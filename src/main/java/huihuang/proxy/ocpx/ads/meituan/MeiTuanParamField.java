@@ -2,55 +2,136 @@ package huihuang.proxy.ocpx.ads.meituan;
 
 
 /**
- * @Description: 美团（参数）
+ * @Description: 美团入参字段
  * @Author: xietao
  * @Date: 2023-04-20 10:50
  **/
-public enum MeiTuanParamField {
+public class MeiTuanParamField {
 
-    SOURCE("source","String",1,"由美团商务提供，一个渠道持有一个美团的source"),
-    APP_TYPE("app_type","String",1,"备类型，枚举值，全小写，安卓设备填 android，IOS 设备填 ios，其余设备不填写"),
-    MD5_IDFA("md5_idfa","String",1,"IOS-idfa 的原生值 md5 值，32 位小写"),
-    MD5_IMEI("md5_imei","String",1,"Android-imei 的原生值 md5 值，32 位小写"),
-    OAID("oaid","String",1,"Android-oaid 的原生值"),
-    MD5_OAID("md5_oaid","String",1,"Android-oaid 的原生值 md5 值，32 位小写"),
-    FEEDBACK_URL("feedback_url","String",1,"转化回调媒体的 url"),
-    ACTION_TIME("action_time","String",1,"行为发生时间戳，毫秒，不传默认行为发生时间是上报的时刻"),
+    private String source;
+    private String app_type;
+    private String md5_idfa;
+    private String md5_imei;
+    private String oaid;
+    private String md5_oaid;
+    private String feedback_url;
+    private String action_time;
+    private String adgroup_id;
+    private String campaign_id;
+    private String campaign_name;
+    private String creative_id;
+    private String placement_id;
+    private String app_install;
 
-    ADGROUP_ID("adgroup_id","String",0,"渠道侧广告组 ID"),
-    CAMPAIGN_ID("campaign_id","String",0,"渠道侧投放计划 id, 用来追踪投放计划转化效果"),
-    CAMPAIGN_NAME("campaign_name","String",0,"渠道侧广告计划名称"),
-    CREATIVE_ID("creative_id","String",0,"渠道侧投放创意 id， 用来追踪投放创意转化效果"),
-    PLACEMENT_ID("placement_id","String",0,"媒体侧的广告位， 用来追踪媒体不同广告位的转化效果"),
-    APP_INSTALL("app_install","String",0,"安装转化目标 app 的标识， 0: 未安装转化目标 app, 1: 安装了转化目标 app"),
-
-    ;
-
-    private String name;
-    private String type;
-    private Integer necessary;
-    private String remark;
-
-    MeiTuanParamField(String name,String type,Integer necessary,String remark){
-        this.name = name;
-        this.type = type;
-        this.necessary = necessary;
-        this.remark = remark;
+    public String getSource() {
+        return source;
     }
 
-    public String getName() {
-        return name;
+    public void setSource(String source) {
+        this.source = source;
     }
 
-    public String getType() {
-        return type;
+    public String getApp_type() {
+        return app_type;
     }
 
-    public Integer getNecessary() {
-        return necessary;
+    public void setApp_type(String app_type) {
+        this.app_type = app_type;
     }
 
-    public String getRemark() {
-        return remark;
+    public String getMd5_idfa() {
+        return md5_idfa;
+    }
+
+    public void setMd5_idfa(String md5_idfa) {
+        this.md5_idfa = md5_idfa;
+    }
+
+    public String getMd5_imei() {
+        return md5_imei;
+    }
+
+    public void setMd5_imei(String md5_imei) {
+        this.md5_imei = md5_imei;
+    }
+
+    public String getOaid() {
+        return oaid;
+    }
+
+    public void setOaid(String oaid) {
+        this.oaid = oaid;
+    }
+
+    public String getMd5_oaid() {
+        return md5_oaid;
+    }
+
+    public void setMd5_oaid(String md5_oaid) {
+        this.md5_oaid = md5_oaid;
+    }
+
+    public String getFeedback_url() {
+        return feedback_url;
+    }
+
+    public void setFeedback_url(String feedback_url) {
+        this.feedback_url = feedback_url;
+    }
+
+    public String getAction_time() {
+        return action_time;
+    }
+
+    public void setAction_time(String action_time) {
+        this.action_time = action_time;
+    }
+
+    public String getAdgroup_id() {
+        return adgroup_id;
+    }
+
+    public void setAdgroup_id(String adgroup_id) {
+        this.adgroup_id = adgroup_id;
+    }
+
+    public String getCampaign_id() {
+        return campaign_id;
+    }
+
+    public void setCampaign_id(String campaign_id) {
+        this.campaign_id = campaign_id;
+    }
+
+    public String getCampaign_name() {
+        return campaign_name;
+    }
+
+    public void setCampaign_name(String campaign_name) {
+        this.campaign_name = campaign_name;
+    }
+
+    public String getCreative_id() {
+        return creative_id;
+    }
+
+    public void setCreative_id(String creative_id) {
+        this.creative_id = creative_id;
+    }
+
+    public String getPlacement_id() {
+        return placement_id;
+    }
+
+    public void setPlacement_id(String placement_id) {
+        this.placement_id = placement_id;
+    }
+
+    public String getApp_install() {
+        return app_install;
+    }
+
+    public void setApp_install(String app_install) {
+        this.app_install = app_install;
     }
 }
