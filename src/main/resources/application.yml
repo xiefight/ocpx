@@ -1,2 +1,12 @@
 server:
   port: 5015
+
+
+spring:
+  # 指定启用环境为 开发环境 dev
+  profiles:
+    active: dev
+
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+  config-location:  classpath:/mybatis/config/mybatis-config.xml
