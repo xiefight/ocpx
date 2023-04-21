@@ -1,7 +1,11 @@
 package huihuang.proxy.ocpx.ads.meituan;
 
+import huihuang.proxy.ocpx.channel.toutiao.ToutiaoParamEnum;
+
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -66,6 +70,30 @@ public enum MeiTuanParamEnum {
 
     public static List<MeiTuanParamEnum> findParamEnumsByNece(Integer necessary) {
         return Arrays.stream(values()).filter(con -> necessary == con.getNecessary()).collect(Collectors.toList());
+    }
+
+    /**
+     * toutiao-meituan
+     */
+    public static Map<MeiTuanParamEnum, ToutiaoParamEnum> tmMap;
+
+    static {
+        tmMap = new HashMap<>();
+        tmMap.put(SOURCE, null);
+        tmMap.put(APP_TYPE, ToutiaoParamEnum.OS);
+        tmMap.put(MD5_IDFA, ToutiaoParamEnum.IDFA_MD5);
+        tmMap.put(MD5_IMEI, ToutiaoParamEnum.IMEI);
+        tmMap.put(OAID, ToutiaoParamEnum.OAID);
+        tmMap.put(MD5_OAID, ToutiaoParamEnum.OAID_MD5);
+        tmMap.put(FEEDBACK_URL, ToutiaoParamEnum.CALLBACK_URL);
+        tmMap.put(ACTION_TIME, ToutiaoParamEnum.TS);
+
+        tmMap.put(ADGROUP_ID, ToutiaoParamEnum.CAMPAIGN_ID);
+        tmMap.put(CAMPAIGN_ID, ToutiaoParamEnum.AID);
+        tmMap.put(CAMPAIGN_NAME, ToutiaoParamEnum.AID_NAME);
+        tmMap.put(CREATIVE_ID, ToutiaoParamEnum.CID);
+        tmMap.put(PLACEMENT_ID, null);
+        tmMap.put(APP_INSTALL, null);
     }
 
 }
