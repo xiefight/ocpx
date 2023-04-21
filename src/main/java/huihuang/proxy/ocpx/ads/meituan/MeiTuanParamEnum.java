@@ -1,5 +1,9 @@
 package huihuang.proxy.ocpx.ads.meituan;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * @Description: 美团入参描述
  * @Author: xietao
@@ -51,6 +55,17 @@ public enum MeiTuanParamEnum {
 
     public String getRemark() {
         return remark;
+    }
+
+    /**
+     * 查找必要
+     */
+    public static List<MeiTuanParamEnum> findParamEnumsByNece() {
+        return findParamEnumsByNece(1);
+    }
+
+    public static List<MeiTuanParamEnum> findParamEnumsByNece(Integer necessary) {
+        return Arrays.stream(values()).filter(con -> necessary == con.getNecessary()).collect(Collectors.toList());
     }
 
 }

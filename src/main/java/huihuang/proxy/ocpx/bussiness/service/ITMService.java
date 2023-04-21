@@ -11,8 +11,5 @@ import java.util.Map;
  **/
 public interface ITMService {
 
-
     Response monitorAddress(Map<String, Object> params);
-
-    Response queryConfig();
 }

@@ -48,9 +48,4 @@ public class TMServiceImpl implements ITMService {
         return BasicResult.getSuccessResponse(monitorAddress);
     }
 
-    @Override
-    public Response queryConfig() {
-        String config = configDao.queryConfig();
-        return BasicResult.getSuccessResponse(config);
-    }
 }
