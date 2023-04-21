@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.util.StrUtil;
+import huihuang.proxy.ocpx.bussiness.dao.IConfigDao;
 import huihuang.proxy.ocpx.bussiness.service.ITMService;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Response;
@@ -22,6 +23,8 @@ public class TMServiceImpl implements ITMService {
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
+    @Autowired
+    private IConfigDao configDao;
 
     @Override
     public Response monitorAddress(Map<String, Object> params) {
@@ -43,5 +46,11 @@ public class TMServiceImpl implements ITMService {
         }
 
         return BasicResult.getSuccessResponse(monitorAddress);
+    }
+
+    @Override
+    public Response queryConfig() {
+        String config = configDao.queryConfig();
+        return BasicResult.getSuccessResponse(config);
     }
 }

@@ -34,4 +34,9 @@ public class TMController {
         }
     }
 
+    @RequestMapping("queryConfig")
+    public Response queryConfig(){
+        return tmService.queryConfig();
+    }
+
 }

@@ -13,4 +13,6 @@ public interface ITMService {
 
 
     Response monitorAddress(Map<String, Object> params);
+
+    Response queryConfig();
 }
