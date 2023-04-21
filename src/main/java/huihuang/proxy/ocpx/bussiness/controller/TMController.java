@@ -24,11 +24,27 @@ public class TMController {
     @Autowired
     private ITMService tmService;
 
+    /**
+     * 监测地址
+     */
     @RequestMapping("monitorAddress")
     public Response monitorAddress(HttpServletRequest request, @RequestBody String reqBody) {
         try {
             Map<String, Object> params = JsonParameterUtil.jsonToMap(reqBody, Exception.class);
             return tmService.monitorAddress(params);
+        } catch (Exception e) {
+            return BasicResult.getFailResponse(e.getMessage());
+        }
+    }
+
+    /**
+     * 点击上报和回传
+     */
+    @RequestMapping("clickReport")
+    public Response monitorAddress(HttpServletRequest request) {
+        try {
+            Map<String, String[]> parameterMap = request.getParameterMap();
+            return tmService.clickReport(parameterMap);
         } catch (Exception e) {
             return BasicResult.getFailResponse(e.getMessage());
         }

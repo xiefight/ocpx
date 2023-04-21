@@ -12,4 +12,6 @@ import java.util.Map;
 public interface ITMService {
 
     Response monitorAddress(Map<String, Object> params);
+
+    Response clickReport(Map<String, String[]> parameterMap);
 }
