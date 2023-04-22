@@ -14,7 +14,7 @@ public interface IMeiTuanAdsDao {
     /**
      * 新增一条监测记录
      */
-    void insert(MeiTuanAdsDTO meiTuanAdsDTO);
+    int insert(MeiTuanAdsDTO meiTuanAdsDTO);
 
     /**
      * 更新监测记录

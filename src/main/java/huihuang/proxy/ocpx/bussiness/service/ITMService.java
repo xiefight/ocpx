@@ -13,5 +13,5 @@ public interface ITMService {
 
     Response monitorAddress(Map<String, Object> params);
 
-    Response clickReport(Map<String, String[]> parameterMap);
+    Response clickReport(Map<String, String[]> parameterMap) throws Exception;
 }

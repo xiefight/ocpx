@@ -1,6 +1,11 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.http.HttpRequest;
+import cn.hutool.http.HttpResponse;
+import cn.hutool.http.HttpStatus;
+import huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamEnum;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamField;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanPath;
@@ -8,9 +13,11 @@ import huihuang.proxy.ocpx.bussiness.dao.IMeiTuanAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.ITMService;
 import huihuang.proxy.ocpx.channel.toutiao.ToutiaoParamEnum;
 import huihuang.proxy.ocpx.common.BasicResult;
+import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
+import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,7 +63,7 @@ public class TMServiceImpl implements ITMService {
     }
 
     @Override
-    public Response clickReport(Map<String, String[]> parameterMap) {
+    public Response clickReport(Map<String, String[]> parameterMap) throws Exception {
         MeiTuanParamField meiTuanParamField = new MeiTuanParamField();
 
         Set<Map.Entry<MeiTuanParamEnum, ToutiaoParamEnum>> tmSet = MeiTuanParamEnum.tmMap.entrySet();
@@ -104,15 +111,44 @@ public class TMServiceImpl implements ITMService {
         meiTuanParamField.setApp_type(convertAppType(meiTuanParamField.getApp_type()));
 
         //保存数据库
-        meiTuanAdsDao.insert(meiTuanParamField);
+        MeiTuanAdsDTO meiTuanAdsDTO = new MeiTuanAdsDTO();
+        BeanUtil.copyProperties(meiTuanParamField, meiTuanAdsDTO);
+        meiTuanAdsDao.insert(meiTuanAdsDTO);
 
         //将回调参数替换成我们的，之后美团侧有回调请求，是通知我们
 
 
         String adsUrl = initAdsUrl(meiTuanParamField);
         //调用广告侧美团上报接口
+        reportAds(meiTuanAdsDTO.getId(), adsUrl);
 
         return BasicResult.getSuccessResponse(adsUrl);
+    }
+
+
+    /**
+     * 上报给广告侧
+     */
+    private void reportAds(Integer id, String adsUrl) throws Exception {
+        HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();
+        Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
+        //上报成功
+        if (HttpStatus.HTTP_OK == response.getStatus() && responseBodyMap.get("ret").equals(0)) {
+            updateReportStatus(id, Constants.ReportStatus.SUCCESS.getCode());
+        } else {
+            updateReportStatus(id, Constants.ReportStatus.FAIL.getCode());
+        }
+    }
+
+    /**
+     * 更新上报状态
+     */
+    private void updateReportStatus(Integer id, String status) {
+        MeiTuanAdsDTO meiTuanAdsDTO = new MeiTuanAdsDTO();
+        meiTuanAdsDTO.setId(id);
+        meiTuanAdsDTO.setReportStatus(status);
+        int update = meiTuanAdsDao.update(meiTuanAdsDTO);
+        System.out.println("update:" + update);
     }
 
     /**

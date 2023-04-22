@@ -9,7 +9,7 @@ import java.util.Date;
  **/
 public class MeiTuanAdsDTO {
 
-    private String id;
+    private Integer id;
     private String source;
     private String app_type;
     private String md5_idfa;
@@ -34,11 +34,11 @@ public class MeiTuanAdsDTO {
     /** 回调时间戳 */
     private String callBackTime;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
