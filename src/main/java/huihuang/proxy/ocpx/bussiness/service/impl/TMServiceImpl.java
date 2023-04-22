@@ -3,6 +3,8 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamEnum;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamField;
+import huihuang.proxy.ocpx.ads.meituan.MeiTuanPath;
+import huihuang.proxy.ocpx.bussiness.dao.IMeiTuanAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.ITMService;
 import huihuang.proxy.ocpx.channel.toutiao.ToutiaoParamEnum;
 import huihuang.proxy.ocpx.common.BasicResult;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -30,6 +33,8 @@ public class TMServiceImpl implements ITMService {
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
+    @Autowired
+    private IMeiTuanAdsDao meiTuanAdsDao;
 
     @Override
     public Response monitorAddress(Map<String, Object> params) {
@@ -76,7 +81,8 @@ public class TMServiceImpl implements ITMService {
 
         //对特殊参数进行校验
         if (Objects.isNull(meiTuanParamField.getSource())) {
-            return BasicResult.getFailResponse(MeiTuanParamEnum.SOURCE.getName() + "不能为空");
+            meiTuanParamField.setSource("123");
+//            return BasicResult.getFailResponse(MeiTuanParamEnum.SOURCE.getName() + "不能为空");
         }
         if (Objects.isNull(meiTuanParamField.getAction_time())) {
             return BasicResult.getFailResponse(MeiTuanParamEnum.ACTION_TIME.getName() + "不能为空");
@@ -94,9 +100,57 @@ public class TMServiceImpl implements ITMService {
             }
         }
 
-        //保存数据库
+        //特殊参数进行转换
+        meiTuanParamField.setApp_type(convertAppType(meiTuanParamField.getApp_type()));
 
-        return BasicResult.getSuccessResponse();
+        //保存数据库
+        meiTuanAdsDao.insert(meiTuanParamField);
+
+        //将回调参数替换成我们的，之后美团侧有回调请求，是通知我们
+
+
+        String adsUrl = initAdsUrl(meiTuanParamField);
+        //调用广告侧美团上报接口
+
+        return BasicResult.getSuccessResponse(adsUrl);
+    }
+
+    /**
+     * 整理广告侧的url
+     *
+     * @param meiTuanParamField
+     * @return
+     */
+    private String initAdsUrl(MeiTuanParamField meiTuanParamField) {
+        StringBuilder adsUrl = new StringBuilder(MeiTuanPath.BASIC_URI + MeiTuanPath.VERIFY);
+        //将参数拼接到url中以发送get请求
+        Field[] declaredFields = meiTuanParamField.getClass().getDeclaredFields();
+        for (Field field : declaredFields) {
+            String fieldName = field.getName();
+            PropertyDescriptor descriptor;
+            try {
+                descriptor = new PropertyDescriptor(fieldName, meiTuanParamField.getClass());
+                Method getMethod = descriptor.getReadMethod();
+                Object fieldValue = getMethod.invoke(meiTuanParamField);
+                if (Objects.nonNull(fieldValue)) {
+                    adsUrl.append("&").append(fieldName).append("=").append(fieldValue);
+                }
+            } catch (IntrospectionException | IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
+        return adsUrl.toString();
+    }
+
+
+    private String convertAppType(String os) {
+        switch (os) {
+            case "0":
+                return "android";
+            case "1":
+                return "ios";
+        }
+        return "";
     }
 
 }

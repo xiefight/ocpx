@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="huihuang.proxy.ocpx.bussiness.dao.IMeiTuanAdsDao">
+
+    <resultMap id="meituanAdsMap" type="huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO">
+        <id column="id" property="id"/>
+        <result column="source" property="source"/>
+        <result column="app_type" property="app_type"/>
+        <result column="md5_idfa" property="md5_idfa"/>
+        <result column="md5_imei" property="md5_imei"/>
+        <result column="oaid" property="oaid"/>
+        <result column="md5_oaid" property="md5_oaid"/>
+        <result column="feedback_url" property="feedback_url"/>
+        <result column="action_time" property="action_time"/>
+        <result column="adgroup_id" property="adgroup_id"/>
+        <result column="campaign_id" property="campaign_id"/>
+        <result column="campaign_name" property="campaign_name"/>
+        <result column="creative_id" property="creative_id"/>
+        <result column="placement_id" property="placement_id"/>
+        <result column="app_install" property="app_install"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO">
+        INSERT INTO meituan_ads
+        (source, app_type, md5_idfa, md5_imei, oaid,
+         md5_oaid, feedback_url, action_time, adgroup_id, campaign_id, campaign_name, creative_id, placement_id,
+         app_install, create_time, update_time)
+        VALUES (#{source}, #{app_type}, #{md5_idfa}, #{md5_imei}, #{oaid}, #{md5_oaid}, #{feedback_url}, #{action_time},
+                #{adgroup_id}, #{campaign_id}, #{campaign_name}, #{creative_id}, #{placement_id}, #{app_install}, now(),
+                now())
+    </insert>
+
+
+</mapper>
