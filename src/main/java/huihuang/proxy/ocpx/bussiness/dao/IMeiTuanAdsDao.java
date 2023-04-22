@@ -21,4 +21,9 @@ public interface IMeiTuanAdsDao {
      */
     int update(MeiTuanAdsDTO meiTuanAdsDTO);
 
+    /**
+     * 根据id查询
+     */
+    MeiTuanAdsDTO queryMeiTuanAdsById(Integer id);
+
 }

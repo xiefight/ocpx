@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="huihuang.proxy.ocpx.bussiness.dao.IToutiaoCallbackDao">
+
+    <resultMap id="toutiaoCallbackMap" type="huihuang.proxy.ocpx.channel.toutiao.ToutiaoCallbackDTO">
+        <id column="id" property="id"/>
+        <id column="ads_id" property="adsId"/>
+        <result column="source" property="source"/>
+        <result column="callback" property="callback"/>
+        <result column="imei" property="imei"/>
+        <result column="idfa" property="idfa"/>
+        <result column="oaid" property="oaid"/>
+        <result column="muid" property="muid"/>
+        <result column="oaid_md5" property="oaidMd5"/>
+        <result column="os" property="os"/>
+        <result column="conv_time" property="convTime"/>
+        <result column="event_type" property="eventType"/>
+        <result column="callback_status" property="callBackStatus"/>
+        <result column="callback_mes" property="callBackMes"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="huihuang.proxy.ocpx.channel.toutiao.ToutiaoCallbackDTO">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO toutiao_callback
+        (ads_id, source, callback, imei, idfa, oaid,
+        muid, oaid_md5, os, conv_time, event_type, callback_status,callback_mes, create_time, update_time)
+        VALUES (#{adsId}, #{source}, #{callback}, #{imei}, #{idfa}, #{oaid}, #{muid}, #{oaidMd5},#{os},
+        #{convTime}, #{eventType}, #{callBackStatus}, #{callBackMes},now(),now())
+    </insert>
+
+
+</mapper>

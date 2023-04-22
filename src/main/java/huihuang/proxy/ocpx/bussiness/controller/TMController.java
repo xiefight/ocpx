@@ -5,9 +5,7 @@ import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -41,7 +39,7 @@ public class TMController {
      * 点击上报和回传
      */
     @RequestMapping("clickReport")
-    public Response monitorAddress(HttpServletRequest request) {
+    public Response clickReport(HttpServletRequest request) {
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
             return tmService.clickReport(parameterMap);
@@ -49,5 +47,19 @@ public class TMController {
             return BasicResult.getFailResponse(e.getMessage());
         }
     }
+
+    /**
+     * 客户侧回调
+     */
+    @GetMapping("adsCallBack/{id}")
+    public Response adsCallBack(HttpServletRequest request, @PathVariable Integer id) {
+        try {
+            Map<String, String[]> parameterMap = request.getParameterMap();
+            return tmService.adsCallBack(id, parameterMap);
+        } catch (Exception e) {
+            return BasicResult.getFailResponse(e.getMessage());
+        }
+    }
+
 
 }

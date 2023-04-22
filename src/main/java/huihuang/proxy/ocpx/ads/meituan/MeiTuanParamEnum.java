@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.ads.meituan;
 
+import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.toutiao.ToutiaoParamEnum;
 
 import java.util.Arrays;
@@ -94,6 +95,26 @@ public enum MeiTuanParamEnum {
         tmMap.put(CREATIVE_ID, ToutiaoParamEnum.CID);
         tmMap.put(PLACEMENT_ID, null);
         tmMap.put(APP_INSTALL, null);
+    }
+
+    public static Map<Integer, Integer> eventTypeMap;
+
+    static {
+        eventTypeMap = CollUtil.newHashMap();
+        //激活
+        eventTypeMap.put(1, 0);
+        //用户下单
+        eventTypeMap.put(2, 20);
+        //用户当日首次DAU
+        eventTypeMap.put(3, null);
+        //有效获客
+        eventTypeMap.put(4, null);
+        //付费
+        eventTypeMap.put(5, 2);
+        //意向uv
+        eventTypeMap.put(6, null);
+        //关键行为
+        eventTypeMap.put(7, 25);
     }
 
 }

@@ -14,4 +14,6 @@ public interface ITMService {
     Response monitorAddress(Map<String, Object> params);
 
     Response clickReport(Map<String, String[]> parameterMap) throws Exception;
+
+    Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception;
 }

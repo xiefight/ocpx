@@ -38,6 +38,6 @@ public class MTChannelAds extends BaseSupport implements IChannelAds {
         //2.config中查找服务地址
         String serverPath = queryServerPath();
         //3.拼接监测地址
-        return serverPath + "?" + macroStr;
+        return serverPath + "/tmServer/clickReport" + "?" + macroStr;
     }
 }

@@ -5,16 +5,21 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
+import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamEnum;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamField;
-import huihuang.proxy.ocpx.ads.meituan.MeiTuanPath;
 import huihuang.proxy.ocpx.bussiness.dao.IMeiTuanAdsDao;
+import huihuang.proxy.ocpx.bussiness.dao.IToutiaoCallbackDao;
+import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.ITMService;
+import huihuang.proxy.ocpx.channel.toutiao.ToutiaoCallbackDTO;
 import huihuang.proxy.ocpx.channel.toutiao.ToutiaoParamEnum;
+import huihuang.proxy.ocpx.channel.toutiao.ToutiaoPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
+import huihuang.proxy.ocpx.middle.BaseSupport;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
@@ -23,7 +28,6 @@ import org.springframework.stereotype.Service;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -36,12 +40,16 @@ import java.util.Set;
  * @Date: 2023-04-20 21:33
  **/
 @Service
-public class TMServiceImpl implements ITMService {
+public class TMServiceImpl extends BaseSupport implements ITMService {
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
     @Autowired
     private IMeiTuanAdsDao meiTuanAdsDao;
+    @Autowired
+    private IToutiaoCallbackDao toutiaoCallbackDao;
+    @Autowired
+    private BaseServiceInner baseServiceInner;
 
     @Override
     public Response monitorAddress(Map<String, Object> params) {
@@ -88,7 +96,7 @@ public class TMServiceImpl implements ITMService {
 
         //对特殊参数进行校验
         if (Objects.isNull(meiTuanParamField.getSource())) {
-            meiTuanParamField.setSource("123");
+            meiTuanParamField.setSource("agroup_bmarketing_conline_dmeituanunion_xinlianlu_roihhmt_ta_5");
 //            return BasicResult.getFailResponse(MeiTuanParamEnum.SOURCE.getName() + "不能为空");
         }
         if (Objects.isNull(meiTuanParamField.getAction_time())) {
@@ -108,7 +116,7 @@ public class TMServiceImpl implements ITMService {
         }
 
         //特殊参数进行转换
-        meiTuanParamField.setApp_type(convertAppType(meiTuanParamField.getApp_type()));
+        meiTuanParamField.setApp_type(baseServiceInner.convertAppType(meiTuanParamField.getApp_type()));
 
         //保存数据库
         MeiTuanAdsDTO meiTuanAdsDTO = new MeiTuanAdsDTO();
@@ -116,77 +124,65 @@ public class TMServiceImpl implements ITMService {
         meiTuanAdsDao.insert(meiTuanAdsDTO);
 
         //将回调参数替换成我们的，之后美团侧有回调请求，是通知我们
-
-
-        String adsUrl = initAdsUrl(meiTuanParamField);
+        String ocpxUrl = queryServerPath() + "/tmServer/adsCallBack/" + meiTuanAdsDTO.getId();
+        meiTuanParamField.setFeedback_url(ocpxUrl);
+        String adsUrl = baseServiceInner.initAdsUrl(meiTuanParamField);
         //调用广告侧美团上报接口
-        reportAds(meiTuanAdsDTO.getId(), adsUrl);
+        baseServiceInner.reportAds(meiTuanAdsDTO.getId(), adsUrl);
 
         return BasicResult.getSuccessResponse(adsUrl);
     }
 
+    @Override
+    public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
+        //转化类型字段
+        String eventType = parameterMap.get("event_type")[0];
+        String eventTimes = parameterMap.get("event_time")[0];
 
-    /**
-     * 上报给广告侧
-     */
-    private void reportAds(Integer id, String adsUrl) throws Exception {
-        HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();
+        //根据id查询对应的点击记录
+        MeiTuanAdsDTO meiTuanAdsDTO = meiTuanAdsDao.queryMeiTuanAdsById(id);
+        String feedbackUrl = meiTuanAdsDTO.getFeedback_url();
+        //回传到字节
+        String channelUrl = ToutiaoPath.BASIC_URI;
+//        HttpResponse response = HttpRequest.get(channelUrl).timeout(20000).execute();
+        String os = baseServiceInner.convertOs(meiTuanAdsDTO.getApp_type());
+        JSONObject json = new JSONObject();
+        json.put("callback", feedbackUrl);
+        json.put("conv_time", eventTimes);
+        json.put("event_type", MeiTuanParamEnum.eventTypeMap.get(eventType));
+        json.put("os", os);
+        json.put("idfa", meiTuanAdsDTO.getMd5_idfa());
+        json.put("oaid", meiTuanAdsDTO.getOaid());
+        json.put("imei", meiTuanAdsDTO.getMd5_imei());
+        json.put("muid", os.equals("1") ? meiTuanAdsDTO.getMd5_idfa() : meiTuanAdsDTO.getMd5_imei());
+        json.put("source", meiTuanAdsDTO.getSource());
+
+        HttpResponse response = HttpRequest.post(channelUrl)
+                .timeout(20000).form(json)
+                .header("content-type", "application/json")
+                .execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
-        //上报成功
-        if (HttpStatus.HTTP_OK == response.getStatus() && responseBodyMap.get("ret").equals(0)) {
-            updateReportStatus(id, Constants.ReportStatus.SUCCESS.getCode());
+
+        //保存转化事件回调信息
+        ToutiaoCallbackDTO toutiaoCallbackDTO = new ToutiaoCallbackDTO(id, feedbackUrl, meiTuanAdsDTO.getMd5_imei(),
+                meiTuanAdsDTO.getMd5_idfa(), (String) json.get("muid"), meiTuanAdsDTO.getOaid(), null, os, meiTuanAdsDTO.getSource(), eventTimes, eventType);
+        //更新回调状态
+        MeiTuanAdsDTO meiTuanAds = new MeiTuanAdsDTO();
+        meiTuanAds.setId(id);
+        meiTuanAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
+        if (HttpStatus.HTTP_OK == response.getStatus() && responseBodyMap.get("code").equals(0)) {
+            toutiaoCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            meiTuanAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
         } else {
-            updateReportStatus(id, Constants.ReportStatus.FAIL.getCode());
+            toutiaoCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            meiTuanAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
         }
+        toutiaoCallbackDTO.setCallBackMes((String) responseBodyMap.get("msg"));
+        toutiaoCallbackDao.insert(toutiaoCallbackDTO);
+        baseServiceInner.updateMeiTuanAds(meiTuanAds);
+
+        return BasicResult.getSuccessResponse();
     }
 
-    /**
-     * 更新上报状态
-     */
-    private void updateReportStatus(Integer id, String status) {
-        MeiTuanAdsDTO meiTuanAdsDTO = new MeiTuanAdsDTO();
-        meiTuanAdsDTO.setId(id);
-        meiTuanAdsDTO.setReportStatus(status);
-        int update = meiTuanAdsDao.update(meiTuanAdsDTO);
-        System.out.println("update:" + update);
-    }
-
-    /**
-     * 整理广告侧的url
-     *
-     * @param meiTuanParamField
-     * @return
-     */
-    private String initAdsUrl(MeiTuanParamField meiTuanParamField) {
-        StringBuilder adsUrl = new StringBuilder(MeiTuanPath.BASIC_URI + MeiTuanPath.VERIFY);
-        //将参数拼接到url中以发送get请求
-        Field[] declaredFields = meiTuanParamField.getClass().getDeclaredFields();
-        for (Field field : declaredFields) {
-            String fieldName = field.getName();
-            PropertyDescriptor descriptor;
-            try {
-                descriptor = new PropertyDescriptor(fieldName, meiTuanParamField.getClass());
-                Method getMethod = descriptor.getReadMethod();
-                Object fieldValue = getMethod.invoke(meiTuanParamField);
-                if (Objects.nonNull(fieldValue)) {
-                    adsUrl.append("&").append(fieldName).append("=").append(fieldValue);
-                }
-            } catch (IntrospectionException | IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        }
-        return adsUrl.toString();
-    }
-
-
-    private String convertAppType(String os) {
-        switch (os) {
-            case "0":
-                return "android";
-            case "1":
-                return "ios";
-        }
-        return "";
-    }
 
 }

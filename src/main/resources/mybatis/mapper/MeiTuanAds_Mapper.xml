@@ -66,4 +66,13 @@
     </update>
 
 
+    <select id="queryMeiTuanAdsById" parameterType="java.lang.Integer" resultMap="meituanAdsMap">
+        SELECT id, source, app_type, md5_idfa, md5_imei, oaid,
+               md5_oaid, feedback_url, action_time, adgroup_id, campaign_id, campaign_name, creative_id, placement_id,
+               app_install, create_time, update_time, report_status, callback_status
+        FROM meituan_ads
+        WHERE id = #{id}
+    </select>
+
+
 </mapper>
