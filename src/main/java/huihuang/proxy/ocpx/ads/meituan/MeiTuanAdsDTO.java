@@ -27,6 +27,13 @@ public class MeiTuanAdsDTO {
     private Date createTime;
     private Date updateTime;
 
+    /** 当前上报状态 */
+    private String reportStatus;
+    /** 当前回调状态 */
+    private String callBackStatus;
+    /** 回调时间戳 */
+    private String callBackTime;
+
     public String getId() {
         return id;
     }
@@ -161,5 +168,29 @@ public class MeiTuanAdsDTO {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getReportStatus() {
+        return reportStatus;
+    }
+
+    public void setReportStatus(String reportStatus) {
+        this.reportStatus = reportStatus;
+    }
+
+    public String getCallBackStatus() {
+        return callBackStatus;
+    }
+
+    public void setCallBackStatus(String callBackStatus) {
+        this.callBackStatus = callBackStatus;
+    }
+
+    public String getCallBackTime() {
+        return callBackTime;
+    }
+
+    public void setCallBackTime(String callBackTime) {
+        this.callBackTime = callBackTime;
     }
 }

@@ -20,17 +20,46 @@
         <result column="app_install" property="app_install"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
+        <result column="report_status" property="reportStatus"/>
+        <result column="callback_status" property="callBackStatus"/>
+        <result column="callback_time" property="callBackTime"/>
     </resultMap>
 
     <insert id="insert" parameterType="huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO">
         INSERT INTO meituan_ads
         (source, app_type, md5_idfa, md5_imei, oaid,
          md5_oaid, feedback_url, action_time, adgroup_id, campaign_id, campaign_name, creative_id, placement_id,
-         app_install, create_time, update_time)
+         app_install, create_time, update_time, report_status, callback_status)
         VALUES (#{source}, #{app_type}, #{md5_idfa}, #{md5_imei}, #{oaid}, #{md5_oaid}, #{feedback_url}, #{action_time},
                 #{adgroup_id}, #{campaign_id}, #{campaign_name}, #{creative_id}, #{placement_id}, #{app_install}, now(),
-                now())
+                now(), "0", "0")
     </insert>
+
+
+    <update id="alterState" parameterType="huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO">
+        UPDATE meituan_ads
+        <set>
+            <if test="source != null">source = #{source},</if>
+            <if test="app_type != null">app_type = #{app_type},</if>
+            <if test="md5_idfa != null">md5_idfa = #{md5_idfa},</if>
+            <if test="md5_imei != null">md5_imei = #{md5_imei},</if>
+            <if test="oaid != null">oaid = #{oaid},</if>
+            <if test="md5_oaid != null">md5_oaid = #{md5_oaid},</if>
+            <if test="feedback_url != null">feedback_url = #{feedback_url,</if>
+            <if test="action_time != null">action_time = #{action_time},</if>
+            <if test="adgroup_id != null">adgroup_id = #{adgroup_id},</if>
+            <if test="campaign_id != null">campaign_id = #{campaign_id},</if>
+            <if test="campaign_name != null">campaign_name = #{campaign_name},</if>
+            <if test="creative_id != null">creative_id = #{creative_id},</if>
+            <if test="placement_id != null">placement_id = #{placement_id},</if>
+            <if test="app_install != null">app_install = #{app_install},</if>
+            update_time = now(),
+            <if test="reportStatus != null">report_status = #{reportStatus},</if>
+            <if test="callBackStatus != null">callback_status = #{callBackStatus},</if>
+            <if test="callBackTime != null">callback_time = #{callBackTime},</if>
+        </set>
+        where id =#{id}
+    </update>
 
 
 </mapper>

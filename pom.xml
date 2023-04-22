@@ -42,6 +42,11 @@
             <artifactId>hutool-core</artifactId>
             <version>5.1.0</version>
         </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-http</artifactId>
+            <version>5.4.2</version>
+        </dependency>
 
         <dependency>
             <groupId>com.alibaba</groupId>

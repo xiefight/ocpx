@@ -1,6 +1,6 @@
 package huihuang.proxy.ocpx.bussiness.dao;
 
-import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamField;
+import huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -14,6 +14,11 @@ public interface IMeiTuanAdsDao {
     /**
      * 新增一条监测记录
      */
-    void insert(MeiTuanParamField meiTuanParamField);
+    void insert(MeiTuanAdsDTO meiTuanAdsDTO);
+
+    /**
+     * 更新监测记录
+     */
+    int update(MeiTuanAdsDTO meiTuanAdsDTO);
 
 }
