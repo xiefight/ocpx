@@ -1,0 +1,236 @@
+<!-- Logback configuration. See http://logback.qos.ch/manual/index.html -->
+<configuration scan="true" scanPeriod="10 seconds">
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <!-- 按照大小切割日志, 保留一定的数量 -->
+    <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/info.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/info.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过30MB归档 -->
+            <maxFileSize>60MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <!-- 按照大小切割日志, 保留一定的数量 -->
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <File>logs/error.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/error.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过30MB归档 -->
+            <maxFileSize>50MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+    
+	<logger name="huihuang.proxy" level="INFO" additivity="true">
+	</logger>
+    <root level="INFO">
+        <appender-ref ref="INFO_FILE" />
+        <appender-ref ref="ERROR_FILE" />
+    </root>
+
+
+    <!-- 业务分析日志, 留待分析数据等, 避免被海量日志覆盖掉, 但此处日志不要添加太多 -->
+   <!-- <appender name="BUSINESS_ANALYSIS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/analysis/business.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/analysis/business.log.%i</fileNamePattern>
+            &lt;!&ndash; 索引最小值，标识%i从1开始 &ndash;&gt;
+			<minIndex>1</minIndex>
+			&lt;!&ndash; 索引最大值，标识%i到5结束，始终保留了5个归档文件 &ndash;&gt;
+			<maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			&lt;!&ndash; 文件大小超过1GB归档 &ndash;&gt;
+			<maxFileSize>30MB</maxFileSize>
+		</triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>-->
+
+    
+    <!--<logger name="business_analysis_log" level="INFO" additivity="true">
+    	<appender-ref ref="BUSINESS_ANALYSIS" />
+    </logger>
+    &lt;!&ndash; 价格提取临时分析 &ndash;&gt;
+    <logger name="com.yunshicloud.business.service.impl.CarPriceServiceImpl" level="INFO" additivity="true">
+    	<appender-ref ref="BUSINESS_ANALYSIS" />
+    </logger>
+    &lt;!&ndash; 价格提取工具类临时分析 &ndash;&gt;
+    <logger name="com.yunshicloud.business.util.CarPriceUtil" level="INFO" additivity="true">
+    	<appender-ref ref="BUSINESS_ANALYSIS" />
+    </logger>-->
+
+
+    
+    <!-- 流状态检查日志 -->
+    <appender name="BASIC_VISITRECORDAOP" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/aop-visitrecord.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/aop-visitrecord.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+			<minIndex>1</minIndex>
+			<!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+			<maxIndex>50</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<!-- 文件大小超过30MB归档 -->
+			<maxFileSize>30MB</maxFileSize>
+		</triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <!--<logger name="com.yunshicloud.basicModule.log.aop.impl.VisitRecordAop" level="INFO" additivity="true">
+    	<appender-ref ref="BASIC_VISITRECORDAOP" />
+    </logger>-->
+    
+    <!-- 三方语音提交或者任务进程 的 一些日志单独打印  ,便于追踪 -->
+    <!--<appender name="LOG_THIRD_SCORE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/thirdscore/thirdscore.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/thirdscore/thirdscore.log.%i</fileNamePattern>
+            &lt;!&ndash; 索引最小值，标识%i从1开始 &ndash;&gt;
+			<minIndex>1</minIndex>
+			&lt;!&ndash; 索引最大值，标识%i到5结束，始终保留了5个归档文件 &ndash;&gt;
+			<maxIndex>30</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			&lt;!&ndash; 文件大小超过30MB归档 &ndash;&gt;
+			<maxFileSize>20MB</maxFileSize>
+		</triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="log_third_score" level="INFO" additivity="true">
+    	<appender-ref ref="LOG_THIRD_SCORE" />
+    </logger>
+    
+    &lt;!&ndash; 处理微信接口的相关日志 &ndash;&gt;
+    <appender name="WECHAT_API" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/wechat/wechat.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/wechat/wechat.log.%i</fileNamePattern>
+            &lt;!&ndash; 索引最小值，标识%i从1开始 &ndash;&gt;
+			<minIndex>1</minIndex>
+			&lt;!&ndash; 索引最大值，标识%i到5结束，始终保留了5个归档文件 &ndash;&gt;
+			<maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			&lt;!&ndash; 文件大小超过30MB归档 &ndash;&gt;
+			<maxFileSize>10MB</maxFileSize>
+		</triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="com.yunshicloud.business.schedule.asynctask.service.impl.RefreshWechatTokenImpl" level="INFO" additivity="true">
+    	<appender-ref ref="WECHAT_API" />
+    </logger>
+    <logger name="com.yunshicloud.business.wechat" level="INFO" additivity="true">
+    	<appender-ref ref="WECHAT_API" />
+    </logger>
+    <logger name="com.yunshicloud.business.schedule.wechat.WechatMessageScheduleJob" level="INFO" additivity="true">
+    	<appender-ref ref="WECHAT_API" />
+    </logger>
+
+    &lt;!&ndash; 处理客户档案数据迁移接口的相关日志 &ndash;&gt;
+    <appender name="CLEANDB_OR_OTHER_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/other/cleanOrOther.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/other/cleanOrOther.log.%i</fileNamePattern>
+            &lt;!&ndash; 索引最小值，标识%i从1开始 &ndash;&gt;
+            <minIndex>1</minIndex>
+            &lt;!&ndash; 索引最大值，标识%i到5结束，始终保留了5个归档文件 &ndash;&gt;
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            &lt;!&ndash; 文件大小超过30MB归档 &ndash;&gt;
+            <maxFileSize>15MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+    <logger name="com.yunshicloud.business.controller.CleanOrRefreshDataBase" level="INFO" additivity="true">
+        <appender-ref ref="CLEANDB_OR_OTHER_LOG" />
+    </logger>
+    <logger name="com.yunshicloud.business.schedule.service.CheckScoreStatusAlarmService" level="INFO" additivity="true">
+        <appender-ref ref="CLEANDB_OR_OTHER_LOG" />
+    </logger>
+    <logger name="cleandb_or_other_log" level="INFO" additivity="true">
+        <appender-ref ref="CLEANDB_OR_OTHER_LOG" />
+    </logger>
+
+
+    &lt;!&ndash; 处理微信接口的相关日志 &ndash;&gt;
+    <appender name="MONGODB_CONNNECTION_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/mongo/mongo-driver.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/mongo/mongo-driver.log.%i</fileNamePattern>
+            &lt;!&ndash; 索引最小值，标识%i从1开始 &ndash;&gt;
+			<minIndex>1</minIndex>
+			&lt;!&ndash; 索引最大值，标识%i到5结束，始终保留了5个归档文件 &ndash;&gt;
+			<maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			&lt;!&ndash; 文件大小超过30MB归档 &ndash;&gt;
+			<maxFileSize>30MB</maxFileSize>
+		</triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="org.mongodb.driver.protocol" level="INFO" additivity="true">
+    	<appender-ref ref="MONGODB_CONNNECTION_LOG" />
+    </logger>
+
+    &lt;!&ndash; 处理shiro登录相关的日志 &ndash;&gt;
+    <appender name="SHIRO_LOGIN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/shiro/shiro-login.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/shiro/shiro-login.log.%i</fileNamePattern>
+            <minIndex>1</minIndex>
+            <maxIndex>15</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>30MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+    <logger name="com.yunshicloud.frameShiro" level="INFO" additivity="true">
+        <appender-ref ref="SHIRO_LOGIN_LOG" />
+    </logger>-->
+
+
+</configuration>

@@ -1,14 +1,8 @@
 package huihuang.proxy.ocpx.bussiness.service;
 
-import cn.hutool.http.HttpRequest;
-import cn.hutool.http.HttpResponse;
-import cn.hutool.http.HttpStatus;
+import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO;
-import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamField;
-import huihuang.proxy.ocpx.ads.meituan.MeiTuanPath;
 import huihuang.proxy.ocpx.bussiness.dao.IMeiTuanAdsDao;
-import huihuang.proxy.ocpx.common.Constants;
-import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @Description:
@@ -27,81 +22,59 @@ import java.util.Objects;
  **/
 @Component
 public class BaseServiceInner {
-    
+
     @Autowired
     private IMeiTuanAdsDao meiTuanAdsDao;
 
     /**
-     * 上报给广告侧
-     */
-    public  void reportAds(Integer id, String adsUrl) throws Exception {
-        HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();
-        Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
-        //上报成功
-        if (HttpStatus.HTTP_OK == response.getStatus() && responseBodyMap.get("ret").equals(0)) {
-            updateReportStatus(id, Constants.ReportStatus.SUCCESS.getCode());
-        } else {
-            updateReportStatus(id, Constants.ReportStatus.FAIL.getCode());
-        }
-    }
-
-    /**
      * 更新点击上报信息
      */
-    public  void updateMeiTuanAds(MeiTuanAdsDTO meiTuanAdsDTO) {
+    public void updateMeiTuanAds(MeiTuanAdsDTO meiTuanAdsDTO) {
         meiTuanAdsDao.update(meiTuanAdsDTO);
     }
 
-
     /**
-     * 更新上报状态
+     * 完善监测地址（在宏参数的基础上，拼接用户自己的参数）
      */
-    public  void updateReportStatus(Integer id, String status) {
-        MeiTuanAdsDTO meiTuanAdsDTO = new MeiTuanAdsDTO();
-        meiTuanAdsDTO.setId(id);
-        meiTuanAdsDTO.setReportStatus(status);
-        meiTuanAdsDao.update(meiTuanAdsDTO);
+    public String appendAddressParam(String monitorAddress, Map<String, Object> params) {
+        StringBuilder sb = new StringBuilder(monitorAddress);
+        if (CollUtil.isNotEmpty(params)) {
+            Set<Map.Entry<String, Object>> paramSet = params.entrySet();
+            for (Map.Entry<String, Object> param : paramSet) {
+                String key = param.getKey();
+                Object value = param.getValue();
+                sb.append("&").append(key).append("=").append(value);
+            }
+        }
+        return sb.toString();
     }
 
     /**
      * 整理广告侧的url
-     *
-     * @param meiTuanParamField
-     * @return
      */
-    public  String initAdsUrl(MeiTuanParamField meiTuanParamField) {
-        StringBuilder adsUrl = new StringBuilder(MeiTuanPath.BASIC_URI + MeiTuanPath.VERIFY);
+    public String initAdsUrlAndParam(String adsUrl, Object adsObj) {
+        StringBuilder stringBuilder = new StringBuilder(adsUrl);
         //将参数拼接到url中以发送get请求
-        Field[] declaredFields = meiTuanParamField.getClass().getDeclaredFields();
+        Field[] declaredFields = adsObj.getClass().getDeclaredFields();
         for (Field field : declaredFields) {
             String fieldName = field.getName();
             PropertyDescriptor descriptor;
             try {
-                descriptor = new PropertyDescriptor(fieldName, meiTuanParamField.getClass());
+                descriptor = new PropertyDescriptor(fieldName, adsObj.getClass());
                 Method getMethod = descriptor.getReadMethod();
-                Object fieldValue = getMethod.invoke(meiTuanParamField);
+                Object fieldValue = getMethod.invoke(adsObj);
                 if (Objects.nonNull(fieldValue)) {
-                    adsUrl.append("&").append(fieldName).append("=").append(fieldValue);
+                    stringBuilder.append("&").append(fieldName).append("=").append(fieldValue);
                 }
             } catch (IntrospectionException | IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
             }
         }
-        return adsUrl.toString();
+        adsUrl = stringBuilder.toString();
+        return adsUrl;
     }
 
-
-    public  String convertAppType(String os) {
-        switch (os) {
-            case "0":
-                return "android";
-            case "1":
-                return "ios";
-        }
-        return "";
-    }
-
-    public  String convertOs(String appType) {
+    public String convertOs(String appType) {
         switch (appType) {
             case "android":
                 return "0";
@@ -110,5 +83,5 @@ public class BaseServiceInner {
         }
         return "";
     }
-    
+
 }

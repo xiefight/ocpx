@@ -1,10 +1,11 @@
 package huihuang.proxy.ocpx.bussiness.controller;
 
-import huihuang.proxy.ocpx.bussiness.service.ITMService;
+import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,8 @@ import java.util.Map;
 public class TMController {
 
     @Autowired
-    private ITMService tmService;
+    @Qualifier("tmService")
+    private IChannelAdsService tmService;
 
     /**
      * 监测地址

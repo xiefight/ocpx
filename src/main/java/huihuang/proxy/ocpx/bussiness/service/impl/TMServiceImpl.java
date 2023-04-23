@@ -1,48 +1,37 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
-import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.net.URLDecoder;
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamEnum;
-import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamField;
 import huihuang.proxy.ocpx.bussiness.dao.IMeiTuanAdsDao;
 import huihuang.proxy.ocpx.bussiness.dao.IToutiaoCallbackDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
-import huihuang.proxy.ocpx.bussiness.service.ITMService;
+import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.channel.toutiao.ToutiaoCallbackDTO;
-import huihuang.proxy.ocpx.channel.toutiao.ToutiaoParamEnum;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
-import huihuang.proxy.ocpx.middle.BaseSupport;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
+import huihuang.proxy.ocpx.util.CommonUtil;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.beans.IntrospectionException;
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
 
 /**
  * @Description:
  * @Author: xietao
  * @Date: 2023-04-20 21:33
  **/
-@Service
-public class TMServiceImpl extends BaseSupport implements ITMService {
+@Service("tmService")
+public class TMServiceImpl implements IChannelAdsService {
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
@@ -53,89 +42,25 @@ public class TMServiceImpl extends BaseSupport implements ITMService {
     @Autowired
     private BaseServiceInner baseServiceInner;
 
+
+    @Override
+    public IChannelAds channelAds() {
+        String channelAdsKey = "toutiao-meituan";
+        return channelAdsFactory.findChannelAds(channelAdsKey);
+    }
+
     @Override
     public Response monitorAddress(Map<String, Object> params) {
-
-        String channel = (String) params.get("channel");
-        String ads = (String) params.get("ads");
-        String source = (String) params.get("source");
-
-        logger.info("准备生成监测地址,参数为：{}", params);
-        String key = channel + "-" + ads;
-        IChannelAds channelAds = channelAdsFactory.findChannelAds(key);
-        if (Objects.isNull(channelAds)) {
-            return BasicResult.getFailResponse("未找到对应渠道：" + channel + " 和广告商：" + ads + "的监测地址");
-        }
+        IChannelAds channelAds = channelAds();
         String monitorAddress = channelAds.findMonitorAddress();
-        monitorAddress = monitorAddress + "&source=" + source;
-        if (StrUtil.isEmpty(monitorAddress)) {
-            return BasicResult.getFailResponse("生成监测地址失败，渠道：" + channel + " 和广告商：" + ads + "");
-        }
-
+        monitorAddress = baseServiceInner.appendAddressParam(monitorAddress, params);
         return BasicResult.getSuccessResponse(monitorAddress);
     }
 
     @Override
     public Response clickReport(Map<String, String[]> parameterMap) throws Exception {
-        MeiTuanParamField meiTuanParamField = new MeiTuanParamField();
-
-        Set<Map.Entry<MeiTuanParamEnum, ToutiaoParamEnum>> tmSet = MeiTuanParamEnum.tmMap.entrySet();
-        tmSet.stream().filter(tm -> Objects.nonNull(tm.getValue())).forEach(tm -> {
-            MeiTuanParamEnum meituan = tm.getKey();
-            ToutiaoParamEnum toutiao = tm.getValue();
-            //美团的字段名
-            String meituanField = meituan.getName();
-            //头条的字段名
-            String toutiaoParam = toutiao.getParam();
-            //头条的参数值
-            String[] value = parameterMap.get(toutiaoParam);
-            if (Objects.isNull(value) || value.length == 0) return;
-            try {
-                PropertyDescriptor descriptor = new PropertyDescriptor(meituanField, meiTuanParamField.getClass());
-                Method setMethod = descriptor.getWriteMethod();
-                setMethod.invoke(meiTuanParamField, value[0]);
-            } catch (IntrospectionException | InvocationTargetException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        });
-
-        //对特殊参数进行校验
-        if (Objects.isNull(meiTuanParamField.getSource())) {
-            meiTuanParamField.setSource("agroup_bmarketing_conline_dmeituanunion_xinlianlu_roihhmt_ta_5");
-//            return BasicResult.getFailResponse(MeiTuanParamEnum.SOURCE.getName() + "不能为空");
-        }
-        if (Objects.isNull(meiTuanParamField.getAction_time())) {
-            return BasicResult.getFailResponse(MeiTuanParamEnum.ACTION_TIME.getName() + "不能为空");
-        }
-        if (Objects.isNull(meiTuanParamField.getApp_type())) {
-            return BasicResult.getFailResponse(MeiTuanParamEnum.APP_TYPE.getName() + "不能为空");
-        }
-        if (Objects.isNull(meiTuanParamField.getFeedback_url())) {
-            return BasicResult.getFailResponse(MeiTuanParamEnum.FEEDBACK_URL.getName() + "不能为空");
-        }
-        //如果ios设备为空，则判断安卓设备
-        if (Objects.isNull(meiTuanParamField.getMd5_idfa())) {
-            if (Objects.isNull(meiTuanParamField.getMd5_imei()) || Objects.isNull(meiTuanParamField.getOaid()) || Objects.isNull(meiTuanParamField.getMd5_oaid())) {
-                return BasicResult.getFailResponse(MeiTuanParamEnum.MD5_IMEI.getName() + "、" + MeiTuanParamEnum.OAID.getName() + "、" + MeiTuanParamEnum.MD5_OAID.getName() + "不能同时为空");
-            }
-        }
-
-        //特殊参数进行转换
-        meiTuanParamField.setApp_type(baseServiceInner.convertAppType(meiTuanParamField.getApp_type()));
-
-        //保存数据库
-        MeiTuanAdsDTO meiTuanAdsDTO = new MeiTuanAdsDTO();
-        BeanUtil.copyProperties(meiTuanParamField, meiTuanAdsDTO);
-        meiTuanAdsDao.insert(meiTuanAdsDTO);
-
-        //将回调参数替换成我们的，之后美团侧有回调请求，是通知我们
-        String ocpxUrl = queryServerPath() + "/tmServer/adsCallBack/" + meiTuanAdsDTO.getId();
-        meiTuanParamField.setFeedback_url(ocpxUrl);
-        String adsUrl = baseServiceInner.initAdsUrl(meiTuanParamField);
-        //调用广告侧美团上报接口
-        baseServiceInner.reportAds(meiTuanAdsDTO.getId(), adsUrl);
-
-        return BasicResult.getSuccessResponse(adsUrl);
+        IChannelAds channelAds = channelAds();
+        return channelAds.clickReport(parameterMap);
     }
 
     @Override
@@ -151,7 +76,7 @@ public class TMServiceImpl extends BaseSupport implements ITMService {
 
         String[] split = feedbackUrl.split("\\?");
         String channelUrl = split[0];
-        Map<String, String> paramMap = convertGetParamToMap(split[1]);
+        Map<String, String> paramMap = CommonUtil.convertGetParamToMap(split[1]);
         //回传到字节
         String os = baseServiceInner.convertOs(meiTuanAdsDTO.getApp_type());
         JSONObject json = new JSONObject();
@@ -191,18 +116,5 @@ public class TMServiceImpl extends BaseSupport implements ITMService {
 
         return BasicResult.getSuccessResponse();
     }
-
-
-
-    private Map<String,String> convertGetParamToMap(String getStr){
-        String[] strs = getStr.split("&");
-        Map<String, String> dataMap = new HashMap<>(16);
-        for (int i = 0; i < strs.length; i++) {
-            String[] str = strs[i].split("=");
-            dataMap.put(str[0], str[1]);
-        }
-        return dataMap;
-    }
-
 
 }

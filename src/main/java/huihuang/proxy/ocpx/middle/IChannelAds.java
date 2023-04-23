@@ -1,5 +1,9 @@
 package huihuang.proxy.ocpx.middle;
 
+import huihuang.proxy.ocpx.common.Response;
+
+import java.util.Map;
+
 /**
  * @Description:
  * @Author: xietao
@@ -7,6 +11,20 @@ package huihuang.proxy.ocpx.middle;
  **/
 public interface IChannelAds {
 
+    /**
+     * 生成监测链接
+     */
     String findMonitorAddress();
+
+    /**
+     * 点击上报和回传
+     */
+    Response clickReport(Map<String, String[]> parameterMap) throws Exception;
+
+    /**
+     * 客户侧回调
+     */
+    void adsCallBack();
+
 
 }
