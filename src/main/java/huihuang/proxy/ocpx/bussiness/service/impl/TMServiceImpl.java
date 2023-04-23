@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.net.URLDecoder;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
@@ -15,7 +16,6 @@ import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.ITMService;
 import huihuang.proxy.ocpx.channel.toutiao.ToutiaoCallbackDTO;
 import huihuang.proxy.ocpx.channel.toutiao.ToutiaoParamEnum;
-import huihuang.proxy.ocpx.channel.toutiao.ToutiaoPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -30,6 +30,8 @@ import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -56,13 +58,16 @@ public class TMServiceImpl extends BaseSupport implements ITMService {
 
         String channel = (String) params.get("channel");
         String ads = (String) params.get("ads");
+        String source = (String) params.get("source");
 
+        logger.info("准备生成监测地址,参数为：{}", params);
         String key = channel + "-" + ads;
         IChannelAds channelAds = channelAdsFactory.findChannelAds(key);
         if (Objects.isNull(channelAds)) {
             return BasicResult.getFailResponse("未找到对应渠道：" + channel + " 和广告商：" + ads + "的监测地址");
         }
         String monitorAddress = channelAds.findMonitorAddress();
+        monitorAddress = monitorAddress + "&source=" + source;
         if (StrUtil.isEmpty(monitorAddress)) {
             return BasicResult.getFailResponse("生成监测地址失败，渠道：" + channel + " 和广告商：" + ads + "");
         }
@@ -142,12 +147,15 @@ public class TMServiceImpl extends BaseSupport implements ITMService {
         //根据id查询对应的点击记录
         MeiTuanAdsDTO meiTuanAdsDTO = meiTuanAdsDao.queryMeiTuanAdsById(id);
         String feedbackUrl = meiTuanAdsDTO.getFeedback_url();
+        feedbackUrl = URLDecoder.decode(feedbackUrl, StandardCharsets.UTF_8);
+
+        String[] split = feedbackUrl.split("\\?");
+        String channelUrl = split[0];
+        Map<String, String> paramMap = convertGetParamToMap(split[1]);
         //回传到字节
-        String channelUrl = ToutiaoPath.BASIC_URI;
-//        HttpResponse response = HttpRequest.get(channelUrl).timeout(20000).execute();
         String os = baseServiceInner.convertOs(meiTuanAdsDTO.getApp_type());
         JSONObject json = new JSONObject();
-        json.put("callback", feedbackUrl);
+        json.put("callback", paramMap.get("callback"));
         json.put("conv_time", eventTimes);
         json.put("event_type", MeiTuanParamEnum.eventTypeMap.get(eventType));
         json.put("os", os);
@@ -182,6 +190,18 @@ public class TMServiceImpl extends BaseSupport implements ITMService {
         baseServiceInner.updateMeiTuanAds(meiTuanAds);
 
         return BasicResult.getSuccessResponse();
+    }
+
+
+
+    private Map<String,String> convertGetParamToMap(String getStr){
+        String[] strs = getStr.split("&");
+        Map<String, String> dataMap = new HashMap<>(16);
+        for (int i = 0; i < strs.length; i++) {
+            String[] str = strs[i].split("=");
+            dataMap.put(str[0], str[1]);
+        }
+        return dataMap;
     }
 
 
