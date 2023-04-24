@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.middle.factory;
 
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.impl.MTChannelAds;
+import huihuang.proxy.ocpx.middle.impl.XJChannelAds;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
@@ -19,10 +20,13 @@ public class ChannelAdsConfig {
 
     @Autowired
     private MTChannelAds mtChannelAds;
+    @Autowired
+    private XJChannelAds xjChannelAds;
 
     @PostConstruct
     public void init() {
         channelAdsMap.put("toutiao-meituan", mtChannelAds);
+        channelAdsMap.put("xiaomi-ltjd", xjChannelAds);
     }
 
 
