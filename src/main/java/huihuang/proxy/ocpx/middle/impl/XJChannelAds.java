@@ -3,6 +3,9 @@ package huihuang.proxy.ocpx.middle.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.net.URLEncoder;
 import cn.hutool.crypto.digest.DigestUtil;
+import cn.hutool.http.HttpRequest;
+import cn.hutool.http.HttpResponse;
+import cn.hutool.http.HttpStatus;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDAdsDTO;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDParamEnum;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDParamField;
@@ -12,9 +15,11 @@ import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamField;
 import huihuang.proxy.ocpx.bussiness.dao.ILtjdAdsDao;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 import huihuang.proxy.ocpx.common.BasicResult;
+import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.middle.BaseSupport;
 import huihuang.proxy.ocpx.middle.IChannelAds;
+import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -104,7 +109,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
     }
 
     @Override
-    protected Response judgeParams(Object adsObj) throws Exception {
+    protected Response judgeParams(Object adsObj) {
         LTJDParamField ltjdParamField = (LTJDParamField) adsObj;
         if (Objects.isNull(ltjdParamField.getSignature())) {
             return BasicResult.getFailResponse(LTJDParamEnum.SIGNATURE.getName() + "不能为空");
@@ -140,17 +145,32 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
 
     @Override
     protected void replaceCallbackUrl(Object adsObj, Object adsDtoObj) {
-
+        LTJDParamField ltjdParamField = (LTJDParamField) adsObj;
+        LTJDAdsDTO ltjdAdsDTO = (LTJDAdsDTO) adsDtoObj;
+        String ocpxUrl = queryServerPath() + "/xjServer/adsCallBack/" + ltjdAdsDTO.getId();
+        String encodeUrl = URLEncoder.createQuery().encode(ocpxUrl, StandardCharsets.UTF_8);
+//            ocpxUrl = URLEncoder.encode(ocpxUrl, "UTF-8");
+        ltjdParamField.setCallback_url(encodeUrl);
     }
 
     @Override
     protected String initAdsUrl() {
-        return null;
+        return LTJDPath.BASIC_URI;
     }
 
     @Override
     protected Response reportAds(String adsUrl, Object adsDtoObj) throws Exception {
-        return null;
+        HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();
+        Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
+        MeiTuanAdsDTO meiTuanAdsDTO = (MeiTuanAdsDTO) adsDtoObj;
+        //上报成功
+        if (HttpStatus.HTTP_OK == response.getStatus() && responseBodyMap.get("ret").equals(0)) {
+            updateReportStatus(meiTuanAdsDTO.getId(), Constants.ReportStatus.SUCCESS.getCode());
+            return BasicResult.getSuccessResponse(meiTuanAdsDTO.getId());
+        } else {
+            updateReportStatus(meiTuanAdsDTO.getId(), Constants.ReportStatus.FAIL.getCode());
+            return BasicResult.getFailResponse("上报广告侧接口请求失败", 0);
+        }
     }
 
     //计算签名

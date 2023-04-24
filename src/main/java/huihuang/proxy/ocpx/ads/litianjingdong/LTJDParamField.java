@@ -7,7 +7,6 @@ package huihuang.proxy.ocpx.ads.litianjingdong;
  **/
 public class LTJDParamField {
 
-    private String signature;
     private String tp_adv_id;
     private String access_id;
     private String request_id;
@@ -27,6 +26,8 @@ public class LTJDParamField {
     private String ip_md5;
     private String ua;
     private String callback_url;
+    //拼接参数时，签名放最后
+    private String signature;
 
     public String getSignature() {
         return signature;
