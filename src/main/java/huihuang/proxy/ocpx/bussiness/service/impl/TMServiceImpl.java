@@ -51,14 +51,6 @@ public class TMServiceImpl implements IChannelAdsService {
     }
 
     @Override
-    public Response monitorAddress(Map<String, Object> params) {
-        IChannelAds channelAds = channelAds();
-        String monitorAddress = channelAds.findMonitorAddress();
-        monitorAddress = baseServiceInner.appendAddressParam(monitorAddress, params);
-        return BasicResult.getSuccessResponse(monitorAddress);
-    }
-
-    @Override
     public Response clickReport(Map<String, String[]> parameterMap) throws Exception {
         IChannelAds channelAds = channelAds();
         return channelAds.clickReport(parameterMap);

@@ -1,6 +1,5 @@
 package huihuang.proxy.ocpx.bussiness.service;
 
-import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO;
 import huihuang.proxy.ocpx.bussiness.dao.IMeiTuanAdsDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +10,7 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * @Description:
@@ -33,21 +30,6 @@ public class BaseServiceInner {
         meiTuanAdsDao.update(meiTuanAdsDTO);
     }
 
-    /**
-     * 完善监测地址（在宏参数的基础上，拼接用户自己的参数）
-     */
-    public String appendAddressParam(String monitorAddress, Map<String, Object> params) {
-        StringBuilder sb = new StringBuilder(monitorAddress);
-        if (CollUtil.isNotEmpty(params)) {
-            Set<Map.Entry<String, Object>> paramSet = params.entrySet();
-            for (Map.Entry<String, Object> param : paramSet) {
-                String key = param.getKey();
-                Object value = param.getValue();
-                sb.append("&").append(key).append("=").append(value);
-            }
-        }
-        return sb.toString();
-    }
 
     /**
      * 整理广告侧的url
