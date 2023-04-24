@@ -144,7 +144,7 @@ public class MTChannelAds extends BaseSupport implements IChannelAds {
     }
 
     @Override
-    protected String initAdsUrl(Object adsObj, Object adsDtoObj) {
+    protected String initAdsUrl() {
         return MeiTuanPath.BASIC_URI + MeiTuanPath.VERIFY;
     }
 

@@ -59,7 +59,7 @@ public abstract class BaseSupport {
         //5.将回调参数替换成我们的，之后广告侧有回调请求，是通知我们
         replaceCallbackUrl(adsObj, adsDtoObj);
         //6.初始化广告侧请求url
-        String adsUrl = initAdsUrl(adsObj, adsDtoObj);
+        String adsUrl = initAdsUrl();
         baseServiceInner.initAdsUrlAndParam(adsUrl, adsObj);
         //7.调用广告侧上报接口
         return reportAds(adsUrl, adsDtoObj);
@@ -75,7 +75,7 @@ public abstract class BaseSupport {
 
     protected abstract void replaceCallbackUrl(Object adsObj, Object adsDtoObj);
 
-    protected abstract String initAdsUrl(Object adsObj, Object adsDtoObj);
+    protected abstract String initAdsUrl();
 
     protected abstract Response reportAds(String adsUrl, Object adsDtoObj) throws Exception;
 
