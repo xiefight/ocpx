@@ -1,15 +1,14 @@
 package huihuang.proxy.ocpx.ads.meituan;
 
-import java.util.Date;
+import huihuang.proxy.ocpx.common.CommonColumn;
 
 /**
  * @Description:
  * @Author: xietao
  * @Date: 2023-04-21 19:30
  **/
-public class MeiTuanAdsDTO {
+public class MeiTuanAdsDTO extends CommonColumn {
 
-    private Integer id;
     private String source;
     private String app_type;
     private String md5_idfa;
@@ -24,23 +23,7 @@ public class MeiTuanAdsDTO {
     private String creative_id;
     private String placement_id;
     private String app_install;
-    private Date createTime;
-    private Date updateTime;
 
-    /** 当前上报状态 */
-    private String reportStatus;
-    /** 当前回调状态 */
-    private String callBackStatus;
-    /** 回调时间戳 */
-    private String callBackTime;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getSource() {
         return source;
@@ -154,43 +137,4 @@ public class MeiTuanAdsDTO {
         this.app_install = app_install;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getReportStatus() {
-        return reportStatus;
-    }
-
-    public void setReportStatus(String reportStatus) {
-        this.reportStatus = reportStatus;
-    }
-
-    public String getCallBackStatus() {
-        return callBackStatus;
-    }
-
-    public void setCallBackStatus(String callBackStatus) {
-        this.callBackStatus = callBackStatus;
-    }
-
-    public String getCallBackTime() {
-        return callBackTime;
-    }
-
-    public void setCallBackTime(String callBackTime) {
-        this.callBackTime = callBackTime;
-    }
 }
