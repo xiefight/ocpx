@@ -6,6 +6,7 @@ import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO;
+import huihuang.proxy.ocpx.ads.meituan.MeiTuanEventTypeEnum;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamEnum;
 import huihuang.proxy.ocpx.bussiness.dao.IMeiTuanAdsDao;
 import huihuang.proxy.ocpx.bussiness.dao.IToutiaoCallbackDao;
@@ -82,7 +83,7 @@ public class TMServiceImpl implements IChannelAdsService {
         JSONObject json = new JSONObject();
         json.put("callback", paramMap.get("callback"));
         json.put("conv_time", eventTimes);
-        json.put("event_type", MeiTuanParamEnum.eventTypeMap.get(eventType));
+        json.put("event_type", MeiTuanEventTypeEnum.eventTypeMap.get(eventType));
         json.put("os", os);
         json.put("idfa", meiTuanAdsDTO.getMd5_idfa());
         json.put("oaid", meiTuanAdsDTO.getOaid());
