@@ -73,9 +73,9 @@ public class TMServiceImpl implements IChannelAdsService {
         //根据id查询对应的点击记录
         MeiTuanAdsDTO meiTuanAdsDTO = meiTuanAdsDao.queryMeiTuanAdsById(id);
         String feedbackUrl = meiTuanAdsDTO.getFeedback_url();
-        feedbackUrl = URLDecoder.decode(feedbackUrl, StandardCharsets.UTF_8);
+        String callbackUrl = URLDecoder.decode(feedbackUrl, StandardCharsets.UTF_8);
 
-        String[] split = feedbackUrl.split("\\?");
+        String[] split = callbackUrl.split("\\?");
         String channelUrl = split[0];
         Map<String, String> paramMap = CommonUtil.convertGetParamToMap(split[1]);
         //回传到字节

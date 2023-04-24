@@ -70,8 +70,7 @@ public class BaseServiceInner {
                 e.printStackTrace();
             }
         }
-        adsUrl = stringBuilder.toString();
-        return adsUrl;
+        return stringBuilder.toString();
     }
 
     public String convertOs(String appType) {

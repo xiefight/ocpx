@@ -60,6 +60,9 @@ public enum ToutiaoParamEnum {
     MID6("_MID6_", "mid6", "安卓下载详情页素材宏参数", 0),
 
 
+    /** 额外补充字段，根据各广告主定 */
+    MEITUAN_SOURCE("","source","美团商务提供的渠道字段",0);
+
     ;
 
 

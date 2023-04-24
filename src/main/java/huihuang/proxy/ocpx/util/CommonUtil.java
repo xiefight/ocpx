@@ -15,7 +15,11 @@ public class CommonUtil {
         Map<String, String> dataMap = new HashMap<>(16);
         for (int i = 0; i < strs.length; i++) {
             String[] str = strs[i].split("=");
-            dataMap.put(str[0], str[1]);
+            if (str.length > 1) {
+                dataMap.put(str[0], str[1]);
+            } else {
+                dataMap.put(str[0], "");
+            }
         }
         return dataMap;
     }

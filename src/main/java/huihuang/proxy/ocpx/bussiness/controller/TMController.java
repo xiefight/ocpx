@@ -33,7 +33,7 @@ public class TMController {
             Map<String, Object> params = JsonParameterUtil.jsonToMap(reqBody, Exception.class);
             return tmService.monitorAddress(params);
         } catch (Exception e) {
-            return BasicResult.getFailResponse(e.getMessage());
+            return BasicResult.getFailResponse("请求异常", e.getMessage());
         }
     }
 
@@ -46,8 +46,10 @@ public class TMController {
             Map<String, String[]> parameterMap = request.getParameterMap();
             return tmService.clickReport(parameterMap);
         } catch (Exception e) {
-            return BasicResult.getFailResponse(e.getMessage());
+            e.printStackTrace();
+            return BasicResult.getFailResponse("请求异常", e.getMessage());
         }
+
     }
 
     /**
@@ -59,7 +61,8 @@ public class TMController {
             Map<String, String[]> parameterMap = request.getParameterMap();
             return tmService.adsCallBack(id, parameterMap);
         } catch (Exception e) {
-            return BasicResult.getFailResponse(e.getMessage());
+            e.printStackTrace();
+            return BasicResult.getFailResponse("请求异常", e.getMessage());
         }
     }
 

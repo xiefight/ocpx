@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.middle.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.net.URLEncoder;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
@@ -21,10 +22,9 @@ import org.springframework.stereotype.Component;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
-import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -117,6 +117,7 @@ public class MTChannelAds extends BaseSupport implements IChannelAds {
     @Override
     protected void convertParams(Object adsObj) {
         MeiTuanParamField meiTuanParamField = (MeiTuanParamField) adsObj;
+        meiTuanParamField.setFeedback_url(URLEncoder.createQuery().encode(meiTuanParamField.getFeedback_url(), StandardCharsets.UTF_8));
         meiTuanParamField.setApp_type(osConvertAppType(meiTuanParamField.getApp_type()));
     }
 
@@ -134,13 +135,9 @@ public class MTChannelAds extends BaseSupport implements IChannelAds {
         MeiTuanParamField meiTuanParamField = (MeiTuanParamField) adsObj;
         MeiTuanAdsDTO meiTuanAdsDTO = (MeiTuanAdsDTO) adsDtoObj;
         String ocpxUrl = queryServerPath() + "/tmServer/adsCallBack/" + meiTuanAdsDTO.getId();
-        try {
-            ocpxUrl = URLEncoder.encode(ocpxUrl, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            logger.error("替换回调路径编码异常", e);
-            e.printStackTrace();
-        }
-        meiTuanParamField.setFeedback_url(ocpxUrl);
+        String encodeUrl = URLEncoder.createQuery().encode(ocpxUrl, StandardCharsets.UTF_8);
+//            ocpxUrl = URLEncoder.encode(ocpxUrl, "UTF-8");
+        meiTuanParamField.setFeedback_url(encodeUrl);
     }
 
     @Override
@@ -156,10 +153,10 @@ public class MTChannelAds extends BaseSupport implements IChannelAds {
         //上报成功
         if (HttpStatus.HTTP_OK == response.getStatus() && responseBodyMap.get("ret").equals(0)) {
             updateReportStatus(meiTuanAdsDTO.getId(), Constants.ReportStatus.SUCCESS.getCode());
-            return BasicResult.getSuccessResponse();
+            return BasicResult.getSuccessResponse(meiTuanAdsDTO.getId());
         } else {
             updateReportStatus(meiTuanAdsDTO.getId(), Constants.ReportStatus.FAIL.getCode());
-            return BasicResult.getFailResponse("上报广告侧接口请求失败");
+            return BasicResult.getFailResponse("上报广告侧接口请求失败", 0);
         }
     }
 
