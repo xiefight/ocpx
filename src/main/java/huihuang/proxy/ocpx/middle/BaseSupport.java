@@ -47,13 +47,13 @@ public abstract class BaseSupport {
     public Response clickReport(Map<String, String[]> parameterMap) throws Exception {
         //1.将媒体侧请求的监测链接中的参数，转化成广告侧的参数对象
         Object adsObj = channelParamToAdsParam(parameterMap);
-        //2.对特殊参数进行校验（一些参数不能为空）
+        //2.特殊参数进行转换（如设备参数转换）
+        convertParams(adsObj);
+        //3.对特殊参数进行校验（一些参数不能为空）
         Response response = judgeParams(adsObj);
         if (ResultStatus.success.status != response.getCode()) {
             return response;
         }
-        //3.特殊参数进行转换（如设备参数转换）
-        convertParams(adsObj);
         //4.将原始参数保存数据库，返回数据库对象
         Object adsDtoObj = saveOriginParamData(adsObj);
         //5.将回调参数替换成我们的，之后广告侧有回调请求，是通知我们
@@ -67,9 +67,9 @@ public abstract class BaseSupport {
 
     protected abstract Object channelParamToAdsParam(Map<String, String[]> parameterMap);
 
-    protected abstract Response judgeParams(Object adsObj) throws Exception;
-
     protected abstract void convertParams(Object adsObj);
+
+    protected abstract Response judgeParams(Object adsObj) throws Exception;
 
     protected abstract Object saveOriginParamData(Object adsObj);
 

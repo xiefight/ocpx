@@ -91,6 +91,13 @@ public class MTChannelAds extends BaseSupport implements IChannelAds {
     }
 
     @Override
+    protected void convertParams(Object adsObj) {
+        MeiTuanParamField meiTuanParamField = (MeiTuanParamField) adsObj;
+        meiTuanParamField.setFeedback_url(URLEncoder.createQuery().encode(meiTuanParamField.getFeedback_url(), StandardCharsets.UTF_8));
+        meiTuanParamField.setApp_type(osConvertAppType(meiTuanParamField.getApp_type()));
+    }
+
+    @Override
     protected Response judgeParams(Object adsObj) {
         MeiTuanParamField meiTuanParamField = (MeiTuanParamField) adsObj;
         if (Objects.isNull(meiTuanParamField.getSource())) {
@@ -112,13 +119,6 @@ public class MTChannelAds extends BaseSupport implements IChannelAds {
             }
         }
         return BasicResult.getSuccessResponse();
-    }
-
-    @Override
-    protected void convertParams(Object adsObj) {
-        MeiTuanParamField meiTuanParamField = (MeiTuanParamField) adsObj;
-        meiTuanParamField.setFeedback_url(URLEncoder.createQuery().encode(meiTuanParamField.getFeedback_url(), StandardCharsets.UTF_8));
-        meiTuanParamField.setApp_type(osConvertAppType(meiTuanParamField.getApp_type()));
     }
 
     @Override
