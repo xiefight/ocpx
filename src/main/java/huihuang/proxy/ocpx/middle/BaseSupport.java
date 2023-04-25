@@ -1,7 +1,7 @@
 package huihuang.proxy.ocpx.middle;
 
 import cn.hutool.core.collection.CollUtil;
-import huihuang.proxy.ocpx.bussiness.dao.IConfigDao;
+import huihuang.proxy.ocpx.bussiness.dao.common.IConfigDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.common.ResultStatus;

@@ -1,7 +1,9 @@
 package huihuang.proxy.ocpx.bussiness.service;
 
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO;
-import huihuang.proxy.ocpx.bussiness.dao.IMeiTuanAdsDao;
+import huihuang.proxy.ocpx.ads.common.AdsDTO;
+import huihuang.proxy.ocpx.bussiness.dao.common.IMarkDao;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IMeiTuanAdsMarkDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +23,7 @@ import java.util.Objects;
 public class BaseServiceInner {
 
     @Autowired
-    private IMeiTuanAdsDao meiTuanAdsDao;
+    private IMeiTuanAdsMarkDao meiTuanAdsDao;
 
     /**
      * 更新点击上报信息
@@ -30,6 +32,14 @@ public class BaseServiceInner {
         meiTuanAdsDao.update(meiTuanAdsDTO);
     }
 
+    public void updateReportStatus(AdsDTO adsDTO, IMarkDao dao) {
+        try {
+            Method update = dao.getClass().getMethod("update", adsDTO.getClass());
+            update.invoke(dao,adsDTO);
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 整理广告侧的url

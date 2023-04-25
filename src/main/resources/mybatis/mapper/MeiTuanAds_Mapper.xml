@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="huihuang.proxy.ocpx.bussiness.dao.IMeiTuanAdsDao">
+<mapper namespace="huihuang.proxy.ocpx.bussiness.dao.ads.IMeiTuanAdsMarkDao">
 
     <resultMap id="meituanAdsMap" type="huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO">
         <id column="id" property="id"/>
@@ -49,7 +49,7 @@
             <if test="md5_imei != null">md5_imei = #{md5_imei},</if>
             <if test="oaid != null">oaid = #{oaid},</if>
             <if test="md5_oaid != null">md5_oaid = #{md5_oaid},</if>
-            <if test="feedback_url != null">feedback_url = #{feedback_url,</if>
+            <if test="feedback_url != null">feedback_url = #{feedback_url},</if>
             <if test="action_time != null">action_time = #{action_time},</if>
             <if test="adgroup_id != null">adgroup_id = #{adgroup_id},</if>
             <if test="campaign_id != null">campaign_id = #{campaign_id},</if>

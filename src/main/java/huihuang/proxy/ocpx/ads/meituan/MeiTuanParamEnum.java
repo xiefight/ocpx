@@ -79,7 +79,7 @@ public enum MeiTuanParamEnum {
 
     static {
         tmMap = new HashMap<>();
-//        tmMap.put(SOURCE, ToutiaoParamEnum.MEITUAN_SOURCE);
+        tmMap.put(SOURCE, ToutiaoParamEnum.MEITUAN_SOURCE);
         tmMap.put(APP_TYPE, ToutiaoParamEnum.OS);
         tmMap.put(MD5_IDFA, ToutiaoParamEnum.IDFA_MD5);
         tmMap.put(MD5_IMEI, ToutiaoParamEnum.IMEI);

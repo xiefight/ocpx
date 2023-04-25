@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.ads.meituan;
 
+import huihuang.proxy.ocpx.ads.common.AdsDTO;
 import huihuang.proxy.ocpx.common.CommonColumn;
 
 /**
@@ -7,7 +8,7 @@ import huihuang.proxy.ocpx.common.CommonColumn;
  * @Author: xietao
  * @Date: 2023-04-21 19:30
  **/
-public class MeiTuanAdsDTO extends CommonColumn {
+public class MeiTuanAdsDTO extends CommonColumn implements AdsDTO {
 
     private String source;
     private String app_type;

@@ -1,4 +1,4 @@
-package huihuang.proxy.ocpx.bussiness.dao;
+package huihuang.proxy.ocpx.bussiness.dao.channel;
 
 import huihuang.proxy.ocpx.channel.toutiao.ToutiaoCallbackDTO;
 import org.apache.ibatis.annotations.Mapper;

@@ -1,4 +1,4 @@
-package huihuang.proxy.ocpx.bussiness.dao;
+package huihuang.proxy.ocpx.bussiness.dao.common;
 
 import org.apache.ibatis.annotations.Mapper;
 

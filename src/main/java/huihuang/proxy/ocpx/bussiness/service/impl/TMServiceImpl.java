@@ -7,9 +7,8 @@ import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanEventTypeEnum;
-import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamEnum;
-import huihuang.proxy.ocpx.bussiness.dao.IMeiTuanAdsDao;
-import huihuang.proxy.ocpx.bussiness.dao.IToutiaoCallbackDao;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IMeiTuanAdsMarkDao;
+import huihuang.proxy.ocpx.bussiness.dao.channel.IToutiaoCallbackDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.channel.toutiao.ToutiaoCallbackDTO;
@@ -37,7 +36,7 @@ public class TMServiceImpl implements IChannelAdsService {
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
     @Autowired
-    private IMeiTuanAdsDao meiTuanAdsDao;
+    private IMeiTuanAdsMarkDao meiTuanAdsDao;
     @Autowired
     private IToutiaoCallbackDao toutiaoCallbackDao;
     @Autowired

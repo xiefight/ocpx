@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.middle.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.net.URLEncoder;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
@@ -9,7 +10,8 @@ import huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamEnum;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamField;
 import huihuang.proxy.ocpx.ads.meituan.MeiTuanPath;
-import huihuang.proxy.ocpx.bussiness.dao.IMeiTuanAdsDao;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IMeiTuanAdsMarkDao;
+import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.channel.toutiao.ToutiaoParamEnum;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
@@ -38,7 +40,9 @@ import java.util.Set;
 public class MTChannelAds extends BaseSupport implements IChannelAds {
 
     @Autowired
-    private IMeiTuanAdsDao meiTuanAdsDao;
+    private IMeiTuanAdsMarkDao meiTuanAdsDao;
+    @Autowired
+    private BaseServiceInner baseServiceInner;
 
     @Override
     public String findMonitorAddress() {
@@ -48,7 +52,7 @@ public class MTChannelAds extends BaseSupport implements IChannelAds {
         Set<MeiTuanParamEnum> meiTuanParamEnums = MeiTuanParamEnum.tmMap.keySet();
         for (MeiTuanParamEnum meiTuan : meiTuanParamEnums) {
             ToutiaoParamEnum toutiao = MeiTuanParamEnum.tmMap.get(meiTuan);
-            if (Objects.isNull(toutiao)) {
+            if (Objects.isNull(toutiao) || StrUtil.isEmpty(toutiao.getMacro())) {
                 continue;
             }
             macro.append(toutiao.getParam()).append("=").append(toutiao.getMacro()).append("&");
@@ -150,22 +154,21 @@ public class MTChannelAds extends BaseSupport implements IChannelAds {
         HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
         MeiTuanAdsDTO meiTuanAdsDTO = (MeiTuanAdsDTO) adsDtoObj;
+        MeiTuanAdsDTO meiTuanAdsVO = new MeiTuanAdsDTO();
+        meiTuanAdsVO.setId(meiTuanAdsDTO.getId());
         //上报成功
         if (HttpStatus.HTTP_OK == response.getStatus() && responseBodyMap.get("ret").equals(0)) {
-            updateReportStatus(meiTuanAdsDTO.getId(), Constants.ReportStatus.SUCCESS.getCode());
+            meiTuanAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
+            baseServiceInner.updateReportStatus(meiTuanAdsVO, meiTuanAdsDao);
             return BasicResult.getSuccessResponse(meiTuanAdsDTO.getId());
         } else {
-            updateReportStatus(meiTuanAdsDTO.getId(), Constants.ReportStatus.FAIL.getCode());
-            return BasicResult.getFailResponse("上报广告侧接口请求失败", 0);
+            meiTuanAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode());
+            baseServiceInner.updateReportStatus(meiTuanAdsVO, meiTuanAdsDao);
+            return BasicResult.getFailResponse("上报meituan-广告侧接口请求失败", 0);
         }
     }
 
-    private void updateReportStatus(Integer id, String status) {
-        MeiTuanAdsDTO meiTuanAdsDTO = new MeiTuanAdsDTO();
-        meiTuanAdsDTO.setId(id);
-        meiTuanAdsDTO.setReportStatus(status);
-        meiTuanAdsDao.update(meiTuanAdsDTO);
-    }
+
 
     private String osConvertAppType(String os) {
         switch (os) {

@@ -61,7 +61,7 @@ public enum ToutiaoParamEnum {
 
 
     /** 额外补充字段，根据各广告主定 */
-//    MEITUAN_SOURCE("","source","美团商务提供的渠道字段",0);
+    MEITUAN_SOURCE("","source","美团商务提供的渠道字段",0);
 
     ;
 
