@@ -1,6 +1,6 @@
 package huihuang.proxy.ocpx.ads.litianjingdong;
 
-import huihuang.proxy.ocpx.ads.common.AdsDTO;
+import huihuang.proxy.ocpx.marketinterface.IMarkDto;
 import huihuang.proxy.ocpx.common.CommonColumn;
 
 /**
@@ -8,7 +8,7 @@ import huihuang.proxy.ocpx.common.CommonColumn;
  * @Author: xietao
  * @Date: 2023-04-24 16:10
  **/
-public class LTJDAdsDTO extends CommonColumn implements AdsDTO {
+public class LTJDAdsDTO extends CommonColumn implements IMarkDto {
 
     private String signature;
     private String tp_adv_id;

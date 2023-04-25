@@ -1,5 +1,7 @@
 package huihuang.proxy.ocpx.channel.toutiao;
 
+import huihuang.proxy.ocpx.marketinterface.IMarkDto;
+
 import java.util.Date;
 
 /**
@@ -7,7 +9,7 @@ import java.util.Date;
  * @Author: xietao
  * @Date: 2023-04-22 15:26
  **/
-public class ToutiaoCallbackDTO {
+public class ToutiaoCallbackDTO implements IMarkDto {
 
     private Integer id;
     private Integer adsId;

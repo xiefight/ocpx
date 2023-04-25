@@ -170,11 +170,11 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
         //上报成功
         if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals("0")) {
             ltjdAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
-            baseServiceInner.updateReportStatus(ltjdAdsVO, ltjdAdsDao);
+            baseServiceInner.updateAdsObject(ltjdAdsVO, ltjdAdsDao);
             return BasicResult.getSuccessResponse(ltjdAdsDTO.getId());
         } else {
             ltjdAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode());
-            baseServiceInner.updateReportStatus(ltjdAdsVO, ltjdAdsDao);
+            baseServiceInner.updateAdsObject(ltjdAdsVO, ltjdAdsDao);
             return BasicResult.getFailResponse("上报ltjd-广告侧接口请求失败", 0);
         }
     }

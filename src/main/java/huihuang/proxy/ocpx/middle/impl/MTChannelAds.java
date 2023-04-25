@@ -159,11 +159,11 @@ public class MTChannelAds extends BaseSupport implements IChannelAds {
         //上报成功
         if (HttpStatus.HTTP_OK == response.getStatus() && responseBodyMap.get("ret").equals(0)) {
             meiTuanAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
-            baseServiceInner.updateReportStatus(meiTuanAdsVO, meiTuanAdsDao);
+            baseServiceInner.updateAdsObject(meiTuanAdsVO, meiTuanAdsDao);
             return BasicResult.getSuccessResponse(meiTuanAdsDTO.getId());
         } else {
             meiTuanAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode());
-            baseServiceInner.updateReportStatus(meiTuanAdsVO, meiTuanAdsDao);
+            baseServiceInner.updateAdsObject(meiTuanAdsVO, meiTuanAdsDao);
             return BasicResult.getFailResponse("上报meituan-广告侧接口请求失败", 0);
         }
     }

@@ -38,23 +38,23 @@ public enum MeiTuanEventTypeEnum {
         return desc;
     }
 
-    public static Map<MeiTuanEventTypeEnum, ToutiaoEventTypeEnum> eventTypeMap;
+    public static Map<String, ToutiaoEventTypeEnum> eventTypeMap;
 
     static {
         eventTypeMap = CollUtil.newHashMap();
         //激活
-        eventTypeMap.put(ACTIVE, ToutiaoEventTypeEnum.ACTIVE);
+        eventTypeMap.put(ACTIVE.code, ToutiaoEventTypeEnum.ACTIVE);
         //用户下单
-        eventTypeMap.put(ORDER, ToutiaoEventTypeEnum.APP_ORDER);
+        eventTypeMap.put(ORDER.code, ToutiaoEventTypeEnum.APP_ORDER);
         //用户当日首次DAU
-        eventTypeMap.put(FIRST_DAU, ToutiaoEventTypeEnum.APP_ACCESS);
+        eventTypeMap.put(FIRST_DAU.code, ToutiaoEventTypeEnum.APP_ACCESS);
         //有效获客
-        eventTypeMap.put(OBTAIN_CUSTOM, null);
+        eventTypeMap.put(OBTAIN_CUSTOM.code, null);
         //付费
-        eventTypeMap.put(PAY, ToutiaoEventTypeEnum.PAY);
+        eventTypeMap.put(PAY.code, ToutiaoEventTypeEnum.PAY);
         //意向uv
-        eventTypeMap.put(UV, null);
+        eventTypeMap.put(UV.code, null);
         //关键行为
-        eventTypeMap.put(KEY_BEHAVIOR, ToutiaoEventTypeEnum.KEY_BEHAVIOR);
+        eventTypeMap.put(KEY_BEHAVIOR.code, ToutiaoEventTypeEnum.KEY_BEHAVIOR);
     }
 }

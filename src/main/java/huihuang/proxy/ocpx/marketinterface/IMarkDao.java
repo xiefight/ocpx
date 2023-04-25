@@ -1,4 +1,4 @@
-package huihuang.proxy.ocpx.bussiness.dao.common;
+package huihuang.proxy.ocpx.marketinterface;
 
 /**
  * @Description: 标记接口，用于统一管理数据传输层

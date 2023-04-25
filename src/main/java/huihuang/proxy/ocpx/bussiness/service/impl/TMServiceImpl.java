@@ -74,7 +74,7 @@ public class TMServiceImpl implements IChannelAdsService {
         JSONObject json = new JSONObject();
         json.put("callback", paramMap.get("callback"));
         json.put("conv_time", eventTimes);
-        json.put("event_type", MeiTuanEventTypeEnum.eventTypeMap.get(eventType));
+        json.put("event_type", MeiTuanEventTypeEnum.eventTypeMap.get(eventType).getCode());
         json.put("os", os);
         json.put("idfa", meiTuanAdsDTO.getMd5_idfa());
         json.put("oaid", meiTuanAdsDTO.getOaid());
@@ -104,7 +104,7 @@ public class TMServiceImpl implements IChannelAdsService {
         }
         toutiaoCallbackDTO.setCallBackMes((String) responseBodyMap.get("msg"));
         toutiaoCallbackDao.insert(toutiaoCallbackDTO);
-        baseServiceInner.updateMeiTuanAds(meiTuanAds);
+        baseServiceInner.updateAdsObject(meiTuanAds, meiTuanAdsDao);
 
         return BasicResult.getSuccessResponse();
     }

@@ -1,7 +1,7 @@
 package huihuang.proxy.ocpx.bussiness.dao.ads;
 
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDAdsDTO;
-import huihuang.proxy.ocpx.bussiness.dao.common.IMarkDao;
+import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
