@@ -94,6 +94,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
                 e.printStackTrace();
             }
         });
+        logger.info("clickReport  媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", ltjdParamField);
         return ltjdParamField;
     }
 
@@ -108,6 +109,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
         ltjdParamField.setTs(String.valueOf(Long.parseLong(ts) / 1000));
         //签名
         signature(ltjdParamField);
+        logger.info("clickReport  特殊参数进行转换 convertParams:{}", ltjdParamField);
     }
 
     @Override
@@ -142,6 +144,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
         LTJDAdsDTO ltjdAdsDTO = new LTJDAdsDTO();
         BeanUtil.copyProperties(ltjdParamField, ltjdAdsDTO);
         ltjdAdsDao.insert(ltjdAdsDTO);
+        logger.info("clickReport  将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", ltjdAdsDTO);
         return ltjdAdsDTO;
     }
 
@@ -153,6 +156,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
         String encodeUrl = URLEncoder.createQuery().encode(ocpxUrl, StandardCharsets.UTF_8);
 //            ocpxUrl = URLEncoder.encode(ocpxUrl, "UTF-8");
         ltjdParamField.setCallback_url(encodeUrl);
+        logger.info("clickReport  回调参数 replaceCallbackUrl:{}", ltjdParamField);
     }
 
     @Override
@@ -171,10 +175,12 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
         if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals("0")) {
             ltjdAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
             baseServiceInner.updateAdsObject(ltjdAdsVO, ltjdAdsDao);
+            logger.info("clickReport  上报ltjd-广告侧接口请求成功:{} 数据:{}", response, ltjdAdsVO);
             return BasicResult.getSuccessResponse(ltjdAdsDTO.getId());
         } else {
             ltjdAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode());
             baseServiceInner.updateAdsObject(ltjdAdsVO, ltjdAdsDao);
+            logger.error("clickReport  上报ltjd-广告侧接口请求失败:{} 数据:{}", response, ltjdAdsVO);
             return BasicResult.getFailResponse("上报ltjd-广告侧接口请求失败", 0);
         }
     }
@@ -186,6 +192,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
         String src = "access_id=" + access_id + "&ts=" + ts;
         String signatureStr = src + LTJDPath.SECRET;
         String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
+        logger.info("clickReport 原始:{}  签名:{}", signatureStr, signature);
         ltjdParamField.setSignature(signature);
     }
 

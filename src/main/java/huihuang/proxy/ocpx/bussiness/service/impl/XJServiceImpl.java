@@ -22,6 +22,8 @@ import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
 import huihuang.proxy.ocpx.util.CommonUtil;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +39,8 @@ import java.util.Set;
  **/
 @Service("xjService")
 public class XJServiceImpl implements IChannelAdsService {
+
+    protected Logger logger = LoggerFactory.getLogger(XJServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
@@ -61,6 +65,7 @@ public class XJServiceImpl implements IChannelAdsService {
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
+        logger.info("adsCallBack  开始回调渠道  id:{}  parameterMap:{}",id,parameterMap);
         //转化类型字段
         String eventType = parameterMap.get("event_type")[0];
         String eventTimes = String.valueOf(System.currentTimeMillis());
@@ -69,11 +74,13 @@ public class XJServiceImpl implements IChannelAdsService {
         LTJDAdsDTO ltjdAdsDTO = ltjdAdsDao.queryLtjdAdsById(id);
         String feedbackUrl = ltjdAdsDTO.getCallback_url();
         String callbackUrl = URLDecoder.decode(feedbackUrl, StandardCharsets.UTF_8);
+        logger.info("adsCallBack  原url:{} decodeUrl:{}",feedbackUrl,callbackUrl);
 
         String[] split = callbackUrl.split("\\?");
         String channelUrl = split[0];
         Map<String, String> paramMap = CommonUtil.convertGetParamToMap(split[1]);
         String callback = URLEncoder.createQuery().encode(paramMap.get("callback"), StandardCharsets.UTF_8);
+        logger.info("adsCallBack  渠道回调url：{}  参数：{}  只对callback进行encode：{}",channelUrl,paramMap,callback);
         //回传到渠道
         JSONObject json = new JSONObject();
         json.put("callback", callback);
@@ -102,9 +109,11 @@ public class XJServiceImpl implements IChannelAdsService {
         if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals("0")) {
             xiaomiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             ltjdAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            logger.info("adsCallBack  回调渠道成功：{} 数据：{}",responseBodyMap,ltjdAds);
         } else {
             xiaomiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             ltjdAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            logger.error("adsCallBack  回调渠道失败：{} 数据：{}",responseBodyMap,ltjdAds);
         }
         assert responseBodyMap != null;
         xiaomiCallbackDTO.setCallBackMes((String) responseBodyMap.get("code"));
@@ -127,6 +136,7 @@ public class XJServiceImpl implements IChannelAdsService {
         String signatureStr = src + XiaomiPath.TLJD_SECRET;
         String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
         json.put("sign", signature);
+        logger.info("adsCallBack  原始:{}  签名:{}", signatureStr, signature);
         return signature;
     }
 }
