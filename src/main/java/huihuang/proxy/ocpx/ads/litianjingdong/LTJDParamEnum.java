@@ -70,8 +70,8 @@ public enum LTJDParamEnum {
 
     static {
         xjMap = new HashMap<>();
-//        xjMap.put(TP_ADV_ID, XiaomiParamEnum.TLJD_TP_ADV_ID);
-//        xjMap.put(ACCESS_ID, XiaomiParamEnum.TLJD_ACCESS_ID);
+        xjMap.put(TP_ADV_ID, XiaomiParamEnum.TLJD_TP_ADV_ID);
+        xjMap.put(ACCESS_ID, XiaomiParamEnum.TLJD_ACCESS_ID);
         xjMap.put(REQUEST_ID, null);//每次请求都不一样，以当前时间戳区分
         xjMap.put(IMEI, null);//xiaomi没有imei的原值
         xjMap.put(IMEI_MD5, XiaomiParamEnum.IMEI);

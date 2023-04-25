@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.middle.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.net.URLEncoder;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
@@ -10,9 +11,8 @@ import huihuang.proxy.ocpx.ads.litianjingdong.LTJDAdsDTO;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDParamEnum;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDParamField;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
-import huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO;
-import huihuang.proxy.ocpx.ads.meituan.MeiTuanParamField;
-import huihuang.proxy.ocpx.bussiness.dao.ILtjdAdsDao;
+import huihuang.proxy.ocpx.bussiness.dao.ads.ILtjdAdsDao;
+import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
@@ -43,6 +43,8 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
 
     @Autowired
     private ILtjdAdsDao ltjdAdsDao;
+    @Autowired
+    private BaseServiceInner baseServiceInner;
 
     /**
      * 生成监测链接
@@ -54,7 +56,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
         Set<LTJDParamEnum> ltjdParamEnums = LTJDParamEnum.xjMap.keySet();
         for (LTJDParamEnum ltjd : ltjdParamEnums) {
             XiaomiParamEnum xiaomi = LTJDParamEnum.xjMap.get(ltjd);
-            if (Objects.isNull(xiaomi)) {
+            if (Objects.isNull(xiaomi) || StrUtil.isEmpty(xiaomi.getMacro())) {
                 continue;
             }
             macro.append(xiaomi.getParam()).append("=").append(xiaomi.getMacro()).append("&");
@@ -162,14 +164,18 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
     protected Response reportAds(String adsUrl, Object adsDtoObj) throws Exception {
         HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
-        MeiTuanAdsDTO meiTuanAdsDTO = (MeiTuanAdsDTO) adsDtoObj;
+        LTJDAdsDTO ltjdAdsDTO = (LTJDAdsDTO) adsDtoObj;
+        LTJDAdsDTO ltjdAdsVO = new LTJDAdsDTO();
+        ltjdAdsVO.setId(ltjdAdsDTO.getId());
         //上报成功
         if (HttpStatus.HTTP_OK == response.getStatus() && responseBodyMap.get("ret").equals(0)) {
-            updateReportStatus(meiTuanAdsDTO.getId(), Constants.ReportStatus.SUCCESS.getCode());
-            return BasicResult.getSuccessResponse(meiTuanAdsDTO.getId());
+            ltjdAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
+            baseServiceInner.updateReportStatus(ltjdAdsVO, ltjdAdsDao);
+            return BasicResult.getSuccessResponse(ltjdAdsDTO.getId());
         } else {
-            updateReportStatus(meiTuanAdsDTO.getId(), Constants.ReportStatus.FAIL.getCode());
-            return BasicResult.getFailResponse("上报广告侧接口请求失败", 0);
+            ltjdAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode());
+            baseServiceInner.updateReportStatus(ltjdAdsVO, ltjdAdsDao);
+            return BasicResult.getFailResponse("上报ltjd-广告侧接口请求失败", 0);
         }
     }
 

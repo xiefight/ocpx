@@ -27,8 +27,8 @@ public enum XiaomiParamEnum {
 
 
     /** 额外补充字段，根据各广告主定 */
-//    TLJD_TP_ADV_ID("","tp_adv_id","天力京东提供的渠道标识"),
-//    TLJD_ACCESS_ID("","access_id","天力京东提供的渠道标识"),
+    TLJD_TP_ADV_ID("","tp_adv_id","天力京东提供的渠道标识"),
+    TLJD_ACCESS_ID("","access_id","天力京东提供的渠道标识"),
 
 
     ;

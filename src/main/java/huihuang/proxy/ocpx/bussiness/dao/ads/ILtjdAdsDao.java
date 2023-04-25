@@ -1,7 +1,7 @@
-package huihuang.proxy.ocpx.bussiness.dao;
+package huihuang.proxy.ocpx.bussiness.dao.ads;
 
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDAdsDTO;
-import huihuang.proxy.ocpx.ads.meituan.MeiTuanAdsDTO;
+import huihuang.proxy.ocpx.bussiness.dao.common.IMarkDao;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @Date: 2023-04-21 19:26
  **/
 @Mapper
-public interface ILtjdAdsDao {
+public interface ILtjdAdsDao extends IMarkDao {
 
     /**
      * 新增一条监测记录
