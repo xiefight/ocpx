@@ -13,6 +13,6 @@ public class LTJDPath {
     /**
      * 点击上报及转化数据回调接口
      */
-    public static final String BASIC_URI = "https://convert.mongac.com/tracking/thirdparty/link/";
+    public static final String BASIC_URI = "https://convert.mongac.com/tracking/thirdparty/link?";
 
 }

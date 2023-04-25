@@ -103,11 +103,11 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
         ltjdParamField.setCallback_url(URLEncoder.createQuery().encode(ltjdParamField.getCallback_url(), StandardCharsets.UTF_8));
 //        ltjdParamField.setApp_type(osConvertAppType(ltjdParamField.getApp_type()));
         ltjdParamField.setRequest_id(String.valueOf(System.currentTimeMillis()));
-        //签名
-        signature(ltjdParamField);
         //时间戳，秒
         String ts = Optional.ofNullable(ltjdParamField.getTs()).orElse(String.valueOf(System.currentTimeMillis()));
         ltjdParamField.setTs(String.valueOf(Long.parseLong(ts) / 1000));
+        //签名
+        signature(ltjdParamField);
     }
 
     @Override
@@ -168,7 +168,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
         LTJDAdsDTO ltjdAdsVO = new LTJDAdsDTO();
         ltjdAdsVO.setId(ltjdAdsDTO.getId());
         //上报成功
-        if (HttpStatus.HTTP_OK == response.getStatus() && responseBodyMap.get("ret").equals(0)) {
+        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals("0")) {
             ltjdAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
             baseServiceInner.updateReportStatus(ltjdAdsVO, ltjdAdsDao);
             return BasicResult.getSuccessResponse(ltjdAdsDTO.getId());

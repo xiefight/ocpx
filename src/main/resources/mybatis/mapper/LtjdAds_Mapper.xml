@@ -23,6 +23,7 @@
         <result column="ip_md5" property="ip_md5"/>
         <result column="ua" property="ua"/>
         <result column="callback_url" property="callback_url"/>
+        <result column="signature" property="signature"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
         <result column="report_status" property="reportStatus"/>
@@ -37,10 +38,10 @@
         INSERT INTO ltjd_ads
         (tp_adv_id, access_id, request_id, imei, imei_md5,
         oaid, oaid_md5, idfa, idfa_md5, advertiser_id, android_id_md5, mac_md5, deep_link,
-        ts,os,ip,ip_md5,ua,callback_url, create_time, update_time, report_status, callback_status)
+        ts,os,ip,ip_md5,ua,callback_url,signature, create_time, update_time, report_status, callback_status)
         VALUES (#{tp_adv_id}, #{access_id}, #{request_id}, #{imei}, #{imei_md5}, #{oaid}, #{oaid_md5},
         #{idfa}, #{idfa_md5}, #{advertiser_id}, #{android_id_md5}, #{mac_md5}, #{deep_link}, #{ts},
-        #{os},#{ip},#{ip_md5},#{ua},#{callback_url},now(),now(), "0", "0")
+        #{os},#{ip},#{ip_md5},#{ua},#{callback_url},#{signature},now(),now(), "0", "0")
     </insert>
 
 
@@ -102,7 +103,7 @@
                update_time,
                report_status,
                callback_status
-        FROM meituan_ads
+        FROM ltjd_ads
         WHERE id = #{id}
     </select>
 
