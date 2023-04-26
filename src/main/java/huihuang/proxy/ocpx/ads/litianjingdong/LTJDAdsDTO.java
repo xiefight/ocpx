@@ -190,4 +190,30 @@ public class LTJDAdsDTO extends CommonColumn implements IMarkDto {
     public void setCallback_url(String callback_url) {
         this.callback_url = callback_url;
     }
+
+    @Override
+    public String toString() {
+        return "LTJDAdsDTO{" +
+                "signature='" + signature + '\'' +
+                ", tp_adv_id='" + tp_adv_id + '\'' +
+                ", access_id='" + access_id + '\'' +
+                ", request_id='" + request_id + '\'' +
+                ", imei='" + imei + '\'' +
+                ", imei_md5='" + imei_md5 + '\'' +
+                ", oaid='" + oaid + '\'' +
+                ", oaid_md5='" + oaid_md5 + '\'' +
+                ", idfa='" + idfa + '\'' +
+                ", idfa_md5='" + idfa_md5 + '\'' +
+                ", advertiser_id='" + advertiser_id + '\'' +
+                ", android_id_md5='" + android_id_md5 + '\'' +
+                ", mac_md5='" + mac_md5 + '\'' +
+                ", deep_link='" + deep_link + '\'' +
+                ", ts='" + ts + '\'' +
+                ", os='" + os + '\'' +
+                ", ip='" + ip + '\'' +
+                ", ip_md5='" + ip_md5 + '\'' +
+                ", ua='" + ua + '\'' +
+                ", callback_url='" + callback_url + '\'' +
+                '}';
+    }
 }
