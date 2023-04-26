@@ -1,6 +1,5 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
-import cn.hutool.core.net.URLDecoder;
 import cn.hutool.core.net.URLEncoder;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
@@ -20,7 +19,6 @@ import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
-import huihuang.proxy.ocpx.util.CommonUtil;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -73,20 +70,20 @@ public class XJServiceImpl implements IChannelAdsService {
 
         //根据id查询对应的点击记录
         LTJDAdsDTO ltjdAdsDTO = ltjdAdsDao.queryLtjdAdsById(id);
-        String feedbackUrl = ltjdAdsDTO.getCallback_url();
-        String callbackUrl = URLDecoder.decode(feedbackUrl, StandardCharsets.UTF_8);
-        logger.info("adsCallBack  原url:{} decodeUrl:{}", feedbackUrl, callbackUrl);
+        if (null == ltjdAdsDTO) {
+            logger.error("未根据{}找到对应的监测信息", id);
+            return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
+        }
 
-        String[] split = callbackUrl.split("\\?");
-        String channelUrl = split[0];
-        Map<String, String> paramMap = CommonUtil.convertGetParamToMap(split[1]);
-        String callback = URLEncoder.createQuery().encode(paramMap.get("callback"), StandardCharsets.UTF_8);
-        logger.info("adsCallBack  渠道回调url：{}  参数：{}  只对callback进行encode：{}", channelUrl, paramMap, callback);
+        String channelUrl = XiaomiPath.CALLBACK_URL;
+        String feedbackUrl = ltjdAdsDTO.getCallback_url();
+        String callback = URLEncoder.createQuery().encode(feedbackUrl, StandardCharsets.UTF_8);
+        logger.info("adsCallBack  渠道回调url：{}  只对callback进行encode：{}", channelUrl + feedbackUrl, callback);
         //回传到渠道
         JSONObject json = new JSONObject();
         json.put("callback", callback);
         json.put("conv_time", eventTimes);
-        json.put("eventType", LTJDEventTypeEnum.eventTypeMap.get(eventType).getCode());
+        json.put("convType", LTJDEventTypeEnum.eventTypeMap.get(eventType).getCode());
         if (Objects.isNull(ltjdAdsDTO.getOaid())) {
             json.put("imei", ltjdAdsDTO.getImei_md5());
         } else {
