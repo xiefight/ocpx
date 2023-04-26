@@ -28,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -65,7 +66,7 @@ public class XJServiceImpl implements IChannelAdsService {
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        logger.info("adsCallBack  开始回调渠道  id:{}  parameterMap.size:{}",id,parameterMap.size());
+        logger.info("adsCallBack  开始回调渠道  id:{}  parameterMap.size:{}", id, parameterMap.size());
         //转化类型字段
         String eventType = parameterMap.get("event_type")[0];
         String eventTimes = String.valueOf(System.currentTimeMillis());
@@ -74,13 +75,13 @@ public class XJServiceImpl implements IChannelAdsService {
         LTJDAdsDTO ltjdAdsDTO = ltjdAdsDao.queryLtjdAdsById(id);
         String feedbackUrl = ltjdAdsDTO.getCallback_url();
         String callbackUrl = URLDecoder.decode(feedbackUrl, StandardCharsets.UTF_8);
-        logger.info("adsCallBack  原url:{} decodeUrl:{}",feedbackUrl,callbackUrl);
+        logger.info("adsCallBack  原url:{} decodeUrl:{}", feedbackUrl, callbackUrl);
 
         String[] split = callbackUrl.split("\\?");
         String channelUrl = split[0];
         Map<String, String> paramMap = CommonUtil.convertGetParamToMap(split[1]);
         String callback = URLEncoder.createQuery().encode(paramMap.get("callback"), StandardCharsets.UTF_8);
-        logger.info("adsCallBack  渠道回调url：{}  参数：{}  只对callback进行encode：{}",channelUrl,paramMap,callback);
+        logger.info("adsCallBack  渠道回调url：{}  参数：{}  只对callback进行encode：{}", channelUrl, paramMap, callback);
         //回传到渠道
         JSONObject json = new JSONObject();
         json.put("callback", callback);
@@ -106,21 +107,20 @@ public class XJServiceImpl implements IChannelAdsService {
         LTJDAdsDTO ltjdAds = new LTJDAdsDTO();
         ltjdAds.setId(id);
         ltjdAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
-        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals("0")) {
+        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals(0)) {
             xiaomiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             ltjdAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            logger.info("adsCallBack  回调渠道成功：{} 数据：{}",responseBodyMap,ltjdAds);
+            logger.info("adsCallBack  回调渠道成功：{} 数据：{}", responseBodyMap, ltjdAds);
         } else {
             xiaomiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             ltjdAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            logger.error("adsCallBack  回调渠道失败：{} 数据：{}",responseBodyMap,ltjdAds);
+            logger.error("adsCallBack  回调渠道失败：{} 数据：{}", responseBodyMap, ltjdAds);
         }
-        assert responseBodyMap != null;
-        xiaomiCallbackDTO.setCallBackMes((String) responseBodyMap.get("code"));
+        xiaomiCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")));
         xiaomiCallbackDao.insert(xiaomiCallbackDTO);
         baseServiceInner.updateAdsObject(ltjdAds, ltjdAdsDao);
-
-        return BasicResult.getSuccessResponse();
+        logger.info("adsCallBack  xiaomiCallbackDTO：{}", xiaomiCallbackDTO);
+        return BasicResult.getSuccessResponse(Objects.isNull(xiaomiCallbackDTO) ? 0 : xiaomiCallbackDTO.getId());
     }
 
     //计算签名

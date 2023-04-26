@@ -9,7 +9,7 @@ import java.util.Date;
  **/
 public class XiaomiCallbackDTO {
 
-    private String id;
+    private Integer id;
     private Integer adsId;
     private String callback;
     private String eventType;
@@ -34,11 +34,11 @@ public class XiaomiCallbackDTO {
         this.signature = signature;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
