@@ -7,7 +7,8 @@ package huihuang.proxy.ocpx.channel.xiaomi;
  **/
 public class XiaomiPath {
 
-    public static final String TLJD_SECRET = "cwJATEvTDjtwEefH";
+    /** xiaomi提供给tljd的秘钥，后期做成配置，动态获取 */
+    public static final String TLJD_SECRET = "toLBaIvbRMKXUoTL";
 
     public static final String TLJD_ADS_NAME = "tljd";
 
