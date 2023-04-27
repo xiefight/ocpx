@@ -57,6 +57,10 @@ public class XJServiceImpl implements IChannelAdsService {
 
     @Override
     public Response clickReport(Map<String, String[]> parameterMap) throws Exception {
+        Set<Map.Entry<String, String[]>> entries = parameterMap.entrySet();
+        for (Map.Entry<String, String[]> entry : entries) {
+            logger.info("点击入参： key:{} value:{}", entry.getKey(), entry.getValue());
+        }
         IChannelAds channelAds = channelAds();
         return channelAds.clickReport(parameterMap);
     }

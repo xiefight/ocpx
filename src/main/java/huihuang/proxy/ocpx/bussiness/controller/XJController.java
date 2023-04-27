@@ -3,6 +3,7 @@ package huihuang.proxy.ocpx.bussiness.controller;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Response;
+import huihuang.proxy.ocpx.common.XiaomiResponse;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -41,14 +42,16 @@ public class XJController {
      * 点击上报和回传
      */
     @RequestMapping("clickReport")
-    public Response clickReport(HttpServletRequest request) {
+    public XiaomiResponse clickReport(HttpServletRequest request) {
+        Response response;
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
-            return xjService.clickReport(parameterMap);
+            response = xjService.clickReport(parameterMap);
         } catch (Exception e) {
             e.printStackTrace();
-            return BasicResult.getFailResponse("请求异常", e.getMessage());
+            response = BasicResult.getFailResponse("请求异常", e.getMessage());
         }
+        return new XiaomiResponse(response.getCode(), response.getMessage(), response.getData(), "请求异常");
 
     }
 
