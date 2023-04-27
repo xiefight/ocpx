@@ -1,6 +1,5 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
-import cn.hutool.core.net.URLEncoder;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
@@ -25,7 +24,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -81,11 +79,11 @@ public class XJServiceImpl implements IChannelAdsService {
 
         String channelUrl = XiaomiPath.CALLBACK_URL;
         String feedbackUrl = ltjdAdsDTO.getCallback_url();
-        String callback = URLEncoder.createQuery().encode(feedbackUrl, StandardCharsets.UTF_8);
-        logger.info("adsCallBack  渠道回调url：{}  只对callback进行encode：{}", channelUrl + feedbackUrl, callback);
+//        String callback = URLEncoder.createQuery().encode(feedbackUrl, StandardCharsets.UTF_8);
+//        logger.info("adsCallBack  渠道回调url：{}  只对callback进行encode：{}", channelUrl + feedbackUrl, feedbackUrl);
         //回传到渠道
         JSONObject json = new JSONObject();
-        json.put("callback", callback);
+        json.put("callback", feedbackUrl);
         json.put("conv_time", eventTimes);
         json.put("convType", LTJDEventTypeEnum.eventTypeMap.get(eventType).getCode());
         if (Objects.isNull(ltjdAdsDTO.getOaid())) {
@@ -93,12 +91,16 @@ public class XJServiceImpl implements IChannelAdsService {
         } else {
             json.put("oaid", ltjdAdsDTO.getOaid());
         }
-        String signature = signature(json);
 
-        HttpResponse response = HttpRequest.post(channelUrl)
-                .timeout(20000).form(json)
-                .header("content-type", "application/json")
-                .execute();
+        StringBuilder url = new StringBuilder(channelUrl);
+        Set<Map.Entry<String, Object>> entries = json.entrySet();
+        for (Map.Entry<String, Object> entry : entries) {
+            url.append(entry.getKey()).append("=").append(entry.getValue()).append("&");
+        }
+        String src = url.substring(0, url.length() - 1);
+        String signature = signature(json);
+//        url.append("sign=").append(signature);
+        HttpResponse response = HttpRequest.get(src).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
 
         //保存转化事件回调信息
@@ -112,16 +114,22 @@ public class XJServiceImpl implements IChannelAdsService {
             xiaomiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             ltjdAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             logger.info("adsCallBack  回调渠道成功：{} 数据：{}", responseBodyMap, ltjdAds);
+            xiaomiCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")));
+            xiaomiCallbackDao.insert(xiaomiCallbackDTO);
+            baseServiceInner.updateAdsObject(ltjdAds, ltjdAdsDao);
+            logger.info("adsCallBack  xiaomiCallbackDTO：{}", xiaomiCallbackDTO);
+            return BasicResult.getSuccessResponse(Objects.isNull(xiaomiCallbackDTO) ? 0 : xiaomiCallbackDTO.getId());
         } else {
             xiaomiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             ltjdAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             logger.error("adsCallBack  回调渠道失败：{} 数据：{}", responseBodyMap, ltjdAds);
+            xiaomiCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")) + responseBodyMap.get("failMsg"));
+            xiaomiCallbackDao.insert(xiaomiCallbackDTO);
+            baseServiceInner.updateAdsObject(ltjdAds, ltjdAdsDao);
+            logger.info("adsCallBack  xiaomiCallbackDTO：{}", xiaomiCallbackDTO);
+            return BasicResult.getFailResponse(xiaomiCallbackDTO.getCallBackMes());
         }
-        xiaomiCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")));
-        xiaomiCallbackDao.insert(xiaomiCallbackDTO);
-        baseServiceInner.updateAdsObject(ltjdAds, ltjdAdsDao);
-        logger.info("adsCallBack  xiaomiCallbackDTO：{}", xiaomiCallbackDTO);
-        return BasicResult.getSuccessResponse(Objects.isNull(xiaomiCallbackDTO) ? 0 : xiaomiCallbackDTO.getId());
+
     }
 
     //计算签名
@@ -140,4 +148,6 @@ public class XJServiceImpl implements IChannelAdsService {
         logger.info("adsCallBack  原始:{}  签名:{}", signatureStr, signature);
         return signature;
     }
+
+
 }

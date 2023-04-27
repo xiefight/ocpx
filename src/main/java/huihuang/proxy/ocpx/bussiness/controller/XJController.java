@@ -51,7 +51,7 @@ public class XJController {
             e.printStackTrace();
             response = BasicResult.getFailResponse("请求异常", e.getMessage());
         }
-        return new XiaomiResponse(response.getCode(), response.getMessage(), response.getData(), "请求异常");
+        return new XiaomiResponse(response.getCode(), response.getMessage(), response.getData(), "");
 
     }
 
