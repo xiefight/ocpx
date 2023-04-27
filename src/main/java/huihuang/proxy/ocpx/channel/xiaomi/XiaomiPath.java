@@ -9,5 +9,9 @@ public class XiaomiPath {
 
     public static final String TLJD_SECRET = "cwJATEvTDjtwEefH";
 
+    public static final String TLJD_ADS_NAME = "tljd";
+
+    public static final String YOUKU_ADS_NAME = "youku";
+
     public static final String CALLBACK_URL = "http://trail.e.mi.com/api/callback";
 }

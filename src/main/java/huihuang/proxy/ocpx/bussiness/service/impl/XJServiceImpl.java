@@ -99,7 +99,7 @@ public class XJServiceImpl implements IChannelAdsService {
 
         //保存转化事件回调信息
         XiaomiCallbackDTO xiaomiCallbackDTO = new XiaomiCallbackDTO(id, feedbackUrl,
-                String.valueOf(json.get("eventType")), eventTimes, ltjdAdsDTO.getImei_md5(), ltjdAdsDTO.getOaid(), signature);
+                String.valueOf(json.get("eventType")), eventTimes, ltjdAdsDTO.getImei_md5(), ltjdAdsDTO.getOaid(), signature, XiaomiPath.TLJD_ADS_NAME);
         //更新回调状态
         LTJDAdsDTO ltjdAds = new LTJDAdsDTO();
         ltjdAds.setId(id);

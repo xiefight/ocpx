@@ -11,6 +11,7 @@
         <result column="signature" property="signature"/>
         <result column="conv_time" property="eventTime"/>
         <result column="event_type" property="eventType"/>
+        <result column="ads_name" property="adsName"/>
         <result column="callback_status" property="callBackStatus"/>
         <result column="callback_mes" property="callBackMes"/>
         <result column="create_time" property="createTime"/>
@@ -22,9 +23,9 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
         INSERT INTO xiaomi_callback
-        (ads_id, callback, imei, oaid, signature, conv_time, event_type, callback_status,callback_mes, create_time,
+        (ads_id, callback, imei, oaid, signature, conv_time, event_type, ads_name, callback_status,callback_mes, create_time,
         update_time)
-        VALUES (#{adsId}, #{callback}, #{imei}, #{oaid}, #{signature}, #{eventTime}, #{eventType}, #{callBackStatus},
+        VALUES (#{adsId}, #{callback}, #{imei}, #{oaid}, #{signature}, #{eventTime}, #{eventType}, #{adsName}, #{callBackStatus},
         #{callBackMes},now(),now())
     </insert>
 

@@ -100,7 +100,7 @@ public class XYServiceImpl implements IChannelAdsService {
 
         //保存转化事件回调信息
         XiaomiCallbackDTO xiaomiCallbackDTO = new XiaomiCallbackDTO(id, feedbackUrl,
-                String.valueOf(json.get("eventType")), eventTimes, ltjdAdsDTO.getImei_md5(), ltjdAdsDTO.getOaid(), signature);
+                String.valueOf(json.get("eventType")), eventTimes, ltjdAdsDTO.getImei_md5(), ltjdAdsDTO.getOaid(), signature, XiaomiPath.YOUKU_ADS_NAME);
         //更新回调状态
         YoukuAdsDTO ltjdAds = new YoukuAdsDTO();
         ltjdAds.setId(id);

@@ -18,13 +18,15 @@ public class XiaomiCallbackDTO {
     private String oaid;
     private String signature;
 
+    private String adsName;
+
     private String callBackStatus;
     private String callBackMes;
 
     private Date createTime;
     private Date updateTime;
 
-    public XiaomiCallbackDTO(Integer adsId, String callback, String eventType, String eventTime, String imei, String oaid, String signature) {
+    public XiaomiCallbackDTO(Integer adsId, String callback, String eventType, String eventTime, String imei, String oaid, String signature, String adsName) {
         this.adsId = adsId;
         this.callback = callback;
         this.eventType = eventType;
@@ -32,6 +34,7 @@ public class XiaomiCallbackDTO {
         this.imei = imei;
         this.oaid = oaid;
         this.signature = signature;
+        this.adsName = adsName;
     }
 
     public Integer getId() {
@@ -128,5 +131,13 @@ public class XiaomiCallbackDTO {
 
     public void setAdsId(Integer adsId) {
         this.adsId = adsId;
+    }
+
+    public String getAdsName() {
+        return adsName;
+    }
+
+    public void setAdsName(String adsName) {
+        this.adsName = adsName;
     }
 }
