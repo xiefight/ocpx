@@ -4,8 +4,8 @@ server:
 spring:
   datasource:
     username: root
-    password: 123456
-    url: jdbc:mysql://39.96.179.255:3306/lottery?useUnicode=true
+    password: 918904@xt
+    url: jdbc:mysql://rm-2ze954q1642q883g6so.mysql.rds.aliyuncs.com:3306/ocpx?useUnicode=true
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis:
