@@ -43,13 +43,17 @@ public class BaseServiceInner {
                 Method getMethod = descriptor.getReadMethod();
                 Object fieldValue = getMethod.invoke(adsObj);
                 if (Objects.nonNull(fieldValue)) {
-                    stringBuilder.append("&").append(fieldName).append("=").append(fieldValue);
+                    stringBuilder.append(fieldName).append("=").append(fieldValue).append("&");
                 }
             } catch (IntrospectionException | IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
             }
         }
-        return stringBuilder.toString();
+        String src = stringBuilder.toString();
+        if (stringBuilder.toString().endsWith("&")){
+            src = stringBuilder.substring(0, stringBuilder.length() - 1);
+        }
+        return src;
     }
 
     public String convertOs(String appType) {

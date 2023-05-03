@@ -5,6 +5,7 @@ import huihuang.proxy.ocpx.bussiness.dao.common.IConfigDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.common.ResultStatus;
+import huihuang.proxy.ocpx.domain.Config;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,10 +36,11 @@ public abstract class BaseSupport {
         Map<String, Object> configMap = CollUtil.newHashMap();
         try {
             configMap = JsonParameterUtil.jsonToMap(config, Exception.class);
+            assert configMap != null;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return (String) configMap.get("serverPath");
+        return (String) configMap.get(Config.SERVER_PATH);
     }
 
     /**

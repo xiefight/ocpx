@@ -107,6 +107,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
         //时间戳，秒
         String ts = Optional.ofNullable(ltjdParamField.getTs()).orElse(String.valueOf(System.currentTimeMillis()));
         ltjdParamField.setTs(String.valueOf(Long.parseLong(ts) / 1000));
+        ltjdParamField.setUa(URLEncoder.createQuery().encode(ltjdParamField.getUa(), StandardCharsets.UTF_8));
         //签名
         signature(ltjdParamField);
         logger.info("clickReport  特殊参数进行转换 convertParams:{}", ltjdParamField);
@@ -166,6 +167,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
 
     @Override
     protected Response reportAds(String adsUrl, Object adsDtoObj) throws Exception {
+        logger.info("调用用户侧的地址  adsUrl:{}", adsUrl);
         HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
         LTJDAdsDTO ltjdAdsDTO = (LTJDAdsDTO) adsDtoObj;

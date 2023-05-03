@@ -17,4 +17,6 @@ public class Config {
     public void setDynamic_config(String dynamic_config) {
         this.dynamic_config = dynamic_config;
     }
+
+    public static final String SERVER_PATH = "serverPath";
 }
