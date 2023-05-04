@@ -140,4 +140,23 @@ public class XiaomiCallbackDTO {
     public void setAdsName(String adsName) {
         this.adsName = adsName;
     }
+
+    @Override
+    public String toString() {
+        return "XiaomiCallbackDTO{" +
+                "id=" + id +
+                ", adsId=" + adsId +
+                ", callback='" + callback + '\'' +
+                ", eventType='" + eventType + '\'' +
+                ", eventTime='" + eventTime + '\'' +
+                ", imei='" + imei + '\'' +
+                ", oaid='" + oaid + '\'' +
+                ", signature='" + signature + '\'' +
+                ", adsName='" + adsName + '\'' +
+                ", callBackStatus='" + callBackStatus + '\'' +
+                ", callBackMes='" + callBackMes + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
+    }
 }
