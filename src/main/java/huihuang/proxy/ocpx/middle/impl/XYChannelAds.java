@@ -109,6 +109,7 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
         //时间戳，秒
         String ts = Optional.ofNullable(youkuParamField.getTs()).orElse(String.valueOf(System.currentTimeMillis()));
         youkuParamField.setTs(String.valueOf(Long.parseLong(ts) / 1000));
+        youkuParamField.setUa(URLEncoder.createQuery().encode(youkuParamField.getUa(), StandardCharsets.UTF_8));
         //签名
         signature(youkuParamField);
         logger.info("clickReport  特殊参数进行转换 convertParams:{}", youkuParamField);
@@ -154,7 +155,7 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
     protected void replaceCallbackUrl(Object adsObj, Object adsDtoObj) {
         YoukuParamField youkuParamField = (YoukuParamField) adsObj;
         YoukuAdsDTO youkuAdsDTO = (YoukuAdsDTO) adsDtoObj;
-        String ocpxUrl = queryServerPath() + "/xyServer/adsCallBack/" + youkuAdsDTO.getId();
+        String ocpxUrl = queryServerPath() + "/xyServer/adsCallBack/" + youkuAdsDTO.getId() + "?";
         String encodeUrl = URLEncoder.createQuery().encode(ocpxUrl, StandardCharsets.UTF_8);
 //            ocpxUrl = URLEncoder.encode(ocpxUrl, "UTF-8");
         youkuParamField.setCallback_url(encodeUrl);
@@ -168,6 +169,7 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
 
     @Override
     protected Response reportAds(String adsUrl, Object adsDtoObj) throws Exception {
+        logger.info("调用用户侧youku的地址  adsUrl:{}", adsUrl);
         HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
         YoukuAdsDTO youkuAdsDTO = (YoukuAdsDTO) adsDtoObj;

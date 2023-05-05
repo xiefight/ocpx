@@ -70,8 +70,8 @@ public enum YoukuParamEnum {
 
     static {
         xyMap = new HashMap<>();
-        xyMap.put(TP_ADV_ID, XiaomiParamEnum.TLJD_TP_ADV_ID);
-        xyMap.put(ACCESS_ID, XiaomiParamEnum.TLJD_ACCESS_ID);
+        xyMap.put(TP_ADV_ID, XiaomiParamEnum.LTJD_TP_ADV_ID);
+        xyMap.put(ACCESS_ID, XiaomiParamEnum.LTJD_ACCESS_ID);
         xyMap.put(REQUEST_ID, null);//每次请求都不一样，以当前时间戳区分
         xyMap.put(IMEI, null);//xiaomi没有imei的原值
         xyMap.put(IMEI_MD5, XiaomiParamEnum.IMEI);
