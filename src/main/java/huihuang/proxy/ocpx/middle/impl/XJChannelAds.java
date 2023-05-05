@@ -34,7 +34,7 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * @Description: tljd-xiaomi
+ * @Description: ltjd-xiaomi
  * @Author: xietao
  * @Date: 2023-04-24 17:31
  **/
@@ -52,7 +52,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
     @Override
     public String findMonitorAddress() {
         StringBuilder macro = new StringBuilder();
-        //1.遍历tljd查找xiaomi对应的宏参数
+        //1.遍历ltjd查找xiaomi对应的宏参数
         Set<LTJDParamEnum> ltjdParamEnums = LTJDParamEnum.xjMap.keySet();
         for (LTJDParamEnum ltjd : ltjdParamEnums) {
             XiaomiParamEnum xiaomi = LTJDParamEnum.xjMap.get(ltjd);

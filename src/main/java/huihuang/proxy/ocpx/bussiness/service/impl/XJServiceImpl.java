@@ -47,9 +47,10 @@ public class XJServiceImpl implements IChannelAdsService {
     @Autowired
     private IXiaomiCallbackDao xiaomiCallbackDao;
 
+    String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_LTJD;
+
     @Override
     public IChannelAds channelAds() {
-        String channelAdsKey = "xiaomi-ltjd";
         return channelAdsFactory.findChannelAds(channelAdsKey);
     }
 
@@ -57,7 +58,7 @@ public class XJServiceImpl implements IChannelAdsService {
     public Response clickReport(Map<String, String[]> parameterMap) throws Exception {
         Set<Map.Entry<String, String[]>> entries = parameterMap.entrySet();
         for (Map.Entry<String, String[]> entry : entries) {
-            logger.info("点击入参： key:{} value:{}", entry.getKey(), entry.getValue());
+            logger.info("{} 点击入参： key:{} value:{}", channelAdsKey, entry.getKey(), entry.getValue());
         }
         IChannelAds channelAds = channelAds();
         return channelAds.clickReport(parameterMap);
@@ -65,7 +66,7 @@ public class XJServiceImpl implements IChannelAdsService {
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        logger.info("adsCallBack  开始回调渠道  id:{}  parameterMap.size:{}", id, parameterMap.size());
+        logger.info("adsCallBack {} 开始回调渠道  id:{}  parameterMap.size:{}", channelAdsKey, id, parameterMap.size());
         //转化类型字段
         String eventType = parameterMap.get("event_type")[0];
         String eventTimes = String.valueOf(System.currentTimeMillis());
@@ -73,7 +74,7 @@ public class XJServiceImpl implements IChannelAdsService {
         //根据id查询对应的点击记录
         LTJDAdsDTO ltjdAdsDTO = ltjdAdsDao.queryLtjdAdsById(id);
         if (null == ltjdAdsDTO) {
-            logger.error("未根据{}找到对应的监测信息", id);
+            logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
@@ -105,7 +106,7 @@ public class XJServiceImpl implements IChannelAdsService {
 
         //保存转化事件回调信息
         XiaomiCallbackDTO xiaomiCallbackDTO = new XiaomiCallbackDTO(id, feedbackUrl,
-                String.valueOf(json.get("convType")), eventTimes, ltjdAdsDTO.getImei_md5(), ltjdAdsDTO.getOaid(), signature, XiaomiPath.TLJD_ADS_NAME);
+                String.valueOf(json.get("convType")), eventTimes, ltjdAdsDTO.getImei_md5(), ltjdAdsDTO.getOaid(), signature, XiaomiPath.LTJD_ADS_NAME);
         //更新回调状态
         LTJDAdsDTO ltjdAds = new LTJDAdsDTO();
         ltjdAds.setId(id);
@@ -113,20 +114,20 @@ public class XJServiceImpl implements IChannelAdsService {
         if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals(0)) {
             xiaomiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             ltjdAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            logger.info("adsCallBack  回调渠道成功：{} 数据：{}", responseBodyMap, ltjdAds);
+            logger.info("adsCallBack {} 回调渠道成功：{} 数据：{}", channelAdsKey, responseBodyMap, ltjdAds);
             xiaomiCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")));
             xiaomiCallbackDao.insert(xiaomiCallbackDTO);
             baseServiceInner.updateAdsObject(ltjdAds, ltjdAdsDao);
-            logger.info("adsCallBack  xiaomiCallbackDTO：{}", xiaomiCallbackDTO);
+            logger.info("adsCallBack {} xiaomiCallbackDTO：{}", channelAdsKey, xiaomiCallbackDTO);
             return BasicResult.getSuccessResponse(Objects.isNull(xiaomiCallbackDTO) ? 0 : xiaomiCallbackDTO.getId());
         } else {
             xiaomiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             ltjdAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            logger.error("adsCallBack  回调渠道失败：{} 数据：{}", responseBodyMap, ltjdAds);
+            logger.error("adsCallBack {} 回调渠道失败：{} 数据：{}", channelAdsKey, responseBodyMap, ltjdAds);
             xiaomiCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")) + responseBodyMap.get("failMsg"));
             xiaomiCallbackDao.insert(xiaomiCallbackDTO);
             baseServiceInner.updateAdsObject(ltjdAds, ltjdAdsDao);
-            logger.info("adsCallBack  xiaomiCallbackDTO：{}", xiaomiCallbackDTO);
+            logger.info("adsCallBack {} xiaomiCallbackDTO：{}", channelAdsKey, xiaomiCallbackDTO);
             return BasicResult.getFailResponse(xiaomiCallbackDTO.getCallBackMes());
         }
 
@@ -142,10 +143,10 @@ public class XJServiceImpl implements IChannelAdsService {
             srcBuilder.append(key).append("=").append(value).append("&");
         }
         String src = srcBuilder.substring(0, srcBuilder.length() - 1);
-        String signatureStr = src + XiaomiPath.TLJD_SECRET;
+        String signatureStr = src + XiaomiPath.LTJD_SECRET;
         String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
         json.put("sign", signature);
-        logger.info("adsCallBack  原始:{}  签名:{}", signatureStr, signature);
+        logger.info("adsCallBack {} 原始:{}  签名:{}", channelAdsKey, signatureStr, signature);
         return signature;
     }
 

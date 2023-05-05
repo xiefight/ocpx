@@ -45,8 +45,7 @@ public class TMServiceImpl implements IChannelAdsService {
 
     @Override
     public IChannelAds channelAds() {
-        String channelAdsKey = "toutiao-meituan";
-        return channelAdsFactory.findChannelAds(channelAdsKey);
+        return channelAdsFactory.findChannelAds(Constants.ChannelAdsKey.TOUTIAO_MEITUAN);
     }
 
     @Override

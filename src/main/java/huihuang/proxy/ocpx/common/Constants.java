@@ -57,4 +57,11 @@ public class Constants {
         }
     }
 
+
+    public class ChannelAdsKey{
+        public static final String XIAOMI_LTJD = "xiaomi-ltjd";
+        public static final String XIAOMI_YOUKU = "xiaomi-youku";
+        public static final String TOUTIAO_MEITUAN = "toutiao-meituan";
+    }
+
 }

@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.middle.factory;
 
+import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.impl.MTChannelAds;
 import huihuang.proxy.ocpx.middle.impl.XJChannelAds;
@@ -28,9 +29,9 @@ public class ChannelAdsConfig {
 
     @PostConstruct
     public void init() {
-        channelAdsMap.put("toutiao-meituan", mtChannelAds);
-        channelAdsMap.put("xiaomi-ltjd", xjChannelAds);
-        channelAdsMap.put("xiaomi-youku", xyChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.TOUTIAO_MEITUAN, mtChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_LTJD, xjChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_YOUKU, xyChannelAds);
     }
 
 
