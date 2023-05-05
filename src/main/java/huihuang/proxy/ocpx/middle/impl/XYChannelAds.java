@@ -179,13 +179,13 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
         if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals("0")) {
             youkuAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
             baseServiceInner.updateAdsObject(youkuAdsVO, youkuAdsDao);
-            logger.info("clickReport  上报ltjd-广告侧接口请求成功:{} 数据:{}", response, youkuAdsVO);
+            logger.info("clickReport  上报youku-广告侧接口请求成功:{} 数据:{}", response, youkuAdsVO);
             return BasicResult.getSuccessResponse(youkuAdsDTO.getId());
         } else {
             youkuAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode());
             baseServiceInner.updateAdsObject(youkuAdsVO, youkuAdsDao);
-            logger.error("clickReport  上报ltjd-广告侧接口请求失败:{} 数据:{}", response, youkuAdsVO);
-            return BasicResult.getFailResponse("上报ltjd-广告侧接口请求失败", 0);
+            logger.error("clickReport  上报youku-广告侧接口请求失败:{} 数据:{}", response, youkuAdsVO);
+            return BasicResult.getFailResponse("上报youku-广告侧接口请求失败", 0);
         }
     }
 

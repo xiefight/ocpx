@@ -119,7 +119,7 @@ public class XJServiceImpl implements IChannelAdsService {
             xiaomiCallbackDao.insert(xiaomiCallbackDTO);
             baseServiceInner.updateAdsObject(ltjdAds, ltjdAdsDao);
             logger.info("adsCallBack {} xiaomiCallbackDTO：{}", channelAdsKey, xiaomiCallbackDTO);
-            return BasicResult.getSuccessResponse(Objects.isNull(xiaomiCallbackDTO) ? 0 : xiaomiCallbackDTO.getId());
+            return BasicResult.getSuccessResponse(xiaomiCallbackDTO.getId());
         } else {
             xiaomiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             ltjdAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());

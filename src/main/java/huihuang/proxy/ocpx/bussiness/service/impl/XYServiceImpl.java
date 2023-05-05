@@ -82,7 +82,7 @@ public class XYServiceImpl implements IChannelAdsService {
         String channelUrl = XiaomiPath.CALLBACK_URL;
         String feedbackUrl = youkuAdsDTO.getCallback_url();
 //        String callback = URLEncoder.createQuery().encode(feedbackUrl, StandardCharsets.UTF_8);
-//        logger.info("adsCallBack  渠道回调url：{}  只对callback进行encode：{}", channelUrl + feedbackUrl, callback);
+//        logger.info("adsCallBack  渠道回调url：{}  只对callback进行encode：{}", channelUrl + feedbackUrl, feedbackUrl);
         //回传到渠道
         JSONObject json = new JSONObject();
         json.put("callback", feedbackUrl);
@@ -93,7 +93,6 @@ public class XYServiceImpl implements IChannelAdsService {
         } else {
             json.put("oaid", youkuAdsDTO.getOaid());
         }
-        String signature = signature(json);
 
         StringBuilder url = new StringBuilder(channelUrl);
         Set<Map.Entry<String, Object>> entries = json.entrySet();
@@ -101,6 +100,7 @@ public class XYServiceImpl implements IChannelAdsService {
             url.append(entry.getKey()).append("=").append(entry.getValue()).append("&");
         }
         String src = url.substring(0, url.length() - 1);
+        String signature = signature(json);
 //        url.append("sign=").append(signature);
         HttpResponse response = HttpRequest.get(src).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
@@ -120,13 +120,12 @@ public class XYServiceImpl implements IChannelAdsService {
             xiaomiCallbackDao.insert(xiaomiCallbackDTO);
             baseServiceInner.updateAdsObject(youkuAds, youkuAdsDao);
             logger.info("adsCallBack {} xiaomiCallbackDTO：{}", channelAdsKey, xiaomiCallbackDTO);
-            return BasicResult.getSuccessResponse(Objects.isNull(xiaomiCallbackDTO) ? 0 : xiaomiCallbackDTO.getId());
-
+            return BasicResult.getSuccessResponse(xiaomiCallbackDTO.getId());
         } else {
             xiaomiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             youkuAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             logger.error("adsCallBack {} 回调渠道失败：{} 数据：{}", channelAdsKey, responseBodyMap, youkuAds);
-            xiaomiCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")) + responseBodyMap.get("failMsg"));
+            xiaomiCallbackDTO.setCallBackMes(responseBodyMap.get("code") +"  "+ responseBodyMap.get("failMsg"));
             xiaomiCallbackDao.insert(xiaomiCallbackDTO);
             baseServiceInner.updateAdsObject(youkuAds, youkuAdsDao);
             logger.info("adsCallBack {} xiaomiCallbackDTO：{}", channelAdsKey, xiaomiCallbackDTO);

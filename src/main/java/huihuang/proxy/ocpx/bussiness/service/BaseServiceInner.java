@@ -34,7 +34,12 @@ public class BaseServiceInner {
     public String initAdsUrlAndParam(String adsUrl, Object adsObj) {
         StringBuilder stringBuilder = new StringBuilder(adsUrl);
         //将参数拼接到url中以发送get请求
+        //本类属性
         Field[] declaredFields = adsObj.getClass().getDeclaredFields();
+        if (0 == declaredFields.length) {
+            //父类属性
+            declaredFields = adsObj.getClass().getSuperclass().getDeclaredFields();
+        }
         for (Field field : declaredFields) {
             String fieldName = field.getName();
             PropertyDescriptor descriptor;
@@ -50,7 +55,7 @@ public class BaseServiceInner {
             }
         }
         String src = stringBuilder.toString();
-        if (stringBuilder.toString().endsWith("&")){
+        if (stringBuilder.toString().endsWith("&")) {
             src = stringBuilder.substring(0, stringBuilder.length() - 1);
         }
         return src;
