@@ -68,7 +68,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
         //2.config中查找服务地址
         String serverPath = queryServerPath();
         //3.拼接监测地址
-        return serverPath + "/xjServer/clickReport" + "?" + macroStr;
+        return serverPath + "/xjServer/clickReport?" + macroStr;
     }
 
     @Override
@@ -101,13 +101,17 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
     @Override
     protected void convertParams(Object adsObj) {
         LTJDParamField ltjdParamField = (LTJDParamField) adsObj;
-        ltjdParamField.setCallback_url(URLEncoder.createQuery().encode(ltjdParamField.getCallback_url(), StandardCharsets.UTF_8));
-//        ltjdParamField.setApp_type(osConvertAppType(ltjdParamField.getApp_type()));
+        if (null != ltjdParamField.getCallback_url()) {
+            ltjdParamField.setCallback_url(URLEncoder.createQuery().encode(ltjdParamField.getCallback_url(), StandardCharsets.UTF_8));
+        }
+        //        ltjdParamField.setApp_type(osConvertAppType(ltjdParamField.getApp_type()));
         ltjdParamField.setRequest_id(String.valueOf(System.currentTimeMillis()));
         //时间戳，秒
         String ts = Optional.ofNullable(ltjdParamField.getTs()).orElse(String.valueOf(System.currentTimeMillis()));
         ltjdParamField.setTs(String.valueOf(Long.parseLong(ts) / 1000));
-        ltjdParamField.setUa(URLEncoder.createQuery().encode(ltjdParamField.getUa(), StandardCharsets.UTF_8));
+        if (null != ltjdParamField.getUa()) {
+            ltjdParamField.setUa(URLEncoder.createQuery().encode(ltjdParamField.getUa(), StandardCharsets.UTF_8));
+        }
         //签名
         signature(ltjdParamField);
         logger.info("clickReport  特殊参数进行转换 convertParams:{}", ltjdParamField);

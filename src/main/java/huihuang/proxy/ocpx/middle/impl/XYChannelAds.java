@@ -70,7 +70,7 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
         //2.config中查找服务地址
         String serverPath = queryServerPath();
         //3.拼接监测地址
-        return serverPath + "/xyServer/clickReport" + "?" + macroStr;
+        return serverPath + "/xyServer/clickReport?" + macroStr;
     }
 
     @Override
@@ -103,13 +103,17 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
     @Override
     protected void convertParams(Object adsObj) {
         YoukuParamField youkuParamField = (YoukuParamField) adsObj;
-        youkuParamField.setCallback_url(URLEncoder.createQuery().encode(youkuParamField.getCallback_url(), StandardCharsets.UTF_8));
+        if (null != youkuParamField.getCallback_url()){
+            youkuParamField.setCallback_url(URLEncoder.createQuery().encode(youkuParamField.getCallback_url(), StandardCharsets.UTF_8));
+        }
 //        youkuParamField.setApp_type(osConvertAppType(youkuParamField.getApp_type()));
         youkuParamField.setRequest_id(String.valueOf(System.currentTimeMillis()));
         //时间戳，秒
         String ts = Optional.ofNullable(youkuParamField.getTs()).orElse(String.valueOf(System.currentTimeMillis()));
         youkuParamField.setTs(String.valueOf(Long.parseLong(ts) / 1000));
-        youkuParamField.setUa(URLEncoder.createQuery().encode(youkuParamField.getUa(), StandardCharsets.UTF_8));
+        if (null != youkuParamField.getUa()){
+            youkuParamField.setUa(URLEncoder.createQuery().encode(youkuParamField.getUa(), StandardCharsets.UTF_8));
+        }
         //签名
         signature(youkuParamField);
         logger.info("clickReport  特殊参数进行转换 convertParams:{}", youkuParamField);
