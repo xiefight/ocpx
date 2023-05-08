@@ -26,7 +26,7 @@ public enum XiaomiParamEnum {
     ADNAME("__ADNAME__", "adName", "广告创意名称"),
 
 
-    /** 额外补充字段，根据各广告主定 */
+    /** 额外补充字段，根据各广告主定，渠道和广告主的宏字段不具有映射关系时，下达监测链接后，广告主根据该字段进行字段赋值 */
     LTJD_TP_ADV_ID("","tp_adv_id","力天京东提供的渠道标识"),
     LTJD_ACCESS_ID("","access_id","力天京东提供的渠道标识"),
 

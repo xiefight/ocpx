@@ -48,6 +48,8 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
     @Autowired
     private BaseServiceInner baseServiceInner;
 
+    String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_YOUKU;
+
     /**
      * 生成监测链接
      */
@@ -96,14 +98,14 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
                 e.printStackTrace();
             }
         });
-        logger.info("clickReport  媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", youkuParamField);
+        logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey, youkuParamField);
         return youkuParamField;
     }
 
     @Override
     protected void convertParams(Object adsObj) {
         YoukuParamField youkuParamField = (YoukuParamField) adsObj;
-        if (null != youkuParamField.getCallback_url()){
+        if (null != youkuParamField.getCallback_url()) {
             youkuParamField.setCallback_url(URLEncoder.createQuery().encode(youkuParamField.getCallback_url(), StandardCharsets.UTF_8));
         }
 //        youkuParamField.setApp_type(osConvertAppType(youkuParamField.getApp_type()));
@@ -111,12 +113,12 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
         //时间戳，秒
         String ts = Optional.ofNullable(youkuParamField.getTs()).orElse(String.valueOf(System.currentTimeMillis()));
         youkuParamField.setTs(String.valueOf(Long.parseLong(ts) / 1000));
-        if (null != youkuParamField.getUa()){
+        if (null != youkuParamField.getUa()) {
             youkuParamField.setUa(URLEncoder.createQuery().encode(youkuParamField.getUa(), StandardCharsets.UTF_8));
         }
         //签名
         signature(youkuParamField);
-        logger.info("clickReport  特殊参数进行转换 convertParams:{}", youkuParamField);
+        logger.info("clickReport {} 特殊参数进行转换 convertParams:{}", channelAdsKey, youkuParamField);
     }
 
     @Override
@@ -151,7 +153,7 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
         YoukuAdsDTO youkuAdsDTO = new YoukuAdsDTO();
         BeanUtil.copyProperties(youkuParamField, youkuAdsDTO);
         youkuAdsDao.insert(youkuAdsDTO);
-        logger.info("clickReport  将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", youkuAdsDTO);
+        logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey, youkuAdsDTO);
         return youkuAdsDTO;
     }
 
@@ -160,10 +162,11 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
         YoukuParamField youkuParamField = (YoukuParamField) adsObj;
         YoukuAdsDTO youkuAdsDTO = (YoukuAdsDTO) adsDtoObj;
         String ocpxUrl = queryServerPath() + "/xyServer/adsCallBack/" + youkuAdsDTO.getId() + "?";
+        logger.info("clickReport {} 客户回调渠道的url：{}", channelAdsKey, ocpxUrl);
         String encodeUrl = URLEncoder.createQuery().encode(ocpxUrl, StandardCharsets.UTF_8);
 //            ocpxUrl = URLEncoder.encode(ocpxUrl, "UTF-8");
         youkuParamField.setCallback_url(encodeUrl);
-        logger.info("clickReport  回调参数 replaceCallbackUrl:{}", youkuParamField);
+        logger.info("clickReport {} 回调参数 replaceCallbackUrl:{}", channelAdsKey, youkuParamField);
     }
 
     @Override
@@ -173,7 +176,7 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
 
     @Override
     protected Response reportAds(String adsUrl, Object adsDtoObj) throws Exception {
-        logger.info("调用用户侧youku的地址  adsUrl:{}", adsUrl);
+        logger.info("调用用户侧youku的地址 {} adsUrl:{}", channelAdsKey, adsUrl);
         HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
         YoukuAdsDTO youkuAdsDTO = (YoukuAdsDTO) adsDtoObj;
@@ -183,12 +186,12 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
         if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals("0")) {
             youkuAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
             baseServiceInner.updateAdsObject(youkuAdsVO, youkuAdsDao);
-            logger.info("clickReport  上报youku-广告侧接口请求成功:{} 数据:{}", response, youkuAdsVO);
+            logger.info("clickReport {} 上报youku-广告侧接口请求成功:{} 数据:{}", channelAdsKey, response, youkuAdsVO);
             return BasicResult.getSuccessResponse(youkuAdsDTO.getId());
         } else {
             youkuAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode());
             baseServiceInner.updateAdsObject(youkuAdsVO, youkuAdsDao);
-            logger.error("clickReport  上报youku-广告侧接口请求失败:{} 数据:{}", response, youkuAdsVO);
+            logger.error("clickReport {} 上报youku-广告侧接口请求失败:{} 数据:{}", channelAdsKey, response, youkuAdsVO);
             return BasicResult.getFailResponse("上报youku-广告侧接口请求失败", 0);
         }
     }
@@ -200,7 +203,7 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
         String src = "access_id=" + access_id + "&ts=" + ts;
         String signatureStr = src + YoukuPath.SECRET;
         String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
-        logger.info("clickReport 原始:{}  签名:{}", signatureStr, signature);
+        logger.info("clickReport {} 原始:{}  签名:{}", channelAdsKey, signatureStr, signature);
         youkuParamField.setSignature(signature);
     }
 
