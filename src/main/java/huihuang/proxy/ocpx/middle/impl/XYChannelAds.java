@@ -7,6 +7,7 @@ import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
+import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
 import huihuang.proxy.ocpx.ads.youku.YoukuAdsDTO;
 import huihuang.proxy.ocpx.ads.youku.YoukuParamEnum;
@@ -189,7 +190,7 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
             logger.info("clickReport {} 上报youku-广告侧接口请求成功:{} 数据:{}", channelAdsKey, response, youkuAdsVO);
             return BasicResult.getSuccessResponse(youkuAdsDTO.getId());
         } else {
-            youkuAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode());
+            youkuAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode() + "--" + JSONObject.toJSONString(responseBodyMap));
             baseServiceInner.updateAdsObject(youkuAdsVO, youkuAdsDao);
             logger.error("clickReport {} 上报youku-广告侧接口请求失败:{} 数据:{}", channelAdsKey, response, youkuAdsVO);
             return BasicResult.getFailResponse("上报youku-广告侧接口请求失败", 0);

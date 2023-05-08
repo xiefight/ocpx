@@ -7,6 +7,8 @@ import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDAdsDTO;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDParamEnum;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDParamField;
@@ -187,7 +189,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
             logger.info("clickReport {} 上报ltjd-广告侧接口请求成功:{} 数据:{}", channelAdsKey, response, ltjdAdsVO);
             return BasicResult.getSuccessResponse(ltjdAdsDTO.getId());
         } else {
-            ltjdAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode());
+            ltjdAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode() + "--" + JSONObject.toJSONString(responseBodyMap));
             baseServiceInner.updateAdsObject(ltjdAdsVO, ltjdAdsDao);
             logger.error("clickReport {} 上报ltjd-广告侧接口请求失败:{} 数据:{}", channelAdsKey, response, ltjdAdsVO);
             return BasicResult.getFailResponse("上报ltjd-广告侧接口请求失败", 0);
