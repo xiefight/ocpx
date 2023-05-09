@@ -1,0 +1,37 @@
+xiaomi-jingdong
+
+监测链接
+curl --location --request GET 'http://localhost:5015/xjServer/monitorAddress' \
+--header 'Content-Type: application/json' \
+--data '{
+    "tp_adv_id":164,
+    "access_id":"tp97c55258d39edfe4232dbc485465dc92",
+    "response_validate":false,
+    "sign":"__SIGN__"
+}'
+
+点击上报
+curl --location 'http://localhost:5015/xjServer/clickReport?tp_adv_id=164&access_id=tp97c55258d39edfe4232dbc485465dc92&imei=&imei_md5=&idfa=&idfa_md5=&oaid=81d3ef10-b550-4160-895e-b6ef14a5e476&oaid_md5=%0A&click_time=1682478619462&os=0&ua=&ip=&ip_md5=&android_id_md5=&mac_md5=&callback=http%3A%2F%2Ftrail.e.mi.com%2Fapi%2Fcallback%3Fcallback%3Dcallback_param&advertiser_id=&deep_link='
+
+回传渠道
+curl --location 'http://localhost:5015/xjServer/adsCallBack/12?event_type=0'
+
+
+xiaomi-youku
+
+监测链接
+curl --location --request GET 'http://hzpvip.com:5015/xyServer/monitorAddress' \
+--header 'Content-Type: application/json' \
+--data '{
+    "tp_adv_id":169,
+    "access_id":"tp97c55258d39edfe4232dbc485465dc92",
+    "response_validate":false,
+    "sign":"__SIGN__"
+}'
+
+点击上报
+curl --location 'http://localhost:5015/xyServer/clickReport?oaid=7280cde560fed673&callback=FtAPFqrxBhgkYmZmMDFiNTMtYmE4MS00YWJhLWExMWQtYWU3YWI2MmQyMmJIGAAVAhggMTEXMTEXMTEXMTEXMTEXMTEXMTEXMTEXMTEXMTEXMTEYIDIyMjlyMjlyMjlyMilyMjlyMjlyMjlyMjlyMjlyMjlyGBA3MjgwY2RINTYwZmVkNjczAA%253D%253D&androidld=332f558b3aa50a7d34101d5f146afa0c&click_time=1683340768223&tp_adv_id=169&access_id=tp97c55258d39edfe4232dbc485465dc92&response_validate=false&sign=b9i5a2a0615f0695f0b12625af8eba24'
+
+回传渠道
+curl --location 'http://hzpvip.com:5015/xyServer/adsCallBack/7461?event_type=0' \
+--data ''
