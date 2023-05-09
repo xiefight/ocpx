@@ -55,16 +55,6 @@ public class XJServiceImpl implements IChannelAdsService {
     }
 
     @Override
-    public Response clickReport(Map<String, String[]> parameterMap) throws Exception {
-        Set<Map.Entry<String, String[]>> entries = parameterMap.entrySet();
-        for (Map.Entry<String, String[]> entry : entries) {
-            logger.info("{} 点击入参： key:{} value:{}", channelAdsKey, entry.getKey(), entry.getValue());
-        }
-        IChannelAds channelAds = channelAds();
-        return channelAds.clickReport(parameterMap);
-    }
-
-    @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
         logger.info("adsCallBack {} 开始回调渠道  id:{}  parameterMap.size:{}", channelAdsKey, id, parameterMap.size());
         //转化类型字段

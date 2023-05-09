@@ -6,6 +6,7 @@ import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.util.CommonUtil;
 
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @Description:
@@ -31,10 +32,15 @@ public interface IChannelAdsService {
         return BasicResult.getSuccessResponse(monitorAddress);
     }
 
+    default Response clickReport(Map<String, String[]> parameterMap) throws Exception {
+        IChannelAds channelAds = channelAds();
+        return channelAds.clickReport(parameterMap);
+    }
+
     /**
      * 渠道点击上报给客户
      */
-    Response clickReport(Map<String, String[]> parameterMap) throws Exception;
+//    Response clickReport(Map<String, String[]> parameterMap) throws Exception;
 
     /**
      * 客户将用户行为回调给渠道

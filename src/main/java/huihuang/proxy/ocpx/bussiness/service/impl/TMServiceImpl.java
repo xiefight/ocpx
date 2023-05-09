@@ -49,12 +49,6 @@ public class TMServiceImpl implements IChannelAdsService {
     }
 
     @Override
-    public Response clickReport(Map<String, String[]> parameterMap) throws Exception {
-        IChannelAds channelAds = channelAds();
-        return channelAds.clickReport(parameterMap);
-    }
-
-    @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
         //转化类型字段
         String eventType = parameterMap.get("event_type")[0];

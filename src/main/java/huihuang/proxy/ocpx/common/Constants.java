@@ -57,11 +57,22 @@ public class Constants {
         }
     }
 
+    public class ServerPath{
+        public static final String WIFI_XIGUA = "wxServer";
+
+        public static final String MONITOR_ADDRESS = "/monitorAddress";
+        public static final String CLICK_REPORT = "/clickReport";
+        public static final String ADS_CALLBACK = "/adsCallBack";
+        public static final String ADS_CALLBACK_ID = "/adsCallBack/{id}";
+
+
+    }
 
     public class ChannelAdsKey{
         public static final String XIAOMI_LTJD = "xiaomi-ltjd";
         public static final String XIAOMI_YOUKU = "xiaomi-youku";
         public static final String TOUTIAO_MEITUAN = "toutiao-meituan";
+        public static final String WIFI_XIGUA = "wifi-xigua";
     }
 
 }

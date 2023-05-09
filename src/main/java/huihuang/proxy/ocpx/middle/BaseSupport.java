@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @Description:
@@ -47,6 +48,10 @@ public abstract class BaseSupport {
      * 点击上报和回传
      */
     public Response clickReport(Map<String, String[]> parameterMap) throws Exception {
+        Set<Map.Entry<String, String[]>> entries = parameterMap.entrySet();
+        for (Map.Entry<String, String[]> entry : entries) {
+            logger.info("点击入参： key:{} value:{}", entry.getKey(), entry.getValue());
+        }
         //1.将媒体侧请求的监测链接中的参数，转化成广告侧的参数对象
         Object adsObj = channelParamToAdsParam(parameterMap);
         //2.特殊参数进行转换（如设备参数转换）
