@@ -58,7 +58,10 @@ public class Constants {
     }
 
     public class ServerPath{
-        public static final String WIFI_XIGUA = "wxServer";
+
+        public static final String XIAOMI_LTJD = "/xjServer";
+        public static final String XIAOMI_YOUKU = "/xyServer";
+        public static final String WIFI_XIGUA = "/wxServer";
 
         public static final String MONITOR_ADDRESS = "/monitorAddress";
         public static final String CLICK_REPORT = "/clickReport";

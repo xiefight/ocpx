@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.bussiness.controller;
 
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.common.BasicResult;
+import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.common.XiaomiResponse;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
@@ -18,7 +19,7 @@ import java.util.Map;
  * @Date: 2023-04-24 17:40
  **/
 @RestController
-@RequestMapping("xjServer")
+@RequestMapping(Constants.ServerPath.XIAOMI_LTJD)
 public class XJController {
 
     @Autowired
@@ -28,7 +29,7 @@ public class XJController {
     /**
      * 监测地址
      */
-    @RequestMapping("monitorAddress")
+    @RequestMapping(Constants.ServerPath.MONITOR_ADDRESS)
     public Response monitorAddress(HttpServletRequest request, @RequestBody String reqBody) {
         try {
             Map<String, Object> params = JsonParameterUtil.jsonToMap(reqBody, Exception.class);
@@ -41,7 +42,7 @@ public class XJController {
     /**
      * 点击上报和回传
      */
-    @RequestMapping("clickReport")
+    @RequestMapping(Constants.ServerPath.CLICK_REPORT)
     public XiaomiResponse clickReport(HttpServletRequest request) {
         Response response;
         try {
@@ -58,7 +59,7 @@ public class XJController {
     /**
      * 客户侧回调
      */
-    @GetMapping("adsCallBack/{id}")
+    @GetMapping(Constants.ServerPath.ADS_CALLBACK_ID)
     public Response adsCallBack(HttpServletRequest request, @PathVariable Integer id) {
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();

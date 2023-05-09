@@ -7,7 +7,6 @@ import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDAdsDTO;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDParamEnum;
@@ -72,7 +71,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
         //2.config中查找服务地址
         String serverPath = queryServerPath();
         //3.拼接监测地址
-        return serverPath + "/xjServer/clickReport?" + macroStr;
+        return serverPath + Constants.ServerPath.XIAOMI_LTJD + Constants.ServerPath.CLICK_REPORT + "?" + macroStr;
     }
 
     @Override

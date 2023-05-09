@@ -73,7 +73,7 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
         //2.config中查找服务地址
         String serverPath = queryServerPath();
         //3.拼接监测地址
-        return serverPath + "/xyServer/clickReport?" + macroStr;
+        return serverPath + Constants.ServerPath.XIAOMI_YOUKU + Constants.ServerPath.CLICK_REPORT + "?" + macroStr;
     }
 
     @Override

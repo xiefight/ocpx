@@ -20,7 +20,7 @@ public enum WifiParamEnum {
     IMEI("__IMEI__", "imei", "Android 设备的 imei的 Md5 值"),
     //    无("_无_", "response_validate", "是否检测返回值（默认为 true）"),
     OAID("__OAID__", "oaid", "设备 oaid 值"),
-    ANDROID_ID("__ANDROID_ID__", "androidId", "Android 设备的android id 的 Md5 值"),
+    ANDROID_ID("__ANDROID_ID__", "android_id", "Android 设备的android id 的 Md5 值"),
     HASH_OAID("__HASH_OAID__", "hash_oaid", "oaid 的 MD5 值"),
     PLAIN_IDFA("__PLAIN_IDFA__", "plain_idfa", "iOS 设备的 IDFA，明文。仅限__S2S__时使用"),
     PLAIN_MAC("__PLAIN_MAC__", "plain_mac", "设备 MAC，明文。仅限__S2S__时使用"),

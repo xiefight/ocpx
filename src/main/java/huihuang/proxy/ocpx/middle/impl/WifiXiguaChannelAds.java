@@ -2,12 +2,12 @@ package huihuang.proxy.ocpx.middle.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.net.URLEncoder;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
-import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
 import huihuang.proxy.ocpx.ads.xiguavideo.XiguaAdsDTO;
 import huihuang.proxy.ocpx.ads.xiguavideo.XiguaParamEnum;
 import huihuang.proxy.ocpx.ads.xiguavideo.XiguaParamField;
@@ -61,6 +61,9 @@ public class WifiXiguaChannelAds extends BaseSupport implements IChannelAds {
         StringBuilder macro = new StringBuilder();
         WifiParamEnum[] wifiParamEnums = WifiParamEnum.values();
         for (WifiParamEnum wifi : wifiParamEnums) {
+            if (Objects.isNull(wifi) || StrUtil.isEmpty(wifi.getMacro())) {
+                continue;
+            }
             macro.append(wifi.getParam()).append("=").append(wifi.getMacro()).append("&");
         }
         String macroStr = macro.toString();
@@ -96,9 +99,9 @@ public class WifiXiguaChannelAds extends BaseSupport implements IChannelAds {
         });
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey, xiguaParamField);
         //处理广告侧无映射的，但又必须回调给渠道侧的额外参数
-        fitExtras(parameterMap,xiguaParamField,
-                WifiParamEnum.CID.getParam(),WifiParamEnum.SID.getParam(),WifiParamEnum.STIME.getParam(),
-                WifiParamEnum.OS.getParam(),WifiParamEnum.IDFA.getParam(),WifiParamEnum.MAC.getParam(),
+        fitExtras(parameterMap, xiguaParamField,
+                WifiParamEnum.CID.getParam(), WifiParamEnum.SID.getParam(), WifiParamEnum.STIME.getParam(),
+                WifiParamEnum.OS.getParam(), WifiParamEnum.IDFA.getParam(), WifiParamEnum.MAC.getParam(),
                 WifiParamEnum.IMEI.getParam());
         return xiguaParamField;
     }
