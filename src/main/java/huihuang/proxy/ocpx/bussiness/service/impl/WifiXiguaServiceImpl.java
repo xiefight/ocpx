@@ -63,7 +63,7 @@ public class WifiXiguaServiceImpl implements IChannelAdsService {
         logger.info("adsCallBack {} 开始回调渠道  id:{}  parameterMap.size:{}", channelAdsKey, id, parameterMap.size());
         //转化类型字段
         String eventType = parameterMap.get("event_type")[0];
-        String eventTimes = String.valueOf(System.currentTimeMillis());
+        String eventTimes = String.valueOf(System.currentTimeMillis() / 1000);
 
         //根据id查询对应的点击记录
         XiguaAdsDTO xiguaAdsDTO = xiguaAdsDao.queryXiguaAdsById(id);
@@ -75,7 +75,7 @@ public class WifiXiguaServiceImpl implements IChannelAdsService {
         String channelUrl = WifiPath.CALLBACK_URL;
         //回传到渠道
         JSONObject json = new JSONObject();
-        json.put("clientid", XiguaPath.ACCESS_ID);
+        json.put("clientid", XiguaPath.CLIENT_ID);
         json.put("ts", eventTimes);
         json.put("event_type", XiguaEventTypeEnum.xiguaWifiEventTypeMap.get(eventType).getCode());
 
@@ -90,7 +90,7 @@ public class WifiXiguaServiceImpl implements IChannelAdsService {
         if (StrUtil.isNotEmpty(extra)) {
             src += extra;
         }
-        logger.info("adsCallBack {} 回传渠道的url ：{}", channelAdsKey, url);
+        logger.info("adsCallBack {} 回传渠道的url ：{}", channelAdsKey, src);
 //        String signature = signature(json);
         HttpResponse response = HttpRequest.get(src).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);

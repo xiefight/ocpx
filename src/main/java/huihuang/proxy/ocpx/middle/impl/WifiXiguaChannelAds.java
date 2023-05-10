@@ -8,12 +8,11 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
+import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
 import huihuang.proxy.ocpx.ads.xiguavideo.XiguaAdsDTO;
 import huihuang.proxy.ocpx.ads.xiguavideo.XiguaParamEnum;
 import huihuang.proxy.ocpx.ads.xiguavideo.XiguaParamField;
 import huihuang.proxy.ocpx.ads.xiguavideo.XiguaPath;
-import huihuang.proxy.ocpx.ads.youku.YoukuParamEnum;
-import huihuang.proxy.ocpx.ads.youku.YoukuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IXiguaAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.channel.wifi.WifiParamEnum;
@@ -123,24 +122,24 @@ public class WifiXiguaChannelAds extends BaseSupport implements IChannelAds {
     protected Response judgeParams(Object adsObj) {
         XiguaParamField xiguaParamField = (XiguaParamField) adsObj;
         if (Objects.isNull(xiguaParamField.getSignature())) {
-            return BasicResult.getFailResponse(YoukuParamEnum.SIGNATURE.getName() + "不能为空");
+            return BasicResult.getFailResponse(XiguaParamEnum.SIGNATURE.getName() + "不能为空");
         }
         if (Objects.isNull(xiguaParamField.getTp_adv_id())) {
-            return BasicResult.getFailResponse(YoukuParamEnum.TP_ADV_ID.getName() + "不能为空");
+            return BasicResult.getFailResponse(XiguaParamEnum.TP_ADV_ID.getName() + "不能为空");
         }
         if (Objects.isNull(xiguaParamField.getAccess_id())) {
-            return BasicResult.getFailResponse(YoukuParamEnum.ACCESS_ID.getName() + "不能为空");
+            return BasicResult.getFailResponse(XiguaParamEnum.ACCESS_ID.getName() + "不能为空");
         }
         if (Objects.isNull(xiguaParamField.getRequest_id())) {
-            return BasicResult.getFailResponse(YoukuParamEnum.REQUEST_ID.getName() + "不能为空");
+            return BasicResult.getFailResponse(XiguaParamEnum.REQUEST_ID.getName() + "不能为空");
         }
         //如果ios设备为空，则判断安卓设备
         if (Objects.isNull(xiguaParamField.getIdfa()) && Objects.isNull(xiguaParamField.getIdfa_md5())
                 && Objects.isNull(xiguaParamField.getImei()) && Objects.isNull(xiguaParamField.getImei_md5())
                 && Objects.isNull(xiguaParamField.getOaid()) && Objects.isNull(xiguaParamField.getOaid_md5())) {
-            return BasicResult.getFailResponse("安卓设备：" + YoukuParamEnum.IMEI.getName() + "、" + YoukuParamEnum.OAID.getName()
-                    + "、" + YoukuParamEnum.IMEI_MD5.getName() + "、" + YoukuParamEnum.OAID_MD5.getName() + "不能同时为空；"
-                    + " ios设备" + YoukuParamEnum.IDFA.getName() + "、" + YoukuParamEnum.IDFA_MD5.getName() + "不能同时为空");
+            return BasicResult.getFailResponse("安卓设备：" + XiguaParamEnum.IMEI.getName() + "、" + XiguaParamEnum.OAID.getName()
+                    + "、" + XiguaParamEnum.IMEI_MD5.getName() + "、" + XiguaParamEnum.OAID_MD5.getName() + "不能同时为空；"
+                    + " ios设备" + XiguaParamEnum.IDFA.getName() + "、" + XiguaParamEnum.IDFA_MD5.getName() + "不能同时为空");
         }
         return BasicResult.getSuccessResponse();
     }
@@ -184,13 +183,13 @@ public class WifiXiguaChannelAds extends BaseSupport implements IChannelAds {
         if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals("0")) {
             xiguaAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
             baseServiceInner.updateAdsObject(xiguaAdsVO, xiguaAdsDao);
-            logger.info("clickReport {} 上报youku-广告侧接口请求成功:{} 数据:{}", channelAdsKey, response, xiguaAdsVO);
+            logger.info("clickReport {} 上报xigua-广告侧接口请求成功:{} 数据:{}", channelAdsKey, response, xiguaAdsVO);
             return BasicResult.getSuccessResponse(xiguaAdsDTO.getId());
         } else {
             xiguaAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode() + "--" + JSONObject.toJSONString(responseBodyMap));
             baseServiceInner.updateAdsObject(xiguaAdsVO, xiguaAdsDao);
-            logger.error("clickReport {} 上报youku-广告侧接口请求失败:{} 数据:{}", channelAdsKey, response, xiguaAdsVO);
-            return BasicResult.getFailResponse("上报youku-广告侧接口请求失败", 0);
+            logger.error("clickReport {} 上报xigua-广告侧接口请求失败:{} 数据:{}", channelAdsKey, response, xiguaAdsVO);
+            return BasicResult.getFailResponse("上报xigua-广告侧接口请求失败", 0);
         }
     }
 
@@ -199,7 +198,7 @@ public class WifiXiguaChannelAds extends BaseSupport implements IChannelAds {
         String access_id = xiguaParamField.getAccess_id();
         String ts = xiguaParamField.getTs();
         String src = "access_id=" + access_id + "&ts=" + ts;
-        String signatureStr = src + YoukuPath.SECRET;
+        String signatureStr = src + LTJDPath.SECRET;
         String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
         logger.info("clickReport {} 原始:{}  签名:{}", channelAdsKey, signatureStr, signature);
         xiguaParamField.setSignature(signature);

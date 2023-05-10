@@ -33,8 +33,6 @@ public enum XiguaParamEnum {
     UA("ua", "String", 0, "用户代理(User Agent)，urlencode 编码"),
     CALLBACK_URL("callback_url", "String", 0, "渠道回调地址"),
 
-    WIFI_SID("wifiSid","String",1,"wifi万能钥匙侧的广告检索ID，需要保存")
-
     ;
 
     private String name;
@@ -120,7 +118,6 @@ public enum XiguaParamEnum {
         xiguaWifiMap.put(IP_MD5, null);
         xiguaWifiMap.put(UA, null);
         xiguaWifiMap.put(CALLBACK_URL, null);
-        xiguaWifiMap.put(WIFI_SID, WifiParamEnum.SID);
     }
 
 }

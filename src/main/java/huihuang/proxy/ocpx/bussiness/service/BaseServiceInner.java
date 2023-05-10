@@ -36,7 +36,7 @@ public class BaseServiceInner {
         //将参数拼接到url中以发送get请求
         //本类属性
         Field[] declaredFields = adsObj.getClass().getDeclaredFields();
-        if (0 == declaredFields.length) {
+        if (0 == declaredFields.length || (1 == declaredFields.length && "extra".equals(declaredFields[0].getName()))) {
             //父类属性
             declaredFields = adsObj.getClass().getSuperclass().getDeclaredFields();
         }
