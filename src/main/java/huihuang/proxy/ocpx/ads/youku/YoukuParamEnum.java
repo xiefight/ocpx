@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.ads.youku;
 
+import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -90,5 +91,34 @@ public enum YoukuParamEnum {
         xyMap.put(UA, XiaomiParamEnum.UA);
         xyMap.put(CALLBACK_URL, XiaomiParamEnum.CALLBACK);
     }
+
+    /**
+     * baidu-youku
+     */
+    public static Map<YoukuParamEnum, BaiduParamEnum> baiduYoukuMap;
+
+    static {
+        baiduYoukuMap = new HashMap<>();
+        baiduYoukuMap.put(TP_ADV_ID, BaiduParamEnum.YOUKU_TP_ADV_ID);
+        baiduYoukuMap.put(ACCESS_ID, BaiduParamEnum.YOUKU_ACCESS_ID);
+        baiduYoukuMap.put(REQUEST_ID, null);//每次请求都不一样，以当前时间戳区分
+        baiduYoukuMap.put(IMEI, null);
+        baiduYoukuMap.put(IMEI_MD5, BaiduParamEnum.IMEI_MD5);
+        baiduYoukuMap.put(OAID, BaiduParamEnum.OAID);
+        baiduYoukuMap.put(OAID_MD5, BaiduParamEnum.OAID_MD5);
+        baiduYoukuMap.put(IDFA, BaiduParamEnum.IDFA);
+        baiduYoukuMap.put(IDFA_MD5, null);
+        baiduYoukuMap.put(ADVERTISER_ID, null);
+        baiduYoukuMap.put(ANDROID_ID_MD5, BaiduParamEnum.ANDROID_ID_MD5);
+        baiduYoukuMap.put(MAC_MD5, BaiduParamEnum.MAC_MD5);
+        baiduYoukuMap.put(DEEP_LINK, BaiduParamEnum.DEEPLINK_URL);
+        baiduYoukuMap.put(TS, BaiduParamEnum.TS);
+        baiduYoukuMap.put(OS, BaiduParamEnum.OS_TYPE);
+        baiduYoukuMap.put(IP, BaiduParamEnum.IP);
+        baiduYoukuMap.put(IP_MD5, null);
+        baiduYoukuMap.put(UA, BaiduParamEnum.UA);
+        baiduYoukuMap.put(CALLBACK_URL, BaiduParamEnum.CALLBACK_URL);
+    }
+
 
 }

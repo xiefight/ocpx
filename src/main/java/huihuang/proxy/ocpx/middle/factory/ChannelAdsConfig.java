@@ -2,10 +2,7 @@ package huihuang.proxy.ocpx.middle.factory;
 
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.middle.IChannelAds;
-import huihuang.proxy.ocpx.middle.impl.MTChannelAds;
-import huihuang.proxy.ocpx.middle.impl.WifiXiguaChannelAds;
-import huihuang.proxy.ocpx.middle.impl.XJChannelAds;
-import huihuang.proxy.ocpx.middle.impl.XYChannelAds;
+import huihuang.proxy.ocpx.middle.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
@@ -29,6 +26,8 @@ public class ChannelAdsConfig {
     private XYChannelAds xyChannelAds;
     @Autowired
     private WifiXiguaChannelAds wxChannelAds;
+    @Autowired
+    private BaiduYoukuChannelAds byChannelAds;
 
     @PostConstruct
     public void init() {
@@ -36,6 +35,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_LTJD, xjChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_YOUKU, xyChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.WIFI_XIGUA, wxChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_YOUKU, byChannelAds);
     }
 
 

@@ -62,6 +62,7 @@ public class Constants {
         public static final String XIAOMI_LTJD = "/xjServer";
         public static final String XIAOMI_YOUKU = "/xyServer";
         public static final String WIFI_XIGUA = "/wxServer";
+        public static final String BAIDU_YOUKU = "/byServer";
 
         public static final String MONITOR_ADDRESS = "/monitorAddress";
         public static final String CLICK_REPORT = "/clickReport";
@@ -76,6 +77,7 @@ public class Constants {
         public static final String XIAOMI_YOUKU = "xiaomi-youku";
         public static final String TOUTIAO_MEITUAN = "toutiao-meituan";
         public static final String WIFI_XIGUA = "wifi-xigua";
+        public static final String BAIDU_YOUKU = "baidu-youku";
     }
 
 }
