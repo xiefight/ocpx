@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.litianjingdong;
 
 import cn.hutool.core.collection.CollUtil;
+import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
@@ -50,6 +51,22 @@ public enum LTJDEventTypeEnum {
         eventTypeMap.put(FIRST_WAKEUP.code, null);
         //次日回访
         eventTypeMap.put(SECOND_OPEN.code, null);
+    }
+
+    public static Map<String, BaiduEventTypeEnum> ltjdBaiduEventTypeMap;
+
+    static {
+        ltjdBaiduEventTypeMap = CollUtil.newHashMap();
+        //激活
+        ltjdBaiduEventTypeMap.put(ACTIVE.code, BaiduEventTypeEnum.ACTIVE);
+        //注册
+        ltjdBaiduEventTypeMap.put(REGISTER.code, BaiduEventTypeEnum.REGISTER);
+        //当日首购
+        ltjdBaiduEventTypeMap.put(FIRST_BUY.code, BaiduEventTypeEnum.ORDERS);
+        //首唤
+        ltjdBaiduEventTypeMap.put(FIRST_WAKEUP.code, null);
+        //次日回访
+        ltjdBaiduEventTypeMap.put(SECOND_OPEN.code, BaiduEventTypeEnum.RETAIN_1DAY);
     }
 
 }

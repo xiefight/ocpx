@@ -17,6 +17,7 @@ public class BaiduPath {
 
     /** BAIDU提供给YOUKU的秘钥 */
     public static final String YOUKU_SECRET = "?";
+    public static final String LTJD_SECRET = "?";
 
     public static final String BAIDU_CHANNEL_NAME = "baidu";
 

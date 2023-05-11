@@ -1,5 +1,7 @@
 package huihuang.proxy.ocpx.ads.litianjingdong;
 
+import huihuang.proxy.ocpx.ads.youku.YoukuParamEnum;
+import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -89,6 +91,35 @@ public enum LTJDParamEnum {
         xjMap.put(IP_MD5, null);
         xjMap.put(UA, XiaomiParamEnum.UA);
         xjMap.put(CALLBACK_URL, XiaomiParamEnum.CALLBACK);
+    }
+
+
+    /**
+     * baidu-ltjd
+     */
+    public static Map<LTJDParamEnum, BaiduParamEnum> baiduLtjdMap;
+
+    static {
+        baiduLtjdMap = new HashMap<>();
+        baiduLtjdMap.put(TP_ADV_ID, BaiduParamEnum.YOUKU_TP_ADV_ID);
+        baiduLtjdMap.put(ACCESS_ID, BaiduParamEnum.YOUKU_ACCESS_ID);
+        baiduLtjdMap.put(REQUEST_ID, null);//每次请求都不一样，以当前时间戳区分
+        baiduLtjdMap.put(IMEI, null);
+        baiduLtjdMap.put(IMEI_MD5, BaiduParamEnum.IMEI_MD5);
+        baiduLtjdMap.put(OAID, BaiduParamEnum.OAID);
+        baiduLtjdMap.put(OAID_MD5, BaiduParamEnum.OAID_MD5);
+        baiduLtjdMap.put(IDFA, BaiduParamEnum.IDFA);
+        baiduLtjdMap.put(IDFA_MD5, null);
+        baiduLtjdMap.put(ADVERTISER_ID, null);
+        baiduLtjdMap.put(ANDROID_ID_MD5, BaiduParamEnum.ANDROID_ID_MD5);
+        baiduLtjdMap.put(MAC_MD5, BaiduParamEnum.MAC_MD5);
+        baiduLtjdMap.put(DEEP_LINK, BaiduParamEnum.DEEPLINK_URL);
+        baiduLtjdMap.put(TS, BaiduParamEnum.TS);
+        baiduLtjdMap.put(OS, BaiduParamEnum.OS_TYPE);
+        baiduLtjdMap.put(IP, BaiduParamEnum.IP);
+        baiduLtjdMap.put(IP_MD5, null);
+        baiduLtjdMap.put(UA, BaiduParamEnum.UA);
+        baiduLtjdMap.put(CALLBACK_URL, BaiduParamEnum.CALLBACK_URL);
     }
 
 }
