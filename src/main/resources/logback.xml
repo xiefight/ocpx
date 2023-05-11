@@ -72,10 +72,10 @@
     </appender>
 
 
-    <logger name="huihuang.proxy.ocpx.middle.impl.WifiXiguaChannelAds" level="INFO" additivity="false">
+    <logger name="huihuang.proxy.ocpx.middle.impl.WifiXiguaChannelAds" level="INFO" additivity="true">
         <appender-ref ref="XIGUA_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.WifiXiguaServiceImpl" level="INFO" additivity="false">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.WifiXiguaServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="XIGUA_LOG"/>
     </logger>
 
@@ -100,10 +100,10 @@
     </appender>
 
 
-    <logger name="huihuang.proxy.ocpx.middle.impl.XJChannelAds" level="INFO" additivity="false">
+    <logger name="huihuang.proxy.ocpx.middle.impl.XJChannelAds" level="INFO" additivity="true">
         <appender-ref ref="LTJD_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XJServiceImpl" level="INFO" additivity="false">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XJServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="LTJD_LOG"/>
     </logger>
 
@@ -127,10 +127,16 @@
     </appender>
 
 
-    <logger name="huihuang.proxy.ocpx.middle.impl.XYChannelAds" level="INFO" additivity="false">
+    <logger name="huihuang.proxy.ocpx.middle.impl.XYChannelAds" level="INFO" additivity="true">
         <appender-ref ref="YOUKU_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XYServiceImpl" level="INFO" additivity="false">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XYServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="YOUKU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduYoukuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="YOUKU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduYoukuServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="YOUKU_LOG"/>
     </logger>
 
