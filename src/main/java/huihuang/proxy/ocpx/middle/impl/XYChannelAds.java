@@ -113,7 +113,7 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
         youkuParamField.setRequest_id(String.valueOf(System.currentTimeMillis()));
         //时间戳，秒
         String ts = Optional.ofNullable(youkuParamField.getTs()).orElse(String.valueOf(System.currentTimeMillis()));
-        youkuParamField.setTs(String.valueOf(Long.parseLong(ts) / 1000));
+        youkuParamField.setTs(String.valueOf(Long.parseLong(ts)));
         if (null != youkuParamField.getUa()) {
             youkuParamField.setUa(URLEncoder.createQuery().encode(youkuParamField.getUa(), StandardCharsets.UTF_8));
         }

@@ -9,7 +9,6 @@ import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.xiguavideo.XiguaAdsDTO;
 import huihuang.proxy.ocpx.ads.xiguavideo.XiguaEventTypeEnum;
 import huihuang.proxy.ocpx.ads.xiguavideo.XiguaPath;
-import huihuang.proxy.ocpx.ads.youku.YoukuAdsDTO;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IXiguaAdsDao;
 import huihuang.proxy.ocpx.bussiness.dao.channel.IWifiCallbackDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -21,14 +20,12 @@ import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
-import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -93,34 +90,62 @@ public class WifiXiguaServiceImpl implements IChannelAdsService {
         logger.info("adsCallBack {} 回传渠道的url ：{}", channelAdsKey, src);
 //        String signature = signature(json);
         HttpResponse response = HttpRequest.get(src).execute();
-        Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
 
         //保存转化事件回调信息
         WifiCallbackDTO wifiCallbackDTO = new WifiCallbackDTO(id, String.valueOf(json.get("clientid")), String.valueOf(json.get("event_type")),
                 eventTimes, WifiPath.XIGUA_ADS_NAME, extra);
         //更新回调状态
-        YoukuAdsDTO youkuAds = new YoukuAdsDTO();
-        youkuAds.setId(id);
-        youkuAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
-        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals(0)) {
+        XiguaAdsDTO xiguaAds = new XiguaAdsDTO();
+        xiguaAds.setId(id);
+        xiguaAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
+
+        if (HttpStatus.HTTP_OK == response.getStatus()) {
             wifiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            youkuAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            logger.info("adsCallBack {} 回调渠道成功：{} 数据：{}", channelAdsKey, responseBodyMap, youkuAds);
-            wifiCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")));
+            xiguaAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            logger.error("adsCallBack {} 回调渠道失败  xiguaAds数据：{}", channelAdsKey, xiguaAds);
+            wifiCallbackDTO.setCallBackMes("回调渠道成功");
             wifiCallbackDao.insert(wifiCallbackDTO);
-            baseServiceInner.updateAdsObject(youkuAds, xiguaAdsDao);
+            baseServiceInner.updateAdsObject(xiguaAds, xiguaAdsDao);
             logger.info("adsCallBack {} wifiCallbackDTO：{}", channelAdsKey, wifiCallbackDTO);
             return BasicResult.getSuccessResponse(wifiCallbackDTO.getId());
         } else {
             wifiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            youkuAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            logger.error("adsCallBack {} 回调渠道失败：{} 数据：{}", channelAdsKey, responseBodyMap, youkuAds);
-            wifiCallbackDTO.setCallBackMes(responseBodyMap.get("code") + "  " + responseBodyMap.get("failMsg"));
+            xiguaAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            logger.error("adsCallBack {} 回调渠道失败  xiguaAds数据：{}", channelAdsKey, xiguaAds);
+            wifiCallbackDTO.setCallBackMes("回调渠道失败");
             wifiCallbackDao.insert(wifiCallbackDTO);
-            baseServiceInner.updateAdsObject(youkuAds, xiguaAdsDao);
+            baseServiceInner.updateAdsObject(xiguaAds, xiguaAdsDao);
             logger.info("adsCallBack {} wifiCallbackDTO：{}", channelAdsKey, wifiCallbackDTO);
             return BasicResult.getFailResponse(wifiCallbackDTO.getCallBackMes());
         }
+        /*Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
+
+        //保存转化事件回调信息
+        WifiCallbackDTO wifiCallbackDTO = new WifiCallbackDTO(id, String.valueOf(json.get("clientid")), String.valueOf(json.get("event_type")),
+                eventTimes, WifiPath.XIGUA_ADS_NAME, extra);
+        //更新回调状态
+        YoukuAdsDTO xiguaAds = new YoukuAdsDTO();
+        xiguaAds.setId(id);
+        xiguaAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
+        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals(0)) {
+            wifiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            xiguaAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            logger.info("adsCallBack {} 回调渠道成功：{} 数据：{}", channelAdsKey, responseBodyMap, xiguaAds);
+            wifiCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")));
+            wifiCallbackDao.insert(wifiCallbackDTO);
+            baseServiceInner.updateAdsObject(xiguaAds, xiguaAdsDao);
+            logger.info("adsCallBack {} wifiCallbackDTO：{}", channelAdsKey, wifiCallbackDTO);
+            return BasicResult.getSuccessResponse(wifiCallbackDTO.getId());
+        } else {
+            wifiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            xiguaAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            logger.error("adsCallBack {} 回调渠道失败：{} 数据：{}", channelAdsKey, responseBodyMap, xiguaAds);
+            wifiCallbackDTO.setCallBackMes(responseBodyMap.get("code") + "  " + responseBodyMap.get("failMsg"));
+            wifiCallbackDao.insert(wifiCallbackDTO);
+            baseServiceInner.updateAdsObject(xiguaAds, xiguaAdsDao);
+            logger.info("adsCallBack {} wifiCallbackDTO：{}", channelAdsKey, wifiCallbackDTO);
+            return BasicResult.getFailResponse(wifiCallbackDTO.getCallBackMes());
+        }*/
     }
 
     //计算签名
