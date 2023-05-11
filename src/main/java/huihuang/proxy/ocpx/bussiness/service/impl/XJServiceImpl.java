@@ -7,6 +7,7 @@ import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDAdsDTO;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDEventTypeEnum;
+import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.ILtjdAdsDao;
 import huihuang.proxy.ocpx.bussiness.dao.channel.IXiaomiCallbackDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -96,7 +97,7 @@ public class XJServiceImpl implements IChannelAdsService {
 
         //保存转化事件回调信息
         XiaomiCallbackDTO xiaomiCallbackDTO = new XiaomiCallbackDTO(id, feedbackUrl,
-                String.valueOf(json.get("convType")), eventTimes, ltjdAdsDTO.getImei_md5(), ltjdAdsDTO.getOaid(), signature, XiaomiPath.LTJD_ADS_NAME);
+                String.valueOf(json.get("convType")), eventTimes, ltjdAdsDTO.getImei_md5(), ltjdAdsDTO.getOaid(), signature, LTJDPath.LTJD_ADS_NAME);
         //更新回调状态
         LTJDAdsDTO ltjdAds = new LTJDAdsDTO();
         ltjdAds.setId(id);

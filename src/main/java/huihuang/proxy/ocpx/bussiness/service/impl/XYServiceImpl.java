@@ -7,6 +7,7 @@ import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.youku.YoukuAdsDTO;
 import huihuang.proxy.ocpx.ads.youku.YoukuEventTypeEnum;
+import huihuang.proxy.ocpx.ads.youku.YoukuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IYoukuAdsDao;
 import huihuang.proxy.ocpx.bussiness.dao.channel.IXiaomiCallbackDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -97,7 +98,7 @@ public class XYServiceImpl implements IChannelAdsService {
 
         //保存转化事件回调信息
         XiaomiCallbackDTO xiaomiCallbackDTO = new XiaomiCallbackDTO(id, feedbackUrl,
-                String.valueOf(json.get("convType")), eventTimes, youkuAdsDTO.getImei_md5(), youkuAdsDTO.getOaid(), signature, XiaomiPath.YOUKU_ADS_NAME);
+                String.valueOf(json.get("convType")), eventTimes, youkuAdsDTO.getImei_md5(), youkuAdsDTO.getOaid(), signature, YoukuPath.YOUKU_ADS_NAME);
         //更新回调状态
         YoukuAdsDTO youkuAds = new YoukuAdsDTO();
         youkuAds.setId(id);

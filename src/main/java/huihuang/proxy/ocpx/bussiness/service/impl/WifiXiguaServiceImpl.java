@@ -93,7 +93,7 @@ public class WifiXiguaServiceImpl implements IChannelAdsService {
 
         //保存转化事件回调信息
         WifiCallbackDTO wifiCallbackDTO = new WifiCallbackDTO(id, String.valueOf(json.get("clientid")), String.valueOf(json.get("event_type")),
-                eventTimes, WifiPath.XIGUA_ADS_NAME, extra);
+                eventTimes, XiguaPath.XIGUA_ADS_NAME, extra);
         //更新回调状态
         XiguaAdsDTO xiguaAds = new XiguaAdsDTO();
         xiguaAds.setId(id);

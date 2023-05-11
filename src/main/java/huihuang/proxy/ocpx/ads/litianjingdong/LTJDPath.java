@@ -10,6 +10,8 @@ public class LTJDPath {
     public static final String ACCESS_ID = "tp97c55258d39edfe4232dbc485465dc92";
     public static final String SECRET = "328a8df2988727656e399bd7f27c52ad";
 
+    public static final String LTJD_ADS_NAME = "ltjd";
+
     /**
      * 点击上报及转化数据回调接口
      */

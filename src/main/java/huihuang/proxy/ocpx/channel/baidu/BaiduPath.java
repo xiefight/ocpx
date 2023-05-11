@@ -18,7 +18,7 @@ public class BaiduPath {
     /** BAIDU提供给YOUKU的秘钥 */
     public static final String YOUKU_SECRET = "?";
 
-    public static final String YOUKU_ADS_NAME = "youku";
+    public static final String BAIDU_CHANNEL_NAME = "baidu";
 
     public static final String CALLBACK_URL = "http://als.baidu.com/cb/actionCb?";
 }

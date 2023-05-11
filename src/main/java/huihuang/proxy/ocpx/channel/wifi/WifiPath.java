@@ -10,7 +10,7 @@ public class WifiPath {
     /** wifi提供给xigua的秘钥 */
     public static final String XIGUA_SECRET = "333DUFA6oZmi09QQ";
 
-    public static final String XIGUA_ADS_NAME = "xigua";
+    public static final String WIFI_CHANNEL_NAME = "wifi";
 
     public static final String CALLBACK_URL = "http://c2.wkanx.com/tracking?";
 }

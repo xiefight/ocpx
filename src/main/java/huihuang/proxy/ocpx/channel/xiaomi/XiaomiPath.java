@@ -13,9 +13,7 @@ public class XiaomiPath {
     /** xiaomi提供给youku的秘钥 */
     public static final String YOUKU_SECRET = "jiwTWEHPQjZySweS";
 
-    public static final String LTJD_ADS_NAME = "ltjd";
-
-    public static final String YOUKU_ADS_NAME = "youku";
+    public static final String XIAOMI_CHANNEL_NAME = "xiaomi";
 
     public static final String CALLBACK_URL = "http://trail.e.mi.com/api/callback?";
 }

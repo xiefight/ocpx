@@ -8,12 +8,12 @@ import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.youku.YoukuAdsDTO;
 import huihuang.proxy.ocpx.ads.youku.YoukuEventTypeEnum;
+import huihuang.proxy.ocpx.ads.youku.YoukuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IYoukuAdsDao;
 import huihuang.proxy.ocpx.bussiness.dao.channel.IBaiduCallbackDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.channel.baidu.BaiduCallbackDTO;
-import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
@@ -112,7 +112,7 @@ public class BaiduYoukuServiceImpl implements IChannelAdsService {
         //保存转化事件回调信息
         BaiduCallbackDTO baiduCallbackDTO = new BaiduCallbackDTO(id, eventType, String.valueOf(json.get("cb_idfa")),
                 String.valueOf(json.get("cb_imei")), String.valueOf(json.get("cb_imei_md5")),
-                String.valueOf(json.get("cb_android_id_md5")), String.valueOf(json.get("cb_ip")), eventTimes, BaiduPath.YOUKU_ADS_NAME);
+                String.valueOf(json.get("cb_android_id_md5")), String.valueOf(json.get("cb_ip")), eventTimes, YoukuPath.YOUKU_ADS_NAME);
         //更新回调状态
         YoukuAdsDTO youkuAds = new YoukuAdsDTO();
         youkuAds.setId(id);
