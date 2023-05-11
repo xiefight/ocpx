@@ -9,7 +9,6 @@ import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDAdsDTO;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDEventTypeEnum;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
-import huihuang.proxy.ocpx.ads.youku.YoukuEventTypeEnum;
 import huihuang.proxy.ocpx.bussiness.dao.ads.ILtjdAdsDao;
 import huihuang.proxy.ocpx.bussiness.dao.channel.IBaiduCallbackDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -36,10 +35,10 @@ import java.util.Set;
  * @Author: xietao
  * @Date: 2023/5/11 17:26
  */
-@Service("byService")
-public class BaiduJingdongServiceImpl implements IChannelAdsService {
+@Service("bjService")
+public class BaiduLtjdServiceImpl implements IChannelAdsService {
 
-    protected Logger logger = LoggerFactory.getLogger(BaiduJingdongServiceImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(BaiduLtjdServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;

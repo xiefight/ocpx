@@ -28,6 +28,8 @@ public class ChannelAdsConfig {
     private WifiXiguaChannelAds wxChannelAds;
     @Autowired
     private BaiduYoukuChannelAds byChannelAds;
+    @Autowired
+    private BaiduLtjdChannelAds bjChannelAds;
 
     @PostConstruct
     public void init() {
@@ -36,6 +38,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_YOUKU, xyChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.WIFI_XIGUA, wxChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_YOUKU, byChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_LTJD, bjChannelAds);
     }
 
 

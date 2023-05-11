@@ -45,7 +45,7 @@ import java.util.Set;
  * @Date: 2023/5/10 22:28
  */
 @Component("bjChannelAds")
-public class BaiduJingdongChannelAds extends BaseSupport implements IChannelAds {
+public class BaiduLtjdChannelAds extends BaseSupport implements IChannelAds {
 
     @Autowired
     private ILtjdAdsDao ltjdAdsDao;

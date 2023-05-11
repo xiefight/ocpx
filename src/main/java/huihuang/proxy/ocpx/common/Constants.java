@@ -79,6 +79,7 @@ public class Constants {
         public static final String TOUTIAO_MEITUAN = "toutiao-meituan";
         public static final String WIFI_XIGUA = "wifi-xigua";
         public static final String BAIDU_YOUKU = "baidu-youku";
+        public static final String BAIDU_LTJD = "baidu-ltjd";
     }
 
 }
