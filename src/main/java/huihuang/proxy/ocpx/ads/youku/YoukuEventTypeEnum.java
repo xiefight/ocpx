@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.youku;
 
 import cn.hutool.core.collection.CollUtil;
+import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
@@ -50,6 +51,22 @@ public enum YoukuEventTypeEnum {
         eventTypeMap.put(FIRST_WAKEUP.code, null);
         //次日回访
         eventTypeMap.put(SECOND_OPEN.code, null);
+    }
+
+    public static Map<String, BaiduEventTypeEnum> youkuBaiduEventTypeMap;
+
+    static {
+        youkuBaiduEventTypeMap = CollUtil.newHashMap();
+        //激活
+        youkuBaiduEventTypeMap.put(ACTIVE.code, BaiduEventTypeEnum.ACTIVE);
+        //注册
+        youkuBaiduEventTypeMap.put(REGISTER.code, BaiduEventTypeEnum.REGISTER);
+        //当日首购
+        youkuBaiduEventTypeMap.put(FIRST_BUY.code, BaiduEventTypeEnum.ORDERS);
+        //首唤
+        youkuBaiduEventTypeMap.put(FIRST_WAKEUP.code, null);
+        //次日回访
+        youkuBaiduEventTypeMap.put(SECOND_OPEN.code, BaiduEventTypeEnum.RETAIN_1DAY);
     }
 
 }

@@ -30,7 +30,7 @@ public enum BaiduParamEnum {
     OAID("__OAID__", "oaid", "原文oaid"),
     DEEPLINK_URL("__DEEPLINK_URL__", "deeplink_url", "deeplink链接"),
     MODEL("__MODEL__", "model", "客户端获取的原始设备信息数据"),
-    CAID("__CAID__", "Caid", "deeplink链接"),
+    CAID("__CAID__", "Caid", "设备标识"),
 
 
     /** 额外补充字段，根据各广告主定，渠道和广告主的宏字段不具有映射关系时，下达监测链接后，广告主根据该字段进行字段赋值 */

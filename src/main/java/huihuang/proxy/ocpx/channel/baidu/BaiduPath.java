@@ -7,6 +7,14 @@ package huihuang.proxy.ocpx.channel.baidu;
  **/
 public class BaiduPath {
 
+    /*
+        账户：原生-智道上海35-B23KA01379
+        密码：JJyku234
+        id：47395819
+        akey:NDczOTU4MTk=
+        token:FmRTMwCwoTuOUqz1mOdaeQXShmPkTt6I@BvWbBznj5ZOvsZz37HbNpCsrqNAhCKLo
+     */
+
     /** BAIDU提供给YOUKU的秘钥 */
     public static final String YOUKU_SECRET = "?";
 

@@ -10,11 +10,14 @@ public class BaiduCallbackDTO {
 
     private Integer id;
     private Integer adsId;
-
-    private String clientId;
     private String eventType;
-    private String ts;
-    private String extra;
+
+    private String cbIdfa;
+    private String cbImei;
+    private String cbImeiMd5;
+    private String cbAndroidIdMd5;
+    private String cbIp;
+    private String cbEventTime;
 
     private String adsName;
     private String callBackStatus;
@@ -23,13 +26,16 @@ public class BaiduCallbackDTO {
     private Date createTime;
     private Date updateTime;
 
-    public BaiduCallbackDTO(Integer adsId, String clientId, String eventType, String ts, String adsName, String extra) {
+    public BaiduCallbackDTO(Integer adsId, String eventType, String cbIdfa, String cbImei, String cbImeiMd5, String cbAndroidIdMd5, String cbIp, String cbEventTime, String adsName) {
         this.adsId = adsId;
-        this.clientId = clientId;
         this.eventType = eventType;
-        this.ts = ts;
+        this.cbIdfa = cbIdfa;
+        this.cbImei = cbImei;
+        this.cbImeiMd5 = cbImeiMd5;
+        this.cbAndroidIdMd5 = cbAndroidIdMd5;
+        this.cbIp = cbIp;
+        this.cbEventTime = cbEventTime;
         this.adsName = adsName;
-        this.extra = extra;
     }
 
     public Integer getId() {
@@ -48,14 +54,6 @@ public class BaiduCallbackDTO {
         this.adsId = adsId;
     }
 
-    public String getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
-    }
-
     public String getEventType() {
         return eventType;
     }
@@ -64,12 +62,52 @@ public class BaiduCallbackDTO {
         this.eventType = eventType;
     }
 
-    public String getTs() {
-        return ts;
+    public String getCbIdfa() {
+        return cbIdfa;
     }
 
-    public void setTs(String ts) {
-        this.ts = ts;
+    public void setCbIdfa(String cbIdfa) {
+        this.cbIdfa = cbIdfa;
+    }
+
+    public String getCbImei() {
+        return cbImei;
+    }
+
+    public void setCbImei(String cbImei) {
+        this.cbImei = cbImei;
+    }
+
+    public String getCbImeiMd5() {
+        return cbImeiMd5;
+    }
+
+    public void setCbImeiMd5(String cbImeiMd5) {
+        this.cbImeiMd5 = cbImeiMd5;
+    }
+
+    public String getCbAndroidIdMd5() {
+        return cbAndroidIdMd5;
+    }
+
+    public void setCbAndroidIdMd5(String cbAndroidIdMd5) {
+        this.cbAndroidIdMd5 = cbAndroidIdMd5;
+    }
+
+    public String getCbIp() {
+        return cbIp;
+    }
+
+    public void setCbIp(String cbIp) {
+        this.cbIp = cbIp;
+    }
+
+    public String getCbEventTime() {
+        return cbEventTime;
+    }
+
+    public void setCbEventTime(String cbEventTime) {
+        this.cbEventTime = cbEventTime;
     }
 
     public String getAdsName() {
@@ -110,13 +148,5 @@ public class BaiduCallbackDTO {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public String getExtra() {
-        return extra;
-    }
-
-    public void setExtra(String extra) {
-        this.extra = extra;
     }
 }

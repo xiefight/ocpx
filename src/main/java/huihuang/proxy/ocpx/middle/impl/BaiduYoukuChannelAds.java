@@ -16,7 +16,6 @@ import huihuang.proxy.ocpx.ads.youku.YoukuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IYoukuAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
-import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -38,6 +37,7 @@ import java.util.Set;
 
 /**
  * baidu--youku
+ *
  * @Author: xietao
  * @Date: 2023/5/10 22:28
  */
@@ -80,16 +80,14 @@ public class BaiduYoukuChannelAds extends BaseSupport implements IChannelAds {
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
         YoukuParamField youkuParamField = new YoukuParamField();
 
-        Set<Map.Entry<YoukuParamEnum, XiaomiParamEnum>> xjSet = YoukuParamEnum.xyMap.entrySet();
+        Set<Map.Entry<YoukuParamEnum, BaiduParamEnum>> xjSet = YoukuParamEnum.baiduYoukuMap.entrySet();
         xjSet.stream().filter(xj -> Objects.nonNull(xj.getValue())).forEach(tm -> {
             YoukuParamEnum ltjd = tm.getKey();
-            XiaomiParamEnum xiaomi = tm.getValue();
+            BaiduParamEnum baidu = tm.getValue();
             //ltjd的字段名
             String ltjdField = ltjd.getName();
-            //xiaomi的字段名
-            String xiaomiParam = xiaomi.getParam();
-            //xiaomi的参数值
-            String[] value = parameterMap.get(xiaomiParam);
+            String baiduParam = baidu.getParam();
+            String[] value = parameterMap.get(baiduParam);
             if (Objects.isNull(value) || value.length == 0) return;
             try {
                 PropertyDescriptor descriptor = new PropertyDescriptor(ltjdField, youkuParamField.getClass());
@@ -162,7 +160,7 @@ public class BaiduYoukuChannelAds extends BaseSupport implements IChannelAds {
     protected void replaceCallbackUrl(Object adsObj, Object adsDtoObj) {
         YoukuParamField youkuParamField = (YoukuParamField) adsObj;
         YoukuAdsDTO youkuAdsDTO = (YoukuAdsDTO) adsDtoObj;
-        String ocpxUrl = queryServerPath() + "/xyServer/adsCallBack/" + youkuAdsDTO.getId() + "?";
+        String ocpxUrl = queryServerPath() + Constants.ServerPath.BAIDU_YOUKU + Constants.ServerPath.ADS_CALLBACK + "/" + youkuAdsDTO.getId() + "?";
         logger.info("clickReport {} 客户回调渠道的url：{}", channelAdsKey, ocpxUrl);
         String encodeUrl = URLEncoder.createQuery().encode(ocpxUrl, StandardCharsets.UTF_8);
 //            ocpxUrl = URLEncoder.encode(ocpxUrl, "UTF-8");

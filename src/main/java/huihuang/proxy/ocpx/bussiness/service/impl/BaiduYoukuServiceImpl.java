@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
@@ -8,10 +9,11 @@ import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.youku.YoukuAdsDTO;
 import huihuang.proxy.ocpx.ads.youku.YoukuEventTypeEnum;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IYoukuAdsDao;
-import huihuang.proxy.ocpx.bussiness.dao.channel.IXiaomiCallbackDao;
+import huihuang.proxy.ocpx.bussiness.dao.channel.IBaiduCallbackDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
-import huihuang.proxy.ocpx.channel.xiaomi.XiaomiCallbackDTO;
+import huihuang.proxy.ocpx.channel.baidu.BaiduCallbackDTO;
+import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
@@ -30,6 +32,7 @@ import java.util.Set;
 
 /**
  * baidu-youku
+ *
  * @Author: xietao
  * @Date: 2023/5/10 22:24
  */
@@ -45,7 +48,7 @@ public class BaiduYoukuServiceImpl implements IChannelAdsService {
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private IXiaomiCallbackDao xiaomiCallbackDao;
+    private IBaiduCallbackDao baiduCallbackDao;
 
     String channelAdsKey = Constants.ChannelAdsKey.BAIDU_YOUKU;
 
@@ -68,20 +71,31 @@ public class BaiduYoukuServiceImpl implements IChannelAdsService {
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
-        String channelUrl = XiaomiPath.CALLBACK_URL;
-        String feedbackUrl = youkuAdsDTO.getCallback_url();
+//        String channelUrl = BaiduPath.CALLBACK_URL;
+        String channelUrl = youkuAdsDTO.getCallback_url();
 //        String callback = URLEncoder.createQuery().encode(feedbackUrl, StandardCharsets.UTF_8);
 //        logger.info("adsCallBack  渠道回调url：{}  只对callback进行encode：{}", channelUrl + feedbackUrl, feedbackUrl);
         //回传到渠道
         JSONObject json = new JSONObject();
-        json.put("callback", feedbackUrl);
-        json.put("conv_time", eventTimes);
-        json.put("convType", YoukuEventTypeEnum.eventTypeMap.get(eventType).getCode());
-        if (Objects.isNull(youkuAdsDTO.getOaid())) {
-            json.put("imei", youkuAdsDTO.getImei_md5());
-        } else {
-            json.put("oaid", youkuAdsDTO.getOaid());
+        json.put("a_type", YoukuEventTypeEnum.youkuBaiduEventTypeMap.get(eventType).getCode());
+        json.put("a_value", 0);
+        json.put("cb_event_time", eventTimes);
+        if (StrUtil.isNotEmpty(youkuAdsDTO.getIdfa())) {
+            json.put("cb_idfa", youkuAdsDTO.getIdfa());
         }
+        if (StrUtil.isNotEmpty(youkuAdsDTO.getImei())) {
+            json.put("cb_imei", youkuAdsDTO.getImei());
+        }
+        if (StrUtil.isNotEmpty(youkuAdsDTO.getImei_md5())) {
+            json.put("cb_imei_md5", youkuAdsDTO.getImei_md5());
+        }
+        if (StrUtil.isNotEmpty(youkuAdsDTO.getAndroid_id_md5())) {
+            json.put("cb_android_id_md5", youkuAdsDTO.getAndroid_id_md5());
+        }
+        if (StrUtil.isNotEmpty(youkuAdsDTO.getIp())) {
+            json.put("cb_ip", youkuAdsDTO.getIp());
+        }
+
 
         StringBuilder url = new StringBuilder(channelUrl);
         Set<Map.Entry<String, Object>> entries = json.entrySet();
@@ -89,36 +103,38 @@ public class BaiduYoukuServiceImpl implements IChannelAdsService {
             url.append(entry.getKey()).append("=").append(entry.getValue()).append("&");
         }
         String src = url.substring(0, url.length() - 1);
+        logger.info("adsCallBack {} 请求渠道url：{}", channelAdsKey, src);
         String signature = signature(json);
 //        url.append("sign=").append(signature);
         HttpResponse response = HttpRequest.get(src).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
 
         //保存转化事件回调信息
-        XiaomiCallbackDTO xiaomiCallbackDTO = new XiaomiCallbackDTO(id, feedbackUrl,
-                String.valueOf(json.get("convType")), eventTimes, youkuAdsDTO.getImei_md5(), youkuAdsDTO.getOaid(), signature, XiaomiPath.YOUKU_ADS_NAME);
+        BaiduCallbackDTO baiduCallbackDTO = new BaiduCallbackDTO(id, eventType, String.valueOf(json.get("cb_idfa")),
+                String.valueOf(json.get("cb_imei")), String.valueOf(json.get("cb_imei_md5")),
+                String.valueOf(json.get("cb_android_id_md5")), String.valueOf(json.get("cb_ip")), eventTimes, BaiduPath.YOUKU_ADS_NAME);
         //更新回调状态
         YoukuAdsDTO youkuAds = new YoukuAdsDTO();
         youkuAds.setId(id);
         youkuAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
         if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals(0)) {
-            xiaomiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            baiduCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             youkuAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             logger.info("adsCallBack {} 回调渠道成功：{} 数据：{}", channelAdsKey, responseBodyMap, youkuAds);
-            xiaomiCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")));
-            xiaomiCallbackDao.insert(xiaomiCallbackDTO);
+            baiduCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")));
+            baiduCallbackDao.insert(baiduCallbackDTO);
             baseServiceInner.updateAdsObject(youkuAds, youkuAdsDao);
-            logger.info("adsCallBack {} xiaomiCallbackDTO：{}", channelAdsKey, xiaomiCallbackDTO);
-            return BasicResult.getSuccessResponse(xiaomiCallbackDTO.getId());
+            logger.info("adsCallBack {} xiaomiCallbackDTO：{}", channelAdsKey, baiduCallbackDTO);
+            return BasicResult.getSuccessResponse(baiduCallbackDTO.getId());
         } else {
-            xiaomiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            baiduCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             youkuAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             logger.error("adsCallBack {} 回调渠道失败：{} 数据：{}", channelAdsKey, responseBodyMap, youkuAds);
-            xiaomiCallbackDTO.setCallBackMes(responseBodyMap.get("code") + "  " + responseBodyMap.get("failMsg"));
-            xiaomiCallbackDao.insert(xiaomiCallbackDTO);
+            baiduCallbackDTO.setCallBackMes(responseBodyMap.get("code") + "  " + responseBodyMap.get("failMsg"));
+            baiduCallbackDao.insert(baiduCallbackDTO);
             baseServiceInner.updateAdsObject(youkuAds, youkuAdsDao);
-            logger.info("adsCallBack {} xiaomiCallbackDTO：{}", channelAdsKey, xiaomiCallbackDTO);
-            return BasicResult.getFailResponse(xiaomiCallbackDTO.getCallBackMes());
+            logger.info("adsCallBack {} xiaomiCallbackDTO：{}", channelAdsKey, baiduCallbackDTO);
+            return BasicResult.getFailResponse(baiduCallbackDTO.getCallBackMes());
         }
     }
 
