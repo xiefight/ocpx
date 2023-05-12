@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.util;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.StrUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +45,17 @@ public class CommonUtil {
             }
         }
         return sb.toString();
+    }
+
+    //判断字符串不为空或不为指定字符
+    public static boolean strEmpty(String str, String filterChars) {
+        if (StrUtil.isEmpty(str)) {
+            return false;
+        }
+        if ("NULL".equals(str) || "null".equals(str) || (StrUtil.isNotEmpty(filterChars) && filterChars.equals(str))) {
+            return false;
+        }
+        return true;
     }
 
 }

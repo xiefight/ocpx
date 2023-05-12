@@ -15,12 +15,14 @@ import huihuang.proxy.ocpx.bussiness.dao.channel.IBaiduCallbackDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.channel.baidu.BaiduCallbackDTO;
+import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
+import huihuang.proxy.ocpx.util.CommonUtil;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -83,19 +85,25 @@ public class BaiduLtjdServiceImpl implements IChannelAdsService {
         json.put("a_type", LTJDEventTypeEnum.ltjdBaiduEventTypeMap.get(eventType).getCode());
         json.put("a_value", 0);
         json.put("cb_event_time", eventTimes);
-        if (StrUtil.isNotEmpty(ltjdAdsDTO.getIdfa())) {
+        if (CommonUtil.strEmpty(ltjdAdsDTO.getOaid(), BaiduParamEnum.OAID.getMacro())) {
+            json.put("cb_oaid", ltjdAdsDTO.getOaid());
+        }
+        if (CommonUtil.strEmpty(ltjdAdsDTO.getOaid_md5(), BaiduParamEnum.OAID_MD5.getMacro())) {
+            json.put("cb_oaid_md5", ltjdAdsDTO.getOaid_md5());
+        }
+        if (CommonUtil.strEmpty(ltjdAdsDTO.getIdfa(), BaiduParamEnum.IDFA.getMacro())) {
             json.put("cb_idfa", ltjdAdsDTO.getIdfa());
         }
-        if (StrUtil.isNotEmpty(ltjdAdsDTO.getImei())) {
+        if (CommonUtil.strEmpty(ltjdAdsDTO.getImei(), null)) {
             json.put("cb_imei", ltjdAdsDTO.getImei());
         }
-        if (StrUtil.isNotEmpty(ltjdAdsDTO.getImei_md5())) {
+        if (CommonUtil.strEmpty(ltjdAdsDTO.getImei_md5(), BaiduParamEnum.IMEI_MD5.getMacro())) {
             json.put("cb_imei_md5", ltjdAdsDTO.getImei_md5());
         }
-        if (StrUtil.isNotEmpty(ltjdAdsDTO.getAndroid_id_md5())) {
+        if (CommonUtil.strEmpty(ltjdAdsDTO.getAndroid_id_md5(), BaiduParamEnum.ANDROID_ID_MD5.getMacro())) {
             json.put("cb_android_id_md5", ltjdAdsDTO.getAndroid_id_md5());
         }
-        if (StrUtil.isNotEmpty(ltjdAdsDTO.getIp())) {
+        if (CommonUtil.strEmpty(ltjdAdsDTO.getIp(), BaiduParamEnum.IP.getMacro())) {
             json.put("cb_ip", ltjdAdsDTO.getIp());
         }
 
@@ -103,13 +111,13 @@ public class BaiduLtjdServiceImpl implements IChannelAdsService {
         StringBuilder url = new StringBuilder(channelUrl);
         Set<Map.Entry<String, Object>> entries = json.entrySet();
         for (Map.Entry<String, Object> entry : entries) {
-            url.append(entry.getKey()).append("=").append(entry.getValue()).append("&");
+            url.append("&").append(entry.getKey()).append("=").append(entry.getValue());
         }
-        String src = url.substring(0, url.length() - 1);
-        logger.info("adsCallBack {} 请求渠道url：{}", channelAdsKey, src);
+//        String src = url.substring(0, url.length() - 1);
+        logger.info("adsCallBack {} 请求渠道url：{}", channelAdsKey, url);
         String signature = signature(json);
 //        url.append("sign=").append(signature);
-        HttpResponse response = HttpRequest.get(src).execute();
+        HttpResponse response = HttpRequest.get(url.toString()).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
 
         //保存转化事件回调信息
