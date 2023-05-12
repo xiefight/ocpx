@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
+import cn.hutool.core.net.URLDecoder;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
@@ -26,6 +27,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -71,9 +73,11 @@ public class BaiduLtjdServiceImpl implements IChannelAdsService {
         }
 
 //        String channelUrl = BaiduPath.CALLBACK_URL;
-        String channelUrl = ltjdAdsDTO.getCallback_url();
+        String callback = ltjdAdsDTO.getCallback_url();
+        String channelUrl = URLDecoder.decode(callback, StandardCharsets.UTF_8);
 //        String callback = URLEncoder.createQuery().encode(feedbackUrl, StandardCharsets.UTF_8);
-//        logger.info("adsCallBack  渠道回调url：{}  只对callback进行encode：{}", channelUrl + feedbackUrl, feedbackUrl);
+        logger.info("adsCallBack 渠道原url：{} 渠道decode回调url：{}", callback, channelUrl);
+        channelUrl = channelUrl.replace("a_type={{ATYPE}}", "").replace("a_value={{AVALUE}}", "").replace("&&", "&");
         //回传到渠道
         JSONObject json = new JSONObject();
         json.put("a_type", LTJDEventTypeEnum.ltjdBaiduEventTypeMap.get(eventType).getCode());
@@ -109,14 +113,14 @@ public class BaiduLtjdServiceImpl implements IChannelAdsService {
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
 
         //保存转化事件回调信息
-        BaiduCallbackDTO baiduCallbackDTO = new BaiduCallbackDTO(id, eventType, String.valueOf(json.get("cb_idfa")),
+        BaiduCallbackDTO baiduCallbackDTO = new BaiduCallbackDTO(id, String.valueOf(json.get("a_type")), String.valueOf(json.get("cb_idfa")),
                 String.valueOf(json.get("cb_imei")), String.valueOf(json.get("cb_imei_md5")),
                 String.valueOf(json.get("cb_android_id_md5")), String.valueOf(json.get("cb_ip")), eventTimes, LTJDPath.LTJD_ADS_NAME);
         //更新回调状态
         LTJDAdsDTO ltjdAds = new LTJDAdsDTO();
         ltjdAds.setId(id);
         ltjdAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
-        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals(0)) {
+        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("error_code").equals(0)) {
             baiduCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             ltjdAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             logger.info("adsCallBack {} 回调渠道成功：{} 数据：{}", channelAdsKey, responseBodyMap, ltjdAds);
@@ -129,7 +133,7 @@ public class BaiduLtjdServiceImpl implements IChannelAdsService {
             baiduCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             ltjdAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             logger.error("adsCallBack {} 回调渠道失败：{} 数据：{}", channelAdsKey, responseBodyMap, ltjdAds);
-            baiduCallbackDTO.setCallBackMes(responseBodyMap.get("code") + "  " + responseBodyMap.get("failMsg"));
+            baiduCallbackDTO.setCallBackMes(responseBodyMap.get("error_code") + "  " + responseBodyMap.get("error_msg"));
             baiduCallbackDao.insert(baiduCallbackDTO);
             baseServiceInner.updateAdsObject(ltjdAds, ltjdAdsDao);
             logger.info("adsCallBack {} {}", channelAdsKey, baiduCallbackDTO);
