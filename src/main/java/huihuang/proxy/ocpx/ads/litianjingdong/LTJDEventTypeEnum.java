@@ -42,7 +42,7 @@ public enum LTJDEventTypeEnum {
     static {
         eventTypeMap = CollUtil.newHashMap();
         //激活
-        eventTypeMap.put(ACTIVE.code, XiaomiEventTypeEnum.APP_ACTIVE_NEW);
+        eventTypeMap.put(ACTIVE.code, XiaomiEventTypeEnum.APP_ACTIVE);
         //注册
         eventTypeMap.put(REGISTER.code, XiaomiEventTypeEnum.APP_REGISTER);
         //当日首购
