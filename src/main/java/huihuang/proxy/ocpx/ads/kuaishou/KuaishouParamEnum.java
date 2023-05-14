@@ -1,0 +1,90 @@
+package huihuang.proxy.ocpx.ads.kuaishou;
+
+import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @Author: xietao
+ * @Date: 2023/5/9 20:26
+ */
+public enum KuaishouParamEnum {
+
+    ADID("adid", "String", 1, "投放渠道标识，向快手商务申请"),
+    IMEI("imei", "String", 1, "设备 imei，支持原值，md5"),
+    IDFA("idfa", "String", 1, "设备 idfa，支持原值，md5"),
+    OAID("oaid", "String", 1, "设备 oaid，支持原值，md5"),
+    ANDROID_ID("android_id", "String", 0, "androidId"),
+    MAC("mac", "String", 0, "mac地址"),
+    IP("ip", "String", 0, "媒体投放系统获取的⽤户终端的公共IP地址"),
+    USER_AGENT("user_agent", "String", 0, "用户浏览器 userAgent"),
+    ACCOUNT_ID("account_id", "String", 0, "媒体账户id"),
+    CLICK_ID("click_id", "String", 0, "媒体点击id"),
+    CAMPAIGN_ID("campaign_id", "String", 0, "计划id"),
+    ADGROUP_ID("adgroup_id", "String", 0, "广告组id"),
+    CREATEIVE_ID("creative_id", "String", 0, "创意id"),
+    ADVERTISER_ID("advertiser_id", "String", 0, "广告id"),
+    RTA_ID("rta_id", "String", 0, "请求rta时的request_id"),
+    CAID_LIST("caid_list", "String", 0, "idfa 的替代,格式是 json 数组的字符串，[{\"caid\":\"9e4e58dfac3d855329271d25d3870b3d\",\"version\":\"1001\"}]"),
+
+
+    CALLBACK("callback", "String", 0, "回调url或参数"),
+
+    ;
+
+    private String name;
+    private String type;
+    private Integer necessary;
+    private String remark;
+
+    KuaishouParamEnum(String name, String type, Integer necessary, String remark) {
+        this.name = name;
+        this.type = type;
+        this.necessary = necessary;
+        this.remark = remark;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public Integer getNecessary() {
+        return necessary;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    /**
+     * xiaomi-xigua
+     */
+    public static Map<KuaishouParamEnum, HuaweiParamEnum> kuaishouHuaweiMap;
+
+    static {
+        kuaishouHuaweiMap = new HashMap<>();
+        kuaishouHuaweiMap.put(ADID, HuaweiParamEnum.KUAISHOU_ADID);
+        kuaishouHuaweiMap.put(IMEI, HuaweiParamEnum.ID_TYPE);//需要特殊处理
+        kuaishouHuaweiMap.put(IDFA, null);
+        kuaishouHuaweiMap.put(OAID, HuaweiParamEnum.OAID);
+        kuaishouHuaweiMap.put(ANDROID_ID, null);
+        kuaishouHuaweiMap.put(MAC, null);
+        kuaishouHuaweiMap.put(IP, HuaweiParamEnum.IP);
+        kuaishouHuaweiMap.put(ACCOUNT_ID, null);
+        kuaishouHuaweiMap.put(CLICK_ID, null);//由中间层生成时间戳
+        kuaishouHuaweiMap.put(CAMPAIGN_ID, HuaweiParamEnum.CAMPAIGN_ID);
+        kuaishouHuaweiMap.put(ADGROUP_ID, HuaweiParamEnum.ADGROUP_ID);
+        kuaishouHuaweiMap.put(CREATEIVE_ID, null);
+        kuaishouHuaweiMap.put(ADVERTISER_ID, null);
+        kuaishouHuaweiMap.put(RTA_ID, null);
+        kuaishouHuaweiMap.put(CAID_LIST, null);
+        kuaishouHuaweiMap.put(USER_AGENT, HuaweiParamEnum.USER_AGENT);
+        kuaishouHuaweiMap.put(CALLBACK, HuaweiParamEnum.CALLBACK);
+    }
+
+}

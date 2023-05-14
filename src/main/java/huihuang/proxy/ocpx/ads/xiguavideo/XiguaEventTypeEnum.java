@@ -37,6 +37,9 @@ public enum XiguaEventTypeEnum {
         return desc;
     }
 
+    /**
+     * xigua - xiaomi 暂无对接
+     */
     public static Map<String, XiaomiEventTypeEnum> xiguaXiaomiEventTypeMap;
 
     static {

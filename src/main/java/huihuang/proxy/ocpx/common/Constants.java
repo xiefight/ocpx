@@ -64,6 +64,7 @@ public class Constants {
         public static final String WIFI_XIGUA = "/wxServer";
         public static final String BAIDU_YOUKU = "/byServer";
         public static final String BAIDU_LTJD = "/bjServer";
+        public static final String HUAWEI_KUAISHOU = "/hkServer";
 
         public static final String MONITOR_ADDRESS = "/monitorAddress";
         public static final String CLICK_REPORT = "/clickReport";
@@ -80,6 +81,7 @@ public class Constants {
         public static final String WIFI_XIGUA = "wifi-xigua";
         public static final String BAIDU_YOUKU = "baidu-youku";
         public static final String BAIDU_LTJD = "baidu-ltjd";
+        public static final String HUAWEI_KUAISHOU = "huawei-kuaishou";
     }
 
 }
