@@ -98,6 +98,12 @@ public class HuaweiKuaishouChannelAds extends BaseSupport implements IChannelAds
                 e.printStackTrace();
             }
         });
+        //存储华为这边必有而快手这不必有的参数，回传可能会用到
+        fitExtras(parameterMap, kuaishouParamField,
+                HuaweiParamEnum.CONTENT_ID.getParam(),
+                HuaweiParamEnum.EVENT_TYPE.getParam(),
+                HuaweiParamEnum.TRACE_TIME.getParam(),
+                HuaweiParamEnum.TRACKING_ENABLED.getParam());
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey, kuaishouParamField);
         return kuaishouParamField;
     }
@@ -170,6 +176,7 @@ public class HuaweiKuaishouChannelAds extends BaseSupport implements IChannelAds
     @Override
     protected Response reportAds(String adsUrl, Object adsDtoObj) throws Exception {
         logger.info("调用用户侧的地址 {} adsUrl:{}", channelAdsKey, adsUrl);
+        //todo 重定向 302问题
         HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
         KuaishouAdsDTO kuaishouAdsDTO = (KuaishouAdsDTO) adsDtoObj;
@@ -200,5 +207,18 @@ public class HuaweiKuaishouChannelAds extends BaseSupport implements IChannelAds
         ltjdParamField.setSignature(signature);
     }
 
+    private void fitExtras(Map<String, String[]> parameterMap, KuaishouParamField kuaishouParamField, String... extras) {
+        StringBuilder extraStr = new StringBuilder();
+        for (String extra : extras) {
+            String[] cids = parameterMap.get(extra);
+            if (Objects.nonNull(cids) && cids.length > 0) {
+                String cid = cids[0];
+                extraStr.append("&").append(extra).append("=").append(cid);
+            }
+        }
+        if (extras.length > 0) {
+            kuaishouParamField.setExtra(extraStr.toString());
+        }
+    }
 
 }

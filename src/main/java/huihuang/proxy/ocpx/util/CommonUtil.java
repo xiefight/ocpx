@@ -47,6 +47,10 @@ public class CommonUtil {
         return sb.toString();
     }
 
+    public static boolean strEmpty(String str) {
+        return strEmpty(str, null);
+    }
+
     //判断字符串不为空或不为指定字符
     public static boolean strEmpty(String str, String filterChars) {
         if (StrUtil.isEmpty(str)) {

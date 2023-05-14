@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.ads.kuaishou;
 
+import cn.hutool.core.annotation.Alias;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDParamField;
 
 /**
@@ -13,19 +14,41 @@ public class KuaishouParamField {
     private String imei;
     private String idfa;
     private String oaid;
+    @Alias("androidId")
     private String android_id;
     private String mac;
     private String ip;
+    @Alias("userAgent")
     private String user_agent;
+    @Alias("accountId")
     private String account_id;
+    @Alias("clickId")
     private String click_id;
+    @Alias("campaignId")
     private String campaign_id;
+    @Alias("adgroupId")
     private String adgroup_id;
+    @Alias("creativeId")
     private String creative_id;
+    @Alias("advertiserId")
     private String advertiser_id;
+    @Alias("rtaId")
     private String rta_id;
+    @Alias("caidList")
     private String caid_list;
     private String callback;
+
+    //回传各渠道时，需要携带的参数（广告侧已有对应的，则不需要出现在这里，如：imei，oaid）
+    // 广告测没有对应的，但是还要在回传时使用的，需要出现在这里，如：素材ID、事件类型、事件发生的时间等需要保存
+    private String extra;
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
+    }
 
     public String getAdid() {
         return adid;

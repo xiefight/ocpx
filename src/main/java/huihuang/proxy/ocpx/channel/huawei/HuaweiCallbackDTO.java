@@ -10,14 +10,18 @@ public class HuaweiCallbackDTO {
 
     private Integer id;
     private Integer adsId;
-    private String eventType;
-
-    private String cbIdfa;
-    private String cbImei;
-    private String cbImeiMd5;
-    private String cbAndroidIdMd5;
-    private String cbIp;
-    private String cbEventTime;
+    private String callback;
+    private String contentId;//素材id
+    private String campaignId;//计划id
+    private String oaid;//设备标识符，明文，没有传空字符
+    private String trackingEnabled;//广告主接收到的tracking_enable字段
+    private String ip;//IP地址，明文
+    private String conversionType;//事件的类型
+    private String conversionTime;//事件发生的时间 秒
+    private String timestamp;//本请求发起的时间戳
+    private String conversionCount;//转 化 数 量
+    private String conversionPrice;//转化价格
+    private String eventId;//事件id
 
     private String adsName;
     private String callBackStatus;
@@ -26,15 +30,16 @@ public class HuaweiCallbackDTO {
     private Date createTime;
     private Date updateTime;
 
-    public HuaweiCallbackDTO(Integer adsId, String eventType, String cbIdfa, String cbImei, String cbImeiMd5, String cbAndroidIdMd5, String cbIp, String cbEventTime, String adsName) {
+    public HuaweiCallbackDTO(Integer adsId, String callback, String contentId, String campaignId, String oaid, String trackingEnabled, String conversionType, String conversionTime, String timestamp, String adsName) {
         this.adsId = adsId;
-        this.eventType = eventType;
-        this.cbIdfa = cbIdfa;
-        this.cbImei = cbImei;
-        this.cbImeiMd5 = cbImeiMd5;
-        this.cbAndroidIdMd5 = cbAndroidIdMd5;
-        this.cbIp = cbIp;
-        this.cbEventTime = cbEventTime;
+        this.callback = callback;
+        this.contentId = contentId;
+        this.campaignId = campaignId;
+        this.oaid = oaid;
+        this.trackingEnabled = trackingEnabled;
+        this.conversionType = conversionType;
+        this.conversionTime = conversionTime;
+        this.timestamp = timestamp;
         this.adsName = adsName;
     }
 
@@ -54,60 +59,100 @@ public class HuaweiCallbackDTO {
         this.adsId = adsId;
     }
 
-    public String getEventType() {
-        return eventType;
+    public String getCallback() {
+        return callback;
     }
 
-    public void setEventType(String eventType) {
-        this.eventType = eventType;
+    public void setCallback(String callback) {
+        this.callback = callback;
     }
 
-    public String getCbIdfa() {
-        return cbIdfa;
+    public String getContentId() {
+        return contentId;
     }
 
-    public void setCbIdfa(String cbIdfa) {
-        this.cbIdfa = cbIdfa;
+    public void setContentId(String contentId) {
+        this.contentId = contentId;
     }
 
-    public String getCbImei() {
-        return cbImei;
+    public String getCampaignId() {
+        return campaignId;
     }
 
-    public void setCbImei(String cbImei) {
-        this.cbImei = cbImei;
+    public void setCampaignId(String campaignId) {
+        this.campaignId = campaignId;
     }
 
-    public String getCbImeiMd5() {
-        return cbImeiMd5;
+    public String getOaid() {
+        return oaid;
     }
 
-    public void setCbImeiMd5(String cbImeiMd5) {
-        this.cbImeiMd5 = cbImeiMd5;
+    public void setOaid(String oaid) {
+        this.oaid = oaid;
     }
 
-    public String getCbAndroidIdMd5() {
-        return cbAndroidIdMd5;
+    public String getTrackingEnabled() {
+        return trackingEnabled;
     }
 
-    public void setCbAndroidIdMd5(String cbAndroidIdMd5) {
-        this.cbAndroidIdMd5 = cbAndroidIdMd5;
+    public void setTrackingEnabled(String trackingEnabled) {
+        this.trackingEnabled = trackingEnabled;
     }
 
-    public String getCbIp() {
-        return cbIp;
+    public String getIp() {
+        return ip;
     }
 
-    public void setCbIp(String cbIp) {
-        this.cbIp = cbIp;
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 
-    public String getCbEventTime() {
-        return cbEventTime;
+    public String getConversionType() {
+        return conversionType;
     }
 
-    public void setCbEventTime(String cbEventTime) {
-        this.cbEventTime = cbEventTime;
+    public void setConversionType(String conversionType) {
+        this.conversionType = conversionType;
+    }
+
+    public String getConversionTime() {
+        return conversionTime;
+    }
+
+    public void setConversionTime(String conversionTime) {
+        this.conversionTime = conversionTime;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getConversionCount() {
+        return conversionCount;
+    }
+
+    public void setConversionCount(String conversionCount) {
+        this.conversionCount = conversionCount;
+    }
+
+    public String getConversionPrice() {
+        return conversionPrice;
+    }
+
+    public void setConversionPrice(String conversionPrice) {
+        this.conversionPrice = conversionPrice;
+    }
+
+    public String getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
     }
 
     public String getAdsName() {
