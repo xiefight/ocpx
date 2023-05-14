@@ -44,15 +44,12 @@ public class HuaweiKuaishouController {
      */
     @RequestMapping(Constants.ServerPath.CLICK_REPORT)
     public Response clickReport(HttpServletRequest request) {
-        Response response;
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
-            response = hkService.clickReport(parameterMap);
+            return hkService.clickReport(parameterMap);
         } catch (Exception e) {
-            e.printStackTrace();
-            response = BasicResult.getFailResponse("请求异常", e.getMessage());
+            return BasicResult.getFailResponse("请求异常", e.getMessage());
         }
-        return new XiaomiResponse(response.getCode(), response.getMessage(), response.getData(), "");
     }
 
     /**
