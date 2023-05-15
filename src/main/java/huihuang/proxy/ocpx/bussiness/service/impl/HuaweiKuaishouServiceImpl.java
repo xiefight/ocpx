@@ -64,7 +64,7 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
         logger.info("adsCallBack {} 开始回调渠道  id:{}  parameterMap.size:{}", channelAdsKey, id, parameterMap.size());
         //转化类型字段
-        String eventType = parameterMap.get("event_type")[0];
+        String eventType = parameterMap.get("actionType")[0];
         long currentTime = System.currentTimeMillis();
         String eventTimes = String.valueOf(currentTime);
 

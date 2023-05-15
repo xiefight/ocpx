@@ -202,7 +202,7 @@ public class BaiduYoukuChannelAds extends BaseSupport implements IChannelAds {
         String access_id = youkuParamField.getAccess_id();
         String ts = youkuParamField.getTs();
         String src = "access_id=" + access_id + "&ts=" + ts;
-        String signatureStr = src + YoukuPath.SECRET;
+        String signatureStr = src + BaiduPath.YOUKU_SECRET;
         String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
         logger.info("clickReport {} 原始:{}  签名:{}", channelAdsKey, signatureStr, signature);
         youkuParamField.setSignature(signature);

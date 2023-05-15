@@ -15,9 +15,16 @@ public class BaiduPath {
         token:FmRTMwCwoTuOUqz1mOdaeQXShmPkTt6I@BvWbBznj5ZOvsZz37HbNpCsrqNAhCKLo
      */
 
+    /*
+        账户：原生-智道未来93-B23KA00816
+        密码：JINdcj8701
+        ID：47716744
+        Akey：NDc3MTY3NDQ=
+     */
+
     /** BAIDU提供给YOUKU的秘钥 */
-    public static final String YOUKU_SECRET = "?";
-    public static final String LTJD_SECRET = "?";
+    public static final String YOUKU_SECRET = "NDczOTU4MTk=";
+    public static final String LTJD_SECRET = "NDc3MTY3NDQ=";
 
     public static final String BAIDU_CHANNEL_NAME = "baidu";
 
