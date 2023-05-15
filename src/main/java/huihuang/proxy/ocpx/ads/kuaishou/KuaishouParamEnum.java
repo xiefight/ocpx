@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.ads.kuaishou;
 
+import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 
 import java.util.HashMap;
@@ -62,7 +63,7 @@ public enum KuaishouParamEnum {
     }
 
     /**
-     * xiaomi-xigua
+     * huawei-kuaishou
      */
     public static Map<KuaishouParamEnum, HuaweiParamEnum> kuaishouHuaweiMap;
 
@@ -85,6 +86,33 @@ public enum KuaishouParamEnum {
         kuaishouHuaweiMap.put(CAID_LIST, null);
         kuaishouHuaweiMap.put(USER_AGENT, HuaweiParamEnum.USER_AGENT);
         kuaishouHuaweiMap.put(CALLBACK, HuaweiParamEnum.CALLBACK);
+    }
+
+
+    /**
+     * baidu-kuaishou
+     */
+    public static Map<KuaishouParamEnum, BaiduParamEnum> kuaishouBaiduMap;
+
+    static {
+        kuaishouBaiduMap = new HashMap<>();
+        kuaishouBaiduMap.put(ADID, BaiduParamEnum.KUAISHOU_ADID);
+        kuaishouBaiduMap.put(IMEI, BaiduParamEnum.IMEI_MD5);
+        kuaishouBaiduMap.put(IDFA, BaiduParamEnum.IDFA);
+        kuaishouBaiduMap.put(OAID, null);//需要特殊处理
+        kuaishouBaiduMap.put(ANDROID_ID, null);
+        kuaishouBaiduMap.put(MAC, null);
+        kuaishouBaiduMap.put(IP, BaiduParamEnum.IP);
+        kuaishouBaiduMap.put(ACCOUNT_ID, null);
+        kuaishouBaiduMap.put(CLICK_ID, null);//由中间层生成时间戳
+        kuaishouBaiduMap.put(CAMPAIGN_ID, BaiduParamEnum.PID);
+        kuaishouBaiduMap.put(ADGROUP_ID, BaiduParamEnum.UID);
+        kuaishouBaiduMap.put(CREATEIVE_ID, null);
+        kuaishouBaiduMap.put(ADVERTISER_ID, null);
+        kuaishouBaiduMap.put(RTA_ID, null);
+        kuaishouBaiduMap.put(CAID_LIST, null);
+        kuaishouBaiduMap.put(USER_AGENT, BaiduParamEnum.UA);
+        kuaishouBaiduMap.put(CALLBACK, BaiduParamEnum.CALLBACK_URL);
     }
 
 }

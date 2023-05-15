@@ -12,10 +12,6 @@ import huihuang.proxy.ocpx.ads.litianjingdong.LTJDAdsDTO;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDParamEnum;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDParamField;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
-import huihuang.proxy.ocpx.ads.youku.YoukuAdsDTO;
-import huihuang.proxy.ocpx.ads.youku.YoukuParamEnum;
-import huihuang.proxy.ocpx.ads.youku.YoukuParamField;
-import huihuang.proxy.ocpx.ads.youku.YoukuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.ILtjdAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
@@ -40,7 +36,7 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * baidu--youku
+ * baidu--ltjd
  *
  * @Author: xietao
  * @Date: 2023/5/10 22:28
@@ -53,7 +49,7 @@ public class BaiduLtjdChannelAds extends BaseSupport implements IChannelAds {
     @Autowired
     private BaseServiceInner baseServiceInner;
 
-    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_YOUKU;
+    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_LTJD;
 
     /**
      * 生成监测链接
@@ -61,10 +57,10 @@ public class BaiduLtjdChannelAds extends BaseSupport implements IChannelAds {
     @Override
     public String findMonitorAddress() {
         StringBuilder macro = new StringBuilder();
-        //1.遍历youku查找xiaomi对应的宏参数
-        Set<YoukuParamEnum> youkuParamEnums = YoukuParamEnum.baiduYoukuMap.keySet();
-        for (YoukuParamEnum youku : youkuParamEnums) {
-            BaiduParamEnum baidu = YoukuParamEnum.baiduYoukuMap.get(youku);
+        //1.遍历ltjd查找baidu对应的宏参数
+        Set<LTJDParamEnum> ltjdParamEnums = LTJDParamEnum.baiduLtjdMap.keySet();
+        for (LTJDParamEnum ltjd : ltjdParamEnums) {
+            BaiduParamEnum baidu = LTJDParamEnum.baiduLtjdMap.get(ltjd);
             if (Objects.isNull(baidu) || StrUtil.isEmpty(baidu.getMacro())) {
                 continue;
             }
@@ -82,27 +78,27 @@ public class BaiduLtjdChannelAds extends BaseSupport implements IChannelAds {
 
     @Override
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
-        YoukuParamField youkuParamField = new YoukuParamField();
+        LTJDParamField ltjdParamField = new LTJDParamField();
 
-        Set<Map.Entry<LTJDParamEnum, BaiduParamEnum>> xjSet = LTJDParamEnum.baiduLtjdMap.entrySet();
-        xjSet.stream().filter(xj -> Objects.nonNull(xj.getValue())).forEach(tm -> {
-            LTJDParamEnum ltjd = tm.getKey();
-            BaiduParamEnum baidu = tm.getValue();
+        Set<Map.Entry<LTJDParamEnum, BaiduParamEnum>> bjSet = LTJDParamEnum.baiduLtjdMap.entrySet();
+        bjSet.stream().filter(xj -> Objects.nonNull(xj.getValue())).forEach(bj -> {
+            LTJDParamEnum ltjd = bj.getKey();
+            BaiduParamEnum baidu = bj.getValue();
             //ltjd的字段名
             String ltjdField = ltjd.getName();
             String baiduParam = baidu.getParam();
             String[] value = parameterMap.get(baiduParam);
             if (Objects.isNull(value) || value.length == 0) return;
             try {
-                PropertyDescriptor descriptor = new PropertyDescriptor(ltjdField, youkuParamField.getClass());
+                PropertyDescriptor descriptor = new PropertyDescriptor(ltjdField, ltjdParamField.getClass());
                 Method setMethod = descriptor.getWriteMethod();
-                setMethod.invoke(youkuParamField, value[0]);
+                setMethod.invoke(ltjdParamField, value[0]);
             } catch (IntrospectionException | InvocationTargetException | IllegalAccessException e) {
                 e.printStackTrace();
             }
         });
-        logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey, youkuParamField);
-        return youkuParamField;
+        logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey, ltjdParamField);
+        return ltjdParamField;
     }
 
     @Override
@@ -128,24 +124,24 @@ public class BaiduLtjdChannelAds extends BaseSupport implements IChannelAds {
     protected Response judgeParams(Object adsObj) {
         LTJDParamField ltjdParamField = (LTJDParamField) adsObj;
         if (Objects.isNull(ltjdParamField.getSignature())) {
-            return BasicResult.getFailResponse(YoukuParamEnum.SIGNATURE.getName() + "不能为空");
+            return BasicResult.getFailResponse(LTJDParamEnum.SIGNATURE.getName() + "不能为空");
         }
         if (Objects.isNull(ltjdParamField.getTp_adv_id())) {
-            return BasicResult.getFailResponse(YoukuParamEnum.TP_ADV_ID.getName() + "不能为空");
+            return BasicResult.getFailResponse(LTJDParamEnum.TP_ADV_ID.getName() + "不能为空");
         }
         if (Objects.isNull(ltjdParamField.getAccess_id())) {
-            return BasicResult.getFailResponse(YoukuParamEnum.ACCESS_ID.getName() + "不能为空");
+            return BasicResult.getFailResponse(LTJDParamEnum.ACCESS_ID.getName() + "不能为空");
         }
         if (Objects.isNull(ltjdParamField.getRequest_id())) {
-            return BasicResult.getFailResponse(YoukuParamEnum.REQUEST_ID.getName() + "不能为空");
+            return BasicResult.getFailResponse(LTJDParamEnum.REQUEST_ID.getName() + "不能为空");
         }
         //如果ios设备为空，则判断安卓设备
         if (Objects.isNull(ltjdParamField.getIdfa()) && Objects.isNull(ltjdParamField.getIdfa_md5())
                 && Objects.isNull(ltjdParamField.getImei()) && Objects.isNull(ltjdParamField.getImei_md5())
                 && Objects.isNull(ltjdParamField.getOaid()) && Objects.isNull(ltjdParamField.getOaid_md5())) {
-            return BasicResult.getFailResponse("安卓设备：" + YoukuParamEnum.IMEI.getName() + "、" + YoukuParamEnum.OAID.getName()
-                    + "、" + YoukuParamEnum.IMEI_MD5.getName() + "、" + YoukuParamEnum.OAID_MD5.getName() + "不能同时为空；"
-                    + " ios设备" + YoukuParamEnum.IDFA.getName() + "、" + YoukuParamEnum.IDFA_MD5.getName() + "不能同时为空");
+            return BasicResult.getFailResponse("安卓设备：" + LTJDParamEnum.IMEI.getName() + "、" + LTJDParamEnum.OAID.getName()
+                    + "、" + LTJDParamEnum.IMEI_MD5.getName() + "、" + LTJDParamEnum.OAID_MD5.getName() + "不能同时为空；"
+                    + " ios设备" + LTJDParamEnum.IDFA.getName() + "、" + LTJDParamEnum.IDFA_MD5.getName() + "不能同时为空");
         }
         return BasicResult.getSuccessResponse();
     }
@@ -205,7 +201,7 @@ public class BaiduLtjdChannelAds extends BaseSupport implements IChannelAds {
         String access_id = ltjdParamField.getAccess_id();
         String ts = ltjdParamField.getTs();
         String src = "access_id=" + access_id + "&ts=" + ts;
-        String signatureStr = src + YoukuPath.SECRET;
+        String signatureStr = src + LTJDPath.SECRET;
         String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
         logger.info("clickReport {} 原始:{}  签名:{}", channelAdsKey, signatureStr, signature);
         ltjdParamField.setSignature(signature);
