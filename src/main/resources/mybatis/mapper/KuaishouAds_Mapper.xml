@@ -22,6 +22,7 @@
         <result column="caid_list" property="caidList"/>
         <result column="callback" property="callback"/>
         <result column="extra" property="extra"/>
+        <result column="channel_name" property="channelName"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
         <result column="report_status" property="reportStatus"/>
@@ -36,10 +37,10 @@
         INSERT INTO kuaishou_ads
         (adid, imei, idfa, oaid, android_id,
         mac, ip, user_agent, account_id, click_id, campaign_id, adgroup_id, creative_id,
-        advertiser_id,rta_id,caid_list,callback,extra, create_time, update_time, report_status, callback_status)
+        advertiser_id,rta_id,caid_list,callback,extra,channel_name, create_time, update_time, report_status, callback_status)
         VALUES (#{adid}, #{imei}, #{idfa}, #{oaid}, #{androidId}, #{mac}, #{ip},
         #{userAgent}, #{accountId}, #{clickId}, #{campaignId}, #{adgroupId}, #{creativeId}, #{advertiserId},
-        #{rtaId},#{caidList},#{callback},#{extra},now(),now(), "0", "0")
+        #{rtaId},#{caidList},#{callback},#{extra},#{channelName},now(),now(), "0", "0")
     </insert>
 
 
@@ -64,6 +65,7 @@
             <if test="caidList != null">caid_list = #{caidList},</if>
             <if test="callback != null">callback = #{callback},</if>
             <if test="extra != null">extra = #{extra},</if>
+            <if test="channelName != null">channel_name = #{channelName},</if>
             update_time = now(),
             <if test="reportStatus != null">report_status = #{reportStatus},</if>
             <if test="callBackStatus != null">callback_status = #{callBackStatus},</if>
@@ -93,6 +95,7 @@
                caid_list,
                callback,
                extra,
+               channel_name,
                create_time,
                update_time,
                report_status,

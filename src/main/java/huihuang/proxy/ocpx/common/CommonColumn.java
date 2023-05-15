@@ -11,6 +11,8 @@ public class CommonColumn {
 
     private Integer id;
 
+    private String channelName;
+
     private Date createTime;
     private Date updateTime;
 
@@ -67,5 +69,13 @@ public class CommonColumn {
 
     public void setCallBackTime(String callBackTime) {
         this.callBackTime = callBackTime;
+    }
+
+    public String getChannelName() {
+        return channelName;
+    }
+
+    public void setChannelName(String channelName) {
+        this.channelName = channelName;
     }
 }

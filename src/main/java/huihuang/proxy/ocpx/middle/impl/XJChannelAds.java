@@ -15,6 +15,7 @@ import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.ILtjdAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
+import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -151,6 +152,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
         LTJDParamField ltjdParamField = (LTJDParamField) adsObj;
         LTJDAdsDTO ltjdAdsDTO = new LTJDAdsDTO();
         BeanUtil.copyProperties(ltjdParamField, ltjdAdsDTO);
+        ltjdAdsDTO.setChannelName(XiaomiPath.XIAOMI_CHANNEL_NAME);
         ltjdAdsDao.insert(ltjdAdsDTO);
         logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey, ltjdAdsDTO);
         return ltjdAdsDTO;

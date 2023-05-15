@@ -16,6 +16,7 @@ import huihuang.proxy.ocpx.ads.youku.YoukuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IYoukuAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -151,6 +152,7 @@ public class BaiduYoukuChannelAds extends BaseSupport implements IChannelAds {
         YoukuParamField youkuParamField = (YoukuParamField) adsObj;
         YoukuAdsDTO youkuAdsDTO = new YoukuAdsDTO();
         BeanUtil.copyProperties(youkuParamField, youkuAdsDTO);
+        youkuAdsDTO.setChannelName(BaiduPath.BAIDU_CHANNEL_NAME);
         youkuAdsDao.insert(youkuAdsDTO);
         logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey, youkuAdsDTO);
         return youkuAdsDTO;

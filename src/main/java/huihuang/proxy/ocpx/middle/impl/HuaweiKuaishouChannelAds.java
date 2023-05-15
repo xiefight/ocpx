@@ -18,6 +18,7 @@ import huihuang.proxy.ocpx.ads.youku.YoukuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IKuaishouAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
+import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -151,6 +152,7 @@ public class HuaweiKuaishouChannelAds extends BaseSupport implements IChannelAds
         KuaishouParamField kuaishouParamField = (KuaishouParamField) adsObj;
         KuaishouAdsDTO kuaishouAdsDTO = new KuaishouAdsDTO();
         BeanUtil.copyProperties(kuaishouParamField, kuaishouAdsDTO);
+        kuaishouAdsDTO.setChannelName(HuaweiPath.HUAWEI_CHANNEL_NAME);
         kuaishouAdsDao.insert(kuaishouAdsDTO);
         logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey, kuaishouAdsDTO);
         return kuaishouAdsDTO;

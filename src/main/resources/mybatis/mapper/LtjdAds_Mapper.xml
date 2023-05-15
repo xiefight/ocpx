@@ -24,6 +24,7 @@
         <result column="ua" property="ua"/>
         <result column="callback_url" property="callback_url"/>
         <result column="signature" property="signature"/>
+        <result column="channel_name" property="channelName"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
         <result column="report_status" property="reportStatus"/>
@@ -38,10 +39,10 @@
         INSERT INTO ltjd_ads
         (tp_adv_id, access_id, request_id, imei, imei_md5,
         oaid, oaid_md5, idfa, idfa_md5, advertiser_id, android_id_md5, mac_md5, deep_link,
-        ts,os,ip,ip_md5,ua,callback_url,signature, create_time, update_time, report_status, callback_status)
+        ts,os,ip,ip_md5,ua,callback_url,signature,channel_name, create_time, update_time, report_status, callback_status)
         VALUES (#{tp_adv_id}, #{access_id}, #{request_id}, #{imei}, #{imei_md5}, #{oaid}, #{oaid_md5},
         #{idfa}, #{idfa_md5}, #{advertiser_id}, #{android_id_md5}, #{mac_md5}, #{deep_link}, #{ts},
-        #{os},#{ip},#{ip_md5},#{ua},#{callback_url},#{signature},now(),now(), "0", "0")
+        #{os},#{ip},#{ip_md5},#{ua},#{callback_url},#{signature},#{channelName},now(),now(), "0", "0")
     </insert>
 
 
@@ -68,6 +69,7 @@
             <if test="ua != null">ua = #{ua},</if>
             <if test="callback_url != null">callback_url = #{callback_url},</if>
             <if test="signature != null">signature = #{signature},</if>
+            <if test="channelName != null">channel_name = #{channelName},</if>
             update_time = now(),
             <if test="reportStatus != null">report_status = #{reportStatus},</if>
             <if test="callBackStatus != null">callback_status = #{callBackStatus},</if>
@@ -99,6 +101,7 @@
                ua,
                callback_url,
                signature,
+               channel_name,
                create_time,
                update_time,
                report_status,

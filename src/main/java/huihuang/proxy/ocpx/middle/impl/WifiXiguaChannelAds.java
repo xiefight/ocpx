@@ -16,6 +16,7 @@ import huihuang.proxy.ocpx.ads.xiguavideo.XiguaPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IXiguaAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.channel.wifi.WifiParamEnum;
+import huihuang.proxy.ocpx.channel.wifi.WifiPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -149,6 +150,7 @@ public class WifiXiguaChannelAds extends BaseSupport implements IChannelAds {
         XiguaParamField xiguaParamField = (XiguaParamField) adsObj;
         XiguaAdsDTO xiguaAdsDTO = new XiguaAdsDTO();
         BeanUtil.copyProperties(xiguaParamField, xiguaAdsDTO);
+        xiguaAdsDTO.setChannelName(WifiPath.WIFI_CHANNEL_NAME);
         xiguaAdsDao.insert(xiguaAdsDTO);
         logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey, xiguaAdsDTO);
         return xiguaAdsDTO;
