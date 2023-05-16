@@ -162,7 +162,7 @@ public class XJChannelAds extends BaseSupport implements IChannelAds {
     protected void replaceCallbackUrl(Object adsObj, Object adsDtoObj) {
         LTJDParamField ltjdParamField = (LTJDParamField) adsObj;
         LTJDAdsDTO ltjdAdsDTO = (LTJDAdsDTO) adsDtoObj;
-        String ocpxUrl = queryServerPath() + "/xjServer/adsCallBack/" + ltjdAdsDTO.getId() + "?";
+        String ocpxUrl = queryServerPath() + Constants.ServerPath.XIAOMI_LTJD + Constants.ServerPath.ADS_CALLBACK + "/" + ltjdAdsDTO.getId() + "?";
         logger.info("clickReport {} 客户回调渠道的url：{}", channelAdsKey, ocpxUrl);
         String encodeUrl = URLEncoder.createQuery().encode(ocpxUrl, StandardCharsets.UTF_8);
 //            ocpxUrl = URLEncoder.encode(ocpxUrl, "UTF-8");

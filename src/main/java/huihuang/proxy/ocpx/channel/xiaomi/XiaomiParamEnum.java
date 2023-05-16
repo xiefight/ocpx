@@ -30,6 +30,8 @@ public enum XiaomiParamEnum {
     LTJD_TP_ADV_ID("","tp_adv_id","力天京东提供的渠道标识"),
     LTJD_ACCESS_ID("","access_id","力天京东提供的渠道标识"),
 
+    KUAISHOU_ADID("","adid","快手投放渠道标识"),
+
 
     ;
 

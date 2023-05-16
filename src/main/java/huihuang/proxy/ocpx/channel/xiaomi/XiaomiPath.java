@@ -12,6 +12,9 @@ public class XiaomiPath {
 
     /** xiaomi提供给youku的秘钥 */
     public static final String YOUKU_SECRET = "FBvBCjprfNhRyLFd";//"jiwTWEHPQjZySweS"
+    /**
+     * xiaomi提供给kuaishou的秘钥 */
+    public static final String KUAISHOU_SECRET = "uMhzEwzBvUvcTLqL";
 
     public static final String XIAOMI_CHANNEL_NAME = "xiaomi";
 

@@ -164,7 +164,7 @@ public class XYChannelAds extends BaseSupport implements IChannelAds {
     protected void replaceCallbackUrl(Object adsObj, Object adsDtoObj) {
         YoukuParamField youkuParamField = (YoukuParamField) adsObj;
         YoukuAdsDTO youkuAdsDTO = (YoukuAdsDTO) adsDtoObj;
-        String ocpxUrl = queryServerPath() + "/xyServer/adsCallBack/" + youkuAdsDTO.getId() + "?";
+        String ocpxUrl = queryServerPath() + Constants.ServerPath.XIAOMI_YOUKU + Constants.ServerPath.ADS_CALLBACK + "/" + youkuAdsDTO.getId() + "?";
         logger.info("clickReport {} 客户回调渠道的url：{}", channelAdsKey, ocpxUrl);
         String encodeUrl = URLEncoder.createQuery().encode(ocpxUrl, StandardCharsets.UTF_8);
 //            ocpxUrl = URLEncoder.encode(ocpxUrl, "UTF-8");
