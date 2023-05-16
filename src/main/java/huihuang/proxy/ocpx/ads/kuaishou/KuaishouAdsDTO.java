@@ -172,4 +172,29 @@ public class KuaishouAdsDTO extends CommonColumn  implements IMarkDto {
     public void setExtra(String extra) {
         this.extra = extra;
     }
+
+
+    @Override
+    public String toString() {
+        return "KuaishouAdsDTO{" +
+                "adid='" + adid + '\'' +
+                ", imei='" + imei + '\'' +
+                ", idfa='" + idfa + '\'' +
+                ", oaid='" + oaid + '\'' +
+                ", androidId='" + androidId + '\'' +
+                ", mac='" + mac + '\'' +
+                ", ip='" + ip + '\'' +
+                ", userAgent='" + userAgent + '\'' +
+                ", accountId='" + accountId + '\'' +
+                ", clickId='" + clickId + '\'' +
+                ", campaignId='" + campaignId + '\'' +
+                ", adgroupId='" + adgroupId + '\'' +
+                ", creativeId='" + creativeId + '\'' +
+                ", advertiserId='" + advertiserId + '\'' +
+                ", rtaId='" + rtaId + '\'' +
+                ", caidList='" + caidList + '\'' +
+                ", callback='" + callback + '\'' +
+                ", extra='" + extra + '\'' +
+                '}';
+    }
 }

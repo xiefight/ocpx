@@ -115,7 +115,7 @@ public class BaiduYoukuServiceImpl implements IChannelAdsService {
         }
 //        String src = url.substring(0, url.length() - 1);
         logger.info("adsCallBack {} 请求渠道url：{}", channelAdsKey, url);
-        String signature = signature(json);
+//        String signature = signature(json);
 //        url.append("sign=").append(signature);
         HttpResponse response = HttpRequest.get(url.toString()).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
