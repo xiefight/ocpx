@@ -106,6 +106,12 @@
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XJServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="LTJD_LOG"/>
     </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduLtjdChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="LTJD_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduLtjdServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="LTJD_LOG"/>
+    </logger>
 
     <!-- 优酷  -->
     <appender name="YOUKU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -138,6 +144,41 @@
     </logger>
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduYoukuServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="YOUKU_LOG"/>
+    </logger>
+
+
+
+    <!-- 快手  -->
+    <appender name="KUAISHOU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/kuaishou/kuaishou.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/kuaishou/kuaishou.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiKuaishouChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiKuaishouServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiKuaishouChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiKuaishouServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
     </logger>
 
 
