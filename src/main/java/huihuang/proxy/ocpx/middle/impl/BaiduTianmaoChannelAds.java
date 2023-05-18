@@ -114,7 +114,7 @@ public class BaiduTianmaoChannelAds extends BaseSupport implements IChannelAds {
             tianmaoParamField.setUa(URLEncoder.createQuery().encode(tianmaoParamField.getUa(), StandardCharsets.UTF_8));
         }
         //签名
-//        signature(tianmaoParamField);
+        signature(tianmaoParamField);
         logger.info("clickReport {} 特殊参数进行转换 convertParams:{}", channelAdsKey, tianmaoParamField);
     }
 
@@ -199,7 +199,7 @@ public class BaiduTianmaoChannelAds extends BaseSupport implements IChannelAds {
         String access_id = tianmaoParamField.getAccess_id();
         String ts = tianmaoParamField.getTs();
         String src = "access_id=" + access_id + "&ts=" + ts;
-        String signatureStr = src + BaiduPath.YOUKU_SECRET;
+        String signatureStr = src + LTJDPath.SECRET;
         String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
         logger.info("clickReport {} 原始:{}  签名:{}", channelAdsKey, signatureStr, signature);
         tianmaoParamField.setSignature(signature);

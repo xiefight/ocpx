@@ -185,7 +185,7 @@ public class HuaweiKuaishouChannelAds extends BaseSupport implements IChannelAds
         KuaishouAdsDTO kuaishouAdsVO = new KuaishouAdsDTO();
         kuaishouAdsVO.setId(kuaishouAdsDTO.getId());
         //上报成功
-        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("ret").equals("0")) {
+        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("ret").equals(0)) {
             kuaishouAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
             baseServiceInner.updateAdsObject(kuaishouAdsVO, kuaishouAdsDao);
             logger.info("clickReport {} 上报广告侧接口请求成功:{} 数据:{}", channelAdsKey, response, kuaishouAdsVO);

@@ -7,6 +7,7 @@ package huihuang.proxy.ocpx.ads.litianjingdong;
  **/
 public class LTJDPath {
 
+    // 上报广告主时使用
     public static final String ACCESS_ID = "tp97c55258d39edfe4232dbc485465dc92";
     public static final String SECRET = "328a8df2988727656e399bd7f27c52ad";
 

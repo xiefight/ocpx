@@ -101,7 +101,7 @@
                ua,
                callback_url,
                signature,
-               channel_name
+               channel_name,
                create_time,
                update_time,
                report_status,
