@@ -14,6 +14,11 @@ public class KuaishouPath {
 //    public static final String CLIENT_ID = "dc557d524fdd1b29d684ea348890fc17";
 //    public static final String SECRET = "333DUFA6oZmi09QQ";
 
+    //小米-快手的adid 21666
+    //小米-快手极速的adid 21756
+    //华为-快手的adid 21749
+
+
     //生产域名
     public static final String URI= "https://promotion-partner.kuaishou.com";
     //曝光接受路径

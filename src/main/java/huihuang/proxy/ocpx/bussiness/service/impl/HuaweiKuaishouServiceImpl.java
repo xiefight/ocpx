@@ -1,7 +1,7 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
+import cn.hutool.core.util.HexUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
@@ -13,7 +13,6 @@ import huihuang.proxy.ocpx.bussiness.dao.ads.IKuaishouAdsDao;
 import huihuang.proxy.ocpx.bussiness.dao.channel.IHuaweiCallbackDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
-import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiCallbackDTO;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
@@ -29,6 +28,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.Mac;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.text.MessageFormat;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -100,7 +104,8 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
         logger.info("adsCallBack {} 请求渠道url：{}", channelAdsKey, url);
 //        String signature = signature(json);
 //        url.append("sign=").append(signature);
-        HttpResponse response = HttpRequest.post(url.toString()).body(json.toJSONString()).execute();
+        final String authSign = buildAuthorizationHeader(json.toJSONString(), HuaweiPath.SECRET);
+        HttpResponse response = HttpRequest.post(url.toString()).header("Authorization", authSign).body(json.toJSONString()).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
         //保存转化事件回调信息
         HuaweiCallbackDTO huaweiCallbackDTO = new HuaweiCallbackDTO(id, callback, String.valueOf(json.get("content_id")),
@@ -133,21 +138,37 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
     }
 
     //计算签名
-    private String signature(Map<String, Object> json) {
-        StringBuilder srcBuilder = new StringBuilder();
-        Set<Map.Entry<String, Object>> entries = json.entrySet();
-        for (Map.Entry<String, Object> entry : entries) {
-            String key = entry.getKey();
-            Object value = entry.getValue();
-            srcBuilder.append(key).append("=").append(value).append("&");
+
+    /**
+     * 计算请求头中的Authorization
+     *
+     * @param body 请求体json
+     * @param key  密钥
+     * @return Authorization 鉴权头
+     */
+    public static String buildAuthorizationHeader(String body, String key) {
+// 广告主请求头header中的Authorization
+        final String authorizationFormat = "Digest validTime=\"{0}\", response=\"{1}\"";
+        String authorization = null;
+        try {
+            byte[] keyBytes = key.getBytes(StandardCharsets.UTF_8);
+            byte[] bodyBytes = body.getBytes(StandardCharsets.UTF_8);
+            Mac mac = Mac.getInstance("HmacSHA256");
+            SecretKey secretKey = new SecretKeySpec(keyBytes, "HmacSHA256");
+            mac.init(secretKey);
+            byte[] signatureBytes = mac.doFinal(bodyBytes);
+            final String timestamp = String.valueOf(System.currentTimeMillis());
+            final String signature = (signatureBytes == null) ? null : HexUtil.encodeHexStr(signatureBytes);
+            authorization = MessageFormat.format(authorizationFormat, timestamp, signature)
+            ;
+        } catch (Exception e) {
+            System.err.println("build Authorization Header failed！");
+            e.printStackTrace();
         }
-        String src = srcBuilder.substring(0, srcBuilder.length() - 1);
-        String signatureStr = src + BaiduPath.LTJD_SECRET;
-        String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
-        json.put("sign", signature);
-        logger.info("adsCallBack {} 原始:{}  签名:{}", channelAdsKey, signatureStr, signature);
-        return signature;
+        System.out.println("generate Authorization Header: " + authorization);
+        return authorization;
     }
+
 
     /**
      * 从extra中获取指定字段值
