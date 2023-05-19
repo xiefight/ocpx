@@ -17,6 +17,12 @@ public class KuaishouPath {
     //小米-快手的adid 21666
     //小米-快手极速的adid 21756
     //华为-快手的adid 21749
+    //华为-快手极速的adid 21750
+
+    public static final String XIAOMI_KUAISHOU_ADID = "21666";
+    public static final String XIAOMI_KUAISHOUJISU_ADID = "21756";
+    public static final String HUAWEI_KUAISHOU_ADID = "21749";
+    public static final String HUAWEI_KUAISHOUJISU_ADID = "21750";
 
 
     //生产域名

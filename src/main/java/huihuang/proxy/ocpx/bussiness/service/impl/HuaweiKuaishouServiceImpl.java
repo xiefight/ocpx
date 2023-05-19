@@ -104,7 +104,14 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
         logger.info("adsCallBack {} 请求渠道url：{}", channelAdsKey, url);
 //        String signature = signature(json);
 //        url.append("sign=").append(signature);
-        final String authSign = buildAuthorizationHeader(json.toJSONString(), HuaweiPath.SECRET);
+        String huaweiSecret = "";
+        if (KuaishouPath.HUAWEI_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())){
+            huaweiSecret = HuaweiPath.KUAISHOU_SECRET;
+        }
+        if (KuaishouPath.HUAWEI_KUAISHOUJISU_ADID.equals(kuaishouAdsDTO.getAdid())){
+            huaweiSecret = HuaweiPath.KUAISHOUJISU_SECRET;
+        }
+        final String authSign = buildAuthorizationHeader(json.toJSONString(), huaweiSecret);
         HttpResponse response = HttpRequest.post(url.toString()).header("Authorization", authSign).body(json.toJSONString()).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
         //保存转化事件回调信息
