@@ -101,23 +101,27 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
             url.append("&").append(entry.getKey()).append("=").append(entry.getValue());
         }
 //        String src = url.substring(0, url.length() - 1);
-        logger.info("adsCallBack {} 请求渠道url：{}", channelAdsKey, url);
+
 //        String signature = signature(json);
 //        url.append("sign=").append(signature);
         String huaweiSecret = "";
+        String adsName = "";
         if (KuaishouPath.HUAWEI_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())){
             huaweiSecret = HuaweiPath.KUAISHOU_SECRET;
+            adsName = KuaishouPath.KUAISHOU_ADS_NAME;
         }
         if (KuaishouPath.HUAWEI_KUAISHOUJISU_ADID.equals(kuaishouAdsDTO.getAdid())){
             huaweiSecret = HuaweiPath.KUAISHOUJISU_SECRET;
+            adsName = "kuaishoujisu";
         }
+        logger.info("adsCallBack {} 请求渠道url：{} adid：{} huaweiSecret：{}", channelAdsKey, url, kuaishouAdsDTO.getAdid(), huaweiSecret);
         final String authSign = buildAuthorizationHeader(json.toJSONString(), huaweiSecret);
         HttpResponse response = HttpRequest.post(url.toString()).header("Authorization", authSign).body(json.toJSONString()).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
         //保存转化事件回调信息
         HuaweiCallbackDTO huaweiCallbackDTO = new HuaweiCallbackDTO(id, callback, String.valueOf(json.get("content_id")),
                 String.valueOf(json.get("campaign_id")), String.valueOf(json.get("oaid")), String.valueOf(json.get("tracking_enbaled")),
-                String.valueOf(json.get("conversion_type")), String.valueOf(json.get("conversion_time")), String.valueOf(json.get("timestamp")), KuaishouPath.KUAISHOU_ADS_NAME);
+                String.valueOf(json.get("conversion_type")), String.valueOf(json.get("conversion_time")), String.valueOf(json.get("timestamp")), adsName);
 
         //更新回调状态
         KuaishouAdsDTO kuaishouAds = new KuaishouAdsDTO();
