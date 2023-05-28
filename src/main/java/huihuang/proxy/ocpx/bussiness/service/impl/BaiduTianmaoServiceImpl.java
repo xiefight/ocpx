@@ -133,7 +133,7 @@ public class BaiduTianmaoServiceImpl implements IChannelAdsService {
             baiduCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")));
             baiduCallbackDao.insert(baiduCallbackDTO);
             baseServiceInner.updateAdsObject(tianmaoAds, tianmaoAdsDao);
-            logger.info("adsCallBack {} xiaomiCallbackDTO：{}", channelAdsKey, baiduCallbackDTO);
+            logger.info("adsCallBack {} baiduCallbackDTO：{}", channelAdsKey, baiduCallbackDTO);
             return BasicResult.getSuccessResponse(baiduCallbackDTO.getId());
         } else {
             baiduCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
@@ -142,7 +142,7 @@ public class BaiduTianmaoServiceImpl implements IChannelAdsService {
             baiduCallbackDTO.setCallBackMes(responseBodyMap.get("error_code") + "  " + responseBodyMap.get("error_msg"));
             baiduCallbackDao.insert(baiduCallbackDTO);
             baseServiceInner.updateAdsObject(tianmaoAds, tianmaoAdsDao);
-            logger.info("adsCallBack {} xiaomiCallbackDTO：{}", channelAdsKey, baiduCallbackDTO);
+            logger.info("adsCallBack {} baiduCallbackDTO：{}", channelAdsKey, baiduCallbackDTO);
             return BasicResult.getFailResponse(baiduCallbackDTO.getCallBackMes());
         }
     }

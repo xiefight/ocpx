@@ -83,18 +83,22 @@ public class BaiduTianmaoChannelAds extends BaseSupport implements IChannelAds {
             TianmaoParamEnum tianmao = tm.getKey();
             BaiduParamEnum baidu = tm.getValue();
             //tianmao的字段名
-            String ltjdField = tianmao.getName();
+            String tianmaoField = tianmao.getName();
             String baiduParam = baidu.getParam();
             String[] value = parameterMap.get(baiduParam);
             if (Objects.isNull(value) || value.length == 0) return;
+            if ("null".equals(value[0]) || "NULL".equals(value[0])) return;
+            if (value[0].startsWith("__") && value[0].endsWith("__")) return;
             try {
-                PropertyDescriptor descriptor = new PropertyDescriptor(ltjdField, tianmaoParamField.getClass());
+                PropertyDescriptor descriptor = new PropertyDescriptor(tianmaoField, tianmaoParamField.getClass());
                 Method setMethod = descriptor.getWriteMethod();
                 setMethod.invoke(tianmaoParamField, value[0]);
             } catch (IntrospectionException | InvocationTargetException | IllegalAccessException e) {
                 e.printStackTrace();
             }
         });
+        //临时修改tp_adv_id 为 192
+        tianmaoParamField.setTp_adv_id("192");
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey, tianmaoParamField);
         return tianmaoParamField;
     }

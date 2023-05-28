@@ -24,8 +24,9 @@ public class BaiduPath {
 
     /** BAIDU提供给YOUKU的秘钥----回传渠道时使用 */
     public static final String YOUKU_SECRET = "NDczOTU4MTk=";
-    public static final String LTJD_SECRET = "NDc3MTY3NDQ=";
+    public static final String LTJD_SECRET = "NDc5NzE1MDk=";//"NDc3MTY3NDQ=";
     public static final String TIANMAO_SECRET = "NDc5NzI3MDk=";
+    public static final String FANQIE_SECRET = "NDU3OTc0NTE=";
 
     public static final String BAIDU_CHANNEL_NAME = "baidu";
 
