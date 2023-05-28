@@ -65,10 +65,6 @@ public class HuaweiChannelFactory {
                 huaweiVO.getCampaignId(), huaweiVO.getOaid(), huaweiVO.getTrackingEnabled(),
                 huaweiVO.getConversionType(), huaweiVO.getConversionTime(), huaweiVO.getTimestamp(), huaweiVO.getAdsName());
 
-        //更新回调状态
-        KuaishouAdsDTO kuaishouAds = new KuaishouAdsDTO();
-        kuaishouAds.setId(huaweiVO.getAdsId());
-        kuaishouAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
         if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("resultCode").equals(0)) {
             huaweiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             huaweiCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")));

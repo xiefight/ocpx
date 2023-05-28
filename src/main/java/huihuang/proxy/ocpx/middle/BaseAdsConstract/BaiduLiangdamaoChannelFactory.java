@@ -144,7 +144,7 @@ public abstract class BaiduLiangdamaoChannelFactory extends BaseSupport implemen
 
     @Override
     protected String initAdsUrl() {
-        return LTJDPath.BASIC_URI;
+        return LiangdamaoPath.BASIC_URI;
     }
 
     //计算签名

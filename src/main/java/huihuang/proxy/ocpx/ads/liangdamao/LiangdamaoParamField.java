@@ -29,6 +29,8 @@ public class LiangdamaoParamField {
     //拼接参数时，签名放最后
     private String signature;
 
+    private String extra;
+
     public String getSignature() {
         return signature;
     }
@@ -189,12 +191,18 @@ public class LiangdamaoParamField {
         this.callback_url = callback_url;
     }
 
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
+    }
 
     @Override
     public String toString() {
         return "LiangdamaoParamField{" +
                 "tp_adv_id='" + tp_adv_id + '\'' +
-                ", access_id='" + access_id + '\'' +
                 ", request_id='" + request_id + '\'' +
                 ", imei='" + imei + '\'' +
                 ", imei_md5='" + imei_md5 + '\'' +
@@ -213,6 +221,7 @@ public class LiangdamaoParamField {
                 ", ua='" + ua + '\'' +
                 ", callback_url='" + callback_url + '\'' +
                 ", signature='" + signature + '\'' +
+                ", extra='" + extra + '\'' +
                 '}';
     }
 }

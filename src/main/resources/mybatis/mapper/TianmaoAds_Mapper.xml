@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="huihuang.proxy.ocpx.bussiness.dao.ads.ITianmaoAdsDao">
 
-    <resultMap id="tianmaoAdsMap" type="huihuang.proxy.ocpx.ads.tianmao.TianmaoAdsDTO">
+    <resultMap id="tianmaoAdsMap" type="huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO">
         <id column="id" property="id"/>
         <result column="tp_adv_id" property="tp_adv_id"/>
         <result column="access_id" property="access_id"/>
@@ -25,6 +25,7 @@
         <result column="callback_url" property="callback_url"/>
         <result column="signature" property="signature"/>
         <result column="channel_name" property="channelName"/>
+        <result column="extra" property="extra"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
         <result column="report_status" property="reportStatus"/>
@@ -32,21 +33,21 @@
         <result column="callback_time" property="callBackTime"/>
     </resultMap>
 
-    <insert id="insert" parameterType="huihuang.proxy.ocpx.ads.tianmao.TianmaoAdsDTO">
+    <insert id="insert" parameterType="huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO">
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
         INSERT INTO tianmao_ads
         (tp_adv_id, access_id, request_id, imei, imei_md5,
         oaid, oaid_md5, idfa, idfa_md5, advertiser_id, android_id_md5, mac_md5, deep_link,
-        ts,os,ip,ip_md5,ua,callback_url,signature,channel_name, create_time, update_time, report_status, callback_status)
+        ts,os,ip,ip_md5,ua,callback_url,signature,channel_name,extra, create_time, update_time, report_status, callback_status)
         VALUES (#{tp_adv_id}, #{access_id}, #{request_id}, #{imei}, #{imei_md5}, #{oaid}, #{oaid_md5},
         #{idfa}, #{idfa_md5}, #{advertiser_id}, #{android_id_md5}, #{mac_md5}, #{deep_link}, #{ts},
-        #{os},#{ip},#{ip_md5},#{ua},#{callback_url},#{signature},#{channelName},now(),now(), "0", "0")
+        #{os},#{ip},#{ip_md5},#{ua},#{callback_url},#{signature},#{channelName},#{extra},now(),now(), "0", "0")
     </insert>
 
 
-    <update id="update" parameterType="huihuang.proxy.ocpx.ads.tianmao.TianmaoAdsDTO">
+    <update id="update" parameterType="huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO">
         UPDATE tianmao_ads
         <set>
             <if test="tp_adv_id != null">tp_adv_id = #{tp_adv_id},</if>
@@ -70,6 +71,7 @@
             <if test="callback_url != null">callback_url = #{callback_url},</if>
             <if test="signature != null">signature = #{signature},</if>
             <if test="channelName != null">channel_name = #{channelName},</if>
+            <if test="extra != null">extra = #{extra},</if>
             update_time = now(),
             <if test="reportStatus != null">report_status = #{reportStatus},</if>
             <if test="callBackStatus != null">callback_status = #{callBackStatus},</if>
@@ -102,6 +104,7 @@
                callback_url,
                signature,
                channel_name,
+               extra,
                create_time,
                update_time,
                report_status,

@@ -3,7 +3,6 @@ package huihuang.proxy.ocpx.middle.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.net.URLEncoder;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
@@ -12,9 +11,6 @@ import huihuang.proxy.ocpx.ads.kuaishou.KuaishouAdsDTO;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouParamEnum;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouParamField;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouPath;
-import huihuang.proxy.ocpx.ads.litianjingdong.LTJDParamField;
-import huihuang.proxy.ocpx.ads.youku.YoukuParamEnum;
-import huihuang.proxy.ocpx.ads.youku.YoukuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IKuaishouAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
@@ -142,7 +138,7 @@ public class HuaweiKuaishouChannelAds extends BaseSupport implements IChannelAds
                 && Objects.isNull(kuaishouParamField.getOaid())
         ) {
             return BasicResult.getFailResponse("安卓设备：" + KuaishouParamEnum.IMEI.getName() + "、" + KuaishouParamEnum.OAID.getName() + "不能同时为空；"
-                    + " ios设备" + YoukuParamEnum.IDFA.getName() + "不能为空");
+                    + " ios设备" + KuaishouParamEnum.IDFA.getName() + "不能为空");
         }
         return BasicResult.getSuccessResponse();
     }
@@ -196,17 +192,6 @@ public class HuaweiKuaishouChannelAds extends BaseSupport implements IChannelAds
             logger.error("clickReport {} 上报广告侧接口请求失败:{} 数据:{}", channelAdsKey, response, kuaishouAdsVO);
             return BasicResult.getFailResponse("上报广告侧接口请求失败", 0);
         }
-    }
-
-    //计算签名
-    private void signature(LTJDParamField ltjdParamField) {
-        String access_id = ltjdParamField.getAccess_id();
-        String ts = ltjdParamField.getTs();
-        String src = "access_id=" + access_id + "&ts=" + ts;
-        String signatureStr = src + YoukuPath.SECRET;
-        String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
-        logger.info("clickReport {} 原始:{}  签名:{}", channelAdsKey, signatureStr, signature);
-        ltjdParamField.setSignature(signature);
     }
 
     private void fitExtras(Map<String, String[]> parameterMap, KuaishouParamField kuaishouParamField, String... extras) {

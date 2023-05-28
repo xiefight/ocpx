@@ -13,11 +13,6 @@ public class LTJDPath extends LiangdamaoPath {
 
     public static final String LTJD_ADS_NAME = "ltjd";
 
-    /**
-     * 点击上报及转化数据回调接口
-     */
-    public static final String BASIC_URI = "https://convert.mongac.com/tracking/thirdparty/link?";
-
     @Override
     public String baseAdsName() {
         return LTJD_ADS_NAME;

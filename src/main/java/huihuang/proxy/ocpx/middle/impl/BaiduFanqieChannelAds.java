@@ -72,11 +72,6 @@ public class BaiduFanqieChannelAds extends BaiduLiangdamaoChannelFactory {
 
 
     @Override
-    protected String initAdsUrl() {
-        return FanqiePath.BASIC_URI;
-    }
-
-    @Override
     protected Response reportAds(String adsUrl, Object adsDtoObj) throws Exception {
         logger.info("调用用户侧的地址 {} adsUrl:{}", channelAdsKey, adsUrl);
         HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();

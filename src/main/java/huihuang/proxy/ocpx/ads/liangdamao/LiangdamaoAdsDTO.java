@@ -31,6 +31,8 @@ public class LiangdamaoAdsDTO extends CommonColumn implements IMarkDto {
     private String ua;
     private String callback_url;
 
+    private String extra;
+
     public String getSignature() {
         return signature;
     }
@@ -191,12 +193,19 @@ public class LiangdamaoAdsDTO extends CommonColumn implements IMarkDto {
         this.callback_url = callback_url;
     }
 
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
+    }
+
     @Override
     public String toString() {
-        return "LTJDAdsDTO{" +
+        return "LiangdamaoAdsDTO{" +
                 "signature='" + signature + '\'' +
                 ", tp_adv_id='" + tp_adv_id + '\'' +
-                ", access_id='" + access_id + '\'' +
                 ", request_id='" + request_id + '\'' +
                 ", imei='" + imei + '\'' +
                 ", imei_md5='" + imei_md5 + '\'' +
@@ -214,6 +223,7 @@ public class LiangdamaoAdsDTO extends CommonColumn implements IMarkDto {
                 ", ip_md5='" + ip_md5 + '\'' +
                 ", ua='" + ua + '\'' +
                 ", callback_url='" + callback_url + '\'' +
+                ", extra='" + extra + '\'' +
                 '}';
     }
 }

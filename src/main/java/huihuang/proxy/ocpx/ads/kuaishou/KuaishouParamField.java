@@ -1,7 +1,6 @@
 package huihuang.proxy.ocpx.ads.kuaishou;
 
 import cn.hutool.core.annotation.Alias;
-import huihuang.proxy.ocpx.ads.litianjingdong.LTJDParamField;
 
 /**
  *

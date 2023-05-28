@@ -1,6 +1,6 @@
 package huihuang.proxy.ocpx.bussiness.dao.ads;
 
-import huihuang.proxy.ocpx.ads.litianjingdong.LTJDAdsDTO;
+import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -15,16 +15,16 @@ public interface ILtjdAdsDao extends IMarkDao {
     /**
      * 新增一条监测记录
      */
-    int insert(LTJDAdsDTO ltjdAdsDTO);
+    int insert(LiangdamaoAdsDTO ltjdAdsDTO);
 
     /**
      * 更新监测记录
      */
-    int update(LTJDAdsDTO ltjdAdsDTO);
+    int update(LiangdamaoAdsDTO ltjdAdsDTO);
 
     /**
      * 根据id查询
      */
-    LTJDAdsDTO queryLtjdAdsById(Integer id);
+    LiangdamaoAdsDTO queryLtjdAdsById(Integer id);
 
 }
