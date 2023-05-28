@@ -149,4 +149,24 @@ public class BaiduCallbackDTO {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+    @Override
+    public String toString() {
+        return "BaiduCallbackDTO{" +
+                "id=" + id +
+                ", adsId=" + adsId +
+                ", eventType='" + eventType + '\'' +
+                ", cbIdfa='" + cbIdfa + '\'' +
+                ", cbImei='" + cbImei + '\'' +
+                ", cbImeiMd5='" + cbImeiMd5 + '\'' +
+                ", cbAndroidIdMd5='" + cbAndroidIdMd5 + '\'' +
+                ", cbIp='" + cbIp + '\'' +
+                ", cbEventTime='" + cbEventTime + '\'' +
+                ", adsName='" + adsName + '\'' +
+                ", callBackStatus='" + callBackStatus + '\'' +
+                ", callBackMes='" + callBackMes + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
+    }
 }
