@@ -2,17 +2,14 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.util.HexUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.http.HttpRequest;
-import cn.hutool.http.HttpResponse;
-import cn.hutool.http.HttpStatus;
-import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouAdsDTO;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouEventTypeEnum;
-import huihuang.proxy.ocpx.ads.kuaishou.KuaishouPath;
+import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IKuaishouAdsDao;
-import huihuang.proxy.ocpx.bussiness.dao.channel.IHuaweiCallbackDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
+import huihuang.proxy.ocpx.bussiness.service.basechannel.HuaweiChannelFactory;
+import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2HuaweiVO;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiCallbackDTO;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
@@ -21,8 +18,6 @@ import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
-import huihuang.proxy.ocpx.util.CommonUtil;
-import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,19 +29,17 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
 
 /**
- * baidu-jingdong
+ * huawei-jingdong
  *
  * @Author: xietao
- * @Date: 2023/5/11 17:26
+ * @Date: 2023/5/28 13:07
  */
-@Service("hkService")
-public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
+@Service("hjService")
+public class HuaweiLtjdServiceImpl extends HuaweiChannelFactory implements IChannelAdsService {
 
-    protected Logger logger = LoggerFactory.getLogger(HuaweiKuaishouServiceImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(HuaweiLtjdServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
@@ -55,9 +48,9 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private IHuaweiCallbackDao huaweiCallbackDao;
+    private LTJDPath ltjdPath;
 
-    String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_KUAISHOU;
+    String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_LTJD;
 
     @Override
     public IChannelAds channelAds() {
@@ -67,10 +60,6 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
         logger.info("adsCallBack {} 开始回调渠道  id:{}  parameterMap.size:{}", channelAdsKey, id, parameterMap.size());
-        //转化类型字段
-        String eventType = parameterMap.get("actionType")[0];
-        long currentTime = System.currentTimeMillis();
-        String eventTimes = String.valueOf(currentTime);
 
         //根据id查询对应的点击记录
         KuaishouAdsDTO kuaishouAdsDTO = kuaishouAdsDao.queryKuaishouAdsById(id);
@@ -79,72 +68,41 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
-        String channelUrl = HuaweiPath.CALLBACK_URL;
-        String callback = kuaishouAdsDTO.getCallback();
-        logger.info("adsCallBack 渠道原url：{} 渠道decode回调url：{}", callback, channelUrl);
-        //回传到渠道
-        JSONObject json = new JSONObject();
-        json.put("callback", callback);
-        json.put("campaign_id", kuaishouAdsDTO.getCampaignId());
-        json.put("content_id", getContentFromExtra(kuaishouAdsDTO, HuaweiParamEnum.CONTENT_ID.getParam(), null));
-        json.put("tracking_enabled", getContentFromExtra(kuaishouAdsDTO, HuaweiParamEnum.TRACKING_ENABLED.getParam(), "1"));
-        json.put("conversion_type", KuaishouEventTypeEnum.kuaishouHuaweiEventTypeMap.get(eventType).getCode());
-        json.put("conversion_time", String.valueOf(currentTime / 1000));
-        json.put("timestamp", eventTimes);
-        if (CommonUtil.strEmpty(kuaishouAdsDTO.getOaid())) {
-            json.put("oaid", kuaishouAdsDTO.getOaid());
-        }
+        long currentTime = System.currentTimeMillis();
+        Ads2HuaweiVO huaweiVO = new Ads2HuaweiVO();
+        huaweiVO.setAdsId(id);
+        huaweiVO.setAdsName(ltjdPath.baseAdsName());
+        huaweiVO.setCallbackUrl(kuaishouAdsDTO.getCallback());
 
-        StringBuilder url = new StringBuilder(channelUrl);
-        Set<Map.Entry<String, Object>> entries = json.entrySet();
-        for (Map.Entry<String, Object> entry : entries) {
-            url.append("&").append(entry.getKey()).append("=").append(entry.getValue());
-        }
-//        String src = url.substring(0, url.length() - 1);
+        huaweiVO.setEventType(parameterMap.get("actionType")[0]);
+        huaweiVO.setTimestamp(String.valueOf(currentTime));
+        huaweiVO.setCampaignId(kuaishouAdsDTO.getCampaignId());
+        huaweiVO.setContentId(getContentFromExtra(kuaishouAdsDTO, HuaweiParamEnum.CONTENT_ID.getParam(), null));
+        huaweiVO.setTrackingEnabled(getContentFromExtra(kuaishouAdsDTO, HuaweiParamEnum.TRACKING_ENABLED.getParam(), "1"));
+        huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
+        huaweiVO.setConversionType(KuaishouEventTypeEnum.kuaishouHuaweiEventTypeMap.get(parameterMap.get("actionType")[0]).getCode());
+        huaweiVO.setOaid(kuaishouAdsDTO.getOaid());
+        huaweiVO.setSecret(HuaweiPath.LTJD_SECRET);
+        logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 
-//        String signature = signature(json);
-//        url.append("sign=").append(signature);
-        String huaweiSecret = "";
-        String adsName = "";
-        if (KuaishouPath.HUAWEI_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())){
-            huaweiSecret = HuaweiPath.KUAISHOU_SECRET;
-            adsName = KuaishouPath.KUAISHOU_ADS_NAME;
-        }
-        if (KuaishouPath.HUAWEI_KUAISHOUJISU_ADID.equals(kuaishouAdsDTO.getAdid())){
-            huaweiSecret = HuaweiPath.KUAISHOUJISU_SECRET;
-            adsName = KuaishouPath.KUAISHOUJISU_ADS_NAME;
-        }
-        logger.info("adsCallBack {} 请求渠道url：{} adid：{} huaweiSecret：{}", channelAdsKey, url, kuaishouAdsDTO.getAdid(), huaweiSecret);
-        final String authSign = buildAuthorizationHeader(json.toJSONString(), huaweiSecret);
-        HttpResponse response = HttpRequest.post(url.toString()).header("Authorization", authSign).body(json.toJSONString()).execute();
-        Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
-        //保存转化事件回调信息
-        HuaweiCallbackDTO huaweiCallbackDTO = new HuaweiCallbackDTO(id, callback, String.valueOf(json.get("content_id")),
-                String.valueOf(json.get("campaign_id")), String.valueOf(json.get("oaid")), String.valueOf(json.get("tracking_enbaled")),
-                String.valueOf(json.get("conversion_type")), String.valueOf(json.get("conversion_time")), String.valueOf(json.get("timestamp")), adsName);
+        Response response = super.baseAdsCallBack(huaweiVO);
+        HuaweiCallbackDTO data = (HuaweiCallbackDTO) response.getData();
 
         //更新回调状态
         KuaishouAdsDTO kuaishouAds = new KuaishouAdsDTO();
         kuaishouAds.setId(id);
         kuaishouAds.setCallBackTime(String.valueOf(currentTime));
-        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("resultCode").equals(0)) {
-            huaweiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+
+        if (response.getCode() == 0) {
             kuaishouAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            logger.info("adsCallBack {} 回调渠道成功：{} 数据：{}", channelAdsKey, responseBodyMap, kuaishouAds);
-            huaweiCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")));
-            huaweiCallbackDao.insert(huaweiCallbackDTO);
             baseServiceInner.updateAdsObject(kuaishouAds, kuaishouAdsDao);
-            logger.info("adsCallBack {} {}", channelAdsKey, huaweiCallbackDTO);
-            return BasicResult.getSuccessResponse(huaweiCallbackDTO.getId());
+            logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
+            return BasicResult.getSuccessResponse(data.getId());
         } else {
-            huaweiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             kuaishouAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            logger.error("adsCallBack {} 回调渠道失败：{} 数据：{}", channelAdsKey, responseBodyMap, kuaishouAds);
-            huaweiCallbackDTO.setCallBackMes(responseBodyMap.get("resultCode") + "  " + responseBodyMap.get("resultMessage"));
-            huaweiCallbackDao.insert(huaweiCallbackDTO);
             baseServiceInner.updateAdsObject(kuaishouAds, kuaishouAdsDao);
-            logger.info("adsCallBack {} {}", channelAdsKey, huaweiCallbackDTO);
-            return BasicResult.getFailResponse(huaweiCallbackDTO.getCallBackMes());
+            logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
+            return BasicResult.getFailResponse(data.getCallBackMes());
         }
     }
 

@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.liangdamao;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -119,6 +120,35 @@ public enum LiangdamaoParamEnum {
         liangdamaoBaiduMap.put(IP_MD5, null);
         liangdamaoBaiduMap.put(UA, BaiduParamEnum.UA);
         liangdamaoBaiduMap.put(CALLBACK_URL, BaiduParamEnum.CALLBACK_URL);
+    }
+
+
+    /**
+     * huawei-ltjd
+     */
+    public static Map<LiangdamaoParamEnum, HuaweiParamEnum> liangdamaoHuaweiMap;
+
+    static {
+        liangdamaoHuaweiMap = new HashMap<>();
+//        liangdamaoHuaweiMap.put(TP_ADV_ID, HuaweiParamEnum.YOUKU_TP_ADV_ID);
+//        liangdamaoHuaweiMap.put(ACCESS_ID, HuaweiParamEnum.YOUKU_ACCESS_ID);
+        liangdamaoHuaweiMap.put(REQUEST_ID, null);//每次请求都不一样，以当前时间戳区分
+        liangdamaoHuaweiMap.put(IMEI, HuaweiParamEnum.ID_TYPE);
+        liangdamaoHuaweiMap.put(IMEI_MD5, null);
+        liangdamaoHuaweiMap.put(OAID, HuaweiParamEnum.OAID);
+        liangdamaoHuaweiMap.put(OAID_MD5, null);
+        liangdamaoHuaweiMap.put(IDFA, null);
+        liangdamaoHuaweiMap.put(IDFA_MD5, null);
+        liangdamaoHuaweiMap.put(ADVERTISER_ID, null);
+        liangdamaoHuaweiMap.put(ANDROID_ID_MD5, null);
+        liangdamaoHuaweiMap.put(MAC_MD5, null);
+        liangdamaoHuaweiMap.put(DEEP_LINK, null);
+        liangdamaoHuaweiMap.put(TS, null);
+        liangdamaoHuaweiMap.put(OS, null);
+        liangdamaoHuaweiMap.put(IP, HuaweiParamEnum.IP);
+        liangdamaoHuaweiMap.put(IP_MD5, null);
+        liangdamaoHuaweiMap.put(UA, HuaweiParamEnum.USER_AGENT);
+        liangdamaoHuaweiMap.put(CALLBACK_URL, HuaweiParamEnum.CALLBACK);
     }
 
 }

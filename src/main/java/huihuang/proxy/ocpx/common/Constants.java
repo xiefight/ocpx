@@ -72,6 +72,7 @@ public class Constants {
         public static final String BAIDU_FANQIE = "/bfServer";
 
         public static final String HUAWEI_KUAISHOU = "/hkServer";
+        public static final String HUAWEI_LTJD = "/hjServer";
 
         public static final String MONITOR_ADDRESS = "/monitorAddress";
         public static final String CLICK_REPORT = "/clickReport";
@@ -97,6 +98,7 @@ public class Constants {
         public static final String BAIDU_FANQIE = "baidu-fanqie";
 
         public static final String HUAWEI_KUAISHOU = "huawei-kuaishou";
+        public static final String HUAWEI_LTJD = "huawei-ltjd";
     }
 
 }

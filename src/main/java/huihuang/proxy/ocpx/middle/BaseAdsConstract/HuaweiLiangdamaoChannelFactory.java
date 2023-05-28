@@ -8,7 +8,7 @@ import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamEnum;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamField;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoPath;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
-import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -26,12 +26,13 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * @Description: 上报客户的逻辑再抽象
- * 比如：百度和京东、优酷、番茄的对接，本质上是百度和粮大猫的对接，抽离出百度和粮大猫的公共部分，将京东、优酷、番茄的不同参数传入
+ * 上报客户的逻辑再抽象
+ * * 比如：百度和京东、优酷、番茄的对接，本质上是百度和粮大猫的对接，抽离出百度和粮大猫的公共部分，将京东、优酷、番茄的不同参数传入
+ *
  * @Author: xietao
- * @Date: 2023-05-23 17:39
- **/
-public abstract class BaiduLiangdamaoChannelAds extends BaseSupport implements IChannelAds {
+ * @Date: 2023/5/28 15:56
+ */
+public abstract class HuaweiLiangdamaoChannelFactory extends BaseSupport implements IChannelAds {
 
     protected abstract String channelAdsKey();
 
@@ -43,14 +44,14 @@ public abstract class BaiduLiangdamaoChannelAds extends BaseSupport implements I
     @Override
     public String findMonitorAddress() {
         StringBuilder macro = new StringBuilder();
-        //1.遍历liangdamao查找baidu对应的宏参数
-        Set<LiangdamaoParamEnum> liangdamaoParamEnums = LiangdamaoParamEnum.liangdamaoBaiduMap.keySet();
+        //1.遍历liangdamao查找huawei对应的宏参数
+        Set<LiangdamaoParamEnum> liangdamaoParamEnums = LiangdamaoParamEnum.liangdamaoHuaweiMap.keySet();
         for (LiangdamaoParamEnum liangdamao : liangdamaoParamEnums) {
-            BaiduParamEnum baidu = LiangdamaoParamEnum.liangdamaoBaiduMap.get(liangdamao);
-            if (Objects.isNull(baidu) || StrUtil.isEmpty(baidu.getMacro())) {
+            HuaweiParamEnum huawei = LiangdamaoParamEnum.liangdamaoHuaweiMap.get(liangdamao);
+            if (Objects.isNull(huawei) || StrUtil.isEmpty(huawei.getMacro())) {
                 continue;
             }
-            macro.append(baidu.getParam()).append("=").append(baidu.getMacro()).append("&");
+            macro.append(huawei.getParam()).append("=").append(huawei.getMacro()).append("&");
         }
         String macroStr = macro.toString();
         if (macroStr.endsWith("&")) {
@@ -66,14 +67,14 @@ public abstract class BaiduLiangdamaoChannelAds extends BaseSupport implements I
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
         LiangdamaoParamField liangdamaoParamField = new LiangdamaoParamField();
 
-        Set<Map.Entry<LiangdamaoParamEnum, BaiduParamEnum>> blSet = LiangdamaoParamEnum.liangdamaoBaiduMap.entrySet();
-        blSet.stream().filter(bl -> Objects.nonNull(bl.getValue())).forEach(bl -> {
-            LiangdamaoParamEnum liangdamao = bl.getKey();
-            BaiduParamEnum baidu = bl.getValue();
+        Set<Map.Entry<LiangdamaoParamEnum, HuaweiParamEnum>> hlSet = LiangdamaoParamEnum.liangdamaoHuaweiMap.entrySet();
+        hlSet.stream().filter(hl -> Objects.nonNull(hl.getValue())).forEach(hl -> {
+            LiangdamaoParamEnum liangdamao = hl.getKey();
+            HuaweiParamEnum huawei = hl.getValue();
             //liangdamao的字段名
             String liangdamaoField = liangdamao.getName();
-            String baiduParam = baidu.getParam();
-            String[] value = parameterMap.get(baiduParam);
+            String huaweiParam = huawei.getParam();
+            String[] value = parameterMap.get(huaweiParam);
             if (Objects.isNull(value) || value.length == 0) return;
             try {
                 PropertyDescriptor descriptor = new PropertyDescriptor(liangdamaoField, liangdamaoParamField.getClass());
@@ -156,6 +157,24 @@ public abstract class BaiduLiangdamaoChannelAds extends BaseSupport implements I
         String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
         logger.info("clickReport {} 原始:{}  签名:{}", channelAdsKey(), signatureStr, signature);
         liangdamaoParamField.setSignature(signature);
+    }
+
+    protected String fitExtras(Map<String, String[]> parameterMap, String... extras) {
+//        if (extras.length == 0) {
+//            extras[0] = HuaweiParamEnum.CONTENT_ID.getParam();
+//            extras[1] = HuaweiParamEnum.EVENT_TYPE.getParam();
+//            extras[2] = HuaweiParamEnum.TRACE_TIME.getParam();
+//            extras[3] = HuaweiParamEnum.TRACKING_ENABLED.getParam();
+//        }
+        StringBuilder extraStr = new StringBuilder();
+        for (String extra : extras) {
+            String[] cids = parameterMap.get(extra);
+            if (Objects.nonNull(cids) && cids.length > 0) {
+                String cid = cids[0];
+                extraStr.append("&").append(extra).append("=").append(cid);
+            }
+        }
+        return extraStr.toString();
     }
 
 }

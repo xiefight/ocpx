@@ -1,15 +1,15 @@
 package huihuang.proxy.ocpx.ads.litianjingdong;
 
+import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoPath;
+import org.springframework.stereotype.Component;
+
 /**
  * @Description: 力天京东
  * @Author: xietao
  * @Date: 2023-04-24 15:56
  **/
-public class LTJDPath {
-
-    // 上报广告主时使用
-    public static final String ACCESS_ID = "tp97c55258d39edfe4232dbc485465dc92";
-    public static final String SECRET = "328a8df2988727656e399bd7f27c52ad";
+@Component
+public class LTJDPath extends LiangdamaoPath {
 
     public static final String LTJD_ADS_NAME = "ltjd";
 
@@ -18,4 +18,13 @@ public class LTJDPath {
      */
     public static final String BASIC_URI = "https://convert.mongac.com/tracking/thirdparty/link?";
 
+    @Override
+    public String baseAdsName() {
+        return LTJD_ADS_NAME;
+    }
+
+    @Override
+    public String tpAdvId() {
+        return "164";
+    }
 }

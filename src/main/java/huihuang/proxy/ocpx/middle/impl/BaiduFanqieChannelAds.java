@@ -14,7 +14,7 @@ import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
-import huihuang.proxy.ocpx.middle.BaseAdsConstract.BaiduLiangdamaoChannelAds;
+import huihuang.proxy.ocpx.middle.BaseAdsConstract.BaiduLiangdamaoChannelFactory;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -29,7 +29,7 @@ import java.util.Objects;
  * @Date: 2023/5/10 22:28
  */
 @Component("bfChannelAds")
-public class BaiduFanqieChannelAds extends BaiduLiangdamaoChannelAds {
+public class BaiduFanqieChannelAds extends BaiduLiangdamaoChannelFactory {
 
     @Autowired
     private FanqiePath fanqiePath;
