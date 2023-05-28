@@ -1,7 +1,6 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.net.URLDecoder;
-import huihuang.proxy.ocpx.ads.fanqie.FanqieAdsDTO;
 import huihuang.proxy.ocpx.ads.fanqie.FanqiePath;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoEventTypeEnum;
@@ -85,7 +84,7 @@ public class BaiduFanqieServiceImpl extends BaiduChannelFactory implements IChan
         BaiduCallbackDTO data = (BaiduCallbackDTO) response.getData();
 
         //更新回调状态
-        FanqieAdsDTO fanqieAds = new FanqieAdsDTO();
+        LiangdamaoAdsDTO fanqieAds = new LiangdamaoAdsDTO();
         fanqieAds.setId(id);
         fanqieAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
         if (response.getCode() == 0) {
