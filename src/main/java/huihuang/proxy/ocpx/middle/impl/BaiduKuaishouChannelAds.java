@@ -91,6 +91,8 @@ public class BaiduKuaishouChannelAds extends BaseSupport implements IChannelAds 
             String baiduParam = baidu.getParam();
             String[] value = parameterMap.get(baiduParam);
             if (Objects.isNull(value) || value.length == 0) return;
+            if ("null".equals(value[0]) || "NULL".equals(value[0])) return;
+            if (value[0].startsWith("__") && value[0].endsWith("__")) return;
             try {
                 PropertyDescriptor descriptor = new PropertyDescriptor(kuaishouField, kuaishouParamField.getClass());
                 Method setMethod = descriptor.getWriteMethod();
