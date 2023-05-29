@@ -71,6 +71,7 @@
             <if test="callback_url != null">callback_url = #{callback_url},</if>
             <if test="signature != null">signature = #{signature},</if>
             <if test="channelName != null">channel_name = #{channelName},</if>
+            <if test="extra != null">extra = #{extra},</if>
             update_time = now(),
             <if test="reportStatus != null">report_status = #{reportStatus},</if>
             <if test="callBackStatus != null">callback_status = #{callBackStatus},</if>

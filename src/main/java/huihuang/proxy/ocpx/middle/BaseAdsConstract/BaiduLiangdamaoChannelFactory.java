@@ -75,6 +75,8 @@ public abstract class BaiduLiangdamaoChannelFactory extends BaseSupport implemen
             String baiduParam = baidu.getParam();
             String[] value = parameterMap.get(baiduParam);
             if (Objects.isNull(value) || value.length == 0) return;
+            if ("null".equals(value[0]) || "NULL".equals(value[0])) return;
+            if (value[0].startsWith("__") && value[0].endsWith("__")) return;
             try {
                 PropertyDescriptor descriptor = new PropertyDescriptor(liangdamaoField, liangdamaoParamField.getClass());
                 Method setMethod = descriptor.getWriteMethod();
