@@ -73,7 +73,7 @@ public class BaiduChannelFactory {
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
 
         //保存转化事件回调信息
-        BaiduCallbackDTO baiduCallbackDTO = new BaiduCallbackDTO(baiduVO.getAdsId(), baiduVO.getEventType(), baiduVO.getCbIdfa(),
+        BaiduCallbackDTO baiduCallbackDTO = new BaiduCallbackDTO(baiduVO.getAdsId(), baiduVO.getaType(), baiduVO.getCbIdfa(),
                 baiduVO.getCbImei(), baiduVO.getCbImeiMd5(), baiduVO.getCbAndroidIdMd5(), baiduVO.getCbIp(), baiduVO.getCbEventTime(), baiduVO.getAdsName());
         if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("error_code").equals(0)) {
             baiduCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());

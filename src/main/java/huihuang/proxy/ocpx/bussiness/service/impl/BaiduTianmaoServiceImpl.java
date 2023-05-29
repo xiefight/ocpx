@@ -76,7 +76,6 @@ public class BaiduTianmaoServiceImpl extends BaiduChannelFactory implements ICha
         Ads2BaiduVO baiduVO = new Ads2BaiduVO();
         baiduVO.setAdsId(id);
         baiduVO.setAdsName(tianmaoPath.baseAdsName());
-        baiduVO.setEventType(parameterMap.get("event_type")[0]);
         baiduVO.setChannelUrl(channelUrl);
         baiduVO.setaType(LiangdamaoEventTypeEnum.liangdamaoBaiduEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
         baiduVO.setaValue(0);

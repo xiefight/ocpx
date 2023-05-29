@@ -9,11 +9,10 @@ public class Ads2BaiduVO {
 
     //广告id
     private Integer adsId;
-    //事件
-    private String eventType;
     //回调渠道的decode的url
     private String channelUrl;
     //参数
+    //事件
     private String aType;
     private Integer aValue;
     private String cbOaid;
@@ -36,14 +35,6 @@ public class Ads2BaiduVO {
 
     public void setAdsId(Integer adsId) {
         this.adsId = adsId;
-    }
-
-    public String getEventType() {
-        return eventType;
-    }
-
-    public void setEventType(String eventType) {
-        this.eventType = eventType;
     }
 
     public String getChannelUrl() {
@@ -154,7 +145,6 @@ public class Ads2BaiduVO {
     public String toString() {
         return "Ads2BaiduVO{" +
                 "adsId=" + adsId +
-                ", eventType='" + eventType + '\'' +
                 ", channelUrl='" + channelUrl + '\'' +
                 ", aType='" + aType + '\'' +
                 ", aValue=" + aValue +
