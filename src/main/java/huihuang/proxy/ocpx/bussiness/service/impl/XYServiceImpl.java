@@ -7,7 +7,7 @@ import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.XiaomiChannelFactory;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2XiaomiVO;
-import huihuang.proxy.ocpx.channel.huawei.HuaweiCallbackDTO;
+import huihuang.proxy.ocpx.channel.xiaomi.XiaomiCallbackDTO;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -66,7 +66,7 @@ public class XYServiceImpl extends XiaomiChannelFactory implements IChannelAdsSe
         xiaomiVO.setImei(youkuAdsDTO.getImei_md5());
 
         Response response = super.baseAdsCallBack(xiaomiVO);
-        HuaweiCallbackDTO data = (HuaweiCallbackDTO) response.getData();
+        XiaomiCallbackDTO data = (XiaomiCallbackDTO) response.getData();
 
         //更新回调状态
         LiangdamaoAdsDTO youkuAds = new LiangdamaoAdsDTO();

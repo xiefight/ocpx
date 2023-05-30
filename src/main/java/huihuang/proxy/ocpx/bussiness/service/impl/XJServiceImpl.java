@@ -1,10 +1,5 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
-import cn.hutool.crypto.digest.DigestUtil;
-import cn.hutool.http.HttpRequest;
-import cn.hutool.http.HttpResponse;
-import cn.hutool.http.HttpStatus;
-import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.ILtjdAdsDao;
@@ -12,23 +7,18 @@ import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.XiaomiChannelFactory;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2XiaomiVO;
-import huihuang.proxy.ocpx.channel.huawei.HuaweiCallbackDTO;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiCallbackDTO;
-import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
-import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
 
 /**
  * @Description: xiaomi-ltjd
@@ -76,7 +66,7 @@ public class XJServiceImpl extends XiaomiChannelFactory implements IChannelAdsSe
         xiaomiVO.setImei(ltjdAdsDTO.getImei_md5());
 
         Response response = super.baseAdsCallBack(xiaomiVO);
-        HuaweiCallbackDTO data = (HuaweiCallbackDTO) response.getData();
+        XiaomiCallbackDTO data = (XiaomiCallbackDTO) response.getData();
 
         //更新回调状态
         LiangdamaoAdsDTO ltjdAds = new LiangdamaoAdsDTO();
