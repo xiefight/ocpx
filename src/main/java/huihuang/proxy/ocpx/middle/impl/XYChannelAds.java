@@ -1,26 +1,18 @@
 package huihuang.proxy.ocpx.middle.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.http.HttpRequest;
-import cn.hutool.http.HttpResponse;
-import cn.hutool.http.HttpStatus;
-import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamField;
 import huihuang.proxy.ocpx.ads.youku.YoukuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IYoukuAdsDao;
-import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
-import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
-import huihuang.proxy.ocpx.common.Response;
-import huihuang.proxy.ocpx.middle.BaseAdsConstract.XiaomiLiangdamaoChannelFactory;
-import huihuang.proxy.ocpx.util.JsonParameterUtil;
+import huihuang.proxy.ocpx.marketinterface.IMarkDao;
+import huihuang.proxy.ocpx.middle.baseadsreport.XiaomiLiangdamaoReportFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * xiaomi-youku
@@ -29,12 +21,10 @@ import java.util.Objects;
  * @Date: 2023/4/27 10:48
  */
 @Component
-public class XYChannelAds extends XiaomiLiangdamaoChannelFactory {
+public class XYChannelAds extends XiaomiLiangdamaoReportFactory {
 
     @Autowired
     private IYoukuAdsDao youkuAdsDao;
-    @Autowired
-    private BaseServiceInner baseServiceInner;
     @Autowired
     private YoukuPath youkuPath;
 
@@ -48,6 +38,11 @@ public class XYChannelAds extends XiaomiLiangdamaoChannelFactory {
     @Override
     protected String serverPathKey() {
         return Constants.ServerPath.XIAOMI_YOUKU;
+    }
+
+    @Override
+    protected IMarkDao adsDao() {
+        return youkuAdsDao;
     }
 
 
@@ -69,28 +64,6 @@ public class XYChannelAds extends XiaomiLiangdamaoChannelFactory {
         youkuAdsDao.insert(liangdamaoAdsDTO);
         logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey(), liangdamaoAdsDTO);
         return liangdamaoAdsDTO;
-    }
-
-    @Override
-    protected Response reportAds(String adsUrl, Object adsDtoObj) throws Exception {
-        logger.info("调用用户侧的地址 {} adsUrl:{}", channelAdsKey, adsUrl);
-        HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();
-        Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
-        LiangdamaoAdsDTO liangdamaoAdsDTO = (LiangdamaoAdsDTO) adsDtoObj;
-        LiangdamaoAdsDTO liangdamaoAdsVO = new LiangdamaoAdsDTO();
-        liangdamaoAdsVO.setId(liangdamaoAdsDTO.getId());
-        //上报成功
-        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals("0")) {
-            liangdamaoAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(liangdamaoAdsVO, youkuAdsDao);
-            logger.info("clickReport {} 上报广告侧接口请求成功:{} 数据:{}", channelAdsKey, response, liangdamaoAdsVO);
-            return BasicResult.getSuccessResponse(liangdamaoAdsDTO.getId());
-        } else {
-            liangdamaoAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode() + "--" + JSONObject.toJSONString(responseBodyMap));
-            baseServiceInner.updateAdsObject(liangdamaoAdsVO, youkuAdsDao);
-            logger.error("clickReport {} 上报广告侧接口请求失败:{} 数据:{}", channelAdsKey, response, liangdamaoAdsVO);
-            return BasicResult.getFailResponse("上报广告侧接口请求失败", 0);
-        }
     }
 
 }
