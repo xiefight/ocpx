@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.middle.baseadsreport;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.net.URLEncoder;
 import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
@@ -41,6 +42,8 @@ public abstract class BaseLiangdamaoReportFactory extends BaseSupport implements
     protected abstract String serverPathKey();
 
     protected abstract IMarkDao adsDao();
+
+    protected abstract String channelName();
 
     @Override
     protected void convertParams(Object adsObj) {
@@ -84,6 +87,17 @@ public abstract class BaseLiangdamaoReportFactory extends BaseSupport implements
                     + " ios设备" + LiangdamaoParamEnum.IDFA.getName() + "、" + LiangdamaoParamEnum.IDFA_MD5.getName() + "不能同时为空");
         }
         return BasicResult.getSuccessResponse();
+    }
+
+    @Override
+    protected Object saveOriginParamData(Object adsObj) {
+        LiangdamaoParamField liangdamaoParamField = (LiangdamaoParamField) adsObj;
+        LiangdamaoAdsDTO liangdamaoAdsDTO = new LiangdamaoAdsDTO();
+        BeanUtil.copyProperties(liangdamaoParamField, liangdamaoAdsDTO);
+        liangdamaoAdsDTO.setChannelName(channelName());
+        baseServiceInner.insertAdsObject(liangdamaoAdsDTO, adsDao());
+        logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey(), liangdamaoAdsDTO);
+        return liangdamaoAdsDTO;
     }
 
     @Override

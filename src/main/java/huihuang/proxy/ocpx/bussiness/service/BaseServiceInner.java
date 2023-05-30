@@ -28,6 +28,15 @@ public class BaseServiceInner {
         }
     }
 
+    public void insertAdsObject(IMarkDto adsDTO, IMarkDao dao) {
+        try {
+            Method update = dao.getClass().getMethod("insert", adsDTO.getClass());
+            update.invoke(dao, adsDTO);
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * 整理广告侧的url
      */

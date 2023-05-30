@@ -6,6 +6,7 @@ import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamEnum;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamField;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoPath;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
+import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
 import huihuang.proxy.ocpx.common.Constants;
 
 import java.beans.IntrospectionException;
@@ -24,9 +25,10 @@ import java.util.Set;
  **/
 public abstract class XiaomiLiangdamaoReportFactory extends BaseLiangdamaoReportFactory {
 
-    protected abstract String channelAdsKey();
-
-    protected abstract String serverPathKey();
+    @Override
+    protected String channelName() {
+        return XiaomiPath.XIAOMI_CHANNEL_NAME;
+    }
 
     /**
      * 生成监测链接

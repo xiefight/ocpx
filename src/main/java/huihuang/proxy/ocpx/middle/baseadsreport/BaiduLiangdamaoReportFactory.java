@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamEnum;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamField;
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.Constants;
 
 import java.beans.IntrospectionException;
@@ -21,6 +22,11 @@ import java.util.Set;
  * @Date: 2023-05-23 17:39
  **/
 public abstract class BaiduLiangdamaoReportFactory extends BaseLiangdamaoReportFactory {
+
+    @Override
+    protected String channelName() {
+        return BaiduPath.BAIDU_CHANNEL_NAME;
+    }
 
     /**
      * 生成监测链接

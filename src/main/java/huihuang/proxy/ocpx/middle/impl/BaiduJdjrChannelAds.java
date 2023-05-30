@@ -52,15 +52,4 @@ public class BaiduJdjrChannelAds extends BaiduLiangdamaoReportFactory {
         return liangdamaoParamField;
     }
 
-    @Override
-    protected Object saveOriginParamData(Object adsObj) {
-        LiangdamaoParamField liangdamaoParamField = (LiangdamaoParamField) adsObj;
-        LiangdamaoAdsDTO liangdamaoAdsDTO = new LiangdamaoAdsDTO();
-        BeanUtil.copyProperties(liangdamaoParamField, liangdamaoAdsDTO);
-        liangdamaoAdsDTO.setChannelName(BaiduPath.BAIDU_CHANNEL_NAME);
-        jdjrAdsDao.insert(liangdamaoAdsDTO);
-        logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey(), liangdamaoAdsDTO);
-        return liangdamaoAdsDTO;
-    }
-
 }

@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamEnum;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamField;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
+import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
 import huihuang.proxy.ocpx.common.Constants;
 
 import java.beans.IntrospectionException;
@@ -23,9 +24,10 @@ import java.util.Set;
  */
 public abstract class HuaweiLiangdamaoReportFactory extends BaseLiangdamaoReportFactory {
 
-    protected abstract String channelAdsKey();
-
-    protected abstract String serverPathKey();
+    @Override
+    protected String channelName() {
+        return HuaweiPath.HUAWEI_CHANNEL_NAME;
+    }
 
     /**
      * 生成监测链接
