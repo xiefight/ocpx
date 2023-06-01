@@ -3,6 +3,7 @@ package huihuang.proxy.ocpx.middle.baseadsreport;
 import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamEnum;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamField;
+import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoPath;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
 import huihuang.proxy.ocpx.common.Constants;
@@ -75,6 +76,7 @@ public abstract class HuaweiLiangdamaoReportFactory extends BaseLiangdamaoReport
                 e.printStackTrace();
             }
         });
+        liangdamaoParamField.setAccess_id(LiangdamaoPath.ACCESS_ID);
         return liangdamaoParamField;
     }
 

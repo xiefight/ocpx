@@ -78,6 +78,7 @@ public abstract class XiaomiLiangdamaoReportFactory extends BaseLiangdamaoReport
                 e.printStackTrace();
             }
         });
+        liangdamaoParamField.setAccess_id(LiangdamaoPath.ACCESS_ID);
         return liangdamaoParamField;
     }
 
