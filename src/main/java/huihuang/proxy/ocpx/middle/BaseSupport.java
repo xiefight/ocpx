@@ -87,11 +87,4 @@ public abstract class BaseSupport {
     protected abstract Response reportAds(String adsUrl, Object adsDtoObj) throws Exception;
 
 
-    /**
-     * 客户侧回调
-     */
-    public void adsCallBack() {
-
-    }
-
 }

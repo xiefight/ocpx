@@ -21,10 +21,4 @@ public interface IChannelAds {
      */
     Response clickReport(Map<String, String[]> parameterMap) throws Exception;
 
-    /**
-     * 客户侧回调
-     */
-    void adsCallBack();
-
-
 }
