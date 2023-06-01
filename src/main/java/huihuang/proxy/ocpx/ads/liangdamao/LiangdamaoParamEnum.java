@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.ads.liangdamao;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
+import huihuang.proxy.ocpx.channel.wifi.WifiParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -131,7 +132,7 @@ public enum LiangdamaoParamEnum {
     static {
         liangdamaoHuaweiMap = new HashMap<>();
 //        liangdamaoHuaweiMap.put(TP_ADV_ID, HuaweiParamEnum.YOUKU_TP_ADV_ID);
-//        liangdamaoHuaweiMap.put(ACCESS_ID, HuaweiParamEnum.YOUKU_ACCESS_ID);
+        liangdamaoHuaweiMap.put(ACCESS_ID, HuaweiParamEnum.YOUKU_ACCESS_ID);
         liangdamaoHuaweiMap.put(REQUEST_ID, null);//每次请求都不一样，以当前时间戳区分
         liangdamaoHuaweiMap.put(IMEI, HuaweiParamEnum.ID_TYPE);
         liangdamaoHuaweiMap.put(IMEI_MD5, null);
@@ -149,6 +150,35 @@ public enum LiangdamaoParamEnum {
         liangdamaoHuaweiMap.put(IP_MD5, null);
         liangdamaoHuaweiMap.put(UA, HuaweiParamEnum.USER_AGENT);
         liangdamaoHuaweiMap.put(CALLBACK_URL, HuaweiParamEnum.CALLBACK);
+    }
+
+
+    /**
+     * wifi-xigua
+     */
+    public static Map<LiangdamaoParamEnum, WifiParamEnum> liangdamaoWifiMap;
+
+    static {
+        liangdamaoWifiMap = new HashMap<>();
+//        xiguaWifiMap.put(TP_ADV_ID, WifiParamEnum.XIGUA_TP_ADV_ID);
+        liangdamaoWifiMap.put(ACCESS_ID, WifiParamEnum.XIGUA_ACCESS_ID);
+        liangdamaoWifiMap.put(REQUEST_ID, null);//每次请求都不一样，以当前时间戳区分
+        liangdamaoWifiMap.put(IMEI, WifiParamEnum.PLAIN_IMEI);//xiaomi没有imei的原值
+        liangdamaoWifiMap.put(IMEI_MD5, WifiParamEnum.IMEI);
+        liangdamaoWifiMap.put(OAID, WifiParamEnum.OAID);
+        liangdamaoWifiMap.put(OAID_MD5, WifiParamEnum.HASH_OAID);
+        liangdamaoWifiMap.put(IDFA, WifiParamEnum.PLAIN_IDFA);// todo ios至少填一个，未确定
+        liangdamaoWifiMap.put(IDFA_MD5, WifiParamEnum.IDFA);
+        liangdamaoWifiMap.put(ADVERTISER_ID, WifiParamEnum.AID);//todo ltjd需要广告主id，未确定
+        liangdamaoWifiMap.put(ANDROID_ID_MD5, WifiParamEnum.ANDROID_ID);
+        liangdamaoWifiMap.put(MAC_MD5, WifiParamEnum.MAC);
+        liangdamaoWifiMap.put(DEEP_LINK, null);
+        liangdamaoWifiMap.put(TS, WifiParamEnum.STIME);//注意：ltjd是秒，xiaomi是毫秒
+        liangdamaoWifiMap.put(OS, WifiParamEnum.OS);//todo 未确定
+        liangdamaoWifiMap.put(IP, null);
+        liangdamaoWifiMap.put(IP_MD5, null);
+        liangdamaoWifiMap.put(UA, null);
+        liangdamaoWifiMap.put(CALLBACK_URL, null);
     }
 
 }
