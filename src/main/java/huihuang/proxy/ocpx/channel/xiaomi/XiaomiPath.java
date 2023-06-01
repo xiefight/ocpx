@@ -16,6 +16,8 @@ public class XiaomiPath {
      * xiaomi提供给kuaishou的秘钥 */
     public static final String KUAISHOU_SECRET = "uMhzEwzBvUvcTLqL";
 
+    public static final String KUAISHOUJISU_SECRET = "qcNfrgHbmDGcyvUc";
+
     public static final String XIAOMI_CHANNEL_NAME = "xiaomi";
 
     public static final String CALLBACK_URL = "http://trail.e.mi.com/api/callback?";
