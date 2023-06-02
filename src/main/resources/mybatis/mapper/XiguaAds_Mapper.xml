@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="huihuang.proxy.ocpx.bussiness.dao.ads.IXiguaAdsDao">
 
-    <resultMap id="xiguaAdsMap" type="huihuang.proxy.ocpx.ads.xiguavideo.XiguaAdsDTO">
+    <resultMap id="xiguaAdsMap" type="huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO">
         <id column="id" property="id"/>
         <result column="tp_adv_id" property="tp_adv_id"/>
         <result column="access_id" property="access_id"/>
@@ -33,7 +33,7 @@
         <result column="callback_time" property="callBackTime"/>
     </resultMap>
 
-    <insert id="insert" parameterType="huihuang.proxy.ocpx.ads.xiguavideo.XiguaAdsDTO">
+    <insert id="insert" parameterType="huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO">
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -47,7 +47,7 @@
     </insert>
 
 
-    <update id="update" parameterType="huihuang.proxy.ocpx.ads.xiguavideo.XiguaAdsDTO">
+    <update id="update" parameterType="huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO">
         UPDATE xigua_ads
         <set>
             <if test="tp_adv_id != null">tp_adv_id = #{tp_adv_id},</if>
