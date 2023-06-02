@@ -28,6 +28,7 @@ public class BaiduPath {
     public static final String TIANMAO_SECRET = "NDc5NzI3MDk=";
     public static final String FANQIE_SECRET = "NDU3OTc0NDg=";//"NDU3OTc0NTE=";
     public static final String JDJR_SECRET = "NDc4NDc5Njk=";
+    public static final String JDSS_SECRET = "NDc4NDc5NzA=";
 
     public static final String BAIDU_CHANNEL_NAME = "baidu";
 
