@@ -38,7 +38,7 @@ public class XiaomiChannelFactory {
         JSONObject json = new JSONObject();
         json.put("callback", xiaomiVO.getCallBackUrl());
         json.put("conv_time", xiaomiVO.getEventTimes());
-        json.put("convType", LiangdamaoEventTypeEnum.liangdamaoXiaomiEventTypeMap.get(xiaomiVO.getEventType()).getCode());
+        json.put("convType", xiaomiVO.getEventType());
         if (Objects.isNull(xiaomiVO.getOaid())) {
             json.put("imei", xiaomiVO.getImei());
         } else {

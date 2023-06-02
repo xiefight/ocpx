@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO;
+import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoEventTypeEnum;
 import huihuang.proxy.ocpx.ads.youku.YoukuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IYoukuAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -59,7 +60,7 @@ public class XYServiceImpl extends XiaomiChannelFactory implements IChannelAdsSe
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
         xiaomiVO.setAdsName(youkuPath.baseAdsName());
-        xiaomiVO.setEventType(parameterMap.get("event_type")[0]);
+        xiaomiVO.setEventType(LiangdamaoEventTypeEnum.liangdamaoXiaomiEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(youkuAdsDTO.getCallback_url());
         xiaomiVO.setOaid(youkuAdsDTO.getOaid());
