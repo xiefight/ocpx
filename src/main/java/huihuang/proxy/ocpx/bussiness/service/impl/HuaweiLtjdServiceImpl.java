@@ -3,6 +3,7 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouEventTypeEnum;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO;
+import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoEventTypeEnum;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.ILtjdAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -74,7 +75,7 @@ public class HuaweiLtjdServiceImpl extends HuaweiChannelFactory implements IChan
         huaweiVO.setContentId(getContentFromExtra(ltjdAdsDTO, HuaweiParamEnum.CONTENT_ID.getParam(), null));
         huaweiVO.setTrackingEnabled(getContentFromExtra(ltjdAdsDTO, HuaweiParamEnum.TRACKING_ENABLED.getParam(), "1"));
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
-        huaweiVO.setConversionType(KuaishouEventTypeEnum.kuaishouHuaweiEventTypeMap.get(parameterMap.get("actionType")[0]).getCode());
+        huaweiVO.setConversionType(LiangdamaoEventTypeEnum.liangdamaoHuaweiEventTypeMap.get(parameterMap.get("actionType")[0]).getCode());
         huaweiVO.setOaid(ltjdAdsDTO.getOaid());
         huaweiVO.setSecret(HuaweiPath.LTJD_SECRET);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);

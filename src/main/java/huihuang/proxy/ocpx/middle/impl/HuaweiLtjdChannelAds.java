@@ -1,27 +1,16 @@
 package huihuang.proxy.ocpx.middle.impl;
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.http.HttpRequest;
-import cn.hutool.http.HttpResponse;
-import cn.hutool.http.HttpStatus;
-import com.alibaba.fastjson.JSONObject;
-import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamField;
+import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.ILtjdAdsDao;
-import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
-import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
-import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
-import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import huihuang.proxy.ocpx.middle.baseadsreport.HuaweiLiangdamaoReportFactory;
-import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * huawei-jingdong
@@ -34,6 +23,9 @@ public class HuaweiLtjdChannelAds extends HuaweiLiangdamaoReportFactory {
 
     @Autowired
     private ILtjdAdsDao ltjdAdsDao;
+
+    @Autowired
+    private LTJDPath ltjdPath;
 
     String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_LTJD;
 
@@ -56,6 +48,7 @@ public class HuaweiLtjdChannelAds extends HuaweiLiangdamaoReportFactory {
     @Override
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
         LiangdamaoParamField liangdamaoParamField = (LiangdamaoParamField) super.channelParamToAdsParam(parameterMap);
+        liangdamaoParamField.setTp_adv_id(ltjdPath.tpAdvId());
         //存储华为这边必有而广告侧（快手、粮大猫）这不必有的参数，回传可能会用到
         String extras = fitExtras(parameterMap,
                 HuaweiParamEnum.CONTENT_ID.getParam(),
