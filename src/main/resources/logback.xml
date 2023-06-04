@@ -52,7 +52,7 @@
     </root>
 
 
-    <!-- 西瓜视频  -->
+    <!-- 西瓜视频 start -->
     <appender name="XIGUA_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/xigua/xigua.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
@@ -79,8 +79,10 @@
         <appender-ref ref="XIGUA_LOG"/>
     </logger>
 
+    <!-- 西瓜视频 end -->
 
-    <!-- 京东  -->
+
+    <!-- 京东 start -->
     <appender name="LTJD_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/ltjd/ltjd.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
@@ -99,7 +101,6 @@
         </layout>
     </appender>
 
-
     <logger name="huihuang.proxy.ocpx.middle.impl.XJChannelAds" level="INFO" additivity="true">
         <appender-ref ref="LTJD_LOG"/>
     </logger>
@@ -113,7 +114,37 @@
         <appender-ref ref="LTJD_LOG"/>
     </logger>
 
-    <!-- 优酷  -->
+    <!-- 京东 end -->
+
+    <!-- 京东搜索 start -->
+    <appender name="JDSS_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/jdss/jdss.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/jdss/jdss.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduJdssChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="JDSS_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduJdssServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="JDSS_LOG"/>
+    </logger>
+
+    <!-- 京东搜索 end -->
+
+    <!-- 优酷 start -->
     <appender name="YOUKU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/youku/youku.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
@@ -147,8 +178,10 @@
     </logger>
 
 
+    <!-- 优酷 end -->
 
-    <!-- 快手  -->
+
+    <!-- 快手 start -->
     <appender name="KUAISHOU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/kuaishou/kuaishou.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
@@ -181,8 +214,10 @@
         <appender-ref ref="KUAISHOU_LOG"/>
     </logger>
 
+    <!-- 快手 end -->
 
-    <!-- 天猫 -->
+
+    <!-- 天猫 start -->
     <appender name="TIANMAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/tianmao/tianmao.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
@@ -209,8 +244,10 @@
         <appender-ref ref="TIANMAO_LOG"/>
     </logger>
 
+    <!-- 天猫 end -->
 
-    <!-- 番茄 -->
+
+    <!-- 番茄 start -->
     <appender name="FANQIE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/fanqie/fanqie.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
@@ -238,7 +275,10 @@
     </logger>
 
 
-    <!-- 京东金融 -->
+    <!-- 番茄 end -->
+
+
+    <!-- 京东金融 start -->
     <appender name="JINGDONGJINRONG_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/jdjr/jdjr.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
@@ -264,5 +304,38 @@
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduJdjrServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="JINGDONGJINRONG_LOG"/>
     </logger>
+
+
+    <!-- 京东金融 end -->
+
+
+    <!-- 小红书 start -->
+    <appender name="XIAOHONGSHU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/xiaohongshu/xiaohongshu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/xiaohongshu/xiaohongshu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiXiaohongshuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XIAOHONGSHU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiXiaohongshuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XIAOHONGSHU_LOG"/>
+    </logger>
+
+    <!-- 小红书 end -->
 
 </configuration>
