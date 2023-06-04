@@ -62,11 +62,13 @@ public class Constants {
         public static final String XIAOMI_LTJD = "/xjServer";
         public static final String XIAOMI_YOUKU = "/xyServer";
         public static final String XIAOMI_KUAISHOU = "/xkServer";
+        public static final String XIAOMI_XIAOHONGSHU = "/xxhsServer";
 
         public static final String WIFI_XIGUA = "/wxServer";
 
         public static final String BAIDU_YOUKU = "/byServer";
         public static final String BAIDU_LTJD = "/bjServer";
+        public static final String BAIDU_JDSS = "/bjdssServer";
         public static final String BAIDU_JDJR = "/bjdjrServer";
         public static final String BAIDU_KUAISHOU = "/bkServer";
         public static final String BAIDU_TIANMAO = "/btServer";
@@ -88,6 +90,7 @@ public class Constants {
         public static final String XIAOMI_LTJD = "xiaomi-ltjd";
         public static final String XIAOMI_YOUKU = "xiaomi-youku";
         public static final String XIAOMI_KUAISHOU = "xiaomi-kuaishou";
+        public static final String XIAOMI_XIAOHONGSHU = "xiaomi-xiaohongshu";
 
         public static final String TOUTIAO_MEITUAN = "toutiao-meituan";
 
@@ -95,6 +98,7 @@ public class Constants {
 
         public static final String BAIDU_YOUKU = "baidu-youku";
         public static final String BAIDU_LTJD = "baidu-ltjd";
+        public static final String BAIDU_JDSS = "baidu-jdss";
         public static final String BAIDU_JDJR = "baidu-jdjr";
         public static final String BAIDU_KUAISHOU = "baidu-kuaishou";
         public static final String BAIDU_TIANMAO = "baidu-tianmao";
