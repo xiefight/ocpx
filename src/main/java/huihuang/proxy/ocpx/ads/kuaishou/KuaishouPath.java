@@ -1,9 +1,8 @@
 package huihuang.proxy.ocpx.ads.kuaishou;
 
-import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
-
 /**
  * xigua
+ *
  * @Author: xietao
  * @Date: 2023/5/9 20:26
  */
@@ -25,9 +24,12 @@ public class KuaishouPath {
     public static final String HUAWEI_KUAISHOU_ADID = "21749";
     public static final String HUAWEI_KUAISHOUJISU_ADID = "21750";
 
+    public static final String OPPO_KUAISHOU_ADID = "?";
+    public static final String OPPO_KUAISHOUJISU_ADID = "?";
+
 
     //生产域名
-    public static final String URI= "https://promotion-partner.kuaishou.com";
+    public static final String URI = "https://promotion-partner.kuaishou.com";
     //曝光接受路径
     public static final String IMPRESSION = "/rest/n/promotion/impression?";
     //

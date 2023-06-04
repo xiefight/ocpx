@@ -48,6 +48,8 @@ public class ChannelAdsConfig {
     private BaiduJdssChannelAds bjdssChannelAds;
     @Autowired
     private XiaomiXiaohongshuChannelAds xiaomiXhsChannelAds;
+    @Autowired
+    private OppoKuaishouChannelAds oppoKuaishouChannelAds;
 
     @PostConstruct
     public void init() {
@@ -66,6 +68,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_JDJR, bjdjrChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_JDSS, bjdssChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_XIAOHONGSHU, xiaomiXhsChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.OPPO_KUAISHOU, oppoKuaishouChannelAds);
     }
 
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="huihuang.proxy.ocpx.bussiness.dao.channel.IOppoCallbackDao">
+
+    <resultMap id="oppoCallbackMap" type="huihuang.proxy.ocpx.channel.oppo.OppoCallbackDTO">
+        <id column="id" property="id"/>
+        <id column="ads_id" property="adsId"/>
+        <result column="imei" property="imei"/>
+        <result column="ouId" property="ouId"/>
+        <result column="ads_name" property="adsName"/>
+        <result column="timestamp" property="timestamp"/>
+        <result column="pkg" property="pkg"/>
+        <result column="data_type" property="dataType"/>
+        <result column="channel" property="channel"/>
+        <result column="type" property="type"/>
+        <result column="ascribe_type" property="ascribeType"/>
+        <result column="adId" property="adId"/>
+
+        <result column="extra" property="extra"/>
+        <result column="callback_status" property="callBackStatus"/>
+        <result column="callback_mes" property="callBackMes"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="huihuang.proxy.ocpx.channel.oppo.OppoCallbackDTO">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO oppo_callback
+        (ads_id, imei, ouId, ads_name, timestamp, pkg, data_type, channel, type, ascribe_type, adId ,extra,
+        callback_status,callback_mes, create_time, update_time)
+        VALUES (#{adsId}, #{imei}, #{ouId},
+        #{adsName},#{timestamp},#{pkg},#{dataType},#{channel},#{type},#{ascribeType},#{adId}, #{extra},
+        #{callBackStatus},#{callBackMes},now(),now())
+    </insert>
+
+
+</mapper>

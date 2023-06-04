@@ -64,9 +64,9 @@ public abstract class KuaishouReportFactory extends BaseSupport implements IChan
     @Override
     protected Response judgeParams(Object adsObj) {
         KuaishouParamField kuaishouParamField = (KuaishouParamField) adsObj;
-        if (Objects.isNull(kuaishouParamField.getCallback())) {
+        /*if (Objects.isNull(kuaishouParamField.getCallback())) {
             return BasicResult.getFailResponse(KuaishouParamEnum.CALLBACK.getName() + "不能为空");
-        }
+        }*/
         if (Objects.isNull(kuaishouParamField.getAdid())) {
             return BasicResult.getFailResponse(KuaishouParamEnum.ADID.getName() + "不能为空");
         }
