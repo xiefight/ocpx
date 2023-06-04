@@ -213,6 +213,12 @@
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiKuaishouServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="KUAISHOU_LOG"/>
     </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.OppoKuaishouChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoKuaishouServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
 
     <!-- 快手 end -->
 
@@ -337,5 +343,6 @@
     </logger>
 
     <!-- 小红书 end -->
+
 
 </configuration>
