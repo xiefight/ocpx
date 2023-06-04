@@ -22,8 +22,8 @@ import java.util.Map;
 public class OppoKuaishouController {
 
     @Autowired
-    @Qualifier("hkService")
-    private IChannelAdsService hkService;
+    @Qualifier("okService")
+    private IChannelAdsService okService;
 
     /**
      * 监测地址
@@ -32,7 +32,7 @@ public class OppoKuaishouController {
     public Response monitorAddress(HttpServletRequest request, @RequestBody String reqBody) {
         try {
             Map<String, Object> params = JsonParameterUtil.jsonToMap(reqBody, Exception.class);
-            return hkService.monitorAddress(params);
+            return okService.monitorAddress(params);
         } catch (Exception e) {
             return BasicResult.getFailResponse("请求异常", e.getMessage());
         }
@@ -45,7 +45,7 @@ public class OppoKuaishouController {
     public Response clickReport(HttpServletRequest request) {
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
-            return hkService.clickReport(parameterMap);
+            return okService.clickReport(parameterMap);
         } catch (Exception e) {
             return BasicResult.getFailResponse("请求异常", e.getMessage());
         }
@@ -58,7 +58,7 @@ public class OppoKuaishouController {
     public Response adsCallBack(HttpServletRequest request, @PathVariable Integer id) {
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
-            return hkService.adsCallBack(id, parameterMap);
+            return okService.adsCallBack(id, parameterMap);
         } catch (Exception e) {
             e.printStackTrace();
             return BasicResult.getFailResponse("请求异常", e.getMessage());
