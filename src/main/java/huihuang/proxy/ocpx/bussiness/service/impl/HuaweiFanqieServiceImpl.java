@@ -81,7 +81,7 @@ public class HuaweiFanqieServiceImpl extends HuaweiChannelFactory implements ICh
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
         huaweiVO.setConversionType(KuaishouEventTypeEnum.kuaishouHuaweiEventTypeMap.get(parameterMap.get("actionType")[0]).getCode());
         huaweiVO.setOaid(kuaishouAdsDTO.getOaid());
-        huaweiVO.setSecret(HuaweiPath.LTJD_SECRET);
+        huaweiVO.setSecret(HuaweiPath.FANQIE_SECRET);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 
         Response response = super.baseAdsCallBack(huaweiVO);
