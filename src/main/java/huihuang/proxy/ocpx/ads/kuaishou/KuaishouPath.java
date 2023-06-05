@@ -24,8 +24,8 @@ public class KuaishouPath {
     public static final String HUAWEI_KUAISHOU_ADID = "21749";
     public static final String HUAWEI_KUAISHOUJISU_ADID = "21750";
 
-    public static final String OPPO_KUAISHOU_ADID = "?";
-    public static final String OPPO_KUAISHOUJISU_ADID = "?";
+    public static final String OPPO_KUAISHOU_ADID = "21666";
+    public static final String OPPO_KUAISHOUJISU_ADID = "21756";
 
 
     //生产域名
