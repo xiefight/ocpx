@@ -69,13 +69,13 @@ public class HuaweiLtjdServiceImpl extends HuaweiChannelFactory implements IChan
         huaweiVO.setAdsName(ltjdPath.baseAdsName());
         huaweiVO.setCallbackUrl(ltjdAdsDTO.getCallback_url());
 
-        huaweiVO.setEventType(parameterMap.get("actionType")[0]);
+        huaweiVO.setEventType(parameterMap.get("event_type")[0]);
         huaweiVO.setTimestamp(String.valueOf(currentTime));
         huaweiVO.setCampaignId(getContentFromExtra(ltjdAdsDTO, HuaweiParamEnum.CAMPAIGN_ID.getParam(), null));
         huaweiVO.setContentId(getContentFromExtra(ltjdAdsDTO, HuaweiParamEnum.CONTENT_ID.getParam(), null));
         huaweiVO.setTrackingEnabled(getContentFromExtra(ltjdAdsDTO, HuaweiParamEnum.TRACKING_ENABLED.getParam(), "1"));
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
-        huaweiVO.setConversionType(LiangdamaoEventTypeEnum.liangdamaoHuaweiEventTypeMap.get(parameterMap.get("actionType")[0]).getCode());
+        huaweiVO.setConversionType(LiangdamaoEventTypeEnum.liangdamaoHuaweiEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
         huaweiVO.setOaid(ltjdAdsDTO.getOaid());
         huaweiVO.setSecret(HuaweiPath.LTJD_SECRET);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
