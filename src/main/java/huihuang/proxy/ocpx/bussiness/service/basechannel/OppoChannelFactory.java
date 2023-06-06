@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.bussiness.service.basechannel;
 
+import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
@@ -51,40 +52,49 @@ public class OppoChannelFactory {
         json.put("dataType", oppoVO.getDataType());
         json.put("channel", oppoVO.getChannel());
         //归因
-        json.put("ascribeType", oppoVO.getAscribeType());
+        json.put("ascribeType", 1);
         json.put("adId", oppoVO.getAdId());
 
         StringBuilder url = new StringBuilder(channelUrl);
-        HttpResponse response = HttpRequest.post(url.toString()).body(json.toJSONString()).execute();
+        HttpResponse response = HttpRequest.post(url.toString())
+                .header("signature", signature(json.toJSONString(), oppoVO.getTimestamp()))
+                .header("Content-Type", "application/json")
+                .header("timestamp", String.valueOf(oppoVO.getTimestamp()))
+                .body(json.toJSONString()).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
         //保存转化事件回调信息
         OppoCallbackDTO oppoCallbackDTO = new OppoCallbackDTO(oppoVO.getAdsId(), oppoVO.getImei(), oppoVO.getOuId(), String.valueOf(oppoVO.getTimestamp()), oppoVO.getPkg(),
                 oppoVO.getDataType(), oppoVO.getChannel(), json.getInteger("type"), oppoVO.getAscribeType(), oppoVO.getAdId(), oppoVO.getAdsName());
 
 
-        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("resultCode").equals(0)) {
+        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("ret").equals(0)) {
             oppoCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             oppoCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")));
             oppoCallbackDao.insert(oppoCallbackDTO);
             return BasicResult.getSuccessResponse(oppoCallbackDTO);
         } else {
             oppoCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            oppoCallbackDTO.setCallBackMes(responseBodyMap.get("resultCode") + "  " + responseBodyMap.get("resultMessage"));
+            oppoCallbackDTO.setCallBackMes(responseBodyMap.get("ret") + "  " + responseBodyMap.get("msg"));
             oppoCallbackDao.insert(oppoCallbackDTO);
             return BasicResult.getFailResponse(oppoCallbackDTO.getCallBackMes(), oppoCallbackDTO);
         }
     }
 
+    /**
+     * 签名计算
+     */
+    private String signature(String postData, Long timestamp) {
+        String originSign = postData + timestamp + OppoPath.SALT;
+        return DigestUtil.md5Hex(originSign).toLowerCase();
+    }
 
     /**
-     * @param data      要AES加密的字符
-     * @param base64Key 文档中为了方便配置，秘钥是经过base64处理后的字符串，实际情况中要判断一下
+     * @param data 要AES加密的字符
      * @return
      * @throws GeneralSecurityException
      */
-    protected static String encode(byte[] data, String base64Key) throws GeneralSecurityException {
-
-        final Key dataKey = new SecretKeySpec(Base64.decodeBase64(base64Key), "AES");
+    protected static String encode(byte[] data) throws GeneralSecurityException {
+        final Key dataKey = new SecretKeySpec(Base64.decodeBase64(OppoPath.BASE64KEY), "AES");
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
 
         cipher.init(Cipher.ENCRYPT_MODE, dataKey);

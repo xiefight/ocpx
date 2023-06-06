@@ -8,7 +8,6 @@ import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.OppoChannelFactory;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2OppoVO;
-import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
 import huihuang.proxy.ocpx.channel.oppo.OppoCallbackDTO;
 import huihuang.proxy.ocpx.channel.oppo.OppoPath;
 import huihuang.proxy.ocpx.common.BasicResult;
@@ -60,11 +59,11 @@ public class OppoKuaishouServiceImpl extends OppoChannelFactory implements IChan
         String oppoSecret = "";
         String adsName = "";
         Long adId = OppoPath.KUAISHOU_ADID;
-        if (KuaishouPath.OPPO_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())){
+        if (KuaishouPath.OPPO_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())) {
             oppoSecret = OppoPath.KUAISHOU_SECRET;
             adsName = KuaishouPath.KUAISHOU_ADS_NAME;
         }
-        if (KuaishouPath.OPPO_KUAISHOUJISU_ADID.equals(kuaishouAdsDTO.getAdid())){
+        if (KuaishouPath.OPPO_KUAISHOUJISU_ADID.equals(kuaishouAdsDTO.getAdid())) {
             oppoSecret = OppoPath.KUAISHOUJISU_SECRET;
             adsName = KuaishouPath.KUAISHOUJISU_ADS_NAME;
             adId = OppoPath.KUAISHOUJISU_ADID;
@@ -74,11 +73,11 @@ public class OppoKuaishouServiceImpl extends OppoChannelFactory implements IChan
         String eventType = parameterMap.get("actionType")[0];
         long currentTime = System.currentTimeMillis();
         Ads2OppoVO oppoVO = new Ads2OppoVO();
-        if (null != kuaishouAdsDTO.getImei()){
-            oppoVO.setImei(encode(kuaishouAdsDTO.getImei().getBytes(StandardCharsets.UTF_8), oppoSecret));
+        if (null != kuaishouAdsDTO.getImei()) {
+            oppoVO.setImei(encode(kuaishouAdsDTO.getImei().getBytes(StandardCharsets.UTF_8)));
         }
-        if (null != kuaishouAdsDTO.getOaid()){
-            oppoVO.setOuId(encode(kuaishouAdsDTO.getOaid().getBytes(StandardCharsets.UTF_8), oppoSecret));
+        if (null != kuaishouAdsDTO.getOaid()) {
+            oppoVO.setOuId(encode(kuaishouAdsDTO.getOaid().getBytes(StandardCharsets.UTF_8)));
         }
 
         oppoVO.setAdsId(id);

@@ -16,7 +16,6 @@
         <result column="ascribe_type" property="ascribeType"/>
         <result column="adId" property="adId"/>
 
-        <result column="extra" property="extra"/>
         <result column="callback_status" property="callBackStatus"/>
         <result column="callback_mes" property="callBackMes"/>
         <result column="create_time" property="createTime"/>
@@ -28,10 +27,10 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
         INSERT INTO oppo_callback
-        (ads_id, imei, ouId, ads_name, timestamp, pkg, data_type, channel, type, ascribe_type, adId ,extra,
+        (ads_id, imei, ouId, ads_name, timestamp, pkg, data_type, channel, type, ascribe_type, adId ,
         callback_status,callback_mes, create_time, update_time)
         VALUES (#{adsId}, #{imei}, #{ouId},
-        #{adsName},#{timestamp},#{pkg},#{dataType},#{channel},#{type},#{ascribeType},#{adId}, #{extra},
+        #{adsName},#{timestamp},#{pkg},#{dataType},#{channel},#{type},#{ascribeType},#{adId},
         #{callBackStatus},#{callBackMes},now(),now())
     </insert>
 
