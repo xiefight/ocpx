@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
+import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouAdsDTO;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouEventTypeEnum;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouPath;
@@ -76,17 +77,15 @@ public class OppoKuaishouServiceImpl extends OppoChannelFactory implements IChan
         String eventType = parameterMap.get("actionType")[0];
         long currentTime = System.currentTimeMillis();
         Ads2OppoVO oppoVO = new Ads2OppoVO();
-        if (null != kuaishouAdsDTO.getImei()) {
+        if (StrUtil.isNotEmpty(kuaishouAdsDTO.getImei())) {
             oppoVO.setImei(encode(kuaishouAdsDTO.getImei().getBytes(StandardCharsets.UTF_8)));
         }
-        if (null != kuaishouAdsDTO.getOaid()) {
+        if (StrUtil.isNotEmpty(kuaishouAdsDTO.getOaid())) {
             oppoVO.setOuId(encode(kuaishouAdsDTO.getOaid().getBytes(StandardCharsets.UTF_8)));
         }
 
         oppoVO.setAdsId(id);
         oppoVO.setAdsName(adsName);
-        // todo 可能会类型转换错误
-        oppoVO.setAdId(adId);
         oppoVO.setChannel(1);
         oppoVO.setTimestamp(currentTime);
         oppoVO.setPkg(pkg);
