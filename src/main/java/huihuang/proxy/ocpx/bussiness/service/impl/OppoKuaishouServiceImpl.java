@@ -8,7 +8,9 @@ import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.OppoChannelFactory;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2OppoVO;
+import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
 import huihuang.proxy.ocpx.channel.oppo.OppoCallbackDTO;
+import huihuang.proxy.ocpx.channel.oppo.OppoPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -19,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 /**
@@ -54,17 +57,37 @@ public class OppoKuaishouServiceImpl extends OppoChannelFactory implements IChan
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
+        String oppoSecret = "";
+        String adsName = "";
+        Long adId = OppoPath.KUAISHOU_ADID;
+        if (KuaishouPath.OPPO_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())){
+            oppoSecret = OppoPath.KUAISHOU_SECRET;
+            adsName = KuaishouPath.KUAISHOU_ADS_NAME;
+        }
+        if (KuaishouPath.OPPO_KUAISHOUJISU_ADID.equals(kuaishouAdsDTO.getAdid())){
+            oppoSecret = OppoPath.KUAISHOUJISU_SECRET;
+            adsName = KuaishouPath.KUAISHOUJISU_ADS_NAME;
+            adId = OppoPath.KUAISHOUJISU_ADID;
+        }
+
         //转化类型字段
         String eventType = parameterMap.get("actionType")[0];
         long currentTime = System.currentTimeMillis();
         Ads2OppoVO oppoVO = new Ads2OppoVO();
+        if (null != kuaishouAdsDTO.getImei()){
+            oppoVO.setImei(encode(kuaishouAdsDTO.getImei().getBytes(StandardCharsets.UTF_8), oppoSecret));
+        }
+        if (null != kuaishouAdsDTO.getOaid()){
+            oppoVO.setOuId(encode(kuaishouAdsDTO.getOaid().getBytes(StandardCharsets.UTF_8), oppoSecret));
+        }
+
         oppoVO.setAdsId(id);
-        oppoVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
+        oppoVO.setAdsName(adsName);
         // todo 可能会类型转换错误
-        oppoVO.setAdId(Long.valueOf(kuaishouAdsDTO.getExtra()));
+        oppoVO.setAdId(adId);
         oppoVO.setChannel(1);
         oppoVO.setTimestamp(currentTime);
-        oppoVO.setPkg("?");
+        oppoVO.setPkg("com.oppo.test");
         oppoVO.setDataType(KuaishouEventTypeEnum.kuaishouOppoEventTypeMap.get(eventType).getCode());
         oppoVO.setAscribeType(0);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, oppoVO);
