@@ -59,14 +59,17 @@ public class OppoKuaishouServiceImpl extends OppoChannelFactory implements IChan
         String oppoSecret = "";
         String adsName = "";
         Long adId = OppoPath.KUAISHOU_ADID;
+        String pkg = "";
         if (KuaishouPath.OPPO_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())) {
             oppoSecret = OppoPath.KUAISHOU_SECRET;
             adsName = KuaishouPath.KUAISHOU_ADS_NAME;
+            pkg = KuaishouPath.OPPO_KUAISHOU_PKG;
         }
         if (KuaishouPath.OPPO_KUAISHOUJISU_ADID.equals(kuaishouAdsDTO.getAdid())) {
             oppoSecret = OppoPath.KUAISHOUJISU_SECRET;
             adsName = KuaishouPath.KUAISHOUJISU_ADS_NAME;
             adId = OppoPath.KUAISHOUJISU_ADID;
+            pkg = KuaishouPath.OPPO_KUAISHOUJISU_PKG;
         }
 
         //转化类型字段
@@ -86,9 +89,10 @@ public class OppoKuaishouServiceImpl extends OppoChannelFactory implements IChan
         oppoVO.setAdId(adId);
         oppoVO.setChannel(1);
         oppoVO.setTimestamp(currentTime);
-        oppoVO.setPkg("com.oppo.test");
+        oppoVO.setPkg(pkg);
         oppoVO.setDataType(KuaishouEventTypeEnum.kuaishouOppoEventTypeMap.get(eventType).getCode());
         oppoVO.setAscribeType(0);
+        oppoVO.setAdId(Long.valueOf(kuaishouAdsDTO.getAdvertiserId()));
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, oppoVO);
 
         Response response = baseAdsCallBack(oppoVO);

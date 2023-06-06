@@ -87,7 +87,7 @@ public class OppoKuaishouChannelAds extends KuaishouReportFactory {
                 e.printStackTrace();
             }
         });
-        kuaishouParamField.setExtra(String.valueOf(parameterMap.get(OppoParamEnum.ADID.getParam())));
+//        kuaishouParamField.setExtra(String.valueOf(parameterMap.get(OppoParamEnum.ADID.getParam())[0]));
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey, kuaishouParamField);
         return kuaishouParamField;
     }

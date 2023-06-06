@@ -184,4 +184,28 @@ public class KuaishouParamField {
     public void setCallback(String callback) {
         this.callback = callback;
     }
+
+    @Override
+    public String toString() {
+        return "KuaishouParamField{" +
+                "adid='" + adid + '\'' +
+                ", imei='" + imei + '\'' +
+                ", idfa='" + idfa + '\'' +
+                ", oaid='" + oaid + '\'' +
+                ", android_id='" + android_id + '\'' +
+                ", mac='" + mac + '\'' +
+                ", ip='" + ip + '\'' +
+                ", user_agent='" + user_agent + '\'' +
+                ", account_id='" + account_id + '\'' +
+                ", click_id='" + click_id + '\'' +
+                ", campaign_id='" + campaign_id + '\'' +
+                ", adgroup_id='" + adgroup_id + '\'' +
+                ", creative_id='" + creative_id + '\'' +
+                ", advertiser_id='" + advertiser_id + '\'' +
+                ", rta_id='" + rta_id + '\'' +
+                ", caid_list='" + caid_list + '\'' +
+                ", callback='" + callback + '\'' +
+                ", extra='" + extra + '\'' +
+                '}';
+    }
 }

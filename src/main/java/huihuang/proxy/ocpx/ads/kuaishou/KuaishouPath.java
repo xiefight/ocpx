@@ -28,6 +28,11 @@ public class KuaishouPath {
     public static final String OPPO_KUAISHOUJISU_ADID = "21756";
 
 
+    //快手包名，oppo用到
+    public static final String OPPO_KUAISHOU_PKG = "com.smile.gifmaker";
+    public static final String OPPO_KUAISHOUJISU_PKG = "com.kuaishou.nebula";
+
+
     //生产域名
     public static final String URI = "https://promotion-partner.kuaishou.com";
     //曝光接受路径
