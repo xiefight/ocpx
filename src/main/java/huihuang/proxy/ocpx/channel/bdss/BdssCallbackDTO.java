@@ -3,9 +3,9 @@ package huihuang.proxy.ocpx.channel.bdss;
 import java.util.Date;
 
 /** 
- * 
+ *
  * @Author: xietao
- * @Date: 2023/6/7 20:34
+ * @Date: 2023/6/7 9:29
  */ 
 public class BdssCallbackDTO {
 
