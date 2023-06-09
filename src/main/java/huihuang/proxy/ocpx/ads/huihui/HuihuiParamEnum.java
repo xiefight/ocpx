@@ -25,7 +25,7 @@ public enum HuihuiParamEnum {
 
     IP("ip", "String", 1, "点击 ip；IPV4:A.B.C.D (四段，以“.”分隔)IPV6:需要 encode 一次 "),
     UA("ua", "String", 1, "点 击 数 据 上 报 时http的 header 中的user_agent，一次urlencode 编码"),
-    TS("ts", "String", 1, "点击时间，时间戳，单位秒"),
+    TS("ts", "String", 1, "点击时间，时间戳，单位毫秒"),
 
     OS("os", "String", 1, "android 或 ios；"),
     CALLBACK("callback", "String", 1, "渠道回调地址"),

@@ -58,7 +58,7 @@ public class XiaomiChannelFactory {
 
         //保存转化事件回调信息
         XiaomiCallbackDTO xiaomiCallbackDTO = new XiaomiCallbackDTO(xiaomiVO.getAdsId(), xiaomiVO.getCallBackUrl(),
-                String.valueOf(json.get("convType")), xiaomiVO.getEventTimes(), xiaomiVO.getImei(), xiaomiVO.getOaid(), signature, xiaomiVO.getAdsName());
+                xiaomiVO.getEventType(), xiaomiVO.getEventTimes(), xiaomiVO.getImei(), xiaomiVO.getOaid(), signature, xiaomiVO.getAdsName());
         if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals(0)) {
             xiaomiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             xiaomiCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")));

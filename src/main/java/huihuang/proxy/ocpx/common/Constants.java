@@ -64,6 +64,7 @@ public class Constants {
         public static final String XIAOMI_KUAISHOU = "/xkServer";
         public static final String XIAOMI_XIAOHONGSHU = "/xxhsServer";
         public static final String XIAOMI_XINYU = "/xxinyuServer";
+        public static final String XIAOMI_TANTAN = "/xtServer";
 
         public static final String WIFI_XIGUA = "/wxServer";
 
@@ -97,6 +98,7 @@ public class Constants {
         public static final String XIAOMI_KUAISHOU = "xiaomi-kuaishou";
         public static final String XIAOMI_XIAOHONGSHU = "xiaomi-xiaohongshu";
         public static final String XIAOMI_XINYU = "xiaomi-xinyu";
+        public static final String XIAOMI_TANTAN = "xiaomi-tantan";
 
         public static final String TOUTIAO_MEITUAN = "toutiao-meituan";
 

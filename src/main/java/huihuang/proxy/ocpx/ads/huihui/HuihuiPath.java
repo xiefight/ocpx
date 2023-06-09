@@ -14,7 +14,7 @@ public abstract class HuihuiPath {
 //    public static final String LTJD_ADS_NAME = "ltjd";
 
     protected abstract String baseAdsName();
-    protected abstract String tpAdvId();
+//    protected abstract String tpAdvId();
 
     /**
      * 点击上报及转化数据回调接口
