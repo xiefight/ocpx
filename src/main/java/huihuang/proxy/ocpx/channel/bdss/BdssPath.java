@@ -9,6 +9,8 @@ import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
  **/
 public class BdssPath extends BaiduPath {
 
+    public static final String LTJD_SECRET = "NDg0MzExNjI=";
+
     public static final String BDSS_CHANNEL_NAME = "baidusousuo";
 
 }

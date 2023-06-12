@@ -8,10 +8,10 @@ import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.ILtjdAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
-import huihuang.proxy.ocpx.bussiness.service.basechannel.BaiduChannelFactory;
+import huihuang.proxy.ocpx.bussiness.service.basechannel.BdssChannelFactory;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2BaiduVO;
-import huihuang.proxy.ocpx.channel.baidu.BaiduCallbackDTO;
-import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
+import huihuang.proxy.ocpx.channel.bdss.BdssCallbackDTO;
+import huihuang.proxy.ocpx.channel.bdss.BdssPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -24,15 +24,13 @@ import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
-import java.util.Set;
 
-/** 
- * 
+/**
  * @Author: xietao
  * @Date: 2023/6/7 20:11
  */
 @Service("bdssjdService")
-public class BdssLtjdServiceImpl extends BaiduChannelFactory implements IChannelAdsService {
+public class BdssLtjdServiceImpl extends BdssChannelFactory implements IChannelAdsService {
 
     protected Logger logger = LoggerFactory.getLogger(BdssLtjdServiceImpl.class);
 
@@ -79,11 +77,11 @@ public class BdssLtjdServiceImpl extends BaiduChannelFactory implements IChannel
         baiduVO.setCbImeiMd5(ltjdAdsDTO.getImei_md5());
         baiduVO.setCbAndroidIdMd5(ltjdAdsDTO.getAndroid_id_md5());
         baiduVO.setCbIp(ltjdAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.LTJD_SECRET);
+        baiduVO.setSecret(BdssPath.LTJD_SECRET);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);
-        BaiduCallbackDTO data = (BaiduCallbackDTO) response.getData();
+        BdssCallbackDTO data = (BdssCallbackDTO) response.getData();
 
         //更新回调状态
         LiangdamaoAdsDTO ltjdAds = new LiangdamaoAdsDTO();
@@ -102,20 +100,9 @@ public class BdssLtjdServiceImpl extends BaiduChannelFactory implements IChannel
         }
     }
 
-    //计算签名
-    private String signature(Map<String, Object> json) {
-        StringBuilder srcBuilder = new StringBuilder();
-        Set<Map.Entry<String, Object>> entries = json.entrySet();
-        for (Map.Entry<String, Object> entry : entries) {
-            String key = entry.getKey();
-            Object value = entry.getValue();
-            srcBuilder.append(key).append("=").append(value).append("&");
-        }
-        String src = srcBuilder.substring(0, srcBuilder.length() - 1);
-        String signatureStr = src + BaiduPath.LTJD_SECRET;
-        String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
-        json.put("sign", signature);
-        logger.info("adsCallBack {} 原始:{}  签名:{}", channelAdsKey, signatureStr, signature);
-        return signature;
+    @Override
+    protected void signature(StringBuilder url) {
+        String signatureStr = url + BdssPath.LTJD_SECRET;
+        url.append("&sign=").append(DigestUtil.md5Hex(signatureStr).toLowerCase());
     }
 }
