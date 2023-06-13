@@ -113,6 +113,12 @@
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduLtjdServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="LTJD_LOG"/>
     </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.BdssLtjdChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="LTJD_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BdssLtjdServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="LTJD_LOG"/>
+    </logger>
 
     <!-- 京东 end -->
 
