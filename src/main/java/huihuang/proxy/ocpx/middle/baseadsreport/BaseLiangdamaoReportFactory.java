@@ -19,6 +19,7 @@ import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import huihuang.proxy.ocpx.middle.BaseSupport;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
+import huihuang.proxy.ocpx.util.RandomUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.nio.charset.StandardCharsets;
@@ -52,7 +53,7 @@ public abstract class BaseLiangdamaoReportFactory extends BaseSupport implements
             liangdamaoParamField.setCallback_url(URLEncoder.createQuery().encode(liangdamaoParamField.getCallback_url(), StandardCharsets.UTF_8));
         }
 //        liangdamaoParamField.setApp_type(osConvertAppType(liangdamaoParamField.getApp_type()));
-        liangdamaoParamField.setRequest_id(String.valueOf(System.currentTimeMillis()));
+        liangdamaoParamField.setRequest_id(String.valueOf(System.currentTimeMillis()) + RandomUtil.random.nextInt(900000) + 100000);
         //时间戳，秒
         String ts = Optional.ofNullable(liangdamaoParamField.getTs()).orElse(String.valueOf(System.currentTimeMillis()));
         liangdamaoParamField.setTs(String.valueOf(Long.parseLong(ts) / 1000));
