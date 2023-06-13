@@ -30,6 +30,9 @@ public class BaiduPath {
     public static final String JDJR_SECRET = "NDc4NDc5Njk=";
     public static final String JDSS_SECRET = "NDc4NDc5NzA=";
 
+    public static final String KUAISHOU_SECRET = "NDc5MTg5NDc=";
+    public static final String KUAISHOUJISU_SECRET = "NDc5MTg5NTc=";
+
     public static final String BAIDU_CHANNEL_NAME = "baidu";
 
     public static final String CALLBACK_URL = "http://als.baidu.com/cb/actionCb?";
