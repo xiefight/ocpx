@@ -39,26 +39,34 @@ public class BaiduChannelFactory {
         json.put("a_type", baiduVO.getaType());
         json.put("a_value", baiduVO.getaValue());
         json.put("cb_event_time", baiduVO.getCbEventTime());
+        json.put("join_type","caid");
         if (CommonUtil.strEmpty(baiduVO.getCbOaid(), BaiduParamEnum.OAID.getMacro())) {
             json.put("cb_oaid", baiduVO.getCbOaid());
+            json.put("join_type","oaid");
         }
         if (CommonUtil.strEmpty(baiduVO.getCbOaidMd5(), BaiduParamEnum.OAID_MD5.getMacro())) {
             json.put("cb_oaid_md5", baiduVO.getCbOaidMd5());
+            json.put("join_type","oaid");
         }
         if (CommonUtil.strEmpty(baiduVO.getCbIdfa(), BaiduParamEnum.IDFA.getMacro())) {
             json.put("cb_idfa", baiduVO.getCbIdfa());
+            json.put("join_type","idfa");
         }
         if (CommonUtil.strEmpty(baiduVO.getCbImei(), null)) {
             json.put("cb_imei", baiduVO.getCbImei());
+            json.put("join_type","imei");
         }
         if (CommonUtil.strEmpty(baiduVO.getCbImeiMd5(), BaiduParamEnum.IMEI_MD5.getMacro())) {
             json.put("cb_imei_md5", baiduVO.getCbImeiMd5());
+            json.put("join_type","imei");
         }
         if (CommonUtil.strEmpty(baiduVO.getCbAndroidIdMd5(), BaiduParamEnum.ANDROID_ID_MD5.getMacro())) {
             json.put("cb_android_id_md5", baiduVO.getCbAndroidIdMd5());
+            json.put("join_type","android_id");
         }
         if (CommonUtil.strEmpty(baiduVO.getCbIp(), BaiduParamEnum.IP.getMacro())) {
             json.put("cb_ip", baiduVO.getCbIp());
+            json.put("join_type","ip");
         }
 
 

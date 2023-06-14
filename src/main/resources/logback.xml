@@ -225,6 +225,12 @@
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoKuaishouServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="KUAISHOU_LOG"/>
     </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduKuaishouChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduKuaishouServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="KUAISHOU_LOG"/>
+    </logger>
 
     <!-- 快手 end -->
 
