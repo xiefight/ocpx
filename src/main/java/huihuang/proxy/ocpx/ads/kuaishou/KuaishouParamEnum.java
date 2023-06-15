@@ -127,9 +127,9 @@ public enum KuaishouParamEnum {
         kuaishouBaiduMap.put(ADID, BaiduParamEnum.KUAISHOU_ADID);
         kuaishouBaiduMap.put(IMEI, BaiduParamEnum.IMEI_MD5);
         kuaishouBaiduMap.put(IDFA, BaiduParamEnum.IDFA);
-        kuaishouBaiduMap.put(OAID, null);//需要特殊处理
-        kuaishouBaiduMap.put(ANDROID_ID, null);
-        kuaishouBaiduMap.put(MAC, null);
+        kuaishouBaiduMap.put(OAID, BaiduParamEnum.OAID);//需要特殊处理
+        kuaishouBaiduMap.put(ANDROID_ID, BaiduParamEnum.ANDROID_ID_MD5);
+        kuaishouBaiduMap.put(MAC, BaiduParamEnum.MAC);
         kuaishouBaiduMap.put(IP, BaiduParamEnum.IP);
         kuaishouBaiduMap.put(ACCOUNT_ID, null);
         kuaishouBaiduMap.put(CLICK_ID, null);//由中间层生成时间戳
