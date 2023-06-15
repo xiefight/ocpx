@@ -1,7 +1,5 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
-import cn.hutool.core.util.StrUtil;
-import huihuang.proxy.ocpx.ads.kuaishou.KuaishouEventTypeEnum;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoEventTypeEnum;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
@@ -101,34 +99,4 @@ public class HuaweiLtjdServiceImpl extends HuaweiChannelFactory implements IChan
         }
     }
 
-    //计算签名
-
-    /**
-     * 从extra中获取指定字段值
-     *
-     * @param liangdamaoAdsDTO 实体数据
-     * @param contentKey       指定字段key
-     * @param defaultVal       默认值
-     * @return 指定字段值
-     */
-    private String getContentFromExtra(LiangdamaoAdsDTO liangdamaoAdsDTO, String contentKey, String defaultVal) {
-        String contentValue = defaultVal;
-        String extra = liangdamaoAdsDTO.getExtra();
-        if (StrUtil.isEmpty(extra)) {
-            return contentValue;
-        }
-        String[] splits = extra.split("&");
-        for (String splitStr : splits) {
-            if (StrUtil.isEmpty(splitStr)) {
-                continue;
-            }
-            String[] equalsStr = splitStr.split("=");
-            String key = equalsStr[0];
-            if (StrUtil.isNotEmpty(key) && key.equals(contentKey)) {
-                contentValue = equalsStr[1];
-                break;
-            }
-        }
-        return contentValue;
-    }
 }

@@ -1,11 +1,11 @@
 package huihuang.proxy.ocpx.bussiness.service.basechannel;
 
 import cn.hutool.core.util.HexUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
-import huihuang.proxy.ocpx.ads.kuaishou.KuaishouAdsDTO;
 import huihuang.proxy.ocpx.bussiness.dao.channel.IHuaweiCallbackDao;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2HuaweiVO;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiCallbackDTO;
@@ -15,11 +15,17 @@ import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.util.CommonUtil;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import java.beans.IntrospectionException;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 import java.util.Map;
@@ -32,6 +38,7 @@ import java.util.Set;
  * @Date: 2023-05-28 13:02
  **/
 public class HuaweiChannelFactory {
+    protected Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private IHuaweiCallbackDao huaweiCallbackDao;
@@ -58,6 +65,7 @@ public class HuaweiChannelFactory {
             url.append("&").append(entry.getKey()).append("=").append(entry.getValue());
         }
         final String authSign = buildAuthorizationHeader(json.toJSONString(), huaweiVO.getSecret());
+        logger.info("baseAdsCallBack 回传渠道url：{}", url);
         HttpResponse response = HttpRequest.post(url.toString()).header("Authorization", authSign).body(json.toJSONString()).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
         //保存转化事件回调信息
@@ -109,6 +117,44 @@ public class HuaweiChannelFactory {
         }
         System.out.println("generate Authorization Header: " + authorization);
         return authorization;
+    }
+
+    /**
+     * 从extra中获取指定字段值
+     *
+     * @param adsDTO     实体数据
+     * @param contentKey 指定字段key
+     * @param defaultVal 默认值
+     * @return 指定字段值
+     */
+    protected String getContentFromExtra(Object adsDTO, String contentKey, String defaultVal) {
+        String contentValue = defaultVal;
+        PropertyDescriptor descriptor;
+        try {
+            descriptor = new PropertyDescriptor("extra", adsDTO.getClass());
+            Method getMethod = descriptor.getReadMethod();
+            String extra = (String) getMethod.invoke(adsDTO);
+            if (StrUtil.isEmpty(extra)) {
+                return contentValue;
+            }
+            String[] splits = extra.split("&");
+            for (String splitStr : splits) {
+                if (StrUtil.isEmpty(splitStr)) {
+                    continue;
+                }
+                String[] equalsStr = splitStr.split("=");
+                String key = equalsStr[0];
+                if (StrUtil.isNotEmpty(key) && key.equals(contentKey)) {
+                    contentValue = equalsStr[1];
+                    break;
+                }
+            }
+            return contentValue;
+        } catch (IntrospectionException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+            logger.error("查找华为额外字段出错", e);
+        }
+        return contentValue;
     }
 
 }
