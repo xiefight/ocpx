@@ -16,9 +16,8 @@ import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiCallbackDTO;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
-import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
-import huihuang.proxy.ocpx.common.Response;
+import huihuang.proxy.ocpx.common.KuaishouResponse;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
 import huihuang.proxy.ocpx.util.CommonUtil;
@@ -65,7 +64,7 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
     }
 
     @Override
-    public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
+    public KuaishouResponse adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
         logger.info("adsCallBack {} 开始回调渠道  id:{}  parameterMap.size:{}", channelAdsKey, id, parameterMap.size());
         //转化类型字段
         String eventType = parameterMap.get("actionType")[0];
@@ -76,7 +75,7 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
         KuaishouAdsDTO kuaishouAdsDTO = kuaishouAdsDao.queryKuaishouAdsById(id);
         if (null == kuaishouAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
-            return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
+            return new KuaishouResponse(1, "未根据找到对应的监测信息", id);
         }
 
         String channelUrl = HuaweiPath.CALLBACK_URL;
@@ -106,11 +105,11 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
 //        url.append("sign=").append(signature);
         String huaweiSecret = "";
         String adsName = "";
-        if (KuaishouPath.HUAWEI_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())){
+        if (KuaishouPath.HUAWEI_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())) {
             huaweiSecret = HuaweiPath.KUAISHOU_SECRET;
             adsName = KuaishouPath.KUAISHOU_ADS_NAME;
         }
-        if (KuaishouPath.HUAWEI_KUAISHOUJISU_ADID.equals(kuaishouAdsDTO.getAdid())){
+        if (KuaishouPath.HUAWEI_KUAISHOUJISU_ADID.equals(kuaishouAdsDTO.getAdid())) {
             huaweiSecret = HuaweiPath.KUAISHOUJISU_SECRET;
             adsName = KuaishouPath.KUAISHOUJISU_ADS_NAME;
         }
@@ -135,7 +134,7 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
             huaweiCallbackDao.insert(huaweiCallbackDTO);
             baseServiceInner.updateAdsObject(kuaishouAds, kuaishouAdsDao);
             logger.info("adsCallBack {} {}", channelAdsKey, huaweiCallbackDTO);
-            return BasicResult.getSuccessResponse(huaweiCallbackDTO.getId());
+            return new KuaishouResponse(0, "", huaweiCallbackDTO.getId());
         } else {
             huaweiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             kuaishouAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
@@ -144,7 +143,7 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
             huaweiCallbackDao.insert(huaweiCallbackDTO);
             baseServiceInner.updateAdsObject(kuaishouAds, kuaishouAdsDao);
             logger.info("adsCallBack {} {}", channelAdsKey, huaweiCallbackDTO);
-            return BasicResult.getFailResponse(huaweiCallbackDTO.getCallBackMes());
+            return new KuaishouResponse(1, huaweiCallbackDTO.getCallBackMes(), huaweiCallbackDTO.getId());
         }
     }
 
