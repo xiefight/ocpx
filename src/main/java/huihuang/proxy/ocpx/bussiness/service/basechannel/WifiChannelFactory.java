@@ -13,6 +13,8 @@ import huihuang.proxy.ocpx.channel.wifi.WifiPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
@@ -24,6 +26,7 @@ import java.util.Set;
  * @Date: 2023-06-02 16:37
  **/
 public class WifiChannelFactory {
+    protected Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private IWifiCallbackDao wifiCallbackDao;
@@ -46,6 +49,7 @@ public class WifiChannelFactory {
         if (StrUtil.isNotEmpty(wifiVO.getExtra())) {
             src += wifiVO.getExtra();
         }
+        logger.info("baseAdsCallBack 回传渠道url：{}", src);
         HttpResponse response = HttpRequest.get(src).execute();
 
         //保存转化事件回调信息

@@ -14,6 +14,8 @@ import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.crypto.Cipher;
@@ -29,6 +31,7 @@ import java.util.Objects;
  * @Date: 2023-06-04 16:21
  **/
 public class OppoChannelFactory {
+    protected Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private IOppoCallbackDao oppoCallbackDao;
@@ -56,6 +59,7 @@ public class OppoChannelFactory {
         json.put("adId", oppoVO.getAdId());
 
         StringBuilder url = new StringBuilder(channelUrl);
+        logger.info("baseAdsCallBack 回传渠道url：{}", url);
         HttpResponse response = HttpRequest.post(url.toString())
                 .header("signature", signature(json.toJSONString(), oppoVO.getTimestamp()))
                 .header("Content-Type", "application/json")

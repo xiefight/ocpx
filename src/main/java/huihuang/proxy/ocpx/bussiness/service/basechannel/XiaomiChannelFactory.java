@@ -14,6 +14,8 @@ import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
@@ -26,6 +28,7 @@ import java.util.Set;
  * @Date: 2023-05-28 22:49
  **/
 public class XiaomiChannelFactory {
+    protected Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private IXiaomiCallbackDao xiaomiCallbackDao;
@@ -53,6 +56,7 @@ public class XiaomiChannelFactory {
         String src = url.substring(0, url.length() - 1);
         String signature = signature(json);
 //        url.append("sign=").append(signature);
+        logger.info("baseAdsCallBack 回传渠道url：{}", src);
         HttpResponse response = HttpRequest.get(src).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
 

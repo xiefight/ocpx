@@ -13,6 +13,8 @@ import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.util.CommonUtil;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
@@ -25,6 +27,7 @@ import java.util.Set;
  * @Date: 2023-05-28 09:29
  **/
 public class BaiduChannelFactory {
+    protected Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private IBaiduCallbackDao baiduCallbackDao;
@@ -77,6 +80,7 @@ public class BaiduChannelFactory {
         }
 //        String signature = signature(json);
 //        url.append("sign=").append(signature);
+        logger.info("baseAdsCallBack 回传渠道url：{}", url);
         HttpResponse response = HttpRequest.get(url.toString()).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
 
