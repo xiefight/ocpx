@@ -10,6 +10,7 @@ public class KuaishouPath {
 
     public static final String KUAISHOU_ADS_NAME = "kuaishou";
     public static final String KUAISHOUJISU_ADS_NAME = "kuaishoujisu";
+    public static final String KUAISHOUJISU2_ADS_NAME = "kuaishoujisu21756";
 
 //    public static final String CLIENT_ID = "dc557d524fdd1b29d684ea348890fc17";
 //    public static final String SECRET = "333DUFA6oZmi09QQ";
