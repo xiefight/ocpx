@@ -4,6 +4,7 @@ import huihuang.proxy.ocpx.ads.fanqie.FanqiePath;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouAdsDTO;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouEventTypeEnum;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO;
+import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoEventTypeEnum;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IFanqieAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -74,7 +75,7 @@ public class HuaweiFanqieServiceImpl extends HuaweiChannelFactory implements ICh
         huaweiVO.setContentId(getContentFromExtra(fanqieAdsDTO, HuaweiParamEnum.CONTENT_ID.getParam(), null));
         huaweiVO.setTrackingEnabled(getContentFromExtra(fanqieAdsDTO, HuaweiParamEnum.TRACKING_ENABLED.getParam(), "1"));
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
-        huaweiVO.setConversionType(KuaishouEventTypeEnum.kuaishouHuaweiEventTypeMap.get(parameterMap.get("actionType")[0]).getCode());
+        huaweiVO.setConversionType(LiangdamaoEventTypeEnum.liangdamaoHuaweiEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
         huaweiVO.setOaid(fanqieAdsDTO.getOaid());
         huaweiVO.setSecret(HuaweiPath.FANQIE_SECRET);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);

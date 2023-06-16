@@ -22,13 +22,14 @@ public class KuaishouPath {
     public static final String XIAOMI_KUAISHOU_ADID = "21666";
     public static final String XIAOMI_KUAISHOUJISU_ADID = "21756";
     public static final String HUAWEI_KUAISHOU_ADID = "21749";
-    public static final String HUAWEI_KUAISHOUJISU_ADID = "21750";
+    public static final String HUAWEI_KUAISHOUJISU_ADID = "21750";//激活+次留
+    public static final String HUAWEI_KUAISHOUJISU2_ADID = "21756";//激活+次留
 
     public static final String OPPO_KUAISHOU_ADID = "21666"; //弃用
     public static final String OPPO_KUAISHOUJISU_ADID = "21756";  //弃用
 
     public static final String BAIDU_KUAISHOU_ADID = "21666";
-    public static final String BAIDU_KUAISHOUJISU_ADID = "21756";
+    public static final String BAIDU_KUAISHOUJISU_ADID = "?";
 
 
     //快手包名，oppo用到
