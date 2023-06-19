@@ -12,6 +12,9 @@ public class FanqiePath extends LiangdamaoPath {
 
     public static final String FANQIE_ADS_NAME = "fanqie";
 
+    public static final String CLIENT_ID = "998b6cc1aeab304d45bd9a54466f6524";
+    public static final String SECRET = "YDlC4jjVqqi6aUzg";
+
     @Override
     public String baseAdsName() {
         return FANQIE_ADS_NAME;
