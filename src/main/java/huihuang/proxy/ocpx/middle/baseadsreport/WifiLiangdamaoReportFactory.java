@@ -3,6 +3,7 @@ package huihuang.proxy.ocpx.middle.baseadsreport;
 import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamEnum;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamField;
+import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoPath;
 import huihuang.proxy.ocpx.channel.wifi.WifiParamEnum;
 import huihuang.proxy.ocpx.channel.wifi.WifiPath;
 import huihuang.proxy.ocpx.common.Constants;
@@ -65,6 +66,7 @@ public abstract class WifiLiangdamaoReportFactory extends BaseLiangdamaoReportFa
             //wifi的参数值
             String[] value = parameterMap.get(wifiParam);
             if (Objects.isNull(value) || value.length == 0) return;
+            if (value[0].startsWith("__") && value[0].endsWith("__")) return;
             try {
                 PropertyDescriptor descriptor = new PropertyDescriptor(liangdamaoField, liangdamaoParamField.getClass());
                 Method setMethod = descriptor.getWriteMethod();
@@ -73,6 +75,7 @@ public abstract class WifiLiangdamaoReportFactory extends BaseLiangdamaoReportFa
                 e.printStackTrace();
             }
         });
+        liangdamaoParamField.setAccess_id(LiangdamaoPath.ACCESS_ID);
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey(), liangdamaoParamField);
         //处理广告侧无映射的，但又必须回调给渠道侧的额外参数
         fitExtras(parameterMap, liangdamaoParamField,

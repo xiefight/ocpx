@@ -109,6 +109,10 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
             huaweiSecret = HuaweiPath.KUAISHOU_SECRET;
             adsName = KuaishouPath.KUAISHOU_ADS_NAME;
         }
+        if (KuaishouPath.HUAWEI_KUAISHOU2_ADID.equals(kuaishouAdsDTO.getAdid())) {
+            huaweiSecret = HuaweiPath.KUAISHOU2_SECRET;
+            adsName = KuaishouPath.KUAISHOU_ADS_NAME;
+        }
         if (KuaishouPath.HUAWEI_KUAISHOUJISU_ADID.equals(kuaishouAdsDTO.getAdid())) {
             huaweiSecret = HuaweiPath.KUAISHOUJISU_SECRET;
             adsName = KuaishouPath.KUAISHOUJISU_ADS_NAME;

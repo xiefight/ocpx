@@ -119,4 +119,22 @@ public class WifiCallbackDTO {
     public void setExtra(String extra) {
         this.extra = extra;
     }
+
+
+    @Override
+    public String toString() {
+        return "WifiCallbackDTO{" +
+                "id=" + id +
+                ", adsId=" + adsId +
+                ", clientId='" + clientId + '\'' +
+                ", eventType='" + eventType + '\'' +
+                ", ts='" + ts + '\'' +
+                ", extra='" + extra + '\'' +
+                ", adsName='" + adsName + '\'' +
+                ", callBackStatus='" + callBackStatus + '\'' +
+                ", callBackMes='" + callBackMes + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
+    }
 }
