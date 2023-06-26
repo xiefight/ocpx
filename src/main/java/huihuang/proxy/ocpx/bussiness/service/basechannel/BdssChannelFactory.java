@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.bussiness.service.basechannel;
 
+import cn.hutool.crypto.digest.DigestUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
@@ -70,7 +71,7 @@ public abstract class BdssChannelFactory {
         for (Map.Entry<String, Object> entry : entries) {
             url.append("&").append(entry.getKey()).append("=").append(entry.getValue());
         }
-        signature(url);
+        signature(url, baiduVO.getSecret());
         logger.info("baseAdsCallBack 回传渠道url：{}", url);
         HttpResponse response = HttpRequest.get(url.toString()).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
@@ -92,6 +93,9 @@ public abstract class BdssChannelFactory {
     }
 
     //计算签名
-    protected abstract void signature(StringBuilder url);
+    protected void signature(StringBuilder url, String secret) {
+        String signatureStr = url + secret;
+        url.append("&sign=").append(DigestUtil.md5Hex(signatureStr).toLowerCase());
+    }
 
 }

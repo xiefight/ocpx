@@ -100,9 +100,4 @@ public class BdssLtjdServiceImpl extends BdssChannelFactory implements IChannelA
         }
     }
 
-    @Override
-    protected void signature(StringBuilder url) {
-        String signatureStr = url + BdssPath.LTJD_SECRET;
-        url.append("&sign=").append(DigestUtil.md5Hex(signatureStr).toLowerCase());
-    }
 }
