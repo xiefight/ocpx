@@ -182,6 +182,12 @@
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduYoukuServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="YOUKU_LOG"/>
     </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiYoukuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="YOUKU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiYoukuServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="YOUKU_LOG"/>
+    </logger>
 
 
     <!-- 优酷 end -->

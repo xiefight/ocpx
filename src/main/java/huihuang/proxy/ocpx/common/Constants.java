@@ -80,6 +80,7 @@ public class Constants {
 
         public static final String HUAWEI_KUAISHOU = "/hkServer";
         public static final String HUAWEI_LTJD = "/hjServer";
+        public static final String HUAWEI_YOUKU = "/hyServer";
         public static final String HUAWEI_FANQIE = "/hfServer";
 
 
@@ -117,6 +118,7 @@ public class Constants {
 
         public static final String HUAWEI_KUAISHOU = "huawei-kuaishou";
         public static final String HUAWEI_LTJD = "huawei-ltjd";
+        public static final String HUAWEI_YOUKU = "huawei-youku";
         public static final String HUAWEI_FANQIE = "huawei-fanqie";
 
         public static final String OPPO_KUAISHOU = "oppo-kuaishou";
