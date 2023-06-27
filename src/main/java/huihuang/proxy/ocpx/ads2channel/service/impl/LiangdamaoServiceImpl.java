@@ -90,6 +90,7 @@ public class LiangdamaoServiceImpl extends BaseLiangdamaoReportFactory implement
                 e.printStackTrace();
             }
         });
+        setChannelName(parameterMap.get("channel_name")[0]);
 //        liangdamaoParamField.setAccess_id(LiangdamaoPath.ACCESS_ID);
         return liangdamaoParamField;
     }
@@ -120,7 +121,11 @@ public class LiangdamaoServiceImpl extends BaseLiangdamaoReportFactory implement
 
         String event_type = parameterMap.get("event_type")[0];
         StringBuilder str = new StringBuilder(channelUrl);
-        str.append("?").append("event_type=").append(event_type);
+        if (str.toString().contains("?")){
+            str.append("&event_type=").append(event_type);
+        }else {
+            str.append("?event_type=").append(event_type);
+        }
         logger.info("adsCallBack 回调渠道URL：{}", str);
 
         HttpResponse response = HttpRequest.get(str.toString()).execute();
