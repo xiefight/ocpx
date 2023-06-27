@@ -57,7 +57,7 @@ public class Constants {
         }
     }
 
-    public class ServerPath{
+    public class ServerPath {
 
         public static final String XIAOMI_LTJD = "/xjServer";
         public static final String XIAOMI_YOUKU = "/xyServer";
@@ -92,7 +92,7 @@ public class Constants {
 
     }
 
-    public class ChannelAdsKey{
+    public class ChannelAdsKey {
         public static final String XIAOMI_LTJD = "xiaomi-ltjd";
         public static final String XIAOMI_YOUKU = "xiaomi-youku";
         public static final String XIAOMI_KUAISHOU = "xiaomi-kuaishou";
@@ -118,6 +118,11 @@ public class Constants {
         public static final String HUAWEI_FANQIE = "huawei-fanqie";
 
         public static final String OPPO_KUAISHOU = "oppo-kuaishou";
+    }
+
+    public class AdsForChannel {
+        public static final String OCPX = "/ocpx/v1";
+        public static final String LIANGDAMAO = OCPX + "/ldm";
     }
 
 }
