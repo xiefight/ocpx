@@ -291,6 +291,12 @@
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduFanqieServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="FANQIE_LOG"/>
     </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.WifiFanqieChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="FANQIE_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.WifiFanqieServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="FANQIE_LOG"/>
+    </logger>
 
 
     <!-- 番茄 end -->
