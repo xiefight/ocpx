@@ -19,7 +19,7 @@ public class HuaweiPath {
 
     public static final String LTJD_SECRET = "Txycx3/Kk14tow5N952l56bgKU+31pQ6W+tkWNlp2TY=";
 
-    public static final String YOUKU_SECRET = "?";
+    public static final String YOUKU_SECRET = "3VV9kUV7O2cWdwjaup7vNN1bRsj5W99agf+DHik7RvE=";
 
     public static final String FANQIE_SECRET = "uRbK76Ly2bj8iOM9F/bGuoJNTN9kpi3rNKjSINVlAxA=";
 
