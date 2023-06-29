@@ -33,6 +33,9 @@ public class KuaishouPath {
     public static final String BAIDU_KUAISHOU_ADID = "21666";
     public static final String BAIDU_KUAISHOUJISU_ADID = "22038";
 
+    public static final String IQIYI_KUAISHOU_ADID = "21749";
+    public static final String IQIYI_KUAISHOUJISU_ADID = "21756";
+
 
     //快手包名，oppo用到
     public static final String OPPO_KUAISHOU_PKG = "com.smile.gifmaker";

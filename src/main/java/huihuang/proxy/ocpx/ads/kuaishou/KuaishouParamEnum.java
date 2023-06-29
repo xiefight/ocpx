@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.ads.kuaishou;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
+import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
 import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
@@ -168,6 +169,33 @@ public enum KuaishouParamEnum {
         kuaishouOppoMap.put(CAID_LIST, null);
         kuaishouOppoMap.put(USER_AGENT, OppoParamEnum.USERAGENT);
         kuaishouOppoMap.put(CALLBACK, null);
+    }
+
+
+    /**
+     * iqiyi-kuaishou
+     */
+    public static Map<KuaishouParamEnum, IQiyiParamEnum> kuaishouIQiyiMap;
+
+    static {
+        kuaishouIQiyiMap = new HashMap<>();
+        kuaishouIQiyiMap.put(ADID, IQiyiParamEnum.KUAISHOU_ADID);
+        kuaishouIQiyiMap.put(IMEI, IQiyiParamEnum.IMEI_MD5);
+        kuaishouIQiyiMap.put(IDFA, IQiyiParamEnum.IDFA);
+        kuaishouIQiyiMap.put(OAID, IQiyiParamEnum.OAID);//需要特殊处理
+        kuaishouIQiyiMap.put(ANDROID_ID, IQiyiParamEnum.ANDROID_ID_MD5);
+        kuaishouIQiyiMap.put(MAC, IQiyiParamEnum.MAC);
+        kuaishouIQiyiMap.put(IP, IQiyiParamEnum.IP);
+        kuaishouIQiyiMap.put(ACCOUNT_ID, null);
+        kuaishouIQiyiMap.put(CLICK_ID, null);//由中间层生成时间戳
+        kuaishouIQiyiMap.put(CAMPAIGN_ID, null);
+        kuaishouIQiyiMap.put(ADGROUP_ID, null);//XiaomiParamEnum.CUSTOMERID
+        kuaishouIQiyiMap.put(CREATEIVE_ID, null);//XiaomiParamEnum.ADID
+        kuaishouIQiyiMap.put(ADVERTISER_ID, null);//XiaomiParamEnum.CUSTOMERID
+        kuaishouIQiyiMap.put(RTA_ID, null);
+        kuaishouIQiyiMap.put(CAID_LIST, null);
+        kuaishouIQiyiMap.put(USER_AGENT, IQiyiParamEnum.UA);
+        kuaishouIQiyiMap.put(CALLBACK, IQiyiParamEnum.CALLBACK_URL);
     }
 
 }

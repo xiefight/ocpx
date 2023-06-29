@@ -3,6 +3,7 @@ package huihuang.proxy.ocpx.ads.kuaishou;
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
+import huihuang.proxy.ocpx.channel.iqiyi.IQiyiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.oppo.OppoEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
@@ -73,6 +74,16 @@ public enum KuaishouEventTypeEnum {
         kuaishouOppoEventTypeMap.put(ACTIVE.code, OppoEventTypeEnum.ACTIVE);
         //次日回访
         kuaishouOppoEventTypeMap.put(SECOND_OPEN.code, OppoEventTypeEnum.RETAIN_2DAY);
+    }
+
+
+
+    public static Map<String, IQiyiEventTypeEnum> kuaishouIQiyiEventTypeMap;
+
+    static {
+        kuaishouIQiyiEventTypeMap = CollUtil.newHashMap();
+        //新增
+        kuaishouIQiyiEventTypeMap.put(ACTIVE.code, IQiyiEventTypeEnum.ACTIVE);
     }
 
 

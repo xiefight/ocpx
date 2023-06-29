@@ -83,8 +83,11 @@ public class Constants {
         public static final String HUAWEI_YOUKU = "/hyServer";
         public static final String HUAWEI_FANQIE = "/hfServer";
 
-
         public static final String OPPO_KUAISHOU = "/okServer";
+
+
+        public static final String IQIYI_KUAISHOU = "/ikServer";
+
 
         public static final String MONITOR_ADDRESS = "/monitorAddress";
         public static final String CLICK_REPORT = "/clickReport";
@@ -122,6 +125,8 @@ public class Constants {
         public static final String HUAWEI_FANQIE = "huawei-fanqie";
 
         public static final String OPPO_KUAISHOU = "oppo-kuaishou";
+
+        public static final String IQIYI_KUAISHOU = "iqiyi-kuaishou";
     }
 
     public class AdsForChannel {
