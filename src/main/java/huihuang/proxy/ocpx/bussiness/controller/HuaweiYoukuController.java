@@ -18,7 +18,7 @@ import java.util.Map;
  * @Date: 2023/6/27 17:42
  */
 @RestController
-@RequestMapping(Constants.ServerPath.HUAWEI_LTJD)
+@RequestMapping(Constants.ServerPath.HUAWEI_YOUKU)
 public class HuaweiYoukuController {
 
     @Autowired
