@@ -1,6 +1,5 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
-import cn.hutool.crypto.digest.DigestUtil;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouAdsDTO;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouEventTypeEnum;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouPath;
@@ -10,8 +9,6 @@ import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.IQiyiChannelFactory;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2IQiyiVO;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiCallbackDTO;
-import huihuang.proxy.ocpx.channel.xiaomi.XiaomiCallbackDTO;
-import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -23,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @Author: xietao
@@ -90,23 +86,5 @@ public class IQiyiKuaishouServiceImpl extends IQiyiChannelFactory implements ICh
         }
 
     }
-
-    //计算签名
-    private String signature(Map<String, Object> json) {
-        StringBuilder srcBuilder = new StringBuilder();
-        Set<Map.Entry<String, Object>> entries = json.entrySet();
-        for (Map.Entry<String, Object> entry : entries) {
-            String key = entry.getKey();
-            Object value = entry.getValue();
-            srcBuilder.append(key).append("=").append(value).append("&");
-        }
-        String src = srcBuilder.substring(0, srcBuilder.length() - 1);
-        String signatureStr = src + XiaomiPath.KUAISHOU_SECRET;
-        String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
-        json.put("sign", signature);
-        logger.info("adsCallBack {} 原始:{}  签名:{}", channelAdsKey, signatureStr, signature);
-        return signature;
-    }
-
 
 }
