@@ -27,11 +27,14 @@ public class BaiduPath {
     public static final String LTJD_SECRET = "NDc5NzE1MDk=";//"NDc3MTY3NDQ=";
     public static final String TIANMAO_SECRET = "NDc5NzI3MDk=";
     public static final String FANQIE_SECRET = "NDU3OTc0NDg=";//"NDU3OTc0NTE=";
+    public static final String FANQIE2_SECRET = "NDc5NzEyMzE=";
     public static final String JDJR_SECRET = "NDc4NDc5Njk=";
     public static final String JDSS_SECRET = "NDc4NDc5NzA=";
 
     public static final String KUAISHOU_SECRET = "NDc5MTg5NDc=";
+    public static final String KUAISHOU2_SECRET = "NDc5MTkyNDA=";
     public static final String KUAISHOUJISU_SECRET = "NDc5MTg5NTc=";
+    public static final String KUAISHOUJISU2_SECRET = "NDc5MTkyNjg=";
 
     public static final String BAIDU_CHANNEL_NAME = "baidu";
 

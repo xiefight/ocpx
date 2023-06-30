@@ -79,7 +79,7 @@ public enum KuaishouParamEnum {
         kuaishouHuaweiMap.put(ANDROID_ID, null);
         kuaishouHuaweiMap.put(MAC, null);
         kuaishouHuaweiMap.put(IP, HuaweiParamEnum.IP);
-        kuaishouHuaweiMap.put(ACCOUNT_ID, null);
+        kuaishouHuaweiMap.put(ACCOUNT_ID, HuaweiParamEnum.ACCOUNT_ID);
         kuaishouHuaweiMap.put(CLICK_ID, null);//由中间层生成时间戳
         kuaishouHuaweiMap.put(CAMPAIGN_ID, HuaweiParamEnum.CAMPAIGN_ID);
         kuaishouHuaweiMap.put(ADGROUP_ID, HuaweiParamEnum.ADGROUP_ID);

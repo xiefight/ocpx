@@ -105,23 +105,45 @@ public class HuaweiKuaishouServiceImpl implements IChannelAdsService {
 //        url.append("sign=").append(signature);
         String huaweiSecret = "";
         String adsName = "";
-        if (KuaishouPath.HUAWEI_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())) {
-            huaweiSecret = HuaweiPath.KUAISHOU_SECRET;
-            adsName = KuaishouPath.KUAISHOU_ADS_NAME;
+        String accountId = kuaishouAdsDTO.getAccountId();
+        String adid = kuaishouAdsDTO.getAdid();
+        if (StrUtil.isEmpty(accountId)) {
+            if (KuaishouPath.HUAWEI_KUAISHOU_ADID.equals(adid)) {
+                huaweiSecret = HuaweiPath.KUAISHOU_SECRET;
+                adsName = KuaishouPath.KUAISHOU_ADS_NAME;
+            }
+            if (KuaishouPath.HUAWEI_KUAISHOU2_ADID.equals(adid)) {
+                huaweiSecret = HuaweiPath.KUAISHOU2_SECRET;
+                adsName = KuaishouPath.KUAISHOU_ADS_NAME;
+            }
+            if (KuaishouPath.HUAWEI_KUAISHOUJISU_ADID.equals(adid)) {
+                huaweiSecret = HuaweiPath.KUAISHOUJISU_SECRET;
+                adsName = KuaishouPath.KUAISHOUJISU_ADS_NAME;
+            }
+            if (KuaishouPath.HUAWEI_KUAISHOUJISU2_ADID.equals(adid)) {
+                huaweiSecret = HuaweiPath.KUAISHOUJISU2_SECRET;
+                adsName = KuaishouPath.KUAISHOUJISU2_ADS_NAME;
+            }
+        } else {
+            if (HuaweiPath.HW_KS_ACCOUNT_01.equals(accountId)) {
+                huaweiSecret = HuaweiPath.KUAISHOU_SECRET;
+                adsName = KuaishouPath.KUAISHOU_ADS_NAME;
+            }
+            if (HuaweiPath.HW_KS_ACCOUNT_02.equals(accountId)) {
+                huaweiSecret = HuaweiPath.KUAISHOU2_SECRET;
+                adsName = KuaishouPath.KUAISHOU_ADS_NAME;
+            }
+            if (HuaweiPath.HW_KSJS_ACCOUNT_01.equals(accountId)) {
+                huaweiSecret = HuaweiPath.KUAISHOUJISU_SECRET;
+                adsName = KuaishouPath.KUAISHOUJISU_ADS_NAME;
+            }
+            if (HuaweiPath.HW_KSJS_ACCOUNT_02.equals(accountId)) {
+                huaweiSecret = HuaweiPath.KUAISHOUJISU2_SECRET;
+                adsName = KuaishouPath.KUAISHOUJISU2_ADS_NAME;
+            }
         }
-        if (KuaishouPath.HUAWEI_KUAISHOU2_ADID.equals(kuaishouAdsDTO.getAdid())) {
-            huaweiSecret = HuaweiPath.KUAISHOU2_SECRET;
-            adsName = KuaishouPath.KUAISHOU_ADS_NAME;
-        }
-        if (KuaishouPath.HUAWEI_KUAISHOUJISU_ADID.equals(kuaishouAdsDTO.getAdid())) {
-            huaweiSecret = HuaweiPath.KUAISHOUJISU_SECRET;
-            adsName = KuaishouPath.KUAISHOUJISU_ADS_NAME;
-        }
-        if (KuaishouPath.HUAWEI_KUAISHOUJISU2_ADID.equals(kuaishouAdsDTO.getAdid())) {
-            huaweiSecret = HuaweiPath.KUAISHOUJISU2_SECRET;
-            adsName = KuaishouPath.KUAISHOUJISU2_ADS_NAME;
-        }
-        logger.info("adsCallBack {} 请求渠道url：{} adid：{} huaweiSecret：{}", channelAdsKey, url, kuaishouAdsDTO.getAdid(), huaweiSecret);
+
+        logger.info("adsCallBack {} 请求渠道url：{} adid：{} huaweiSecret：{}", channelAdsKey, url, adid, huaweiSecret);
         final String authSign = buildAuthorizationHeader(json.toJSONString(), huaweiSecret);
         HttpResponse response = HttpRequest.post(url.toString()).header("Authorization", authSign).body(json.toJSONString()).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
