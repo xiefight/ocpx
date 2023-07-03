@@ -83,6 +83,8 @@ public class IQiyiKuaishouChannelAds extends KuaishouReportFactory {
             String iqiyiParam = iqiyi.getParam();
             String[] value = parameterMap.get(iqiyiParam);
             if (Objects.isNull(value) || value.length == 0) return;
+            if ("null".equals(value[0]) || "NULL".equals(value[0])) return;
+            if (value[0].startsWith("__") && value[0].endsWith("__")) return;
             try {
                 PropertyDescriptor descriptor = new PropertyDescriptor(kuaishouField, kuaishouParamField.getClass());
                 Method setMethod = descriptor.getWriteMethod();
