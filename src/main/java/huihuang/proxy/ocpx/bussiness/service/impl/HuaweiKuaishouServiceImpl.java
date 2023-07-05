@@ -66,6 +66,7 @@ public class HuaweiKuaishouServiceImpl extends HuaweiChannelFactory implements I
         String eventType = parameterMap.get("actionType")[0];
         long currentTime = System.currentTimeMillis();
         String eventTimes = String.valueOf(currentTime);
+        logger.info("adsCallBack {} 开始回调渠道  eventType:{}", channelAdsKey, eventType);
 
         huaweiVO.setConversionType(KuaishouEventTypeEnum.kuaishouHuaweiEventTypeMap.get(eventType).getCode());
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
@@ -115,6 +116,10 @@ public class HuaweiKuaishouServiceImpl extends HuaweiChannelFactory implements I
             if (HuaweiPath.HW_KSJS_ACCOUNT_02.equals(accountId)) {
                 huaweiSecret = HuaweiPath.KUAISHOUJISU2_SECRET;
                 adsName = KuaishouPath.KUAISHOUJISU2_ADS_NAME;
+            }
+            if (HuaweiPath.HW_KSJS_ACCOUNT_03.equals(accountId)) {
+                huaweiSecret = HuaweiPath.KUAISHOUJISU3_SECRET;
+                adsName = KuaishouPath.KUAISHOUJISU3_ADS_NAME;
             }
         }
 

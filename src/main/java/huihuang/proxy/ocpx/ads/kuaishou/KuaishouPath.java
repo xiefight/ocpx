@@ -11,6 +11,7 @@ public class KuaishouPath {
     public static final String KUAISHOU_ADS_NAME = "kuaishou";
     public static final String KUAISHOUJISU_ADS_NAME = "kuaishoujisu";
     public static final String KUAISHOUJISU2_ADS_NAME = "kuaishoujisu2";
+    public static final String KUAISHOUJISU3_ADS_NAME = "kuaishoujisu3";
 
 //    public static final String CLIENT_ID = "dc557d524fdd1b29d684ea348890fc17";
 //    public static final String SECRET = "333DUFA6oZmi09QQ";
@@ -24,8 +25,9 @@ public class KuaishouPath {
     public static final String XIAOMI_KUAISHOUJISU_ADID = "21756";
     public static final String HUAWEI_KUAISHOU_ADID = "21749";
     public static final String HUAWEI_KUAISHOU2_ADID = "22037";
-    public static final String HUAWEI_KUAISHOUJISU_ADID = "21750";//激活+次留
+    public static final String HUAWEI_KUAISHOUJISU_ADID = "21756";//"21750";//激活+次留
     public static final String HUAWEI_KUAISHOUJISU2_ADID = "21756";//激活+次留
+    public static final String HUAWEI_KUAISHOUJISU3_ADID = "21750";//激活+次留
 
     public static final String OPPO_KUAISHOU_ADID = "21666"; //弃用
     public static final String OPPO_KUAISHOUJISU_ADID = "21756";  //弃用
