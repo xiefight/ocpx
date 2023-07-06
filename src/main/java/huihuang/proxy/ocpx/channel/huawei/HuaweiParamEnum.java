@@ -29,6 +29,8 @@ public enum HuaweiParamEnum {
     KUAISHOU_ADID("","adid","快手投放渠道标识"),
     ACCOUNT_ID("","account_id","我们自定义的华为渠道标识，体现在监测链接中"),
 
+    HUIHUANG_CHAIN_CODE("","chainCode","辉煌标识"),
+
 
     ;
 
