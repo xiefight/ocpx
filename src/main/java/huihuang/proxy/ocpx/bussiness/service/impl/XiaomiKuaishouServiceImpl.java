@@ -11,8 +11,8 @@ import huihuang.proxy.ocpx.bussiness.service.basechannel.XiaomiChannelFactory;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2XiaomiVO;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiCallbackDTO;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
-import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
+import huihuang.proxy.ocpx.common.KuaishouResponse;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
@@ -51,13 +51,13 @@ public class XiaomiKuaishouServiceImpl extends XiaomiChannelFactory implements I
     }
 
     @Override
-    public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
+    public KuaishouResponse adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
         logger.info("adsCallBack {} 开始回调渠道  id:{}  parameterMap.size:{}", channelAdsKey, id, parameterMap.size());
         //根据id查询对应的点击记录
         KuaishouAdsDTO kuaishouAdsDTO = kuaishouAdsDao.queryKuaishouAdsById(id);
         if (null == kuaishouAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
-            return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
+            return new KuaishouResponse(1, "未根据找到对应的监测信息", id);
         }
 
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
@@ -94,12 +94,12 @@ public class XiaomiKuaishouServiceImpl extends XiaomiChannelFactory implements I
             kuaishouAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             baseServiceInner.updateAdsObject(kuaishouAds, kuaishouAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
-            return BasicResult.getSuccessResponse(data.getId());
+            return new KuaishouResponse(0, "", data.getId());
         } else {
             kuaishouAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             baseServiceInner.updateAdsObject(kuaishouAds, kuaishouAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
-            return BasicResult.getFailResponse(data.getCallBackMes());
+            return new KuaishouResponse(1, data.getCallBackMes(), data.getId());
         }
 
     }

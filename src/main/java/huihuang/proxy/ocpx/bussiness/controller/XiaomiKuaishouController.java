@@ -1,10 +1,7 @@
 package huihuang.proxy.ocpx.bussiness.controller;
 
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
-import huihuang.proxy.ocpx.common.BasicResult;
-import huihuang.proxy.ocpx.common.Constants;
-import huihuang.proxy.ocpx.common.Response;
-import huihuang.proxy.ocpx.common.XiaomiResponse;
+import huihuang.proxy.ocpx.common.*;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -66,7 +63,7 @@ public class XiaomiKuaishouController {
             return xkService.adsCallBack(id, parameterMap);
         } catch (Exception e) {
             e.printStackTrace();
-            return BasicResult.getFailResponse("请求异常", e.getMessage());
+            return new KuaishouResponse(1, "请求异常", e.getMessage());
         }
     }
 
