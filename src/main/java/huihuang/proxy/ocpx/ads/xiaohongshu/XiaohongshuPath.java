@@ -20,6 +20,6 @@ public class XiaohongshuPath extends LiangdamaoPath {
 
     @Override
     public String tpAdvId() {
-        return "205";
+        return "225";
     }
 }
