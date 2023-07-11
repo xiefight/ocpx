@@ -109,7 +109,7 @@
                update_time,
                report_status,
                callback_status
-        FROM ltjd_ads
+        FROM xiaohongshu_ads
         WHERE id = #{id}
     </select>
 
