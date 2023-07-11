@@ -38,6 +38,11 @@ public class KuaishouPath {
     public static final String IQIYI_KUAISHOU_ADID = "21749";
     public static final String IQIYI_KUAISHOUJISU_ADID = "21756";
 
+    public static final String KUAISHOU_ADID5 = "22126";
+    public static final String KUAISHOUJISU_ADID5 = "22125";
+    public static final String KUAISHOU_ADID6 = "22173";
+    public static final String KUAISHOUJISU_ADID6 = "22115";
+
 
     //快手包名，oppo用到
     public static final String OPPO_KUAISHOU_PKG = "com.smile.gifmaker";
