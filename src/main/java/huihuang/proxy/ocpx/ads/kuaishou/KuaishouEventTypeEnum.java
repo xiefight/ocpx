@@ -50,7 +50,7 @@ public enum KuaishouEventTypeEnum {
     static {
         kuaishouXiaomiEventTypeMap = CollUtil.newHashMap();
         //新增
-        kuaishouXiaomiEventTypeMap.put(ACTIVE.code, XiaomiEventTypeEnum.APP_ACTIVE);
+        kuaishouXiaomiEventTypeMap.put(ACTIVE.code, XiaomiEventTypeEnum.APP_ACTIVE_NEW);
         //次日回访
         kuaishouXiaomiEventTypeMap.put(SECOND_OPEN.code, XiaomiEventTypeEnum.APP_RETENTION);
     }

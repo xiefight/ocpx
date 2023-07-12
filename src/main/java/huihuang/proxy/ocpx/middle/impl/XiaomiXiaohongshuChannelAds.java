@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.middle.impl;
 
+import cn.hutool.crypto.digest.DigestUtil;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamField;
 import huihuang.proxy.ocpx.ads.xiaohongshu.XiaohongshuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IXiaohongshuAdsDao;
@@ -9,6 +10,7 @@ import huihuang.proxy.ocpx.middle.baseadsreport.XiaomiLiangdamaoReportFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -50,4 +52,13 @@ public class XiaomiXiaohongshuChannelAds extends XiaomiLiangdamaoReportFactory {
         return liangdamaoParamField;
     }
 
+    //上报给小红书时，如果有oaid，则oaidMd5必传，而小米没有oaidMD5，所以作特殊处理
+    @Override
+    protected Object saveOriginParamData(Object adsObj) {
+        LiangdamaoParamField liangdamaoParamField = (LiangdamaoParamField) adsObj;
+        if (null != liangdamaoParamField.getOaid()) {
+            liangdamaoParamField.setOaid_md5(DigestUtil.md5Hex(liangdamaoParamField.getOaid()).toLowerCase(Locale.ROOT));
+        }
+        return super.saveOriginParamData(adsObj);
+    }
 }
