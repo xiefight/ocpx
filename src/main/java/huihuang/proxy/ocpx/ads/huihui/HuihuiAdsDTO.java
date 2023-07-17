@@ -9,6 +9,7 @@ import huihuang.proxy.ocpx.marketinterface.IMarkDto;
  */
 public class HuihuiAdsDTO extends CommonColumn implements IMarkDto {
 
+    private String aid;
     private String req_id;
     private String imei;
     private String oaid;
@@ -24,6 +25,16 @@ public class HuihuiAdsDTO extends CommonColumn implements IMarkDto {
     private String ua;
     private String callback;
     private String extra;
+    private String model;
+
+
+    public String getAid() {
+        return aid;
+    }
+
+    public void setAid(String aid) {
+        this.aid = aid;
+    }
 
     public String getReq_id() {
         return req_id;
@@ -143,6 +154,14 @@ public class HuihuiAdsDTO extends CommonColumn implements IMarkDto {
 
     public void setExtra(String extra) {
         this.extra = extra;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     @Override

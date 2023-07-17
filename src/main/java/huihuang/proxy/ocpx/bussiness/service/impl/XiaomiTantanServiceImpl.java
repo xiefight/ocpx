@@ -71,18 +71,18 @@ public class XiaomiTantanServiceImpl extends XiaomiChannelFactory implements ICh
         XiaomiCallbackDTO data = (XiaomiCallbackDTO) response.getData();
 
         //更新回调状态
-        LiangdamaoAdsDTO ltjdAds = new LiangdamaoAdsDTO();
-        ltjdAds.setId(id);
-        ltjdAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
+        HuihuiAdsDTO huihuiAds = new HuihuiAdsDTO();
+        huihuiAds.setId(id);
+        huihuiAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
 
         if (response.getCode() == 0) {
-            ltjdAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(ltjdAds, tantanAdsDao);
+            huihuiAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            baseServiceInner.updateAdsObject(huihuiAds, tantanAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
-            ltjdAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(ltjdAds, tantanAdsDao);
+            huihuiAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            baseServiceInner.updateAdsObject(huihuiAds, tantanAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
         }

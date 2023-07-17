@@ -6,6 +6,8 @@ package huihuang.proxy.ocpx.ads.huihui;
  */
 public class HuihuiParamField {
 
+    private String aid;
+    private String sid;
     private String req_id;
     private String imei;
     private String oaid;
@@ -20,7 +22,33 @@ public class HuihuiParamField {
     private String ip;
     private String ua;
     private String callback;
+    private String model;
     private String extra;
+    private String redirect;
+
+    public String getAid() {
+        return aid;
+    }
+
+    public void setAid(String aid) {
+        this.aid = aid;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getSid() {
+        return sid;
+    }
+
+    public void setSid(String sid) {
+        this.sid = sid;
+    }
 
     public String getReq_id() {
         return req_id;
@@ -140,6 +168,14 @@ public class HuihuiParamField {
 
     public void setExtra(String extra) {
         this.extra = extra;
+    }
+
+    public String getRedirect() {
+        return redirect;
+    }
+
+    public void setRedirect(String redirect) {
+        this.redirect = redirect;
     }
 
     @Override

@@ -11,6 +11,8 @@ import java.util.Map;
  * @Date: 2023/6/8 17:16
  */ 
 public enum HuihuiParamEnum {
+    AID("aid", "String", 1, "活动 id"),
+    SID("sid", "String", 1, ""),
     IDFA("idfa", "String", 1, "原值， 大写"),
     IDFA_MD5("idfa_md5", "String", 2, "原值大写后 md5 之后再转大写"),
     IMEI("imei", "String", 1, "md5 之后再转大写，对应渠道的imei_md5，如果只有imei，则先md5，再大写"),
@@ -61,13 +63,12 @@ public enum HuihuiParamEnum {
         return remark;
     }
 
-    /**
-     * xiaomi-ltjd
-     */
     public static Map<HuihuiParamEnum, XiaomiParamEnum> huihuiXiaomiMap;
 
     static {
         huihuiXiaomiMap = new HashMap<>();
+        huihuiXiaomiMap.put(AID, XiaomiParamEnum.TANTAN_AID);
+        huihuiXiaomiMap.put(SID, XiaomiParamEnum.TANTAN_SID);
         huihuiXiaomiMap.put(IMEI, XiaomiParamEnum.IMEI);
         huihuiXiaomiMap.put(OAID, XiaomiParamEnum.OAID);
         huihuiXiaomiMap.put(OAID_MD5, null);

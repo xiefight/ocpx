@@ -46,6 +46,8 @@ public class XiaomiTantanChannelAds extends XiaomiHuihuiReportFactory {
         HuihuiParamField huihuiParamField = (HuihuiParamField) super.channelParamToAdsParam(parameterMap);
 //        huihuiParamField.setTp_adv_id(tantanPath.tpAdvId());
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey, huihuiParamField);
+        huihuiParamField.setRedirect("false");
+//        huihuiParamField.setSid("1");
         return huihuiParamField;
     }
 

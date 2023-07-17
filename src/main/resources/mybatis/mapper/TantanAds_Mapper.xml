@@ -4,6 +4,7 @@
 
     <resultMap id="tantanAdsMap" type="huihuang.proxy.ocpx.ads.huihui.HuihuiAdsDTO">
         <id column="id" property="id"/>
+        <result column="aid" property="aid"/>
         <result column="req_id" property="req_id"/>
         <result column="imei" property="imei"/>
         <result column="oaid" property="oaid"/>
@@ -33,9 +34,9 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
         INSERT INTO tantan_ads
-        (imei, oaid, oaid_md5, idfa, idfa_md5,caid, caid_md5, aaid,
+        (aid, imei, oaid, oaid_md5, idfa, idfa_md5,caid, caid_md5, aaid,
         ts,os,ip,ua,model,callback,channel_name,req_id, extra, create_time, update_time, report_status, callback_status)
-        VALUES (#{imei}, #{oaid}, #{oaid_md5},
+        VALUES (#{aid}, #{imei}, #{oaid}, #{oaid_md5},
         #{idfa}, #{idfa_md5}, #{caid}, #{caid_md5}, #{aaid}, #{ts},
         #{os},#{ip},#{ua},#{model},#{callback},#{channelName},#{req_id}, #{extra},now(),now(), "0", "0")
     </insert>
@@ -44,6 +45,7 @@
     <update id="update" parameterType="huihuang.proxy.ocpx.ads.huihui.HuihuiAdsDTO">
         UPDATE tantan_ads
         <set>
+            <if test="aid != null">aid = #{aid},</if>
             <if test="req_id != null">req_id = #{req_id},</if>
             <if test="imei != null">imei = #{imei},</if>
             <if test="oaid != null">oaid = #{oaid},</if>
@@ -72,6 +74,7 @@
 
     <select id="queryTantanAdsById" parameterType="java.lang.Integer" resultMap="tantanAdsMap">
         SELECT id,
+               aid,
                req_id,
                imei,
                oaid,
@@ -93,7 +96,7 @@
                update_time,
                report_status,
                callback_status
-        FROM huihui_ads
+        FROM tantan_ads
         WHERE id = #{id}
     </select>
 
