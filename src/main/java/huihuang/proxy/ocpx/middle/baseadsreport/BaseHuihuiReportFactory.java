@@ -132,7 +132,7 @@ public abstract class BaseHuihuiReportFactory extends BaseSupport implements ICh
     protected void replaceCallbackUrl(Object adsObj, Object adsDtoObj) {
         HuihuiParamField huihuiParamField = (HuihuiParamField) adsObj;
         HuihuiAdsDTO huihuiAdsDTO = (HuihuiAdsDTO) adsDtoObj;
-        String ocpxUrl = queryServerPath() + serverPathKey() + Constants.ServerPath.ADS_CALLBACK + "/" + huihuiAdsDTO.getId() + "?";//"?conv_action=__EVENT__";
+        String ocpxUrl = queryServerPath() + serverPathKey() + Constants.ServerPath.ADS_CALLBACK + "/" + huihuiAdsDTO.getId() + "?conv_action=__EVENT__";
         logger.info("clickReport {} 客户回调渠道的url：{}", channelAdsKey(), ocpxUrl);
         String encodeUrl = URLEncoder.createQuery().encode(ocpxUrl, StandardCharsets.UTF_8);
 //            ocpxUrl = URLEncoder.encode(ocpxUrl, "UTF-8");

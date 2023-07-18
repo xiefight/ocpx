@@ -25,6 +25,7 @@ public class HuihuiParamField {
     private String model;
     private String extra;
     private String redirect;
+    private String conv_ext;
 
     public String getAid() {
         return aid;
@@ -176,6 +177,14 @@ public class HuihuiParamField {
 
     public void setRedirect(String redirect) {
         this.redirect = redirect;
+    }
+
+    public String getConv_ext() {
+        return conv_ext;
+    }
+
+    public void setConv_ext(String conv_ext) {
+        this.conv_ext = conv_ext;
     }
 
     @Override
