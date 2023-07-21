@@ -84,7 +84,7 @@ public class BaiduKuaishouServiceImpl extends BaiduChannelFactory implements ICh
         if (KuaishouPath.BAIDU_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())) {
             baiduVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
             baiduVO.setSecret(BaiduPath.KUAISHOU_SECRET);
-        } else if (KuaishouPath.BAIDU_KUAISHOUJISU_ADID.equals(kuaishouAdsDTO.getAdid())) {
+        } else if (KuaishouPath.KUAISHOUJISU_ADID6.equals(kuaishouAdsDTO.getAdid())) {
             baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
             baiduVO.setSecret(BaiduPath.KUAISHOUJISU_SECRET);
         }

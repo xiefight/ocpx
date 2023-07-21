@@ -52,7 +52,7 @@ public enum LiangdamaoEventTypeEnum {
         //首唤
         liangdamaoXiaomiEventTypeMap.put(FIRST_WAKEUP.code, null);
         //次日回访
-        liangdamaoXiaomiEventTypeMap.put(SECOND_OPEN.code, null);
+        liangdamaoXiaomiEventTypeMap.put(SECOND_OPEN.code, XiaomiEventTypeEnum.APP_RETENTION);
     }
 
     public static Map<String, BaiduEventTypeEnum> liangdamaoBaiduEventTypeMap;

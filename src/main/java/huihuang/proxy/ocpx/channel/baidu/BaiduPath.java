@@ -35,6 +35,10 @@ public class BaiduPath {
     public static final String KUAISHOU2_SECRET = "NDc5MTkyNDA=";
     public static final String KUAISHOUJISU_SECRET = "NDc5MTg5NTc=";
     public static final String KUAISHOUJISU2_SECRET = "NDc5MTkyNjg=";
+    //在用
+    public static final String KUAISHOU3_SECRET = "NDg1NDA1Nzc=";
+    //在用
+    public static final String KUAISHOUJISU3_SECRET = "NDg1NDA3OTI=";
 
     public static final String BAIDU_CHANNEL_NAME = "baidu";
 

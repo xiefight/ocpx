@@ -21,9 +21,9 @@ import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import sun.net.util.IPAddressUtil;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -134,11 +134,18 @@ public abstract class BaseHuihuiReportFactory extends BaseSupport implements ICh
         HuihuiAdsDTO huihuiAdsDTO = (HuihuiAdsDTO) adsDtoObj;
         String ocpxUrl = queryServerPath() + serverPathKey() + Constants.ServerPath.ADS_CALLBACK + "/" + huihuiAdsDTO.getId() + "?conv_action=__EVENT__";
         logger.info("clickReport {} 客户回调渠道的url：{}", channelAdsKey(), ocpxUrl);
-        String encodeUrl = URLEncoder.createQuery().encode(ocpxUrl, StandardCharsets.UTF_8);
+//        String encodeUrl = URLEncoder.createQuery().encode(ocpxUrl, StandardCharsets.UTF_8);
 //            ocpxUrl = URLEncoder.encode(ocpxUrl, "UTF-8");
+        String encodeUrl = null;
+        try {
+            encodeUrl = java.net.URLEncoder.encode(ocpxUrl, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         huihuiParamField.setCallback(encodeUrl);
         logger.info("clickReport {} 回调参数 replaceCallbackUrl:{}", channelAdsKey(), huihuiParamField);
     }
+
 
     @Override
     protected String initAdsUrl() {
