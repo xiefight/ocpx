@@ -21,8 +21,8 @@ public class KuaishouPath {
     //华为-快手的adid 21749
     //华为-快手极速的adid 21750
 
-    public static final String XIAOMI_KUAISHOU_ADID = "22126";//"21666";
-    public static final String XIAOMI_KUAISHOUJISU_ADID = "22125";//"21756";
+    public static final String XIAOMI_KUAISHOU_ADID = "21749";//"21666";
+    public static final String XIAOMI_KUAISHOUJISU_ADID = "21756";//"21756";
     public static final String HUAWEI_KUAISHOU_ADID = "21749";
     public static final String HUAWEI_KUAISHOU2_ADID = "22037";
     public static final String HUAWEI_KUAISHOUJISU_ADID = "21756";//"21750";//激活+次留
