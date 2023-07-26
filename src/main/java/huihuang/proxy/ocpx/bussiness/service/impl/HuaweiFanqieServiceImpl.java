@@ -1,8 +1,6 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.fanqie.FanqiePath;
-import huihuang.proxy.ocpx.ads.kuaishou.KuaishouAdsDTO;
-import huihuang.proxy.ocpx.ads.kuaishou.KuaishouEventTypeEnum;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoEventTypeEnum;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IFanqieAdsDao;
@@ -84,18 +82,18 @@ public class HuaweiFanqieServiceImpl extends HuaweiChannelFactory implements ICh
         HuaweiCallbackDTO data = (HuaweiCallbackDTO) response.getData();
 
         //更新回调状态
-        KuaishouAdsDTO kuaishouAds = new KuaishouAdsDTO();
-        kuaishouAds.setId(id);
-        kuaishouAds.setCallBackTime(String.valueOf(currentTime));
+        LiangdamaoAdsDTO fanqieAds = new LiangdamaoAdsDTO();
+        fanqieAds.setId(id);
+        fanqieAds.setCallBackTime(String.valueOf(currentTime));
 
         if (response.getCode() == 0) {
-            kuaishouAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(kuaishouAds, fanqieAdsDao);
+            fanqieAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            baseServiceInner.updateAdsObject(fanqieAds, fanqieAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
-            kuaishouAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(kuaishouAds, fanqieAdsDao);
+            fanqieAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            baseServiceInner.updateAdsObject(fanqieAds, fanqieAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
         }

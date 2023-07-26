@@ -20,6 +20,7 @@ import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
@@ -42,6 +43,9 @@ public class BaiduKuaishouServiceImpl extends BaiduChannelFactory implements ICh
     @Autowired
     private IKuaishouAdsDao kuaishouAdsDao;
     @Autowired
+    @Qualifier("kuaishouAdsBaiduDao")
+    private IKuaishouAdsDao kuaishouAdsBaiduDao;
+    @Autowired
     private BaseServiceInner baseServiceInner;
 
     String channelAdsKey = Constants.ChannelAdsKey.BAIDU_KUAISHOU;
@@ -57,11 +61,16 @@ public class BaiduKuaishouServiceImpl extends BaiduChannelFactory implements ICh
         //转化类型字段
         String eventType = parameterMap.get("actionType")[0];
 
+        IKuaishouAdsDao ikuaishouAdsDao = kuaishouAdsBaiduDao;
         //根据id查询对应的点击记录
-        KuaishouAdsDTO kuaishouAdsDTO = kuaishouAdsDao.queryKuaishouAdsById(id);
+        KuaishouAdsDTO kuaishouAdsDTO = kuaishouAdsBaiduDao.queryKuaishouAdsById(id);
         if (null == kuaishouAdsDTO) {
-            logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
-            return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
+            ikuaishouAdsDao = kuaishouAdsDao;
+            kuaishouAdsDTO = kuaishouAdsDao.queryKuaishouAdsById(id);
+            if (null == kuaishouAdsDTO) {
+                logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
+                return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
+            }
         }
 
         String callback = kuaishouAdsDTO.getCallback();
@@ -99,12 +108,12 @@ public class BaiduKuaishouServiceImpl extends BaiduChannelFactory implements ICh
         kuaishouAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
         if (response.getCode() == 0) {
             kuaishouAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(kuaishouAds, kuaishouAdsDao);
+            baseServiceInner.updateAdsObject(kuaishouAds, ikuaishouAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
             kuaishouAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(kuaishouAds, kuaishouAdsDao);
+            baseServiceInner.updateAdsObject(kuaishouAds, ikuaishouAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
         }

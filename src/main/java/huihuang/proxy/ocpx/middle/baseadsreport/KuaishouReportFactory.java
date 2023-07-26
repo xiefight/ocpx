@@ -32,8 +32,6 @@ import java.util.Objects;
 public abstract class KuaishouReportFactory extends BaseSupport implements IChannelAds {
 
     @Autowired
-    private IKuaishouAdsDao kuaishouAdsDao;
-    @Autowired
     protected BaseServiceInner baseServiceInner;
 
     protected abstract String channelAdsKey();
@@ -41,6 +39,8 @@ public abstract class KuaishouReportFactory extends BaseSupport implements IChan
     protected abstract String serverPathKey();
 
     protected abstract String channelName();
+
+    protected abstract IKuaishouAdsDao adsDao();
 
     @Override
     protected void convertParams(Object adsObj) {
@@ -86,7 +86,8 @@ public abstract class KuaishouReportFactory extends BaseSupport implements IChan
         KuaishouAdsDTO kuaishouAdsDTO = new KuaishouAdsDTO();
         BeanUtil.copyProperties(kuaishouParamField, kuaishouAdsDTO);
         kuaishouAdsDTO.setChannelName(channelName());
-        kuaishouAdsDao.insert(kuaishouAdsDTO);
+        baseServiceInner.insertAdsObject(kuaishouAdsDTO, adsDao());
+//        adsDao().insert(kuaishouAdsDTO);
         logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey(), kuaishouAdsDTO);
         return kuaishouAdsDTO;
     }
@@ -120,12 +121,12 @@ public abstract class KuaishouReportFactory extends BaseSupport implements IChan
         //上报成功
         if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("ret").equals(0)) {
             kuaishouAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(kuaishouAdsVO, kuaishouAdsDao);
+            baseServiceInner.updateAdsObject(kuaishouAdsVO, adsDao());
             logger.info("clickReport {} 上报广告侧接口请求成功:{} 数据:{}", channelAdsKey(), response, kuaishouAdsVO);
             return BasicResult.getSuccessResponse(kuaishouAdsDTO.getId());
         } else {
             kuaishouAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode() + "--" + JSONObject.toJSONString(responseBodyMap));
-            baseServiceInner.updateAdsObject(kuaishouAdsVO, kuaishouAdsDao);
+            baseServiceInner.updateAdsObject(kuaishouAdsVO, adsDao());
             logger.error("clickReport {} 上报广告侧接口请求失败:{} 数据:{}", channelAdsKey(), response, kuaishouAdsVO);
             return BasicResult.getFailResponse("上报广告侧接口请求失败", 0);
         }

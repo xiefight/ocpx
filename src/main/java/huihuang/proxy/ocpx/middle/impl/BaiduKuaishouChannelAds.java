@@ -3,10 +3,13 @@ package huihuang.proxy.ocpx.middle.impl;
 import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouParamEnum;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouParamField;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IKuaishouAdsDao;
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.middle.baseadsreport.KuaishouReportFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.beans.IntrospectionException;
@@ -28,6 +31,10 @@ public class BaiduKuaishouChannelAds extends KuaishouReportFactory {
 
     String channelAdsKey = Constants.ChannelAdsKey.BAIDU_KUAISHOU;
 
+    @Autowired
+    @Qualifier("kuaishouAdsBaiduDao")
+    private IKuaishouAdsDao kuaishouAdsBaiduDao;
+
     @Override
     protected String channelAdsKey() {
         return channelAdsKey;
@@ -41,6 +48,11 @@ public class BaiduKuaishouChannelAds extends KuaishouReportFactory {
     @Override
     protected String channelName() {
         return BaiduPath.BAIDU_CHANNEL_NAME;
+    }
+
+    @Override
+    protected IKuaishouAdsDao adsDao() {
+        return kuaishouAdsBaiduDao;
     }
 
     /**

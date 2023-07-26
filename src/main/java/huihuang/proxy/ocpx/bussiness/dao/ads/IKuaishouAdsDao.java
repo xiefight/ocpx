@@ -3,12 +3,14 @@ package huihuang.proxy.ocpx.bussiness.dao.ads;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouAdsDTO;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.context.annotation.Primary;
 
 /**
  * @Author: xietao
  * @Date: 2023/5/14 15:49
  */
 @Mapper
+@Primary
 public interface IKuaishouAdsDao extends IMarkDao {
 
     /**

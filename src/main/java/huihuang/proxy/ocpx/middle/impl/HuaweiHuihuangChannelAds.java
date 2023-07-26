@@ -3,6 +3,7 @@ package huihuang.proxy.ocpx.middle.impl;
 import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouParamEnum;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouParamField;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IKuaishouAdsDao;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
 import huihuang.proxy.ocpx.common.Constants;
@@ -41,6 +42,11 @@ public class HuaweiHuihuangChannelAds extends KuaishouReportFactory {
     @Override
     protected String channelName() {
         return HuaweiPath.HUAWEI_CHANNEL_NAME;
+    }
+
+    @Override
+    protected IKuaishouAdsDao adsDao() {
+        return null;
     }
 
 
