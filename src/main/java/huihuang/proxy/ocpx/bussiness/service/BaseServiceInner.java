@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.bussiness.service;
 
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import huihuang.proxy.ocpx.marketinterface.IMarkDto;
+import huihuang.proxy.ocpx.util.tuple.Tuple2;
 import org.springframework.stereotype.Component;
 
 import java.beans.IntrospectionException;
@@ -35,6 +36,36 @@ public class BaseServiceInner {
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 用于分表后的查询上报信息
+     *
+     * @param splitAdsDao 先从splitAdsDao中查
+     * @param adsDao      查不出来从adsDao中查
+     * @param methodName  查询的方法名，各个广告上报的查询方法不一样
+     * @param clazz       要封装转换的对象
+     * @param id          要查询的主键id
+     * @param <T>
+     * @return
+     */
+    public <T> Tuple2<IMarkDao, T> querySplitAdsObject(IMarkDao splitAdsDao, IMarkDao adsDao, String methodName, Class<T> clazz, Integer id) {
+        try {
+            Method splitAdsDaoQuery = splitAdsDao.getClass().getMethod(methodName, Integer.class);
+            T t = (T) splitAdsDaoQuery.invoke(splitAdsDao, id);
+            if (null != t) {
+                return new Tuple2<>(splitAdsDao, t);
+            }
+            Method adsDaoQuery = adsDao.getClass().getMethod(methodName, Integer.class);
+            t = (T) adsDaoQuery.invoke(adsDao, id);
+            if (null != t) {
+                return new Tuple2<>(adsDao, t);
+            }
+            return null;
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**

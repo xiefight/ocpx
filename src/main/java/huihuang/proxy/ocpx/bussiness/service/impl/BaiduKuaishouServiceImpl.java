@@ -15,8 +15,10 @@ import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
+import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
+import huihuang.proxy.ocpx.util.tuple.Tuple2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,18 +62,15 @@ public class BaiduKuaishouServiceImpl extends BaiduChannelFactory implements ICh
         logger.info("adsCallBack {} 开始回调渠道  id:{}  parameterMap.size:{}", channelAdsKey, id, parameterMap.size());
         //转化类型字段
         String eventType = parameterMap.get("actionType")[0];
-
-        IKuaishouAdsDao ikuaishouAdsDao = kuaishouAdsBaiduDao;
         //根据id查询对应的点击记录
-        KuaishouAdsDTO kuaishouAdsDTO = kuaishouAdsBaiduDao.queryKuaishouAdsById(id);
-        if (null == kuaishouAdsDTO) {
-            ikuaishouAdsDao = kuaishouAdsDao;
-            kuaishouAdsDTO = kuaishouAdsDao.queryKuaishouAdsById(id);
-            if (null == kuaishouAdsDTO) {
-                logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
-                return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
-            }
+        Tuple2<IMarkDao, KuaishouAdsDTO> tuple2 = baseServiceInner.querySplitAdsObject(kuaishouAdsBaiduDao, kuaishouAdsDao, "queryKuaishouAdsById", KuaishouAdsDTO.class, id);
+
+        if (null == tuple2) {
+            logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
+            return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
+        IKuaishouAdsDao ikuaishouAdsDao = (IKuaishouAdsDao) tuple2.getT1();
+        KuaishouAdsDTO kuaishouAdsDTO = tuple2.getT2();
 
         String callback = kuaishouAdsDTO.getCallback();
         String channelUrl = URLDecoder.decode(callback, StandardCharsets.UTF_8);
