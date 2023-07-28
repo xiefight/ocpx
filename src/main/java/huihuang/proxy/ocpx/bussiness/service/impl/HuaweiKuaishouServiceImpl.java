@@ -15,12 +15,15 @@ import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.KuaishouResponse;
 import huihuang.proxy.ocpx.common.Response;
+import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
 import huihuang.proxy.ocpx.util.CommonUtil;
+import huihuang.proxy.ocpx.util.tuple.Tuple2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -41,6 +44,9 @@ public class HuaweiKuaishouServiceImpl extends HuaweiChannelFactory implements I
     @Autowired
     private IKuaishouAdsDao kuaishouAdsDao;
     @Autowired
+    @Qualifier("kuaishouAdsHuaweiDao")
+    private IKuaishouAdsDao kuaishouAdsHuaweiDao;
+    @Autowired
     private BaseServiceInner baseServiceInner;
 
     String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_KUAISHOU;
@@ -54,11 +60,14 @@ public class HuaweiKuaishouServiceImpl extends HuaweiChannelFactory implements I
     public KuaishouResponse adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
         logger.info("adsCallBack {} 开始回调渠道  id:{}  parameterMap.size:{}", channelAdsKey, id, parameterMap.size());
         //根据id查询对应的点击记录
-        KuaishouAdsDTO kuaishouAdsDTO = kuaishouAdsDao.queryKuaishouAdsById(id);
-        if (null == kuaishouAdsDTO) {
+        Tuple2<IMarkDao, KuaishouAdsDTO> tuple2 = baseServiceInner.querySplitAdsObject(kuaishouAdsHuaweiDao, kuaishouAdsDao, "queryKuaishouAdsById", KuaishouAdsDTO.class, id);
+
+        if (null == tuple2) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return new KuaishouResponse(1, "未根据找到对应的监测信息", id);
         }
+        IKuaishouAdsDao ikuaishouAdsDao = (IKuaishouAdsDao) tuple2.getT1();
+        KuaishouAdsDTO kuaishouAdsDTO = tuple2.getT2();
 
         Ads2HuaweiVO huaweiVO = new Ads2HuaweiVO();
 
@@ -138,12 +147,12 @@ public class HuaweiKuaishouServiceImpl extends HuaweiChannelFactory implements I
         kuaishouAds.setCallBackTime(String.valueOf(currentTime));
         if (response.getCode() == 0) {
             kuaishouAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(kuaishouAds, kuaishouAdsDao);
+            baseServiceInner.updateAdsObject(kuaishouAds, ikuaishouAdsDao);
             logger.info("adsCallBack {} {}", channelAdsKey, data);
             return new KuaishouResponse(0, "", data.getId());
         } else {
             kuaishouAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(kuaishouAds, kuaishouAdsDao);
+            baseServiceInner.updateAdsObject(kuaishouAds, ikuaishouAdsDao);
             logger.info("adsCallBack {} {}", channelAdsKey, data);
             return new KuaishouResponse(1, data.getCallBackMes(), data.getId());
         }
