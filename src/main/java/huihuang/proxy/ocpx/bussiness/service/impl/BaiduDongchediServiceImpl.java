@@ -1,7 +1,7 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.net.URLDecoder;
-import huihuang.proxy.ocpx.ads.fanqie.FanqiePath;
+import huihuang.proxy.ocpx.ads.dongchedi.DongchediPath;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoEventTypeEnum;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IDongchediAdsDao;
@@ -40,9 +40,9 @@ public class BaiduDongchediServiceImpl extends BaiduChannelFactory implements IC
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private FanqiePath fanqiePath;
+    private DongchediPath dongchediPath;
 
-    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_FANQIE;
+    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_DONGCHEDI;
 
     @Override
     public IChannelAds channelAds() {
@@ -64,7 +64,7 @@ public class BaiduDongchediServiceImpl extends BaiduChannelFactory implements IC
 
         Ads2BaiduVO baiduVO = new Ads2BaiduVO();
         baiduVO.setAdsId(id);
-        baiduVO.setAdsName(fanqiePath.baseAdsName());
+        baiduVO.setAdsName(dongchediPath.baseAdsName());
         baiduVO.setChannelUrl(channelUrl);
         baiduVO.setaType(LiangdamaoEventTypeEnum.liangdamaoBaiduEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
         baiduVO.setaValue(0);
