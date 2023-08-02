@@ -502,7 +502,7 @@
     <appender name="DONGCHEDI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/dongchedi/dongchedi.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <fileNamePattern>logs/huihuang/dongchedi.log.%i</fileNamePattern>
+            <fileNamePattern>logs/dongchedi/dongchedi.log.%i</fileNamePattern>
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
@@ -526,6 +526,36 @@
     </logger>
 
     <!-- 懂车帝 end -->
+
+
+    <!-- 心遇-有道 start -->
+    <appender name="XINYUYOUDAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/xinyuyoudao/xinyuyoudao.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/xinyuyoudao/xinyuyoudao.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiXinyuYoudaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XINYUYOUDAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiXinyuYoudaoServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="XINYUYOUDAO_LOG"/>
+    </logger>
+
+    <!-- 心遇-有道 end -->
 
 
 </configuration>
