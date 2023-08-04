@@ -49,7 +49,7 @@ public class XiaomiXinyuYoudaoServiceImpl extends XiaomiChannelFactory implement
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        logger.info("adsCallBack {} 开始回调渠道  id:{}  parameterMap.size:{}", channelAdsKey, id, parameterMap.size());
+        logger.info("adsCallBack {} 开始回调渠道  id:{}  event:{}", channelAdsKey, id, parameterMap.get("conv_action")[0]);
         //根据id查询对应的点击记录
         HuihuiAdsDTO huihuiAdsDTO = xinyuyoudaoAdsDao.queryXinyuYoudaoAdsById(id);
         if (null == huihuiAdsDTO) {
