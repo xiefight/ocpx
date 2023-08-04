@@ -101,10 +101,10 @@
         </layout>
     </appender>
 
-    <logger name="huihuang.proxy.ocpx.middle.impl.XJChannelAds" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiJingdongChannelAds" level="INFO" additivity="true">
         <appender-ref ref="LTJD_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XJServiceImpl" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiJingdongServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="LTJD_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.middle.impl.BaiduLtjdChannelAds" level="INFO" additivity="true">
@@ -170,10 +170,10 @@
     </appender>
 
 
-    <logger name="huihuang.proxy.ocpx.middle.impl.XYChannelAds" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiYoukuChannelAds" level="INFO" additivity="true">
         <appender-ref ref="YOUKU_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XYServiceImpl" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiYoukuServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="YOUKU_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.middle.impl.BaiduYoukuChannelAds" level="INFO" additivity="true">
@@ -522,6 +522,13 @@
         <appender-ref ref="DONGCHEDI_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduDongchediServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="DONGCHEDI_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiDongchediChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DONGCHEDI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDongchediServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="DONGCHEDI_LOG"/>
     </logger>
 

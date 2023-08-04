@@ -1,11 +1,8 @@
 package huihuang.proxy.ocpx.middle.impl;
 
-import cn.hutool.core.bean.BeanUtil;
-import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO;
+import huihuang.proxy.ocpx.ads.dongchedi.DongchediPath;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamField;
-import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.ILtjdAdsDao;
-import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IDongchediAdsDao;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import huihuang.proxy.ocpx.middle.baseadsreport.XiaomiLiangdamaoReportFactory;
@@ -15,19 +12,19 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 /**
- * @Description: ltjd-xiaomi
+ *
  * @Author: xietao
- * @Date: 2023-04-24 17:31
- **/
+ * @Date: 2023/8/4 13:28
+ */
 @Component
-public class XJChannelAds extends XiaomiLiangdamaoReportFactory {
+public class XiaomiDongchediChannelAds extends XiaomiLiangdamaoReportFactory {
 
     @Autowired
-    private ILtjdAdsDao ltjdAdsDao;
+    private IDongchediAdsDao dongchediAdsDao;
     @Autowired
-    private LTJDPath ltjdPath;
+    private DongchediPath dongchediPath;
 
-    String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_LTJD;
+    String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_DONGCHEDI;
 
 
     @Override
@@ -37,18 +34,18 @@ public class XJChannelAds extends XiaomiLiangdamaoReportFactory {
 
     @Override
     protected String serverPathKey() {
-        return Constants.ServerPath.XIAOMI_LTJD;
+        return Constants.ServerPath.XIAOMI_DONGCHEDI;
     }
 
     @Override
     protected IMarkDao adsDao() {
-        return ltjdAdsDao;
+        return dongchediAdsDao;
     }
 
     @Override
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
         LiangdamaoParamField liangdamaoParamField = (LiangdamaoParamField) super.channelParamToAdsParam(parameterMap);
-        liangdamaoParamField.setTp_adv_id(ltjdPath.tpAdvId());
+        liangdamaoParamField.setTp_adv_id(dongchediPath.tpAdvId());
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey, liangdamaoParamField);
         return liangdamaoParamField;
     }

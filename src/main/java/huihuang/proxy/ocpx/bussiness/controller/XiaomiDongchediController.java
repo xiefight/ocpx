@@ -14,18 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
- * xiaomi-youku
- *
  * @Author: xietao
- * @Date: 2023/4/27 10:48
+ * @Date: 2023/8/4 13:15
  */
 @RestController
-@RequestMapping(Constants.ServerPath.XIAOMI_YOUKU)
-public class XYController {
+@RequestMapping(Constants.ServerPath.XIAOMI_DONGCHEDI)
+public class XiaomiDongchediController {
 
     @Autowired
-    @Qualifier("xyService")
-    private IChannelAdsService xyService;
+    @Qualifier("xdcdService")
+    private IChannelAdsService xdcdService;
 
     /**
      * 监测地址
@@ -34,7 +32,7 @@ public class XYController {
     public Response monitorAddress(HttpServletRequest request, @RequestBody String reqBody) {
         try {
             Map<String, Object> params = JsonParameterUtil.jsonToMap(reqBody, Exception.class);
-            return xyService.monitorAddress(params);
+            return xdcdService.monitorAddress(params);
         } catch (Exception e) {
             return BasicResult.getFailResponse("请求异常", e.getMessage());
         }
@@ -44,16 +42,17 @@ public class XYController {
      * 点击上报和回传
      */
     @RequestMapping(Constants.ServerPath.CLICK_REPORT)
-    public Response clickReport(HttpServletRequest request) {
+    public XiaomiResponse clickReport(HttpServletRequest request) {
         Response response;
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
-            response = xyService.clickReport(parameterMap);
+            response = xdcdService.clickReport(parameterMap);
         } catch (Exception e) {
             e.printStackTrace();
             response = BasicResult.getFailResponse("请求异常", e.getMessage());
         }
         return new XiaomiResponse(response.getCode(), response.getMessage(), response.getData(), "");
+
     }
 
     /**
@@ -63,7 +62,7 @@ public class XYController {
     public Response adsCallBack(HttpServletRequest request, @PathVariable Integer id) {
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
-            return xyService.adsCallBack(id, parameterMap);
+            return xdcdService.adsCallBack(id, parameterMap);
         } catch (Exception e) {
             e.printStackTrace();
             return BasicResult.getFailResponse("请求异常", e.getMessage());
