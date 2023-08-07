@@ -2,8 +2,8 @@ package huihuang.proxy.ocpx.ads.liangdamao;
 
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
-import huihuang.proxy.ocpx.channel.wifi.WifiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
+import huihuang.proxy.ocpx.channel.wifi.WifiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
@@ -45,6 +45,8 @@ public enum LiangdamaoEventTypeEnum {
         liangdamaoXiaomiEventTypeMap = CollUtil.newHashMap();
         //激活
         liangdamaoXiaomiEventTypeMap.put(ACTIVE.code, XiaomiEventTypeEnum.APP_ACTIVE);
+        //激活
+        liangdamaoXiaomiEventTypeMap.put(ACTIVE.code + "new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
         //注册
         liangdamaoXiaomiEventTypeMap.put(REGISTER.code, XiaomiEventTypeEnum.APP_REGISTER);
         //当日首购

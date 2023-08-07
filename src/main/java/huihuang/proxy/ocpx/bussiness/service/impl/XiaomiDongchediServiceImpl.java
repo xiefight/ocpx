@@ -59,7 +59,7 @@ public class XiaomiDongchediServiceImpl extends XiaomiChannelFactory implements 
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
         xiaomiVO.setAdsName(dongchediPath.baseAdsName());
-        xiaomiVO.setEventType(LiangdamaoEventTypeEnum.liangdamaoXiaomiEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
+        xiaomiVO.setEventType(LiangdamaoEventTypeEnum.liangdamaoXiaomiEventTypeMap.get(parameterMap.get("event_type")[0] + "new").getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(dongchediAdsDTO.getCallback_url());
         xiaomiVO.setOaid(dongchediAdsDTO.getOaid());
