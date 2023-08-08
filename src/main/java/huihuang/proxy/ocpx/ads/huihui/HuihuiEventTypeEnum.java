@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.huihui;
 
 import cn.hutool.core.collection.CollUtil;
+import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
@@ -76,6 +77,37 @@ public enum HuihuiEventTypeEnum {
         //自定义
         huihuiXiaomiEventTypeMap.put(ANDROID_CUSTOM.code, null);
         huihuiXiaomiEventTypeMap.put(IOS_CUSTOM.code, null);
+
+    }
+
+
+    public static Map<String, BaiduEventTypeEnum> huihuiBaiduEventTypeMap;
+
+    static {
+        huihuiBaiduEventTypeMap = CollUtil.newHashMap();
+        //下载
+        huihuiBaiduEventTypeMap.put(ANDROID_DOWNLOAD.code, null);
+        //激活
+        huihuiBaiduEventTypeMap.put(ANDROID_ACTIVATE.code, BaiduEventTypeEnum.ACTIVE);
+        huihuiBaiduEventTypeMap.put(IOS_ACTIVATE.code, BaiduEventTypeEnum.ACTIVE);
+        //注册
+        huihuiBaiduEventTypeMap.put(ANDROID_REGISTER.code, BaiduEventTypeEnum.REGISTER);
+        huihuiBaiduEventTypeMap.put(IOS_REGISTER.code, BaiduEventTypeEnum.REGISTER);
+        //次日留存
+        huihuiBaiduEventTypeMap.put(ANDROID_DAY1RETENTION.code, BaiduEventTypeEnum.RETAIN_1DAY);
+        huihuiBaiduEventTypeMap.put(IOS_DAY1RETENTION.code, BaiduEventTypeEnum.RETAIN_1DAY);
+        //加入购物车
+        huihuiBaiduEventTypeMap.put(ANDROID_ADDTOCART.code, null);
+        huihuiBaiduEventTypeMap.put(IOS_ADDTOCART.code, null);
+        //购买
+        huihuiBaiduEventTypeMap.put(ANDROID_PURCHASE.code, BaiduEventTypeEnum.EC_BUY);
+        huihuiBaiduEventTypeMap.put(IOS_PURCHASE.code, BaiduEventTypeEnum.EC_BUY);
+        //授信
+        huihuiBaiduEventTypeMap.put(ANDROID_CREDIT.code, null);
+        huihuiBaiduEventTypeMap.put(IOS_CREDIT.code, null);
+        //自定义
+        huihuiBaiduEventTypeMap.put(ANDROID_CUSTOM.code, null);
+        huihuiBaiduEventTypeMap.put(IOS_CUSTOM.code, null);
 
     }
 

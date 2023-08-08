@@ -1,29 +1,29 @@
 package huihuang.proxy.ocpx.ads.huihui;
 
+import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/** 
- * 
+/**
  * @Author: xietao
  * @Date: 2023/6/8 17:16
- */ 
+ */
 public enum HuihuiParamEnum {
     AID("aid", "String", 1, "活动 id"),
     SID("sid", "String", 1, ""),
     IDFA("idfa", "String", 1, "原值， 大写"),
     IDFA_MD5("idfa_md5", "String", 2, "原值大写后 md5 之后再转大写"),
     IMEI("imei", "String", 1, "md5 之后再转大写，对应渠道的imei_md5，如果只有imei，则先md5，再大写"),
-//    IMEI_MD5("imei_md5", "String", 1, "imei原生值的md5， 32位小写"),
-    OAID("oaid", "String", 1, "android 广告标识"),
+    //    IMEI_MD5("imei_md5", "String", 1, "imei原生值的md5， 32位小写"),
+    OAID("oaid", "String", 1, ""),
     OAID_MD5("oaid_md5", "String", 1, "android 广告标识 md5值， 32位大写"),
-    CAID("caid","String",1,"原值"),
-    CAID_MD5("caid_md5","String",1,"原值大写后 md5 之后再转大写"),
+    CAID("caid", "String", 1, "原值"),
+    CAID_MD5("caid_md5", "String", 1, "原值大写后 md5 之后再转大写"),
 
     REQ_ID("reqid", "String", 1, "原始请求 id；若为RTA 投放，需要回传RTA 接口的请求 id;RTA 投放时必填 "),
-    AAID("aaid","String",2,"阿里设备标识符"),
+    AAID("aaid", "String", 2, "阿里设备标识符"),
 
     IP("ip", "String", 1, "点击 ip；IPV4:A.B.C.D (四段，以“.”分隔)IPV6:需要 encode 一次 "),
     UA("ua", "String", 1, "点 击 数 据 上 报 时http的 header 中的user_agent，一次urlencode 编码"),
@@ -84,6 +84,30 @@ public enum HuihuiParamEnum {
         huihuiXiaomiMap.put(REQ_ID, null);
         huihuiXiaomiMap.put(AAID, null);
         huihuiXiaomiMap.put(MODEL, null);//小米机型？
+    }
+
+
+    public static Map<HuihuiParamEnum, BaiduParamEnum> huihuiBaiduMap;
+
+    static {
+        huihuiBaiduMap = new HashMap<>();
+        huihuiBaiduMap.put(AID, BaiduParamEnum.XIANYU_AID);
+        huihuiBaiduMap.put(SID, BaiduParamEnum.XIANYU_SID);
+        huihuiBaiduMap.put(IMEI, BaiduParamEnum.IMEI_MD5);
+        huihuiBaiduMap.put(OAID, BaiduParamEnum.OAID);
+        huihuiBaiduMap.put(OAID_MD5, BaiduParamEnum.OAID_MD5);
+        huihuiBaiduMap.put(IDFA, BaiduParamEnum.IDFA);
+        huihuiBaiduMap.put(IDFA_MD5, null);
+        huihuiBaiduMap.put(CAID, BaiduParamEnum.CAID);
+        huihuiBaiduMap.put(CAID_MD5, null);
+        huihuiBaiduMap.put(TS, BaiduParamEnum.TS);
+        huihuiBaiduMap.put(OS, null);
+        huihuiBaiduMap.put(IP, BaiduParamEnum.IP);
+        huihuiBaiduMap.put(UA, BaiduParamEnum.UA);
+        huihuiBaiduMap.put(CALLBACK, BaiduParamEnum.CALLBACK_URL);
+        huihuiBaiduMap.put(REQ_ID, null);
+        huihuiBaiduMap.put(AAID, null);
+        huihuiBaiduMap.put(MODEL, null);
     }
 
 
