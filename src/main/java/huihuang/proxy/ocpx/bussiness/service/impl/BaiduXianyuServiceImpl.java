@@ -42,7 +42,7 @@ public class BaiduXianyuServiceImpl extends BaiduChannelFactory implements IChan
     @Autowired
     private XianyuPath xianyuPath;
 
-    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_DONGCHEDI;
+    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_XIANYU;
 
     @Override
     public IChannelAds channelAds() {
