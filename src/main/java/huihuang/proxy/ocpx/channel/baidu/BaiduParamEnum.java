@@ -39,8 +39,8 @@ public enum BaiduParamEnum {
 
     KUAISHOU_ADID("","adid","快手投放渠道标识"),
 
-    XIANYU_AID("","aid","探探投放渠道标识"),
-    XIANYU_SID("","sid","探探投放渠道标识"),
+    XIANYU_AID("","aid","闲鱼投放渠道标识"),
+    XIANYU_SID("","sid","闲鱼投放渠道标识"),
 
 
     ;

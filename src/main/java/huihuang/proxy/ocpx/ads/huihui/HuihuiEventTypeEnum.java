@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.ads.huihui;
 
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
+import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
@@ -107,6 +108,37 @@ public enum HuihuiEventTypeEnum {
         huihuiBaiduEventTypeMap.put(IOS_CREDIT.code, null);
         //自定义
         huihuiBaiduEventTypeMap.put(ANDROID_CUSTOM.code, null);
+        huihuiBaiduEventTypeMap.put(IOS_CUSTOM.code, null);
+
+    }
+
+
+    public static Map<String, HuaweiEventTypeEnum> huihuiHuaweiEventTypeMap;
+
+    static {
+        huihuiHuaweiEventTypeMap = CollUtil.newHashMap();
+        //下载
+        huihuiHuaweiEventTypeMap.put(ANDROID_DOWNLOAD.code, null);
+        //激活
+        huihuiHuaweiEventTypeMap.put(ANDROID_ACTIVATE.code, HuaweiEventTypeEnum.ACTIVE);
+        huihuiHuaweiEventTypeMap.put(IOS_ACTIVATE.code, HuaweiEventTypeEnum.ACTIVE);
+        //注册
+        huihuiHuaweiEventTypeMap.put(ANDROID_REGISTER.code, HuaweiEventTypeEnum.REGISTER);
+        huihuiHuaweiEventTypeMap.put(IOS_REGISTER.code, HuaweiEventTypeEnum.REGISTER);
+        //次日留存
+        huihuiHuaweiEventTypeMap.put(ANDROID_DAY1RETENTION.code, HuaweiEventTypeEnum.RETAIN);
+        huihuiHuaweiEventTypeMap.put(IOS_DAY1RETENTION.code, HuaweiEventTypeEnum.RETAIN);
+        //加入购物车
+        huihuiHuaweiEventTypeMap.put(ANDROID_ADDTOCART.code, HuaweiEventTypeEnum.ADD_TO_CART);
+        huihuiHuaweiEventTypeMap.put(IOS_ADDTOCART.code, HuaweiEventTypeEnum.ADD_TO_CART);
+        //购买
+        huihuiHuaweiEventTypeMap.put(ANDROID_PURCHASE.code, HuaweiEventTypeEnum.FIRST_PURCHASE);
+        huihuiHuaweiEventTypeMap.put(IOS_PURCHASE.code, HuaweiEventTypeEnum.FIRST_PURCHASE);
+        //授信
+        huihuiHuaweiEventTypeMap.put(ANDROID_CREDIT.code, HuaweiEventTypeEnum.CREDIT);
+        huihuiHuaweiEventTypeMap.put(IOS_CREDIT.code, HuaweiEventTypeEnum.CREDIT);
+        //自定义
+        huihuiHuaweiEventTypeMap.put(ANDROID_CUSTOM.code, null);
         huihuiBaiduEventTypeMap.put(IOS_CUSTOM.code, null);
 
     }

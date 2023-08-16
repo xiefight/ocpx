@@ -28,5 +28,7 @@ public class HuaweiPath {
 
     public static final String HUIHUANG_SECRET = "?";
 
+    public static final String TUHU_SECRET = "?";
+
     public static final String CALLBACK_URL = "https://ppscrowd-drcn.op.hicloud.com/action-lib-track/hiad/v2/actionupload?";
 }

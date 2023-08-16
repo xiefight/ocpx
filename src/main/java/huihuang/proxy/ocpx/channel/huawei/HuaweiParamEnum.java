@@ -31,6 +31,8 @@ public enum HuaweiParamEnum {
 
     HUIHUANG_CHAIN_CODE("","chainCode","辉煌标识"),
 
+    TUHU_AID("","aid","途虎投放渠道标识"),
+    TUHU_SID("","sid","途虎投放渠道标识"),
 
     ;
 

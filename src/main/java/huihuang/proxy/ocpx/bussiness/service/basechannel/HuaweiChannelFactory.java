@@ -157,4 +157,22 @@ public class HuaweiChannelFactory {
         return contentValue;
     }
 
+    public static String fitExtras(Map<String, String[]> parameterMap, String... extras) {
+//        if (extras.length == 0) {
+//            extras[0] = HuaweiParamEnum.CONTENT_ID.getParam();
+//            extras[1] = HuaweiParamEnum.EVENT_TYPE.getParam();
+//            extras[2] = HuaweiParamEnum.TRACE_TIME.getParam();
+//            extras[3] = HuaweiParamEnum.TRACKING_ENABLED.getParam();
+//        }
+        StringBuilder extraStr = new StringBuilder();
+        for (String extra : extras) {
+            String[] cids = parameterMap.get(extra);
+            if (Objects.nonNull(cids) && cids.length > 0) {
+                String cid = cids[0];
+                extraStr.append("&").append(extra).append("=").append(cid);
+            }
+        }
+        return extraStr.toString();
+    }
+
 }

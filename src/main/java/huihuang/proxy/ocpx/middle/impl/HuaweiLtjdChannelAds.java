@@ -3,6 +3,7 @@ package huihuang.proxy.ocpx.middle.impl;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamField;
 import huihuang.proxy.ocpx.ads.litianjingdong.LTJDPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.ILtjdAdsDao;
+import huihuang.proxy.ocpx.bussiness.service.basechannel.HuaweiChannelFactory;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
@@ -50,7 +51,7 @@ public class HuaweiLtjdChannelAds extends HuaweiLiangdamaoReportFactory {
         LiangdamaoParamField liangdamaoParamField = (LiangdamaoParamField) super.channelParamToAdsParam(parameterMap);
         liangdamaoParamField.setTp_adv_id("200");
         //存储华为这边必有而广告侧（快手、粮大猫）这不必有的参数，回传可能会用到
-        String extras = fitExtras(parameterMap,
+        String extras = HuaweiChannelFactory.fitExtras(parameterMap,
                 HuaweiParamEnum.CONTENT_ID.getParam(),
                 HuaweiParamEnum.EVENT_TYPE.getParam(),
                 HuaweiParamEnum.TRACE_TIME.getParam(),

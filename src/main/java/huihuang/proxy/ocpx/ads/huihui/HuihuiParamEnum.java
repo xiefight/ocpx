@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.huihui;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -108,6 +109,30 @@ public enum HuihuiParamEnum {
         huihuiBaiduMap.put(REQ_ID, null);
         huihuiBaiduMap.put(AAID, null);
         huihuiBaiduMap.put(MODEL, null);
+    }
+
+
+    public static Map<HuihuiParamEnum, HuaweiParamEnum> huihuiHuaweiMap;
+
+    static {
+        huihuiHuaweiMap = new HashMap<>();
+        huihuiHuaweiMap.put(AID, HuaweiParamEnum.TUHU_AID);
+        huihuiHuaweiMap.put(SID, HuaweiParamEnum.TUHU_SID);
+        huihuiHuaweiMap.put(IMEI, HuaweiParamEnum.ID_TYPE);
+        huihuiHuaweiMap.put(OAID, HuaweiParamEnum.OAID);
+        huihuiHuaweiMap.put(OAID_MD5, null);
+        huihuiHuaweiMap.put(IDFA, null);
+        huihuiHuaweiMap.put(IDFA_MD5, null);
+        huihuiHuaweiMap.put(CAID, null);
+        huihuiHuaweiMap.put(CAID_MD5, null);
+        huihuiHuaweiMap.put(TS, null);
+        huihuiHuaweiMap.put(OS, null);
+        huihuiHuaweiMap.put(IP, HuaweiParamEnum.IP);
+        huihuiHuaweiMap.put(UA, HuaweiParamEnum.USER_AGENT);
+        huihuiHuaweiMap.put(CALLBACK, HuaweiParamEnum.CALLBACK);
+        huihuiHuaweiMap.put(REQ_ID, null);
+        huihuiHuaweiMap.put(AAID, null);
+        huihuiHuaweiMap.put(MODEL, null);
     }
 
 
