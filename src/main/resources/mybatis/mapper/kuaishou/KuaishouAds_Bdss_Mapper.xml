@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="huihuang.proxy.ocpx.bussiness.dao.ads.kuaishousplit.IKuaishouAdsBdssDao">
+
+    <resultMap id="kuaishouAdsMap" type="huihuang.proxy.ocpx.ads.kuaishou.KuaishouAdsDTO">
+        <id column="id" property="id"/>
+        <result column="adid" property="adid"/>
+        <result column="imei" property="imei"/>
+        <result column="idfa" property="idfa"/>
+        <result column="oaid" property="oaid"/>
+        <result column="android_id" property="androidId"/>
+        <result column="mac" property="mac"/>
+        <result column="ip" property="ip"/>
+        <result column="user_agent" property="userAgent"/>
+        <result column="account_id" property="accountId"/>
+        <result column="click_id" property="clickId"/>
+        <result column="campaign_id" property="campaignId"/>
+        <result column="adgroup_id" property="adgroupId"/>
+        <result column="creative_id" property="creativeId"/>
+        <result column="advertiser_id" property="advertiserId"/>
+        <result column="rta_id" property="rtaId"/>
+        <result column="caid_list" property="caidList"/>
+        <result column="callback" property="callback"/>
+        <result column="extra" property="extra"/>
+        <result column="channel_name" property="channelName"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="report_status" property="reportStatus"/>
+        <result column="callback_status" property="callBackStatus"/>
+        <result column="callback_time" property="callBackTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="huihuang.proxy.ocpx.ads.kuaishou.KuaishouAdsDTO">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO kuaishou_ads_bdss
+        (adid, imei, idfa, oaid, android_id,
+        mac, ip, user_agent, account_id, click_id, campaign_id, adgroup_id, creative_id,
+        advertiser_id,rta_id,caid_list,callback,extra,channel_name, create_time, update_time, report_status, callback_status)
+        VALUES (#{adid}, #{imei}, #{idfa}, #{oaid}, #{androidId}, #{mac}, #{ip},
+        #{userAgent}, #{accountId}, #{clickId}, #{campaignId}, #{adgroupId}, #{creativeId}, #{advertiserId},
+        #{rtaId},#{caidList},#{callback},#{extra},#{channelName},now(),now(), "0", "0")
+    </insert>
+
+
+    <update id="update" parameterType="huihuang.proxy.ocpx.ads.kuaishou.KuaishouAdsDTO">
+        UPDATE kuaishou_ads_bdss
+        <set>
+            <if test="adid != null">adid = #{adid},</if>
+            <if test="imei != null">imei = #{imei},</if>
+            <if test="idfa != null">idfa = #{idfa},</if>
+            <if test="oaid != null">oaid = #{oaid},</if>
+            <if test="androidId != null">android_id = #{androidId},</if>
+            <if test="mac != null">mac = #{mac},</if>
+            <if test="ip != null">ip = #{ip},</if>
+            <if test="userAgent != null">user_agent = #{userAgent},</if>
+            <if test="accountId != null">account_id = #{accountId},</if>
+            <if test="clickId != null">click_id = #{clickId},</if>
+            <if test="campaignId != null">campaign_id = #{campaignId},</if>
+            <if test="adgroupId != null">adgroup_id = #{adgroupId},</if>
+            <if test="creativeId != null">creative_id = #{creativeId},</if>
+            <if test="advertiserId != null">advertiser_id = #{advertiserId},</if>
+            <if test="rtaId != null">rta_id = #{rtaId},</if>
+            <if test="caidList != null">caid_list = #{caidList},</if>
+            <if test="callback != null">callback = #{callback},</if>
+            <if test="extra != null">extra = #{extra},</if>
+            <if test="channelName != null">channel_name = #{channelName},</if>
+            update_time = now(),
+            <if test="reportStatus != null">report_status = #{reportStatus},</if>
+            <if test="callBackStatus != null">callback_status = #{callBackStatus},</if>
+            <if test="callBackTime != null">callback_time = #{callBackTime},</if>
+        </set>
+        where id =#{id}
+    </update>
+
+
+    <select id="queryKuaishouAdsById" parameterType="java.lang.Integer" resultMap="kuaishouAdsMap">
+        SELECT id,
+               adid,
+               imei,
+               idfa,
+               oaid,
+               android_id,
+               mac,
+               ip,
+               user_agent,
+               account_id,
+               click_id,
+               campaign_id,
+               adgroup_id,
+               creative_id,
+               advertiser_id,
+               rta_id,
+               caid_list,
+               callback,
+               extra,
+               channel_name,
+               create_time,
+               update_time,
+               report_status,
+               callback_status
+        FROM kuaishou_ads_bdss
+        WHERE id = #{id}
+    </select>
+
+
+</mapper>

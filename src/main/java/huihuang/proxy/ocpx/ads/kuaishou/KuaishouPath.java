@@ -35,6 +35,9 @@ public class KuaishouPath {
     public static final String BAIDU_KUAISHOU_ADID = "21666";
     public static final String BAIDU_KUAISHOUJISU_ADID = "22038";
 
+    public static final String BDSS_KUAISHOU_ADID = "21749";
+    public static final String BDSS_KUAISHOUJISU_ADID = "";
+
     public static final String IQIYI_KUAISHOU_ADID = "21749";
     public static final String IQIYI_KUAISHOUJISU_ADID = "21756";
 
