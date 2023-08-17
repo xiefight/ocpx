@@ -50,7 +50,7 @@ public class HuaweiTuhuServiceImpl extends HuaweiChannelFactory implements IChan
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        logger.info("adsCallBack {} 开始回调渠道  id:{}  event:{}", channelAdsKey, id, parameterMap.get("event_type")[0]);
+        logger.info("adsCallBack {} 开始回调渠道  id:{}  event:{}", channelAdsKey, id, parameterMap.get("conv_action")[0]);
 
         //根据id查询对应的点击记录
         HuihuiAdsDTO tuhuAdsDTO = tuhuAdsDao.queryTuhuAdsById(id);
