@@ -10,8 +10,8 @@ import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.BdssChannelFactory;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2BaiduVO;
-import huihuang.proxy.ocpx.channel.baidu.BaiduCallbackDTO;
 import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
+import huihuang.proxy.ocpx.channel.bdss.BdssCallbackDTO;
 import huihuang.proxy.ocpx.channel.bdss.BdssPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
@@ -98,7 +98,7 @@ public class BdssKuaishouServiceImpl extends BdssChannelFactory implements IChan
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);
-        BaiduCallbackDTO data = (BaiduCallbackDTO) response.getData();
+        BdssCallbackDTO data = (BdssCallbackDTO) response.getData();
 
         //更新回调状态
         KuaishouAdsDTO kuaishouAds = new KuaishouAdsDTO();
