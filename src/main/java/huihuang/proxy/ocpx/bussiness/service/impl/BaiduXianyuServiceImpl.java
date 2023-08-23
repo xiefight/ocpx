@@ -51,7 +51,8 @@ public class BaiduXianyuServiceImpl extends BaiduChannelFactory implements IChan
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        logger.info("adsCallBack {} 开始回调渠道  id:{}  event:{}", channelAdsKey, id, parameterMap.get("conv_action")[0]);
+        String eventType = parameterMap.get("conv_action")[0];
+        logger.info("adsCallBack {} 开始回调渠道  id:{}  event:{}", channelAdsKey, id, eventType);
 
         //根据id查询对应的点击记录
         HuihuiAdsDTO xianyuAdsDTO = xianyuAdsDao.queryXianyuAdsById(id);
@@ -62,11 +63,21 @@ public class BaiduXianyuServiceImpl extends BaiduChannelFactory implements IChan
         String callback = xianyuAdsDTO.getCallback();
         String channelUrl = URLDecoder.decode(callback, StandardCharsets.UTF_8);
 
+        //针对闲鱼aid=33936的户，闲鱼注册事件对应百度激活事件，这里特殊处理一下
+        if ("33936".equals(xianyuAdsDTO.getAid())) {
+            if (eventType.equals(HuihuiEventTypeEnum.ANDROID_REGISTER.getCode())) {
+                eventType = HuihuiEventTypeEnum.ANDROID_ACTIVATE.getCode();
+            }
+            if (eventType.equals(HuihuiEventTypeEnum.IOS_REGISTER.getCode())) {
+                eventType = HuihuiEventTypeEnum.IOS_ACTIVATE.getCode();
+            }
+        }
+
         Ads2BaiduVO baiduVO = new Ads2BaiduVO();
         baiduVO.setAdsId(id);
         baiduVO.setAdsName(xianyuPath.baseAdsName());
         baiduVO.setChannelUrl(channelUrl);
-        baiduVO.setaType(HuihuiEventTypeEnum.huihuiBaiduEventTypeMap.get(parameterMap.get("conv_action")[0]).getCode());
+        baiduVO.setaType(HuihuiEventTypeEnum.huihuiBaiduEventTypeMap.get(eventType).getCode());
         baiduVO.setaValue(0);
         baiduVO.setCbEventTime(String.valueOf(System.currentTimeMillis()));
         baiduVO.setCbOaid(xianyuAdsDTO.getOaid());
