@@ -41,6 +41,7 @@ public enum BaiduParamEnum {
 
     XIANYU_AID("","aid","闲鱼投放渠道标识"),
     XIANYU_SID("","sid","闲鱼投放渠道标识"),
+    XIANYU_CONV_EXT("","conv_ext","闲鱼投放渠道标识"),
 
 
     ;

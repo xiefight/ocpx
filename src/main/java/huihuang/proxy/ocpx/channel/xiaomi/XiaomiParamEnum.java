@@ -34,6 +34,7 @@ public enum XiaomiParamEnum {
 
     TANTAN_AID("","aid","探探投放渠道标识"),
     TANTAN_SID("","sid","探探投放渠道标识"),
+    TANTAN_CONV_EXT("","conv_ext","探探投放渠道标识"),
 
 
     ;

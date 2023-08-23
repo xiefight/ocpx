@@ -14,6 +14,7 @@ import java.util.Map;
 public enum HuihuiParamEnum {
     AID("aid", "String", 1, "活动 id"),
     SID("sid", "String", 1, ""),
+    CONV_EXT("conv_ext", "String", 1, ""),
     IDFA("idfa", "String", 1, "原值， 大写"),
     IDFA_MD5("idfa_md5", "String", 2, "原值大写后 md5 之后再转大写"),
     IMEI("imei", "String", 1, "md5 之后再转大写，对应渠道的imei_md5，如果只有imei，则先md5，再大写"),
@@ -70,6 +71,7 @@ public enum HuihuiParamEnum {
         huihuiXiaomiMap = new HashMap<>();
         huihuiXiaomiMap.put(AID, XiaomiParamEnum.TANTAN_AID);
         huihuiXiaomiMap.put(SID, XiaomiParamEnum.TANTAN_SID);
+        huihuiXiaomiMap.put(CONV_EXT, XiaomiParamEnum.TANTAN_CONV_EXT);
         huihuiXiaomiMap.put(IMEI, XiaomiParamEnum.IMEI);
         huihuiXiaomiMap.put(OAID, XiaomiParamEnum.OAID);
         huihuiXiaomiMap.put(OAID_MD5, null);
@@ -94,6 +96,7 @@ public enum HuihuiParamEnum {
         huihuiBaiduMap = new HashMap<>();
         huihuiBaiduMap.put(AID, BaiduParamEnum.XIANYU_AID);
         huihuiBaiduMap.put(SID, BaiduParamEnum.XIANYU_SID);
+        huihuiBaiduMap.put(CONV_EXT, BaiduParamEnum.XIANYU_CONV_EXT);
         huihuiBaiduMap.put(IMEI, BaiduParamEnum.IMEI_MD5);
         huihuiBaiduMap.put(OAID, BaiduParamEnum.OAID);
         huihuiBaiduMap.put(OAID_MD5, BaiduParamEnum.OAID_MD5);
@@ -118,6 +121,7 @@ public enum HuihuiParamEnum {
         huihuiHuaweiMap = new HashMap<>();
         huihuiHuaweiMap.put(AID, HuaweiParamEnum.TUHU_AID);
         huihuiHuaweiMap.put(SID, HuaweiParamEnum.TUHU_SID);
+        huihuiHuaweiMap.put(CONV_EXT, HuaweiParamEnum.TUHU_CONV_EXT);
         huihuiHuaweiMap.put(IMEI, HuaweiParamEnum.ID_TYPE);
         huihuiHuaweiMap.put(OAID, HuaweiParamEnum.OAID);
         huihuiHuaweiMap.put(OAID_MD5, null);
