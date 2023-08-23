@@ -130,6 +130,10 @@ public class HuaweiKuaishouServiceImpl extends HuaweiChannelFactory implements I
                 huaweiSecret = HuaweiPath.KUAISHOUJISU3_SECRET;
                 adsName = KuaishouPath.KUAISHOUJISU3_ADS_NAME;
             }
+            if (HuaweiPath.HW_KS_ACCOUNT_04.equals(accountId)) {
+                huaweiSecret = HuaweiPath.KUAISHOU4_SECRET;
+                adsName = KuaishouPath.KUAISHOU_ADS_NAME;
+            }
         }
 
         huaweiVO.setAdsId(id);
