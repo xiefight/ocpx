@@ -33,7 +33,7 @@ public class HuaweiPath {
     public static final String TUHU_SECRET = "kG7rK8Z0G2+sAU9PndgTCvjmea/vqUpEOMIAsnaaVFg=";
     public static final String XIANYU_SECRET = "jkcvW39AvnnNU30+0rM0MlieNSj4Fsk69K9R+KAfV8M=";
 
-    public static final String DIANTAO_SECRET = "?";
+    public static final String DIANTAO_SECRET = "cZ1S8DB7vgx5k+7awgFChN8hOAiIulw7fwGyP3Alzaw=";
 
     public static final String CALLBACK_URL = "https://ppscrowd-drcn.op.hicloud.com/action-lib-track/hiad/v2/actionupload?";
 }

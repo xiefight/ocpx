@@ -63,7 +63,7 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianHuaweiMap.put(CHAIN_CODE, HuaweiParamEnum.HUIHUANG_CHAIN_CODE);
         huihuangmingtianHuaweiMap.put(TASKID, HuaweiParamEnum.HUIHUANG_TASK_ID);
         huihuangmingtianHuaweiMap.put(APP, HuaweiParamEnum.HUIHUANG_APP);
-        huihuangmingtianHuaweiMap.put(SOURCE, HuaweiParamEnum.HUIHUANG_APP);
+        huihuangmingtianHuaweiMap.put(SOURCE, HuaweiParamEnum.HUIHUANG_SOURCE);
         huihuangmingtianHuaweiMap.put(ADVERTISING_SPACE_ID, HuaweiParamEnum.HUIHUANG_ADVERTISING_SPACE_ID);
         huihuangmingtianHuaweiMap.put(AID, HuaweiParamEnum.HUIHUANG_AID);
         huihuangmingtianHuaweiMap.put(IMEI_MD5, HuaweiParamEnum.ID_TYPE);
