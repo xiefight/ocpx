@@ -10,7 +10,7 @@ public enum HuaweiParamEnum {
     CONTENT_ID("{content_id}","content_id","素材id"),
     ADGROUP_ID("{adgroup_id}", "adgroup_id", "任务id"),
     CAMPAIGN_ID("{campaign_id}", "campaign_id", "计划id"),
-    OAID("{oaid}", "oaid", "广告单元 ID"),
+    OAID("{oaid}", "oaid", "设备标识符，明文"),
     TRACKING_ENABLED("{tracking_enabled}", "tracking_enabled", "0：不允许跟踪,1：允许跟踪"),
     IP("{ip}", "ip", "IP地址：客户端IP地址"),
     USER_AGENT("{user_agent}", "user_agent", "用户代理"),
@@ -30,6 +30,11 @@ public enum HuaweiParamEnum {
     ACCOUNT_ID("","account_id","我们自定义的华为渠道标识，体现在监测链接中"),
 
     HUIHUANG_CHAIN_CODE("","chainCode","辉煌标识"),
+    HUIHUANG_TASK_ID("","taskId","由辉煌明天提供任务 id"),
+    HUIHUANG_APP("","app","辉煌明天提供App 号，14 飞猪,9 点淘"),
+    HUIHUANG_SOURCE("","source","辉煌明天提供App 号，14 飞猪,9 点淘"),
+    HUIHUANG_ADVERTISING_SPACE_ID("","advertisingSpaceId","辉煌明天提供App 号，14 飞猪,9 点淘"),
+    HUIHUANG_AID("","advertisingSpaceId","辉煌明天提供广告数据 id "),
 
     TUHU_AID("","aid","途虎投放渠道标识"),
     TUHU_SID("","sid","途虎投放渠道标识"),
