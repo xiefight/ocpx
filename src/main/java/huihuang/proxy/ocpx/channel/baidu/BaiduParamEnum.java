@@ -44,6 +44,13 @@ public enum BaiduParamEnum {
     XIANYU_CONV_EXT("","conv_ext","闲鱼投放渠道标识"),
 
 
+    HUIHUANG_CHAIN_CODE("","chainCode","辉煌标识"),
+    HUIHUANG_TASK_ID("","taskId","由辉煌明天提供任务 id"),
+    HUIHUANG_APP("","app","辉煌明天提供App 号，14 飞猪,9 点淘"),
+    HUIHUANG_SOURCE("","source","辉煌明天提供App 号，14 飞猪,9 点淘"),
+    HUIHUANG_ADVERTISING_SPACE_ID("","advertisingSpaceId","辉煌明天提供App 号，14 飞猪,9 点淘"),
+    HUIHUANG_AID("","advertisingSpaceId","辉煌明天提供广告数据 id "),
+
     ;
 
 

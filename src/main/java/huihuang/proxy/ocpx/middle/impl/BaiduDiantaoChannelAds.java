@@ -3,10 +3,13 @@ package huihuang.proxy.ocpx.middle.impl;
 import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianParamEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianParamField;
+import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.DiantaoPath;
+import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamField;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IDiantaoAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.HuaweiChannelFactory;
+import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
-import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import huihuang.proxy.ocpx.middle.baseadsreport.HuihuangMingtianReportFactory;
@@ -21,13 +24,13 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-@Component("hdtChannelAds")
-public class HuaweiDiantaoChannelAds extends HuihuangMingtianReportFactory {
-
-    String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_DIANTAO;
+@Component("bdtChannelAds")
+public class BaiduDiantaoChannelAds extends HuihuangMingtianReportFactory {
 
     @Autowired
     private IDiantaoAdsDao diantaoAdsDao;
+
+    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_DIANTAO;
 
     @Override
     protected String channelAdsKey() {
@@ -36,19 +39,18 @@ public class HuaweiDiantaoChannelAds extends HuihuangMingtianReportFactory {
 
     @Override
     protected String serverPathKey() {
-        return Constants.ServerPath.HUAWEI_DIANTAO;
+        return Constants.ServerPath.BAIDU_DIANTAO;
     }
 
     @Override
     protected String channelName() {
-        return HuaweiPath.HUAWEI_CHANNEL_NAME;
+        return BaiduPath.BAIDU_CHANNEL_NAME;
     }
 
     @Override
     protected IMarkDao adsDao() {
         return diantaoAdsDao;
     }
-
 
     /**
      * 生成监测链接
@@ -57,13 +59,13 @@ public class HuaweiDiantaoChannelAds extends HuihuangMingtianReportFactory {
     public String findMonitorAddress() {
         StringBuilder macro = new StringBuilder();
         //1.遍历广告主查找渠道对应的宏参数
-        Set<HuihuangmingtianParamEnum> huihuangmingtianParamEnums = HuihuangmingtianParamEnum.huihuangmingtianHuaweiMap.keySet();
+        Set<HuihuangmingtianParamEnum> huihuangmingtianParamEnums = HuihuangmingtianParamEnum.huihuangmingtianBaiduMap.keySet();
         for (HuihuangmingtianParamEnum huihuangmingtian : huihuangmingtianParamEnums) {
-            HuaweiParamEnum huawei = HuihuangmingtianParamEnum.huihuangmingtianHuaweiMap.get(huihuangmingtian);
-            if (Objects.isNull(huawei) || StrUtil.isEmpty(huawei.getMacro())) {
+            BaiduParamEnum baidu = HuihuangmingtianParamEnum.huihuangmingtianBaiduMap.get(huihuangmingtian);
+            if (Objects.isNull(baidu) || StrUtil.isEmpty(baidu.getMacro())) {
                 continue;
             }
-            macro.append(huawei.getParam()).append("=").append(huawei.getMacro()).append("&");
+            macro.append(baidu.getParam()).append("=").append(baidu.getMacro()).append("&");
         }
         String macroStr = macro.toString();
         if (macroStr.endsWith("&")) {
@@ -72,19 +74,19 @@ public class HuaweiDiantaoChannelAds extends HuihuangMingtianReportFactory {
         //2.config中查找服务地址
         String serverPath = queryServerPath();
         //3.拼接监测地址
-        return serverPath + Constants.ServerPath.HUAWEI_DIANTAO + Constants.ServerPath.CLICK_REPORT + "?" + macroStr;
+        return serverPath + Constants.ServerPath.BAIDU_DIANTAO + Constants.ServerPath.CLICK_REPORT + "?" + macroStr;
     }
 
     @Override
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
         HuihuangmingtianParamField huihuangmingtianParamField = new HuihuangmingtianParamField();
 
-        Set<Map.Entry<HuihuangmingtianParamEnum, HuaweiParamEnum>> hhSet = HuihuangmingtianParamEnum.huihuangmingtianHuaweiMap.entrySet();
-        hhSet.stream().filter(hh -> Objects.nonNull(hh.getValue())).forEach(hh -> {
-            HuihuangmingtianParamEnum huihuangmingtian = hh.getKey();
-            HuaweiParamEnum huawei = hh.getValue();
+        Set<Map.Entry<HuihuangmingtianParamEnum, BaiduParamEnum>> hbSet = HuihuangmingtianParamEnum.huihuangmingtianBaiduMap.entrySet();
+        hbSet.stream().filter(hb -> Objects.nonNull(hb.getValue())).forEach(hb -> {
+            HuihuangmingtianParamEnum huihuangmingtian = hb.getKey();
+            BaiduParamEnum baidu = hb.getValue();
             String huihuangmingtianField = huihuangmingtian.getName();
-            String huaweiParam = huawei.getParam();
+            String huaweiParam = baidu.getParam();
             String[] value = parameterMap.get(huaweiParam);
             if (Objects.isNull(value) || value.length == 0) return;
             try {
@@ -95,15 +97,6 @@ public class HuaweiDiantaoChannelAds extends HuihuangMingtianReportFactory {
                 e.printStackTrace();
             }
         });
-        //存储华为这边必有而快手这不必有的参数，回传可能会用到
-        String extras = HuaweiChannelFactory.fitExtras(parameterMap,
-                HuaweiParamEnum.CONTENT_ID.getParam(),
-                HuaweiParamEnum.EVENT_TYPE.getParam(),
-                HuaweiParamEnum.TRACE_TIME.getParam(),
-                HuaweiParamEnum.TRACKING_ENABLED.getParam());
-        if (extras.length() > 0) {
-            huihuangmingtianParamField.setExtra(extras);
-        }
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey, huihuangmingtianParamField);
         return huihuangmingtianParamField;
     }

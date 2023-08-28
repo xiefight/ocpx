@@ -80,6 +80,7 @@ public class Constants {
         public static final String BAIDU_FANQIE = "/bfServer";
         public static final String BAIDU_DONGCHEDI = "/bdcdServer";
         public static final String BAIDU_XIANYU = "/bxyServer";
+        public static final String BAIDU_DIANTAO = "/bdtServer";
         public static final String BDSS_LTJD = "/bdssjdServer";
         public static final String BDSS_KUAISHOU = "/bdssksServer";
 
@@ -130,6 +131,7 @@ public class Constants {
         public static final String BAIDU_FANQIE = "baidu-fanqie";
         public static final String BAIDU_DONGCHEDI = "baidu-dongchedi";
         public static final String BAIDU_XIANYU = "baidu-xianyu";
+        public static final String BAIDU_DIANTAO = "baidu-diantao";
         public static final String BDSS_LTJD = "bdss-ltjd";
         public static final String BDSS_KUAISHOU = "bdss-kuaishou";
 

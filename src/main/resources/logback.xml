@@ -663,6 +663,12 @@
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiDiantaoServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="DAINTAO_LOG"/>
     </logger>
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduDiantaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DAINTAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduDiantaoServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="DAINTAO_LOG"/>
+    </logger>
 
     <!-- 点淘 end -->
 

@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.ads.huihuangmingtian;
 
+import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 
 import java.util.HashMap;
@@ -80,5 +81,28 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianHuaweiMap.put(CALLBACK_URL, HuaweiParamEnum.CALLBACK);
     }
 
+    public static Map<HuihuangmingtianParamEnum, BaiduParamEnum> huihuangmingtianBaiduMap;
+
+    static {
+        huihuangmingtianBaiduMap = new HashMap<>();
+        huihuangmingtianBaiduMap.put(CHAIN_CODE, BaiduParamEnum.HUIHUANG_CHAIN_CODE);
+        huihuangmingtianBaiduMap.put(TASKID, BaiduParamEnum.HUIHUANG_TASK_ID);
+        huihuangmingtianBaiduMap.put(APP, BaiduParamEnum.HUIHUANG_APP);
+        huihuangmingtianBaiduMap.put(SOURCE, BaiduParamEnum.HUIHUANG_SOURCE);
+        huihuangmingtianBaiduMap.put(ADVERTISING_SPACE_ID, BaiduParamEnum.HUIHUANG_ADVERTISING_SPACE_ID);
+        huihuangmingtianBaiduMap.put(AID, BaiduParamEnum.HUIHUANG_AID);
+        huihuangmingtianBaiduMap.put(IMEI_MD5, BaiduParamEnum.IMEI_MD5);
+        huihuangmingtianBaiduMap.put(OAID, BaiduParamEnum.OAID);
+        huihuangmingtianBaiduMap.put(OAID_MD5, BaiduParamEnum.OAID_MD5);
+        huihuangmingtianBaiduMap.put(IDFA, BaiduParamEnum.IDFA);
+        huihuangmingtianBaiduMap.put(IDFA_MD5, null);
+        huihuangmingtianBaiduMap.put(CAMPAIGN_ID, null);
+
+        huihuangmingtianBaiduMap.put(TMS, BaiduParamEnum.TS);
+        huihuangmingtianBaiduMap.put(OS, BaiduParamEnum.OS_TYPE);
+        huihuangmingtianBaiduMap.put(IP, BaiduParamEnum.IP);
+        huihuangmingtianBaiduMap.put(UA, BaiduParamEnum.UA);
+        huihuangmingtianBaiduMap.put(CALLBACK_URL, BaiduParamEnum.CALLBACK_URL);
+    }
 
 }
