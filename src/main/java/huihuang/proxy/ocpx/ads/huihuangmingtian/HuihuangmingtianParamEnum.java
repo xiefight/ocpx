@@ -71,6 +71,7 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianHuaweiMap.put(OAID_MD5, null);
         huihuangmingtianHuaweiMap.put(IDFA, null);
         huihuangmingtianHuaweiMap.put(IDFA_MD5, null);
+        huihuangmingtianHuaweiMap.put(CAMPAIGN_ID, HuaweiParamEnum.CAMPAIGN_ID);
 
         huihuangmingtianHuaweiMap.put(TMS, HuaweiParamEnum.TRACE_TIME);
         huihuangmingtianHuaweiMap.put(OS, HuaweiParamEnum.OS_VERSION);

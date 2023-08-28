@@ -63,7 +63,7 @@ public class HuaweiDiantaoServiceImpl extends HuaweiChannelFactory implements IC
         huaweiVO.setCallbackUrl(huihuangmingtianAdsDTO.getCallbackUrl());
 
         huaweiVO.setTimestamp(String.valueOf(currentTime));
-        huaweiVO.setCampaignId(getContentFromExtra(huihuangmingtianAdsDTO, HuaweiParamEnum.CAMPAIGN_ID.getParam(), null));
+        huaweiVO.setCampaignId(huihuangmingtianAdsDTO.getCampaignId());
         huaweiVO.setContentId(getContentFromExtra(huihuangmingtianAdsDTO, HuaweiParamEnum.CONTENT_ID.getParam(), null));
         huaweiVO.setTrackingEnabled(getContentFromExtra(huihuangmingtianAdsDTO, HuaweiParamEnum.TRACKING_ENABLED.getParam(), "1"));
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
@@ -76,18 +76,18 @@ public class HuaweiDiantaoServiceImpl extends HuaweiChannelFactory implements IC
         HuaweiCallbackDTO data = (HuaweiCallbackDTO) response.getData();
 
         //更新回调状态
-        LiangdamaoAdsDTO ltjdAds = new LiangdamaoAdsDTO();
-        ltjdAds.setId(id);
-        ltjdAds.setCallBackTime(String.valueOf(currentTime));
+        HuihuangmingtianAdsDTO huihuangmingtianAds = new HuihuangmingtianAdsDTO();
+        huihuangmingtianAds.setId(id);
+        huihuangmingtianAds.setCallBackTime(String.valueOf(currentTime));
 
         if (response.getCode() == 0) {
-            ltjdAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(ltjdAds, diantaoAdsDao);
+            huihuangmingtianAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            baseServiceInner.updateAdsObject(huihuangmingtianAds, diantaoAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
-            ltjdAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(ltjdAds, diantaoAdsDao);
+            huihuangmingtianAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            baseServiceInner.updateAdsObject(huihuangmingtianAds, diantaoAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
         }
