@@ -89,6 +89,8 @@ public class BaiduDiantaoChannelAds extends HuihuangMingtianReportFactory {
             String huaweiParam = baidu.getParam();
             String[] value = parameterMap.get(huaweiParam);
             if (Objects.isNull(value) || value.length == 0) return;
+            if ("null".equals(value[0]) || "NULL".equals(value[0])) return;
+            if (value[0].startsWith("__") && value[0].endsWith("__")) return;
             try {
                 PropertyDescriptor descriptor = new PropertyDescriptor(huihuangmingtianField, huihuangmingtianParamField.getClass());
                 Method setMethod = descriptor.getWriteMethod();
