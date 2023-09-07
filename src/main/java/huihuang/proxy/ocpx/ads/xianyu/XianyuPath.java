@@ -11,6 +11,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class XianyuPath extends HuihuiPath {
 
+    /**
+     * 闲鱼1：33936替换36490
+     * 闲鱼2：35270 替换36494
+     */
+
     public static final String XIANYU_ADS_NAME = "xianyu";
 
     @Override
