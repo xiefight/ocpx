@@ -673,4 +673,34 @@
     <!-- 点淘 end -->
 
 
+    <!-- 番茄小说（全能互动） start -->
+    <appender name="QUANNENG_FANQIE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengFanqie/quannengFanqie.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengFanqie/quannengFanqie.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengFanqieChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DAINTAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiFanqieServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="DAINTAO_LOG"/>
+    </logger>
+
+    <!-- 番茄小说（全能互动） end -->
+
+
 </configuration>
