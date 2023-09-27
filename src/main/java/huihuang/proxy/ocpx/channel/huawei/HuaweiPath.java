@@ -22,7 +22,7 @@ public class HuaweiPath {
     public static final String HW_KS_ACCOUNT_04 = "hwks04";
     public static final String KUAISHOU4_SECRET = "R2etToXeBJy8jGmQpmDs1PGEAIGKbAObw9VJRF2HT4I=";
 
-    public static final String LTJD_SECRET = "Txycx3/Kk14tow5N952l56bgKU+31pQ6W+tkWNlp2TY=";
+    public static final String LTJD_SECRET = "ggJC4oDsoBpalFHbHqmxcWxY4fmg6tZnYBTPxU5LLtI=";//"Txycx3/Kk14tow5N952l56bgKU+31pQ6W+tkWNlp2TY=";
 
     public static final String YOUKU_SECRET = "3VV9kUV7O2cWdwjaup7vNN1bRsj5W99agf+DHik7RvE=";
 
@@ -32,6 +32,7 @@ public class HuaweiPath {
 
     public static final String TUHU_SECRET = "kG7rK8Z0G2+sAU9PndgTCvjmea/vqUpEOMIAsnaaVFg=";
     public static final String XIANYU_SECRET = "jkcvW39AvnnNU30+0rM0MlieNSj4Fsk69K9R+KAfV8M=";
+    public static final String XIANYU36626_SECRET = "6XWsEIZqsvKi820dScwvK6ONsB5DhG4Bp7uMza4L7Eg=";
 
     public static final String DIANTAO_SECRET = "cZ1S8DB7vgx5k+7awgFChN8hOAiIulw7fwGyP3Alzaw=";
 
