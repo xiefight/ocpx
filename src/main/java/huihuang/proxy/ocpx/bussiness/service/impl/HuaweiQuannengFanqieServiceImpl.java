@@ -1,9 +1,9 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
-import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianEventTypeEnum;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.DiantaoPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IDiantaoAdsDao;
+import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongAdsDTO;
+import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongEventTypeEnum;
+import huihuang.proxy.ocpx.ads.quannenghudong.fanqie.FanqiePath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IQuannengFanqieAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.HuaweiChannelFactory;
@@ -33,9 +33,9 @@ public class HuaweiQuannengFanqieServiceImpl extends HuaweiChannelFactory implem
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private IDiantaoAdsDao diantaoAdsDao;
+    private IQuannengFanqieAdsDao fanqieAdsDao;
     @Autowired
-    private DiantaoPath diantaoPath;
+    private FanqiePath fanqiePath;
 
     String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_QUANNENG_FANQIE;
 
@@ -46,11 +46,12 @@ public class HuaweiQuannengFanqieServiceImpl extends HuaweiChannelFactory implem
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, parameterMap.get("event_type")[0]);
+        String eventType = parameterMap.get("action_type")[0];
+        logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
 
         //根据id查询对应的点击记录
-        HuihuangmingtianAdsDTO huihuangmingtianAdsDTO = diantaoAdsDao.queryDiantaoAdsById(id);
-        if (null == huihuangmingtianAdsDTO) {
+        QuannengHudongAdsDTO quannengHudongAdsDTO = fanqieAdsDao.queryQuannengFanqieAdsById(id);
+        if (null == quannengHudongAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
@@ -58,35 +59,35 @@ public class HuaweiQuannengFanqieServiceImpl extends HuaweiChannelFactory implem
         long currentTime = System.currentTimeMillis();
         Ads2HuaweiVO huaweiVO = new Ads2HuaweiVO();
         huaweiVO.setAdsId(id);
-        huaweiVO.setAdsName(diantaoPath.baseAdsName());
-        huaweiVO.setCallbackUrl(huihuangmingtianAdsDTO.getCallbackUrl());
+        huaweiVO.setAdsName(fanqiePath.baseAdsName());
+        huaweiVO.setCallbackUrl(quannengHudongAdsDTO.getCallback());
 
         huaweiVO.setTimestamp(String.valueOf(currentTime));
-        huaweiVO.setCampaignId(huihuangmingtianAdsDTO.getCampaignId());
-        huaweiVO.setContentId(getContentFromExtra(huihuangmingtianAdsDTO, HuaweiParamEnum.CONTENT_ID.getParam(), null));
-        huaweiVO.setTrackingEnabled(getContentFromExtra(huihuangmingtianAdsDTO, HuaweiParamEnum.TRACKING_ENABLED.getParam(), "1"));
+        huaweiVO.setCampaignId(getContentFromExtra(quannengHudongAdsDTO, HuaweiParamEnum.CAMPAIGN_ID.getParam(), null));
+        huaweiVO.setContentId(getContentFromExtra(quannengHudongAdsDTO, HuaweiParamEnum.CONTENT_ID.getParam(), null));
+        huaweiVO.setTrackingEnabled(getContentFromExtra(quannengHudongAdsDTO, HuaweiParamEnum.TRACKING_ENABLED.getParam(), "1"));
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
-        huaweiVO.setConversionType(HuihuangmingtianEventTypeEnum.huihuangmingtianHuaweiEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
-        huaweiVO.setOaid(huihuangmingtianAdsDTO.getOaid());
-        huaweiVO.setSecret(HuaweiPath.DIANTAO_SECRET);
+        huaweiVO.setConversionType(QuannengHudongEventTypeEnum.quannengHudongHuaweiEventTypeMap.get(eventType).getCode());
+        huaweiVO.setOaid(quannengHudongAdsDTO.getOaid());
+        huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_SECRET);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 
         Response response = super.baseAdsCallBack(huaweiVO);
         HuaweiCallbackDTO data = (HuaweiCallbackDTO) response.getData();
 
         //更新回调状态
-        HuihuangmingtianAdsDTO huihuangmingtianAds = new HuihuangmingtianAdsDTO();
-        huihuangmingtianAds.setId(id);
-        huihuangmingtianAds.setCallBackTime(String.valueOf(currentTime));
+        QuannengHudongAdsDTO quannengHudongAds = new QuannengHudongAdsDTO();
+        quannengHudongAds.setId(id);
+        quannengHudongAds.setCallBackTime(String.valueOf(currentTime));
 
         if (response.getCode() == 0) {
-            huihuangmingtianAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(huihuangmingtianAds, diantaoAdsDao);
+            quannengHudongAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            baseServiceInner.updateAdsObject(quannengHudongAds, fanqieAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
-            huihuangmingtianAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(huihuangmingtianAds, diantaoAdsDao);
+            quannengHudongAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            baseServiceInner.updateAdsObject(quannengHudongAds, fanqieAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
         }

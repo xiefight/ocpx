@@ -35,5 +35,7 @@ public class HuaweiPath {
 
     public static final String DIANTAO_SECRET = "cZ1S8DB7vgx5k+7awgFChN8hOAiIulw7fwGyP3Alzaw=";
 
+    public static final String QUANNENG_FANQIE_SECRET = "?";
+
     public static final String CALLBACK_URL = "https://ppscrowd-drcn.op.hicloud.com/action-lib-track/hiad/v2/actionupload?";
 }
