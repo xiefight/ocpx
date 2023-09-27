@@ -55,6 +55,7 @@ public class HuaweiXianyuServiceImpl extends HuaweiChannelFactory implements ICh
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
+        Ads2HuaweiVO huaweiVO = new Ads2HuaweiVO();
         //针对闲鱼aid=36626的户，闲鱼注册事件对应华为激活事件，这里特殊处理一下，而闲鱼的激活事件暂时不处理
         if ("36626".equals(xianyuAdsDTO.getAid())) {
             if (eventType.equals(HuihuiEventTypeEnum.ANDROID_ACTIVATE.getCode())
@@ -67,10 +68,12 @@ public class HuaweiXianyuServiceImpl extends HuaweiChannelFactory implements ICh
             if (eventType.equals(HuihuiEventTypeEnum.IOS_REGISTER.getCode())) {
                 eventType = HuihuiEventTypeEnum.IOS_ACTIVATE.getCode();
             }
+            huaweiVO.setSecret(HuaweiPath.XIANYU36626_SECRET);
+        }else {
+            huaweiVO.setSecret(HuaweiPath.XIANYU_SECRET);
         }
 
         long currentTime = System.currentTimeMillis();
-        Ads2HuaweiVO huaweiVO = new Ads2HuaweiVO();
         huaweiVO.setAdsId(id);
         huaweiVO.setAdsName(xianyuPath.baseAdsName());
         huaweiVO.setCallbackUrl(xianyuAdsDTO.getCallback());
@@ -83,7 +86,6 @@ public class HuaweiXianyuServiceImpl extends HuaweiChannelFactory implements ICh
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
         huaweiVO.setConversionType(HuihuiEventTypeEnum.huihuiHuaweiEventTypeMap.get(eventType).getCode());
         huaweiVO.setOaid(xianyuAdsDTO.getOaid());
-        huaweiVO.setSecret(HuaweiPath.XIANYU_SECRET);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 
         Response response = super.baseAdsCallBack(huaweiVO);
