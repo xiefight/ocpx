@@ -63,7 +63,7 @@ public class BaiduXianyuServiceImpl extends BaiduChannelFactory implements IChan
         String callback = xianyuAdsDTO.getCallback();
         String channelUrl = URLDecoder.decode(callback, StandardCharsets.UTF_8);
 
-        //针对闲鱼aid=33936的户，闲鱼注册事件对应百度激活事件，这里特殊处理一下，而闲鱼的激活事件暂时不处理
+        //针对闲鱼aid=36490(原33936)的户，闲鱼注册事件对应百度激活事件，这里特殊处理一下，而闲鱼的激活事件暂时不处理
         if ("36490".equals(xianyuAdsDTO.getAid())) {
             if (eventType.equals(HuihuiEventTypeEnum.ANDROID_ACTIVATE.getCode())
                     || eventType.equals(HuihuiEventTypeEnum.IOS_ACTIVATE.getCode())) {

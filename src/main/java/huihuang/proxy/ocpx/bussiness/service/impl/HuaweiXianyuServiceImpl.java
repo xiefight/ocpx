@@ -46,29 +46,43 @@ public class HuaweiXianyuServiceImpl extends HuaweiChannelFactory implements ICh
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        logger.info("adsCallBack {} 开始回调渠道  id:{}  event:{}", channelAdsKey, id, parameterMap.get("conv_action")[0]);
-
+        String eventType = parameterMap.get("conv_action")[0];
+        logger.info("adsCallBack {} 开始回调渠道  id:{}  event:{}", channelAdsKey, id, eventType);
         //根据id查询对应的点击记录
-        HuihuiAdsDTO tuhuAdsDTO = xianyuAdsDao.queryXianyuAdsById(id);
-        if (null == tuhuAdsDTO) {
+        HuihuiAdsDTO xianyuAdsDTO = xianyuAdsDao.queryXianyuAdsById(id);
+        if (null == xianyuAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
+        }
+
+        //针对闲鱼aid=36626的户，闲鱼注册事件对应华为激活事件，这里特殊处理一下，而闲鱼的激活事件暂时不处理
+        if ("36626".equals(xianyuAdsDTO.getAid())) {
+            if (eventType.equals(HuihuiEventTypeEnum.ANDROID_ACTIVATE.getCode())
+                    || eventType.equals(HuihuiEventTypeEnum.IOS_ACTIVATE.getCode())) {
+                return BasicResult.getFailResponse("aid=36626的闲鱼户不需要回传激活事件:" + id);
+            }
+            if (eventType.equals(HuihuiEventTypeEnum.ANDROID_REGISTER.getCode())) {
+                eventType = HuihuiEventTypeEnum.ANDROID_ACTIVATE.getCode();
+            }
+            if (eventType.equals(HuihuiEventTypeEnum.IOS_REGISTER.getCode())) {
+                eventType = HuihuiEventTypeEnum.IOS_ACTIVATE.getCode();
+            }
         }
 
         long currentTime = System.currentTimeMillis();
         Ads2HuaweiVO huaweiVO = new Ads2HuaweiVO();
         huaweiVO.setAdsId(id);
         huaweiVO.setAdsName(xianyuPath.baseAdsName());
-        huaweiVO.setCallbackUrl(tuhuAdsDTO.getCallback());
+        huaweiVO.setCallbackUrl(xianyuAdsDTO.getCallback());
 
         huaweiVO.setEventType(parameterMap.get("conv_action")[0]);
         huaweiVO.setTimestamp(String.valueOf(currentTime));
-        huaweiVO.setCampaignId(getContentFromExtra(tuhuAdsDTO, HuaweiParamEnum.CAMPAIGN_ID.getParam(), null));
-        huaweiVO.setContentId(getContentFromExtra(tuhuAdsDTO, HuaweiParamEnum.CONTENT_ID.getParam(), null));
-        huaweiVO.setTrackingEnabled(getContentFromExtra(tuhuAdsDTO, HuaweiParamEnum.TRACKING_ENABLED.getParam(), "1"));
+        huaweiVO.setCampaignId(getContentFromExtra(xianyuAdsDTO, HuaweiParamEnum.CAMPAIGN_ID.getParam(), null));
+        huaweiVO.setContentId(getContentFromExtra(xianyuAdsDTO, HuaweiParamEnum.CONTENT_ID.getParam(), null));
+        huaweiVO.setTrackingEnabled(getContentFromExtra(xianyuAdsDTO, HuaweiParamEnum.TRACKING_ENABLED.getParam(), "1"));
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
-        huaweiVO.setConversionType(HuihuiEventTypeEnum.huihuiHuaweiEventTypeMap.get(parameterMap.get("conv_action")[0]).getCode());
-        huaweiVO.setOaid(tuhuAdsDTO.getOaid());
+        huaweiVO.setConversionType(HuihuiEventTypeEnum.huihuiHuaweiEventTypeMap.get(eventType).getCode());
+        huaweiVO.setOaid(xianyuAdsDTO.getOaid());
         huaweiVO.setSecret(HuaweiPath.XIANYU_SECRET);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 
