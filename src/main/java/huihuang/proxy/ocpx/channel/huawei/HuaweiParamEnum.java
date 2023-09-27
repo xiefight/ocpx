@@ -40,6 +40,8 @@ public enum HuaweiParamEnum {
     TUHU_SID("","sid","途虎投放渠道标识"),
     TUHU_CONV_EXT("","conv_ext","途虎投放渠道标识"),
 
+    QUANNENGHUDONG_UNIQUEID("","uniqueid","全能互动请求唯一id"),
+
     ;
 
 
