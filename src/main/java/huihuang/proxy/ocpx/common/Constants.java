@@ -67,6 +67,7 @@ public class Constants {
         public static final String XIAOMI_TANTAN = "/xtServer";
         public static final String XIAOMI_XINYU_YOUDAO = "/xxyydServer";
         public static final String XIAOMI_DONGCHEDI = "/xdcdServer";
+        public static final String XIAOMI_QUANNENG_FANQIE = "/xqfServer";
 
         public static final String WIFI_XIGUA = "/wxServer";
         public static final String WIFI_FANQIE = "/wfServer";
