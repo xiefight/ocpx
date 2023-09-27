@@ -49,6 +49,11 @@ public abstract class QuannengHudongReportFactory extends BaseSupport implements
 //        if (null != quannengHudongParamField.getAdAgent()) {
 //            quannengHudongParamField.setAdAgent(URLEncoder.createQuery().encode(quannengHudongParamField.getAdAgent(), StandardCharsets.UTF_8));
 //        }
+        if (quannengHudongParamField.getIdfa()!=null){
+            quannengHudongParamField.setOs("ios");
+        }else {
+            quannengHudongParamField.setOs("android");
+        }
         logger.info("clickReport {} 特殊参数进行转换 convertParams:{}", channelAdsKey(), quannengHudongParamField);
     }
 
@@ -108,7 +113,7 @@ public abstract class QuannengHudongReportFactory extends BaseSupport implements
         QuannengHudongAdsDTO quannengHudongAdsVO = new QuannengHudongAdsDTO();
         quannengHudongAdsVO.setId(quannengHudongAdsDTO.getId());
         //上报成功
-        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals("200")) {
+        if (HttpStatus.HTTP_OK == response.getStatus() && Integer.parseInt(String.valueOf(Objects.requireNonNull(responseBodyMap).get("code"))) == 200) {
             quannengHudongAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
             baseServiceInner.updateAdsObject(quannengHudongAdsVO, adsDao());
             logger.info("clickReport {} 上报广告侧接口请求成功:{} 数据:{}", channelAdsKey(), response, quannengHudongAdsVO);

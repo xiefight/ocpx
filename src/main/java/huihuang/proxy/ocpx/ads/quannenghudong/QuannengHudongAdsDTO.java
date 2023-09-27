@@ -9,6 +9,7 @@ import lombok.ToString;
 @ToString
 public class QuannengHudongAdsDTO extends CommonColumn implements IMarkDto {
 
+    private String pid;
     private String idfa;
     private String imei;
     private String oaid;

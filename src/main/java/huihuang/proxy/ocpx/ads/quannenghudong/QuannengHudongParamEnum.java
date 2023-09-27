@@ -7,6 +7,7 @@ import java.util.Map;
 
 public enum QuannengHudongParamEnum {
 
+    PID("pid", "String", 1, "广告商分配的标识"),
     IDFA("idfa", "String", 1, "iOS 设备广告标识 idfa（iOS必填）"),
     IMEI("imei", "String", 1, "imei原生值的md5， 32位小写"),
     OAID("oaid", "String", 1, "安卓设备广告标识 oaid 原值"),
@@ -58,6 +59,7 @@ public enum QuannengHudongParamEnum {
 
     static {
         quannengHudongHuaweiMap = new HashMap<>();
+        quannengHudongHuaweiMap.put(PID, HuaweiParamEnum.PID);
         quannengHudongHuaweiMap.put(IDFA, null);
         quannengHudongHuaweiMap.put(IMEI, HuaweiParamEnum.ID_TYPE);//需要md5
         quannengHudongHuaweiMap.put(OAID, HuaweiParamEnum.OAID);

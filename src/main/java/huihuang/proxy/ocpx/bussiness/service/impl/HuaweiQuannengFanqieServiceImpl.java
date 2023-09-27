@@ -19,6 +19,7 @@ import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -35,6 +36,7 @@ public class HuaweiQuannengFanqieServiceImpl extends HuaweiChannelFactory implem
     @Autowired
     private IQuannengFanqieAdsDao fanqieAdsDao;
     @Autowired
+    @Qualifier("quannengFanqiePath")
     private FanqiePath fanqiePath;
 
     String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_QUANNENG_FANQIE;
