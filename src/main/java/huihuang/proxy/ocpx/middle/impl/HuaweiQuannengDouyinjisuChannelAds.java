@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-@Component("hqfChannelAds")
+@Component("hqdyjsChannelAds")
 public class HuaweiQuannengDouyinjisuChannelAds extends QuannengHudongReportFactory {
 
     String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_QUANNENG_DOUYIN_JISU;

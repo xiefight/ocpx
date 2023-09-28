@@ -12,6 +12,6 @@ import org.springframework.stereotype.Component;
 public class QuannengDouyinjisuPath extends QuannengHudongPath {
     @Override
     public String baseAdsName() {
-        return "63";
+        return "quanneng-douyinjisu";
     }
 }
