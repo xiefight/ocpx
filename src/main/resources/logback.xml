@@ -694,10 +694,10 @@
 
 
     <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengFanqieChannelAds" level="INFO" additivity="true">
-        <appender-ref ref="DAINTAO_LOG"/>
+        <appender-ref ref="QUANNENG_FANQIE_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiFanqieServiceImpl" level="INFO" additivity="true">
-        <appender-ref ref="DAINTAO_LOG"/>
+        <appender-ref ref="QUANNENG_FANQIE_LOG"/>
     </logger>
 
     <!-- 番茄小说（全能互动） end -->
@@ -723,10 +723,10 @@
 
 
     <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengDouyinjisuChannelAds" level="INFO" additivity="true">
-        <appender-ref ref="DAINTAO_LOG"/>
+        <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengDouyinjisuServiceImpl" level="INFO" additivity="true">
-        <appender-ref ref="DAINTAO_LOG"/>
+        <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
     </logger>
 
     <!-- 抖音极速（全能互动） end -->
