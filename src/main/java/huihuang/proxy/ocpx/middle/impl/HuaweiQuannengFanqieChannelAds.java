@@ -100,6 +100,7 @@ public class HuaweiQuannengFanqieChannelAds extends QuannengHudongReportFactory 
                 HuaweiParamEnum.CONTENT_ID.getParam(),
                 HuaweiParamEnum.EVENT_TYPE.getParam(),
                 HuaweiParamEnum.TRACE_TIME.getParam(),
+                HuaweiParamEnum.CAMPAIGN_ID.getParam(),
                 HuaweiParamEnum.TRACKING_ENABLED.getParam());
         if (extras.length() > 0) {
             quannengHudongParamField.setExtra(extras);
