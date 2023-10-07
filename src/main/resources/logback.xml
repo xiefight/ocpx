@@ -597,10 +597,18 @@
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduXianyuServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="XIANYU_LOG"/>
     </logger>
+
     <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiXianyuChannelAds" level="INFO" additivity="true">
         <appender-ref ref="XIANYU_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiXianyuServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="XIANYU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiXianyuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiXianyuServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="XIANYU_LOG"/>
     </logger>
 

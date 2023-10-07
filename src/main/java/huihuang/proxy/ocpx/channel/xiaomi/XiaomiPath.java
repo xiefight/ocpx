@@ -18,6 +18,8 @@ public class XiaomiPath {
 
     public static final String KUAISHOUJISU_SECRET = "qcNfrgHbmDGcyvUc";
 
+    public static final String XIANYU_SECRET = "uISNMKFpPUyXsJzy";
+
     public static final String XIAOMI_CHANNEL_NAME = "xiaomi";
 
     public static final String CALLBACK_URL = "http://trail.e.mi.com/api/callback?";
