@@ -37,6 +37,11 @@ public class ChannelAdsConfig {
     @Autowired
     private XiaomiDongchediChannelAds xiaomiDongchediChannelAds;
     @Autowired
+    private XiaomiXiaohongshuChannelAds xiaomiXhsChannelAds;
+    @Autowired
+    private XiaomiQuannengFanqieChannelAds xiaomiQuannengFanqieChannelAds;
+
+    @Autowired
     private WifiXiguaChannelAds wxChannelAds;
     @Autowired
     private WifiFanqieChannelAds wfChannelAds;
@@ -88,8 +93,7 @@ public class ChannelAdsConfig {
     private BaiduJdssChannelAds bjdssChannelAds;
     @Autowired
     private BaiduDiantaoChannelAds bdtChannelAds;
-    @Autowired
-    private XiaomiXiaohongshuChannelAds xiaomiXhsChannelAds;
+
     @Autowired
     private OppoKuaishouChannelAds oppoKuaishouChannelAds;
     @Autowired
@@ -106,6 +110,9 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_XINYU_YOUDAO, xiaomiXinyuYoudaoChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_DONGCHEDI, xiaomiDongchediChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_XIANYU, xiaomiXianyuChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_XIAOHONGSHU, xiaomiXhsChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_QUANNENG_FANQIE, xiaomiQuannengFanqieChannelAds);
+
         channelAdsMap.put(Constants.ChannelAdsKey.WIFI_XIGUA, wxChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.WIFI_FANQIE, wfChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_YOUKU, byChannelAds);
@@ -131,7 +138,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_JDJR, bjdjrChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_JDSS, bjdssChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_DIANTAO, bdtChannelAds);
-        channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_XIAOHONGSHU, xiaomiXhsChannelAds);
+
         channelAdsMap.put(Constants.ChannelAdsKey.OPPO_KUAISHOU, oppoKuaishouChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.IQIYI_KUAISHOU, ikChannelAds);
     }

@@ -708,6 +708,13 @@
         <appender-ref ref="QUANNENG_FANQIE_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengFanqieChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_FANQIE_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiXianyuServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_FANQIE_LOG"/>
+    </logger>
+
     <!-- 番茄小说（全能互动） end -->
 
     <!-- 抖音极速（全能互动） start -->

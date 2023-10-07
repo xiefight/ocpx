@@ -2,7 +2,7 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongAdsDTO;
 import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongEventTypeEnum;
-import huihuang.proxy.ocpx.ads.quannenghudong.fanqie.FanqiePath;
+import huihuang.proxy.ocpx.ads.quannenghudong.fanqie.QuannengFanqiePath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IQuannengFanqieAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -37,7 +37,7 @@ public class HuaweiQuannengFanqieServiceImpl extends HuaweiChannelFactory implem
     private IQuannengFanqieAdsDao fanqieAdsDao;
     @Autowired
     @Qualifier("quannengFanqiePath")
-    private FanqiePath fanqiePath;
+    private QuannengFanqiePath quannengFanqiePath;
 
     String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_QUANNENG_FANQIE;
 
@@ -61,7 +61,7 @@ public class HuaweiQuannengFanqieServiceImpl extends HuaweiChannelFactory implem
         long currentTime = System.currentTimeMillis();
         Ads2HuaweiVO huaweiVO = new Ads2HuaweiVO();
         huaweiVO.setAdsId(id);
-        huaweiVO.setAdsName(fanqiePath.baseAdsName());
+        huaweiVO.setAdsName(quannengFanqiePath.baseAdsName());
         huaweiVO.setCallbackUrl(quannengHudongAdsDTO.getCallback());
 
         huaweiVO.setTimestamp(String.valueOf(currentTime));

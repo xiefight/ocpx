@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.ads.quannenghudong;
 
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
+import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
 
@@ -43,6 +44,21 @@ public enum QuannengHudongEventTypeEnum {
         quannengHudongHuaweiEventTypeMap.put(DAY1RETENTION.code, HuaweiEventTypeEnum.RETAIN);
         //购买
         quannengHudongHuaweiEventTypeMap.put(PURCHASE.code, HuaweiEventTypeEnum.PAID);
+    }
+
+
+    public static Map<String, XiaomiEventTypeEnum> quannengHudongXiaomiEventTypeMap;
+
+    static {
+        quannengHudongXiaomiEventTypeMap = CollUtil.newHashMap();
+        //激活
+        quannengHudongXiaomiEventTypeMap.put(ACTIVATE.code, XiaomiEventTypeEnum.APP_ACTIVE);
+        //注册
+        quannengHudongXiaomiEventTypeMap.put(REGISTER.code, XiaomiEventTypeEnum.APP_REGISTER);
+        //次留
+        quannengHudongXiaomiEventTypeMap.put(DAY1RETENTION.code, XiaomiEventTypeEnum.APP_RETENTION);
+        //购买
+        quannengHudongXiaomiEventTypeMap.put(PURCHASE.code, XiaomiEventTypeEnum.APP_PURCHASE);
     }
 
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @Date: 2023-09-27 11:04
  **/
 @Component("quannengFanqiePath")
-public class FanqiePath extends QuannengHudongPath {
+public class QuannengFanqiePath extends QuannengHudongPath {
     @Override
     public String baseAdsName() {
         return "quanneng-fanqie";

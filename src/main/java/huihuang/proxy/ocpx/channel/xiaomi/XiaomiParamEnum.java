@@ -37,6 +37,10 @@ public enum XiaomiParamEnum {
     TANTAN_CONV_EXT("","conv_ext","探探投放渠道标识"),
 
 
+    PID("","pid","全能互动广告商标识"),
+    QUANNENGHUDONG_UNIQUEID("","uniqueid","全能互动请求唯一id"),
+
+
     ;
 
 
