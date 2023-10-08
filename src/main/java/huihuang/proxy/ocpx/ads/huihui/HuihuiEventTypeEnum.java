@@ -60,6 +60,9 @@ public enum HuihuiEventTypeEnum {
         //激活
         huihuiXiaomiEventTypeMap.put(ANDROID_ACTIVATE.code, XiaomiEventTypeEnum.APP_ACTIVE);
         huihuiXiaomiEventTypeMap.put(IOS_ACTIVATE.code, XiaomiEventTypeEnum.APP_ACTIVE);
+        //自定义新增激活
+        huihuiXiaomiEventTypeMap.put(ANDROID_ACTIVATE.code + "new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
+        huihuiXiaomiEventTypeMap.put(IOS_ACTIVATE.code + "new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
         //注册
         huihuiXiaomiEventTypeMap.put(ANDROID_REGISTER.code, XiaomiEventTypeEnum.APP_REGISTER);
         huihuiXiaomiEventTypeMap.put(IOS_REGISTER.code, XiaomiEventTypeEnum.APP_REGISTER);
