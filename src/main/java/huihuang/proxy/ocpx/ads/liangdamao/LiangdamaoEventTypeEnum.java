@@ -45,7 +45,7 @@ public enum LiangdamaoEventTypeEnum {
         liangdamaoXiaomiEventTypeMap = CollUtil.newHashMap();
         //激活
         liangdamaoXiaomiEventTypeMap.put(ACTIVE.code, XiaomiEventTypeEnum.APP_ACTIVE);
-        //激活
+        //自定义新增激活
         liangdamaoXiaomiEventTypeMap.put(ACTIVE.code + "new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
         //注册
         liangdamaoXiaomiEventTypeMap.put(REGISTER.code, XiaomiEventTypeEnum.APP_REGISTER);

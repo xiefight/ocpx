@@ -56,7 +56,7 @@ public class XiaomiQuannengFanqieServiceImpl extends XiaomiChannelFactory implem
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
         xiaomiVO.setAdsName(quannengFanqiePath.baseAdsName());
-        xiaomiVO.setEventType(QuannengHudongEventTypeEnum.quannengHudongXiaomiEventTypeMap.get(eventType).getCode());
+        xiaomiVO.setEventType(QuannengHudongEventTypeEnum.quannengHudongXiaomiEventTypeMap.get(eventType + "new").getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(quannengFanqieAdsDTO.getCallback());
         xiaomiVO.setOaid(quannengFanqieAdsDTO.getOaid());

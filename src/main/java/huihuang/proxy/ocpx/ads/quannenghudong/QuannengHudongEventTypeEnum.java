@@ -53,6 +53,8 @@ public enum QuannengHudongEventTypeEnum {
         quannengHudongXiaomiEventTypeMap = CollUtil.newHashMap();
         //激活
         quannengHudongXiaomiEventTypeMap.put(ACTIVATE.code, XiaomiEventTypeEnum.APP_ACTIVE);
+        //自定义新增激活
+        quannengHudongXiaomiEventTypeMap.put(ACTIVATE.code + "new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
         //注册
         quannengHudongXiaomiEventTypeMap.put(REGISTER.code, XiaomiEventTypeEnum.APP_REGISTER);
         //次留
