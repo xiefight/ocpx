@@ -30,6 +30,7 @@ public class BaiduPath {
     public static final String FANQIE2_SECRET = "NDc5NzEyMzE=";
     public static final String JDJR_SECRET = "NDc4NDc5Njk=";
     public static final String JDSS_SECRET = "NDc4NDc5NzA=";
+    public static final String DOUYIN_SECRET = "NTA2NjYzMTY=";
 
     public static final String XIANYU_SECRET = "NDk1ODUwMDQ=";
 
