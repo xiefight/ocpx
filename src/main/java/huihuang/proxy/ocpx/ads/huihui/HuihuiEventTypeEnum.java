@@ -73,8 +73,8 @@ public enum HuihuiEventTypeEnum {
         huihuiXiaomiEventTypeMap.put(ANDROID_ADDTOCART.code, null);
         huihuiXiaomiEventTypeMap.put(IOS_ADDTOCART.code, null);
         //购买
-        huihuiXiaomiEventTypeMap.put(ANDROID_PURCHASE.code, XiaomiEventTypeEnum.APP_PURCHASE);
-        huihuiXiaomiEventTypeMap.put(IOS_PURCHASE.code, XiaomiEventTypeEnum.APP_PURCHASE);
+        huihuiXiaomiEventTypeMap.put(ANDROID_PURCHASE.code, XiaomiEventTypeEnum.APP_FIRST_PAY);
+        huihuiXiaomiEventTypeMap.put(IOS_PURCHASE.code, XiaomiEventTypeEnum.APP_FIRST_PAY);
         //授信
         huihuiXiaomiEventTypeMap.put(ANDROID_CREDIT.code, XiaomiEventTypeEnum.APP_CREDIT);
         huihuiXiaomiEventTypeMap.put(IOS_CREDIT.code, XiaomiEventTypeEnum.APP_CREDIT);
