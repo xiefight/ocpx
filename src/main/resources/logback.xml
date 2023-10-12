@@ -806,6 +806,13 @@
         <appender-ref ref="IQIYI_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiIQiyiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="IQIYI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiIQiyiServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="IQIYI_LOG"/>
+    </logger>
+
     <!-- 爱奇艺（huihui） end -->
 
 
