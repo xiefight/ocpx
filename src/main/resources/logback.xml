@@ -712,7 +712,7 @@
     <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengFanqieChannelAds" level="INFO" additivity="true">
         <appender-ref ref="QUANNENG_FANQIE_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiXianyuServiceImpl" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengFanqieServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="QUANNENG_FANQIE_LOG"/>
     </logger>
 

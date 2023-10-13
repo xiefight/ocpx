@@ -57,7 +57,10 @@ public class XiaomiIQiyiServiceImpl extends XiaomiChannelFactory implements ICha
         xiaomiVO.setAdsId(id);
         xiaomiVO.setAdsName(iQiyiPath.baseAdsName());
         //HuihuiEventTypeEnum.huihuiXiaomiEventTypeMap.get(parameterMap.get("conv_action")[0]).getCode()
-        xiaomiVO.setEventType(HuihuiEventTypeEnum.huihuiXiaomiEventTypeMap.get(eventType + "new").getCode());
+        if (eventType.equals(HuihuiEventTypeEnum.ANDROID_ACTIVATE.getCode()) || eventType.equals(HuihuiEventTypeEnum.IOS_ACTIVATE.getCode())) {
+            eventType = eventType + "new";
+        }
+        xiaomiVO.setEventType(HuihuiEventTypeEnum.huihuiXiaomiEventTypeMap.get(eventType).getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(huihuiAdsDTO.getCallback());
         xiaomiVO.setOaid(huihuiAdsDTO.getOaid());
