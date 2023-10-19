@@ -92,6 +92,7 @@ public class Constants {
         public static final String HUAWEI_LTJD = "/hjServer";
         public static final String HUAWEI_YOUKU = "/hyServer";
         public static final String HUAWEI_FANQIE = "/hfServer";
+        public static final String HUAWEI_DOUYIN = "/hdyServer";
         public static final String HUAWEI_HUIHUANG = "/hhServer";
         public static final String HUAWEI_TUHU = "/htServer";
         public static final String HUAWEI_XIANYU = "/hxyServer";
@@ -151,6 +152,7 @@ public class Constants {
         public static final String HUAWEI_LTJD = "huawei-ltjd";
         public static final String HUAWEI_YOUKU = "huawei-youku";
         public static final String HUAWEI_FANQIE = "huawei-fanqie";
+        public static final String HUAWEI_DOUYIN = "huawei-douyin";
         public static final String HUAWEI_HUIHUANG = "huawei-huihuang";
         public static final String HUAWEI_TUHU = "huawei-tuhu";
         public static final String HUAWEI_XIANYU = "huawei-xianyu";
