@@ -131,7 +131,7 @@ public enum LiangdamaoParamEnum {
 
     static {
         liangdamaoHuaweiMap = new HashMap<>();
-//        liangdamaoHuaweiMap.put(TP_ADV_ID, HuaweiParamEnum.YOUKU_TP_ADV_ID);
+        liangdamaoHuaweiMap.put(TP_ADV_ID, HuaweiParamEnum.YOUKU_TP_ADV_ID);
         liangdamaoHuaweiMap.put(ACCESS_ID, HuaweiParamEnum.YOUKU_ACCESS_ID);
         liangdamaoHuaweiMap.put(REQUEST_ID, null);//每次请求都不一样，以当前时间戳区分
         liangdamaoHuaweiMap.put(IMEI, HuaweiParamEnum.ID_TYPE);

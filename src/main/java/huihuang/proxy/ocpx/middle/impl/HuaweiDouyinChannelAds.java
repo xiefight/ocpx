@@ -43,7 +43,9 @@ public class HuaweiDouyinChannelAds extends HuaweiLiangdamaoReportFactory {
     @Override
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
         LiangdamaoParamField liangdamaoParamField = (LiangdamaoParamField) super.channelParamToAdsParam(parameterMap);
-        liangdamaoParamField.setTp_adv_id(douyinPath.tpAdvId());
+        if (null == liangdamaoParamField.getTp_adv_id()){
+            liangdamaoParamField.setTp_adv_id(douyinPath.tpAdvId());
+        }
         //存储华为这边必有而广告侧（快手、粮大猫）这不必有的参数，回传可能会用到
         String extras = HuaweiChannelFactory.fitExtras(parameterMap,
                 HuaweiParamEnum.CONTENT_ID.getParam(),

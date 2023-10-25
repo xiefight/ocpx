@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.ads.quannenghudong;
 
+import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
@@ -90,6 +91,26 @@ public enum QuannengHudongParamEnum {
         quannengHudongXiaomiMap.put(MODEL, null);
         quannengHudongXiaomiMap.put(CALLBACK, XiaomiParamEnum.CALLBACK);
         quannengHudongXiaomiMap.put(UNIQUE_ID, XiaomiParamEnum.QUANNENGHUDONG_UNIQUEID);
+    }
+
+
+    public static Map<QuannengHudongParamEnum, BaiduParamEnum> quannengHudongBaiduMap;
+
+    static {
+        quannengHudongBaiduMap = new HashMap<>();
+        quannengHudongBaiduMap.put(PID, BaiduParamEnum.QUANNENGHUDONG_PID);
+        quannengHudongBaiduMap.put(IDFA, BaiduParamEnum.IDFA);
+        quannengHudongBaiduMap.put(IMEI, BaiduParamEnum.IMEI_MD5);//需要md5
+        quannengHudongBaiduMap.put(OAID, BaiduParamEnum.OAID);
+        quannengHudongBaiduMap.put(CAID, BaiduParamEnum.CAID);
+        quannengHudongBaiduMap.put(OS, BaiduParamEnum.OS_TYPE);
+        quannengHudongBaiduMap.put(IP, BaiduParamEnum.IP);
+        quannengHudongBaiduMap.put(ANDROID_ID, BaiduParamEnum.ANDROID_ID_MD5);
+        quannengHudongBaiduMap.put(AAID, null);
+        quannengHudongBaiduMap.put(UA, BaiduParamEnum.UA);
+        quannengHudongBaiduMap.put(MODEL, null);
+        quannengHudongBaiduMap.put(CALLBACK, BaiduParamEnum.CALLBACK_URL);
+        quannengHudongBaiduMap.put(UNIQUE_ID, BaiduParamEnum.QUANNENGHUDONG_UNIQUEID);
     }
 
 
