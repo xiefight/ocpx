@@ -866,6 +866,13 @@
         <appender-ref ref="DOUYIN_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiDouyinChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DOUYIN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDouyinServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="DOUYIN_LOG"/>
+    </logger>
+
     <!-- 抖音（大猫） end -->
 
 </configuration>
