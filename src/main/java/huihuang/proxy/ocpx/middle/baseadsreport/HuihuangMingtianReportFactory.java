@@ -60,9 +60,9 @@ public abstract class HuihuangMingtianReportFactory extends BaseSupport implemen
         if (Objects.isNull(huihuangmingtianParamField.getChainCode())) {
             return BasicResult.getFailResponse(HuihuangmingtianParamEnum.CHAIN_CODE.getName() + "不能为空");
         }
-        if (Objects.isNull(huihuangmingtianParamField.getApp())) {
+        /*if (Objects.isNull(huihuangmingtianParamField.getApp())) {
             return BasicResult.getFailResponse(HuihuangmingtianParamEnum.APP.getName() + "不能为空");
-        }
+        }*/
         if (Objects.isNull(huihuangmingtianParamField.getIdfa())
                 && Objects.isNull(huihuangmingtianParamField.getImeiMd5())
                 && Objects.isNull(huihuangmingtianParamField.getOaid())
