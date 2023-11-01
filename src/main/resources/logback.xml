@@ -705,14 +705,16 @@
     <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengFanqieChannelAds" level="INFO" additivity="true">
         <appender-ref ref="QUANNENG_FANQIE_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengFanqieServiceImpl" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengFanqieServiceImpl" level="INFO"
+            additivity="true">
         <appender-ref ref="QUANNENG_FANQIE_LOG"/>
     </logger>
 
     <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengFanqieChannelAds" level="INFO" additivity="true">
         <appender-ref ref="QUANNENG_FANQIE_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengFanqieServiceImpl" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengFanqieServiceImpl" level="INFO"
+            additivity="true">
         <appender-ref ref="QUANNENG_FANQIE_LOG"/>
     </logger>
 
@@ -742,6 +744,14 @@
         <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengDouyinjisuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengDouyinjisuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengDouyinjisuServiceImpl" level="INFO"
             additivity="true">
         <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
     </logger>
