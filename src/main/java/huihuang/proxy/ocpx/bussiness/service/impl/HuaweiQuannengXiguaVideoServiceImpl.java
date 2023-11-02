@@ -19,7 +19,6 @@ import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -70,7 +69,12 @@ public class HuaweiQuannengXiguaVideoServiceImpl extends HuaweiChannelFactory im
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
         huaweiVO.setConversionType(QuannengHudongEventTypeEnum.quannengHudongHuaweiEventTypeMap.get(eventType).getCode());
         huaweiVO.setOaid(quannengHudongAdsDTO.getOaid());
-        huaweiVO.setSecret(HuaweiPath.QUANNENG_DOUYIN_XIGUA_VIDEO);
+        if ("105".equals(quannengHudongAdsDTO.getPid())){
+            huaweiVO.setSecret(HuaweiPath.QUANNENG_105_XIGUA_VIDEO);
+        }else {
+            huaweiVO.setSecret(HuaweiPath.QUANNENG_64_XIGUA_VIDEO);
+        }
+
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 
         Response response = super.baseAdsCallBack(huaweiVO);

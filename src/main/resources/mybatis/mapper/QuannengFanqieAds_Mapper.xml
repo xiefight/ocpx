@@ -4,6 +4,7 @@
 
     <resultMap id="quannengHudongAdsMap" type="huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongAdsDTO">
         <id column="id" property="id"/>
+        <result column="pid" property="pid"/>
         <result column="idfa" property="idfa"/>
         <result column="imei" property="imei"/>
         <result column="oaid" property="oaid"/>
@@ -30,11 +31,11 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
         INSERT INTO quanneng_fanqie_ads
-        (idfa, imei, oaid, caid, ip,
+        (pid, idfa, imei, oaid, caid, ip,
         android_id, aaid, ua, os, model, callback, uniqueid, extra,channel_name, create_time, update_time,
         report_status,
         callback_status)
-        VALUES (#{idfa}, #{imei}, #{oaid}, #{caid}, #{ip}, #{androidId}, #{aaid},
+        VALUES (#{pid}, #{idfa}, #{imei}, #{oaid}, #{caid}, #{ip}, #{androidId}, #{aaid},
         #{ua}, #{os}, #{model}, #{callback}, #{uniqueId}, #{extra},#{channelName},now(),now(), "0", "0")
     </insert>
 
@@ -42,6 +43,7 @@
     <update id="update" parameterType="huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongAdsDTO">
         UPDATE quanneng_fanqie_ads
         <set>
+            <if test="pid != null">pid = #{pid},</if>
             <if test="idfa != null">idfa = #{idfa},</if>
             <if test="imei != null">imei = #{imei},</if>
             <if test="oaid != null">oaid = #{oaid},</if>
@@ -67,6 +69,7 @@
 
     <select id="queryQuannengFanqieAdsById" parameterType="java.lang.Integer" resultMap="quannengHudongAdsMap">
         SELECT id,
+               pid,
                idfa,
                imei,
                oaid,
