@@ -1,9 +1,9 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.net.URLDecoder;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
 import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongAdsDTO;
 import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongEventTypeEnum;
+import huihuang.proxy.ocpx.ads.quannenghudong.xiguavideo.QuannengXiguaVideoPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IQuannengXiguaVideoAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -35,6 +35,8 @@ public class BaiduQuannengXiguaServiceImpl extends BaiduChannelFactory implement
     private IQuannengXiguaVideoAdsDao xiguaAdsDao;
     @Autowired
     private BaseServiceInner baseServiceInner;
+    @Autowired
+    private QuannengXiguaVideoPath xiguaVideoPath;
 
     String channelAdsKey = Constants.ChannelAdsKey.BAIDU_QUANNENG_XIGUA_VIDEO;
 
@@ -59,7 +61,7 @@ public class BaiduQuannengXiguaServiceImpl extends BaiduChannelFactory implement
 
         Ads2BaiduVO baiduVO = new Ads2BaiduVO();
         baiduVO.setAdsId(id);
-        baiduVO.setAdsName(BaiduPath.BAIDU_CHANNEL_NAME);
+        baiduVO.setAdsName(xiguaVideoPath.baseAdsName());
         baiduVO.setChannelUrl(channelUrl);
         baiduVO.setaType(QuannengHudongEventTypeEnum.quannengHudongBaiduEventTypeMap.get(eventType).getCode());
         baiduVO.setaValue(0);
@@ -78,17 +80,17 @@ public class BaiduQuannengXiguaServiceImpl extends BaiduChannelFactory implement
         BaiduCallbackDTO data = (BaiduCallbackDTO) response.getData();
 
         //更新回调状态
-        HuihuangmingtianAdsDTO quannengdongliAds = new HuihuangmingtianAdsDTO();
-        quannengdongliAds.setId(id);
-        quannengdongliAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
+        QuannengHudongAdsDTO quannengdongAds = new QuannengHudongAdsDTO();
+        quannengdongAds.setId(id);
+        quannengdongAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
         if (response.getCode() == 0) {
-            quannengdongliAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(quannengdongliAds, xiguaAdsDao);
+            quannengdongAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            baseServiceInner.updateAdsObject(quannengdongAds, xiguaAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
-            quannengdongliAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(quannengdongliAds, xiguaAdsDao);
+            quannengdongAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            baseServiceInner.updateAdsObject(quannengdongAds, xiguaAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
         }
