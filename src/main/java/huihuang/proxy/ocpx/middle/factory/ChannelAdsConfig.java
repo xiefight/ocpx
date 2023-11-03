@@ -91,6 +91,8 @@ public class ChannelAdsConfig {
     private HuaweiQuannengDouyinjisuChannelAds hqdyjsChannelAds;
     @Autowired
     private HuaweiQuannengXiguaVideoChannelAds hqxvChannelAds;
+    @Autowired
+    private HuaweiQuannengBaidujisuChannelAds hqbaidujisuChannelAds;
 
 
     @Autowired
@@ -162,6 +164,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_QUANNENG_FANQIE, hqfChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_QUANNENG_DOUYIN_JISU, hqdyjsChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_QUANNENG_XIGUA_VIDEO, hqxvChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_QUANNENG_BAIDU_JISU, hqbaidujisuChannelAds);
 
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_KUAISHOU, bkChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_FANQIE, bfChannelAds);
