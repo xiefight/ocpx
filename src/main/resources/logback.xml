@@ -756,6 +756,14 @@
         <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengDouyinjisuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengDouyinjisuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_DOUYINJISU_LOG"/>
+    </logger>
+
     <!-- 抖音极速（全能互动） end -->
 
     <!-- 西瓜视频（全能互动） start -->
