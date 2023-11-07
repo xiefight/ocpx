@@ -961,6 +961,14 @@
         <appender-ref ref="QUANNENG_JINRITOUTIAO_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengJinritoutiaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_JINRITOUTIAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengJinritoutiaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_JINRITOUTIAO_LOG"/>
+    </logger>
+
     <!-- 今日头条（全能互动） start -->
 
 </configuration>
