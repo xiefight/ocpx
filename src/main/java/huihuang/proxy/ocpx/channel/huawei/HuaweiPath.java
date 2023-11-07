@@ -41,6 +41,7 @@ public class HuaweiPath {
 
     public static final String QUANNENG_FANQIE_SECRET = "OXqHD9y52yIyoZGuEUthFKWRel5B+7M3JX6+CUfh7ik=";
     public static final String QUANNENG_DOUYIN_JISU_SECRET = "kWNNpypXZC4e4G1tXf9STK0jNySs8TJlapbkKihsIy4=";
+    public static final String QUANNENG_DOUYIN_HUOSHAN_SECRET = "NCOZSPwBg64Kb/UPT1g8f6TiQOW4rH2GbgVp55FF0n0=";
     public static final String QUANNENG_64_XIGUA_VIDEO = "bC0mZ00wTssMW1+lgA5K9DuMq3e5PFxKXEsn4QxDh30=";
     public static final String QUANNENG_138_XIGUA_VIDEO = "SKVr6d1VlhZMrUCjOaaDcJf9ZdtshAVNI7h4Cvmtr2s=";
     public static final String QUANNENG_BAIDU_JISU_SECRET = "YT78NYuW4++fAvHCgxTp6K4IMWwxSexh68oiwyUWxXY=";
