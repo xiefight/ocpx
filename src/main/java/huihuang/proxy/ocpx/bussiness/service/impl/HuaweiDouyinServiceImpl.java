@@ -70,7 +70,7 @@ public class HuaweiDouyinServiceImpl extends HuaweiChannelFactory implements ICh
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
         huaweiVO.setConversionType(LiangdamaoEventTypeEnum.liangdamaoHuaweiEventTypeMap.get(eventType).getCode());
         huaweiVO.setOaid(fanqieAdsDTO.getOaid());
-        huaweiVO.setSecret(HuaweiPath.FANQIE_DOUYIN);
+        huaweiVO.setSecret(HuaweiPath.DOUYIN_SECRET);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 
         Response response = super.baseAdsCallBack(huaweiVO);
