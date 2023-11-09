@@ -43,6 +43,9 @@ public class BaiduPath {
     //在用
     public static final String KUAISHOUJISU3_SECRET = "NDg1NDA3OTI=";
 
+    public static final String KUAISHOU_7_SECRET = "NTEzOTk5NDc=";
+    public static final String KUAISHOUJISU_7_SECRET = "NTE0MDAwNjM=";
+
     public static final String DIANTAO_SECRET = "NDk5OTU1MDk=";
     public static final String HUIHUANG_TIANMAO_SECRET = "NTEyNTU4NDA=";
 

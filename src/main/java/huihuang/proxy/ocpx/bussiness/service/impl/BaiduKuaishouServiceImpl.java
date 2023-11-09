@@ -95,6 +95,12 @@ public class BaiduKuaishouServiceImpl extends BaiduChannelFactory implements ICh
         } else if (KuaishouPath.KUAISHOUJISU_ADID6.equals(kuaishouAdsDTO.getAdid())) {
             baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
             baiduVO.setSecret(BaiduPath.KUAISHOUJISU_SECRET);
+        } else if (KuaishouPath.KUAISHOU_ADID_21749.equals(kuaishouAdsDTO.getAdid())) {
+            baiduVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
+            baiduVO.setSecret(BaiduPath.KUAISHOU_7_SECRET);
+        } else if (KuaishouPath.KUAISHOUJISU_ADID_21756.equals(kuaishouAdsDTO.getAdid())) {
+            baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
+            baiduVO.setSecret(BaiduPath.KUAISHOUJISU_7_SECRET);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
