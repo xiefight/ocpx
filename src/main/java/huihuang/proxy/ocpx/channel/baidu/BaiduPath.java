@@ -50,6 +50,7 @@ public class BaiduPath {
     public static final String QUANNENG_DOUYIN_JISU_SECRET = "NTEwMjE3OTM=";
     public static final String QUANNENG_JINRITOUTIAO_SECRET = "NTAyMTY0MzE=";
     public static final String QUANNENG_FANQIE_SECRET = "NTExMjcyNjE=";
+    public static final String QUANNENG_DOUYINHUOSHAN_SECRET = "NTEzNTc0ODg=";
 
     public static final String BAIDU_CHANNEL_NAME = "baidu";
 
