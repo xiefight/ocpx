@@ -97,6 +97,7 @@ public class Constants {
         public static final String BAIDU_QUANNENG_DOUYIN_JISU = "/bqdyjsServer";
         public static final String BAIDU_QUANNENG_JINRITOUTIAO = "/bqjrttServer";
         public static final String BAIDU_QUANNENG_FANQIE = "/bqfanqieServer";
+        public static final String BAIDU_QUANNENG_FANQIE_CHANGTING = "/bqfqctServer";
         public static final String BAIDU_QUANNENG_DOUYIN_HUOSHAN = "/bqdyhsServer";
 
         public static final String HUAWEI_KUAISHOU = "/hkServer";
@@ -171,6 +172,7 @@ public class Constants {
         public static final String BAIDU_QUANNENG_DOUYIN_JISU = "baidu-quanneng-douyinjisu";
         public static final String BAIDU_QUANNENG_JINRITOUTIAO = "baidu-quanneng-jinritoutiao";
         public static final String BAIDU_QUANNENG_FANQIE = "baidu-quanneng-fanqie";
+        public static final String BAIDU_QUANNENG_FANQIE_CHANGTING = "baidu-quanneng-fanqiechangting";
         public static final String BAIDU_QUANNENG_DOUYIN_HUOSHAN = "baidu-quanneng-douyinhuoshan";
 
         public static final String HUAWEI_KUAISHOU = "huawei-kuaishou";
