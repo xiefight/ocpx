@@ -728,6 +728,36 @@
 
     <!-- 番茄小说（全能互动） end -->
 
+    <!-- 番茄畅听（全能互动） start -->
+    <appender name="QUANNENG_FANQIECHANGTING_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengFanqiechangting/quannengFanqiechangting.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengFanqiechangting/quannengFanqiechangting.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengFanqiechangtingChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_FANQIECHANGTING_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengFanqiechangtingServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_FANQIECHANGTING_LOG"/>
+    </logger>
+
+    <!-- 番茄畅听（全能互动） end -->
+
     <!-- 抖音极速（全能互动） start -->
     <appender name="QUANNENG_DOUYINJISU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/quannengDouyinjisu/quannengDouyinjisu.log</File>
@@ -980,7 +1010,6 @@
     <!-- 今日头条（全能互动） start -->
 
 
-
     <!-- 抖音火山（全能互动） start -->
     <appender name="QUANNENG_JINRIHUOSHAN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/quannengDyhs/quannengDyhs.log</File>
@@ -1056,5 +1085,35 @@
     </logger>
 
     <!-- 百度极速（全能互动） start -->
+
+
+    <!-- 小红书（全能互动） start -->
+    <appender name="QUANNENG_XIAOHONGSHU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengXhs/quannengXhs.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengXhs/quannengXhs.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengXiaohongshuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_XIAOHONGSHU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengXiaohongshuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_XIAOHONGSHU_LOG"/>
+    </logger>
+
+    <!-- 小红书（全能互动） start -->
 
 </configuration>
