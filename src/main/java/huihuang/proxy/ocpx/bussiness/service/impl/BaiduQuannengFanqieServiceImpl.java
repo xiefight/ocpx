@@ -73,7 +73,11 @@ public class BaiduQuannengFanqieServiceImpl extends BaiduChannelFactory implemen
         baiduVO.setCbImeiMd5(fanqieAdsDTO.getImei());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(fanqieAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.QUANNENG_FANQIE_SECRET);
+        if ("176".equals(fanqieAdsDTO.getPid())){
+            baiduVO.setSecret(BaiduPath.QUANNENG_FANQIE176_SECRET);
+        }else if ("207".equals(fanqieAdsDTO.getPid())){
+            baiduVO.setSecret(BaiduPath.QUANNENG_FANQIE207_SECRET);
+        }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);
