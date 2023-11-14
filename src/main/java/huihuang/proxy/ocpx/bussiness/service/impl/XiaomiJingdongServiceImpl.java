@@ -50,17 +50,23 @@ public class XiaomiJingdongServiceImpl extends XiaomiChannelFactory implements I
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        logger.info("adsCallBack {} 开始回调渠道  id:{}  parameterMap.size:{}", channelAdsKey, id, parameterMap.size());
+        String eventType = parameterMap.get("event_type")[0];
+        logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
         //根据id查询对应的点击记录
         LiangdamaoAdsDTO ltjdAdsDTO = ltjdAdsDao.queryLtjdAdsById(id);
         if (null == ltjdAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
+
+        if (eventType.equals(LiangdamaoEventTypeEnum.ACTIVE.getCode())) {
+            eventType = eventType + "new";
+        }
+
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
         xiaomiVO.setAdsName(ltjdPath.baseAdsName());
-        xiaomiVO.setEventType(LiangdamaoEventTypeEnum.liangdamaoXiaomiEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
+        xiaomiVO.setEventType(LiangdamaoEventTypeEnum.liangdamaoXiaomiEventTypeMap.get(eventType).getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(ltjdAdsDTO.getCallback_url());
         xiaomiVO.setOaid(ltjdAdsDTO.getOaid());

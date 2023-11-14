@@ -48,7 +48,9 @@ public class XiaomiJingdongChannelAds extends XiaomiLiangdamaoReportFactory {
     @Override
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
         LiangdamaoParamField liangdamaoParamField = (LiangdamaoParamField) super.channelParamToAdsParam(parameterMap);
-        liangdamaoParamField.setTp_adv_id(ltjdPath.tpAdvId());
+        if (null == liangdamaoParamField.getTp_adv_id()){
+            liangdamaoParamField.setTp_adv_id(ltjdPath.tpAdvId());
+        }
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey, liangdamaoParamField);
         return liangdamaoParamField;
     }
