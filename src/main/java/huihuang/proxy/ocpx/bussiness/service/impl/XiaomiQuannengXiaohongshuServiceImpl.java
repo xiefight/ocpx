@@ -54,8 +54,12 @@ public class XiaomiQuannengXiaohongshuServiceImpl extends XiaomiChannelFactory i
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
-        if (eventType.equals(QuannengHudongEventTypeEnum.ACTIVATE.getCode())) {
-            eventType = eventType + "new";
+//        if (eventType.equals(QuannengHudongEventTypeEnum.ACTIVATE.getCode())) {
+//            eventType = eventType + "new";
+//        }
+        //注册事件对应上激活事件
+        if(eventType.equals(QuannengHudongEventTypeEnum.REGISTER.getCode())){
+            eventType = QuannengHudongEventTypeEnum.ACTIVATE.getCode();
         }
 
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();

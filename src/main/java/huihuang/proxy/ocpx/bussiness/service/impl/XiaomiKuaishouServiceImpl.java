@@ -83,10 +83,12 @@ public class XiaomiKuaishouServiceImpl extends XiaomiChannelFactory implements I
         } else {
             xiaomiVO.setOaid(kuaishouAdsDTO.getOaid());
         }
-        if (KuaishouPath.XIAOMI_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())) {
+//        if (KuaishouPath.XIAOMI_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())) {
+        if (KuaishouPath.KUAISHOU_ADID6.equals(kuaishouAdsDTO.getAdid())) {
             xiaomiVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
             xiaomiVO.setSecret(XiaomiPath.KUAISHOU_SECRET);
-        } else if (KuaishouPath.XIAOMI_KUAISHOUJISU_ADID.equals(kuaishouAdsDTO.getAdid())) {
+//        } else if (KuaishouPath.XIAOMI_KUAISHOUJISU_ADID.equals(kuaishouAdsDTO.getAdid())) {
+        } else if (KuaishouPath.KUAISHOUJISU_ADID6.equals(kuaishouAdsDTO.getAdid())) {
             xiaomiVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
             xiaomiVO.setSecret(XiaomiPath.KUAISHOUJISU_SECRET);
         }
