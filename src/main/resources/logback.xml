@@ -1046,6 +1046,14 @@
         <appender-ref ref="QUANNENG_JINRIHUOSHAN_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengDouyinhuoshanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_JINRIHUOSHAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengDouyinhuoshanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_JINRIHUOSHAN_LOG"/>
+    </logger>
+
     <!-- 抖音火山（全能互动） start -->
 
 
