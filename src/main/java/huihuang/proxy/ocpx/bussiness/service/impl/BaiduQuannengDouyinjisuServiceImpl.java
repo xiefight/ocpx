@@ -73,7 +73,11 @@ public class BaiduQuannengDouyinjisuServiceImpl extends BaiduChannelFactory impl
         baiduVO.setCbImeiMd5(dyjsAdsDTO.getImei());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(dyjsAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.QUANNENG_DOUYIN_JISU_SECRET);
+        if ("131".equals(dyjsAdsDTO.getPid())) {
+            baiduVO.setSecret(BaiduPath.QUANNENG_DOUYIN_JISU_131_SECRET);
+        } else if ("195".equals(dyjsAdsDTO.getPid())) {
+            baiduVO.setSecret(BaiduPath.QUANNENG_DOUYIN_JISU_195_SECRET);
+        }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);

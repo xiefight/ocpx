@@ -71,7 +71,12 @@ public class HuaweiQuannengFanqieServiceImpl extends HuaweiChannelFactory implem
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
         huaweiVO.setConversionType(QuannengHudongEventTypeEnum.quannengHudongHuaweiEventTypeMap.get(eventType).getCode());
         huaweiVO.setOaid(quannengHudongAdsDTO.getOaid());
-        huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_SECRET);
+        if ("176".equals(quannengHudongAdsDTO.getPid())) {
+            huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_176_SECRET);
+        } else if ("205".equals(quannengHudongAdsDTO.getPid())) {
+            huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_205_SECRET);
+        }
+
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 
         Response response = super.baseAdsCallBack(huaweiVO);

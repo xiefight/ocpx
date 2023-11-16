@@ -50,7 +50,8 @@ public class BaiduPath {
     public static final String HUIHUANG_TIANMAO_SECRET = "NTEyNTU4NDA=";
 
     public static final String QUANNENG_XIGUA_VIDEO_SECRET = "NTEwMjE4MDI=";
-    public static final String QUANNENG_DOUYIN_JISU_SECRET = "NTEwMjE3OTM=";
+    public static final String QUANNENG_DOUYIN_JISU_131_SECRET = "NTEwMjE3OTM=";
+    public static final String QUANNENG_DOUYIN_JISU_195_SECRET = "NTE0MjI1NjI=";
     public static final String QUANNENG_JINRITOUTIAO_SECRET = "NTAyMTY0MzE=";
     public static final String QUANNENG_FANQIE176_SECRET = "NTExMjcyNjE=";
     public static final String QUANNENG_FANQIE207_SECRET = "NTExMjcyMDA=";
