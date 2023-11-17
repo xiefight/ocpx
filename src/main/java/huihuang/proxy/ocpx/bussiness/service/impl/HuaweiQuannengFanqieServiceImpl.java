@@ -73,8 +73,8 @@ public class HuaweiQuannengFanqieServiceImpl extends HuaweiChannelFactory implem
         huaweiVO.setOaid(quannengHudongAdsDTO.getOaid());
         if ("176".equals(quannengHudongAdsDTO.getPid())) {
             huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_176_SECRET);
-        } else if ("205".equals(quannengHudongAdsDTO.getPid())) {
-            huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_205_SECRET);
+        } else if ("207".equals(quannengHudongAdsDTO.getPid())) {
+            huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_207_SECRET);
         }
 
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);

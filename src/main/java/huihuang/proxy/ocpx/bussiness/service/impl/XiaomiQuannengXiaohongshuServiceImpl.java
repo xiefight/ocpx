@@ -57,10 +57,14 @@ public class XiaomiQuannengXiaohongshuServiceImpl extends XiaomiChannelFactory i
 //        if (eventType.equals(QuannengHudongEventTypeEnum.ACTIVATE.getCode())) {
 //            eventType = eventType + "new";
 //        }
-        //注册事件对应上激活事件
-        if(eventType.equals(QuannengHudongEventTypeEnum.REGISTER.getCode())){
-            eventType = QuannengHudongEventTypeEnum.ACTIVATE.getCode();
+
+        //只接收小红书的注册事件
+        if(!eventType.equals(QuannengHudongEventTypeEnum.REGISTER.getCode())){
+            logger.error("小红书只支持注册事件 eventType：{}",eventType);
+            return BasicResult.getFailResponse("只支持注册事件");
         }
+        //小红书的注册事件对应上小米的激活事件
+        eventType = QuannengHudongEventTypeEnum.ACTIVATE.getCode();
 
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
