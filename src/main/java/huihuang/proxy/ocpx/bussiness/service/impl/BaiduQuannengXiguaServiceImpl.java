@@ -73,7 +73,11 @@ public class BaiduQuannengXiguaServiceImpl extends BaiduChannelFactory implement
         baiduVO.setCbImeiMd5(xiguaAdsDTO.getImei());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(xiguaAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.QUANNENG_XIGUA_VIDEO_SECRET);
+        if ("105".equals(xiguaAdsDTO.getPid())){
+            baiduVO.setSecret(BaiduPath.QUANNENG_XIGUA_VIDEO_105_SECRET);
+        }else if ("228".equals(xiguaAdsDTO.getPid())){
+            baiduVO.setSecret(BaiduPath.QUANNENG_XIGUA_VIDEO_228_SECRET);
+        }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);

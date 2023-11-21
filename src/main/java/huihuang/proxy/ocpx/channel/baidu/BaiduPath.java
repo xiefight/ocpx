@@ -24,7 +24,8 @@ public class BaiduPath {
 
     /** BAIDU提供给YOUKU的秘钥----回传渠道时使用 */
     public static final String YOUKU_SECRET = "NDczOTU4MTk=";
-    public static final String LTJD_SECRET = "NDc5NzE1MDk=";//"NDc3MTY3NDQ=";
+    public static final String LTJD_SECRET_164 = "NDc5NzE1MDk=";//"NDc3MTY3NDQ=";
+    public static final String LTJD_SECRET_200 = "NDg1NDA2NTk=";
     public static final String TIANMAO_SECRET = "NTAzMjYxMTA=";//"NDc5NzI3MDk=";
     public static final String FANQIE_SECRET = "NDU3OTc0NDg=";//"NDU3OTc0NTE=";
     public static final String FANQIE2_SECRET = "NDc5NzEyMzE=";
@@ -49,7 +50,8 @@ public class BaiduPath {
     public static final String DIANTAO_SECRET = "NDk5OTU1MDk=";
     public static final String HUIHUANG_TIANMAO_SECRET = "NTEyNTU4NDA=";
 
-    public static final String QUANNENG_XIGUA_VIDEO_SECRET = "NTEwMjE4MDI=";
+    public static final String QUANNENG_XIGUA_VIDEO_105_SECRET = "NTEwMjE4MDI=";
+    public static final String QUANNENG_XIGUA_VIDEO_228_SECRET = "NTE0MjI1NDI=";
     public static final String QUANNENG_DOUYIN_JISU_131_SECRET = "NTEwMjE3OTM=";
     public static final String QUANNENG_DOUYIN_JISU_195_SECRET = "NTE0MjI1NjI=";
     public static final String QUANNENG_JINRITOUTIAO_SECRET = "NTAyMTY0MzE=";

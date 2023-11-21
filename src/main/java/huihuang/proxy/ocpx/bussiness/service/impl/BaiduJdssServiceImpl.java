@@ -79,7 +79,7 @@ public class BaiduJdssServiceImpl extends BaiduChannelFactory implements IChanne
         baiduVO.setCbImeiMd5(ltjdAdsDTO.getImei_md5());
         baiduVO.setCbAndroidIdMd5(ltjdAdsDTO.getAndroid_id_md5());
         baiduVO.setCbIp(ltjdAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.LTJD_SECRET);
+        baiduVO.setSecret(BaiduPath.LTJD_SECRET_164);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);

@@ -80,7 +80,11 @@ public class BaiduLtjdServiceImpl extends BaiduChannelFactory implements IChanne
         baiduVO.setCbImeiMd5(ltjdAdsDTO.getImei_md5());
         baiduVO.setCbAndroidIdMd5(ltjdAdsDTO.getAndroid_id_md5());
         baiduVO.setCbIp(ltjdAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.LTJD_SECRET);
+        if ("164".equals(ltjdAdsDTO.getTp_adv_id())) {
+            baiduVO.setSecret(BaiduPath.LTJD_SECRET_164);
+        } else if ("200".equals(ltjdAdsDTO.getTp_adv_id())) {
+            baiduVO.setSecret(BaiduPath.LTJD_SECRET_200);
+        }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);
@@ -113,7 +117,7 @@ public class BaiduLtjdServiceImpl extends BaiduChannelFactory implements IChanne
             srcBuilder.append(key).append("=").append(value).append("&");
         }
         String src = srcBuilder.substring(0, srcBuilder.length() - 1);
-        String signatureStr = src + BaiduPath.LTJD_SECRET;
+        String signatureStr = src + BaiduPath.LTJD_SECRET_164;
         String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
         json.put("sign", signature);
         logger.info("adsCallBack {} 原始:{}  签名:{}", channelAdsKey, signatureStr, signature);
