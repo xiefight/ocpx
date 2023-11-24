@@ -41,6 +41,9 @@ public enum XiaomiParamEnum {
     QUANNENGHUDONG_UNIQUEID("","uniqueid","全能互动请求唯一id"),
 
 
+    QIDU_APPID("","appid","七读的appid"),
+    QIDU_CHANNEL("","channel","七读的channel"),
+
     ;
 
 
