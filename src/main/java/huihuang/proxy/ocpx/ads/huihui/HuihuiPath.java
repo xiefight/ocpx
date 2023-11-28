@@ -21,4 +21,6 @@ public abstract class HuihuiPath {
      */
     public static final String BASIC_URI = "http://ad.huihui.cn/api2/click?";
 
+    public static final String BASIC_URI_2 = "https://c.adtest.cn/api2/click?";
+
 }
