@@ -13,10 +13,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-/**
- * @Author: xietao
- * @Date: 2023/6/8 19:39
- */
 @Component("xiaomiTTYoudaoChannelAds")
 public class XiaomiTTYoudaoChannelAds extends XiaomiHuihuiReportFactory {
 
