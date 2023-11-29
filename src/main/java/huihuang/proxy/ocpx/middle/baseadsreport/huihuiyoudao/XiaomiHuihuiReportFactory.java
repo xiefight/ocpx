@@ -1,8 +1,9 @@
-package huihuang.proxy.ocpx.middle.baseadsreport;
+package huihuang.proxy.ocpx.middle.baseadsreport.huihuiyoudao;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
-import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamEnum;
+import huihuang.proxy.ocpx.ads.huihui.HuihuiParamEnum;
+import huihuang.proxy.ocpx.ads.huihui.HuihuiParamField;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamField;
 import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoPath;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
@@ -23,7 +24,7 @@ import java.util.Set;
  * @Author: xietao
  * @Date: 2023-05-23 17:39
  **/
-public abstract class XiaomiLiangdamaoReportFactory extends BaseLiangdamaoReportFactory {
+public abstract class XiaomiHuihuiReportFactory extends BaseHuihuiReportFactory {
 
     @Override
     protected String channelName() {
@@ -36,10 +37,10 @@ public abstract class XiaomiLiangdamaoReportFactory extends BaseLiangdamaoReport
     @Override
     public String findMonitorAddress() {
         StringBuilder macro = new StringBuilder();
-        //1.遍历ltjd查找xiaomi对应的宏参数
-        Set<LiangdamaoParamEnum> liangdamaoParamEnums = LiangdamaoParamEnum.liangdamaoXiaomiMap.keySet();
-        for (LiangdamaoParamEnum liangdamao : liangdamaoParamEnums) {
-            XiaomiParamEnum xiaomi = LiangdamaoParamEnum.liangdamaoXiaomiMap.get(liangdamao);
+        //1.遍历客户侧查找渠道对应的宏参数
+        Set<HuihuiParamEnum> huihuiParamEnums = HuihuiParamEnum.huihuiXiaomiMap.keySet();
+        for (HuihuiParamEnum huihui : huihuiParamEnums) {
+            XiaomiParamEnum xiaomi = HuihuiParamEnum.huihuiXiaomiMap.get(huihui);
             if (Objects.isNull(xiaomi) || StrUtil.isEmpty(xiaomi.getMacro())) {
                 continue;
             }
@@ -57,29 +58,29 @@ public abstract class XiaomiLiangdamaoReportFactory extends BaseLiangdamaoReport
 
     @Override
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
-        LiangdamaoParamField liangdamaoParamField = new LiangdamaoParamField();
+        HuihuiParamField huihuiParamField = new HuihuiParamField();
 
-        Set<Map.Entry<LiangdamaoParamEnum, XiaomiParamEnum>> xlSet = LiangdamaoParamEnum.liangdamaoXiaomiMap.entrySet();
-        xlSet.stream().filter(xl -> Objects.nonNull(xl.getValue())).forEach(xl -> {
-            LiangdamaoParamEnum liangdamao = xl.getKey();
-            XiaomiParamEnum xiaomi = xl.getValue();
-            //ltjd的字段名
-            String liangdamaoField = liangdamao.getName();
+        Set<Map.Entry<HuihuiParamEnum, XiaomiParamEnum>> xhSet = HuihuiParamEnum.huihuiXiaomiMap.entrySet();
+        xhSet.stream().filter(xh -> Objects.nonNull(xh.getValue())).forEach(xh -> {
+            HuihuiParamEnum huihui = xh.getKey();
+            XiaomiParamEnum xiaomi = xh.getValue();
+            //huihui的字段名
+            String liangdamaoField = huihui.getName();
             //xiaomi的字段名
             String xiaomiParam = xiaomi.getParam();
             //xiaomi的参数值
             String[] value = parameterMap.get(xiaomiParam);
             if (Objects.isNull(value) || value.length == 0) return;
             try {
-                PropertyDescriptor descriptor = new PropertyDescriptor(liangdamaoField, liangdamaoParamField.getClass());
+                PropertyDescriptor descriptor = new PropertyDescriptor(liangdamaoField, huihuiParamField.getClass());
                 Method setMethod = descriptor.getWriteMethod();
-                setMethod.invoke(liangdamaoParamField, value[0]);
+                setMethod.invoke(huihuiParamField, value[0]);
             } catch (IntrospectionException | InvocationTargetException | IllegalAccessException e) {
                 e.printStackTrace();
             }
         });
-        liangdamaoParamField.setAccess_id(LiangdamaoPath.ACCESS_ID);
-        return liangdamaoParamField;
+//        huihuiParamField.setAccess_id(LiangdamaoPath.ACCESS_ID);
+        return huihuiParamField;
     }
 
 

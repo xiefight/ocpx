@@ -13,7 +13,7 @@ import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
-import huihuang.proxy.ocpx.middle.baseadsreport.BaseLiangdamaoReportFactory;
+import huihuang.proxy.ocpx.middle.baseadsreport.liangdamao.BaseLiangdamaoReportFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

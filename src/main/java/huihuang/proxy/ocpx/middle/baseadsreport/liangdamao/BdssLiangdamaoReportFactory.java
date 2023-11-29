@@ -1,4 +1,4 @@
-package huihuang.proxy.ocpx.middle.baseadsreport;
+package huihuang.proxy.ocpx.middle.baseadsreport.liangdamao;
 
 import huihuang.proxy.ocpx.channel.bdss.BdssPath;
 

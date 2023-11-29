@@ -5,7 +5,7 @@ import huihuang.proxy.ocpx.ads.xiguavideo.XiguaPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IXiguaAdsDao;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
-import huihuang.proxy.ocpx.middle.baseadsreport.WifiLiangdamaoReportFactory;
+import huihuang.proxy.ocpx.middle.baseadsreport.liangdamao.WifiLiangdamaoReportFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

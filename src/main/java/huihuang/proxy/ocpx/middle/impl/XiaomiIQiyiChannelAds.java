@@ -5,7 +5,7 @@ import huihuang.proxy.ocpx.ads.huihui.iqiyi.IQiyiPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IIQiyiAdsDao;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
-import huihuang.proxy.ocpx.middle.baseadsreport.XiaomiHuihuiReportFactory;
+import huihuang.proxy.ocpx.middle.baseadsreport.huihuiyoudao.XiaomiHuihuiReportFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
