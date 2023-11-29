@@ -77,6 +77,7 @@ public class Constants {
         public static final String XIAOMI_QUANNENG_BAIDUJISU = "/xqbdjsServer";
         public static final String XIAOMI_QUANNENG_XIAOHONGSHU = "/xqxhsServer";
         public static final String XIAOMI_QUANNENG_IQIYI = "/xqiqyServer";
+        public static final String XIAOMI_QUANNENG_HGDJ = "/xqhgdjServer";
         public static final String XIAOMI_IQIYI = "/xiqyServer";
         public static final String XIAOMI_DOUYIN = "/xdyServer";
 
@@ -160,6 +161,7 @@ public class Constants {
         public static final String XIAOMI_QUANNENG_BAIDUJISU = "xiaomi-quanneng-baidujisu";
         public static final String XIAOMI_QUANNENG_XIAOHONGSHU = "xiaomi-quanneng-xiaohongshu";
         public static final String XIAOMI_QUANNENG_IQIYI = "xiaomi-quanneng-iqiyi";
+        public static final String XIAOMI_QUANNENG_HGDJ = "xiaomi-quanneng-hgdj";
 
         public static final String XIAOMI_QIDU = "xiaomi-qidu";
 

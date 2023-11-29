@@ -73,6 +73,8 @@ public class HuaweiQuannengDouyinjisuServiceImpl extends HuaweiChannelFactory im
             huaweiVO.setSecret(HuaweiPath.QUANNENG_DOUYIN_JISU_131_SECRET);
         } else if ("195".equals(quannengHudongAdsDTO.getPid())) {
             huaweiVO.setSecret(HuaweiPath.QUANNENG_DOUYIN_JISU_195_SECRET);
+        } else if ("241".equals(quannengHudongAdsDTO.getPid())) {
+            huaweiVO.setSecret(HuaweiPath.QUANNENG_DOUYIN_JISU_241_SECRET);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 

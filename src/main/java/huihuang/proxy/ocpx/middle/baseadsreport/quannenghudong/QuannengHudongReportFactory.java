@@ -1,4 +1,4 @@
-package huihuang.proxy.ocpx.middle.baseadsreport;
+package huihuang.proxy.ocpx.middle.baseadsreport.quannenghudong;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.net.URLEncoder;
@@ -38,6 +38,7 @@ public abstract class QuannengHudongReportFactory extends BaseSupport implements
 
     protected abstract IMarkDao adsDao();
 
+
     @Override
     protected void convertParams(Object adsObj) {
         QuannengHudongParamField quannengHudongParamField = (QuannengHudongParamField) adsObj;
@@ -49,13 +50,14 @@ public abstract class QuannengHudongReportFactory extends BaseSupport implements
 //        if (null != quannengHudongParamField.getAdAgent()) {
 //            quannengHudongParamField.setAdAgent(URLEncoder.createQuery().encode(quannengHudongParamField.getAdAgent(), StandardCharsets.UTF_8));
 //        }
-        if (quannengHudongParamField.getIdfa()!=null){
+        if (quannengHudongParamField.getIdfa() != null) {
             quannengHudongParamField.setOs("ios");
-        }else {
+        } else {
             quannengHudongParamField.setOs("android");
         }
         logger.info("clickReport {} 特殊参数进行转换 convertParams:{}", channelAdsKey(), quannengHudongParamField);
     }
+
 
     @Override
     protected Response judgeParams(Object adsObj) {
