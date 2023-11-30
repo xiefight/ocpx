@@ -39,14 +39,20 @@ public class HuaweiPath {
 
     public static final String DIANTAO_SECRET = "cZ1S8DB7vgx5k+7awgFChN8hOAiIulw7fwGyP3Alzaw=";
 
+    //用于同一pid区分不出来的情况下，使用accountId区分
+    public static final String HW_QUANNENG_DOUYIN_JISU_ACCOUNT_01 = "hwqndyjs01";
+    public static final String HW_QUANNENG_DOUYIN_JISU_ACCOUNT_02 = "hwqndyjs02";
     public static final String QUANNENG_FANQIE_176_SECRET = "OXqHD9y52yIyoZGuEUthFKWRel5B+7M3JX6+CUfh7ik=";
     public static final String QUANNENG_FANQIE_207_SECRET = "bxfMNrJ6MCiFGLyA9sPsWVx+m98o1LnTftPiQt+Rfn8=";
     public static final String QUANNENG_DOUYIN_JISU_131_SECRET = "kWNNpypXZC4e4G1tXf9STK0jNySs8TJlapbkKihsIy4=";
     public static final String QUANNENG_DOUYIN_JISU_195_SECRET = "FcD7Dv9Zygw5T6A/3y8oHAjP53j36Scw5E9oC1lw5Ls=";
     public static final String QUANNENG_DOUYIN_JISU_241_SECRET = "RzUVxZF1SUHRLaA6sHh7wRQKAnMoR+yjZN+a9c86714=";
+    public static final String QUANNENG_DOUYIN_JISU_241_01_SECRET = "kWNNpypXZC4e4G1tXf9STK0jNySs8TJlapbkKihsIy4=";
+    public static final String QUANNENG_DOUYIN_JISU_241_02_SECRET = "FcD7Dv9Zygw5T6A/3y8oHAjP53j36Scw5E9oC1lw5Ls=";
     public static final String QUANNENG_DOUYIN_HUOSHAN_SECRET = "NCOZSPwBg64Kb/UPT1g8f6TiQOW4rH2GbgVp55FF0n0=";
     public static final String QUANNENG_64_XIGUA_VIDEO = "bC0mZ00wTssMW1+lgA5K9DuMq3e5PFxKXEsn4QxDh30=";
     public static final String QUANNENG_138_XIGUA_VIDEO = "SKVr6d1VlhZMrUCjOaaDcJf9ZdtshAVNI7h4Cvmtr2s=";
+    public static final String QUANNENG_245_XIGUA_VIDEO = "bC0mZ00wTssMW1+lgA5K9DuMq3e5PFxKXEsn4QxDh30=";
     public static final String QUANNENG_BAIDU_JISU_SECRET = "YT78NYuW4++fAvHCgxTp6K4IMWwxSexh68oiwyUWxXY=";
     public static final String QUANNENG_JINRITOUTIAO_SECRET = "eOtYyDmCN603lx0Ir5Ng9y1tbpozBVuIqmSvu9ezPys=";
     public static final String QUANNENG_IQIYI_SECRET = "CSfUp2v5dmrCfqSU0MrHtDYHhBUr4M9sUqNuzPKbmKY=";

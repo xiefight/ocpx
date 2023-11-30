@@ -22,6 +22,7 @@ public enum QuannengHudongParamEnum {
     MODEL("model", "String", 1, "手机机型"),
     CALLBACK("callback", "String", 1, "渠道回调地址"),
     UNIQUE_ID("uniqueid", "String", 1, "本次请求的唯一id"),
+    ACCOUNT_ID("account_id", "String", 0, "我们规定的账户id,用于同一pid区分不出来的情况下,使用accountId区分"),
 
     ;
 
@@ -71,6 +72,7 @@ public enum QuannengHudongParamEnum {
         quannengHudongHuaweiMap.put(MODEL, null);
         quannengHudongHuaweiMap.put(CALLBACK, HuaweiParamEnum.CALLBACK);
         quannengHudongHuaweiMap.put(UNIQUE_ID, HuaweiParamEnum.QUANNENGHUDONG_UNIQUEID);
+        quannengHudongHuaweiMap.put(ACCOUNT_ID, HuaweiParamEnum.ACCOUNT_ID);
     }
 
 

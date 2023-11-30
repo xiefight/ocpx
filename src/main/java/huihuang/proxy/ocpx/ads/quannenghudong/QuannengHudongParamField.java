@@ -20,6 +20,8 @@ public class QuannengHudongParamField {
     private String callback;
     @Alias("uniqueId")
     private String uniqueid;
+    @Alias("accountId")
+    private String account_id;
 
     private String extra;
 

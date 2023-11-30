@@ -22,6 +22,7 @@ public class QuannengHudongAdsDTO extends CommonColumn implements IMarkDto {
     private String model;
     private String callback;
     private String uniqueId;
+    private String accountId;
 
     private String extra;
 

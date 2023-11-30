@@ -74,7 +74,13 @@ public class HuaweiQuannengDouyinjisuServiceImpl extends HuaweiChannelFactory im
         } else if ("195".equals(quannengHudongAdsDTO.getPid())) {
             huaweiVO.setSecret(HuaweiPath.QUANNENG_DOUYIN_JISU_195_SECRET);
         } else if ("241".equals(quannengHudongAdsDTO.getPid())) {
-            huaweiVO.setSecret(HuaweiPath.QUANNENG_DOUYIN_JISU_241_SECRET);
+            if (HuaweiPath.HW_QUANNENG_DOUYIN_JISU_ACCOUNT_01.equals(quannengHudongAdsDTO.getAccountId())) {
+                huaweiVO.setSecret(HuaweiPath.QUANNENG_DOUYIN_JISU_241_01_SECRET);
+            } else if (HuaweiPath.HW_QUANNENG_DOUYIN_JISU_ACCOUNT_02.equals(quannengHudongAdsDTO.getAccountId())) {
+                huaweiVO.setSecret(HuaweiPath.QUANNENG_DOUYIN_JISU_241_02_SECRET);
+            } else {
+                huaweiVO.setSecret(HuaweiPath.QUANNENG_DOUYIN_JISU_241_SECRET);
+            }
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 

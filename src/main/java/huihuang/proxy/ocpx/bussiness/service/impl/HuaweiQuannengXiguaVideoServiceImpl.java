@@ -69,9 +69,11 @@ public class HuaweiQuannengXiguaVideoServiceImpl extends HuaweiChannelFactory im
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
         huaweiVO.setConversionType(QuannengHudongEventTypeEnum.quannengHudongHuaweiEventTypeMap.get(eventType).getCode());
         huaweiVO.setOaid(quannengHudongAdsDTO.getOaid());
-        if ("138".equals(quannengHudongAdsDTO.getPid())){
+        if ("138".equals(quannengHudongAdsDTO.getPid())) {
             huaweiVO.setSecret(HuaweiPath.QUANNENG_138_XIGUA_VIDEO);
-        }else {
+        } else if ("245".equals(quannengHudongAdsDTO.getPid())) {
+            huaweiVO.setSecret(HuaweiPath.QUANNENG_245_XIGUA_VIDEO);
+        } else {
             huaweiVO.setSecret(HuaweiPath.QUANNENG_64_XIGUA_VIDEO);
         }
 
