@@ -997,6 +997,14 @@
         <appender-ref ref="HUIHUANGDOUYINHUOSHAN_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangDouyinhuoshanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANGDOUYINHUOSHAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangDouyinhuoshanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANGDOUYINHUOSHAN_LOG"/>
+    </logger>
+
     <!-- 辉煌 抖音火山 end -->
 
 
