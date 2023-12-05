@@ -764,6 +764,15 @@
             additivity="true">
         <appender-ref ref="QUANNENG_FANQIECHANGTING_LOG"/>
     </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengFanqiechangtingChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_FANQIECHANGTING_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengFanqiechangtingServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_FANQIECHANGTING_LOG"/>
+    </logger>
     <!-- 番茄畅听（全能互动） end -->
 
     <!-- 抖音极速（全能互动） start -->
