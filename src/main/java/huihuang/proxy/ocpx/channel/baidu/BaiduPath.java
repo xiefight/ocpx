@@ -49,6 +49,7 @@ public class BaiduPath {
 
     public static final String DIANTAO_SECRET = "NDk5OTU1MDk=";
     public static final String HUIHUANG_TIANMAO_SECRET = "NTEyNTU4NDA=";
+    public static final String HUIHUANG_DOUYINHUOSHAN_SECRET = "NTEzNTc0ODg=";
 
     public static final String QUANNENG_XIGUA_VIDEO_105_SECRET = "NTEwMjE4MDI=";
     public static final String QUANNENG_XIGUA_VIDEO_228_SECRET = "NTE0MjI1NDI=";

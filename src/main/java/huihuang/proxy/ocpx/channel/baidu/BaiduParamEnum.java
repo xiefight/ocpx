@@ -47,9 +47,10 @@ public enum BaiduParamEnum {
     HUIHUANG_CHAIN_CODE("","chainCode","辉煌标识"),
     HUIHUANG_TASK_ID("","taskId","由辉煌明天提供任务 id"),
     HUIHUANG_APP("","app","辉煌明天提供App 号，14 飞猪,9 点淘"),
-    HUIHUANG_SOURCE("","source","辉煌明天提供App 号，14 飞猪,9 点淘"),
-    HUIHUANG_ADVERTISING_SPACE_ID("","advertisingSpaceId","辉煌明天提供App 号，14 飞猪,9 点淘"),
-    HUIHUANG_AID("","advertisingSpaceId","辉煌明天提供广告数据 id "),
+    HUIHUANG_SOURCE("","source",""),
+    HUIHUANG_ADVERTISING_SPACE_ID("","advertisingSpaceId",""),
+    HUIHUANG_AID("","aid","辉煌明天提供广告数据 id "),
+//    HUIHUANG_AID("","advertisingSpaceId","辉煌明天提供广告数据 id "),
 
 
     QUANNENGHUDONG_PID("","pid","全能互动广告商标识"),
