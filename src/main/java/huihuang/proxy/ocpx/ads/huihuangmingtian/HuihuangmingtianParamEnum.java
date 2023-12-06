@@ -2,6 +2,8 @@ package huihuang.proxy.ocpx.ads.huihuangmingtian;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
+import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
+import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -103,6 +105,31 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianBaiduMap.put(IP, BaiduParamEnum.IP);
         huihuangmingtianBaiduMap.put(UA, BaiduParamEnum.UA);
         huihuangmingtianBaiduMap.put(CALLBACK_URL, BaiduParamEnum.CALLBACK_URL);
+    }
+
+
+    public static Map<HuihuangmingtianParamEnum, XiaomiParamEnum> huihuangmingtianXiaomiMap;
+
+    static {
+        huihuangmingtianXiaomiMap = new HashMap<>();
+        huihuangmingtianXiaomiMap.put(CHAIN_CODE, XiaomiParamEnum.HUIHUANG_CHAIN_CODE);
+        huihuangmingtianXiaomiMap.put(TASKID, XiaomiParamEnum.HUIHUANG_TASK_ID);
+        huihuangmingtianXiaomiMap.put(APP, XiaomiParamEnum.HUIHUANG_APP);
+        huihuangmingtianXiaomiMap.put(SOURCE, XiaomiParamEnum.HUIHUANG_SOURCE);
+        huihuangmingtianXiaomiMap.put(ADVERTISING_SPACE_ID, XiaomiParamEnum.HUIHUANG_ADVERTISING_SPACE_ID);
+        huihuangmingtianXiaomiMap.put(AID, XiaomiParamEnum.HUIHUANG_AID);
+        huihuangmingtianXiaomiMap.put(IMEI_MD5, XiaomiParamEnum.IMEI);
+        huihuangmingtianXiaomiMap.put(OAID, XiaomiParamEnum.OAID);
+        huihuangmingtianXiaomiMap.put(OAID_MD5, null);
+        huihuangmingtianXiaomiMap.put(IDFA, null);
+        huihuangmingtianXiaomiMap.put(IDFA_MD5, null);
+        huihuangmingtianXiaomiMap.put(CAMPAIGN_ID, XiaomiParamEnum.CAMPAIGNID);
+
+        huihuangmingtianXiaomiMap.put(TMS, XiaomiParamEnum.TS);
+        huihuangmingtianXiaomiMap.put(OS, null);
+        huihuangmingtianXiaomiMap.put(IP, XiaomiParamEnum.IP);
+        huihuangmingtianXiaomiMap.put(UA, XiaomiParamEnum.UA);
+        huihuangmingtianXiaomiMap.put(CALLBACK_URL, XiaomiParamEnum.CALLBACK);
     }
 
 }

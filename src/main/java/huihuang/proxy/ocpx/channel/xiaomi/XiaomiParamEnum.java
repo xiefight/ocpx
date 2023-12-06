@@ -44,6 +44,15 @@ public enum XiaomiParamEnum {
     QIDU_APPID("","appid","七读的appid"),
     QIDU_CHANNEL("","channel","七读的channel"),
 
+
+    HUIHUANG_CHAIN_CODE("","chainCode","辉煌标识"),
+    HUIHUANG_TASK_ID("","taskId","由辉煌明天提供任务 id"),
+    HUIHUANG_APP("","app","辉煌明天提供App 号，14 飞猪,9 点淘"),
+    HUIHUANG_SOURCE("","source",""),
+    HUIHUANG_ADVERTISING_SPACE_ID("","advertisingSpaceId",""),
+    HUIHUANG_AID("","aid",""),
+
+
     ;
 
 

@@ -3,6 +3,7 @@ package huihuang.proxy.ocpx.ads.huihuangmingtian;
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
+import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
 
@@ -60,6 +61,22 @@ public enum HuihuangmingtianEventTypeEnum {
         huihuangmingtianBaiduEventTypeMap.put(PURCHASE.code, null);
         huihuangmingtianBaiduEventTypeMap.put(FIRST_WEAK.code, BaiduEventTypeEnum.FEED_DEEPLINK);
         huihuangmingtianBaiduEventTypeMap.put(PAID.code, BaiduEventTypeEnum.ORDERS);
+    }
+
+
+    public static Map<String, XiaomiEventTypeEnum> huihuangmingtianXiaomiEventTypeMap;
+
+    static {
+        huihuangmingtianXiaomiEventTypeMap = CollUtil.newHashMap();
+        huihuangmingtianXiaomiEventTypeMap.put(ACTIVATE.code, XiaomiEventTypeEnum.APP_ACTIVE);
+        //自定义新增激活
+        huihuangmingtianXiaomiEventTypeMap.put(ACTIVATE.code + "new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
+        huihuangmingtianXiaomiEventTypeMap.put(NEW_LOGIN.code, null);
+        huihuangmingtianXiaomiEventTypeMap.put(DAY1RETENTION.code, XiaomiEventTypeEnum.APP_RETENTION);
+        huihuangmingtianXiaomiEventTypeMap.put(ORDER.code, XiaomiEventTypeEnum.APP_COMPLETE_ORDER);
+        huihuangmingtianXiaomiEventTypeMap.put(PURCHASE.code, null);
+        huihuangmingtianXiaomiEventTypeMap.put(FIRST_WEAK.code, null);
+        huihuangmingtianXiaomiEventTypeMap.put(PAID.code, XiaomiEventTypeEnum.APP_PAY);
     }
 
 }
