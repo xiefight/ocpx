@@ -35,6 +35,7 @@ public enum HuaweiParamEnum {
     HUIHUANG_SOURCE("","source",""),
     HUIHUANG_ADVERTISING_SPACE_ID("","advertisingSpaceId",""),
     HUIHUANG_AID("","aid",""),
+    HUIHUANG_CHANNEL("","channel",""),
 
     TUHU_AID("","aid","途虎投放渠道标识"),
     TUHU_SID("","sid","途虎投放渠道标识"),

@@ -1,6 +1,6 @@
 package huihuang.proxy.ocpx.middle.impl;
 
-import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangXiguaAdsDao;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangFanqiechangtingAdsDao;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
@@ -14,7 +14,7 @@ public class HuaweiHuihuangFanqiechangtingChannelAds extends HuaweiHuihuangRepor
     String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_HUIHUANG_FANQIECHANGTING;
 
     @Autowired
-    private IHuihuangXiguaAdsDao hhfqctAdsDao;
+    private IHuihuangFanqiechangtingAdsDao hhfqctAdsDao;
 
     @Override
     protected String channelAdsKey() {

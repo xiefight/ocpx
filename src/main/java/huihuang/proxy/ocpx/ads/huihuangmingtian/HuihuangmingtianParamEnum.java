@@ -82,6 +82,7 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianHuaweiMap.put(IP, HuaweiParamEnum.IP);
         huihuangmingtianHuaweiMap.put(UA, HuaweiParamEnum.USER_AGENT);
         huihuangmingtianHuaweiMap.put(CALLBACK_URL, HuaweiParamEnum.CALLBACK);
+        huihuangmingtianHuaweiMap.put(CHANNEL, HuaweiParamEnum.HUIHUANG_CHANNEL);
     }
 
     public static Map<HuihuangmingtianParamEnum, BaiduParamEnum> huihuangmingtianBaiduMap;
@@ -131,7 +132,7 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianXiaomiMap.put(IP, XiaomiParamEnum.IP);
         huihuangmingtianXiaomiMap.put(UA, XiaomiParamEnum.UA);
         huihuangmingtianXiaomiMap.put(CALLBACK_URL, XiaomiParamEnum.CALLBACK);
-        huihuangmingtianXiaomiMap.put(CHANNEL, XiaomiParamEnum.CALLBACK);
+        huihuangmingtianXiaomiMap.put(CHANNEL, XiaomiParamEnum.HUIHUANG_CHANNEL);
     }
 
 }

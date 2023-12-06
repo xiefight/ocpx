@@ -55,10 +55,20 @@ public abstract class HuaweiHuihuangReportFactory extends HuihuangMingtianReport
             String huaweiParam = huawei.getParam();
             String[] value = parameterMap.get(huaweiParam);
             if (Objects.isNull(value) || value.length == 0) return;
+            String val = value[0];
+            //特殊处理channel字段
+            if (HuaweiParamEnum.HUIHUANG_CHANNEL.getParam().equals(huaweiParam)){
+                for (String channel : value){
+                    if (!"-1".equals(channel)){
+                        val = channel;
+                        break;
+                    }
+                }
+            }
             try {
                 PropertyDescriptor descriptor = new PropertyDescriptor(huihuangmingtianField, huihuangmingtianParamField.getClass());
                 Method setMethod = descriptor.getWriteMethod();
-                setMethod.invoke(huihuangmingtianParamField, value[0]);
+                setMethod.invoke(huihuangmingtianParamField, val);
             } catch (IntrospectionException | InvocationTargetException | IllegalAccessException e) {
                 e.printStackTrace();
             }
