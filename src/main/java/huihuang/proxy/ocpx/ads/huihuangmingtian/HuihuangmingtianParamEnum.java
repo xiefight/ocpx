@@ -28,6 +28,7 @@ public enum HuihuangmingtianParamEnum {
     OS("os", "String", 1, "0:android 1:ios"),
     CALLBACK_URL("callbackUrl", "String", 1, "渠道回调地址"),
     ADVERTISING_SPACE_ID("advertisingSpaceId", "String", 2, "广告位 id，由辉煌明天提供"),
+    CHANNEL("channel", "String", 2, "渠道标识"),
 
     ;
 
@@ -130,6 +131,7 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianXiaomiMap.put(IP, XiaomiParamEnum.IP);
         huihuangmingtianXiaomiMap.put(UA, XiaomiParamEnum.UA);
         huihuangmingtianXiaomiMap.put(CALLBACK_URL, XiaomiParamEnum.CALLBACK);
+        huihuangmingtianXiaomiMap.put(CHANNEL, XiaomiParamEnum.CALLBACK);
     }
 
 }

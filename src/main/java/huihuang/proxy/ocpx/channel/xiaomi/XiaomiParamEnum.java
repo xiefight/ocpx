@@ -51,6 +51,7 @@ public enum XiaomiParamEnum {
     HUIHUANG_SOURCE("","source",""),
     HUIHUANG_ADVERTISING_SPACE_ID("","advertisingSpaceId",""),
     HUIHUANG_AID("","aid",""),
+    HUIHUANG_CHANNEL("","channel",""),
 
 
     ;

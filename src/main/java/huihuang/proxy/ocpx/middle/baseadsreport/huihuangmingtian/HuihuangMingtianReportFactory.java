@@ -1,4 +1,4 @@
-package huihuang.proxy.ocpx.middle.baseadsreport;
+package huihuang.proxy.ocpx.middle.baseadsreport.huihuangmingtian;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.net.URLEncoder;

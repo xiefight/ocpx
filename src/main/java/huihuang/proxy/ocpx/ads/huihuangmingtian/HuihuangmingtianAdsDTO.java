@@ -27,6 +27,7 @@ public class HuihuangmingtianAdsDTO extends CommonColumn implements IMarkDto {
     private String extra;
     private String source;
     private String advertisingSpaceId;
+    private String channel;
 
 
     public String getChainCode() {
@@ -173,6 +174,14 @@ public class HuihuangmingtianAdsDTO extends CommonColumn implements IMarkDto {
         this.advertisingSpaceId = advertisingSpaceId;
     }
 
+    public String getChannel() {
+        return channel;
+    }
+
+    public void setChannel(String channel) {
+        this.channel = channel;
+    }
+
     @Override
     public String toString() {
         return "HuihuangmingtianAdsDTO{" +
@@ -194,6 +203,7 @@ public class HuihuangmingtianAdsDTO extends CommonColumn implements IMarkDto {
                 ", extra='" + extra + '\'' +
                 ", source='" + source + '\'' +
                 ", advertisingSpaceId='" + advertisingSpaceId + '\'' +
+                ", channel='" + channel + '\'' +
                 '}';
     }
 }

@@ -968,6 +968,16 @@
         </layout>
     </appender>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangTianmaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANGTIANMAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangTianmaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANGTIANMAO_LOG"/>
+    </logger>
+
+    <!-- 辉煌 天猫 end -->
+
 
     <!-- 辉煌 抖音火山 start -->
     <appender name="HUIHUANGDOUYINHUOSHAN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -1016,15 +1026,34 @@
     <!-- 辉煌 抖音火山 end -->
 
 
-    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangTianmaoChannelAds" level="INFO" additivity="true">
-        <appender-ref ref="HUIHUANGTIANMAO_LOG"/>
+    <!-- 辉煌 红果短剧 start -->
+    <appender name="HUIHUANGHONGGUODUANJU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/hhhgdj/hhhgdj.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/hhhgdj/hhhgdj.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangHongguoduanjuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANGHONGGUODUANJU_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangTianmaoServiceImpl" level="INFO"
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangHongguoduanjuServiceImpl" level="INFO"
             additivity="true">
-        <appender-ref ref="HUIHUANGTIANMAO_LOG"/>
+        <appender-ref ref="HUIHUANGHONGGUODUANJU_LOG"/>
     </logger>
 
-    <!-- 辉煌 天猫 end -->
+    <!-- 辉煌 红果短剧 end -->
 
 
     <!-- 今日头条（全能互动） start -->

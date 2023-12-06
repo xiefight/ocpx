@@ -3,16 +3,12 @@ package huihuang.proxy.ocpx.middle.impl;
 import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianParamEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianParamField;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.DiantaoPath;
-import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoParamField;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IDiantaoAdsDao;
-import huihuang.proxy.ocpx.bussiness.service.basechannel.HuaweiChannelFactory;
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
-import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
-import huihuang.proxy.ocpx.middle.baseadsreport.HuihuangMingtianReportFactory;
+import huihuang.proxy.ocpx.middle.baseadsreport.huihuangmingtian.HuihuangMingtianReportFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -24,6 +24,7 @@ public class HuihuangmingtianParamField {
     private String extra;
     private String source;
     private String advertisingSpaceId;
+    private String channel;
 
     public String getChainCode() {
         return chainCode;
@@ -169,6 +170,14 @@ public class HuihuangmingtianParamField {
         this.advertisingSpaceId = advertisingSpaceId;
     }
 
+    public String getChannel() {
+        return channel;
+    }
+
+    public void setChannel(String channel) {
+        this.channel = channel;
+    }
+
     @Override
     public String toString() {
         return "HuihuangmingtianParamField{" +
@@ -190,6 +199,7 @@ public class HuihuangmingtianParamField {
                 ", extra='" + extra + '\'' +
                 ", source='" + source + '\'' +
                 ", advertisingSpaceId='" + advertisingSpaceId + '\'' +
+                ", channel='" + channel + '\'' +
                 '}';
     }
 }

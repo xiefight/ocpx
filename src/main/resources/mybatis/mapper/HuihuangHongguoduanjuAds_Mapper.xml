@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangDouyinhuoshanAdsDao">
+<mapper namespace="huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangHongguoduanjuAdsDao">
 
     <resultMap id="huihuangmingtianAdsMap" type="huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO">
         <id column="id" property="id"/>
@@ -20,8 +20,8 @@
         <result column="ad_agent" property="adAgent"/>
         <result column="advertising_space_id" property="advertisingSpaceId"/>
         <result column="source" property="source"/>
-        <result column="channel" property="channel"/>
         <result column="callback_url" property="callbackUrl"/>
+        <result column="channel" property="channel"/>
         <result column="extra" property="extra"/>
         <result column="channel_name" property="channelName"/>
         <result column="create_time" property="createTime"/>
@@ -35,7 +35,7 @@
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO huihuangdouyinhuoshan_ads
+        INSERT INTO huihuang_hongguoduanju_ads
         (chain_code, imei_md5, oaid, oaid_md5, idfa,
         idfa_md5, task_id, aid, campaign_id, app, tms, os, ip, ad_agent,
         advertising_space_id,source,callback_url,channel,extra,channel_name, create_time, update_time, report_status,
@@ -47,7 +47,7 @@
 
 
     <update id="update" parameterType="huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO">
-        UPDATE huihuangdouyinhuoshan_ads
+        UPDATE huihuang_hongguoduanju_ads
         <set>
             <if test="chainCode != null">chain_code = #{chainCode},</if>
             <if test="imeiMd5 != null">imei_md5 = #{imeiMd5},</if>
@@ -65,8 +65,8 @@
             <if test="adAgent != null">ad_agent = #{adAgent},</if>
             <if test="advertisingSpaceId != null">advertising_space_id = #{advertisingSpaceId},</if>
             <if test="source != null">source = #{source},</if>
-            <if test="channel != null">channel = #{channel},</if>
             <if test="callbackUrl != null">callback_url = #{callbackUrl},</if>
+            <if test="channel != null">channel = #{channel},</if>
             <if test="extra != null">extra = #{extra},</if>
             <if test="channelName != null">channel_name = #{channelName},</if>
             update_time = now(),
@@ -78,7 +78,7 @@
     </update>
 
 
-    <select id="queryHuihuangDouyinhuoshanAdsById" parameterType="java.lang.Integer" resultMap="huihuangmingtianAdsMap">
+    <select id="queryHuihuangHongguoduanjuAdsById" parameterType="java.lang.Integer" resultMap="huihuangmingtianAdsMap">
         SELECT id,
                chain_code,
                imei_md5,
@@ -104,7 +104,7 @@
                update_time,
                report_status,
                callback_status
-        FROM huihuangdouyinhuoshan_ads
+        FROM huihuang_hongguoduanju_ads
         WHERE id = #{id}
     </select>
 
