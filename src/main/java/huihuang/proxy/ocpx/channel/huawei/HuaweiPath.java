@@ -37,8 +37,11 @@ public class HuaweiPath {
 
     public static final String IQIYI_SECRET = "CSfUp2v5dmrCfqSU0MrHtDYHhBUr4M9sUqNuzPKbmKY=";
 
+    //辉煌系
     public static final String DIANTAO_SECRET = "cZ1S8DB7vgx5k+7awgFChN8hOAiIulw7fwGyP3Alzaw=";
     public static final String HUIHUANG_DOUYIN_HUOSHAN_SECRET = "NCOZSPwBg64Kb/UPT1g8f6TiQOW4rH2GbgVp55FF0n0=";
+    public static final String HUIHUANG_XIGUA_VIDEO_SECRET = "bC0mZ00wTssMW1+lgA5K9DuMq3e5PFxKXEsn4QxDh30=";
+    public static final String HUIHUANG_FANQIECHANGTING_SECRET = "KTlpWiHHQMOXlkxU6LyR3xBwr38bV0wjAr+YdXdcE/k=";
 
     //用于同一pid区分不出来的情况下，使用accountId区分
     public static final String HW_QUANNENG_DOUYIN_JISU_ACCOUNT_01 = "hwqndyjs01";

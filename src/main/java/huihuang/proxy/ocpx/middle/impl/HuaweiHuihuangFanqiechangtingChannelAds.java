@@ -1,6 +1,6 @@
 package huihuang.proxy.ocpx.middle.impl;
 
-import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangDouyinhuoshanAdsDao;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangXiguaAdsDao;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
@@ -8,13 +8,13 @@ import huihuang.proxy.ocpx.middle.baseadsreport.huihuangmingtian.HuaweiHuihuangR
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("hhhdyhsChannelAds")
-public class HuaweiHuihuangDouyinhuoshanChannelAds extends HuaweiHuihuangReportFactory {
+@Component("hhhfqctChannelAds")
+public class HuaweiHuihuangFanqiechangtingChannelAds extends HuaweiHuihuangReportFactory {
 
-    String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_HUIHUANG_DOUYINHUOSHAN;
+    String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_HUIHUANG_FANQIECHANGTING;
 
     @Autowired
-    private IHuihuangDouyinhuoshanAdsDao hhdyhsAdsDao;
+    private IHuihuangXiguaAdsDao hhfqctAdsDao;
 
     @Override
     protected String channelAdsKey() {
@@ -23,7 +23,7 @@ public class HuaweiHuihuangDouyinhuoshanChannelAds extends HuaweiHuihuangReportF
 
     @Override
     protected String serverPathKey() {
-        return Constants.ServerPath.HUAWEI_HUIHUANG_DOUYINHUOSHAN;
+        return Constants.ServerPath.HUAWEI_HUIHUANG_FANQIECHANGTING;
     }
 
     @Override
@@ -33,8 +33,6 @@ public class HuaweiHuihuangDouyinhuoshanChannelAds extends HuaweiHuihuangReportF
 
     @Override
     protected IMarkDao adsDao() {
-        return hhdyhsAdsDao;
+        return hhfqctAdsDao;
     }
-
-
 }
