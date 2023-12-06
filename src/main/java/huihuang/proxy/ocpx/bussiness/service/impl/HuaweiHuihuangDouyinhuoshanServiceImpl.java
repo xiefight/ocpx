@@ -1,7 +1,7 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
+import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangDouyinhuoshanPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangDouyinhuoshanAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -66,7 +66,7 @@ public class HuaweiHuihuangDouyinhuoshanServiceImpl extends HuaweiChannelFactory
         huaweiVO.setContentId(getContentFromExtra(huihuangmingtianAdsDTO, HuaweiParamEnum.CONTENT_ID.getParam(), null));
         huaweiVO.setTrackingEnabled(getContentFromExtra(huihuangmingtianAdsDTO, HuaweiParamEnum.TRACKING_ENABLED.getParam(), "1"));
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
-        huaweiVO.setConversionType(HuihuangmingtianEventTypeEnum.huihuangmingtianHuaweiEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
+        huaweiVO.setConversionType(HuihuangFengmangEventTypeEnum.huihuangmingtianHuaweiEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
         huaweiVO.setOaid(huihuangmingtianAdsDTO.getOaid());
         huaweiVO.setSecret(HuaweiPath.HUIHUANG_DOUYIN_HUOSHAN_SECRET);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);

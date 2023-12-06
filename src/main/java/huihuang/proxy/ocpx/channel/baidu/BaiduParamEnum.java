@@ -50,7 +50,8 @@ public enum BaiduParamEnum {
     HUIHUANG_SOURCE("","source",""),
     HUIHUANG_ADVERTISING_SPACE_ID("","advertisingSpaceId",""),
     HUIHUANG_AID("","aid","辉煌明天提供广告数据 id "),
-//    HUIHUANG_AID("","advertisingSpaceId","辉煌明天提供广告数据 id "),
+    HUIHUANG_ADID("","adid",""),
+    HUIHUANG_CHANNEL("","channel",""),
 
 
     QUANNENGHUDONG_PID("","pid","全能互动广告商标识"),

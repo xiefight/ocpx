@@ -1,8 +1,8 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.net.URLDecoder;
+import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangDouyinhuoshanPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangDouyinhuoshanAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -63,7 +63,7 @@ public class BaiduHuihuangDouyinhuoshanServiceImpl extends BaiduChannelFactory i
         baiduVO.setAdsId(id);
         baiduVO.setAdsName(hhdyhsPath.baseAdsName());
         baiduVO.setChannelUrl(channelUrl);
-        baiduVO.setaType(HuihuangmingtianEventTypeEnum.huihuangmingtianBaiduEventTypeMap.get(eventType).getCode());
+        baiduVO.setaType(HuihuangFengmangEventTypeEnum.huihuangmingtianBaiduEventTypeMap.get(eventType).getCode());
         baiduVO.setaValue(0);
         baiduVO.setCbEventTime(String.valueOf(System.currentTimeMillis()));
         baiduVO.setCbOaid(hhtmAdsDTO.getOaid());

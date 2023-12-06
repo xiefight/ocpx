@@ -29,6 +29,7 @@ public enum HuihuangmingtianParamEnum {
     CALLBACK_URL("callbackUrl", "String", 1, "渠道回调地址"),
     ADVERTISING_SPACE_ID("advertisingSpaceId", "String", 2, "广告位 id，由辉煌明天提供"),
     CHANNEL("channel", "String", 2, "渠道标识"),
+    ADID("adid", "String", 2, "渠道标识"),
 
     ;
 
@@ -70,6 +71,8 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianHuaweiMap.put(SOURCE, HuaweiParamEnum.HUIHUANG_SOURCE);
         huihuangmingtianHuaweiMap.put(ADVERTISING_SPACE_ID, HuaweiParamEnum.HUIHUANG_ADVERTISING_SPACE_ID);
         huihuangmingtianHuaweiMap.put(AID, HuaweiParamEnum.HUIHUANG_AID);
+        huihuangmingtianHuaweiMap.put(CHANNEL, HuaweiParamEnum.HUIHUANG_CHANNEL);
+        huihuangmingtianHuaweiMap.put(ADID, HuaweiParamEnum.HUIHUANG_ADID);
         huihuangmingtianHuaweiMap.put(IMEI_MD5, HuaweiParamEnum.ID_TYPE);
         huihuangmingtianHuaweiMap.put(OAID, HuaweiParamEnum.OAID);
         huihuangmingtianHuaweiMap.put(OAID_MD5, null);
@@ -82,7 +85,7 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianHuaweiMap.put(IP, HuaweiParamEnum.IP);
         huihuangmingtianHuaweiMap.put(UA, HuaweiParamEnum.USER_AGENT);
         huihuangmingtianHuaweiMap.put(CALLBACK_URL, HuaweiParamEnum.CALLBACK);
-        huihuangmingtianHuaweiMap.put(CHANNEL, HuaweiParamEnum.HUIHUANG_CHANNEL);
+
     }
 
     public static Map<HuihuangmingtianParamEnum, BaiduParamEnum> huihuangmingtianBaiduMap;
@@ -95,6 +98,8 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianBaiduMap.put(SOURCE, BaiduParamEnum.HUIHUANG_SOURCE);
         huihuangmingtianBaiduMap.put(ADVERTISING_SPACE_ID, BaiduParamEnum.HUIHUANG_ADVERTISING_SPACE_ID);
         huihuangmingtianBaiduMap.put(AID, BaiduParamEnum.HUIHUANG_AID);
+        huihuangmingtianBaiduMap.put(CHANNEL, BaiduParamEnum.HUIHUANG_CHANNEL);
+        huihuangmingtianBaiduMap.put(ADID, BaiduParamEnum.HUIHUANG_ADID);
         huihuangmingtianBaiduMap.put(IMEI_MD5, BaiduParamEnum.IMEI_MD5);
         huihuangmingtianBaiduMap.put(OAID, BaiduParamEnum.OAID);
         huihuangmingtianBaiduMap.put(OAID_MD5, BaiduParamEnum.OAID_MD5);
@@ -120,6 +125,8 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianXiaomiMap.put(SOURCE, XiaomiParamEnum.HUIHUANG_SOURCE);
         huihuangmingtianXiaomiMap.put(ADVERTISING_SPACE_ID, XiaomiParamEnum.HUIHUANG_ADVERTISING_SPACE_ID);
         huihuangmingtianXiaomiMap.put(AID, XiaomiParamEnum.HUIHUANG_AID);
+        huihuangmingtianXiaomiMap.put(CHANNEL, XiaomiParamEnum.HUIHUANG_CHANNEL);
+        huihuangmingtianXiaomiMap.put(ADID, XiaomiParamEnum.HUIHUANG_ADID);
         huihuangmingtianXiaomiMap.put(IMEI_MD5, XiaomiParamEnum.IMEI);
         huihuangmingtianXiaomiMap.put(OAID, XiaomiParamEnum.OAID);
         huihuangmingtianXiaomiMap.put(OAID_MD5, null);
@@ -132,7 +139,7 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianXiaomiMap.put(IP, XiaomiParamEnum.IP);
         huihuangmingtianXiaomiMap.put(UA, XiaomiParamEnum.UA);
         huihuangmingtianXiaomiMap.put(CALLBACK_URL, XiaomiParamEnum.CALLBACK);
-        huihuangmingtianXiaomiMap.put(CHANNEL, XiaomiParamEnum.HUIHUANG_CHANNEL);
+
     }
 
 }

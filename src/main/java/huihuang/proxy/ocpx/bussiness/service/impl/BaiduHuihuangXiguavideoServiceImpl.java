@@ -1,16 +1,16 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
+import cn.hutool.core.net.URLDecoder;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangXiguavideoPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangXiguaAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
-import huihuang.proxy.ocpx.bussiness.service.basechannel.HuaweiChannelFactory;
-import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2HuaweiVO;
-import huihuang.proxy.ocpx.channel.huawei.HuaweiCallbackDTO;
-import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
-import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
+import huihuang.proxy.ocpx.bussiness.service.basechannel.BaiduChannelFactory;
+import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2BaiduVO;
+import huihuang.proxy.ocpx.channel.baidu.BaiduCallbackDTO;
+import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -21,23 +21,24 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-@Service("hhhxgService")
-public class HuaweiHuihuangXiguaServiceImpl extends HuaweiChannelFactory implements IChannelAdsService {
+@Service("bhhxgService")
+public class BaiduHuihuangXiguavideoServiceImpl extends BaiduChannelFactory implements IChannelAdsService {
 
-    protected Logger logger = LoggerFactory.getLogger(HuaweiHuihuangXiguaServiceImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(BaiduHuihuangXiguavideoServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
     @Autowired
-    private BaseServiceInner baseServiceInner;
-    @Autowired
     private IHuihuangXiguaAdsDao hhxgAdsDao;
+    @Autowired
+    private BaseServiceInner baseServiceInner;
     @Autowired
     private HuihuangXiguavideoPath hhxgPath;
 
-    String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_HUIHUANG_XIGUAVIDEO;
+    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_HUIHUANG_XIGUAVIDEO;
 
     @Override
     public IChannelAds channelAds() {
@@ -46,39 +47,42 @@ public class HuaweiHuihuangXiguaServiceImpl extends HuaweiChannelFactory impleme
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, parameterMap.get("event_type")[0]);
+        String eventType = parameterMap.get("event_type")[0];
+        logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
 
         //根据id查询对应的点击记录
-        HuihuangmingtianAdsDTO huihuangmingtianAdsDTO = hhxgAdsDao.queryHuihuangXiguaAdsById(id);
-        if (null == huihuangmingtianAdsDTO) {
+        HuihuangmingtianAdsDTO hhtmAdsDTO = hhxgAdsDao.queryHuihuangXiguaAdsById(id);
+        if (null == hhtmAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
+        String callback = hhtmAdsDTO.getCallbackUrl();
+        String channelUrl = URLDecoder.decode(callback, StandardCharsets.UTF_8);
 
-        long currentTime = System.currentTimeMillis();
-        Ads2HuaweiVO huaweiVO = new Ads2HuaweiVO();
-        huaweiVO.setAdsId(id);
-        huaweiVO.setAdsName(hhxgPath.baseAdsName());
-        huaweiVO.setCallbackUrl(huihuangmingtianAdsDTO.getCallbackUrl());
+        Ads2BaiduVO baiduVO = new Ads2BaiduVO();
+        baiduVO.setAdsId(id);
+        baiduVO.setAdsName(hhxgPath.baseAdsName());
+        baiduVO.setChannelUrl(channelUrl);
+        baiduVO.setaType(HuihuangFengmangEventTypeEnum.huihuangmingtianBaiduEventTypeMap.get(eventType).getCode());
+        baiduVO.setaValue(0);
+        baiduVO.setCbEventTime(String.valueOf(System.currentTimeMillis()));
+        baiduVO.setCbOaid(hhtmAdsDTO.getOaid());
+        baiduVO.setCbOaidMd5(hhtmAdsDTO.getOaidMd5());
+        baiduVO.setCbIdfa(hhtmAdsDTO.getIdfa());
+        baiduVO.setCbImei(null);
+        baiduVO.setCbImeiMd5(hhtmAdsDTO.getImeiMd5());
+        baiduVO.setCbAndroidIdMd5(null);
+        baiduVO.setCbIp(hhtmAdsDTO.getIp());
+        baiduVO.setSecret(BaiduPath.HUIHUANG_XIGUAVIDEO_SECRET);
+        logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
-        huaweiVO.setTimestamp(String.valueOf(currentTime));
-        huaweiVO.setCampaignId(huihuangmingtianAdsDTO.getCampaignId());
-        huaweiVO.setContentId(getContentFromExtra(huihuangmingtianAdsDTO, HuaweiParamEnum.CONTENT_ID.getParam(), null));
-        huaweiVO.setTrackingEnabled(getContentFromExtra(huihuangmingtianAdsDTO, HuaweiParamEnum.TRACKING_ENABLED.getParam(), "1"));
-        huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
-        huaweiVO.setConversionType(HuihuangFengmangEventTypeEnum.huihuangmingtianHuaweiEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
-        huaweiVO.setOaid(huihuangmingtianAdsDTO.getOaid());
-        huaweiVO.setSecret(HuaweiPath.HUIHUANG_XIGUA_VIDEO_SECRET);
-        logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
-
-        Response response = super.baseAdsCallBack(huaweiVO);
-        HuaweiCallbackDTO data = (HuaweiCallbackDTO) response.getData();
+        Response response = baseAdsCallBack(baiduVO);
+        BaiduCallbackDTO data = (BaiduCallbackDTO) response.getData();
 
         //更新回调状态
         HuihuangmingtianAdsDTO huihuangmingtianAds = new HuihuangmingtianAdsDTO();
         huihuangmingtianAds.setId(id);
-        huihuangmingtianAds.setCallBackTime(String.valueOf(currentTime));
-
+        huihuangmingtianAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
         if (response.getCode() == 0) {
             huihuangmingtianAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             baseServiceInner.updateAdsObject(huihuangmingtianAds, hhxgAdsDao);

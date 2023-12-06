@@ -1,7 +1,7 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
+import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangHongguoduanjuPath;
 import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongEventTypeEnum;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangHongguoduanjuAdsDao;
@@ -62,7 +62,7 @@ public class XiaomiHuihuangHongguoduanjuServiceImpl extends XiaomiChannelFactory
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
         xiaomiVO.setAdsName(hhhgdjPath.baseAdsName());
-        xiaomiVO.setEventType(HuihuangmingtianEventTypeEnum.huihuangmingtianXiaomiEventTypeMap.get(eventType).getCode());
+        xiaomiVO.setEventType(HuihuangFengmangEventTypeEnum.huihuangmingtianXiaomiEventTypeMap.get(eventType).getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(hhmtAdsDTO.getCallbackUrl());
         xiaomiVO.setOaid(hhmtAdsDTO.getOaid());

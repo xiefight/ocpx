@@ -1,6 +1,6 @@
 package huihuang.proxy.ocpx.middle.impl;
 
-import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangTianmaoAdsDao;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangXiguaAdsDao;
 import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
@@ -8,13 +8,13 @@ import huihuang.proxy.ocpx.middle.baseadsreport.huihuangmingtian.BaiduHuihuangRe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("bhhtmChannelAds")
-public class BaiduHuihuangTianmaoChannelAds extends BaiduHuihuangReportFactory {
+@Component("bhhxgChannelAds")
+public class BaiduHuihuangXiguavideoChannelAds extends BaiduHuihuangReportFactory {
 
     @Autowired
-    private IHuihuangTianmaoAdsDao hhtmAdsDao;
+    private IHuihuangXiguaAdsDao hhxgAdsDao;
 
-    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_HUIHUANG_TIANMAO;
+    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_HUIHUANG_XIGUAVIDEO;
 
     @Override
     protected String channelAdsKey() {
@@ -23,7 +23,7 @@ public class BaiduHuihuangTianmaoChannelAds extends BaiduHuihuangReportFactory {
 
     @Override
     protected String serverPathKey() {
-        return Constants.ServerPath.BAIDU_HUIHUANG_TIANMAO;
+        return Constants.ServerPath.BAIDU_HUIHUANG_XIGUAVIDEO;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class BaiduHuihuangTianmaoChannelAds extends BaiduHuihuangReportFactory {
 
     @Override
     protected IMarkDao adsDao() {
-        return hhtmAdsDao;
+        return hhxgAdsDao;
     }
 
 }

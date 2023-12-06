@@ -48,6 +48,12 @@ public abstract class HuihuangMingtianReportFactory extends BaseSupport implemen
         if (null != huihuangmingtianParamField.getAdAgent()) {
             huihuangmingtianParamField.setAdAgent(URLEncoder.createQuery().encode(huihuangmingtianParamField.getAdAgent(), StandardCharsets.UTF_8));
         }
+        if (null != huihuangmingtianParamField.getOaid() || null != huihuangmingtianParamField.getOaidMd5()){
+            huihuangmingtianParamField.setOs("0");
+        }
+        if (null != huihuangmingtianParamField.getIdfa() || null != huihuangmingtianParamField.getIdfaMd5()){
+            huihuangmingtianParamField.setOs("1");
+        }
         logger.info("clickReport {} 特殊参数进行转换 convertParams:{}", channelAdsKey(), huihuangmingtianParamField);
     }
 
