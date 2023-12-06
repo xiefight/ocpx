@@ -1128,6 +1128,14 @@
         <appender-ref ref="HUIHUANG_FANQIECHANGTING_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangFanqiechangtingChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_FANQIECHANGTING_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangFanqiechangtingServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_FANQIECHANGTING_LOG"/>
+    </logger>
+
     <!-- 辉煌 番茄畅听 end -->
 
 
