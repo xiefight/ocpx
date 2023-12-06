@@ -3,7 +3,6 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangHongguoduanjuPath;
-import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongEventTypeEnum;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangHongguoduanjuAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -55,7 +54,7 @@ public class XiaomiHuihuangHongguoduanjuServiceImpl extends XiaomiChannelFactory
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
-        if (eventType.equals(QuannengHudongEventTypeEnum.ACTIVATE.getCode())) {
+        if (eventType.equals(HuihuangFengmangEventTypeEnum.ACTIVATE.getCode())) {
             eventType = eventType + "new";
         }
 

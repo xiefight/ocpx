@@ -2,8 +2,8 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangDouyinhuoshanPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangDouyinhuoshanAdsDao;
+import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangFanqiechangtingPath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangFanqiechangtingAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.XiaomiChannelFactory;
@@ -21,22 +21,22 @@ import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
-@Service("xhhdyhsService")
-public class XiaomiHuihuangDouyinhuoshanServiceImpl extends XiaomiChannelFactory implements IChannelAdsService {
+@Service("xhhfqctService")
+public class XiaomiHuihuangFanqiechangtingServiceImpl extends XiaomiChannelFactory implements IChannelAdsService {
 
-    protected Logger logger = LoggerFactory.getLogger(XiaomiHuihuangDouyinhuoshanServiceImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(XiaomiHuihuangFanqiechangtingServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
     @Autowired
-    private IHuihuangDouyinhuoshanAdsDao hhdyhsAdsDao;
+    private IHuihuangFanqiechangtingAdsDao hhfqctAdsDao;
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private HuihuangDouyinhuoshanPath hhdyhsPath;
+    private HuihuangFanqiechangtingPath hhfqctPath;
 
 
-    String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_HUIHUANG_DOUYINHUOSHAN;
+    String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_HUIHUANG_FANQIECHANGTING;
 
     @Override
     public IChannelAds channelAds() {
@@ -48,7 +48,7 @@ public class XiaomiHuihuangDouyinhuoshanServiceImpl extends XiaomiChannelFactory
         String eventType = parameterMap.get("event_type")[0];
         logger.info("adsCallBack {} 开始回调渠道  id:{}  event:{}", channelAdsKey, id, eventType);
         //根据id查询对应的点击记录
-        HuihuangmingtianAdsDTO hhmtAdsDTO = hhdyhsAdsDao.queryHuihuangDouyinhuoshanAdsById(id);
+        HuihuangmingtianAdsDTO hhmtAdsDTO = hhfqctAdsDao.queryHuihuangFanqiechangtingAdsById(id);
         if (null == hhmtAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
@@ -60,7 +60,7 @@ public class XiaomiHuihuangDouyinhuoshanServiceImpl extends XiaomiChannelFactory
 
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
-        xiaomiVO.setAdsName(hhdyhsPath.baseAdsName());
+        xiaomiVO.setAdsName(hhfqctPath.baseAdsName());
         xiaomiVO.setEventType(HuihuangFengmangEventTypeEnum.huihuangmingtianXiaomiEventTypeMap.get(eventType).getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(hhmtAdsDTO.getCallbackUrl());
@@ -77,12 +77,12 @@ public class XiaomiHuihuangDouyinhuoshanServiceImpl extends XiaomiChannelFactory
 
         if (response.getCode() == 0) {
             huihuangAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(huihuangAds, hhdyhsAdsDao);
+            baseServiceInner.updateAdsObject(huihuangAds, hhfqctAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
             huihuangAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(huihuangAds, hhdyhsAdsDao);
+            baseServiceInner.updateAdsObject(huihuangAds, hhfqctAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
         }
