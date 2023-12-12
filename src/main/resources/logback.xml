@@ -1053,6 +1053,14 @@
         <appender-ref ref="HUIHUANGHONGGUODUANJU_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangHongguoduanjuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANGHONGGUODUANJU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangHongguoduanjuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANGHONGGUODUANJU_LOG"/>
+    </logger>
+
     <!-- 辉煌 红果短剧 end -->
 
     <!-- 辉煌 西瓜视频 start -->
