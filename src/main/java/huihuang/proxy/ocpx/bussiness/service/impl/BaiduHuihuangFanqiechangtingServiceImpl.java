@@ -73,7 +73,11 @@ public class BaiduHuihuangFanqiechangtingServiceImpl extends BaiduChannelFactory
         baiduVO.setCbImeiMd5(hhtmAdsDTO.getImeiMd5());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(hhtmAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.HUIHUANG_FANQIECHANGTING_SECRET);
+        if ("JYTeH".equals(hhtmAdsDTO.getAid())){
+            baiduVO.setSecret(BaiduPath.HUIHUANG_FANQIECHANGTING_JYTeH_SECRET);
+        }else if ("TxwB".equals(hhtmAdsDTO.getAid())){
+            baiduVO.setSecret(BaiduPath.HUIHUANG_FANQIECHANGTING_TxwB_SECRET);
+        }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);
