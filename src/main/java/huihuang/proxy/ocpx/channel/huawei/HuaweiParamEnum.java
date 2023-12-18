@@ -46,6 +46,8 @@ public enum HuaweiParamEnum {
     PID("","pid","全能互动广告商标识"),
     QUANNENGHUDONG_UNIQUEID("","uniqueid","全能互动请求唯一id"),
 
+    HUIHUI_ACCOUNT("","ocpxAccount","我们定义的给huihui使用的account id"),
+
     ;
 
 

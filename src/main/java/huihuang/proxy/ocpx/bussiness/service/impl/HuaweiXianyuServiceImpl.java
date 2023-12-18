@@ -68,7 +68,11 @@ public class HuaweiXianyuServiceImpl extends HuaweiChannelFactory implements ICh
             if (eventType.equals(HuihuiEventTypeEnum.IOS_REGISTER.getCode())) {
                 eventType = HuihuiEventTypeEnum.IOS_ACTIVATE.getCode();
             }
-            huaweiVO.setSecret(HuaweiPath.XIANYU36626_SECRET);
+            if (HuaweiPath.HW_HH_XIANYU_ACCOUNT_01.equals(xianyuAdsDTO.getOcpxAccount())){
+                huaweiVO.setSecret(HuaweiPath.XIANYU36626_1_SECRET);
+            }else {
+                huaweiVO.setSecret(HuaweiPath.XIANYU36626_SECRET);
+            }
         }else {
             huaweiVO.setSecret(HuaweiPath.XIANYU_SECRET);
         }
@@ -78,7 +82,7 @@ public class HuaweiXianyuServiceImpl extends HuaweiChannelFactory implements ICh
         huaweiVO.setAdsName(xianyuPath.baseAdsName());
         huaweiVO.setCallbackUrl(xianyuAdsDTO.getCallback());
 
-        huaweiVO.setEventType(parameterMap.get("conv_action")[0]);
+        huaweiVO.setEventType(eventType);
         huaweiVO.setTimestamp(String.valueOf(currentTime));
         huaweiVO.setCampaignId(getContentFromExtra(xianyuAdsDTO, HuaweiParamEnum.CAMPAIGN_ID.getParam(), null));
         huaweiVO.setContentId(getContentFromExtra(xianyuAdsDTO, HuaweiParamEnum.CONTENT_ID.getParam(), null));

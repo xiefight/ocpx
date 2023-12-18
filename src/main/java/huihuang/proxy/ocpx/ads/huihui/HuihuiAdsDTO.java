@@ -27,6 +27,8 @@ public class HuihuiAdsDTO extends CommonColumn implements IMarkDto {
     private String extra;
     private String model;
 
+    private String ocpxAccount;
+
 
     public String getAid() {
         return aid;
@@ -164,10 +166,19 @@ public class HuihuiAdsDTO extends CommonColumn implements IMarkDto {
         this.model = model;
     }
 
+    public String getOcpxAccount() {
+        return ocpxAccount;
+    }
+
+    public void setOcpxAccount(String ocpxAccount) {
+        this.ocpxAccount = ocpxAccount;
+    }
+
     @Override
     public String toString() {
         return "HuihuiAdsDTO{" +
-                "req_id='" + req_id + '\'' +
+                "aid='" + aid + '\'' +
+                ", req_id='" + req_id + '\'' +
                 ", imei='" + imei + '\'' +
                 ", oaid='" + oaid + '\'' +
                 ", oaid_md5='" + oaid_md5 + '\'' +
@@ -182,6 +193,8 @@ public class HuihuiAdsDTO extends CommonColumn implements IMarkDto {
                 ", ua='" + ua + '\'' +
                 ", callback='" + callback + '\'' +
                 ", extra='" + extra + '\'' +
+                ", model='" + model + '\'' +
+                ", ocpxAccount='" + ocpxAccount + '\'' +
                 '}';
     }
 }

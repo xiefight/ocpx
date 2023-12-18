@@ -21,6 +21,7 @@
         <result column="model" property="model"/>
         <result column="callback" property="callback"/>
         <result column="channel_name" property="channelName"/>
+        <result column="ocpx_account" property="ocpxAccount"/>
         <result column="extra" property="extra"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
@@ -35,10 +36,10 @@
         </selectKey>
         INSERT INTO xianyu_ads
         (aid, imei, oaid, oaid_md5, idfa, idfa_md5,caid, caid_md5, aaid,
-        ts,os,ip,ua,model,callback,channel_name,req_id, extra, create_time, update_time, report_status, callback_status)
+        ts,os,ip,ua,model,callback,channel_name,ocpx_account,req_id, extra, create_time, update_time, report_status, callback_status)
         VALUES (#{aid}, #{imei}, #{oaid}, #{oaid_md5},
         #{idfa}, #{idfa_md5}, #{caid}, #{caid_md5}, #{aaid}, #{ts},
-        #{os},#{ip},#{ua},#{model},#{callback},#{channelName},#{req_id}, #{extra},now(),now(), "0", "0")
+        #{os},#{ip},#{ua},#{model},#{callback},#{channelName},#{ocpxAccount},#{req_id}, #{extra},now(),now(), "0", "0")
     </insert>
 
 
@@ -62,6 +63,7 @@
             <if test="model != null">model = #{model},</if>
             <if test="callback != null">callback = #{callback},</if>
             <if test="channelName != null">channel_name = #{channelName},</if>
+            <if test="ocpxAccount != null">ocpx_account = #{ocpxAccount},</if>
             <if test="extra != null">extra = #{extra},</if>
             update_time = now(),
             <if test="reportStatus != null">report_status = #{reportStatus},</if>
@@ -91,6 +93,7 @@
                model,
                callback,
                channel_name,
+               ocpx_account,
                extra,
                create_time,
                update_time,

@@ -27,6 +27,8 @@ public class HuihuiParamField {
     private String redirect;
     private String conv_ext;
 
+    private String ocpxAccount;
+
     public String getAid() {
         return aid;
     }
@@ -187,10 +189,20 @@ public class HuihuiParamField {
         this.conv_ext = conv_ext;
     }
 
+    public String getOcpxAccount() {
+        return ocpxAccount;
+    }
+
+    public void setOcpxAccount(String ocpxAccount) {
+        this.ocpxAccount = ocpxAccount;
+    }
+
     @Override
     public String toString() {
         return "HuihuiParamField{" +
-                "req_id='" + req_id + '\'' +
+                "aid='" + aid + '\'' +
+                ", sid='" + sid + '\'' +
+                ", req_id='" + req_id + '\'' +
                 ", imei='" + imei + '\'' +
                 ", oaid='" + oaid + '\'' +
                 ", oaid_md5='" + oaid_md5 + '\'' +
@@ -204,7 +216,11 @@ public class HuihuiParamField {
                 ", ip='" + ip + '\'' +
                 ", ua='" + ua + '\'' +
                 ", callback='" + callback + '\'' +
+                ", model='" + model + '\'' +
                 ", extra='" + extra + '\'' +
+                ", redirect='" + redirect + '\'' +
+                ", conv_ext='" + conv_ext + '\'' +
+                ", ocpxAccount='" + ocpxAccount + '\'' +
                 '}';
     }
 }

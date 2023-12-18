@@ -35,6 +35,8 @@ public enum HuihuiParamEnum {
     CALLBACK("callback", "String", 1, "渠道回调地址"),
     MODEL("model", "String", 1, "手机机型"),
 
+    OCPX_ACCOUNT("ocpxAccount", "String", 1, ""),
+
     ;
 
     private String name;
@@ -137,6 +139,7 @@ public enum HuihuiParamEnum {
         huihuiHuaweiMap.put(REQ_ID, null);
         huihuiHuaweiMap.put(AAID, null);
         huihuiHuaweiMap.put(MODEL, null);
+        huihuiHuaweiMap.put(OCPX_ACCOUNT, HuaweiParamEnum.HUIHUI_ACCOUNT);
     }
 
 
