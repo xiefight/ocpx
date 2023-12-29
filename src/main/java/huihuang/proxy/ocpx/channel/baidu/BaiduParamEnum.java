@@ -32,6 +32,8 @@ public enum BaiduParamEnum {
     MODEL("__MODEL__", "model", "客户端获取的原始设备信息数据"),
     CAID("__CAID__", "Caid", "设备标识"),
 
+    ACCOUNT_ID("","account_id","我们自定义的baidu渠道标识，体现在监测链接中"),
+
 
     /** 额外补充字段，根据各广告主定，渠道和广告主的宏字段不具有映射关系时，下达监测链接后，广告主根据该字段进行字段赋值 */
     YOUKU_TP_ADV_ID("","tp_adv_id","力天京东提供的渠道标识"),

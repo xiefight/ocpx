@@ -35,7 +35,11 @@ public class BaiduPath {
 
     public static final String XIANYU_SECRET = "NDk1ODUwMDQ=";
 
-    public static final String KUAISHOU_SECRET = "NDc5MTg5NDc=";
+
+    public static final String BAIDU_KUAISHOU_ACCOUNT_01 = "bdks01";
+    public static final String BAIDU_KUAISHOUJISU_ACCOUNT_01 = "bdksjs01";
+    public static final String KUAISHOU_21666_SECRET = "NDg1NDA1Nzc=";//"NDc5MTg5NDc=";
+    public static final String KUAISHOU_21666_01_SECRET = "NTE0MDAwMjM=";
     public static final String KUAISHOU2_SECRET = "NDc5MTkyNDA=";
     public static final String KUAISHOUJISU_SECRET = "NDc5MTg5NTc=";
     public static final String KUAISHOUJISU2_SECRET = "NDc5MTkyNjg=";
@@ -46,6 +50,7 @@ public class BaiduPath {
 
     public static final String KUAISHOU_7_SECRET = "NTEzOTk5NDc=";
     public static final String KUAISHOUJISU_7_SECRET = "NTE0MDAwNjM=";
+    public static final String KUAISHOUJISU_7_01_SECRET = "NTE0MDAwNzU=";
 
     public static final String DIANTAO_SECRET = "NDk5OTU1MDk=";
     public static final String HUIHUANG_TIANMAO_SECRET = "NTEyNTU4NDA=";

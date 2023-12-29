@@ -127,7 +127,7 @@ public class BdssKuaishouServiceImpl extends BdssChannelFactory implements IChan
             srcBuilder.append(key).append("=").append(value).append("&");
         }
         String src = srcBuilder.substring(0, srcBuilder.length() - 1);
-        String signatureStr = src + BaiduPath.KUAISHOU_SECRET;
+        String signatureStr = src + BaiduPath.KUAISHOU_21666_SECRET;
         String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
         json.put("sign", signature);
         logger.info("adsCallBack {} 原始:{}  签名:{}", channelAdsKey, signatureStr, signature);

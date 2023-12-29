@@ -132,7 +132,7 @@ public enum KuaishouParamEnum {
         kuaishouBaiduMap.put(ANDROID_ID, BaiduParamEnum.ANDROID_ID_MD5);
         kuaishouBaiduMap.put(MAC, BaiduParamEnum.MAC);
         kuaishouBaiduMap.put(IP, BaiduParamEnum.IP);
-        kuaishouBaiduMap.put(ACCOUNT_ID, null);
+        kuaishouBaiduMap.put(ACCOUNT_ID, BaiduParamEnum.ACCOUNT_ID);
         kuaishouBaiduMap.put(CLICK_ID, null);//由中间层生成时间戳
         kuaishouBaiduMap.put(CAMPAIGN_ID, BaiduParamEnum.PID);
         kuaishouBaiduMap.put(ADGROUP_ID, BaiduParamEnum.UID);

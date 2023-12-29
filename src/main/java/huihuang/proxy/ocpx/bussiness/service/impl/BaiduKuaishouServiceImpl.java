@@ -91,7 +91,11 @@ public class BaiduKuaishouServiceImpl extends BaiduChannelFactory implements ICh
         baiduVO.setCbIp(kuaishouAdsDTO.getIp());
         if (KuaishouPath.BAIDU_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())) {
             baiduVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
-            baiduVO.setSecret(BaiduPath.KUAISHOU_SECRET);
+            if (BaiduPath.BAIDU_KUAISHOU_ACCOUNT_01.equals(kuaishouAdsDTO.getAccountId())) {
+                baiduVO.setSecret(BaiduPath.KUAISHOU_21666_01_SECRET);
+            } else {
+                baiduVO.setSecret(BaiduPath.KUAISHOU_21666_SECRET);
+            }
         } else if (KuaishouPath.KUAISHOUJISU_ADID6.equals(kuaishouAdsDTO.getAdid())) {
             baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
             baiduVO.setSecret(BaiduPath.KUAISHOUJISU_SECRET);
@@ -100,7 +104,11 @@ public class BaiduKuaishouServiceImpl extends BaiduChannelFactory implements ICh
             baiduVO.setSecret(BaiduPath.KUAISHOU_7_SECRET);
         } else if (KuaishouPath.KUAISHOUJISU_ADID_21756.equals(kuaishouAdsDTO.getAdid())) {
             baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
-            baiduVO.setSecret(BaiduPath.KUAISHOUJISU_7_SECRET);
+            if (kuaishouAdsDTO.getAccountId().equals(BaiduPath.BAIDU_KUAISHOUJISU_ACCOUNT_01)) {
+                baiduVO.setSecret(BaiduPath.KUAISHOUJISU_7_01_SECRET);
+            } else {
+                baiduVO.setSecret(BaiduPath.KUAISHOUJISU_7_SECRET);
+            }
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
@@ -134,7 +142,7 @@ public class BaiduKuaishouServiceImpl extends BaiduChannelFactory implements ICh
             srcBuilder.append(key).append("=").append(value).append("&");
         }
         String src = srcBuilder.substring(0, srcBuilder.length() - 1);
-        String signatureStr = src + BaiduPath.KUAISHOU_SECRET;
+        String signatureStr = src + BaiduPath.KUAISHOU_21666_SECRET;
         String signature = DigestUtil.md5Hex(signatureStr).toLowerCase();
         json.put("sign", signature);
         logger.info("adsCallBack {} 原始:{}  签名:{}", channelAdsKey, signatureStr, signature);
