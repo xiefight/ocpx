@@ -37,13 +37,19 @@ public class BaiduPath {
 
 
     public static final String BAIDU_KUAISHOU_ACCOUNT_01 = "bdks01";
-    public static final String BAIDU_KUAISHOUJISU_ACCOUNT_01 = "bdksjs01";
+    public static final String BAIDU_KUAISHOU_ACCOUNT_02 = "bdks02";
+    public static final String BAIDU_KUAISHOU_ACCOUNT_03 = "bdks03";
+    public static final String BAIDU_KUAISHOUJISU_ACCOUNT_01 = "bdksjs01"; //这个是新户
+    public static final String BAIDU_KUAISHOUJISU_ACCOUNT_02 = "bdksjs02"; //这个是老户
     public static final String KUAISHOU_21666_SECRET = "NDg1NDA1Nzc=";//"NDc5MTg5NDc=";
     public static final String KUAISHOU_21666_01_SECRET = "NTE0MDAwMjM=";
+    public static final String KUAISHOU_21749_02_SECRET = "NDg1NDA1Nzc=";//"NDc5MTg5NDc=";
+    public static final String KUAISHOU_21749_03_SECRET = "NTE0MDAwMjM=";
+    public static final String KUAISHOUJISU_21756_01_SECRET = "NTE0MDAwNzU=";
     public static final String KUAISHOU2_SECRET = "NDc5MTkyNDA=";
     public static final String KUAISHOUJISU_SECRET = "NDc5MTg5NTc=";
     public static final String KUAISHOUJISU2_SECRET = "NDc5MTkyNjg=";
-    //在用
+    //在用9b95181d3c44e172
     public static final String KUAISHOU3_SECRET = "NDg1NDA1Nzc=";
     //在用
     public static final String KUAISHOUJISU3_SECRET = "NDg1NDA3OTI=";

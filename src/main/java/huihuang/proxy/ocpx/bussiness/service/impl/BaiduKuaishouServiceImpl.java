@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.net.URLDecoder;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.DigestUtil;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouAdsDTO;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouEventTypeEnum;
@@ -89,27 +90,43 @@ public class BaiduKuaishouServiceImpl extends BaiduChannelFactory implements ICh
         baiduVO.setCbImeiMd5(kuaishouAdsDTO.getImei());
         baiduVO.setCbAndroidIdMd5(kuaishouAdsDTO.getAndroidId());
         baiduVO.setCbIp(kuaishouAdsDTO.getIp());
-        if (KuaishouPath.BAIDU_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())) {
-            baiduVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
-            if (BaiduPath.BAIDU_KUAISHOU_ACCOUNT_01.equals(kuaishouAdsDTO.getAccountId())) {
-                baiduVO.setSecret(BaiduPath.KUAISHOU_21666_01_SECRET);
-            } else {
+
+        String accountId = kuaishouAdsDTO.getAccountId();
+        //使用快手的adid是为了兼容旧数据的区分，新数据通过accountId区分
+        if (StrUtil.isEmpty(accountId)) {
+            if (KuaishouPath.BAIDU_KUAISHOU_ADID.equals(kuaishouAdsDTO.getAdid())) {
+                baiduVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
                 baiduVO.setSecret(BaiduPath.KUAISHOU_21666_SECRET);
+            } else if (KuaishouPath.KUAISHOUJISU_ADID6.equals(kuaishouAdsDTO.getAdid())) {
+                baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
+                baiduVO.setSecret(BaiduPath.KUAISHOUJISU_SECRET);
+            } else if (KuaishouPath.KUAISHOU_ADID_21749.equals(kuaishouAdsDTO.getAdid())) {
+                baiduVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
+                baiduVO.setSecret(BaiduPath.KUAISHOU_7_SECRET);
+            } else if (KuaishouPath.KUAISHOUJISU_ADID_21756.equals(kuaishouAdsDTO.getAdid())) {
+                baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
+                baiduVO.setSecret(BaiduPath.KUAISHOUJISU3_SECRET);
             }
-        } else if (KuaishouPath.KUAISHOUJISU_ADID6.equals(kuaishouAdsDTO.getAdid())) {
-            baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
-            baiduVO.setSecret(BaiduPath.KUAISHOUJISU_SECRET);
-        } else if (KuaishouPath.KUAISHOU_ADID_21749.equals(kuaishouAdsDTO.getAdid())) {
-            baiduVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
-            baiduVO.setSecret(BaiduPath.KUAISHOU_7_SECRET);
-        } else if (KuaishouPath.KUAISHOUJISU_ADID_21756.equals(kuaishouAdsDTO.getAdid())) {
-            baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
-            if (kuaishouAdsDTO.getAccountId().equals(BaiduPath.BAIDU_KUAISHOUJISU_ACCOUNT_01)) {
-                baiduVO.setSecret(BaiduPath.KUAISHOUJISU_7_01_SECRET);
-            } else {
-                baiduVO.setSecret(BaiduPath.KUAISHOUJISU_7_SECRET);
+        } else {
+            if (BaiduPath.BAIDU_KUAISHOU_ACCOUNT_01.equals(kuaishouAdsDTO.getAccountId())) {
+                baiduVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
+                baiduVO.setSecret(BaiduPath.KUAISHOU_21666_01_SECRET);
+            } else if (kuaishouAdsDTO.getAccountId().equals(BaiduPath.BAIDU_KUAISHOU_ACCOUNT_02)) {
+                baiduVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
+                baiduVO.setSecret(BaiduPath.KUAISHOU_21749_02_SECRET);
+            } else if (kuaishouAdsDTO.getAccountId().equals(BaiduPath.BAIDU_KUAISHOU_ACCOUNT_03)) {
+                baiduVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
+                baiduVO.setSecret(BaiduPath.KUAISHOU_21749_03_SECRET);
+            } else if (kuaishouAdsDTO.getAccountId().equals(BaiduPath.BAIDU_KUAISHOUJISU_ACCOUNT_01)) {
+                baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
+                baiduVO.setSecret(BaiduPath.KUAISHOUJISU_21756_01_SECRET);
+            } else if (kuaishouAdsDTO.getAccountId().equals(BaiduPath.BAIDU_KUAISHOUJISU_ACCOUNT_02)) {
+                baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
+                baiduVO.setSecret(BaiduPath.KUAISHOUJISU3_SECRET);
             }
         }
+
+
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);
