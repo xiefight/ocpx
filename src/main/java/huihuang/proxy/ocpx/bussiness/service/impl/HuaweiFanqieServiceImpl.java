@@ -64,7 +64,6 @@ public class HuaweiFanqieServiceImpl extends HuaweiChannelFactory implements ICh
         long currentTime = System.currentTimeMillis();
         Ads2HuaweiVO huaweiVO = new Ads2HuaweiVO();
         huaweiVO.setAdsId(id);
-        huaweiVO.setAdsName(fanqiePath.baseAdsName());
         huaweiVO.setCallbackUrl(fanqieAdsDTO.getCallback_url());
 
         huaweiVO.setEventType(parameterMap.get("event_type")[0]);
@@ -75,7 +74,13 @@ public class HuaweiFanqieServiceImpl extends HuaweiChannelFactory implements ICh
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
         huaweiVO.setConversionType(LiangdamaoEventTypeEnum.liangdamaoHuaweiEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
         huaweiVO.setOaid(fanqieAdsDTO.getOaid());
-        huaweiVO.setSecret(HuaweiPath.FANQIE_SECRET);
+        if ("186".equals(fanqieAdsDTO.getTp_adv_id())){
+            huaweiVO.setSecret(HuaweiPath.FANQIE_SECRET);
+            huaweiVO.setAdsName(fanqiePath.baseAdsName());
+        }else if ("318".equals(fanqieAdsDTO.getTp_adv_id())){
+            huaweiVO.setSecret(HuaweiPath.FANQIE_CHANGTING_SECRET);
+            huaweiVO.setAdsName("fanqiechangting");
+        }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 
         Response response = super.baseAdsCallBack(huaweiVO);
