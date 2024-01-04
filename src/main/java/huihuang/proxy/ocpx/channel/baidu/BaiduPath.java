@@ -85,6 +85,9 @@ public class BaiduPath {
     public static final String BAIDU_DINGYUN_XIGUAVIDEO_ACCOUNT = "bddyxg01";
     public static final String DINGYUN_XIGUA_01_SECRET = "NTE0NTY0ODg=";
 
+    public static final String BAIDU_DINGYUN_FANQIECHANGTING_ACCOUNT = "bddyfqct01";
+    public static final String DINGYUN_FANQIECHANGTING_01_SECRET = "NTExMjcyNDQ=";
+
     public static final String BAIDU_CHANNEL_NAME = "baidu";
 
     public static final String CALLBACK_URL = "http://als.baidu.com/cb/actionCb?";
