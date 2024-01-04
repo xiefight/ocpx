@@ -3,9 +3,7 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 import huihuang.proxy.ocpx.ads.dingyun.DingyunAdsDTO;
 import huihuang.proxy.ocpx.ads.dingyun.DingyunEventTypeEnum;
 import huihuang.proxy.ocpx.ads.dingyun.huoshan.DingyunDouyinHuoshanPath;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IDingyunDouyinhuoshanAdsDao;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IDingyunXiguaVideoAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.XiaomiChannelFactory;
@@ -31,7 +29,7 @@ public class XiaomiDingyunDouyinhuoshanServiceImpl extends XiaomiChannelFactory 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
     @Autowired
-    private IDingyunDouyinhuoshanAdsDao dydyhsAdsDao;
+    private IDingyunXiguaVideoAdsDao dyxgAdsDao;
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
@@ -47,16 +45,16 @@ public class XiaomiDingyunDouyinhuoshanServiceImpl extends XiaomiChannelFactory 
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        String eventType = parameterMap.get("event_type")[0];
+        String eventType = parameterMap.get("actionType")[0];
         logger.info("adsCallBack {} 开始回调渠道  id:{}  event:{}", channelAdsKey, id, eventType);
         //根据id查询对应的点击记录
-        DingyunAdsDTO dyAdsDTO = dydyhsAdsDao.queryDingyunDouyinhuoshanAdsById(id);
+        DingyunAdsDTO dyAdsDTO = dyxgAdsDao.queryDingyunXiguavideoAdsById(id);
         if (null == dyAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
-        if (eventType.equals(HuihuangFengmangEventTypeEnum.ACTIVATE.getCode())) {
+        if (eventType.equals(DingyunEventTypeEnum.ACTIVATE.getCode())) {
             eventType = eventType + "new";
         }
 
@@ -79,12 +77,12 @@ public class XiaomiDingyunDouyinhuoshanServiceImpl extends XiaomiChannelFactory 
 
         if (response.getCode() == 0) {
             dyAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(dyAds, dydyhsAdsDao);
+            baseServiceInner.updateAdsObject(dyAds, dyxgAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
             dyAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(dyAds, dydyhsAdsDao);
+            baseServiceInner.updateAdsObject(dyAds, dyxgAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
         }
