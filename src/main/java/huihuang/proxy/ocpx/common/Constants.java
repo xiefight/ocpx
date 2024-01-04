@@ -150,6 +150,7 @@ public class Constants {
         public static final String HUAWEI_QUANNENG_JINRITOUTIAO = "/hqjrttServer";
         public static final String HUAWEI_QUANNENG_IQIYI = "/hqiqyServer";
         public static final String HUAWEI_QUANNENG_HEMAJUCHANG = "/hqhmjcServer";
+        public static final String HUAWEI_QUANNENG_XIAOHONGSHU = "/hqxhsServer";
 
         public static final String OPPO_KUAISHOU = "/okServer";
 
@@ -256,6 +257,7 @@ public class Constants {
         public static final String HUAWEI_QUANNENG_JINRITOUTIAO = "huawei-quanneng-jinritoutiao";
         public static final String HUAWEI_QUANNENG_IQIYI = "huawei-quanneng-iqiyi";
         public static final String HUAWEI_QUANNENG_HEMAJUCHANG = "huawei-quanneng-hemajuchang";
+        public static final String HUAWEI_QUANNENG_XIAOHONGSHU = "huawei-quanneng-xiaohongshu";
 
         public static final String OPPO_KUAISHOU = "oppo-kuaishou";
 
