@@ -1463,6 +1463,14 @@
         <appender-ref ref="QUANNENG_XIAOHONGSHU_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengXiaohongshuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_XIAOHONGSHU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengXiaohongshuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_XIAOHONGSHU_LOG"/>
+    </logger>
+
     <!-- 小红书（全能互动） start -->
 
     <!-- 爱奇艺（全能互动） start -->
