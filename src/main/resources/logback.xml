@@ -1686,6 +1686,14 @@
         <appender-ref ref="DINGYUN_DOUYINHUOSHAN_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiDingyunDouyinhuoshanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_DOUYINHUOSHAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDingyunDouyinhuoshanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_DOUYINHUOSHAN_LOG"/>
+    </logger>
+
     <!-- 丁耘 抖音火山 end -->
 
     <!-- 丁耘 西瓜视频 start -->
