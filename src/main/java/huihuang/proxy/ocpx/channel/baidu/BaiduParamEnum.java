@@ -58,6 +58,8 @@ public enum BaiduParamEnum {
 
     QUANNENGHUDONG_PID("","pid","全能互动广告商标识"),
     QUANNENGHUDONG_UNIQUEID("","uniqueid","全能互动请求唯一id"),
+
+    DINGYUN_ADID("","adid","丁耘adid"),
     ;
 
 

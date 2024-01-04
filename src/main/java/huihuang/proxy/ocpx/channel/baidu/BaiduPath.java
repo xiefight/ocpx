@@ -78,6 +78,10 @@ public class BaiduPath {
     public static final String QUANNENG_DOUYINHUOSHAN_SECRET = "NTEzNTc0ODg=";
     public static final String QUANNENG_TEGNXUNSHIPIN_SECRET = "NTE5MDcxNjQ=";
 
+
+    public static final String BAIDU_DIGNYUN_DOUYINHUOSHAN_ACCOUNT = "bddydyhs01";
+    public static final String DINGYUN_DOUYINHUOSHAN_01_SECRET = "?";
+
     public static final String BAIDU_CHANNEL_NAME = "baidu";
 
     public static final String CALLBACK_URL = "http://als.baidu.com/cb/actionCb?";
