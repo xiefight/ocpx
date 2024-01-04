@@ -3,8 +3,8 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 import cn.hutool.core.net.URLDecoder;
 import huihuang.proxy.ocpx.ads.dingyun.DingyunAdsDTO;
 import huihuang.proxy.ocpx.ads.dingyun.DingyunEventTypeEnum;
-import huihuang.proxy.ocpx.ads.dingyun.huoshan.DingyunDouyinHuoshanPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IDingyunDouyinhuoshanAdsDao;
+import huihuang.proxy.ocpx.ads.dingyun.xigua.DingyunXiguaVideoPath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IDingyunXiguaVideoAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.BaiduChannelFactory;
@@ -24,21 +24,21 @@ import org.springframework.stereotype.Service;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-@Service("bdydyhsService")
-public class BaiduDingyunDouyinhuoshanServiceImpl extends BaiduChannelFactory implements IChannelAdsService {
+@Service("bdyxgService")
+public class BaiduDingyunXiguavideoServiceImpl extends BaiduChannelFactory implements IChannelAdsService {
 
-    protected Logger logger = LoggerFactory.getLogger(BaiduDingyunDouyinhuoshanServiceImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(BaiduDingyunXiguavideoServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
     @Autowired
-    private IDingyunDouyinhuoshanAdsDao dydyhsAdsDao;
+    private IDingyunXiguaVideoAdsDao dyxgAdsDao;
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private DingyunDouyinHuoshanPath dydyhsPath;
+    private DingyunXiguaVideoPath dyxgPath;
 
-    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_DINGYUN_DOUYINHUOSHAN;
+    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_DINGYUN_XIGUAVIDEO;
 
     @Override
     public IChannelAds channelAds() {
@@ -51,7 +51,7 @@ public class BaiduDingyunDouyinhuoshanServiceImpl extends BaiduChannelFactory im
         logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
 
         //根据id查询对应的点击记录
-        DingyunAdsDTO dyAdsDTO = dydyhsAdsDao.queryDingyunDouyinhuoshanAdsById(id);
+        DingyunAdsDTO dyAdsDTO = dyxgAdsDao.queryDingyunXiguavideoAdsById(id);
         if (null == dyAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
@@ -61,7 +61,7 @@ public class BaiduDingyunDouyinhuoshanServiceImpl extends BaiduChannelFactory im
 
         Ads2BaiduVO baiduVO = new Ads2BaiduVO();
         baiduVO.setAdsId(id);
-        baiduVO.setAdsName(dydyhsPath.baseAdsName());
+        baiduVO.setAdsName(dyxgPath.baseAdsName());
         baiduVO.setChannelUrl(channelUrl);
         baiduVO.setaType(DingyunEventTypeEnum.dingyunBaiduEventTypeMap.get(eventType).getCode());
         baiduVO.setaValue(0);
@@ -73,8 +73,8 @@ public class BaiduDingyunDouyinhuoshanServiceImpl extends BaiduChannelFactory im
         baiduVO.setCbImeiMd5(dyAdsDTO.getImeiMd5());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(dyAdsDTO.getIp());
-        if (BaiduPath.BAIDU_DINGYUN_DOUYINHUOSHAN_ACCOUNT.equals(dyAdsDTO.getAccountId())) {
-            baiduVO.setSecret(BaiduPath.DINGYUN_DOUYINHUOSHAN_01_SECRET);
+        if (BaiduPath.BAIDU_DINGYUN_XIGUAVIDEO_ACCOUNT.equals(dyAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.DINGYUN_XIGUA_01_SECRET);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
@@ -87,12 +87,12 @@ public class BaiduDingyunDouyinhuoshanServiceImpl extends BaiduChannelFactory im
         dyAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
         if (response.getCode() == 0) {
             dyAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(dyAds, dydyhsAdsDao);
+            baseServiceInner.updateAdsObject(dyAds, dyxgAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
             dyAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(dyAds, dydyhsAdsDao);
+            baseServiceInner.updateAdsObject(dyAds, dyxgAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
         }

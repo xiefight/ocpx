@@ -32,7 +32,7 @@ public abstract class BaiduDingyunReportFactory extends DingyunReportFactory {
         //1.遍历广告主查找渠道对应的宏参数
         Set<DingyunParamEnum> dingyunParamEnums = DingyunParamEnum.dingyunBaiduMap.keySet();
         for (DingyunParamEnum dingyunEnum : dingyunParamEnums) {
-            BaiduParamEnum baidu = HuihuangmingtianParamEnum.huihuangmingtianBaiduMap.get(dingyunEnum);
+            BaiduParamEnum baidu = DingyunParamEnum.dingyunBaiduMap.get(dingyunEnum);
             if (Objects.isNull(baidu) || StrUtil.isEmpty(baidu.getMacro())) {
                 continue;
             }

@@ -126,7 +126,7 @@ public abstract class DingyunReportFactory extends BaseSupport implements IChann
         DingyunAdsDTO dingyunAdsVO = new DingyunAdsDTO();
         dingyunAdsVO.setId(dingyunAdsDTO.getId());
         //上报成功
-        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals("0")) {
+        if (HttpStatus.HTTP_OK == response.getStatus() && (Integer) Objects.requireNonNull(responseBodyMap).get("code") == 0) {
             dingyunAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
             baseServiceInner.updateAdsObject(dingyunAdsVO, adsDao());
             logger.info("clickReport {} 上报广告侧接口请求成功:{} 数据:{}", channelAdsKey(), response, dingyunAdsVO);

@@ -79,8 +79,11 @@ public class BaiduPath {
     public static final String QUANNENG_TEGNXUNSHIPIN_SECRET = "NTE5MDcxNjQ=";
 
 
-    public static final String BAIDU_DIGNYUN_DOUYINHUOSHAN_ACCOUNT = "bddydyhs01";
-    public static final String DINGYUN_DOUYINHUOSHAN_01_SECRET = "?";
+    public static final String BAIDU_DINGYUN_DOUYINHUOSHAN_ACCOUNT = "bddydyhs01";
+    public static final String DINGYUN_DOUYINHUOSHAN_01_SECRET = "NTE0NTY0ODg=";
+
+    public static final String BAIDU_DINGYUN_XIGUAVIDEO_ACCOUNT = "bddyxg01";
+    public static final String DINGYUN_XIGUA_01_SECRET = "NTE0NTY0ODg=";
 
     public static final String BAIDU_CHANNEL_NAME = "baidu";
 
