@@ -1723,6 +1723,14 @@
         <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiDingyunXiguavideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDingyunXiguavideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
+    </logger>
+
     <!-- 丁耘 西瓜视频 end -->
 
 
