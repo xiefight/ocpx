@@ -12,6 +12,6 @@ public abstract class DingyunPath {
     /**
      * 点击上报及转化数据回调接口
      */
-    public static final String BASIC_URI = "https://promotion-partner.dingyunwl.com/rest/click/?";
+    public static final String BASIC_URI = "http://promotion-partner.dingyunwl.com/rest/click?";
 
 }
