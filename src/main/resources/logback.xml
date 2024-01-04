@@ -1761,6 +1761,14 @@
         <appender-ref ref="DINGYUN_FANQIECHANGTING_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiDingyunFanqiechangtingChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_FANQIECHANGTING_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDingyunFanqiechangtingServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_FANQIECHANGTING_LOG"/>
+    </logger>
+
     <!-- 丁耘 番茄畅听 end -->
 
 
