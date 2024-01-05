@@ -1090,6 +1090,14 @@
         <appender-ref ref="HUIHUANGHONGGUODUANJU_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangHongguoduanjuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANGHONGGUODUANJU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangHongguoduanjuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANGHONGGUODUANJU_LOG"/>
+    </logger>
+
     <!-- 辉煌 红果短剧 end -->
 
     <!-- 辉煌 西瓜视频 start -->
@@ -1297,6 +1305,14 @@
         <appender-ref ref="HUIHUANG_TOUTIAOJISU_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangToutiaojisuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_TOUTIAOJISU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangToutiaojisuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_TOUTIAOJISU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangToutiaojisuServiceImpl" level="INFO"
             additivity="true">
         <appender-ref ref="HUIHUANG_TOUTIAOJISU_LOG"/>
     </logger>
