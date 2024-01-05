@@ -3,8 +3,8 @@ package huihuang.proxy.ocpx.middle.baseadsreport.dingyun;
 import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.dingyun.DingyunParamEnum;
 import huihuang.proxy.ocpx.ads.dingyun.DingyunParamField;
+import huihuang.proxy.ocpx.bussiness.service.basechannel.HuaweiChannelFactory;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
-import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 import huihuang.proxy.ocpx.common.Constants;
 
 import java.beans.IntrospectionException;
@@ -65,6 +65,17 @@ public abstract class HuaweiDingyunReportFactory extends DingyunReportFactory {
                 e.printStackTrace();
             }
         });
+
+        //存储华为这边必有而快手这不必有的参数，回传可能会用到
+        String extras = HuaweiChannelFactory.fitExtras(parameterMap,
+                HuaweiParamEnum.CONTENT_ID.getParam(),
+                HuaweiParamEnum.EVENT_TYPE.getParam(),
+                HuaweiParamEnum.TRACE_TIME.getParam(),
+                HuaweiParamEnum.TRACKING_ENABLED.getParam());
+        if (extras.length() > 0) {
+            dingyunParamField.setExtra(extras);
+        }
+
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey(), dingyunParamField);
         return dingyunParamField;
     }
