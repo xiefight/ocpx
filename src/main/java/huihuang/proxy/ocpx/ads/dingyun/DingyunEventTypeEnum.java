@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.ads.dingyun;
 
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
+import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
@@ -54,6 +55,15 @@ public enum DingyunEventTypeEnum {
         //自定义新增激活
         dingyunXiaomiEventTypeMap.put(ACTIVATE.code + "new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
         dingyunXiaomiEventTypeMap.put(DAY1RETENTION.code, XiaomiEventTypeEnum.APP_RETENTION);
+    }
+
+
+    public static Map<String, HuaweiEventTypeEnum> dingyunHuaweiEventTypeMap;
+
+    static {
+        dingyunHuaweiEventTypeMap = CollUtil.newHashMap();
+        dingyunHuaweiEventTypeMap.put(ACTIVATE.code, HuaweiEventTypeEnum.ACTIVE);
+        dingyunHuaweiEventTypeMap.put(DAY1RETENTION.code, HuaweiEventTypeEnum.RETAIN);
     }
 
 }

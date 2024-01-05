@@ -69,5 +69,10 @@ public class HuaweiPath {
     public static final String QUANNENG_HEMAJUCHANG_SECRET = "nJo+6w7ZS9KaM/hSYYH3aUpFqHcnT+sE9hsXc+16dOk=";
     public static final String QUANNENG_XIAOHONGSHU_SECRET = "lQ3F5ALgJXhlV5aLatOD5x8ZoD6lgNf5fad3QqtQyPA=";
 
+    //丁耘系
+    public static final String DINGYUN_DOUYINHUOSHAN_SECRET = "NCOZSPwBg64Kb/UPT1g8f6TiQOW4rH2GbgVp55FF0n0=";
+    public static final String DINGYUN_XIGUAVIDEO_SECRET = "bC0mZ00wTssMW1+lgA5K9DuMq3e5PFxKXEsn4QxDh30=";
+    public static final String DINGYUN_FANQIECHANGTING_SECRET = "KTlpWiHHQMOXlkxU6LyR3xBwr38bV0wjAr+YdXdcE/k=";
+
     public static final String CALLBACK_URL = "https://ppscrowd-drcn.op.hicloud.com/action-lib-track/hiad/v2/actionupload?";
 }

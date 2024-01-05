@@ -48,6 +48,9 @@ public enum HuaweiParamEnum {
 
     HUIHUI_ACCOUNT("","ocpxAccount","我们定义的给huihui使用的account id"),
 
+    DINGYUN_ADID("","adid","丁耘adid"),
+//    ACCOUNT_ID("","account_id","我们自定义的baidu渠道标识，体现在监测链接中"),
+
     ;
 
 

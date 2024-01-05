@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.dingyun;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -106,6 +107,29 @@ public enum DingyunParamEnum {
         dingyunXiaomiMap.put(USER_AGENT, XiaomiParamEnum.UA);
         dingyunXiaomiMap.put(CAID_LIST, null);
         dingyunXiaomiMap.put(ACCOUNT_ID, XiaomiParamEnum.ACCOUNT_ID);
+
+    }
+
+    public static Map<DingyunParamEnum, HuaweiParamEnum> dingyunHuaweiMap;
+
+    static {
+        dingyunHuaweiMap = new HashMap<>();
+        dingyunHuaweiMap.put(ADID, HuaweiParamEnum.DINGYUN_ADID);
+        dingyunHuaweiMap.put(TYPE, null);//上报时固定值 2
+        dingyunHuaweiMap.put(IMEI, null);
+        dingyunHuaweiMap.put(IMEI_MD5, null);
+        dingyunHuaweiMap.put(IDFA, null);
+        dingyunHuaweiMap.put(IDFA_MD5, null);
+        dingyunHuaweiMap.put(OAID, HuaweiParamEnum.OAID);
+        dingyunHuaweiMap.put(OAID_MD5, null);
+        dingyunHuaweiMap.put(CALLBACK, HuaweiParamEnum.CALLBACK);
+        dingyunHuaweiMap.put(ANDROID_ID, null);
+        dingyunHuaweiMap.put(MAC, null);
+        dingyunHuaweiMap.put(IMPRESSION_ID, null);
+        dingyunHuaweiMap.put(IP, HuaweiParamEnum.IP);
+        dingyunHuaweiMap.put(USER_AGENT, HuaweiParamEnum.USER_AGENT);
+        dingyunHuaweiMap.put(CAID_LIST, null);
+        dingyunHuaweiMap.put(ACCOUNT_ID, HuaweiParamEnum.ACCOUNT_ID);
 
     }
 
