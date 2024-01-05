@@ -1317,6 +1317,14 @@
         <appender-ref ref="HUIHUANG_TOUTIAOJISU_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangToutiaojisuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_TOUTIAOJISU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangToutiaojisuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_TOUTIAOJISU_LOG"/>
+    </logger>
+
     <!-- 辉煌 头条极速 end -->
 
 
