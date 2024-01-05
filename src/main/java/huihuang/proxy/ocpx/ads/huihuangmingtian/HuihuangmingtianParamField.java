@@ -1,5 +1,7 @@
 package huihuang.proxy.ocpx.ads.huihuangmingtian;
 
+import cn.hutool.core.annotation.Alias;
+
 /**
  * @Author: xietao
  * @Date: 2023/6/8 17:21
@@ -26,6 +28,17 @@ public class HuihuangmingtianParamField {
     private String advertisingSpaceId;
     private String channel;
     private String adid;
+
+    @Alias("accountId")
+    private String account_id;
+
+    public String getAccount_id() {
+        return account_id;
+    }
+
+    public void setAccount_id(String account_id) {
+        this.account_id = account_id;
+    }
 
     public String getChainCode() {
         return chainCode;

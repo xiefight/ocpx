@@ -3,7 +3,6 @@ package huihuang.proxy.ocpx.ads.huihuangmingtian;
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
-import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +29,9 @@ public enum HuihuangmingtianParamEnum {
     ADVERTISING_SPACE_ID("advertisingSpaceId", "String", 2, "广告位 id，由辉煌明天提供"),
     CHANNEL("channel", "String", 2, "渠道标识"),
     ADID("adid", "String", 2, "渠道标识"),
+
+
+    ACCOUNT_ID("account_id", "String", 1, ""),
 
     ;
 
@@ -85,6 +87,8 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianHuaweiMap.put(IP, HuaweiParamEnum.IP);
         huihuangmingtianHuaweiMap.put(UA, HuaweiParamEnum.USER_AGENT);
         huihuangmingtianHuaweiMap.put(CALLBACK_URL, HuaweiParamEnum.CALLBACK);
+
+        huihuangmingtianHuaweiMap.put(ACCOUNT_ID, HuaweiParamEnum.ACCOUNT_ID);
 
     }
 

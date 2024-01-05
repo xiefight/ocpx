@@ -30,6 +30,15 @@ public class HuihuangmingtianAdsDTO extends CommonColumn implements IMarkDto {
     private String channel;
     private String adid;
 
+    private String accountId;
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
 
     public String getChainCode() {
         return chainCode;
