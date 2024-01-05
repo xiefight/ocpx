@@ -1694,6 +1694,14 @@
         <appender-ref ref="DINGYUN_DOUYINHUOSHAN_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiDingyunDouyinhuoshanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_DOUYINHUOSHAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiDingyunDouyinhuoshanServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_DOUYINHUOSHAN_LOG"/>
+    </logger>
+
     <!-- 丁耘 抖音火山 end -->
 
     <!-- 丁耘 西瓜视频 start -->
@@ -1727,6 +1735,14 @@
         <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDingyunXiguavideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiDingyunXiguavideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiDingyunXiguavideoServiceImpl" level="INFO"
             additivity="true">
         <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
     </logger>
@@ -1765,6 +1781,14 @@
         <appender-ref ref="DINGYUN_FANQIECHANGTING_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDingyunFanqiechangtingServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_FANQIECHANGTING_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiDingyunFanqiechangtingChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_FANQIECHANGTING_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiDingyunFanqiechangtingServiceImpl" level="INFO"
             additivity="true">
         <appender-ref ref="DINGYUN_FANQIECHANGTING_LOG"/>
     </logger>
