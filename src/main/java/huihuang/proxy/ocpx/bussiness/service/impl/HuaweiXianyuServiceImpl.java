@@ -68,12 +68,14 @@ public class HuaweiXianyuServiceImpl extends HuaweiChannelFactory implements ICh
             if (eventType.equals(HuihuiEventTypeEnum.IOS_REGISTER.getCode())) {
                 eventType = HuihuiEventTypeEnum.IOS_ACTIVATE.getCode();
             }
-            if (HuaweiPath.HW_HH_XIANYU_ACCOUNT_01.equals(xianyuAdsDTO.getOcpxAccount())){
+            if (HuaweiPath.HW_HH_XIANYU_ACCOUNT_01.equals(xianyuAdsDTO.getOcpxAccount())) {
                 huaweiVO.setSecret(HuaweiPath.XIANYU36626_1_SECRET);
-            }else {
+            } else {
                 huaweiVO.setSecret(HuaweiPath.XIANYU36626_SECRET);
             }
-        }else {
+        } else if (HuaweiPath.HW_HH_XIANYU_ACCOUNT_02.equals(xianyuAdsDTO.getOcpxAccount())) {
+            huaweiVO.setSecret(HuaweiPath.XIANYU42139_SECRET);
+        } else {
             huaweiVO.setSecret(HuaweiPath.XIANYU_SECRET);
         }
 
