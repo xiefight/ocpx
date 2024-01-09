@@ -54,9 +54,9 @@ public class XiaomiHuihuangFanqiechangtingServiceImpl extends XiaomiChannelFacto
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
-        if (eventType.equals(HuihuangFengmangEventTypeEnum.ACTIVATE.getCode())) {
-            eventType = eventType + "new";
-        }
+//        if (eventType.equals(HuihuangFengmangEventTypeEnum.ACTIVATE.getCode())) {
+//            eventType = eventType + "new";
+//        }
 
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
