@@ -55,9 +55,9 @@ public class XiaomiQuannengXiguaVideoServiceImpl extends XiaomiChannelFactory im
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
-        if (eventType.equals(QuannengHudongEventTypeEnum.ACTIVATE.getCode())) {
-            eventType = eventType + "new";
-        }
+//        if (eventType.equals(QuannengHudongEventTypeEnum.ACTIVATE.getCode())) {
+//            eventType = eventType + "new";
+//        }
 
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);

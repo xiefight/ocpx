@@ -68,7 +68,12 @@ public class HuaweiHuihuangHongguoduanjuServiceImpl extends HuaweiChannelFactory
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
         huaweiVO.setConversionType(HuihuangFengmangEventTypeEnum.huihuangmingtianHuaweiEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
         huaweiVO.setOaid(huihuangmingtianAdsDTO.getOaid());
-        huaweiVO.setSecret(HuaweiPath.HUIHUANG_HONGGUODUANJU_SECRET);
+        if (null == huihuangmingtianAdsDTO.getAccountId()){
+            huaweiVO.setSecret(HuaweiPath.HUIHUANG_HONGGUODUANJU_SECRET);
+        }else if (HuaweiPath.HUIHUANG_HONGGUODUANJU_ACCOUNT_02.equals(huihuangmingtianAdsDTO.getAccountId())){
+            huaweiVO.setSecret(HuaweiPath.HUIHUANG_HONGGUODUANJU_02_SECRET);
+        }
+
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 
         Response response = super.baseAdsCallBack(huaweiVO);

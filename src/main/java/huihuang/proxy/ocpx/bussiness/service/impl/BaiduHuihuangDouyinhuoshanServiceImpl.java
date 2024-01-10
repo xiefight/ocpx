@@ -73,7 +73,12 @@ public class BaiduHuihuangDouyinhuoshanServiceImpl extends BaiduChannelFactory i
         baiduVO.setCbImeiMd5(hhtmAdsDTO.getImeiMd5());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(hhtmAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.HUIHUANG_DOUYINHUOSHAN_SECRET);
+
+        if (BaiduPath.HUIHUANG_DOUYINHUOSHAN_ACCOUNT_02.equals(hhtmAdsDTO.getAccountId())){
+            baiduVO.setSecret(BaiduPath.HUIHUANG_DOUYINHUOSHAN_02_SECRET);
+        }else {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_DOUYINHUOSHAN_SECRET);
+        }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);

@@ -116,6 +116,8 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianBaiduMap.put(IP, BaiduParamEnum.IP);
         huihuangmingtianBaiduMap.put(UA, BaiduParamEnum.UA);
         huihuangmingtianBaiduMap.put(CALLBACK_URL, BaiduParamEnum.CALLBACK_URL);
+
+        huihuangmingtianBaiduMap.put(ACCOUNT_ID, BaiduParamEnum.ACCOUNT_ID);
     }
 
 

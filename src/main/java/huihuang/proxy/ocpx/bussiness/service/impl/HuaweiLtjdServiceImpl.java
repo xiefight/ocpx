@@ -77,7 +77,7 @@ public class HuaweiLtjdServiceImpl extends HuaweiChannelFactory implements IChan
         huaweiVO.setOaid(ltjdAdsDTO.getOaid());
         if (ltjdAdsDTO.getTp_adv_id().equals("200")){
             huaweiVO.setSecret(HuaweiPath.LTJD_SECRET);
-        }else if (ltjdAdsDTO.getTp_adv_id().equals("320")){
+        }else if (ltjdAdsDTO.getTp_adv_id().equals("321")){
             huaweiVO.setSecret(HuaweiPath.LTJD_02_SECRET);
         }
 

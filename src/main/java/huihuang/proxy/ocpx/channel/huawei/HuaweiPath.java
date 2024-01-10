@@ -45,12 +45,14 @@ public class HuaweiPath {
 
     //辉煌系
     public static final String HUIHUANG_FANQIE_ACCOUNT_02 = "hwhhfqct02";
+    public static final String HUIHUANG_HONGGUODUANJU_ACCOUNT_02 = "hwhhhgdj02";
     public static final String DIANTAO_SECRET = "cZ1S8DB7vgx5k+7awgFChN8hOAiIulw7fwGyP3Alzaw=";
     public static final String HUIHUANG_DOUYIN_HUOSHAN_SECRET = "NCOZSPwBg64Kb/UPT1g8f6TiQOW4rH2GbgVp55FF0n0=";
     public static final String HUIHUANG_XIGUA_VIDEO_SECRET = "bC0mZ00wTssMW1+lgA5K9DuMq3e5PFxKXEsn4QxDh30=";
     public static final String HUIHUANG_FANQIECHANGTING_SECRET = "KTlpWiHHQMOXlkxU6LyR3xBwr38bV0wjAr+YdXdcE/k=";
     public static final String HUIHUANG_FANQIECHANGTING_02_SECRET = "I4WKI+Q4qQ1WO5u7VV00jX8yi6mxv3Kjjn0opfTOX+w=";
     public static final String HUIHUANG_HONGGUODUANJU_SECRET = "7P6brRfmCVFs0fxzYgLYSE7SpYRH5adOnq6u3gajJXs=";
+    public static final String HUIHUANG_HONGGUODUANJU_02_SECRET = "5JILcNnLOe3nj11BrCEgqW6ED/RmG2/iwHLqZJRHtRk=";
     public static final String HUIHUANG_TOUTIAOJISU_SECRET = "wJEVZ/a90+RBKig611cweDoJCtnsy5hJ+2BiVpW8f5g=";
 
     //用于同一pid区分不出来的情况下，使用accountId区分
