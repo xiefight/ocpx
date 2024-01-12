@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangPipixiaAdsDao">
+
+    <resultMap id="huihuangmingtianAdsMap" type="huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO">
+        <id column="id" property="id"/>
+        <result column="chain_code" property="chainCode"/>
+        <result column="imei_md5" property="imeiMd5"/>
+        <result column="oaid" property="oaid"/>
+        <result column="oaid_md5" property="oaidMd5"/>
+        <result column="idfa" property="idfa"/>
+        <result column="idfa_md5" property="idfaMd5"/>
+        <result column="task_id" property="taskId"/>
+        <result column="aid" property="aid"/>
+        <result column="campaign_id" property="campaignId"/>
+        <result column="app" property="app"/>
+        <result column="adid" property="adid"/>
+        <result column="tms" property="tms"/>
+        <result column="os" property="os"/>
+        <result column="ip" property="ip"/>
+        <result column="ad_agent" property="adAgent"/>
+        <result column="advertising_space_id" property="advertisingSpaceId"/>
+        <result column="source" property="source"/>
+        <result column="account_id" property="accountId"/>
+        <result column="channel" property="channel"/>
+        <result column="callback_url" property="callbackUrl"/>
+        <result column="extra" property="extra"/>
+        <result column="channel_name" property="channelName"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="report_status" property="reportStatus"/>
+        <result column="callback_status" property="callBackStatus"/>
+        <result column="callback_time" property="callBackTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO huihuang_pipixia_ads
+        (chain_code, imei_md5, oaid, oaid_md5, idfa,
+        idfa_md5, task_id, aid, campaign_id, app, adid, tms, os, ip, ad_agent,
+        advertising_space_id,source,account_id,callback_url,channel,extra,channel_name, create_time, update_time, report_status,
+        callback_status)
+        VALUES (#{chainCode}, #{imeiMd5}, #{oaid}, #{oaidMd5}, #{idfa}, #{idfaMd5}, #{taskId},
+        #{aid}, #{campaignId}, #{app}, #{adid}, #{tms}, #{os}, #{ip}, #{adAgent}, #{advertisingSpaceId},
+        #{source},#{accountId},#{callbackUrl},#{channel},#{extra},#{channelName},now(),now(), "0", "0")
+    </insert>
+
+
+    <update id="update" parameterType="huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO">
+        UPDATE huihuang_pipixia_ads
+        <set>
+            <if test="chainCode != null">chain_code = #{chainCode},</if>
+            <if test="imeiMd5 != null">imei_md5 = #{imeiMd5},</if>
+            <if test="oaid != null">oaid = #{oaid},</if>
+            <if test="oaidMd5 != null">oaid_md5 = #{oaidMd5},</if>
+            <if test="idfa != null">idfa = #{idfa},</if>
+            <if test="idfaMd5 != null">idfa_md5 = #{idfaMd5},</if>
+            <if test="taskId != null">task_id = #{taskId},</if>
+            <if test="aid != null">aid = #{aid},</if>
+            <if test="campaignId != null">campaign_id = #{campaignId},</if>
+            <if test="app != null">app = #{app},</if>
+            <if test="adid != null">adid = #{adid},</if>
+            <if test="tms != null">tms = #{tms},</if>
+            <if test="os != null">os = #{os},</if>
+            <if test="ip != null">ip = #{ip},</if>
+            <if test="adAgent != null">ad_agent = #{adAgent},</if>
+            <if test="advertisingSpaceId != null">advertising_space_id = #{advertisingSpaceId},</if>
+            <if test="source != null">source = #{source},</if>
+            <if test="accountId != null">account_id = #{accountId},</if>
+            <if test="channel != null">channel = #{channel},</if>
+            <if test="callbackUrl != null">callback_url = #{callbackUrl},</if>
+            <if test="extra != null">extra = #{extra},</if>
+            <if test="channelName != null">channel_name = #{channelName},</if>
+            update_time = now(),
+            <if test="reportStatus != null">report_status = #{reportStatus},</if>
+            <if test="callBackStatus != null">callback_status = #{callBackStatus},</if>
+            <if test="callBackTime != null">callback_time = #{callBackTime},</if>
+        </set>
+        where id =#{id}
+    </update>
+
+
+    <select id="queryHuihuangPipixiaAdsById" parameterType="java.lang.Integer" resultMap="huihuangmingtianAdsMap">
+        SELECT id,
+               chain_code,
+               imei_md5,
+               oaid,
+               oaid_md5,
+               idfa,
+               idfa_md5,
+               task_id,
+               aid,
+               campaign_id,
+               app,
+               adid,
+               tms,
+               os,
+               ip,
+               ad_agent,
+               advertising_space_id,
+               source,
+               account_id,
+               callback_url,
+               channel,
+               extra,
+               channel_name,
+               create_time,
+               update_time,
+               report_status,
+               callback_status
+        FROM huihuang_pipixia_ads
+        WHERE id = #{id}
+    </select>
+
+
+</mapper>
