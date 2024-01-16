@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.ads.huihuangmingtian;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
+import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -146,6 +147,36 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianXiaomiMap.put(UA, XiaomiParamEnum.UA);
         huihuangmingtianXiaomiMap.put(CALLBACK_URL, XiaomiParamEnum.CALLBACK);
 
+    }
+
+
+
+    public static Map<HuihuangmingtianParamEnum, IQiyiParamEnum> huihuangmingtianIQiyiMap;
+
+    static {
+        huihuangmingtianIQiyiMap = new HashMap<>();
+        huihuangmingtianIQiyiMap.put(CHAIN_CODE, IQiyiParamEnum.HUIHUANG_CHAIN_CODE);
+        huihuangmingtianIQiyiMap.put(TASKID, IQiyiParamEnum.HUIHUANG_TASK_ID);
+        huihuangmingtianIQiyiMap.put(APP, IQiyiParamEnum.HUIHUANG_APP);
+        huihuangmingtianIQiyiMap.put(SOURCE, IQiyiParamEnum.HUIHUANG_SOURCE);
+        huihuangmingtianIQiyiMap.put(ADVERTISING_SPACE_ID, IQiyiParamEnum.HUIHUANG_ADVERTISING_SPACE_ID);
+        huihuangmingtianIQiyiMap.put(AID, IQiyiParamEnum.HUIHUANG_AID);
+        huihuangmingtianIQiyiMap.put(CHANNEL, IQiyiParamEnum.HUIHUANG_CHANNEL);
+        huihuangmingtianIQiyiMap.put(ADID, IQiyiParamEnum.HUIHUANG_ADID);
+        huihuangmingtianIQiyiMap.put(IMEI_MD5, IQiyiParamEnum.IMEI_MD5);
+        huihuangmingtianIQiyiMap.put(OAID, IQiyiParamEnum.OAID);
+        huihuangmingtianIQiyiMap.put(OAID_MD5, null);
+        huihuangmingtianIQiyiMap.put(IDFA, IQiyiParamEnum.IDFA);
+        huihuangmingtianIQiyiMap.put(IDFA_MD5, null);
+        huihuangmingtianIQiyiMap.put(CAMPAIGN_ID, null);
+
+        huihuangmingtianIQiyiMap.put(TMS, IQiyiParamEnum.TS);
+        huihuangmingtianIQiyiMap.put(OS, IQiyiParamEnum.OS);
+        huihuangmingtianIQiyiMap.put(IP, IQiyiParamEnum.IP);
+        huihuangmingtianIQiyiMap.put(UA, IQiyiParamEnum.UA);
+        huihuangmingtianIQiyiMap.put(CALLBACK_URL, IQiyiParamEnum.CALLBACK_URL);
+
+        huihuangmingtianIQiyiMap.put(ACCOUNT_ID, IQiyiParamEnum.ACCOUNT_ID);
     }
 
 }

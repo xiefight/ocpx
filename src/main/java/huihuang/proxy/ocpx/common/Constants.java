@@ -170,6 +170,7 @@ public class Constants {
 
 
         public static final String IQIYI_KUAISHOU = "/ikServer";
+        public static final String IQIYI_HUIHUANG_FANQIE = "/ihhfqServer";
 
 
         public static final String MONITOR_ADDRESS = "/monitorAddress";
@@ -290,6 +291,7 @@ public class Constants {
         public static final String OPPO_KUAISHOU = "oppo-kuaishou";
 
         public static final String IQIYI_KUAISHOU = "iqiyi-kuaishou";
+        public static final String IQIYI_HUIHUANG_FANQIE = "iqiyi-huihuang-fanqie";
     }
 
     public class AdsForChannel {

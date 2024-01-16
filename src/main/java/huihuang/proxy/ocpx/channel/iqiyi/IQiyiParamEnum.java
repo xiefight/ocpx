@@ -21,6 +21,17 @@ public enum IQiyiParamEnum {
 
     KUAISHOU_ADID("", "adid", "快手投放渠道标识"),
 
+    ACCOUNT_ID("","account_id","我们自定义的标识，体现在监测链接中"),
+
+    HUIHUANG_CHAIN_CODE("","chainCode","辉煌标识"),
+    HUIHUANG_TASK_ID("","taskId","由辉煌明天提供任务 id"),
+    HUIHUANG_APP("","app","辉煌明天提供App 号，14 飞猪,9 点淘"),
+    HUIHUANG_SOURCE("","source",""),
+    HUIHUANG_ADVERTISING_SPACE_ID("","advertisingSpaceId",""),
+    HUIHUANG_AID("","aid","辉煌明天提供广告数据 id "),
+    HUIHUANG_ADID("","adid",""),
+    HUIHUANG_CHANNEL("","channel",""),
+
     ;
 
 

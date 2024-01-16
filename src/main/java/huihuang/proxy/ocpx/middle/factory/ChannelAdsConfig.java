@@ -224,6 +224,8 @@ public class ChannelAdsConfig {
     private OppoKuaishouChannelAds oppoKuaishouChannelAds;
     @Autowired
     private IQiyiKuaishouChannelAds ikChannelAds;
+    @Autowired
+    private IQiyiHuihuangFanqieChannelAds ihhfqChannelAds;
 
     @PostConstruct
     public void init() {
@@ -334,6 +336,7 @@ public class ChannelAdsConfig {
 
         channelAdsMap.put(Constants.ChannelAdsKey.OPPO_KUAISHOU, oppoKuaishouChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.IQIYI_KUAISHOU, ikChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.IQIYI_HUIHUANG_FANQIE, ihhfqChannelAds);
     }
 
 
