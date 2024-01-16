@@ -13,6 +13,6 @@ public class QuannengJinritoutiaoPath extends QuannengHudongPath {
 
     @Override
     public String baseAdsName() {
-        return "quanneng-xiguavideo";
+        return "quanneng-jinritoutiao";
     }
 }
