@@ -1694,6 +1694,36 @@
     <!-- 河马剧场（全能互动） start -->
 
 
+    <!-- 皮皮虾（全能互动） start -->
+    <appender name="QUANNENG_PIPIXIA_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/quannengppx/quannengppx.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/quannengppx/quannengppx.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengPipixiaChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengPipixiaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
+    </logger>
+
+    <!-- 皮皮虾（全能互动） start -->
+
+
     <!-- 七读 start -->
     <appender name="QIDU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/qidu/qidu.log</File>
