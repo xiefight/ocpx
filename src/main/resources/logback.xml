@@ -1143,6 +1143,14 @@
         <appender-ref ref="HUIHUANG_XIGUAVIDEO_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiHuihuangXiguavideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_XIGUAVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiHuihuangXiguavideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIGUAVIDEO_LOG"/>
+    </logger>
+
     <!-- 辉煌 西瓜视频 end -->
 
 
