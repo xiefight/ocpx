@@ -62,6 +62,7 @@ public class HuaweiPath {
     //用于同一pid区分不出来的情况下，使用accountId区分
     public static final String HW_QUANNENG_DOUYIN_JISU_ACCOUNT_01 = "hwqndyjs01";
     public static final String HW_QUANNENG_DOUYIN_JISU_ACCOUNT_02 = "hwqndyjs02";
+    public static final String HW_QUANNENG_YOUSHI_ACCOUNT_01 = "hwqnys01";
     public static final String QUANNENG_FANQIE_176_SECRET = "OXqHD9y52yIyoZGuEUthFKWRel5B+7M3JX6+CUfh7ik=";
     public static final String QUANNENG_FANQIE_207_SECRET = "bxfMNrJ6MCiFGLyA9sPsWVx+m98o1LnTftPiQt+Rfn8=";
     public static final String QUANNENG_FANQIE_CHANGTING_242_SECRET = "KTlpWiHHQMOXlkxU6LyR3xBwr38bV0wjAr+YdXdcE/k=";
@@ -80,6 +81,7 @@ public class HuaweiPath {
     public static final String QUANNENG_IQIYI_SECRET = "CSfUp2v5dmrCfqSU0MrHtDYHhBUr4M9sUqNuzPKbmKY=";
     public static final String QUANNENG_HEMAJUCHANG_SECRET = "nJo+6w7ZS9KaM/hSYYH3aUpFqHcnT+sE9hsXc+16dOk=";
     public static final String QUANNENG_XIAOHONGSHU_SECRET = "lQ3F5ALgJXhlV5aLatOD5x8ZoD6lgNf5fad3QqtQyPA=";
+    public static final String QUANNENG_YOUSHI_SECRET = "Ejxx2oa9jeVyR1HL9/AX9iC2sEr1e1ETxEPHrfrG4E8=";
 
     //丁耘系
     public static final String DINGYUN_DOUYINHUOSHAN_SECRET = "NCOZSPwBg64Kb/UPT1g8f6TiQOW4rH2GbgVp55FF0n0=";
