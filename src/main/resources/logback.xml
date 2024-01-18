@@ -1751,6 +1751,14 @@
         <appender-ref ref="QUANNENG_YOUSHI_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengYoushiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_YOUSHI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengYoushiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_YOUSHI_LOG"/>
+    </logger>
+
     <!-- 有柿（全能互动） start -->
 
 

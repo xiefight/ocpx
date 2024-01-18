@@ -69,9 +69,10 @@ public class HuaweiQuannengYoushiServiceImpl extends HuaweiChannelFactory implem
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
         huaweiVO.setConversionType(QuannengHudongEventTypeEnum.quannengHudongHuaweiEventTypeMap.get(eventType).getCode());
         huaweiVO.setOaid(quannengHudongAdsDTO.getOaid());
-        if (HuaweiPath.HW_QUANNENG_YOUSHI_ACCOUNT_01.equals(quannengHudongAdsDTO.getAccountId())){
-            huaweiVO.setSecret(HuaweiPath.QUANNENG_YOUSHI_SECRET);
-        }
+        huaweiVO.setSecret(HuaweiPath.QUANNENG_YOUSHI_SECRET);
+//        if (HuaweiPath.HW_QUANNENG_YOUSHI_ACCOUNT_01.equals(quannengHudongAdsDTO.getAccountId())){
+//            huaweiVO.setSecret(HuaweiPath.QUANNENG_YOUSHI_SECRET);
+//        }
 
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 
