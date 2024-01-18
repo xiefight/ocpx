@@ -35,11 +35,13 @@ public class HuaweiPath {
 
     public static final String HW_HH_XIANYU_ACCOUNT_01 = "hwhhxy01";
     public static final String HW_HH_XIANYU_ACCOUNT_02 = "hwhhxy02";
+    public static final String HW_HH_XIANYU_ACCOUNT_03 = "hwhhxy03";
     public static final String TUHU_SECRET = "kG7rK8Z0G2+sAU9PndgTCvjmea/vqUpEOMIAsnaaVFg=";
     public static final String XIANYU_SECRET = "jkcvW39AvnnNU30+0rM0MlieNSj4Fsk69K9R+KAfV8M=";
     public static final String XIANYU36626_SECRET = "6XWsEIZqsvKi820dScwvK6ONsB5DhG4Bp7uMza4L7Eg=";
     public static final String XIANYU36626_1_SECRET = "xKUsc5fpkq2zRCZj2xg4AwTlTeos2HDIKgsPbIBuPTY=";
     public static final String XIANYU42139_SECRET = "jkcvW39AvnnNU30+0rM0MlieNSj4Fsk69K9R+KAfV8M=";
+    public static final String XIANYU_03_SECRET = "6XWsEIZqsvKi820dScwvK6ONsB5DhG4Bp7uMza4L7Eg=";
 
     public static final String IQIYI_SECRET = "CSfUp2v5dmrCfqSU0MrHtDYHhBUr4M9sUqNuzPKbmKY=";
 

@@ -75,6 +75,8 @@ public class HuaweiXianyuServiceImpl extends HuaweiChannelFactory implements ICh
             }
         } else if (HuaweiPath.HW_HH_XIANYU_ACCOUNT_02.equals(xianyuAdsDTO.getOcpxAccount())) {
             huaweiVO.setSecret(HuaweiPath.XIANYU42139_SECRET);
+        } else if (HuaweiPath.HW_HH_XIANYU_ACCOUNT_03.equals(xianyuAdsDTO.getOcpxAccount())) {
+            huaweiVO.setSecret(HuaweiPath.XIANYU_03_SECRET);
         } else {
             huaweiVO.setSecret(HuaweiPath.XIANYU_SECRET);
         }
