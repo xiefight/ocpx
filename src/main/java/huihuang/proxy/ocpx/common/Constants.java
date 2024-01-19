@@ -176,6 +176,8 @@ public class Constants {
         public static final String IQIYI_HUIHUANG_FANQIE = "/ihhfqServer";
         public static final String IQIYI_HUIHUANG_XIGUAVIDEO = "/ihhxgServer";
 
+        public static final String IQIYI_DINGYUN_XIGUAVIDEO = "/idyxgServer";
+
 
         public static final String MONITOR_ADDRESS = "/monitorAddress";
         public static final String CLICK_REPORT = "/clickReport";
@@ -300,6 +302,8 @@ public class Constants {
         public static final String IQIYI_KUAISHOU = "iqiyi-kuaishou";
         public static final String IQIYI_HUIHUANG_FANQIE = "iqiyi-huihuang-fanqie";
         public static final String IQIYI_HUIHUANG_XIGUAVIDEO = "iqiyi-huihuang-xiguavideo";
+
+        public static final String IQIYI_DINGYUN_XIGUAVIDEO = "iqiyi-dingyun-xiguavideo";
     }
 
     public class AdsForChannel {

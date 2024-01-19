@@ -32,6 +32,9 @@ public enum IQiyiParamEnum {
     HUIHUANG_ADID("","adid",""),
     HUIHUANG_CHANNEL("","channel",""),
 
+
+    DINGYUN_ADID("","adid","丁耘adid"),
+
     ;
 
 

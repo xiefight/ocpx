@@ -1910,6 +1910,14 @@
         <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiDingyunXiguavideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiDingyunXiguavideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_XIGAUVIDEO_LOG"/>
+    </logger>
+
     <!-- 丁耘 西瓜视频 end -->
 
 
