@@ -65,6 +65,7 @@ public class HuaweiPath {
     public static final String HW_QUANNENG_YOUSHI_ACCOUNT_01 = "hwqnys01";
     public static final String QUANNENG_FANQIE_176_SECRET = "OXqHD9y52yIyoZGuEUthFKWRel5B+7M3JX6+CUfh7ik=";
     public static final String QUANNENG_FANQIE_207_SECRET = "bxfMNrJ6MCiFGLyA9sPsWVx+m98o1LnTftPiQt+Rfn8=";
+    public static final String QUANNENG_FANQIE_356_SECRET = "8feZnTr42ui7gPh53uXgPt9i0pcDtAKVpykdxzkLqag=";
     public static final String QUANNENG_FANQIE_CHANGTING_242_SECRET = "KTlpWiHHQMOXlkxU6LyR3xBwr38bV0wjAr+YdXdcE/k=";
     public static final String QUANNENG_DOUYIN_JISU_131_SECRET = "kWNNpypXZC4e4G1tXf9STK0jNySs8TJlapbkKihsIy4=";
     public static final String QUANNENG_DOUYIN_JISU_195_SECRET = "FcD7Dv9Zygw5T6A/3y8oHAjP53j36Scw5E9oC1lw5Ls=";
