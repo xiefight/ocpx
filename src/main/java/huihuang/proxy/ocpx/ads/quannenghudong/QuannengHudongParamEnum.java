@@ -93,6 +93,7 @@ public enum QuannengHudongParamEnum {
         quannengHudongXiaomiMap.put(MODEL, null);
         quannengHudongXiaomiMap.put(CALLBACK, XiaomiParamEnum.CALLBACK);
         quannengHudongXiaomiMap.put(UNIQUE_ID, XiaomiParamEnum.QUANNENGHUDONG_UNIQUEID);
+        quannengHudongXiaomiMap.put(ACCOUNT_ID, XiaomiParamEnum.ACCOUNT_ID);
     }
 
 

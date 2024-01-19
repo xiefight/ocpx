@@ -9,6 +9,7 @@ import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.XiaomiChannelFactory;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2XiaomiVO;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiCallbackDTO;
+import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -54,9 +55,13 @@ public class XiaomiQuannengFanqieServiceImpl extends XiaomiChannelFactory implem
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
-        if (QuannengHudongEventTypeEnum.ACTIVATE.getCode().equals(eventType)) {
-            eventType = eventType + "new";
+        //3户激活，其他两户新增激活
+        if (!XiaomiPath.XM_QUANNENG_FANQIE_ACCOUNT_03.equals(quannengFanqieAdsDTO.getAccountId())){
+            if (QuannengHudongEventTypeEnum.ACTIVATE.getCode().equals(eventType)) {
+                eventType = eventType + "new";
+            }
         }
+
 
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
