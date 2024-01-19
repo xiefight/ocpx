@@ -71,13 +71,22 @@ public class HuaweiQuannengFanqieServiceImpl extends HuaweiChannelFactory implem
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
         huaweiVO.setConversionType(QuannengHudongEventTypeEnum.quannengHudongHuaweiEventTypeMap.get(eventType).getCode());
         huaweiVO.setOaid(quannengHudongAdsDTO.getOaid());
-        if ("176".equals(quannengHudongAdsDTO.getPid())) {
+//        if ("176".equals(quannengHudongAdsDTO.getPid())) {
+//            huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_176_SECRET);
+//        } else if ("207".equals(quannengHudongAdsDTO.getPid())) {
+//            huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_02_SECRET);
+//        } else if ("356".equals(quannengHudongAdsDTO.getPid())) {
+//            huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_03_SECRET);
+//        }
+
+        if (HuaweiPath.HW_QUANNENG_FANQIE_ACCOUNT_02.equals(quannengHudongAdsDTO.getAccountId())){
+            huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_02_SECRET);
+        } else if (HuaweiPath.HW_QUANNENG_FANQIE_ACCOUNT_03.equals(quannengHudongAdsDTO.getAccountId())){
+            huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_03_SECRET);
+        }else {
             huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_176_SECRET);
-        } else if ("207".equals(quannengHudongAdsDTO.getPid())) {
-            huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_207_SECRET);
-        } else if ("356".equals(quannengHudongAdsDTO.getPid())) {
-            huaweiVO.setSecret(HuaweiPath.QUANNENG_FANQIE_356_SECRET);
         }
+
 
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 

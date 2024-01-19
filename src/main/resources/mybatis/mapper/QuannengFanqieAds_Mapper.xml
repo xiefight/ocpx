@@ -17,6 +17,7 @@
         <result column="model" property="model"/>
         <result column="callback" property="callback"/>
         <result column="uniqueid" property="uniqueId"/>
+        <result column="account_id" property="accountId"/>
         <result column="extra" property="extra"/>
         <result column="channel_name" property="channelName"/>
         <result column="create_time" property="createTime"/>
@@ -32,11 +33,11 @@
         </selectKey>
         INSERT INTO quanneng_fanqie_ads
         (pid, idfa, imei, oaid, caid, ip,
-        android_id, aaid, ua, os, model, callback, uniqueid, extra,channel_name, create_time, update_time,
+        android_id, aaid, ua, os, model, callback, uniqueid,account_id, extra,channel_name, create_time, update_time,
         report_status,
         callback_status)
         VALUES (#{pid}, #{idfa}, #{imei}, #{oaid}, #{caid}, #{ip}, #{androidId}, #{aaid},
-        #{ua}, #{os}, #{model}, #{callback}, #{uniqueId}, #{extra},#{channelName},now(),now(), "0", "0")
+        #{ua}, #{os}, #{model}, #{callback}, #{uniqueId},#{accountId}, #{extra},#{channelName},now(),now(), "0", "0")
     </insert>
 
 
@@ -56,6 +57,7 @@
             <if test="model != null">model = #{model},</if>
             <if test="callback != null">callback = #{callback},</if>
             <if test="uniqueId != null">uniqueid = #{uniqueId},</if>
+            <if test="accountId != null">account_id = #{accountId},</if>
             <if test="extra != null">extra = #{extra},</if>
             <if test="channelName != null">channel_name = #{channelName},</if>
             update_time = now(),
@@ -82,6 +84,7 @@
                model,
                callback,
                uniqueid,
+               account_id,
                extra,
                channel_name,
                create_time,
