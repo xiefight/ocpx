@@ -4,12 +4,12 @@ import huihuang.proxy.ocpx.bussiness.dao.ads.IDingyunXiguaVideoAdsDao;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
-import huihuang.proxy.ocpx.middle.baseadsreport.huihuangmingtian.IQiyiHuihuangReportFactory;
+import huihuang.proxy.ocpx.middle.baseadsreport.dingyun.IQiyiDingyunReportFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component("idyxgChannelAds")
-public class IQiyiDingyunXiguavideoChannelAds extends IQiyiHuihuangReportFactory {
+public class IQiyiDingyunXiguavideoChannelAds extends IQiyiDingyunReportFactory {
 
     String channelAdsKey = Constants.ChannelAdsKey.IQIYI_DINGYUN_XIGUAVIDEO;
 
