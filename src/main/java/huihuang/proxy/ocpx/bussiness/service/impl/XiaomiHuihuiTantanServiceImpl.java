@@ -2,8 +2,7 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiAdsDTO;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiEventTypeEnum;
-import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO;
-import huihuang.proxy.ocpx.ads.tantan.TantanPath;
+import huihuang.proxy.ocpx.ads.tantan.HuihuiTantanPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.ITantanAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -27,9 +26,9 @@ import java.util.Map;
  * @Date: 2023/6/8 19:36
  */
 @Service("xtService")
-public class XiaomiTantanServiceImpl extends XiaomiChannelFactory implements IChannelAdsService {
+public class XiaomiHuihuiTantanServiceImpl extends XiaomiChannelFactory implements IChannelAdsService {
 
-    protected Logger logger = LoggerFactory.getLogger(XiaomiTantanServiceImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(XiaomiHuihuiTantanServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
@@ -38,7 +37,7 @@ public class XiaomiTantanServiceImpl extends XiaomiChannelFactory implements ICh
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private TantanPath tantanPath;
+    private HuihuiTantanPath huihuiTantanPath;
 
 
     String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_TANTAN;
@@ -59,7 +58,7 @@ public class XiaomiTantanServiceImpl extends XiaomiChannelFactory implements ICh
         }
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
-        xiaomiVO.setAdsName(tantanPath.baseAdsName());
+        xiaomiVO.setAdsName(huihuiTantanPath.baseAdsName());
         //HuihuiEventTypeEnum.huihuiXiaomiEventTypeMap.get(parameterMap.get("conv_action")[0]).getCode()
         xiaomiVO.setEventType(HuihuiEventTypeEnum.huihuiXiaomiEventTypeMap.get(parameterMap.get("conv_action")[0]).getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));

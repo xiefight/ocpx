@@ -438,10 +438,17 @@
     </appender>
 
 
-    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiTantanChannelAds" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuiTantanChannelAds" level="INFO" additivity="true">
         <appender-ref ref="TANTAN_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiTantanServiceImpl" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiTantanServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="TANTAN_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuiTantanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="TANTAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiTantanServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="TANTAN_LOG"/>
     </logger>
 
@@ -592,24 +599,24 @@
     </appender>
 
 
-    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduXianyuChannelAds" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuiXianyuChannelAds" level="INFO" additivity="true">
         <appender-ref ref="XIANYU_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduXianyuServiceImpl" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuiXianyuServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="XIANYU_LOG"/>
     </logger>
 
     <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiXianyuChannelAds" level="INFO" additivity="true">
         <appender-ref ref="XIANYU_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiXianyuServiceImpl" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiXianyuServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="XIANYU_LOG"/>
     </logger>
 
-    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiXianyuChannelAds" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuiXianyuChannelAds" level="INFO" additivity="true">
         <appender-ref ref="XIANYU_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiXianyuServiceImpl" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiXianyuServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="XIANYU_LOG"/>
     </logger>
 
@@ -639,7 +646,7 @@
     <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiTuhuChannelAds" level="INFO" additivity="true">
         <appender-ref ref="TUHU_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiTuhuServiceImpl" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiTuhuServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="TUHU_LOG"/>
     </logger>
 

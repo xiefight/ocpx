@@ -2,7 +2,7 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiAdsDTO;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiEventTypeEnum;
-import huihuang.proxy.ocpx.ads.xianyu.XianyuPath;
+import huihuang.proxy.ocpx.ads.xianyu.HuihuiXianyuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IXianyuAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -24,9 +24,9 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Service("hxyService")
-public class HuaweiXianyuServiceImpl extends HuaweiChannelFactory implements IChannelAdsService {
+public class HuaweiHuihuiXianyuServiceImpl extends HuaweiChannelFactory implements IChannelAdsService {
 
-    protected Logger logger = LoggerFactory.getLogger(HuaweiXianyuServiceImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(HuaweiHuihuiXianyuServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
@@ -35,7 +35,7 @@ public class HuaweiXianyuServiceImpl extends HuaweiChannelFactory implements ICh
     @Autowired
     private IXianyuAdsDao xianyuAdsDao;
     @Autowired
-    private XianyuPath xianyuPath;
+    private HuihuiXianyuPath huihuiXianyuPath;
 
     String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_XIANYU;
 
@@ -83,7 +83,7 @@ public class HuaweiXianyuServiceImpl extends HuaweiChannelFactory implements ICh
 
         long currentTime = System.currentTimeMillis();
         huaweiVO.setAdsId(id);
-        huaweiVO.setAdsName(xianyuPath.baseAdsName());
+        huaweiVO.setAdsName(huihuiXianyuPath.baseAdsName());
         huaweiVO.setCallbackUrl(xianyuAdsDTO.getCallback());
 
         huaweiVO.setEventType(eventType);

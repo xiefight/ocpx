@@ -1,7 +1,7 @@
 package huihuang.proxy.ocpx.middle.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiParamField;
-import huihuang.proxy.ocpx.ads.xianyu.XianyuPath;
+import huihuang.proxy.ocpx.ads.xianyu.HuihuiXianyuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IXianyuAdsDao;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component("xiaomiXianyuChannelAds")
-public class XiaomiXianyuChannelAds extends XiaomiHuihuiReportFactory {
+public class XiaomiHuihuiXianyuChannelAds extends XiaomiHuihuiReportFactory {
 
     @Autowired
     private IXianyuAdsDao xianyuAdsDao;
     @Autowired
-    private XianyuPath xianyuPath;
+    private HuihuiXianyuPath huihuiXianyuPath;
 
     String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_XIANYU;
 

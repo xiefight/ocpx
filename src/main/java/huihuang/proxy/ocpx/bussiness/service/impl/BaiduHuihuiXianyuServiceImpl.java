@@ -3,7 +3,7 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 import cn.hutool.core.net.URLDecoder;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiAdsDTO;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiEventTypeEnum;
-import huihuang.proxy.ocpx.ads.xianyu.XianyuPath;
+import huihuang.proxy.ocpx.ads.xianyu.HuihuiXianyuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IXianyuAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -29,9 +29,9 @@ import java.util.Map;
  * @Date: 2023/8/8 11:40
  */
 @Service("bxyService")
-public class BaiduXianyuServiceImpl extends BaiduChannelFactory implements IChannelAdsService {
+public class BaiduHuihuiXianyuServiceImpl extends BaiduChannelFactory implements IChannelAdsService {
 
-    protected Logger logger = LoggerFactory.getLogger(BaiduXianyuServiceImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(BaiduHuihuiXianyuServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
@@ -40,7 +40,7 @@ public class BaiduXianyuServiceImpl extends BaiduChannelFactory implements IChan
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private XianyuPath xianyuPath;
+    private HuihuiXianyuPath huihuiXianyuPath;
 
     String channelAdsKey = Constants.ChannelAdsKey.BAIDU_XIANYU;
 
@@ -79,7 +79,7 @@ public class BaiduXianyuServiceImpl extends BaiduChannelFactory implements IChan
 
         Ads2BaiduVO baiduVO = new Ads2BaiduVO();
         baiduVO.setAdsId(id);
-        baiduVO.setAdsName(xianyuPath.baseAdsName());
+        baiduVO.setAdsName(huihuiXianyuPath.baseAdsName());
         baiduVO.setChannelUrl(channelUrl);
         baiduVO.setaType(HuihuiEventTypeEnum.huihuiBaiduEventTypeMap.get(eventType).getCode());
         baiduVO.setaValue(0);

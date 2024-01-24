@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @Date: 2023-08-08 11:40
  **/
 @Component
-public class XianyuPath extends HuihuiPath {
+public class HuihuiXianyuPath extends HuihuiPath {
 
     /**
      * 闲鱼1：33936替换36490

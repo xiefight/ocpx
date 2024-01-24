@@ -29,9 +29,9 @@ public class ChannelAdsConfig {
     @Autowired
     private XiaomiXinyuChannelAds xiaomiXinyuChannelAds;
     @Autowired
-    private XiaomiTantanChannelAds xiaomiTantanChannelAds;
+    private XiaomiHuihuiTantanChannelAds xiaomiHuihuiTantanChannelAds;
     @Autowired
-    private XiaomiXianyuChannelAds xiaomiXianyuChannelAds;
+    private XiaomiHuihuiXianyuChannelAds xiaomiHuihuiXianyuChannelAds;
     @Autowired
     private XiaomiXinyuYoudaoChannelAds xiaomiXinyuYoudaoChannelAds;
     @Autowired
@@ -121,6 +121,8 @@ public class ChannelAdsConfig {
     @Autowired
     private HuaweiXianyuChannelAds hxyChannelAds;
     @Autowired
+    private HuaweiHuihuiTantanChannelAds hhhttChannelAds;
+    @Autowired
     private HuaweiIQiyiChannelAds hiqyChannelAds;
     @Autowired
     private HuaweiDiantaoChannelAds hdtChannelAds;
@@ -171,7 +173,7 @@ public class ChannelAdsConfig {
     @Autowired
     private BaiduFanqieChannelAds bfChannelAds;
     @Autowired
-    private BaiduXianyuChannelAds baiduxianyuChannelAds;
+    private BaiduHuihuiXianyuChannelAds baiduxianyuChannelAds;
     @Autowired
     private BaiduDongchediChannelAds bdcdChannelAds;
     @Autowired
@@ -245,11 +247,11 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_YOUKU, xiaomiYoukuChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_KUAISHOU, xkChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_XINYU, xiaomiXinyuChannelAds);
-        channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_TANTAN, xiaomiTantanChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_TANTAN, xiaomiHuihuiTantanChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_XINYU_YOUDAO, xiaomiXinyuYoudaoChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_TT_YOUDAO, xiaomiTTYoudaoChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_DONGCHEDI, xiaomiDongchediChannelAds);
-        channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_XIANYU, xiaomiXianyuChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_XIANYU, xiaomiHuihuiXianyuChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_XIAOHONGSHU, xiaomiXhsChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_QUANNENG_FANQIE, xiaomiQuannengFanqieChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_QUANNENG_FANQIECHANGTING, xqfqctChannelAds);
@@ -293,6 +295,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_HUIHUANG, hhChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_TUHU, htChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_XIANYU, hxyChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_HUIHUI_TANTAN, hhhttChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_IQIYI, hiqyChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_DIANTAO, hdtChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.HUAWEI_QUANNENG_FANQIE, hqfChannelAds);

@@ -2,7 +2,7 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiAdsDTO;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiEventTypeEnum;
-import huihuang.proxy.ocpx.ads.tuhu.TuhuPath;
+import huihuang.proxy.ocpx.ads.tuhu.HuihuiTuhuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.ITuhuAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -28,9 +28,9 @@ import java.util.Map;
  * @Date: 2023/8/16 10:18
  */
 @Service("htService")
-public class HuaweiTuhuServiceImpl extends HuaweiChannelFactory implements IChannelAdsService {
+public class HuaweiHuihuiTuhuServiceImpl extends HuaweiChannelFactory implements IChannelAdsService {
 
-    protected Logger logger = LoggerFactory.getLogger(HuaweiTuhuServiceImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(HuaweiHuihuiTuhuServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
@@ -39,7 +39,7 @@ public class HuaweiTuhuServiceImpl extends HuaweiChannelFactory implements IChan
     @Autowired
     private ITuhuAdsDao tuhuAdsDao;
     @Autowired
-    private TuhuPath tuhuPath;
+    private HuihuiTuhuPath huihuiTuhuPath;
 
     String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_TUHU;
 
@@ -62,7 +62,7 @@ public class HuaweiTuhuServiceImpl extends HuaweiChannelFactory implements IChan
         long currentTime = System.currentTimeMillis();
         Ads2HuaweiVO huaweiVO = new Ads2HuaweiVO();
         huaweiVO.setAdsId(id);
-        huaweiVO.setAdsName(tuhuPath.baseAdsName());
+        huaweiVO.setAdsName(huihuiTuhuPath.baseAdsName());
         huaweiVO.setCallbackUrl(tuhuAdsDTO.getCallback());
 
         huaweiVO.setEventType(parameterMap.get("conv_action")[0]);

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @Date: 2023/8/16 10:19
  */
 @Component
-public class TuhuPath extends HuihuiPath {
+public class HuihuiTuhuPath extends HuihuiPath {
 
     public static final String TUHU_ADS_NAME = "tuhu";
 

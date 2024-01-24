@@ -2,7 +2,7 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiAdsDTO;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiEventTypeEnum;
-import huihuang.proxy.ocpx.ads.xianyu.XianyuPath;
+import huihuang.proxy.ocpx.ads.xianyu.HuihuiXianyuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IXianyuAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -22,9 +22,9 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Service("xxyService")
-public class XiaomiXianyuServiceImpl extends XiaomiChannelFactory implements IChannelAdsService {
+public class XiaomiHuihuiXianyuServiceImpl extends XiaomiChannelFactory implements IChannelAdsService {
 
-    protected Logger logger = LoggerFactory.getLogger(XiaomiXianyuServiceImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(XiaomiHuihuiXianyuServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
@@ -33,7 +33,7 @@ public class XiaomiXianyuServiceImpl extends XiaomiChannelFactory implements ICh
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private XianyuPath xianyuPath;
+    private HuihuiXianyuPath huihuiXianyuPath;
 
 
     String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_XIANYU;
@@ -55,7 +55,7 @@ public class XiaomiXianyuServiceImpl extends XiaomiChannelFactory implements ICh
         }
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
-        xiaomiVO.setAdsName(xianyuPath.baseAdsName());
+        xiaomiVO.setAdsName(huihuiXianyuPath.baseAdsName());
         //HuihuiEventTypeEnum.huihuiXiaomiEventTypeMap.get(parameterMap.get("conv_action")[0]).getCode()
         xiaomiVO.setEventType(HuihuiEventTypeEnum.huihuiXiaomiEventTypeMap.get(eventType).getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));

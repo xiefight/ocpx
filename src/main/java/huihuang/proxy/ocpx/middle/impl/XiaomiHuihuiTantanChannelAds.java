@@ -1,7 +1,7 @@
 package huihuang.proxy.ocpx.middle.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiParamField;
-import huihuang.proxy.ocpx.ads.tantan.TantanPath;
+import huihuang.proxy.ocpx.ads.tantan.HuihuiTantanPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.ITantanAdsDao;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
@@ -16,12 +16,12 @@ import java.util.Map;
  * @Date: 2023/6/8 19:39
  */
 @Component("xiaomiTantanChannelAds")
-public class XiaomiTantanChannelAds extends XiaomiHuihuiReportFactory {
+public class XiaomiHuihuiTantanChannelAds extends XiaomiHuihuiReportFactory {
 
     @Autowired
     private ITantanAdsDao tantanAdsDao;
     @Autowired
-    private TantanPath tantanPath;
+    private HuihuiTantanPath huihuiTantanPath;
 
     String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_TANTAN;
 
