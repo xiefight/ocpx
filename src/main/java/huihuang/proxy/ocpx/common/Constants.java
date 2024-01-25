@@ -170,6 +170,8 @@ public class Constants {
         public static final String HUAWEI_DINGYUN_XIGUAVIDEO = "/hdyxgServer";
         public static final String HUAWEI_DINGYUN_FANQIECHANGTING = "/hdyfqctServer";
 
+        public static final String HUAWEI_KEEP = "/hkeepServer";
+
         public static final String OPPO_KUAISHOU = "/okServer";
 
 
@@ -298,6 +300,8 @@ public class Constants {
         public static final String HUAWEI_DINGYUN_DOUYINHUOSHAN = "huawei-dingyun-douyinhuoshan";
         public static final String HUAWEI_DINGYUN_XIGUAVIDEO = "huawei-dingyun-xiguavideo";
         public static final String HUAWEI_DINGYUN_FANQIECHANGTING = "huawei-dingyun-fanqiechangting";
+
+        public static final String HUAWEI_KEEP = "huawei-keep";
 
         public static final String OPPO_KUAISHOU = "oppo-kuaishou";
 

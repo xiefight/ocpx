@@ -51,6 +51,9 @@ public enum HuaweiParamEnum {
     DINGYUN_ADID("","adid","丁耘adid"),
 //    ACCOUNT_ID("","account_id","我们自定义的baidu渠道标识，体现在监测链接中"),
 
+    KEEP_APPID("","appid","keep appid"),
+    KEEP_CHANNEL("","channel","keep channel"),
+
     ;
 
 

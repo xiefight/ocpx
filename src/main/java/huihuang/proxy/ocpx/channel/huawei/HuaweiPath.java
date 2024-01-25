@@ -93,5 +93,8 @@ public class HuaweiPath {
     public static final String DINGYUN_XIGUAVIDEO_SECRET = "bC0mZ00wTssMW1+lgA5K9DuMq3e5PFxKXEsn4QxDh30=";
     public static final String DINGYUN_FANQIECHANGTING_SECRET = "KTlpWiHHQMOXlkxU6LyR3xBwr38bV0wjAr+YdXdcE/k=";
 
+    public static final String HW_KEEP_ACCOUNT_01 = "hwkeep01";
+    public static final String KEEP_SECRET_01 = "SqO4o4KHCTKWVmkHwdbDdBURpviUCrUxaRHu+HLIxC0=";
+
     public static final String CALLBACK_URL = "https://ppscrowd-drcn.op.hicloud.com/action-lib-track/hiad/v2/actionupload?";
 }

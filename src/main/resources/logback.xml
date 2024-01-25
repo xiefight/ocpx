@@ -1974,4 +1974,35 @@
     <!-- 丁耘 番茄畅听 end -->
 
 
+
+    <!-- keep start -->
+    <appender name="KEEP_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/keep/keep.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/keep/keep.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiKeepChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiKeepServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+
+    <!-- keep end -->
+
+
 </configuration>
