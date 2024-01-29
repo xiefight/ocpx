@@ -70,10 +70,14 @@ public class HuaweiHuihuiXianyuServiceImpl extends HuaweiChannelFactory implemen
             }
             if (HuaweiPath.HW_HH_XIANYU_ACCOUNT_01.equals(xianyuAdsDTO.getOcpxAccount())) {
                 huaweiVO.setSecret(HuaweiPath.XIANYU36626_1_SECRET);
+            } else if (HuaweiPath.HW_HH_XIANYU_ACCOUNT_02.equals(xianyuAdsDTO.getOcpxAccount())) {
+                //当aid=36626时，使用的02户，需要处理注册激活事件对应
+                huaweiVO.setSecret(HuaweiPath.XIANYU_SECRET);
             } else {
                 huaweiVO.setSecret(HuaweiPath.XIANYU36626_SECRET);
             }
         } else if (HuaweiPath.HW_HH_XIANYU_ACCOUNT_02.equals(xianyuAdsDTO.getOcpxAccount())) {
+            //02户本来不需要处理
             huaweiVO.setSecret(HuaweiPath.XIANYU42139_SECRET);
         } else if (HuaweiPath.HW_HH_XIANYU_ACCOUNT_03.equals(xianyuAdsDTO.getOcpxAccount())) {
             huaweiVO.setSecret(HuaweiPath.XIANYU_03_SECRET);
