@@ -1,11 +1,16 @@
 package huihuang.proxy.ocpx.channel.huawei;
 
+import lombok.Data;
+import lombok.ToString;
+
 import java.util.Date;
 
 /**
  * @Author: xietao
  * @Date: 2023/5/9 20:42
  */
+@Data
+@ToString
 public class HuaweiCallbackDTO {
 
     private Integer id;
@@ -43,155 +48,4 @@ public class HuaweiCallbackDTO {
         this.adsName = adsName;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getAdsId() {
-        return adsId;
-    }
-
-    public void setAdsId(Integer adsId) {
-        this.adsId = adsId;
-    }
-
-    public String getCallback() {
-        return callback;
-    }
-
-    public void setCallback(String callback) {
-        this.callback = callback;
-    }
-
-    public String getContentId() {
-        return contentId;
-    }
-
-    public void setContentId(String contentId) {
-        this.contentId = contentId;
-    }
-
-    public String getCampaignId() {
-        return campaignId;
-    }
-
-    public void setCampaignId(String campaignId) {
-        this.campaignId = campaignId;
-    }
-
-    public String getOaid() {
-        return oaid;
-    }
-
-    public void setOaid(String oaid) {
-        this.oaid = oaid;
-    }
-
-    public String getTrackingEnabled() {
-        return trackingEnabled;
-    }
-
-    public void setTrackingEnabled(String trackingEnabled) {
-        this.trackingEnabled = trackingEnabled;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    public String getConversionType() {
-        return conversionType;
-    }
-
-    public void setConversionType(String conversionType) {
-        this.conversionType = conversionType;
-    }
-
-    public String getConversionTime() {
-        return conversionTime;
-    }
-
-    public void setConversionTime(String conversionTime) {
-        this.conversionTime = conversionTime;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public String getConversionCount() {
-        return conversionCount;
-    }
-
-    public void setConversionCount(String conversionCount) {
-        this.conversionCount = conversionCount;
-    }
-
-    public String getConversionPrice() {
-        return conversionPrice;
-    }
-
-    public void setConversionPrice(String conversionPrice) {
-        this.conversionPrice = conversionPrice;
-    }
-
-    public String getEventId() {
-        return eventId;
-    }
-
-    public void setEventId(String eventId) {
-        this.eventId = eventId;
-    }
-
-    public String getAdsName() {
-        return adsName;
-    }
-
-    public void setAdsName(String adsName) {
-        this.adsName = adsName;
-    }
-
-    public String getCallBackStatus() {
-        return callBackStatus;
-    }
-
-    public void setCallBackStatus(String callBackStatus) {
-        this.callBackStatus = callBackStatus;
-    }
-
-    public String getCallBackMes() {
-        return callBackMes;
-    }
-
-    public void setCallBackMes(String callBackMes) {
-        this.callBackMes = callBackMes;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }

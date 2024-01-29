@@ -231,6 +231,8 @@ public class ChannelAdsConfig {
     private BaiduDingyunXiguavideoChannelAds bdyxgChannelAds;
     @Autowired
     private BaiduDingyunFanqiechangtingChannelAds bdyfqctChannelAds;
+    @Autowired
+    private BaiduDingyunYoushiChannelAds bdyysChannelAds;
 
     @Autowired
     private OppoKuaishouChannelAds oppoKuaishouChannelAds;
@@ -355,6 +357,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_DINGYUN_DOUYINHUOSHAN, bdydyhsChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_DINGYUN_XIGUAVIDEO, bdyxgChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_DINGYUN_FANQIECHANGTING, bdyfqctChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_DINGYUN_YOUSHI, bdyysChannelAds);
 
         channelAdsMap.put(Constants.ChannelAdsKey.OPPO_KUAISHOU, oppoKuaishouChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.IQIYI_KUAISHOU, ikChannelAds);
