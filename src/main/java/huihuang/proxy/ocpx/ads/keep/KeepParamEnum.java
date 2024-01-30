@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.ads.keep;
 
+import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 
 import java.util.HashMap;
@@ -50,9 +51,6 @@ public enum KeepParamEnum {
         return remark;
     }
 
-    /**
-     * huawei-kuaishou
-     */
     public static Map<KeepParamEnum, HuaweiParamEnum> keepHuaweiMap;
 
     static {
@@ -68,6 +66,24 @@ public enum KeepParamEnum {
         keepHuaweiMap.put(ACCOUNT_ID, HuaweiParamEnum.ACCOUNT_ID);
         keepHuaweiMap.put(UA, HuaweiParamEnum.USER_AGENT);
         keepHuaweiMap.put(CALLBACK, HuaweiParamEnum.CALLBACK);
+    }
+
+
+    public static Map<KeepParamEnum, BaiduParamEnum> keepBaiduMap;
+
+    static {
+        keepBaiduMap = new HashMap<>();
+        keepBaiduMap.put(APPID, BaiduParamEnum.KEEP_APPID);
+        keepBaiduMap.put(CHANNEL, BaiduParamEnum.KEEP_CHANNEL);
+        keepBaiduMap.put(IMEI, null);//需要特殊处理
+        keepBaiduMap.put(IMEI_MD5, BaiduParamEnum.IMEI_MD5);
+        keepBaiduMap.put(OAID, BaiduParamEnum.OAID);
+        keepBaiduMap.put(OAID_MD5, BaiduParamEnum.OAID_MD5);
+        keepBaiduMap.put(ANDROID_ID, BaiduParamEnum.ANDROID_ID_MD5);
+        keepBaiduMap.put(IP, BaiduParamEnum.IP);
+        keepBaiduMap.put(ACCOUNT_ID, BaiduParamEnum.ACCOUNT_ID);
+        keepBaiduMap.put(UA, BaiduParamEnum.UA);
+        keepBaiduMap.put(CALLBACK, BaiduParamEnum.CALLBACK_URL);
     }
 
 }

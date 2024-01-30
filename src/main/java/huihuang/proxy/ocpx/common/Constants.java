@@ -138,6 +138,8 @@ public class Constants {
         public static final String BAIDU_DINGYUN_FANQIECHANGTING = "/bdyfqctServer";
         public static final String BAIDU_DINGYUN_YOUSHI = "/bdyysServer";
 
+        public static final String BAIDU_KEEP = "/bkeepServer";
+
 
 
         public static final String HUAWEI_KUAISHOU = "/hkServer";
@@ -272,6 +274,8 @@ public class Constants {
         public static final String BAIDU_DINGYUN_XIGUAVIDEO = "baidu-dingyun-xiguavideo";
         public static final String BAIDU_DINGYUN_FANQIECHANGTING = "baidu-dingyun-fanqiechangting";
         public static final String BAIDU_DINGYUN_YOUSHI = "baidu-dingyun-youshi";
+
+        public static final String BAIDU_KEEP = "baidu-keep";
 
         public static final String HUAWEI_KUAISHOU = "huawei-kuaishou";
         public static final String HUAWEI_LTJD = "huawei-ltjd";

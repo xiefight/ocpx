@@ -2040,6 +2040,14 @@
         <appender-ref ref="KEEP_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduKeepChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduKeepServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+
     <!-- keep end -->
 
 

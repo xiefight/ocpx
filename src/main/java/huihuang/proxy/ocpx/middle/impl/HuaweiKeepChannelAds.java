@@ -5,6 +5,7 @@ import huihuang.proxy.ocpx.ads.keep.KeepParamEnum;
 import huihuang.proxy.ocpx.ads.keep.KeepParamField;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.HuaweiChannelFactory;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
+import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.middle.baseadsreport.KeepReportFactory;
 import org.springframework.stereotype.Component;
@@ -36,7 +37,7 @@ public class HuaweiKeepChannelAds extends KeepReportFactory {
 
     @Override
     protected String channelName() {
-        return null;
+        return HuaweiPath.HUAWEI_CHANNEL_NAME;
     }
 
     @Override

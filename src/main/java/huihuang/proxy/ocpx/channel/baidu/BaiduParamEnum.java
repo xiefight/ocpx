@@ -60,6 +60,10 @@ public enum BaiduParamEnum {
     QUANNENGHUDONG_UNIQUEID("","uniqueid","全能互动请求唯一id"),
 
     DINGYUN_ADID("","adid","丁耘adid"),
+
+    KEEP_APPID("","appid","keep appid"),
+    KEEP_CHANNEL("","channel","keep channel"),
+
     ;
 
 

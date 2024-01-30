@@ -96,6 +96,10 @@ public class BaiduPath {
     public static final String BAIDU_DINGYUN_YOUSHI_ACCOUNT = "bddyys01";
     public static final String DINGYUN_YOUSHI_01_SECRET = "NTI1OTY1OTA=";
 
+    public static final String KEEP_SECRET = "NTI5Mjc5NDc=";
+
+
+
     public static final String BAIDU_CHANNEL_NAME = "baidu";
 
     public static final String CALLBACK_URL = "http://als.baidu.com/cb/actionCb?";

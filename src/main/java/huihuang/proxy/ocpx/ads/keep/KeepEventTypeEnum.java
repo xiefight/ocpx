@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.keep;
 
 import cn.hutool.core.collection.CollUtil;
+import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
 
 import java.util.Map;
@@ -40,6 +41,21 @@ public enum KeepEventTypeEnum {
         keepHuaweiEventTypeMap.put(PAID.code, HuaweiEventTypeEnum.PAID);
         //次日回访
         keepHuaweiEventTypeMap.put(DAY1RETENTION.code, HuaweiEventTypeEnum.RETAIN);
+    }
+
+
+    public static Map<String, BaiduEventTypeEnum> keepBaiduEventTypeMap;
+
+    static {
+        keepBaiduEventTypeMap = CollUtil.newHashMap();
+        //激活
+        keepBaiduEventTypeMap.put(ACTIVE.code, BaiduEventTypeEnum.ACTIVE);
+        //注册
+        keepBaiduEventTypeMap.put(REGISTER.code, BaiduEventTypeEnum.REGISTER);
+        //付费
+        keepBaiduEventTypeMap.put(PAID.code, null);
+        //次日回访
+        keepBaiduEventTypeMap.put(DAY1RETENTION.code, BaiduEventTypeEnum.RETAIN_1DAY);
     }
 
 }
