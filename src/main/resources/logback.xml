@@ -2000,6 +2000,14 @@
         <appender-ref ref="DINGYUN_YOUSHI_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiDingyunYoushiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="DINGYUN_YOUSHI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiDingyunYoushiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="DINGYUN_YOUSHI_LOG"/>
+    </logger>
+
 
     <!-- 丁耘 有柿 end -->
 
