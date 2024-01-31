@@ -95,6 +95,7 @@ public class Constants {
         public static final String XIAOMI_DINGYUN_FANQIECHANGTING = "/xdyfqctServer";
         public static final String XIAOMI_DINGYUN_YOUSHI = "/xdyysServer";
 
+        public static final String XIAOMI_KEEP = "/xkeepServer";
         public static final String XIAOMI_QIDU = "/xqiduServer";
 
 
@@ -232,6 +233,7 @@ public class Constants {
         public static final String XIAOMI_DINGYUN_YOUSHI = "xiaomi-dingyun-youshi";
 
         public static final String XIAOMI_QIDU = "xiaomi-qidu";
+        public static final String XIAOMI_KEEP = "xiaomi-keep";
 
         public static final String TOUTIAO_MEITUAN = "toutiao-meituan";
 

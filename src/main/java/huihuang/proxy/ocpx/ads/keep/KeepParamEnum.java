@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.ads.keep;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
+import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -85,5 +86,24 @@ public enum KeepParamEnum {
         keepBaiduMap.put(UA, BaiduParamEnum.UA);
         keepBaiduMap.put(CALLBACK, BaiduParamEnum.CALLBACK_URL);
     }
+
+
+    public static Map<KeepParamEnum, XiaomiParamEnum> keepXiaomiMap;
+
+    static {
+        keepXiaomiMap = new HashMap<>();
+        keepXiaomiMap.put(APPID, XiaomiParamEnum.KEEP_APPID);
+        keepXiaomiMap.put(CHANNEL, XiaomiParamEnum.KEEP_CHANNEL);
+        keepXiaomiMap.put(IMEI, null);//需要特殊处理
+        keepXiaomiMap.put(IMEI_MD5, XiaomiParamEnum.IMEI);
+        keepXiaomiMap.put(OAID, XiaomiParamEnum.OAID);
+        keepXiaomiMap.put(OAID_MD5, null);
+        keepXiaomiMap.put(ANDROID_ID, XiaomiParamEnum.ANDROIDID);
+        keepXiaomiMap.put(IP, XiaomiParamEnum.IP);
+        keepXiaomiMap.put(ACCOUNT_ID, XiaomiParamEnum.ACCOUNT_ID);
+        keepXiaomiMap.put(UA, XiaomiParamEnum.UA);
+        keepXiaomiMap.put(CALLBACK, XiaomiParamEnum.CALLBACK);
+    }
+
 
 }
