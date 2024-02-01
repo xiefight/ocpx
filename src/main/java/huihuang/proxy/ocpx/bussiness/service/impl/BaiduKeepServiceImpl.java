@@ -1,9 +1,9 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.net.URLDecoder;
-import huihuang.proxy.ocpx.ads.keep.KeepAdsDTO;
-import huihuang.proxy.ocpx.ads.keep.KeepEventTypeEnum;
-import huihuang.proxy.ocpx.ads.keep.KeepPath;
+import huihuang.proxy.ocpx.ads.luyun.KeepPath;
+import huihuang.proxy.ocpx.ads.luyun.LuyunAdsDTO;
+import huihuang.proxy.ocpx.ads.luyun.LuyunEventTypeEnum;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IKeepAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -35,6 +35,8 @@ public class BaiduKeepServiceImpl extends BaiduChannelFactory implements IChanne
     private IKeepAdsDao keepAdsDao;
     @Autowired
     private BaseServiceInner baseServiceInner;
+    @Autowired
+    private KeepPath keepPath;
 
     String channelAdsKey = Constants.ChannelAdsKey.BAIDU_KEEP;
 
@@ -49,7 +51,7 @@ public class BaiduKeepServiceImpl extends BaiduChannelFactory implements IChanne
         logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
 
         //根据id查询对应的点击记录
-        KeepAdsDTO keepAdsDTO = keepAdsDao.queryKeepAdsById(id);
+        LuyunAdsDTO keepAdsDTO = keepAdsDao.queryKeepAdsById(id);
         if (null == keepAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
@@ -61,14 +63,14 @@ public class BaiduKeepServiceImpl extends BaiduChannelFactory implements IChanne
         baiduVO.setAdsId(id);
         baiduVO.setAdsName(KeepPath.ADS_NAME);
         baiduVO.setChannelUrl(channelUrl);
-        baiduVO.setaType(KeepEventTypeEnum.keepBaiduEventTypeMap.get(eventType).getCode());
+        baiduVO.setaType(LuyunEventTypeEnum.luyunBaiduEventTypeMap.get(eventType).getCode());
         baiduVO.setaValue(0);
         baiduVO.setCbEventTime(String.valueOf(System.currentTimeMillis()));
         baiduVO.setCbOaid(keepAdsDTO.getOaid());
         baiduVO.setCbOaidMd5(keepAdsDTO.getOaidMd5());
 //        baiduVO.setCbIdfa(keepAdsDTO.getIdfa());
         baiduVO.setCbImei(null);
-        baiduVO.setCbImeiMd5(keepAdsDTO.getImeiMd5());
+        baiduVO.setCbImeiMd5(keepPath.baseAdsName());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(keepAdsDTO.getIp());
         baiduVO.setSecret(BaiduPath.KEEP_SECRET);
@@ -78,7 +80,7 @@ public class BaiduKeepServiceImpl extends BaiduChannelFactory implements IChanne
         BaiduCallbackDTO data = (BaiduCallbackDTO) response.getData();
 
         //更新回调状态
-        KeepAdsDTO keepAds = new KeepAdsDTO();
+        LuyunAdsDTO keepAds = new LuyunAdsDTO();
         keepAds.setId(id);
         keepAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
         if (response.getCode() == 0) {

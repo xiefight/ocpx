@@ -1,9 +1,8 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
-import huihuang.proxy.ocpx.ads.keep.KeepAdsDTO;
-import huihuang.proxy.ocpx.ads.keep.KeepEventTypeEnum;
-import huihuang.proxy.ocpx.ads.keep.KeepPath;
-import huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoEventTypeEnum;
+import huihuang.proxy.ocpx.ads.luyun.KeepPath;
+import huihuang.proxy.ocpx.ads.luyun.LuyunAdsDTO;
+import huihuang.proxy.ocpx.ads.luyun.LuyunEventTypeEnum;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IKeepAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -35,8 +34,8 @@ public class HuaweiKeepServiceImpl extends HuaweiChannelFactory implements IChan
     private IKeepAdsDao keepAdsDao;
     @Autowired
     private BaseServiceInner baseServiceInner;
-//    @Autowired
-//    private KeepPath keepPath;
+    @Autowired
+    private KeepPath keepPath;
 
     String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_KEEP;
 
@@ -51,7 +50,7 @@ public class HuaweiKeepServiceImpl extends HuaweiChannelFactory implements IChan
         logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
 
         //根据id查询对应的点击记录
-        KeepAdsDTO keepAdsDTO = keepAdsDao.queryKeepAdsById(id);
+        LuyunAdsDTO keepAdsDTO = keepAdsDao.queryKeepAdsById(id);
         if (null == keepAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
@@ -61,7 +60,7 @@ public class HuaweiKeepServiceImpl extends HuaweiChannelFactory implements IChan
         Ads2HuaweiVO huaweiVO = new Ads2HuaweiVO();
         huaweiVO.setAdsId(id);
 //        huaweiVO.setAdsName(keepPath.baseAdsName());
-        huaweiVO.setAdsName(KeepPath.ADS_NAME);
+        huaweiVO.setAdsName(keepPath.baseAdsName());
         huaweiVO.setCallbackUrl(keepAdsDTO.getCallback());
 
         huaweiVO.setEventType(eventType);
@@ -70,7 +69,7 @@ public class HuaweiKeepServiceImpl extends HuaweiChannelFactory implements IChan
         huaweiVO.setContentId(getContentFromExtra(keepAdsDTO, HuaweiParamEnum.CONTENT_ID.getParam(), null));
         huaweiVO.setTrackingEnabled(getContentFromExtra(keepAdsDTO, HuaweiParamEnum.TRACKING_ENABLED.getParam(), "1"));
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
-        huaweiVO.setConversionType(KeepEventTypeEnum.keepHuaweiEventTypeMap.get(eventType).getCode());
+        huaweiVO.setConversionType(LuyunEventTypeEnum.luyunHuaweiEventTypeMap.get(eventType).getCode());
         huaweiVO.setOaid(keepAdsDTO.getOaid());
 
         if (HuaweiPath.HW_KEEP_ACCOUNT_01.equals(keepAdsDTO.getAccountId())) {
@@ -82,7 +81,7 @@ public class HuaweiKeepServiceImpl extends HuaweiChannelFactory implements IChan
         HuaweiCallbackDTO data = (HuaweiCallbackDTO) response.getData();
 
         //更新回调状态
-        KeepAdsDTO keepAds = new KeepAdsDTO();
+        LuyunAdsDTO keepAds = new LuyunAdsDTO();
         keepAds.setId(id);
         keepAds.setCallBackTime(String.valueOf(currentTime));
 

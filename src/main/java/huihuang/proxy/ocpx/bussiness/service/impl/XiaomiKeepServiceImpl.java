@@ -1,8 +1,8 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
-import huihuang.proxy.ocpx.ads.keep.KeepAdsDTO;
-import huihuang.proxy.ocpx.ads.keep.KeepEventTypeEnum;
-import huihuang.proxy.ocpx.ads.keep.KeepPath;
+import huihuang.proxy.ocpx.ads.luyun.KeepPath;
+import huihuang.proxy.ocpx.ads.luyun.LuyunAdsDTO;
+import huihuang.proxy.ocpx.ads.luyun.LuyunEventTypeEnum;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IKeepAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -32,6 +32,8 @@ public class XiaomiKeepServiceImpl extends XiaomiChannelFactory implements IChan
     private IKeepAdsDao keepAdsDao;
     @Autowired
     private BaseServiceInner baseServiceInner;
+    @Autowired
+    private KeepPath keepPath;
 
 
     String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_KEEP;
@@ -46,19 +48,19 @@ public class XiaomiKeepServiceImpl extends XiaomiChannelFactory implements IChan
         String eventType = parameterMap.get("event_type")[0];
         logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
         //根据id查询对应的点击记录
-        KeepAdsDTO keepAdsDTO = keepAdsDao.queryKeepAdsById(id);
+        LuyunAdsDTO keepAdsDTO = keepAdsDao.queryKeepAdsById(id);
         if (null == keepAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
-        xiaomiVO.setAdsName(KeepPath.ADS_NAME);
+        xiaomiVO.setAdsName(keepPath.baseAdsName());
 
 //        if (eventType.equals(LiangdamaoEventTypeEnum.ACTIVE.getCode())) {
 //            eventType = eventType + "new";
 //        }
-        xiaomiVO.setEventType(KeepEventTypeEnum.keepXiaomiEventTypeMap.get(eventType).getCode());
+        xiaomiVO.setEventType(LuyunEventTypeEnum.luyunXiaomiEventTypeMap.get(eventType).getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(keepAdsDTO.getCallback());
         xiaomiVO.setOaid(keepAdsDTO.getOaid());
@@ -68,7 +70,7 @@ public class XiaomiKeepServiceImpl extends XiaomiChannelFactory implements IChan
         XiaomiCallbackDTO data = (XiaomiCallbackDTO) response.getData();
 
         //更新回调状态
-        KeepAdsDTO keepAds = new KeepAdsDTO();
+        LuyunAdsDTO keepAds = new LuyunAdsDTO();
         keepAds.setId(id);
         keepAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
 

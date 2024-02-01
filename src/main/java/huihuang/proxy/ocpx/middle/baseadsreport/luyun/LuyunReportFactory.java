@@ -1,37 +1,40 @@
-package huihuang.proxy.ocpx.middle.baseadsreport;
+package huihuang.proxy.ocpx.middle.baseadsreport.luyun;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.net.URLEncoder;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.huihuang.HuihuangParamEnum;
-import huihuang.proxy.ocpx.ads.keep.KeepAdsDTO;
-import huihuang.proxy.ocpx.ads.keep.KeepParamField;
-import huihuang.proxy.ocpx.ads.keep.KeepPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IKeepAdsDao;
+import huihuang.proxy.ocpx.ads.luyun.KeepPath;
+import huihuang.proxy.ocpx.ads.luyun.LuyunAdsDTO;
+import huihuang.proxy.ocpx.ads.luyun.LuyunParamEnum;
+import huihuang.proxy.ocpx.ads.luyun.LuyunParamField;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
+import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
+import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import huihuang.proxy.ocpx.middle.BaseSupport;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.beans.IntrospectionException;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
-/**
- * @Author: xietao
- * @Date: 2023/7/6 16:35
- */
-public abstract class KeepReportFactory extends BaseSupport implements IChannelAds {
+public abstract class LuyunReportFactory extends BaseSupport implements IChannelAds {
 
-    @Autowired
-    private IKeepAdsDao keepAdsDao;
+
     @Autowired
     protected BaseServiceInner baseServiceInner;
 
@@ -41,9 +44,13 @@ public abstract class KeepReportFactory extends BaseSupport implements IChannelA
 
     protected abstract String channelName();
 
+    protected abstract IMarkDao adsDao();
+
+
+
     @Override
     protected void convertParams(Object adsObj) {
-        KeepParamField keepParamField = (KeepParamField) adsObj;
+        LuyunParamField keepParamField = (LuyunParamField) adsObj;
         if (null != keepParamField.getCallback()) {
             keepParamField.setCallback(URLEncoder.createQuery().encode(keepParamField.getCallback(), StandardCharsets.UTF_8));
         }
@@ -57,7 +64,7 @@ public abstract class KeepReportFactory extends BaseSupport implements IChannelA
 
     @Override
     protected Response judgeParams(Object adsObj) {
-        KeepParamField keepParamField = (KeepParamField) adsObj;
+        LuyunParamField keepParamField = (LuyunParamField) adsObj;
         if (Objects.isNull(keepParamField.getCallback())) {
             return BasicResult.getFailResponse(HuihuangParamEnum.CALLBACK_URL.getName() + "不能为空");
         }
@@ -76,19 +83,19 @@ public abstract class KeepReportFactory extends BaseSupport implements IChannelA
 
     @Override
     protected Object saveOriginParamData(Object adsObj) {
-        KeepParamField keepParamField = (KeepParamField) adsObj;
-        KeepAdsDTO keepAdsDTO = new KeepAdsDTO();
+        LuyunParamField keepParamField = (LuyunParamField) adsObj;
+        LuyunAdsDTO keepAdsDTO = new LuyunAdsDTO();
         BeanUtil.copyProperties(keepParamField, keepAdsDTO);
         keepAdsDTO.setChannelName(channelName());
-        keepAdsDao.insert(keepAdsDTO);
+        baseServiceInner.insertAdsObject(keepAdsDTO, adsDao());
         logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey(), keepAdsDTO);
         return keepAdsDTO;
     }
 
     @Override
     protected void replaceCallbackUrl(Object adsObj, Object adsDtoObj) {
-        KeepParamField keepParamField = (KeepParamField) adsObj;
-        KeepAdsDTO keepAdsDTO = (KeepAdsDTO) adsDtoObj;
+        LuyunParamField keepParamField = (LuyunParamField) adsObj;
+        LuyunAdsDTO keepAdsDTO = (LuyunAdsDTO) adsDtoObj;
         String ocpxUrl = queryServerPath() + serverPathKey() + Constants.ServerPath.ADS_CALLBACK + "/" + keepAdsDTO.getId() + "?";
         logger.info("clickReport {} 客户回调渠道的url：{}", channelAdsKey(), ocpxUrl);
         String encodeUrl = URLEncoder.createQuery().encode(ocpxUrl, StandardCharsets.UTF_8);
@@ -107,18 +114,18 @@ public abstract class KeepReportFactory extends BaseSupport implements IChannelA
         logger.info("调用用户侧的地址 {} adsUrl:{}", channelAdsKey(), adsUrl);
         HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
-        KeepAdsDTO keepAdsDTO = (KeepAdsDTO) adsDtoObj;
-        KeepAdsDTO keepAdsVO = new KeepAdsDTO();
+        LuyunAdsDTO keepAdsDTO = (LuyunAdsDTO) adsDtoObj;
+        LuyunAdsDTO keepAdsVO = new LuyunAdsDTO();
         keepAdsVO.setId(keepAdsDTO.getId());
         //上报成功
         if (HttpStatus.HTTP_OK == response.getStatus() && (Integer) Objects.requireNonNull(responseBodyMap).get("error_code") == 0) {
             keepAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(keepAdsVO, keepAdsDao);
+            baseServiceInner.updateAdsObject(keepAdsVO, adsDao());
             logger.info("clickReport {} 上报广告侧接口请求成功:{} 数据:{}", channelAdsKey(), response, keepAdsVO);
             return BasicResult.getSuccessResponse(keepAdsDTO.getId());
         } else {
             keepAdsVO.setReportStatus(Constants.ReportStatus.FAIL.getCode() + "--" + JSONObject.toJSONString(responseBodyMap));
-            baseServiceInner.updateAdsObject(keepAdsVO, keepAdsDao);
+            baseServiceInner.updateAdsObject(keepAdsVO, adsDao());
             logger.error("clickReport {} 上报广告侧接口请求失败:{} 数据:{}", channelAdsKey(), response, keepAdsVO);
             return BasicResult.getFailResponse("上报广告侧接口请求失败", 0);
         }

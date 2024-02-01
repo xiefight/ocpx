@@ -1,4 +1,4 @@
-package huihuang.proxy.ocpx.ads.keep;
+package huihuang.proxy.ocpx.ads.luyun;
 
 import cn.hutool.core.annotation.Alias;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @Data
 @ToString
-public class KeepParamField {
+public class LuyunParamField {
 
     @Alias("appId")
     private String appid;

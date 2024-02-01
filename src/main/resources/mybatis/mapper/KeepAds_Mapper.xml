@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="huihuang.proxy.ocpx.bussiness.dao.ads.IKeepAdsDao">
 
-    <resultMap id="keepAdsMap" type="huihuang.proxy.ocpx.ads.keep.KeepAdsDTO">
+    <resultMap id="keepAdsMap" type="huihuang.proxy.ocpx.ads.luyun.LuyunAdsDTO">
         <id column="id" property="id"/>
         <result column="appid" property="appId"/>
         <result column="channel" property="channel"/>
@@ -24,7 +24,7 @@
         <result column="callback_time" property="callBackTime"/>
     </resultMap>
 
-    <insert id="insert" parameterType="huihuang.proxy.ocpx.ads.keep.KeepAdsDTO">
+    <insert id="insert" parameterType="huihuang.proxy.ocpx.ads.luyun.LuyunAdsDTO">
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -37,7 +37,7 @@
     </insert>
 
 
-    <update id="update" parameterType="huihuang.proxy.ocpx.ads.keep.KeepAdsDTO">
+    <update id="update" parameterType="huihuang.proxy.ocpx.ads.luyun.LuyunAdsDTO">
         UPDATE keep_ads
         <set>
             <if test="appId != null">appid = #{appId},</if>

@@ -1,4 +1,4 @@
-package huihuang.proxy.ocpx.ads.keep;
+package huihuang.proxy.ocpx.ads.luyun;
 
 import huihuang.proxy.ocpx.common.CommonColumn;
 import huihuang.proxy.ocpx.marketinterface.IMarkDto;
@@ -8,7 +8,7 @@ import lombok.ToString;
 
 @Data
 @ToString
-public class KeepAdsDTO extends CommonColumn  implements IMarkDto {
+public class LuyunAdsDTO extends CommonColumn  implements IMarkDto {
 
     private String appId;
     private String channel;
