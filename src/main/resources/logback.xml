@@ -872,6 +872,14 @@
         <appender-ref ref="QUANNENG_XIGUAVIDEO_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiQuannengXiguaVideoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_XIGUAVIDEO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiQuannengXiguaVideoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_XIGUAVIDEO_LOG"/>
+    </logger>
+
     <!-- 西瓜视频（全能互动） end -->
 
 

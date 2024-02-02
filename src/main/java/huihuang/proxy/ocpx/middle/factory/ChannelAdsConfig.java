@@ -256,6 +256,8 @@ public class ChannelAdsConfig {
     private IQiyiHuihuangXiguavideoChannelAds ihhxgChannelAds;
     @Autowired
     private IQiyiDingyunXiguavideoChannelAds idyxgChannelAds;
+    @Autowired
+    private IQiyiQuannengXiguavideoChannelAds iqnxgChannelAds;
 
     @PostConstruct
     public void init() {
@@ -383,6 +385,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.IQIYI_HUIHUANG_FANQIE, ihhfqChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.IQIYI_HUIHUANG_XIGUAVIDEO, ihhxgChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.IQIYI_DINGYUN_XIGUAVIDEO, idyxgChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.IQIYI_QUANNENG_XIGUAVIDEO, iqnxgChannelAds);
     }
 
 

@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.ads.quannenghudong;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
+import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -114,6 +115,27 @@ public enum QuannengHudongParamEnum {
         quannengHudongBaiduMap.put(MODEL, null);
         quannengHudongBaiduMap.put(CALLBACK, BaiduParamEnum.CALLBACK_URL);
         quannengHudongBaiduMap.put(UNIQUE_ID, BaiduParamEnum.QUANNENGHUDONG_UNIQUEID);
+    }
+
+
+public static Map<QuannengHudongParamEnum, IQiyiParamEnum> quannengHudongIQiyiMap;
+
+    static {
+        quannengHudongIQiyiMap = new HashMap<>();
+        quannengHudongIQiyiMap.put(PID, IQiyiParamEnum.QUANNENGHUDONG_PID);
+        quannengHudongIQiyiMap.put(IDFA, IQiyiParamEnum.IDFA);
+        quannengHudongIQiyiMap.put(IMEI, IQiyiParamEnum.IMEI_MD5);//需要md5
+        quannengHudongIQiyiMap.put(OAID, IQiyiParamEnum.OAID);
+        quannengHudongIQiyiMap.put(CAID, null);
+        quannengHudongIQiyiMap.put(OS, IQiyiParamEnum.OS);
+        quannengHudongIQiyiMap.put(IP, IQiyiParamEnum.IP);
+        quannengHudongIQiyiMap.put(ANDROID_ID, IQiyiParamEnum.ANDROID_ID_MD5);
+        quannengHudongIQiyiMap.put(AAID, null);
+        quannengHudongIQiyiMap.put(UA, IQiyiParamEnum.UA);
+        quannengHudongIQiyiMap.put(MODEL, null);
+        quannengHudongIQiyiMap.put(CALLBACK, IQiyiParamEnum.CALLBACK_URL);
+        quannengHudongIQiyiMap.put(UNIQUE_ID, IQiyiParamEnum.QUANNENGHUDONG_UNIQUEID);
+        quannengHudongIQiyiMap.put(ACCOUNT_ID, IQiyiParamEnum.ACCOUNT_ID);
     }
 
 
