@@ -2,18 +2,15 @@ package huihuang.proxy.ocpx.middle.baseadsreport.luyun;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.net.URLEncoder;
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.huihuang.HuihuangParamEnum;
-import huihuang.proxy.ocpx.ads.luyun.KeepPath;
+import huihuang.proxy.ocpx.ads.luyun.keep.KeepPath;
 import huihuang.proxy.ocpx.ads.luyun.LuyunAdsDTO;
-import huihuang.proxy.ocpx.ads.luyun.LuyunParamEnum;
 import huihuang.proxy.ocpx.ads.luyun.LuyunParamField;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
-import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -23,14 +20,9 @@ import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.util.JsonParameterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.beans.IntrospectionException;
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 public abstract class LuyunReportFactory extends BaseSupport implements IChannelAds {
 

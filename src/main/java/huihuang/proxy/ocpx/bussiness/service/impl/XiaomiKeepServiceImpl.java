@@ -1,6 +1,6 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
-import huihuang.proxy.ocpx.ads.luyun.KeepPath;
+import huihuang.proxy.ocpx.ads.luyun.keep.KeepPath;
 import huihuang.proxy.ocpx.ads.luyun.LuyunAdsDTO;
 import huihuang.proxy.ocpx.ads.luyun.LuyunEventTypeEnum;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IKeepAdsDao;
