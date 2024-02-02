@@ -2088,6 +2088,14 @@
         <appender-ref ref="LUYUN_PAIPAI_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduLuyunPaipaiChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="LUYUN_PAIPAI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduLuyunPaipaiServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="LUYUN_PAIPAI_LOG"/>
+    </logger>
+
 
     <!-- 派派 end -->
 

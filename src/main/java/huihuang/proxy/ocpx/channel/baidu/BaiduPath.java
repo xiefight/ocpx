@@ -97,6 +97,7 @@ public class BaiduPath {
     public static final String DINGYUN_YOUSHI_01_SECRET = "NTI1OTY1OTA=";
 
     public static final String KEEP_SECRET = "NTI5Mjc5NDc=";
+    public static final String LUYUN_PAIPAI_SECRET = "NDU5NDk5MjQ=";
 
 
 
