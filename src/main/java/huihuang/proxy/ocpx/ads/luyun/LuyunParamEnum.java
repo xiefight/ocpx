@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.ads.luyun;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
+import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -105,5 +106,22 @@ public enum LuyunParamEnum {
         luyunXiaomiMap.put(CALLBACK, XiaomiParamEnum.CALLBACK);
     }
 
+
+    public static Map<LuyunParamEnum, IQiyiParamEnum> luyunIQiyiMap;
+
+    static {
+        luyunIQiyiMap = new HashMap<>();
+        luyunIQiyiMap.put(APPID, IQiyiParamEnum.KEEP_APPID);
+        luyunIQiyiMap.put(CHANNEL, IQiyiParamEnum.KEEP_CHANNEL);
+        luyunIQiyiMap.put(IMEI, null);//需要特殊处理
+        luyunIQiyiMap.put(IMEI_MD5, IQiyiParamEnum.IMEI_MD5);
+        luyunIQiyiMap.put(OAID, IQiyiParamEnum.OAID);
+        luyunIQiyiMap.put(OAID_MD5, null);
+        luyunIQiyiMap.put(ANDROID_ID, IQiyiParamEnum.ANDROID_ID_MD5);
+        luyunIQiyiMap.put(IP, IQiyiParamEnum.IP);
+        luyunIQiyiMap.put(ACCOUNT_ID, IQiyiParamEnum.ACCOUNT_ID);
+        luyunIQiyiMap.put(UA, IQiyiParamEnum.UA);
+        luyunIQiyiMap.put(CALLBACK, IQiyiParamEnum.CALLBACK_URL);
+    }
 
 }

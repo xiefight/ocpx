@@ -3,6 +3,7 @@ package huihuang.proxy.ocpx.ads.luyun;
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
+import huihuang.proxy.ocpx.channel.iqiyi.IQiyiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
@@ -72,6 +73,20 @@ public enum LuyunEventTypeEnum {
         luyunXiaomiEventTypeMap.put(PAID.code, XiaomiEventTypeEnum.APP_PAY);
         //次日回访
         luyunXiaomiEventTypeMap.put(DAY1RETENTION.code, XiaomiEventTypeEnum.APP_RETENTION);
+    }
+
+    public static Map<String, IQiyiEventTypeEnum> luyunIQiyiEventTypeMap;
+
+    static {
+        luyunIQiyiEventTypeMap = CollUtil.newHashMap();
+        //激活
+        luyunIQiyiEventTypeMap.put(ACTIVE.code, IQiyiEventTypeEnum.ACTIVE);
+        //注册
+        luyunIQiyiEventTypeMap.put(REGISTER.code, IQiyiEventTypeEnum.REGISTER);
+        //付费
+        luyunIQiyiEventTypeMap.put(PAID.code, IQiyiEventTypeEnum.PAY);
+        //次日回访
+        luyunIQiyiEventTypeMap.put(DAY1RETENTION.code, IQiyiEventTypeEnum.RETENTION);
     }
 
 }

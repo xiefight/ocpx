@@ -2064,6 +2064,14 @@
         <appender-ref ref="KEEP_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiLuyunKeepChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiLuyunXiaomiKeepServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+
 
     <!-- keep end -->
 

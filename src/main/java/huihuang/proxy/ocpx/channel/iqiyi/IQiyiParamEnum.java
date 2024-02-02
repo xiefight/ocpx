@@ -38,6 +38,9 @@ public enum IQiyiParamEnum {
     QUANNENGHUDONG_PID("","pid","全能互动广告商标识"),
     QUANNENGHUDONG_UNIQUEID("","uniqueid","全能互动请求唯一id"),
 
+    KEEP_APPID("","appid","keep appid"),
+    KEEP_CHANNEL("","channel","keep channel"),
+
     ;
 
 
