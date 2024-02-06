@@ -73,7 +73,11 @@ public class BaiduLuyunPaipaiServiceImpl extends BaiduChannelFactory implements 
         baiduVO.setCbImeiMd5(keepAdsDTO.getImeiMd5());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(keepAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.LUYUN_PAIPAI_SECRET);
+        if (BaiduPath.BAIDU_LUYUN_PAIPAI_ACCOUNT_01.equals(keepAdsDTO.getAccountId())){
+            baiduVO.setSecret(BaiduPath.LUYUN_PAIPAI_SECRET_01);
+        }else if (BaiduPath.BAIDU_LUYUN_PAIPAI_ACCOUNT_02.equals(keepAdsDTO.getAccountId())){
+            baiduVO.setSecret(BaiduPath.LUYUN_PAIPAI_SECRET_02);
+        }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);
