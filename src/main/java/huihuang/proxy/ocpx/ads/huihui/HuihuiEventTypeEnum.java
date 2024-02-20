@@ -3,6 +3,7 @@ package huihuang.proxy.ocpx.ads.huihui;
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
+import huihuang.proxy.ocpx.channel.iqiyi.IQiyiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
@@ -142,6 +143,37 @@ public enum HuihuiEventTypeEnum {
         huihuiHuaweiEventTypeMap.put(IOS_CREDIT.code, HuaweiEventTypeEnum.CREDIT);
         //自定义
         huihuiHuaweiEventTypeMap.put(ANDROID_CUSTOM.code, null);
+        huihuiBaiduEventTypeMap.put(IOS_CUSTOM.code, null);
+
+    }
+
+
+    public static Map<String, IQiyiEventTypeEnum> huihuiIQiyiEventTypeMap;
+
+    static {
+        huihuiIQiyiEventTypeMap = CollUtil.newHashMap();
+        //下载
+        huihuiIQiyiEventTypeMap.put(ANDROID_DOWNLOAD.code, null);
+        //激活
+        huihuiIQiyiEventTypeMap.put(ANDROID_ACTIVATE.code, IQiyiEventTypeEnum.ACTIVE);
+        huihuiIQiyiEventTypeMap.put(IOS_ACTIVATE.code, IQiyiEventTypeEnum.ACTIVE);
+        //注册
+        huihuiIQiyiEventTypeMap.put(ANDROID_REGISTER.code, IQiyiEventTypeEnum.REGISTER);
+        huihuiIQiyiEventTypeMap.put(IOS_REGISTER.code, IQiyiEventTypeEnum.REGISTER);
+        //次日留存
+        huihuiIQiyiEventTypeMap.put(ANDROID_DAY1RETENTION.code, IQiyiEventTypeEnum.RETENTION);
+        huihuiIQiyiEventTypeMap.put(IOS_DAY1RETENTION.code, IQiyiEventTypeEnum.RETENTION);
+        //加入购物车
+        huihuiIQiyiEventTypeMap.put(ANDROID_ADDTOCART.code, null);
+        huihuiIQiyiEventTypeMap.put(IOS_ADDTOCART.code, null);
+        //购买
+        huihuiIQiyiEventTypeMap.put(ANDROID_PURCHASE.code, IQiyiEventTypeEnum.PAY);
+        huihuiIQiyiEventTypeMap.put(IOS_PURCHASE.code, IQiyiEventTypeEnum.PAY);
+        //授信
+        huihuiIQiyiEventTypeMap.put(ANDROID_CREDIT.code, null);
+        huihuiIQiyiEventTypeMap.put(IOS_CREDIT.code, null);
+        //自定义
+        huihuiIQiyiEventTypeMap.put(ANDROID_CUSTOM.code, null);
         huihuiBaiduEventTypeMap.put(IOS_CUSTOM.code, null);
 
     }

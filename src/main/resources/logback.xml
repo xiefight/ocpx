@@ -620,6 +620,13 @@
         <appender-ref ref="XIANYU_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiHuihuiXianyuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiHuihuiXianyuServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="XIANYU_LOG"/>
+    </logger>
+
     <!-- 闲鱼 end -->
 
 
