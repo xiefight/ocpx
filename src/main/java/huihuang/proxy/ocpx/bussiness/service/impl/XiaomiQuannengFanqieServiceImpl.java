@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Map;
 
 @Service("xqfService")
@@ -44,6 +45,8 @@ public class XiaomiQuannengFanqieServiceImpl extends XiaomiChannelFactory implem
         return channelAdsFactory.findChannelAds(channelAdsKey);
     }
 
+    String[] actives = new String[]{XiaomiPath.XM_QUANNENG_FANQIE_ACCOUNT_03, XiaomiPath.XM_QUANNENG_FANQIE_ACCOUNT_04};
+
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
         String eventType = parameterMap.get("action_type")[0];
@@ -55,13 +58,13 @@ public class XiaomiQuannengFanqieServiceImpl extends XiaomiChannelFactory implem
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
-        //3户激活，其他两户新增激活
-        if (!XiaomiPath.XM_QUANNENG_FANQIE_ACCOUNT_03.equals(quannengFanqieAdsDTO.getAccountId())){
+
+        //03户、04户激活，其他两户新增激活
+        if (!Arrays.asList(actives).contains(quannengFanqieAdsDTO.getAccountId())) {
             if (QuannengHudongEventTypeEnum.ACTIVATE.getCode().equals(eventType)) {
                 eventType = eventType + "new";
             }
         }
-
 
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
