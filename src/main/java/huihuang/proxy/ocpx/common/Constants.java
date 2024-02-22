@@ -67,6 +67,7 @@ public class Constants {
         public static final String XIAOMI_TANTAN = "/xtServer";
         public static final String XIAOMI_XINYU_YOUDAO = "/xxyydServer";
         public static final String XIAOMI_TT_YOUDAO = "/xttydServer";
+        public static final String XIAOMI_QIMAO_YOUDAO = "/xqmydServer";
         public static final String XIAOMI_DONGCHEDI = "/xdcdServer";
         public static final String XIAOMI_XIANYU = "/xxyServer";
         public static final String XIAOMI_QUANNENG_FANQIE = "/xqfServer";
@@ -208,6 +209,7 @@ public class Constants {
         public static final String XIAOMI_TANTAN = "xiaomi-tantan";
         public static final String XIAOMI_XINYU_YOUDAO = "xiaomi-xinyu-youdao";
         public static final String XIAOMI_TT_YOUDAO = "xiaomi-tt-youdao";
+        public static final String XIAOMI_QIMAO_YOUDAO = "xiaomi-qimao-youdao";
         public static final String XIAOMI_DONGCHEDI = "xiaomi-dongchedi";
         public static final String XIAOMI_XIANYU = "xiaomi-xianyu";
         public static final String XIAOMI_IQIYI = "xiaomi-iqiyi";
