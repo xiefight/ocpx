@@ -78,6 +78,7 @@ public class BaiduPath {
     public static final String QUANNENG_DOUYIN_JISU_131_SECRET = "NTEwMjE3OTM=";
     public static final String QUANNENG_DOUYIN_JISU_195_SECRET = "NTE0MjI1NjI=";
     public static final String QUANNENG_JINRITOUTIAO_SECRET = "NTAyMTY0MzE=";
+    public static final String QUANNENG_FANQIE161_SECRET = "NTExMjcyNjE=";
     public static final String QUANNENG_FANQIE176_SECRET = "NTExMjcyNjE=";
     public static final String QUANNENG_FANQIE207_SECRET = "NTExMjcyMDA=";
     public static final String QUANNENG_FANQIE_CHANGTING_SECRET = "NTExMjcyNDQ=";

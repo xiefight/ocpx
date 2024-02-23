@@ -77,6 +77,8 @@ public class BaiduQuannengFanqieServiceImpl extends BaiduChannelFactory implemen
             baiduVO.setSecret(BaiduPath.QUANNENG_FANQIE176_SECRET);
         }else if ("207".equals(fanqieAdsDTO.getPid())){
             baiduVO.setSecret(BaiduPath.QUANNENG_FANQIE207_SECRET);
+        }else if ("161".equals(fanqieAdsDTO.getPid())){
+            baiduVO.setSecret(BaiduPath.QUANNENG_FANQIE161_SECRET);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
