@@ -76,7 +76,8 @@ public enum HuihuangFengmangEventTypeEnum {
         huihuangmingtianXiaomiEventTypeMap.put(ACTIVATE.code + "new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
         huihuangmingtianXiaomiEventTypeMap.put(REGISTER.code, XiaomiEventTypeEnum.APP_REGISTER);
         huihuangmingtianXiaomiEventTypeMap.put(FIRST_PAID.code, XiaomiEventTypeEnum.APP_FIRST_PAY);
-        huihuangmingtianXiaomiEventTypeMap.put(ORDER.code, XiaomiEventTypeEnum.APP_COMPLETE_ORDER);
+        huihuangmingtianXiaomiEventTypeMap.put(ORDER.code, XiaomiEventTypeEnum.APP_NEW_USER_PURCHASE);
+//        huihuangmingtianXiaomiEventTypeMap.put(ORDER.code, XiaomiEventTypeEnum.APP_COMPLETE_ORDER);
         huihuangmingtianXiaomiEventTypeMap.put(OTHER.code, null);
         huihuangmingtianXiaomiEventTypeMap.put(DAY1RETENTION.code, XiaomiEventTypeEnum.APP_RETENTION);
         huihuangmingtianXiaomiEventTypeMap.put(COPY_PART.code, null);
