@@ -115,6 +115,7 @@ public enum HuihuiParamEnum {
         huihuiBaiduMap.put(REQ_ID, null);
         huihuiBaiduMap.put(AAID, null);
         huihuiBaiduMap.put(MODEL, null);
+        huihuiBaiduMap.put(OCPX_ACCOUNT, BaiduParamEnum.ACCOUNT_ID);
     }
 
 

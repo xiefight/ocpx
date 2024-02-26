@@ -33,7 +33,14 @@ public class BaiduPath {
     public static final String JDSS_SECRET = "NDc4NDc5NzA=";
     public static final String DOUYIN_SECRET = "NTA2NjYzMTY=";
 
-    public static final String XIANYU_SECRET = "NDk1ODUwMDQ=";
+    public static final String BAIDU_XIANYU_ACCOUNT_01 = "bdhhxy01";
+    public static final String BAIDU_XIANYU_ACCOUNT_02 = "bdhhxy02";
+    public static final String BAIDU_XIANYU_ACCOUNT_03 = "bdhhxy03";
+    public static final String BAIDU_XIANYU_ACCOUNT_04 = "bdhhxy04";
+    public static final String XIANYU_01_SECRET = "NDk1ODUwMDQ=";
+    public static final String XIANYU_02_SECRET = "NDk1ODUwMDg=";
+    public static final String XIANYU_03_SECRET = "NDk1ODUwMTQ=";
+    public static final String XIANYU_04_SECRET = "NDk1ODUwMDQ=";
 
 
     public static final String BAIDU_KUAISHOU_ACCOUNT_01 = "bdks01";

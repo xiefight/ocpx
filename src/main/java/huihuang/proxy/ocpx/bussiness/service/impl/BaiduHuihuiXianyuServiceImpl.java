@@ -91,7 +91,22 @@ public class BaiduHuihuiXianyuServiceImpl extends BaiduChannelFactory implements
 //        baiduVO.setCbImeiMd5(xianyuAdsDTO.getImei_md5());
 //        baiduVO.setCbAndroidIdMd5(xianyuAdsDTO.getAndroid_id_md5());
         baiduVO.setCbIp(xianyuAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.XIANYU_SECRET);
+
+        String ocpxAccount = xianyuAdsDTO.getOcpxAccount();
+        if (BaiduPath.BAIDU_XIANYU_ACCOUNT_01.equals(ocpxAccount)) {
+            baiduVO.setSecret(BaiduPath.XIANYU_01_SECRET);
+        } else if (BaiduPath.BAIDU_XIANYU_ACCOUNT_02.equals(ocpxAccount)) {
+            baiduVO.setSecret(BaiduPath.XIANYU_02_SECRET);
+        } else if (BaiduPath.BAIDU_XIANYU_ACCOUNT_03.equals(ocpxAccount)) {
+            baiduVO.setSecret(BaiduPath.XIANYU_03_SECRET);
+        } else if (BaiduPath.BAIDU_XIANYU_ACCOUNT_04.equals(ocpxAccount)) {
+            baiduVO.setSecret(BaiduPath.XIANYU_04_SECRET);
+        } else {
+            //默认
+            baiduVO.setSecret(BaiduPath.XIANYU_01_SECRET);
+        }
+
+
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);
