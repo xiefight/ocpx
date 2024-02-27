@@ -42,6 +42,8 @@ public class BaiduPath {
     public static final String XIANYU_03_SECRET = "NDk1ODUwMTQ=";
     public static final String XIANYU_04_SECRET = "NDk1ODUwMDQ=";
 
+    public static final String BAIDU_HUIHUI_TAOBAO_ACCOUNT_01 = "bdhhtb01";
+    public static final String HUIHUI_TAOBAO_01_SECRET = "NTA4ODg1NDg=";
 
     public static final String BAIDU_KUAISHOU_ACCOUNT_01 = "bdks01";
     public static final String BAIDU_KUAISHOU_ACCOUNT_02 = "bdks02";

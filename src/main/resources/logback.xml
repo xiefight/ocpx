@@ -687,6 +687,13 @@
         <appender-ref ref="HUIHUI_TAOBAO_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuiTaobaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_TAOBAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuiTaobaoServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_TAOBAO_LOG"/>
+    </logger>
+
     <!-- huihui有道 淘宝 end -->
 
 
