@@ -75,7 +75,8 @@ public enum HuihuangFengmangEventTypeEnum {
         //自定义新增激活
         huihuangmingtianXiaomiEventTypeMap.put(ACTIVATE.code + "new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
         huihuangmingtianXiaomiEventTypeMap.put(REGISTER.code, XiaomiEventTypeEnum.APP_REGISTER);
-        huihuangmingtianXiaomiEventTypeMap.put(FIRST_PAID.code, XiaomiEventTypeEnum.APP_FIRST_PAY);
+        huihuangmingtianXiaomiEventTypeMap.put(FIRST_PAID.code, XiaomiEventTypeEnum.APP_PAY);
+//        huihuangmingtianXiaomiEventTypeMap.put(FIRST_PAID.code, XiaomiEventTypeEnum.APP_FIRST_PAY);
         huihuangmingtianXiaomiEventTypeMap.put(ORDER.code, XiaomiEventTypeEnum.APP_NEW_USER_PURCHASE);
 //        huihuangmingtianXiaomiEventTypeMap.put(ORDER.code, XiaomiEventTypeEnum.APP_COMPLETE_ORDER);
         huihuangmingtianXiaomiEventTypeMap.put(OTHER.code, null);

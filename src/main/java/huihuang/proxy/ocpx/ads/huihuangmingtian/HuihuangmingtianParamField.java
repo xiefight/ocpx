@@ -16,6 +16,7 @@ public class HuihuangmingtianParamField {
     private String idfaMd5;
     private String taskId;
     private String aid;
+    private String uid;
     private String campaignId;
     private String app;
     private String tms;
@@ -200,6 +201,14 @@ public class HuihuangmingtianParamField {
         this.adid = adid;
     }
 
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
     @Override
     public String toString() {
         return "HuihuangmingtianParamField{" +
@@ -211,6 +220,7 @@ public class HuihuangmingtianParamField {
                 ", idfaMd5='" + idfaMd5 + '\'' +
                 ", taskId='" + taskId + '\'' +
                 ", aid='" + aid + '\'' +
+                ", uid='" + uid + '\'' +
                 ", campaignId='" + campaignId + '\'' +
                 ", app='" + app + '\'' +
                 ", tms='" + tms + '\'' +
@@ -223,6 +233,7 @@ public class HuihuangmingtianParamField {
                 ", advertisingSpaceId='" + advertisingSpaceId + '\'' +
                 ", channel='" + channel + '\'' +
                 ", adid='" + adid + '\'' +
+                ", account_id='" + account_id + '\'' +
                 '}';
     }
 }

@@ -30,6 +30,7 @@ public enum HuihuangmingtianParamEnum {
     ADVERTISING_SPACE_ID("advertisingSpaceId", "String", 2, "广告位 id，由辉煌明天提供"),
     CHANNEL("channel", "String", 2, "渠道标识"),
     ADID("adid", "String", 2, "渠道标识"),
+    UID("uid", "String", 2, "来自优酷 pid，拉新需要，拉活不需要"),
 
 
     ACCOUNT_ID("account_id", "String", 1, ""),
@@ -140,12 +141,15 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianXiaomiMap.put(IDFA, null);
         huihuangmingtianXiaomiMap.put(IDFA_MD5, null);
         huihuangmingtianXiaomiMap.put(CAMPAIGN_ID, XiaomiParamEnum.CAMPAIGNID);
+        huihuangmingtianXiaomiMap.put(UID, XiaomiParamEnum.HUIHUANG_UID);
 
         huihuangmingtianXiaomiMap.put(TMS, XiaomiParamEnum.TS);
         huihuangmingtianXiaomiMap.put(OS, null);
         huihuangmingtianXiaomiMap.put(IP, XiaomiParamEnum.IP);
         huihuangmingtianXiaomiMap.put(UA, XiaomiParamEnum.UA);
         huihuangmingtianXiaomiMap.put(CALLBACK_URL, XiaomiParamEnum.CALLBACK);
+
+        huihuangmingtianXiaomiMap.put(ACCOUNT_ID, XiaomiParamEnum.ACCOUNT_ID);
 
     }
 
