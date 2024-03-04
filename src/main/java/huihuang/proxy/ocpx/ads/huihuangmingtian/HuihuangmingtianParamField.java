@@ -17,6 +17,9 @@ public class HuihuangmingtianParamField {
     private String taskId;
     private String aid;
     private String uid;
+    private String cid;
+    private String sid;
+    private String eventType;
     private String campaignId;
     private String app;
     private String tms;
@@ -209,6 +212,30 @@ public class HuihuangmingtianParamField {
         this.uid = uid;
     }
 
+    public String getCid() {
+        return cid;
+    }
+
+    public void setCid(String cid) {
+        this.cid = cid;
+    }
+
+    public String getSid() {
+        return sid;
+    }
+
+    public void setSid(String sid) {
+        this.sid = sid;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
+
     @Override
     public String toString() {
         return "HuihuangmingtianParamField{" +
@@ -221,6 +248,9 @@ public class HuihuangmingtianParamField {
                 ", taskId='" + taskId + '\'' +
                 ", aid='" + aid + '\'' +
                 ", uid='" + uid + '\'' +
+                ", cid='" + cid + '\'' +
+                ", sid='" + sid + '\'' +
+                ", eventType='" + eventType + '\'' +
                 ", campaignId='" + campaignId + '\'' +
                 ", app='" + app + '\'' +
                 ", tms='" + tms + '\'' +

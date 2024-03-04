@@ -31,6 +31,17 @@ public enum HuihuangmingtianParamEnum {
     CHANNEL("channel", "String", 2, "渠道标识"),
     ADID("adid", "String", 2, "渠道标识"),
     UID("uid", "String", 2, "来自优酷 pid，拉新需要，拉活不需要"),
+    SID("sid", "String", 2, "可选参数有\n" +
+            "DAU（拉活回传）\n" +
+            "NU（拉新回传，必须指定 uid）\n" +
+            "SED_RU（sedRu 回传，必须指定\n" +
+            "uid）\n" +
+            "NU_SED_RU（nu&sedRu 同时回\n" +
+            "传，需指定 uid"),
+    CID("cid", "String", 2, "REMAIN1D（次留深度回传）\n" +
+            "PAY1D（当日付费）\n" +
+            "PAY1D_REMAIN1D（次留&付费都回传）"),
+    EVENT_TYPE("eventType", "String", 2, "目标 1-拉活 2-拉新"),
 
 
     ACCOUNT_ID("account_id", "String", 1, ""),
@@ -142,6 +153,9 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianXiaomiMap.put(IDFA_MD5, null);
         huihuangmingtianXiaomiMap.put(CAMPAIGN_ID, XiaomiParamEnum.CAMPAIGNID);
         huihuangmingtianXiaomiMap.put(UID, XiaomiParamEnum.HUIHUANG_UID);
+        huihuangmingtianXiaomiMap.put(CID, XiaomiParamEnum.HUIHUANG_CID);
+        huihuangmingtianXiaomiMap.put(SID, XiaomiParamEnum.HUIHUANG_SID);
+        huihuangmingtianXiaomiMap.put(EVENT_TYPE, XiaomiParamEnum.HUIHUANG_EVENT_TYPE);
 
         huihuangmingtianXiaomiMap.put(TMS, XiaomiParamEnum.TS);
         huihuangmingtianXiaomiMap.put(OS, null);

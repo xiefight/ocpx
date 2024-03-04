@@ -13,6 +13,9 @@
         <result column="task_id" property="taskId"/>
         <result column="aid" property="aid"/>
         <result column="uid" property="uid"/>
+        <result column="cid" property="cid"/>
+        <result column="sid" property="sid"/>
+        <result column="event_type" property="eventType"/>
         <result column="campaign_id" property="campaignId"/>
         <result column="app" property="app"/>
         <result column="adid" property="adid"/>
@@ -40,11 +43,11 @@
         </selectKey>
         INSERT INTO huihuang_youku_ads
         (chain_code, imei_md5, oaid, oaid_md5, idfa,
-        idfa_md5, task_id, aid, uid, campaign_id, app, adid, tms, os, ip, ad_agent,
+        idfa_md5, task_id, aid, uid, cid, sid, event_type, campaign_id, app, adid, tms, os, ip, ad_agent,
         advertising_space_id,source,callback_url,account_id, channel,extra,channel_name, create_time, update_time, report_status,
         callback_status)
         VALUES (#{chainCode}, #{imeiMd5}, #{oaid}, #{oaidMd5}, #{idfa}, #{idfaMd5}, #{taskId},
-        #{aid}, #{uid}, #{campaignId}, #{app}, #{adid}, #{tms}, #{os}, #{ip}, #{adAgent}, #{advertisingSpaceId},
+        #{aid}, #{uid},#{cid},#{sid},#{eventType}, #{campaignId}, #{app}, #{adid}, #{tms}, #{os}, #{ip}, #{adAgent}, #{advertisingSpaceId},
         #{source},#{callbackUrl},#{accountId},#{channel},#{extra},#{channelName},now(),now(), "0", "0")
     </insert>
 
@@ -61,6 +64,9 @@
             <if test="taskId != null">task_id = #{taskId},</if>
             <if test="aid != null">aid = #{aid},</if>
             <if test="uid != null">uid = #{uid},</if>
+            <if test="cid != null">cid = #{cid},</if>
+            <if test="sid != null">sid = #{sid},</if>
+            <if test="eventType != null">event_type = #{eventType},</if>
             <if test="campaignId != null">campaign_id = #{campaignId},</if>
             <if test="app != null">app = #{app},</if>
             <if test="adid != null">adid = #{adid},</if>
@@ -95,6 +101,9 @@
                task_id,
                aid,
                uid,
+               cid,
+               sid,
+               event_type,
                campaign_id,
                app,
                adid,

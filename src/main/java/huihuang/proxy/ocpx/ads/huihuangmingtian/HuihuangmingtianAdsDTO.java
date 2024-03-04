@@ -22,6 +22,9 @@ public class HuihuangmingtianAdsDTO extends CommonColumn implements IMarkDto {
     private String taskId;
     private String aid;
     private String uid;
+    private String cid;
+    private String sid;
+    private String eventType;
     private String campaignId;
     private String app;
     private String tms;

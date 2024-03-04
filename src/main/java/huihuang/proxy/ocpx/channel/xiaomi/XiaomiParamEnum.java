@@ -54,6 +54,9 @@ public enum XiaomiParamEnum {
     HUIHUANG_CHANNEL("","channel",""),
     HUIHUANG_ADID("","adid",""),
     HUIHUANG_UID("","uid",""),
+    HUIHUANG_CID("","cid",""),
+    HUIHUANG_SID("","sid",""),
+    HUIHUANG_EVENT_TYPE("","eventType",""),
 
 
     DINGYUN_ADID("","adid","丁耘adid"),
