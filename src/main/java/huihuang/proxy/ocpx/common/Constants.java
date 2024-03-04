@@ -70,6 +70,7 @@ public class Constants {
         public static final String XIAOMI_QIMAO_YOUDAO = "/xqmydServer";
         public static final String XIAOMI_DONGCHEDI = "/xdcdServer";
         public static final String XIAOMI_XIANYU = "/xxyServer";
+        public static final String XIAOMI_HUIHUI_TAOBAO = "/xhhtbServer";
         public static final String XIAOMI_QUANNENG_FANQIE = "/xqfServer";
         public static final String XIAOMI_QUANNENG_FANQIECHANGTING = "/xqfqctServer";
         public static final String XIAOMI_QUANNENG_XIGUA_VIDEO = "/xqxvServer";
@@ -215,6 +216,7 @@ public class Constants {
         public static final String XIAOMI_QIMAO_YOUDAO = "xiaomi-qimao-youdao";
         public static final String XIAOMI_DONGCHEDI = "xiaomi-dongchedi";
         public static final String XIAOMI_XIANYU = "xiaomi-xianyu";
+        public static final String XIAOMI_HUIHUI_TAOBAO = "xiaomi-huihui-taobao";
         public static final String XIAOMI_IQIYI = "xiaomi-iqiyi";
         public static final String XIAOMI_DOUYIN = "xiaomi-douyin";
         public static final String XIAOMI_DOUYINHUOSHAN = "xiaomi-douyinhuoshan";
