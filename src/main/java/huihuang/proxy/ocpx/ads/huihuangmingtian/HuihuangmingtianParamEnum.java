@@ -94,6 +94,10 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianHuaweiMap.put(IDFA, null);
         huihuangmingtianHuaweiMap.put(IDFA_MD5, null);
         huihuangmingtianHuaweiMap.put(CAMPAIGN_ID, HuaweiParamEnum.CAMPAIGN_ID);
+        huihuangmingtianHuaweiMap.put(UID, HuaweiParamEnum.HUIHUANG_UID);
+        huihuangmingtianHuaweiMap.put(CID, HuaweiParamEnum.HUIHUANG_CID);
+        huihuangmingtianHuaweiMap.put(SID, HuaweiParamEnum.HUIHUANG_SID);
+        huihuangmingtianHuaweiMap.put(EVENT_TYPE, HuaweiParamEnum.HUIHUANG_EVENT_TYPE);
 
         huihuangmingtianHuaweiMap.put(TMS, HuaweiParamEnum.TRACE_TIME);
         huihuangmingtianHuaweiMap.put(OS, HuaweiParamEnum.OS_VERSION);

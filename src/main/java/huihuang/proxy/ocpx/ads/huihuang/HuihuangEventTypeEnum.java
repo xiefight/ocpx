@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public enum HuihuangEventTypeEnum {
 
-    DAU("DAU", "首活"),
+    DAU("DAU", "首活"), //
     NU("NU", "新用户"),
     SED_RU("SED_RU", "回流"),
     REMAIN1D("REMAIN1D", "次留"),
@@ -43,15 +43,15 @@ public enum HuihuangEventTypeEnum {
     static {
         huihuangHuaweiEventTypeMap = CollUtil.newHashMap();
         //首活
-        huihuangHuaweiEventTypeMap.put(DAU.code, HuaweiEventTypeEnum.ACTIVE);
+        huihuangHuaweiEventTypeMap.put(DAU.code, null);
         //新用户
-        huihuangHuaweiEventTypeMap.put(NU.code, null);
+        huihuangHuaweiEventTypeMap.put(NU.code, HuaweiEventTypeEnum.ACTIVE);
         //回流
         huihuangHuaweiEventTypeMap.put(SED_RU.code, null);
         //次留
         huihuangHuaweiEventTypeMap.put(REMAIN1D.code, HuaweiEventTypeEnum.RETAIN);
         //当日付费
-        huihuangHuaweiEventTypeMap.put(PAY1D.code, HuaweiEventTypeEnum.FIRST_PURCHASE);
+        huihuangHuaweiEventTypeMap.put(PAY1D.code, HuaweiEventTypeEnum.PAID);
     }
 
 
@@ -60,10 +60,10 @@ public enum HuihuangEventTypeEnum {
     static {
         huihuangXiaomiEventTypeMap = CollUtil.newHashMap();
         //首活
-        huihuangXiaomiEventTypeMap.put(DAU.code, XiaomiEventTypeEnum.APP_ACTIVE);
-        huihuangXiaomiEventTypeMap.put(DAU.code+"new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
+        huihuangXiaomiEventTypeMap.put(DAU.code, null);
         //新用户
-        huihuangXiaomiEventTypeMap.put(NU.code, XiaomiEventTypeEnum.APP_REGISTER);
+        huihuangXiaomiEventTypeMap.put(NU.code, XiaomiEventTypeEnum.APP_ACTIVE);
+        huihuangXiaomiEventTypeMap.put(NU.code+"new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
         //回流
         huihuangXiaomiEventTypeMap.put(SED_RU.code, null);
         //次留

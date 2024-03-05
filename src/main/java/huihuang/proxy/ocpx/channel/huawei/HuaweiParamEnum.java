@@ -37,6 +37,10 @@ public enum HuaweiParamEnum {
     HUIHUANG_AID("","aid",""),
     HUIHUANG_CHANNEL("","channel",""),
     HUIHUANG_ADID("","adid",""),
+    HUIHUANG_UID("","uid",""),
+    HUIHUANG_CID("","cid",""),
+    HUIHUANG_SID("","sid",""),
+    HUIHUANG_EVENT_TYPE("","eventType",""),
 
     TUHU_AID("","aid","途虎投放渠道标识"),
     TUHU_SID("","sid","途虎投放渠道标识"),
