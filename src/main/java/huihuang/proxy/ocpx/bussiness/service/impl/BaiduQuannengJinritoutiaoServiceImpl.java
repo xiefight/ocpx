@@ -73,7 +73,12 @@ public class BaiduQuannengJinritoutiaoServiceImpl extends BaiduChannelFactory im
         baiduVO.setCbImeiMd5(dyjsAdsDTO.getImei());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(dyjsAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.QUANNENG_JINRITOUTIAO_SECRET);
+
+        if (BaiduPath.QUANNENG_JINRITOUTIAO_ACCOUNT_02.equals(dyjsAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.QUANNENG_JINRITOUTIAO_02_SECRET);
+        } else {
+            baiduVO.setSecret(BaiduPath.QUANNENG_JINRITOUTIAO_SECRET);
+        }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);

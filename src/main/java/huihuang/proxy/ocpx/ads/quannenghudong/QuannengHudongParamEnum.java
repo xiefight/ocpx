@@ -115,6 +115,7 @@ public enum QuannengHudongParamEnum {
         quannengHudongBaiduMap.put(MODEL, null);
         quannengHudongBaiduMap.put(CALLBACK, BaiduParamEnum.CALLBACK_URL);
         quannengHudongBaiduMap.put(UNIQUE_ID, BaiduParamEnum.QUANNENGHUDONG_UNIQUEID);
+        quannengHudongBaiduMap.put(ACCOUNT_ID, BaiduParamEnum.ACCOUNT_ID);
     }
 
 
