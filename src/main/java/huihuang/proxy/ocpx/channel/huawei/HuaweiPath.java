@@ -22,6 +22,7 @@ public class HuaweiPath {
     public static final String HW_KS_ACCOUNT_04 = "hwks04";
     public static final String KUAISHOU4_SECRET = "R2etToXeBJy8jGmQpmDs1PGEAIGKbAObw9VJRF2HT4I=";
 
+    public static final String HW_HH_JINGDONG_ACCOUNT_01 = "hwhhjd01";
     public static final String LTJD_SECRET = "ggJC4oDsoBpalFHbHqmxcWxY4fmg6tZnYBTPxU5LLtI=";//"Txycx3/Kk14tow5N952l56bgKU+31pQ6W+tkWNlp2TY=";
     public static final String LTJD_02_SECRET = "+ZTn5tcB6xXL7rder5hHLkikXMzy+PSn6MmD92pyuLI=";
 
