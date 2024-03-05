@@ -1885,6 +1885,14 @@
         <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQuannengPipixiaChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengPipixiaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
+    </logger>
+
     <!-- 皮皮虾（全能互动） start -->
 
 
