@@ -1797,6 +1797,14 @@
         <appender-ref ref="QUANNENG_HONGGUODUANJU_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengHgdjChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_HONGGUODUANJU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengHgdjServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_HONGGUODUANJU_LOG"/>
+    </logger>
+
     <!-- 红果短剧（全能互动） start -->
 
     <!-- 腾讯视频（全能互动） start -->
@@ -1889,6 +1897,14 @@
         <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQuannengPipixiaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiQuannengPipixiaChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiQuannengPipixiaServiceImpl" level="INFO"
             additivity="true">
         <appender-ref ref="QUANNENG_PIPIXIA_LOG"/>
     </logger>
