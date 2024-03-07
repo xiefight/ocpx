@@ -571,7 +571,7 @@
     <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiXinyuYoudaoChannelAds" level="INFO" additivity="true">
         <appender-ref ref="XINYUYOUDAO_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiXinyuYoudaoServiceImpl" level="INFO"
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiXinyuServiceImpl" level="INFO"
             additivity="true">
         <appender-ref ref="XINYUYOUDAO_LOG"/>
     </logger>
@@ -602,7 +602,7 @@
     <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiQimaoYoudaoChannelAds" level="INFO" additivity="true">
         <appender-ref ref="QIMAOYOUDAO_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiQimaoYoudaoServiceImpl" level="INFO"
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiQimaoServiceImpl" level="INFO"
             additivity="true">
         <appender-ref ref="QIMAOYOUDAO_LOG"/>
     </logger>
@@ -987,14 +987,14 @@
     <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiIQiyiChannelAds" level="INFO" additivity="true">
         <appender-ref ref="IQIYI_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiIQiyiServiceImpl" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiIQiyiServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="IQIYI_LOG"/>
     </logger>
 
     <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiIQiyiChannelAds" level="INFO" additivity="true">
         <appender-ref ref="IQIYI_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiIQiyiServiceImpl" level="INFO" additivity="true">
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiIQiyiServiceImpl" level="INFO" additivity="true">
         <appender-ref ref="IQIYI_LOG"/>
     </logger>
 
@@ -2002,7 +2002,7 @@
     <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiTTYoudaoChannelAds" level="INFO" additivity="true">
         <appender-ref ref="TT_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiTTYoudaoServiceImpl" level="INFO"
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuiTTServiceImpl" level="INFO"
             additivity="true">
         <appender-ref ref="TT_LOG"/>
     </logger>

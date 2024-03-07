@@ -1,7 +1,7 @@
 package huihuang.proxy.ocpx.middle.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiParamField;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IIQiyiAdsDao;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuiIQiyiAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.HuaweiChannelFactory;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.common.Constants;
@@ -16,7 +16,7 @@ import java.util.Map;
 public class HuaweiIQiyiChannelAds extends HuaweiHuihuiReportFactory {
 
     @Autowired
-    private IIQiyiAdsDao iqyAdsDao;
+    private IHuihuiIQiyiAdsDao iqyAdsDao;
 
     String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_IQIYI;
 
@@ -28,7 +28,7 @@ public class HuaweiIQiyiChannelAds extends HuaweiHuihuiReportFactory {
 
     @Override
     protected String serverPathKey() {
-        return Constants.ServerPath.HUAWEI_IQIYI;
+        return Constants.ServerPath.HUAWEI_HUIHUI_IQIYI;
     }
 
     @Override

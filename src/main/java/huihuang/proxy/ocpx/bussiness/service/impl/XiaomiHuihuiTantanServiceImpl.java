@@ -2,8 +2,8 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiAdsDTO;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiEventTypeEnum;
-import huihuang.proxy.ocpx.ads.tantan.HuihuiTantanPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.ITantanAdsDao;
+import huihuang.proxy.ocpx.ads.huihui.tantan.HuihuiTantanPath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuiTantanAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.XiaomiChannelFactory;
@@ -33,7 +33,7 @@ public class XiaomiHuihuiTantanServiceImpl extends XiaomiChannelFactory implemen
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
     @Autowired
-    private ITantanAdsDao tantanAdsDao;
+    private IHuihuiTantanAdsDao tantanAdsDao;
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired

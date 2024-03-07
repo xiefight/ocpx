@@ -2,8 +2,8 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiAdsDTO;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiEventTypeEnum;
-import huihuang.proxy.ocpx.ads.huihui.taobao.TaobaoYoudaoPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.ITaobaoYoudaoAdsDao;
+import huihuang.proxy.ocpx.ads.huihui.taobao.HuihuiTaobaoPath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuiTaobaoAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.HuaweiChannelFactory;
@@ -33,9 +33,9 @@ public class HuaweiHuihuiTaobaoServiceImpl extends HuaweiChannelFactory implemen
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private ITaobaoYoudaoAdsDao taobaoAdsDao;
+    private IHuihuiTaobaoAdsDao taobaoAdsDao;
     @Autowired
-    private TaobaoYoudaoPath huihuiTaobaoPath;
+    private HuihuiTaobaoPath huihuiTaobaoPath;
 
     String channelAdsKey = Constants.ChannelAdsKey.HUAWEI_HUIHUI_TAOBAO;
 

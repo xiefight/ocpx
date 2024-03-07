@@ -1,12 +1,9 @@
 package huihuang.proxy.ocpx.middle.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiParamField;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IXianyuAdsDao;
-import huihuang.proxy.ocpx.bussiness.service.basechannel.HuaweiChannelFactory;
-import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuiXianyuAdsDao;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
-import huihuang.proxy.ocpx.middle.baseadsreport.huihuiyoudao.HuaweiHuihuiReportFactory;
 import huihuang.proxy.ocpx.middle.baseadsreport.huihuiyoudao.IQiyiHuihuiReportFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,7 +14,7 @@ import java.util.Map;
 public class IQiyiHuihuiXianyuChannelAds extends IQiyiHuihuiReportFactory {
 
     @Autowired
-    private IXianyuAdsDao xianyuAdsDao;
+    private IHuihuiXianyuAdsDao xianyuAdsDao;
 
     String channelAdsKey = Constants.ChannelAdsKey.IQIYI_HUIHUI_XIANYU;
 

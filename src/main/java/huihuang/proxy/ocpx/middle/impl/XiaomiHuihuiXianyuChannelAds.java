@@ -1,8 +1,8 @@
 package huihuang.proxy.ocpx.middle.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiParamField;
-import huihuang.proxy.ocpx.ads.xianyu.HuihuiXianyuPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IXianyuAdsDao;
+import huihuang.proxy.ocpx.ads.huihui.xianyu.HuihuiXianyuPath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuiXianyuAdsDao;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import huihuang.proxy.ocpx.middle.baseadsreport.huihuiyoudao.XiaomiHuihuiReportFactory;
@@ -15,7 +15,7 @@ import java.util.Map;
 public class XiaomiHuihuiXianyuChannelAds extends XiaomiHuihuiReportFactory {
 
     @Autowired
-    private IXianyuAdsDao xianyuAdsDao;
+    private IHuihuiXianyuAdsDao xianyuAdsDao;
     @Autowired
     private HuihuiXianyuPath huihuiXianyuPath;
 
@@ -29,7 +29,7 @@ public class XiaomiHuihuiXianyuChannelAds extends XiaomiHuihuiReportFactory {
 
     @Override
     protected String serverPathKey() {
-        return Constants.ServerPath.XIAOMI_XIANYU;
+        return Constants.ServerPath.XIAOMI_HUIHUI_XIANYU;
     }
 
     @Override

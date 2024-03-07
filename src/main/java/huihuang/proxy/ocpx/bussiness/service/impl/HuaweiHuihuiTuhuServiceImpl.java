@@ -2,8 +2,8 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiAdsDTO;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiEventTypeEnum;
-import huihuang.proxy.ocpx.ads.tuhu.HuihuiTuhuPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.ITuhuAdsDao;
+import huihuang.proxy.ocpx.ads.huihui.tuhu.HuihuiTuhuPath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuiTuhuAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.HuaweiChannelFactory;
@@ -37,7 +37,7 @@ public class HuaweiHuihuiTuhuServiceImpl extends HuaweiChannelFactory implements
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private ITuhuAdsDao tuhuAdsDao;
+    private IHuihuiTuhuAdsDao tuhuAdsDao;
     @Autowired
     private HuihuiTuhuPath huihuiTuhuPath;
 

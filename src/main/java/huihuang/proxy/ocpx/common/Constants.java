@@ -64,13 +64,14 @@ public class Constants {
         public static final String XIAOMI_KUAISHOU = "/xkServer";
         public static final String XIAOMI_XIAOHONGSHU = "/xxhsServer";
         public static final String XIAOMI_XINYU = "/xxinyuServer";
-        public static final String XIAOMI_TANTAN = "/xtServer";
-        public static final String XIAOMI_XINYU_YOUDAO = "/xxyydServer";
-        public static final String XIAOMI_TT_YOUDAO = "/xttydServer";
-        public static final String XIAOMI_QIMAO_YOUDAO = "/xqmydServer";
-        public static final String XIAOMI_DONGCHEDI = "/xdcdServer";
-        public static final String XIAOMI_XIANYU = "/xxyServer";
+        public static final String XIAOMI_HUIHUI_TANTAN = "/xtServer";
+        public static final String XIAOMI_HUIHUI_XINYU = "/xxyydServer";
+        public static final String XIAOMI_HUIHUI_TT = "/xttydServer";
+        public static final String XIAOMI_HUIHUI_QIMAO = "/xqmydServer";
+        public static final String XIAOMI_HUIHUI_XIANYU = "/xxyServer";
         public static final String XIAOMI_HUIHUI_TAOBAO = "/xhhtbServer";
+        public static final String XIAOMI_DONGCHEDI = "/xdcdServer";
+
         public static final String XIAOMI_QUANNENG_FANQIE = "/xqfServer";
         public static final String XIAOMI_QUANNENG_FANQIECHANGTING = "/xqfqctServer";
         public static final String XIAOMI_QUANNENG_XIGUA_VIDEO = "/xqxvServer";
@@ -115,7 +116,7 @@ public class Constants {
         public static final String BAIDU_TIANMAO = "/btServer";
         public static final String BAIDU_FANQIE = "/bfServer";
         public static final String BAIDU_DONGCHEDI = "/bdcdServer";
-        public static final String BAIDU_XIANYU = "/bxyServer";
+        public static final String BAIDU_HUIHUI_XIANYU = "/bxyServer";
         public static final String BAIDU_HUIHUI_TAOBAO = "/bhhtbServer";
         public static final String BAIDU_DIANTAO = "/bdtServer";
         public static final String BAIDU_HUIHUANG_TIANMAO = "/bhhtmServer";
@@ -156,14 +157,14 @@ public class Constants {
         public static final String HUAWEI_FANQIE = "/hfServer";
         public static final String HUAWEI_DOUYIN = "/hdyServer";
         public static final String HUAWEI_HUIHUANG = "/hhServer";
-        public static final String HUAWEI_TUHU = "/htServer";
-        public static final String HUAWEI_XIANYU = "/hxyServer";
-        public static final String HUAWEI_IQIYI = "/hiqyServer";
-        public static final String HUAWEI_DIANTAO = "/hdtServer";
+        public static final String HUAWEI_HUIHUI_TUHU = "/htServer";
+        public static final String HUAWEI_HUIHUI_XIANYU = "/hxyServer";
+        public static final String HUAWEI_HUIHUI_IQIYI = "/hiqyServer";
         public static final String HUAWEI_HUIHUI_TANTAN = "/hhhttServer";
         public static final String HUAWEI_HUIHUI_TAOBAO = "/hhhtbServer";
         public static final String HUAWEI_HUIHUI_QQREAD = "/hhhqqrServer";
 
+        public static final String HUAWEI_DIANTAO = "/hdtServer";
         public static final String HUAWEI_HUIHUANG_DOUYINHUOSHAN = "/hhhdyhsServer";
         public static final String HUAWEI_HUIHUANG_XIGUAVIDEO = "/hhhxgServer";
         public static final String HUAWEI_HUIHUANG_FANQIECHANGTING = "/hhhfqctServer";

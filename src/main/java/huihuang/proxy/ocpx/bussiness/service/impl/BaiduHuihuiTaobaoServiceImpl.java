@@ -3,8 +3,8 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 import cn.hutool.core.net.URLDecoder;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiAdsDTO;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiEventTypeEnum;
-import huihuang.proxy.ocpx.ads.huihui.taobao.TaobaoYoudaoPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.ITaobaoYoudaoAdsDao;
+import huihuang.proxy.ocpx.ads.huihui.taobao.HuihuiTaobaoPath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuiTaobaoAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.BaiduChannelFactory;
@@ -32,11 +32,11 @@ public class BaiduHuihuiTaobaoServiceImpl extends BaiduChannelFactory implements
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
     @Autowired
-    private ITaobaoYoudaoAdsDao taobaoAdsDao;
+    private IHuihuiTaobaoAdsDao taobaoAdsDao;
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private TaobaoYoudaoPath taobaoPath;
+    private HuihuiTaobaoPath taobaoPath;
 
     String channelAdsKey = Constants.ChannelAdsKey.BAIDU_HUIHUI_TAOBAO;
 

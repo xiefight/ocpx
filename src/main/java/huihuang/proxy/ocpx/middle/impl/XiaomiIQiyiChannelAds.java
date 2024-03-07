@@ -1,8 +1,8 @@
 package huihuang.proxy.ocpx.middle.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiParamField;
-import huihuang.proxy.ocpx.ads.huihui.iqiyi.IQiyiPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IIQiyiAdsDao;
+import huihuang.proxy.ocpx.ads.huihui.iqiyi.HuihuiIQiyiPath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuiIQiyiAdsDao;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import huihuang.proxy.ocpx.middle.baseadsreport.huihuiyoudao.XiaomiHuihuiReportFactory;
@@ -15,9 +15,9 @@ import java.util.Map;
 public class XiaomiIQiyiChannelAds extends XiaomiHuihuiReportFactory {
 
     @Autowired
-    private IIQiyiAdsDao iQiyiAdsDao;
+    private IHuihuiIQiyiAdsDao iQiyiAdsDao;
     @Autowired
-    private IQiyiPath iQiyiPath;
+    private HuihuiIQiyiPath iQiyiPath;
 
     String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_IQIYI;
 

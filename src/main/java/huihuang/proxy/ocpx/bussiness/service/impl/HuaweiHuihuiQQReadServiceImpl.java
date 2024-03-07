@@ -2,7 +2,7 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiAdsDTO;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiEventTypeEnum;
-import huihuang.proxy.ocpx.ads.xianyu.HuihuiXianyuPath;
+import huihuang.proxy.ocpx.ads.huihui.xianyu.HuihuiXianyuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuiQQReadAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
