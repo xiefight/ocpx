@@ -53,7 +53,7 @@ public abstract class BaseLiangdamaoReportFactory extends BaseSupport implements
             liangdamaoParamField.setCallback_url(URLEncoder.createQuery().encode(liangdamaoParamField.getCallback_url(), StandardCharsets.UTF_8));
         }
 //        liangdamaoParamField.setApp_type(osConvertAppType(liangdamaoParamField.getApp_type()));
-        liangdamaoParamField.setRequest_id(String.valueOf(System.currentTimeMillis()) + (RandomUtil.random.nextInt(900000) + 100000));
+        liangdamaoParamField.setRequest_id(RandomUtil.randomStamp());
         //时间戳，秒
         String ts = Optional.ofNullable(liangdamaoParamField.getTs()).orElse(String.valueOf(System.currentTimeMillis()));
         liangdamaoParamField.setTs(String.valueOf(Long.parseLong(ts) / 1000));

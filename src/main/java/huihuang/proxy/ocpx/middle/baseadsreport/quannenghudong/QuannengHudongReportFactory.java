@@ -46,7 +46,7 @@ public abstract class QuannengHudongReportFactory extends BaseSupport implements
             quannengHudongParamField.setCallback(URLEncoder.createQuery().encode(quannengHudongParamField.getCallback(), StandardCharsets.UTF_8));
         }
         //uniqueid
-        quannengHudongParamField.setUniqueid(String.valueOf(System.currentTimeMillis()) + (RandomUtil.random.nextInt(900000) + 100000));
+        quannengHudongParamField.setUniqueid(RandomUtil.randomStamp());
 //        if (null != quannengHudongParamField.getAdAgent()) {
 //            quannengHudongParamField.setAdAgent(URLEncoder.createQuery().encode(quannengHudongParamField.getAdAgent(), StandardCharsets.UTF_8));
 //        }

@@ -8,6 +8,7 @@ import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.middle.baseadsreport.KuaishouReportFactory;
+import huihuang.proxy.ocpx.util.RandomUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -115,6 +116,16 @@ public class BaiduKuaishouChannelAds extends KuaishouReportFactory {
         }
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey, kuaishouParamField);
         return kuaishouParamField;
+    }
+
+    @Override
+    public void convertParams(Object adsObj){
+        super.convertParams(adsObj);
+        KuaishouParamField kuaishouParamField = (KuaishouParamField) adsObj;
+        if (BaiduPath.BAIDU_KUAISHOU_ACCOUNT_05.equals(kuaishouParamField.getAccount_id())
+                || BaiduPath.BAIDU_KUAISHOUJISU_ACCOUNT_05.equals(kuaishouParamField.getAccount_id())){
+            kuaishouParamField.setRta_id(RandomUtil.randomStamp());
+        }
     }
 
 

@@ -79,7 +79,7 @@ public abstract class QiduReportFactory extends BaseSupport implements IChannelA
             qiduParamField.setCallback(URLEncoder.createQuery().encode(qiduParamField.getCallback(), StandardCharsets.UTF_8));
         }
         //uniqueid
-        qiduParamField.setClickid(String.valueOf(System.currentTimeMillis()) + (RandomUtil.random.nextInt(900000) + 100000));
+        qiduParamField.setClickid(RandomUtil.randomStamp());
 //        if (null != qiduParamField.getAdAgent()) {
 //            qiduParamField.setAdAgent(URLEncoder.createQuery().encode(qiduParamField.getAdAgent(), StandardCharsets.UTF_8));
 //        }
