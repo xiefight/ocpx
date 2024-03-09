@@ -75,6 +75,7 @@ public class HuaweiPath {
     public static final String HW_QUANNENG_FANQIE_ACCOUNT_03 = "hwqnfq03";
     public static final String HW_QUANNENG_HONGGUODUANJU_ACCOUNT_01 = "hwqnhgdj01";
     public static final String HW_QUANNENG_PIPIXIA_ACCOUNT_01 = "hwqnppx01";
+    public static final String HW_QUANNENG_JINRITOUTIAO_ACCOUNT_01 = "hwqnjrtt01";
     public static final String QUANNENG_FANQIE_176_SECRET = "OXqHD9y52yIyoZGuEUthFKWRel5B+7M3JX6+CUfh7ik=";
     public static final String QUANNENG_FANQIE_02_SECRET = "bxfMNrJ6MCiFGLyA9sPsWVx+m98o1LnTftPiQt+Rfn8=";
     public static final String QUANNENG_FANQIE_03_SECRET = "8feZnTr42ui7gPh53uXgPt9i0pcDtAKVpykdxzkLqag=";
@@ -91,6 +92,7 @@ public class HuaweiPath {
     public static final String QUANNENG_228_XIGUA_VIDEO = "bC0mZ00wTssMW1+lgA5K9DuMq3e5PFxKXEsn4QxDh30=";
     public static final String QUANNENG_BAIDU_JISU_SECRET = "YT78NYuW4++fAvHCgxTp6K4IMWwxSexh68oiwyUWxXY=";
     public static final String QUANNENG_JINRITOUTIAO_SECRET = "eOtYyDmCN603lx0Ir5Ng9y1tbpozBVuIqmSvu9ezPys=";
+    public static final String QUANNENG_JINRITOUTIAO_01_SECRET = "XrHhSDQtAtzkCw185o/R8ylmRR34602n2KB2RfJmQrs=";
     public static final String QUANNENG_IQIYI_SECRET = "CSfUp2v5dmrCfqSU0MrHtDYHhBUr4M9sUqNuzPKbmKY=";
     public static final String QUANNENG_HEMAJUCHANG_SECRET = "nJo+6w7ZS9KaM/hSYYH3aUpFqHcnT+sE9hsXc+16dOk=";
     public static final String QUANNENG_XIAOHONGSHU_SECRET = "lQ3F5ALgJXhlV5aLatOD5x8ZoD6lgNf5fad3QqtQyPA=";

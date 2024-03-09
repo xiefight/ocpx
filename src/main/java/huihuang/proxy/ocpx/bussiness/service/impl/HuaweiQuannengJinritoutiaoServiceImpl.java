@@ -69,7 +69,11 @@ public class HuaweiQuannengJinritoutiaoServiceImpl extends HuaweiChannelFactory 
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
         huaweiVO.setConversionType(QuannengHudongEventTypeEnum.quannengHudongHuaweiEventTypeMap.get(eventType).getCode());
         huaweiVO.setOaid(quannengHudongAdsDTO.getOaid());
-        huaweiVO.setSecret(HuaweiPath.QUANNENG_JINRITOUTIAO_SECRET);
+        if (HuaweiPath.HW_QUANNENG_JINRITOUTIAO_ACCOUNT_01.equals(quannengHudongAdsDTO.getAccountId())) {
+            huaweiVO.setSecret(HuaweiPath.QUANNENG_JINRITOUTIAO_01_SECRET);
+        } else {
+            huaweiVO.setSecret(HuaweiPath.QUANNENG_JINRITOUTIAO_SECRET);
+        }
 
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 
