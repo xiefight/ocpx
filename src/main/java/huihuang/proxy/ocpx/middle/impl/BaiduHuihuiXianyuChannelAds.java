@@ -23,7 +23,7 @@ public class BaiduHuihuiXianyuChannelAds extends BaiduHuihuiReportFactory {
     @Autowired
     private HuihuiXianyuPath huihuiXianyuPath;
 
-    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_XIANYU;
+    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_HUIHUI_XIANYU;
 
 
     @Override

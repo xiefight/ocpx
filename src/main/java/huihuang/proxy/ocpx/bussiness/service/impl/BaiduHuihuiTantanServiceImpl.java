@@ -3,8 +3,8 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 import cn.hutool.core.net.URLDecoder;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiAdsDTO;
 import huihuang.proxy.ocpx.ads.huihui.HuihuiEventTypeEnum;
-import huihuang.proxy.ocpx.ads.huihui.xianyu.HuihuiXianyuPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuiXianyuAdsDao;
+import huihuang.proxy.ocpx.ads.huihui.tantan.HuihuiTantanPath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuiTantanAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.BaiduChannelFactory;
@@ -24,25 +24,21 @@ import org.springframework.stereotype.Service;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-/**
- * @Author: xietao
- * @Date: 2023/8/8 11:40
- */
-@Service("bxyService")
-public class BaiduHuihuiXianyuServiceImpl extends BaiduChannelFactory implements IChannelAdsService {
+@Service("bdhhttService")
+public class BaiduHuihuiTantanServiceImpl extends BaiduChannelFactory implements IChannelAdsService {
 
-    protected Logger logger = LoggerFactory.getLogger(BaiduHuihuiXianyuServiceImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(BaiduHuihuiTantanServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
     @Autowired
-    private IHuihuiXianyuAdsDao xianyuAdsDao;
+    private IHuihuiTantanAdsDao tantanAdsDao;
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private HuihuiXianyuPath huihuiXianyuPath;
+    private HuihuiTantanPath tantanPath;
 
-    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_HUIHUI_XIANYU;
+    String channelAdsKey = Constants.ChannelAdsKey.BAIDU_HUIHUI_TANTAN;
 
     @Override
     public IChannelAds channelAds() {
@@ -55,16 +51,16 @@ public class BaiduHuihuiXianyuServiceImpl extends BaiduChannelFactory implements
         logger.info("adsCallBack {} 开始回调渠道  id:{}  event:{}", channelAdsKey, id, eventType);
 
         //根据id查询对应的点击记录
-        HuihuiAdsDTO xianyuAdsDTO = xianyuAdsDao.queryXianyuAdsById(id);
-        if (null == xianyuAdsDTO) {
+        HuihuiAdsDTO taobaoAdsDTO = tantanAdsDao.queryTantanAdsById(id);
+        if (null == taobaoAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
-        String callback = xianyuAdsDTO.getCallback();
+        String callback = taobaoAdsDTO.getCallback();
         String channelUrl = URLDecoder.decode(callback, StandardCharsets.UTF_8);
 
         //针对闲鱼aid=36490(原33936)的户，闲鱼注册事件对应百度激活事件，这里特殊处理一下，而闲鱼的激活事件暂时不处理
-        if ("36490".equals(xianyuAdsDTO.getAid())) {
+        if ("36490".equals(taobaoAdsDTO.getAid())) {
             if (eventType.equals(HuihuiEventTypeEnum.ANDROID_ACTIVATE.getCode())
                     || eventType.equals(HuihuiEventTypeEnum.IOS_ACTIVATE.getCode())) {
                 return BasicResult.getFailResponse("aid=36490的闲鱼户不需要回传激活事件:" + id);
@@ -79,31 +75,22 @@ public class BaiduHuihuiXianyuServiceImpl extends BaiduChannelFactory implements
 
         Ads2BaiduVO baiduVO = new Ads2BaiduVO();
         baiduVO.setAdsId(id);
-        baiduVO.setAdsName(huihuiXianyuPath.baseAdsName());
+        baiduVO.setAdsName(tantanPath.baseAdsName());
         baiduVO.setChannelUrl(channelUrl);
         baiduVO.setaType(HuihuiEventTypeEnum.huihuiBaiduEventTypeMap.get(eventType).getCode());
         baiduVO.setaValue(0);
         baiduVO.setCbEventTime(String.valueOf(System.currentTimeMillis()));
-        baiduVO.setCbOaid(xianyuAdsDTO.getOaid());
-        baiduVO.setCbOaidMd5(xianyuAdsDTO.getOaid_md5());
-        baiduVO.setCbIdfa(xianyuAdsDTO.getIdfa());
-        baiduVO.setCbImei(xianyuAdsDTO.getImei());
-//        baiduVO.setCbImeiMd5(xianyuAdsDTO.getImei_md5());
-//        baiduVO.setCbAndroidIdMd5(xianyuAdsDTO.getAndroid_id_md5());
-        baiduVO.setCbIp(xianyuAdsDTO.getIp());
+        baiduVO.setCbOaid(taobaoAdsDTO.getOaid());
+        baiduVO.setCbOaidMd5(taobaoAdsDTO.getOaid_md5());
+        baiduVO.setCbIdfa(taobaoAdsDTO.getIdfa());
+        baiduVO.setCbImei(taobaoAdsDTO.getImei());
+//        baiduVO.setCbImeiMd5(taobaoAdsDTO.getImei_md5());
+//        baiduVO.setCbAndroidIdMd5(taobaoAdsDTO.getAndroid_id_md5());
+        baiduVO.setCbIp(taobaoAdsDTO.getIp());
 
-        String ocpxAccount = xianyuAdsDTO.getOcpxAccount();
-        if (BaiduPath.BAIDU_XIANYU_ACCOUNT_01.equals(ocpxAccount)) {
-            baiduVO.setSecret(BaiduPath.XIANYU_01_SECRET);
-        } else if (BaiduPath.BAIDU_XIANYU_ACCOUNT_02.equals(ocpxAccount)) {
-            baiduVO.setSecret(BaiduPath.XIANYU_02_SECRET);
-        } else if (BaiduPath.BAIDU_XIANYU_ACCOUNT_03.equals(ocpxAccount)) {
-            baiduVO.setSecret(BaiduPath.XIANYU_03_SECRET);
-        } else if (BaiduPath.BAIDU_XIANYU_ACCOUNT_04.equals(ocpxAccount)) {
-            baiduVO.setSecret(BaiduPath.XIANYU_04_SECRET);
-        } else {
-            //默认
-            baiduVO.setSecret(BaiduPath.XIANYU_01_SECRET);
+        String ocpxAccount = taobaoAdsDTO.getOcpxAccount();
+        if (BaiduPath.BAIDU_HUIHUI_TANTAN_ACCOUNT_01.equals(ocpxAccount)) {
+            baiduVO.setSecret(BaiduPath.HUIHUI_TANTAN_01_SECRET);
         }
 
 
@@ -113,17 +100,17 @@ public class BaiduHuihuiXianyuServiceImpl extends BaiduChannelFactory implements
         BaiduCallbackDTO data = (BaiduCallbackDTO) response.getData();
 
         //更新回调状态
-        HuihuiAdsDTO xianyuAds = new HuihuiAdsDTO();
-        xianyuAds.setId(id);
-        xianyuAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
+        HuihuiAdsDTO huihuiAds = new HuihuiAdsDTO();
+        huihuiAds.setId(id);
+        huihuiAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
         if (response.getCode() == 0) {
-            xianyuAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(xianyuAds, xianyuAdsDao);
+            huihuiAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            baseServiceInner.updateAdsObject(huihuiAds, tantanAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
-            xianyuAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(xianyuAds, xianyuAdsDao);
+            huihuiAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            baseServiceInner.updateAdsObject(huihuiAds, tantanAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
         }

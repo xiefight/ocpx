@@ -418,7 +418,7 @@
     <!-- 心遇 end -->
 
 
-    <!-- 探探 start -->
+    <!-- 探探 （huihui） start -->
     <appender name="TANTAN_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/tantan/tantan.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
@@ -452,7 +452,14 @@
         <appender-ref ref="TANTAN_LOG"/>
     </logger>
 
-    <!-- 探探 end -->
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuiTantanChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="TANTAN_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuiTantanServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="TANTAN_LOG"/>
+    </logger>
+
+    <!-- 探探 （huihui） end -->
 
 
     <!-- liangdamao start -->
