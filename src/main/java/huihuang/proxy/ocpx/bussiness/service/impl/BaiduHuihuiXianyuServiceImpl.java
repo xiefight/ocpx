@@ -63,11 +63,14 @@ public class BaiduHuihuiXianyuServiceImpl extends BaiduChannelFactory implements
         String callback = xianyuAdsDTO.getCallback();
         String channelUrl = URLDecoder.decode(callback, StandardCharsets.UTF_8);
 
+        String ocpxAccount = xianyuAdsDTO.getOcpxAccount();
         //针对闲鱼aid=36490(原33936)的户，闲鱼注册事件对应百度激活事件，这里特殊处理一下，而闲鱼的激活事件暂时不处理
-        if ("36490".equals(xianyuAdsDTO.getAid())) {
+        //通过账户进行特殊处理，不再通过aid进行特殊处理
+//        if ("36490".equals(xianyuAdsDTO.getAid())) {
+        if(BaiduPath.BAIDU_XIANYU_ACCOUNT_02.equals(ocpxAccount) || BaiduPath.BAIDU_XIANYU_ACCOUNT_03.equals(ocpxAccount)){
             if (eventType.equals(HuihuiEventTypeEnum.ANDROID_ACTIVATE.getCode())
                     || eventType.equals(HuihuiEventTypeEnum.IOS_ACTIVATE.getCode())) {
-                return BasicResult.getFailResponse("aid=36490的闲鱼户不需要回传激活事件:" + id);
+                return BasicResult.getFailResponse(ocpxAccount + "的闲鱼户不需要回传激活事件:" + id);
             }
             if (eventType.equals(HuihuiEventTypeEnum.ANDROID_REGISTER.getCode())) {
                 eventType = HuihuiEventTypeEnum.ANDROID_ACTIVATE.getCode();
@@ -92,7 +95,7 @@ public class BaiduHuihuiXianyuServiceImpl extends BaiduChannelFactory implements
 //        baiduVO.setCbAndroidIdMd5(xianyuAdsDTO.getAndroid_id_md5());
         baiduVO.setCbIp(xianyuAdsDTO.getIp());
 
-        String ocpxAccount = xianyuAdsDTO.getOcpxAccount();
+
         if (BaiduPath.BAIDU_XIANYU_ACCOUNT_01.equals(ocpxAccount)) {
             baiduVO.setSecret(BaiduPath.XIANYU_01_SECRET);
         } else if (BaiduPath.BAIDU_XIANYU_ACCOUNT_02.equals(ocpxAccount)) {
