@@ -90,6 +90,8 @@ public class ChannelAdsConfig {
     private XiaomiHuihuangFengmangYitaoChannelAds xhhfmytChannelAds;
     @Autowired
     private XiaomiHuihuangYoukuChannelAds xhhykChannelAds;
+    @Autowired
+    private XiaomiHuihuangJingdongChannelAds xhhjdChannelAds;
 
     @Autowired
     private XiaomiDingyunDouyinhuoshanChannelAds xdydyhsChannelAds;
@@ -326,6 +328,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_HUIHUANG_YITAO, xhhytChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_HUIHUANG_FENGMANG_YITAO, xhhfmytChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_HUIHUANG_YOUKU, xhhykChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_HUIHUANG_JINGDONG, xhhjdChannelAds);
 
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_DINGYUN_DOUYINHUOSHAN, xdydyhsChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_DINGYUN_XIGUAVIDEO, xdyxgChannelAds);
