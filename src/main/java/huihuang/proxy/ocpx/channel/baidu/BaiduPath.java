@@ -98,13 +98,16 @@ public class BaiduPath {
     public static final String HUIHUANG_YITAO_SECRET = "NTIxMTk2ODI=";//"NTIwNjc1NTg=";
     public static final String HUIHUANG_PIPIXIA_SECRET = "NTI1OTY1ODc=";//"NTIwNjc1NTg=";
 
+    public static final String QUANNENG_PIPIXIA_ACCOUNT_02 = "bdqnppx02";
     public static final String QUANNENG_JINRITOUTIAO_ACCOUNT_02 = "bdqnjrtt02";
+    public static final String QUANNENG_JINRITOUTIAO_ACCOUNT_03 = "bdqnjrtt03";
     public static final String QUANNENG_XIGUA_VIDEO_105_SECRET = "NTEwMjE4MDI=";
     public static final String QUANNENG_XIGUA_VIDEO_228_SECRET = "NTE0MjI1NDI=";
     public static final String QUANNENG_DOUYIN_JISU_131_SECRET = "NTEwMjE3OTM=";
     public static final String QUANNENG_DOUYIN_JISU_195_SECRET = "NTE0MjI1NjI=";
     public static final String QUANNENG_JINRITOUTIAO_SECRET = "NTAyMTY0MzE=";
     public static final String QUANNENG_JINRITOUTIAO_02_SECRET = "NTI1OTY1OTc=";
+    public static final String QUANNENG_JINRITOUTIAO_03_SECRET = "NTM5MzMzNTg=";
     public static final String QUANNENG_FANQIE161_SECRET = "NTExMjcyNjE=";
     public static final String QUANNENG_FANQIE176_SECRET = "NTExMjcyNjE=";
     public static final String QUANNENG_FANQIE207_SECRET = "NTExMjcyMDA=";
@@ -112,6 +115,7 @@ public class BaiduPath {
     public static final String QUANNENG_DOUYINHUOSHAN_SECRET = "NTEzNTc0ODg=";
     public static final String QUANNENG_TEGNXUNSHIPIN_SECRET = "NTE5MDcxNjQ=";
     public static final String QUANNENG_PIPIXIA_SECRET = "NTI1OTY1ODc=";
+    public static final String QUANNENG_PIPIXIA_02_SECRET = "NTM5MzM1NDc=";
     public static final String QUANNENG_YOUSHI_SECRET = "NTI1OTY1OTA=";
 
 
@@ -126,9 +130,12 @@ public class BaiduPath {
 
     public static final String BAIDU_LUYUN_PAIPAI_ACCOUNT_01 = "blypp01";
     public static final String BAIDU_LUYUN_PAIPAI_ACCOUNT_02 = "blypp02";
-    public static final String KEEP_SECRET = "NTI5Mjc5NDc=";
     public static final String LUYUN_PAIPAI_SECRET_01 = "NDU5NDk5MjQ=";
     public static final String LUYUN_PAIPAI_SECRET_02 = "NTI5MTAwNjQ=";
+
+    public static final String BAIDU_LUYUN_KEEP_ACCOUNT_02 = "bdkeep02";
+    public static final String KEEP_SECRET = "NTI5Mjc5NDc=";
+    public static final String KEEP_02_SECRET = "NTEzNzEzNTI=";
 
 
 

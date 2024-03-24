@@ -1,9 +1,9 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.net.URLDecoder;
-import huihuang.proxy.ocpx.ads.luyun.keep.KeepPath;
 import huihuang.proxy.ocpx.ads.luyun.LuyunAdsDTO;
 import huihuang.proxy.ocpx.ads.luyun.LuyunEventTypeEnum;
+import huihuang.proxy.ocpx.ads.luyun.keep.KeepPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IKeepAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -73,7 +73,11 @@ public class BaiduKeepServiceImpl extends BaiduChannelFactory implements IChanne
         baiduVO.setCbImeiMd5(keepAdsDTO.getImeiMd5());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(keepAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.KEEP_SECRET);
+        if (BaiduPath.BAIDU_LUYUN_KEEP_ACCOUNT_02.equals(keepAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.KEEP_02_SECRET);
+        } else {
+            baiduVO.setSecret(BaiduPath.KEEP_SECRET);
+        }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);

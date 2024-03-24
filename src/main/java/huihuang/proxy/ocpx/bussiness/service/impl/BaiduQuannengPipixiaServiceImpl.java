@@ -51,12 +51,12 @@ public class BaiduQuannengPipixiaServiceImpl extends BaiduChannelFactory impleme
         logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
 
         //根据id查询对应的点击记录
-        QuannengHudongAdsDTO dyhsAdsDTO = ppxAdsDao.queryQuannengPipixiaAdsById(id);
-        if (null == dyhsAdsDTO) {
+        QuannengHudongAdsDTO ppxAdsDTO = ppxAdsDao.queryQuannengPipixiaAdsById(id);
+        if (null == ppxAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
-        String callback = dyhsAdsDTO.getCallback();
+        String callback = ppxAdsDTO.getCallback();
         String channelUrl = URLDecoder.decode(callback, StandardCharsets.UTF_8);
 
         Ads2BaiduVO baiduVO = new Ads2BaiduVO();
@@ -66,14 +66,18 @@ public class BaiduQuannengPipixiaServiceImpl extends BaiduChannelFactory impleme
         baiduVO.setaType(QuannengHudongEventTypeEnum.quannengHudongBaiduEventTypeMap.get(eventType).getCode());
         baiduVO.setaValue(0);
         baiduVO.setCbEventTime(String.valueOf(System.currentTimeMillis()));
-        baiduVO.setCbOaid(dyhsAdsDTO.getOaid());
-        baiduVO.setCbOaidMd5(dyhsAdsDTO.getOaid());
-        baiduVO.setCbIdfa(dyhsAdsDTO.getIdfa());
+        baiduVO.setCbOaid(ppxAdsDTO.getOaid());
+        baiduVO.setCbOaidMd5(ppxAdsDTO.getOaid());
+        baiduVO.setCbIdfa(ppxAdsDTO.getIdfa());
         baiduVO.setCbImei(null);
-        baiduVO.setCbImeiMd5(dyhsAdsDTO.getImei());
+        baiduVO.setCbImeiMd5(ppxAdsDTO.getImei());
         baiduVO.setCbAndroidIdMd5(null);
-        baiduVO.setCbIp(dyhsAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.QUANNENG_PIPIXIA_SECRET);
+        baiduVO.setCbIp(ppxAdsDTO.getIp());
+        if (BaiduPath.QUANNENG_PIPIXIA_ACCOUNT_02.equals(ppxAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.QUANNENG_PIPIXIA_02_SECRET);
+        } else {
+            baiduVO.setSecret(BaiduPath.QUANNENG_PIPIXIA_SECRET);
+        }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);
