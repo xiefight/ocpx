@@ -63,9 +63,9 @@ public abstract class HuihuangMingtianReportFactory extends BaseSupport implemen
     @Override
     protected Response judgeParams(Object adsObj) {
         HuihuangmingtianParamField huihuangmingtianParamField = (HuihuangmingtianParamField) adsObj;
-        if (Objects.isNull(huihuangmingtianParamField.getCallbackUrl())) {
-            return BasicResult.getFailResponse(HuihuangmingtianParamEnum.CALLBACK_URL.getName() + "不能为空");
-        }
+//        if (Objects.isNull(huihuangmingtianParamField.getCallbackUrl())) {
+//            return BasicResult.getFailResponse(HuihuangmingtianParamEnum.CALLBACK_URL.getName() + "不能为空");
+//        }
         if (Objects.isNull(huihuangmingtianParamField.getChainCode())) {
             return BasicResult.getFailResponse(HuihuangmingtianParamEnum.CHAIN_CODE.getName() + "不能为空");
         }

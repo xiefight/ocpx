@@ -1,6 +1,5 @@
 package huihuang.proxy.ocpx.bussiness.service.basechannel;
 
-import cn.hutool.core.util.HexUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
@@ -19,15 +18,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.crypto.Mac;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.nio.charset.StandardCharsets;
-import java.text.MessageFormat;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -43,10 +37,11 @@ public class HonorChannelFactory {
         String channelUrl = HonorPath.CALLBACK_URL;
         //回传到渠道
         JSONObject json = new JSONObject();
-        json.put("callback", honorVO.getCallbackUrl());
+//        json.put("callback", honorVO.getCallbackUrl());
         json.put("conversionId", honorVO.getConversionId());
-        json.put("conversion_time", honorVO.getConversionTime());
+        json.put("conversionTime", honorVO.getConversionTime());
         json.put("advertiserId", honorVO.getAdvertiserId());
+        json.put("trackId", honorVO.getTrackId());
         if (CommonUtil.strEmpty(honorVO.getOaid())) {
             json.put("oaid", honorVO.getOaid());
         }
@@ -56,9 +51,11 @@ public class HonorChannelFactory {
         for (Map.Entry<String, Object> entry : entries) {
             url.append("&").append(entry.getKey()).append("=").append(entry.getValue());
         }
-        final String authSign = buildAuthorizationHeader(json.toJSONString(), honorVO.getSecret());
+//        final String authSign = buildAuthorizationHeader(json.toJSONString(), honorVO.getSecret());
         logger.info("baseAdsCallBack 回传渠道url：{}", url);
-        HttpResponse response = HttpRequest.post(url.toString()).header("Authorization", authSign).body(json.toJSONString()).execute();
+//        HttpResponse response = HttpRequest.post(url.toString()).header("Authorization", authSign).body(json.toJSONString()).execute();
+
+        HttpResponse response = HttpRequest.get(url.toString()).body(json.toJSONString()).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
         //保存转化事件回调信息
         HonorCallbackDTO honorCallbackDTO = new HonorCallbackDTO(honorVO.getAdsId(), honorVO.getConversionId(),
@@ -77,38 +74,6 @@ public class HonorChannelFactory {
         }
     }
 
-
-    //计算签名
-
-    /**
-     * 计算请求头中的Authorization
-     *
-     * @param body 请求体json
-     * @param key  密钥
-     * @return Authorization 鉴权头
-     */
-    private String buildAuthorizationHeader(String body, String key) {
-// 广告主请求头header中的Authorization
-        final String authorizationFormat = "Digest validTime=\"{0}\", response=\"{1}\"";
-        String authorization = null;
-        try {
-            byte[] keyBytes = key.getBytes(StandardCharsets.UTF_8);
-            byte[] bodyBytes = body.getBytes(StandardCharsets.UTF_8);
-            Mac mac = Mac.getInstance("HmacSHA256");
-            SecretKey secretKey = new SecretKeySpec(keyBytes, "HmacSHA256");
-            mac.init(secretKey);
-            byte[] signatureBytes = mac.doFinal(bodyBytes);
-            final String timestamp = String.valueOf(System.currentTimeMillis());
-            final String signature = (signatureBytes == null) ? null : HexUtil.encodeHexStr(signatureBytes);
-            authorization = MessageFormat.format(authorizationFormat, timestamp, signature)
-            ;
-        } catch (Exception e) {
-            System.err.println("build Authorization Header failed！");
-            e.printStackTrace();
-        }
-        System.out.println("generate Authorization Header: " + authorization);
-        return authorization;
-    }
 
     /**
      * 从extra中获取指定字段值

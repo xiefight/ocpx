@@ -75,7 +75,10 @@ public abstract class HonorHuihuangReportFactory extends HuihuangMingtianReportF
         //存储华为这边必有而广告主这不必有的参数，回传可能会用到
         String extras = HonorChannelFactory.fitExtras(parameterMap,
                 HonorParamEnum.TRACK_ID.getParam(),
-                HonorParamEnum.ADVERTISER_ID.getParam());
+                HonorParamEnum.ADVERTISER_ID.getParam(),
+                HonorParamEnum.GROUPID.getParam(),
+                HonorParamEnum.CREATIVE_ID.getParam(),
+                HonorParamEnum.REQUESTID.getParam());
         if (extras.length() > 0) {
             huihuangmingtianParamField.setExtra(extras);
         }
