@@ -206,6 +206,9 @@ public class Constants {
         public static final String IQIYI_HUIHUI_XIANYU = "/ihhxyServer";
 
 
+        public static final String HONOR_HUIHUANG_JINGDONG = "/honorhhjdServer";
+
+
         public static final String MONITOR_ADDRESS = "/monitorAddress";
         public static final String CLICK_REPORT = "/clickReport";
         public static final String ADS_CALLBACK = "/adsCallBack";
@@ -357,6 +360,9 @@ public class Constants {
         public static final String IQIYI_DINGYUN_XIGUAVIDEO = "iqiyi-dingyun-xiguavideo";
         public static final String IQIYI_LUYUN_KEEP = "iqiyi-luyun-keep";
         public static final String IQIYI_HUIHUI_XIANYU = "iqiyi-huihui-xianyu";
+
+
+        public static final String HONOR_HUIHUANG_JINGDONG = "honor-huihuang-jingdong";
     }
 
     public class AdsForChannel {

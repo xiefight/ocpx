@@ -6,10 +6,10 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
-import huihuang.proxy.ocpx.bussiness.dao.channel.IHuaweiCallbackDao;
-import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2HuaweiVO;
-import huihuang.proxy.ocpx.channel.huawei.HuaweiCallbackDTO;
-import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
+import huihuang.proxy.ocpx.bussiness.dao.channel.IHonorCallbackDao;
+import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2HonorVO;
+import huihuang.proxy.ocpx.channel.honor.HonorCallbackDTO;
+import huihuang.proxy.ocpx.channel.honor.HonorPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -32,31 +32,23 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-/**
- * @Description: 抽象出huawei渠道的回调，不掺杂广告侧的逻辑，不用管广告侧是谁
- * @Author: xietao
- * @Date: 2023-05-28 13:02
- **/
-public class HuaweiChannelFactory {
+public class HonorChannelFactory {
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private IHuaweiCallbackDao huaweiCallbackDao;
+    private IHonorCallbackDao honorCallbackDao;
 
-    protected Response baseAdsCallBack(Ads2HuaweiVO huaweiVO) throws Exception {
+    protected Response baseAdsCallBack(Ads2HonorVO honorVO) throws Exception {
 
-        String channelUrl = HuaweiPath.CALLBACK_URL;
+        String channelUrl = HonorPath.CALLBACK_URL;
         //回传到渠道
         JSONObject json = new JSONObject();
-        json.put("callback", huaweiVO.getCallbackUrl());
-        json.put("campaign_id", huaweiVO.getCampaignId());
-        json.put("content_id", huaweiVO.getContentId());
-        json.put("tracking_enabled", huaweiVO.getTrackingEnabled());
-        json.put("conversion_type", huaweiVO.getConversionType());
-        json.put("conversion_time", huaweiVO.getConversionTime());
-        json.put("timestamp", huaweiVO.getTimestamp());
-        if (CommonUtil.strEmpty(huaweiVO.getOaid())) {
-            json.put("oaid", huaweiVO.getOaid());
+        json.put("callback", honorVO.getCallbackUrl());
+        json.put("conversionId", honorVO.getConversionId());
+        json.put("conversion_time", honorVO.getConversionTime());
+        json.put("advertiserId", honorVO.getAdvertiserId());
+        if (CommonUtil.strEmpty(honorVO.getOaid())) {
+            json.put("oaid", honorVO.getOaid());
         }
 
         StringBuilder url = new StringBuilder(channelUrl);
@@ -64,25 +56,24 @@ public class HuaweiChannelFactory {
         for (Map.Entry<String, Object> entry : entries) {
             url.append("&").append(entry.getKey()).append("=").append(entry.getValue());
         }
-        final String authSign = buildAuthorizationHeader(json.toJSONString(), huaweiVO.getSecret());
+        final String authSign = buildAuthorizationHeader(json.toJSONString(), honorVO.getSecret());
         logger.info("baseAdsCallBack 回传渠道url：{}", url);
         HttpResponse response = HttpRequest.post(url.toString()).header("Authorization", authSign).body(json.toJSONString()).execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
         //保存转化事件回调信息
-        HuaweiCallbackDTO huaweiCallbackDTO = new HuaweiCallbackDTO(huaweiVO.getAdsId(), huaweiVO.getCallbackUrl(), huaweiVO.getContentId(),
-                huaweiVO.getCampaignId(), huaweiVO.getOaid(), huaweiVO.getTrackingEnabled(),
-                huaweiVO.getConversionType(), huaweiVO.getConversionTime(), huaweiVO.getTimestamp(), huaweiVO.getAdsName());
+        HonorCallbackDTO honorCallbackDTO = new HonorCallbackDTO(honorVO.getAdsId(), honorVO.getConversionId(),
+                honorVO.getOaid(), honorVO.getAdvertiserId(), honorVO.getConversionTime(), honorVO.getAdsName());
 
-        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("resultCode").equals(0)) {
-            huaweiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            huaweiCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("resultCode")));
-            huaweiCallbackDao.insert(huaweiCallbackDTO);
-            return BasicResult.getSuccessResponse(huaweiCallbackDTO);
+        if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("code").equals(0)) {
+            honorCallbackDTO.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            honorCallbackDTO.setCallBackMes(String.valueOf(responseBodyMap.get("code")));
+            honorCallbackDao.insert(honorCallbackDTO);
+            return BasicResult.getSuccessResponse(honorCallbackDTO);
         } else {
-            huaweiCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            huaweiCallbackDTO.setCallBackMes(responseBodyMap.get("resultCode") + "  " + responseBodyMap.get("resultMessage"));
-            huaweiCallbackDao.insert(huaweiCallbackDTO);
-            return BasicResult.getFailResponse(huaweiCallbackDTO.getCallBackMes(), huaweiCallbackDTO);
+            honorCallbackDTO.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            honorCallbackDTO.setCallBackMes(responseBodyMap.get("code") + "  " + responseBodyMap.get("message"));
+            honorCallbackDao.insert(honorCallbackDTO);
+            return BasicResult.getFailResponse(honorCallbackDTO.getCallBackMes(), honorCallbackDTO);
         }
     }
 

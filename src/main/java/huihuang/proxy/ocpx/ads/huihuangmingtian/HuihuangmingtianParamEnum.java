@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.huihuangmingtian;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.honor.HonorParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
@@ -172,7 +173,6 @@ public enum HuihuangmingtianParamEnum {
     }
 
 
-
     public static Map<HuihuangmingtianParamEnum, IQiyiParamEnum> huihuangmingtianIQiyiMap;
 
     static {
@@ -199,6 +199,40 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianIQiyiMap.put(CALLBACK_URL, IQiyiParamEnum.CALLBACK_URL);
 
         huihuangmingtianIQiyiMap.put(ACCOUNT_ID, IQiyiParamEnum.ACCOUNT_ID);
+    }
+
+
+    public static Map<HuihuangmingtianParamEnum, HonorParamEnum> huihuangmingtianHonorMap;
+
+    static {
+        huihuangmingtianHonorMap = new HashMap<>();
+        huihuangmingtianHonorMap.put(CHAIN_CODE, HonorParamEnum.HUIHUANG_CHAIN_CODE);
+        huihuangmingtianHonorMap.put(TASKID, HonorParamEnum.HUIHUANG_TASK_ID);
+        huihuangmingtianHonorMap.put(APP, HonorParamEnum.HUIHUANG_APP);
+        huihuangmingtianHonorMap.put(SOURCE, HonorParamEnum.HUIHUANG_SOURCE);
+        huihuangmingtianHonorMap.put(ADVERTISING_SPACE_ID, HonorParamEnum.HUIHUANG_ADVERTISING_SPACE_ID);
+        huihuangmingtianHonorMap.put(AID, HonorParamEnum.HUIHUANG_AID);
+        huihuangmingtianHonorMap.put(CHANNEL, HonorParamEnum.HUIHUANG_CHANNEL);
+        huihuangmingtianHonorMap.put(ADID, HonorParamEnum.HUIHUANG_ADID);
+        huihuangmingtianHonorMap.put(IMEI_MD5, null);
+        huihuangmingtianHonorMap.put(OAID, HonorParamEnum.OAID);
+        huihuangmingtianHonorMap.put(OAID_MD5, null);
+        huihuangmingtianHonorMap.put(IDFA, null);
+        huihuangmingtianHonorMap.put(IDFA_MD5, null);
+        huihuangmingtianHonorMap.put(CAMPAIGN_ID, HonorParamEnum.CAMPAIGNID);
+        huihuangmingtianHonorMap.put(UID, HonorParamEnum.HUIHUANG_UID);
+        huihuangmingtianHonorMap.put(CID, HonorParamEnum.HUIHUANG_CID);
+        huihuangmingtianHonorMap.put(SID, HonorParamEnum.HUIHUANG_SID);
+        huihuangmingtianHonorMap.put(EVENT_TYPE, HonorParamEnum.HUIHUANG_EVENT_TYPE);
+
+        huihuangmingtianHonorMap.put(TMS, HonorParamEnum.TIME);
+        huihuangmingtianHonorMap.put(OS, HonorParamEnum.OS);
+        huihuangmingtianHonorMap.put(IP, HonorParamEnum.IP);
+        huihuangmingtianHonorMap.put(UA, HonorParamEnum.UA);
+//        huihuangmingtianHonorMap.put(CALLBACK_URL, HonorParamEnum.CALLBACK);
+
+        huihuangmingtianHonorMap.put(ACCOUNT_ID, HonorParamEnum.ACCOUNT_ID);
+
     }
 
 }
