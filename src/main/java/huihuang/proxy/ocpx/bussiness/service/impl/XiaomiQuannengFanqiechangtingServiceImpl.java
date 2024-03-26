@@ -53,10 +53,17 @@ public class XiaomiQuannengFanqiechangtingServiceImpl extends XiaomiChannelFacto
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
+
+        if (quannengFanqieAdsDTO.getPid().equals("242")){
+            if (eventType.equals(QuannengHudongEventTypeEnum.ACTIVATE.getCode())){
+                eventType = eventType + "new";
+            }
+        }
+
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
         xiaomiVO.setAdsName(quannengFqctPath.baseAdsName());
-        xiaomiVO.setEventType(QuannengHudongEventTypeEnum.quannengHudongXiaomiEventTypeMap.get(eventType + "new").getCode());
+        xiaomiVO.setEventType(QuannengHudongEventTypeEnum.quannengHudongXiaomiEventTypeMap.get(eventType).getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(quannengFanqieAdsDTO.getCallback());
         xiaomiVO.setOaid(quannengFanqieAdsDTO.getOaid());
