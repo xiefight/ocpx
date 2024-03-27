@@ -3,7 +3,6 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 import cn.hutool.core.net.URLDecoder;
 import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongAdsDTO;
 import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongEventTypeEnum;
-import huihuang.proxy.ocpx.ads.quannenghudong.fanqie.QuannengFanqiePath;
 import huihuang.proxy.ocpx.ads.quannenghudong.fanqiechangting.QuannengFanqieChangtingPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IQuannengFanqiechangtingAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -74,7 +73,11 @@ public class BaiduQuannengFanqiechangtingServiceImpl extends BaiduChannelFactory
         baiduVO.setCbImeiMd5(fqctAdsDTO.getImei());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(fqctAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.QUANNENG_FANQIE_CHANGTING_SECRET);
+        if (BaiduPath.QUANNENG_FANQIECHANGTING_ACCOUNT_02.equals(fqctAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.QUANNENG_FANQIE_CHANGTING_02_SECRET);
+        } else {
+            baiduVO.setSecret(BaiduPath.QUANNENG_FANQIE_CHANGTING_SECRET);
+        }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);
