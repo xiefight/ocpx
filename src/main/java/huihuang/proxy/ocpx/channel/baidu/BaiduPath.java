@@ -44,6 +44,13 @@ public class BaiduPath {
     public static final String XIANYU_04_SECRET = "NDk1ODUwMDQ=";
     public static final String XIANYU_05_SECRET = "NTM4OTEyMjc=";
 
+    public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_01 = "bdhuihxy01";
+    public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_02 = "bdhuihxy02";
+    public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_03 = "bdhuihxy03";
+    public static final String HUIHUANG_XIANYU_01_SECRET = "NDk1ODUwMDQ=";
+    public static final String HUIHUANG_XIANYU_02_SECRET = "NDk1ODUwMDg=";
+    public static final String HUIHUANG_XIANYU_03_SECRET = "NTM4OTEyMjc=";
+
     public static final String BAIDU_HUIHUI_TAOBAO_ACCOUNT_01 = "bdhhtb01";
     public static final String HUIHUI_TAOBAO_01_SECRET = "NTA4ODg1NDg=";
     //未上线
