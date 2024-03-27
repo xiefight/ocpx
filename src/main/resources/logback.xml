@@ -1613,6 +1613,14 @@
         <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangFengmangXianyuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangFengmangXianyuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+
 
     <!-- 辉煌 闲鱼 end -->
 

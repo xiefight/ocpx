@@ -93,6 +93,7 @@ public class Constants {
         public static final String XIAOMI_HUIHUANG_TOUTIAOJISU = "/xhhttjsServer";
         public static final String XIAOMI_HUIHUANG_YITAO = "/xhhytServer";
         public static final String XIAOMI_HUIHUANG_FENGMANG_YITAO = "/xhhfmytServer";
+        public static final String XIAOMI_HUIHUANG_FENGMANG_XIANYU = "/xhhxyServer";
         public static final String XIAOMI_HUIHUANG_YOUKU = "/xhhykServer";
         public static final String XIAOMI_HUIHUANG_JINGDONG = "/xhhjdServer";
 
@@ -253,6 +254,7 @@ public class Constants {
         public static final String XIAOMI_HUIHUANG_XIGUAVIDEO = "xiaomi-huihuang-xiguavideo";
         public static final String XIAOMI_HUIHUANG_TOUTIAOJISU = "xiaomi-huihuang-toutiaojisu";
         public static final String XIAOMI_HUIHUANG_YITAO = "xiaomi-huihuang-yitao";
+        public static final String XIAOMI_HUIHUANG_FENGMANG_XIANYU = "xiaomi-huihuangfengmang-xianyu";
         public static final String XIAOMI_HUIHUANG_FENGMANG_YITAO = "xiaomi-huihuangfengmang-yitao";
         public static final String XIAOMI_HUIHUANG_YOUKU = "xiaomi-huihuang-youku";
         public static final String XIAOMI_HUIHUANG_JINGDONG = "xiaomi-huihuang-jingdong";
