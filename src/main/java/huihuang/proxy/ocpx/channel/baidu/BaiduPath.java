@@ -53,9 +53,10 @@ public class BaiduPath {
 
     public static final String BAIDU_HUIHUI_TAOBAO_ACCOUNT_01 = "bdhhtb01";
     public static final String HUIHUI_TAOBAO_01_SECRET = "NTA4ODg1NDg=";
-    //未上线
     public static final String BAIDU_HUIHUI_TANTAN_ACCOUNT_01 = "bdhhtt01";
     public static final String HUIHUI_TANTAN_01_SECRET = "？";
+    public static final String BAIDU_HUIHUI_TONGCHENG_ACCOUNT_01 = "bdhhtc01";
+    public static final String HUIHUI_TONGCHENG_01_SECRET = "NTQyNDM2Mjk=";
 
     public static final String BAIDU_KUAISHOU_ACCOUNT_01 = "bdks01";
     public static final String BAIDU_KUAISHOU_ACCOUNT_02 = "bdks02";
