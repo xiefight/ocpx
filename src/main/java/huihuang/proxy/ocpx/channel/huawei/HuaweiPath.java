@@ -56,9 +56,13 @@ public class HuaweiPath {
     public static final String HUIHUANG_FANQIE_ACCOUNT_02 = "hwhhfqct02";
     public static final String HUIHUANG_HONGGUODUANJU_ACCOUNT_02 = "hwhhhgdj02";
     public static final String HUIHUANG_TOUTIAOJISU_ACCOUNT_02 = "hwhhttjs02";
+    public static final String HUIHUANG_XIANYU_ACCOUNT_01 = "hwhhxy01";
+    public static final String HUIHUANG_XIANYU_ACCOUNT_02 = "hwhhxy02";
     public static final String DIANTAO_SECRET = "cZ1S8DB7vgx5k+7awgFChN8hOAiIulw7fwGyP3Alzaw=";
     public static final String HUIHUANG_DOUYIN_HUOSHAN_SECRET = "NCOZSPwBg64Kb/UPT1g8f6TiQOW4rH2GbgVp55FF0n0=";
     public static final String HUIHUANG_XIGUA_VIDEO_SECRET = "bC0mZ00wTssMW1+lgA5K9DuMq3e5PFxKXEsn4QxDh30=";
+    public static final String HUIHUANG_XIANYU_01_SECRET = "jkcvW39AvnnNU30+0rM0MlieNSj4Fsk69K9R+KAfV8M=";
+    public static final String HUIHUANG_XIANYU_02_SECRET = "xKUsc5fpkq2zRCZj2xg4AwTlTeos2HDIKgsPbIBuPTY=";
     public static final String HUIHUANG_FANQIECHANGTING_SECRET = "KTlpWiHHQMOXlkxU6LyR3xBwr38bV0wjAr+YdXdcE/k=";
     public static final String HUIHUANG_FANQIECHANGTING_02_SECRET = "I4WKI+Q4qQ1WO5u7VV00jX8yi6mxv3Kjjn0opfTOX+w=";
     public static final String HUIHUANG_HONGGUODUANJU_SECRET = "7P6brRfmCVFs0fxzYgLYSE7SpYRH5adOnq6u3gajJXs=";
