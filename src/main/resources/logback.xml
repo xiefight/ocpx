@@ -1637,6 +1637,14 @@
         <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.HonorHuihuangFengmangXianyuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HonorHuihuangFengmangXianyuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_XIANYU_LOG"/>
+    </logger>
+
 
     <!-- 辉煌 闲鱼 end -->
 

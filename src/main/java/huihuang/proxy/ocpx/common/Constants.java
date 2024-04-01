@@ -214,6 +214,7 @@ public class Constants {
 
 
         public static final String HONOR_HUIHUANG_JINGDONG = "/honorhhjdServer";
+        public static final String HONOR_HUIHUANG_XIANYU = "/honorhhxyServer";
 
 
         public static final String MONITOR_ADDRESS = "/monitorAddress";
@@ -376,6 +377,7 @@ public class Constants {
 
 
         public static final String HONOR_HUIHUANG_JINGDONG = "honor-huihuang-jingdong";
+        public static final String HONOR_HUIHUANG_XIANYU = "honor-huihuang-xianyu";
     }
 
     public class AdsForChannel {
