@@ -45,13 +45,15 @@ public class BaiduPath {
     public static final String XIANYU_05_SECRET = "NTM4OTEyMjc=";
 
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_01 = "bdhuihxy01";
-    public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_02 = "bdhuihxy02";
+    public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_02 = "bdhuihxy02";//跑的lx052，数据对不上，暂停
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_03 = "bdhuihxy03";
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_04 = "bdhuihxy04";//闲鱼搜索，暂时不用了
+    public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_05 = "bdhuihxy05";
     public static final String HUIHUANG_XIANYU_01_SECRET = "NDk1ODUwMDQ=";
     public static final String HUIHUANG_XIANYU_02_SECRET = "NDk1ODUwMDg=";
     public static final String HUIHUANG_XIANYU_03_SECRET = "NTM4OTEyMjc=";
     public static final String HUIHUANG_XIANYU_04_SECRET = "NTQyMjc0MDI=";
+    public static final String HUIHUANG_XIANYU_05_SECRET = "NTQyMjc0MDY=";
 
     public static final String BAIDU_HUIHUI_TAOBAO_ACCOUNT_01 = "bdhhtb01";
     public static final String HUIHUI_TAOBAO_01_SECRET = "NTA4ODg1NDg=";

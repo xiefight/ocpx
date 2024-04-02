@@ -72,7 +72,7 @@ public class BaiduHuihuangXianyuServiceImpl extends BaiduChannelFactory implemen
             }
         }*/
 
-        if (BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_02.equals(hhxyAdsDTO.getAccountId())) {
+        if (BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_05.equals(hhxyAdsDTO.getAccountId())) {
             if (eventType.equals(HuihuangFengmangEventTypeEnum.REGISTER.getCode())) {
                 eventType = HuihuangFengmangEventTypeEnum.ACTIVATE.getCode();
             }
@@ -104,6 +104,8 @@ public class BaiduHuihuangXianyuServiceImpl extends BaiduChannelFactory implemen
             baiduVO.setSecret(BaiduPath.HUIHUANG_XIANYU_03_SECRET);
         } else if (BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_04.equals(hhxyAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.HUIHUANG_XIANYU_04_SECRET);
+        } else if (BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_05.equals(hhxyAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_XIANYU_05_SECRET);
         }
 
 
