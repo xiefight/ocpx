@@ -74,6 +74,8 @@ public abstract class HonorHuihuangReportFactory extends HuihuangMingtianReportF
         });
         String extras = HonorChannelFactory.fitExtras(parameterMap,
                 HonorParamEnum.TRACK_ID.getParam(),
+                "trackId",
+                "advertiserId",
                 HonorParamEnum.ADVERTISER_ID.getParam(),
                 HonorParamEnum.GROUPID.getParam(),
                 HonorParamEnum.CREATIVE_ID.getParam(),

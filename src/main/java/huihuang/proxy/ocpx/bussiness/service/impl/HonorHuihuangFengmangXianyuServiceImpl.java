@@ -63,8 +63,10 @@ public class HonorHuihuangFengmangXianyuServiceImpl extends HonorChannelFactory 
 //        honorVO.setTimestamp(String.valueOf(currentTime));
         honorVO.setConversionTime(String.valueOf(currentTime));
         honorVO.setConversionId(HuihuangFengmangEventTypeEnum.huihuangmingtianHonorEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
-        honorVO.setTrackId(getContentFromExtra(huihuangmingtianAdsDTO, HonorParamEnum.TRACK_ID.getParam(), ""));
-        honorVO.setAdvertiserId(getContentFromExtra(huihuangmingtianAdsDTO, HonorParamEnum.ADVERTISER_ID.getParam(), ""));
+        honorVO.setTrackId(getContentFromExtra(huihuangmingtianAdsDTO, HonorParamEnum.TRACK_ID.getParam(),
+                getContentFromExtra(huihuangmingtianAdsDTO, "trackId", "")));
+        honorVO.setAdvertiserId(getContentFromExtra(huihuangmingtianAdsDTO, HonorParamEnum.ADVERTISER_ID.getParam(),
+                getContentFromExtra(huihuangmingtianAdsDTO, "advertiserId", "")));
         honorVO.setOaid(huihuangmingtianAdsDTO.getOaid());
 //        if (HuaweiPath.HW_HH_JINGDONG_ACCOUNT_01.equals(huihuangmingtianAdsDTO.getAccountId())) {
 //            honorVO.setSecret(HuaweiPath.LTJD_02_SECRET);
