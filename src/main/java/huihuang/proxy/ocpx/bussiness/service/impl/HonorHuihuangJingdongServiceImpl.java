@@ -10,7 +10,6 @@ import huihuang.proxy.ocpx.bussiness.service.basechannel.HonorChannelFactory;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2HonorVO;
 import huihuang.proxy.ocpx.channel.honor.HonorCallbackDTO;
 import huihuang.proxy.ocpx.channel.honor.HonorParamEnum;
-import huihuang.proxy.ocpx.channel.huawei.HuaweiPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.common.Response;
@@ -46,13 +45,19 @@ public class HonorHuihuangJingdongServiceImpl extends HonorChannelFactory implem
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, parameterMap.get("event_type")[0]);
+        String eventType = parameterMap.get("event_type")[0];
+        logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
 
         //根据id查询对应的点击记录
         HuihuangmingtianAdsDTO huihuangmingtianAdsDTO = hhjdAdsDao.queryHuihuangJingdongAdsById(id);
         if (null == huihuangmingtianAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
+        }
+
+        //京东金融的注册  对应  荣耀的激活
+        if (HuihuangFengmangEventTypeEnum.REGISTER.getCode().equals(eventType)) {
+            eventType = HuihuangFengmangEventTypeEnum.ACTIVATE.getCode();
         }
 
         long currentTime = System.currentTimeMillis();
@@ -63,7 +68,7 @@ public class HonorHuihuangJingdongServiceImpl extends HonorChannelFactory implem
 
 //        honorVO.setTimestamp(String.valueOf(currentTime));
         honorVO.setConversionTime(String.valueOf(currentTime));
-        honorVO.setConversionId(HuihuangFengmangEventTypeEnum.huihuangmingtianHonorEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
+        honorVO.setConversionId(HuihuangFengmangEventTypeEnum.huihuangmingtianHonorEventTypeMap.get(eventType).getCode());
         honorVO.setTrackId(getContentFromExtra(huihuangmingtianAdsDTO, HonorParamEnum.TRACK_ID.getParam(), ""));
         honorVO.setAdvertiserId(getContentFromExtra(huihuangmingtianAdsDTO, HonorParamEnum.ADVERTISER_ID.getParam(), ""));
         honorVO.setOaid(huihuangmingtianAdsDTO.getOaid());
