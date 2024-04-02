@@ -47,7 +47,7 @@ public class BaiduPath {
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_01 = "bdhuihxy01";
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_02 = "bdhuihxy02";
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_03 = "bdhuihxy03";
-    public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_04 = "bdhuihxy04";
+    public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_04 = "bdhuihxy04";//闲鱼搜索，暂时不用了
     public static final String HUIHUANG_XIANYU_01_SECRET = "NDk1ODUwMDQ=";
     public static final String HUIHUANG_XIANYU_02_SECRET = "NDk1ODUwMDg=";
     public static final String HUIHUANG_XIANYU_03_SECRET = "NTM4OTEyMjc=";

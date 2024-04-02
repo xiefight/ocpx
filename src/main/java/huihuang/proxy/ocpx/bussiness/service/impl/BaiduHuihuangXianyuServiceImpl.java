@@ -56,6 +56,28 @@ public class BaiduHuihuangXianyuServiceImpl extends BaiduChannelFactory implemen
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
+
+        //百度-闲鱼1&4户 ：注册对应注册人数（激活不需要回传）
+        //百度-闲鱼2&3户：注册对应激活人数（激活也不需要回传）
+
+        if (eventType.equals(HuihuangFengmangEventTypeEnum.ACTIVATE.getCode())) {
+            logger.error("{} 百度-闲鱼 {} 不需要激活事件 {}", channelAdsKey, hhxyAdsDTO.getAccountId(), id);
+            return BasicResult.getFailResponse("百度-闲鱼不需要激活事件 " + id);
+        }
+        /*if (BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_01.equals(hhxyAdsDTO.getAccountId())
+                || BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_03.equals(hhxyAdsDTO.getAccountId())) {
+            if (eventType.equals(HuihuangFengmangEventTypeEnum.ACTIVATE.getCode())) {
+                logger.error("{} 百度-闲鱼 {} 不需要激活事件 {}", channelAdsKey, hhxyAdsDTO.getAccountId(), id);
+                return BasicResult.getFailResponse("小米-闲鱼不需要激活事件 " + id);
+            }
+        }*/
+
+        if (BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_02.equals(hhxyAdsDTO.getAccountId())) {
+            if (eventType.equals(HuihuangFengmangEventTypeEnum.REGISTER.getCode())) {
+                eventType = HuihuangFengmangEventTypeEnum.ACTIVATE.getCode();
+            }
+        }
+
         String callback = hhxyAdsDTO.getCallbackUrl();
         String channelUrl = URLDecoder.decode(callback, StandardCharsets.UTF_8);
 

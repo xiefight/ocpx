@@ -54,9 +54,15 @@ public class XiaomiHuihuangFengmangXianyuServiceImpl extends XiaomiChannelFactor
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
-        if (eventType.equals(HuihuangFengmangEventTypeEnum.ACTIVATE.getCode())) {
-            eventType = eventType + "new";
+        //小米-闲鱼不需要激活事件
+        if (eventType.equals(HuihuangFengmangEventTypeEnum.ACTIVATE.getCode())){
+            logger.error("{} 小米-闲鱼不需要激活事件 {}",channelAdsKey, id);
+            return BasicResult.getFailResponse("小米-闲鱼不需要激活事件 " + id);
         }
+
+        /*if (eventType.equals(HuihuangFengmangEventTypeEnum.ACTIVATE.getCode())) {
+            eventType = eventType + "new";
+        }*/
 
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
