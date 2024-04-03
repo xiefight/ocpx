@@ -49,11 +49,13 @@ public class BaiduPath {
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_03 = "bdhuihxy03";
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_04 = "bdhuihxy04";//闲鱼搜索，暂时不用了
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_05 = "bdhuihxy05";
+    public static final String BAIDU_HUIHUANG_XIANYUSOUSUO_ACCOUNT_01 = "bdhuihxyss01";
     public static final String HUIHUANG_XIANYU_01_SECRET = "NDk1ODUwMDQ=";
     public static final String HUIHUANG_XIANYU_02_SECRET = "NDk1ODUwMDg=";
     public static final String HUIHUANG_XIANYU_03_SECRET = "NTM4OTEyMjc=";
     public static final String HUIHUANG_XIANYU_04_SECRET = "NTQyMjc0MDI=";
     public static final String HUIHUANG_XIANYU_05_SECRET = "NTQyMjc0MDY=";
+    public static final String HUIHUANG_XIANYUSOUSUO_01_SECRET = "NDczMDc5OTY=";
 
     public static final String BAIDU_HUIHUI_TAOBAO_ACCOUNT_01 = "bdhhtb01";
     public static final String HUIHUI_TAOBAO_01_SECRET = "NTA4ODg1NDg=";
@@ -116,6 +118,7 @@ public class BaiduPath {
     public static final String QUANNENG_PIPIXIA_ACCOUNT_02 = "bdqnppx02";
     public static final String QUANNENG_JINRITOUTIAO_ACCOUNT_02 = "bdqnjrtt02";
     public static final String QUANNENG_JINRITOUTIAO_ACCOUNT_03 = "bdqnjrtt03";
+    public static final String QUANNENG_JINRITOUTIAO_ACCOUNT_04 = "bdqnjrtt04";
     public static final String QUANNENG_XIGUA_VIDEO_105_SECRET = "NTEwMjE4MDI=";
     public static final String QUANNENG_XIGUA_VIDEO_228_SECRET = "NTE0MjI1NDI=";
     public static final String QUANNENG_DOUYIN_JISU_131_SECRET = "NTEwMjE3OTM=";
@@ -123,6 +126,7 @@ public class BaiduPath {
     public static final String QUANNENG_JINRITOUTIAO_SECRET = "NTAyMTY0MzE=";
     public static final String QUANNENG_JINRITOUTIAO_02_SECRET = "NTI1OTY1OTc=";
     public static final String QUANNENG_JINRITOUTIAO_03_SECRET = "NTM5MzMzNTg=";
+    public static final String QUANNENG_JINRITOUTIAO_04_SECRET = "NTAyMTY0MjI=";
     public static final String QUANNENG_FANQIE161_SECRET = "NTExMjcyNjE=";
     public static final String QUANNENG_FANQIE176_SECRET = "NTExMjcyNjE=";
     public static final String QUANNENG_FANQIE207_SECRET = "NTExMjcyMDA=";

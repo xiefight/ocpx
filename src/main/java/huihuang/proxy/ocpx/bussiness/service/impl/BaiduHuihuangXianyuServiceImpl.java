@@ -106,6 +106,8 @@ public class BaiduHuihuangXianyuServiceImpl extends BaiduChannelFactory implemen
             baiduVO.setSecret(BaiduPath.HUIHUANG_XIANYU_04_SECRET);
         } else if (BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_05.equals(hhxyAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.HUIHUANG_XIANYU_05_SECRET);
+        } else if (BaiduPath.BAIDU_HUIHUANG_XIANYUSOUSUO_ACCOUNT_01.equals(hhxyAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_XIANYUSOUSUO_01_SECRET);
         }
 
 
