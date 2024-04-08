@@ -64,6 +64,10 @@ public enum BaiduParamEnum {
     KEEP_APPID("","appid","keep appid"),
     KEEP_CHANNEL("","channel","keep channel"),
 
+    T345_ADID("","adId","2345的adId"),
+    T345_CAMPAIGN_ID("","adId","2345的campaign_id"),
+    T345_CONTENT_ID("","adId","2345的content_id"),
+
     ;
 
 
