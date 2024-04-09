@@ -56,9 +56,9 @@ public class HonorHuihuangJingdongServiceImpl extends HonorChannelFactory implem
         }
 
         //京东金融的注册  对应  荣耀的激活
-        if (HuihuangFengmangEventTypeEnum.REGISTER.getCode().equals(eventType)) {
-            eventType = HuihuangFengmangEventTypeEnum.ACTIVATE.getCode();
-        }
+//        if (HuihuangFengmangEventTypeEnum.REGISTER.getCode().equals(eventType)) {
+//            eventType = HuihuangFengmangEventTypeEnum.ACTIVATE.getCode();
+//        }
 
         long currentTime = System.currentTimeMillis();
         Ads2HonorVO honorVO = new Ads2HonorVO();
