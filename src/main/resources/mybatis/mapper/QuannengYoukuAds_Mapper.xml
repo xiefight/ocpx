@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="huihuang.proxy.ocpx.bussiness.dao.ads.IQuannengYoukuAdsDao">
+
+    <resultMap id="quannengHudongAdsMap" type="huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongAdsDTO">
+        <id column="id" property="id"/>
+        <result column="pid" property="pid"/>
+        <result column="idfa" property="idfa"/>
+        <result column="imei" property="imei"/>
+        <result column="oaid" property="oaid"/>
+        <result column="caid" property="caid"/>
+        <result column="ip" property="ip"/>
+        <result column="android_id" property="androidId"/>
+        <result column="aaid" property="aaid"/>
+        <result column="ua" property="ua"/>
+        <result column="os" property="os"/>
+        <result column="model" property="model"/>
+        <result column="callback" property="callback"/>
+        <result column="uniqueid" property="uniqueId"/>
+        <result column="account_id" property="accountId"/>
+        <result column="extra" property="extra"/>
+        <result column="channel_name" property="channelName"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="report_status" property="reportStatus"/>
+        <result column="callback_status" property="callBackStatus"/>
+        <result column="callback_time" property="callBackTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongAdsDTO">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO quanneng_youku_ads
+        (pid, idfa, imei, oaid, caid, ip,
+        android_id, aaid, ua, os, model,account_id, callback, uniqueid, extra,channel_name, create_time, update_time,
+        report_status,
+        callback_status)
+        VALUES (#{pid}, #{idfa}, #{imei}, #{oaid}, #{caid}, #{ip}, #{androidId}, #{aaid},
+        #{ua}, #{os}, #{model},#{accountId}, #{callback}, #{uniqueId}, #{extra},#{channelName},now(),now(), "0", "0")
+    </insert>
+
+
+    <update id="update" parameterType="huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongAdsDTO">
+        UPDATE quanneng_youku_ads
+        <set>
+            <if test="pid != null">pid = #{pid},</if>
+            <if test="idfa != null">idfa = #{idfa},</if>
+            <if test="imei != null">imei = #{imei},</if>
+            <if test="oaid != null">oaid = #{oaid},</if>
+            <if test="caid != null">caid = #{caid},</if>
+            <if test="ip != null">ip = #{ip},</if>
+            <if test="androidId != null">android_id = #{androidId},</if>
+            <if test="aaid != null">aaid = #{aaid},</if>
+            <if test="ua != null">ua = #{ua},</if>
+            <if test="os != null">os = #{os},</if>
+            <if test="model != null">model = #{model},</if>
+            <if test="accountId != null">account_id = #{accountId},</if>
+            <if test="callback != null">callback = #{callback},</if>
+            <if test="uniqueId != null">uniqueid = #{uniqueId},</if>
+            <if test="extra != null">extra = #{extra},</if>
+            <if test="channelName != null">channel_name = #{channelName},</if>
+            update_time = now(),
+            <if test="reportStatus != null">report_status = #{reportStatus},</if>
+            <if test="callBackStatus != null">callback_status = #{callBackStatus},</if>
+            <if test="callBackTime != null">callback_time = #{callBackTime},</if>
+        </set>
+        where id =#{id}
+    </update>
+
+
+    <select id="queryQuannengYoukuAdsById" parameterType="java.lang.Integer" resultMap="quannengHudongAdsMap">
+        SELECT id,
+               pid,
+               idfa,
+               imei,
+               oaid,
+               caid,
+               ip,
+               android_id,
+               aaid,
+               ua,
+               os,
+               model,
+               account_id,
+               callback,
+               uniqueid,
+               extra,
+               channel_name,
+               create_time,
+               update_time,
+               report_status,
+               callback_status
+        FROM quanneng_youku_ads
+        WHERE id = #{id}
+    </select>
+
+
+</mapper>
