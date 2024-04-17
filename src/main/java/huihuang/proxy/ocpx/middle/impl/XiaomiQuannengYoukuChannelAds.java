@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.middle.impl;
 
 import huihuang.proxy.ocpx.bussiness.dao.ads.IQuannengPipixiaAdsDao;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IQuannengYoukuAdsDao;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
@@ -15,7 +16,7 @@ public class XiaomiQuannengYoukuChannelAds extends XiaomiQuannengHudongReportFac
     String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_QUANNENG_YOUKU;
 
     @Autowired
-    private IQuannengPipixiaAdsDao youkuAdsDao;
+    private IQuannengYoukuAdsDao youkuAdsDao;
 
     @Override
     protected String channelAdsKey() {

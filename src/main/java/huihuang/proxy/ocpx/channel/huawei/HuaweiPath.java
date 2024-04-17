@@ -104,6 +104,7 @@ public class HuaweiPath {
     public static final String QUANNENG_XIAOHONGSHU_SECRET = "lQ3F5ALgJXhlV5aLatOD5x8ZoD6lgNf5fad3QqtQyPA=";
     public static final String QUANNENG_YOUSHI_SECRET = "Ejxx2oa9jeVyR1HL9/AX9iC2sEr1e1ETxEPHrfrG4E8=";
     public static final String QUANNENG_PIPIXIA_SECRET = "4PEsfDuh9Dsed1SkwQ6uVCO7OqEkpvgr6aTu9sntwyc=";
+    public static final String QUANNENG_UC_SECRET = "1nVyNygyCKb/bQd9aKXvSjnt08duBYRX34Fw9Q/i47o=";
 
     //丁耘系
     public static final String DINGYUN_DOUYINHUOSHAN_SECRET = "NCOZSPwBg64Kb/UPT1g8f6TiQOW4rH2GbgVp55FF0n0=";
