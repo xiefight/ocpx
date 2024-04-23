@@ -141,6 +141,8 @@ public class BaiduPath {
     public static final String QUANNENG_PIPIXIA_SECRET = "NTI1OTY1ODc=";
     public static final String QUANNENG_PIPIXIA_02_SECRET = "NTM5MzM1NDc=";
     public static final String QUANNENG_YOUSHI_SECRET = "NTI1OTY1OTA=";
+    public static final String QUANNENG_UC_ACCOUNT_01 = "bdqnuc01";
+    public static final String QUANNENG_UC_SECRET_01 = "NTQ3MzE3NTM=";
 
 
     public static final String BAIDU_DINGYUN_DOUYINHUOSHAN_ACCOUNT = "bddydyhs01";

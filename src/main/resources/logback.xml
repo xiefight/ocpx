@@ -2099,6 +2099,14 @@
         <appender-ref ref="QUANNENG_UC_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduQuannengUCChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="QUANNENG_UC_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduQuannengUCServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="QUANNENG_UC_LOG"/>
+    </logger>
+
     <!-- UC（全能互动） start -->
 
     <!-- 七读 start -->
