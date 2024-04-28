@@ -90,6 +90,7 @@ public enum HuihuiParamEnum {
         huihuiXiaomiMap.put(REQ_ID, null);
         huihuiXiaomiMap.put(AAID, null);
         huihuiXiaomiMap.put(MODEL, null);//小米机型？
+        huihuiXiaomiMap.put(OCPX_ACCOUNT, XiaomiParamEnum.ACCOUNT_ID);
     }
 
 

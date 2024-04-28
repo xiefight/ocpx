@@ -80,6 +80,8 @@ public class BaiduQuannengJinritoutiaoServiceImpl extends BaiduChannelFactory im
             baiduVO.setSecret(BaiduPath.QUANNENG_JINRITOUTIAO_03_SECRET);
         } else if (BaiduPath.QUANNENG_JINRITOUTIAO_ACCOUNT_04.equals(dyjsAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.QUANNENG_JINRITOUTIAO_04_SECRET);
+        } else if (BaiduPath.QUANNENG_TOUTIAOJISU_ACCOUNT_01.equals(dyjsAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.QUANNENG_TOUTIAOJISU_SECRET_01);
         } else {
             baiduVO.setSecret(BaiduPath.QUANNENG_JINRITOUTIAO_SECRET);
         }
