@@ -73,7 +73,11 @@ public class BaiduHuihuangYitaoServiceImpl extends BaiduChannelFactory implement
         baiduVO.setCbImeiMd5(hhtmAdsDTO.getImeiMd5());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(hhtmAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.HUIHUANG_YITAO_SECRET);
+        if (BaiduPath.HUIHUANG_YITAO_ACCOUNT_02.equals(hhtmAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_YITAO_SECRET_02);
+        } else {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_YITAO_SECRET);
+        }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);
