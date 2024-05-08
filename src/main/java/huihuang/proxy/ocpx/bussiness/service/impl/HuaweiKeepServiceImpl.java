@@ -1,8 +1,8 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
-import huihuang.proxy.ocpx.ads.luyun.keep.KeepPath;
 import huihuang.proxy.ocpx.ads.luyun.LuyunAdsDTO;
 import huihuang.proxy.ocpx.ads.luyun.LuyunEventTypeEnum;
+import huihuang.proxy.ocpx.ads.luyun.keep.KeepPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IKeepAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -74,6 +74,10 @@ public class HuaweiKeepServiceImpl extends HuaweiChannelFactory implements IChan
 
         if (HuaweiPath.HW_KEEP_ACCOUNT_01.equals(keepAdsDTO.getAccountId())) {
             huaweiVO.setSecret(HuaweiPath.KEEP_SECRET_01);
+        } else if (HuaweiPath.HW_KEEP_ACCOUNT_02.equals(keepAdsDTO.getAccountId())) {
+            huaweiVO.setSecret(HuaweiPath.KEEP_SECRET_02);
+        } else if (HuaweiPath.HW_KEEP_ACCOUNT_03.equals(keepAdsDTO.getAccountId())) {
+            huaweiVO.setSecret(HuaweiPath.KEEP_SECRET_03);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 

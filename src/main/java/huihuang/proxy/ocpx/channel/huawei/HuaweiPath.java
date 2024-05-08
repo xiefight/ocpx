@@ -113,6 +113,12 @@ public class HuaweiPath {
 
     public static final String HW_KEEP_ACCOUNT_01 = "hwkeep01";
     public static final String KEEP_SECRET_01 = "SqO4o4KHCTKWVmkHwdbDdBURpviUCrUxaRHu+HLIxC0=";
+    //奇异果keep
+    public static final String HW_KEEP_ACCOUNT_02 = "hwkeep02";
+    public static final String KEEP_SECRET_02 = "qAzjQw2i7ZEI9AjQ/opFm9VxXLxsAfFsVIA3JKMTvYU=";
+    //品众keep
+    public static final String HW_KEEP_ACCOUNT_03 = "hwkeep03";
+    public static final String KEEP_SECRET_03 = "xaZeAMCE5Ax6CN/zJVrSVh20YgbsKhT/OJgMx7CpB68=";
 
     public static final String CALLBACK_URL = "https://ppscrowd-drcn.op.hicloud.com/action-lib-track/hiad/v2/actionupload?";
 }
