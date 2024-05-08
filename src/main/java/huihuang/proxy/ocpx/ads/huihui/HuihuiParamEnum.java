@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.huihui;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
@@ -170,5 +171,31 @@ public enum HuihuiParamEnum {
         huihuiIQiyiMap.put(MODEL, null);
         huihuiIQiyiMap.put(OCPX_ACCOUNT, IQiyiParamEnum.ACCOUNT_ID);
     }
+
+    public static Map<HuihuiParamEnum, GuangdiantongParamEnum> huihuiGDTMap;
+
+    static {
+        huihuiGDTMap = new HashMap<>();
+        huihuiGDTMap.put(AID, GuangdiantongParamEnum.HUIHUIYOUDAO_AID);
+        huihuiGDTMap.put(SID, GuangdiantongParamEnum.HUIHUIYOUDAO_SID);
+        huihuiGDTMap.put(CONV_EXT, GuangdiantongParamEnum.HUIHUIYOUDAO_CONV_EXT);
+        huihuiGDTMap.put(IMEI, GuangdiantongParamEnum.MUID);
+        huihuiGDTMap.put(OAID, null);
+        huihuiGDTMap.put(OAID_MD5, GuangdiantongParamEnum.HASH_OAID);
+        huihuiGDTMap.put(IDFA, null);
+        huihuiGDTMap.put(IDFA_MD5, GuangdiantongParamEnum.MUID);
+        huihuiGDTMap.put(CAID, null);
+        huihuiGDTMap.put(CAID_MD5, null);
+        huihuiGDTMap.put(TS, GuangdiantongParamEnum.CLICK_TIME);
+        huihuiGDTMap.put(OS, GuangdiantongParamEnum.DEVICE_OS_TYPE);
+        huihuiGDTMap.put(IP, GuangdiantongParamEnum.IP);
+        huihuiGDTMap.put(UA, GuangdiantongParamEnum.USER_AGENT);
+        huihuiGDTMap.put(CALLBACK, GuangdiantongParamEnum.CALLBACK);
+        huihuiGDTMap.put(REQ_ID, GuangdiantongParamEnum.REQUEST_ID);
+        huihuiGDTMap.put(AAID, null);
+        huihuiGDTMap.put(MODEL, null);
+        huihuiGDTMap.put(OCPX_ACCOUNT, GuangdiantongParamEnum.ACCOUNT_ID_OWN);
+    }
+
 
 }

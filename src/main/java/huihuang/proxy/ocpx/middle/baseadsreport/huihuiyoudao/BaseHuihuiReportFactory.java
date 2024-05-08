@@ -86,7 +86,7 @@ public abstract class BaseHuihuiReportFactory extends BaseSupport implements ICh
         }
 
         //操作系统
-        if (StrUtil.isNotEmpty(huihuiParamField.getIdfa()) || StrUtil.isNotEmpty(huihuiParamField.getIdfa_md5())) {
+        if (null == huihuiParamField.getOs() && (StrUtil.isNotEmpty(huihuiParamField.getIdfa()) || StrUtil.isNotEmpty(huihuiParamField.getIdfa_md5()))) {
             huihuiParamField.setOs("ios");
         } else {
             huihuiParamField.setOs("android");

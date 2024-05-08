@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.ads.huihui;
 
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
+import huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongEventTypeEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
@@ -174,7 +175,38 @@ public enum HuihuiEventTypeEnum {
         huihuiIQiyiEventTypeMap.put(IOS_CREDIT.code, null);
         //自定义
         huihuiIQiyiEventTypeMap.put(ANDROID_CUSTOM.code, null);
-        huihuiBaiduEventTypeMap.put(IOS_CUSTOM.code, null);
+        huihuiIQiyiEventTypeMap.put(IOS_CUSTOM.code, null);
+
+    }
+
+
+    public static Map<String, GuangdiantongEventTypeEnum> huihuiGDTEventTypeMap;
+
+    static {
+        huihuiGDTEventTypeMap = CollUtil.newHashMap();
+        //下载
+        huihuiGDTEventTypeMap.put(ANDROID_DOWNLOAD.code, null);
+        //激活
+        huihuiGDTEventTypeMap.put(ANDROID_ACTIVATE.code, GuangdiantongEventTypeEnum.ACTIVE);
+        huihuiGDTEventTypeMap.put(IOS_ACTIVATE.code, GuangdiantongEventTypeEnum.ACTIVE);
+        //注册
+        huihuiGDTEventTypeMap.put(ANDROID_REGISTER.code, GuangdiantongEventTypeEnum.REGISTER);
+        huihuiGDTEventTypeMap.put(IOS_REGISTER.code, GuangdiantongEventTypeEnum.REGISTER);
+        //次日留存
+        huihuiGDTEventTypeMap.put(ANDROID_DAY1RETENTION.code, GuangdiantongEventTypeEnum.START_APP);
+        huihuiGDTEventTypeMap.put(IOS_DAY1RETENTION.code, GuangdiantongEventTypeEnum.START_APP);
+        //加入购物车
+        huihuiGDTEventTypeMap.put(ANDROID_ADDTOCART.code, null);
+        huihuiGDTEventTypeMap.put(IOS_ADDTOCART.code, null);
+        //购买
+        huihuiGDTEventTypeMap.put(ANDROID_PURCHASE.code, GuangdiantongEventTypeEnum.PURCHASE);
+        huihuiGDTEventTypeMap.put(IOS_PURCHASE.code, GuangdiantongEventTypeEnum.PURCHASE);
+        //授信
+        huihuiGDTEventTypeMap.put(ANDROID_CREDIT.code, null);
+        huihuiGDTEventTypeMap.put(IOS_CREDIT.code, null);
+        //自定义
+        huihuiGDTEventTypeMap.put(ANDROID_CUSTOM.code, null);
+        huihuiGDTEventTypeMap.put(IOS_CUSTOM.code, null);
 
     }
 

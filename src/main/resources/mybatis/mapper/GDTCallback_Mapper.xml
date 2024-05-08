@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="huihuang.proxy.ocpx.bussiness.dao.channel.IGDTCallbackDao">
+
+    <resultMap id="gdtCallbackMap" type="huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongCallbackDTO">
+        <id column="id" property="id"/>
+        <id column="ads_id" property="adsId"/>
+<!--        <result column="event_time" property="eventTime"/>-->
+        <result column="action_type" property="actionType"/>
+        <result column="ads_name" property="adsName"/>
+        <result column="callback_status" property="callBackStatus"/>
+        <result column="callback_mes" property="callBackMes"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongCallbackDTO">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO guangdiantong_callback
+        (ads_id, action_type, ads_name, callback_status,callback_mes, create_time, update_time)
+        VALUES (#{adsId}, #{actionType}, #{adsName}, #{callBackStatus}, #{callBackMes},now(),now())
+    </insert>
+
+
+</mapper>
