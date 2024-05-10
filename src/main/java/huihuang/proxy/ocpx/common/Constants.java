@@ -174,6 +174,7 @@ public class Constants {
         public static final String HUAWEI_HUIHUI_TANTAN = "/hhhttServer";
         public static final String HUAWEI_HUIHUI_TAOBAO = "/hhhtbServer";
         public static final String HUAWEI_HUIHUI_QQREAD = "/hhhqqrServer";
+        public static final String HUAWEI_HUIHUI_GUAZI = "/hhhgzServer";
 
         public static final String HUAWEI_DIANTAO = "/hdtServer";
         public static final String HUAWEI_HUIHUANG_DOUYINHUOSHAN = "/hhhdyhsServer";
@@ -347,6 +348,7 @@ public class Constants {
         public static final String HUAWEI_HUIHUI_TANTAN = "huawei-huihui-tantan";
         public static final String HUAWEI_HUIHUI_TAOBAO = "huawei-huihui-taobao";
         public static final String HUAWEI_HUIHUI_QQREAD = "huawei-huihui-qqread";
+        public static final String HUAWEI_HUIHUI_GUAZI = "huawei-huihui-guazi";
 
         public static final String HUAWEI_HUIHUANG_DOUYINHUOSHAN = "huawei-huihuang_douyinhuoshan";
         public static final String HUAWEI_HUIHUANG_XIGUAVIDEO = "huawei-huihuang_xiguavideo";

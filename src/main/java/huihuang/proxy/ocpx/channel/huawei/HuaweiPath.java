@@ -40,6 +40,7 @@ public class HuaweiPath {
     public static final String HW_HH_TANTAN_ACCOUNT_01 = "hwhhtt01";
     public static final String HW_HH_TAOBAO_ACCOUNT_01 = "hwhhtb01";
     public static final String HW_HH_QQREAD_ACCOUNT_01 = "hwhhqqr01";
+    public static final String HW_HH_GUAZI_ACCOUNT_01 = "hwhhgz01";
     public static final String TUHU_SECRET = "kG7rK8Z0G2+sAU9PndgTCvjmea/vqUpEOMIAsnaaVFg=";
     public static final String XIANYU_SECRET = "jkcvW39AvnnNU30+0rM0MlieNSj4Fsk69K9R+KAfV8M=";
     public static final String XIANYU36626_SECRET = "6XWsEIZqsvKi820dScwvK6ONsB5DhG4Bp7uMza4L7Eg=";
@@ -49,6 +50,7 @@ public class HuaweiPath {
     public static final String TANTAN_01_SECRET = "QPPqntLDz83VMNpUFuvlNlqXNXDFD0uUTjupiloV6rk=";
     public static final String TAOBAO_01_SECRET = "mnQdEu2HjHkum9SJNo9A3+FZ90+J2FjGHmFT1cBZi50=";
     public static final String QQREAD_01_SECRET = "？";
+    public static final String GUAZI_01_SECRET = "Q1c8K2sLYnqXbH8PZA3ndPDFtBXDJLIouBd45ZN66X0=";
 
     public static final String IQIYI_SECRET = "CSfUp2v5dmrCfqSU0MrHtDYHhBUr4M9sUqNuzPKbmKY=";
 

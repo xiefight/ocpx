@@ -679,7 +679,7 @@
     <appender name="HUIHUI_TAOBAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/taobao/taobao.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <fileNamePattern>logs/xianyu/xianyu.log.%i</fileNamePattern>
+            <fileNamePattern>logs/taobao/taobao.log.%i</fileNamePattern>
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
@@ -716,6 +716,34 @@
     </logger>
 
     <!-- huihui有道 淘宝 end -->
+
+    <!-- huihui有道 瓜子二手车 start -->
+    <appender name="HUIHUI_GUAZI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuiguazi/guazi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuiguazi/guazi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>20</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuiGuaziChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_GUAZI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiGuaziServiceImpl" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUI_GUAZI_LOG"/>
+    </logger>
+
+    <!-- huihui有道 瓜子二手车 end -->
 
 
     <!-- 途虎 start -->
