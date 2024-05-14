@@ -67,7 +67,9 @@ public class BaiduHuihuiXianyuServiceImpl extends BaiduChannelFactory implements
         //针对闲鱼aid=36490(原33936)的户，闲鱼注册事件对应百度激活事件，这里特殊处理一下，而闲鱼的激活事件暂时不处理
         //通过账户进行特殊处理，不再通过aid进行特殊处理
 //        if ("36490".equals(xianyuAdsDTO.getAid())) {
-        if(BaiduPath.BAIDU_XIANYU_ACCOUNT_02.equals(ocpxAccount) || BaiduPath.BAIDU_XIANYU_ACCOUNT_03.equals(ocpxAccount)){
+        if(BaiduPath.BAIDU_XIANYU_ACCOUNT_02.equals(ocpxAccount)
+                || BaiduPath.BAIDU_XIANYU_ACCOUNT_03.equals(ocpxAccount)
+                || BaiduPath.BAIDU_XIANYU_ACCOUNT_06.equals(ocpxAccount)){
             if (eventType.equals(HuihuiEventTypeEnum.ANDROID_ACTIVATE.getCode())
                     || eventType.equals(HuihuiEventTypeEnum.IOS_ACTIVATE.getCode())) {
                 return BasicResult.getFailResponse(ocpxAccount + "的闲鱼户不需要回传激活事件:" + id);
@@ -106,6 +108,8 @@ public class BaiduHuihuiXianyuServiceImpl extends BaiduChannelFactory implements
             baiduVO.setSecret(BaiduPath.XIANYU_04_SECRET);
         } else if (BaiduPath.BAIDU_XIANYU_ACCOUNT_05.equals(ocpxAccount)) {
             baiduVO.setSecret(BaiduPath.XIANYU_05_SECRET);
+        } else if (BaiduPath.BAIDU_XIANYU_ACCOUNT_06.equals(ocpxAccount)) {
+            baiduVO.setSecret(BaiduPath.XIANYU_06_SECRET);
         } else {
             //默认
             baiduVO.setSecret(BaiduPath.XIANYU_01_SECRET);
