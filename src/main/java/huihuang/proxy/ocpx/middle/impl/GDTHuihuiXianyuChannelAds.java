@@ -2,8 +2,10 @@ package huihuang.proxy.ocpx.middle.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiParamField;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuiXianyuAdsDao;
+import huihuang.proxy.ocpx.cache.impl.GDTCache;
 import huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongPath;
 import huihuang.proxy.ocpx.common.Constants;
+import huihuang.proxy.ocpx.exception.RepeatException;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import huihuang.proxy.ocpx.middle.baseadsreport.huihuiyoudao.GDTHuihuiReportFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ public class GDTHuihuiXianyuChannelAds extends GDTHuihuiReportFactory {
 
     @Autowired
     private IHuihuiXianyuAdsDao xianyuAdsDao;
+    @Autowired
+    private GDTCache gdtCache;
 
     String channelAdsKey = Constants.ChannelAdsKey.GDT_HUIHUI_XIANYU;
 
@@ -38,6 +42,35 @@ public class GDTHuihuiXianyuChannelAds extends GDTHuihuiReportFactory {
     @Override
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
         HuihuiParamField huihuiParamField = (HuihuiParamField) super.channelParamToAdsParam(parameterMap);
+
+        synchronized (this) {
+            String key = huihuiParamField.getOcpxAccount() + "_";
+            if (huihuiParamField.getImei() != null && gdtCache.find(key + huihuiParamField.getImei())) {
+                logger.info("近十分钟内有重复请求:{}", key + huihuiParamField.getImei());
+                throw new RepeatException("重复请求 " + key + huihuiParamField.getImei());
+            } else {
+                gdtCache.put(key + huihuiParamField.getImei(), 1);
+            }
+            if (huihuiParamField.getOaid() != null && gdtCache.find(key + huihuiParamField.getOaid())) {
+                logger.info("近十分钟内有重复请求:{}", key + huihuiParamField.getOaid());
+                throw new RepeatException("重复请求 " + key + huihuiParamField.getOaid());
+            } else {
+                gdtCache.put(key + huihuiParamField.getOaid(), 1);
+            }
+            if (huihuiParamField.getOaid_md5() != null && gdtCache.find(key + huihuiParamField.getOaid_md5())) {
+                logger.info("近十分钟内有重复请求:{}", key + huihuiParamField.getOaid_md5());
+                throw new RepeatException("重复请求 " + key + huihuiParamField.getOaid_md5());
+            } else {
+                gdtCache.put(key + huihuiParamField.getOaid_md5(), 1);
+            }
+            if (huihuiParamField.getIp() != null && gdtCache.find(key + huihuiParamField.getIp())) {
+                logger.info("近十分钟内有重复请求:{}", key + huihuiParamField.getIp());
+                throw new RepeatException("重复请求 " + key + huihuiParamField.getIp());
+            } else {
+                gdtCache.put(key + huihuiParamField.getIp(), 1);
+            }
+        }
+
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey, huihuiParamField);
         huihuiParamField.setRedirect("false");
         if (GuangdiantongPath.GUANGDIANTONG_HUIHUI_XIANYU_01.equals(huihuiParamField.getOcpxAccount())
