@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.kuaishou;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
 import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
@@ -196,6 +197,34 @@ public enum KuaishouParamEnum {
         kuaishouIQiyiMap.put(CAID_LIST, null);
         kuaishouIQiyiMap.put(USER_AGENT, IQiyiParamEnum.UA);
         kuaishouIQiyiMap.put(CALLBACK, IQiyiParamEnum.CALLBACK_URL);
+    }
+
+
+    /**
+     * guangdiantong-kuaishou
+     */
+    public static Map<KuaishouParamEnum, GuangdiantongParamEnum> kuaishouGudangdiantongMap;
+
+    static {
+        kuaishouGudangdiantongMap = new HashMap<>();
+        kuaishouGudangdiantongMap.put(ADID, GuangdiantongParamEnum.KUAISHOU_ADID);
+        kuaishouGudangdiantongMap.put(IMEI, GuangdiantongParamEnum.MUID);
+        //由于imei和idfa都使用muid，监测链接中会重复，这里如果有muid，我们先给imei，然后在后续填充对象时，再判断是将muid赋值给imei还是idfa
+//        kuaishouGudangdiantongMap.put(IDFA, GuangdiantongParamEnum.MUID);
+        kuaishouGudangdiantongMap.put(OAID, GuangdiantongParamEnum.HASH_OAID);
+        kuaishouGudangdiantongMap.put(ANDROID_ID, null);
+        kuaishouGudangdiantongMap.put(MAC, null);
+        kuaishouGudangdiantongMap.put(IP, GuangdiantongParamEnum.IP);
+        kuaishouGudangdiantongMap.put(ACCOUNT_ID, GuangdiantongParamEnum.ACCOUNT_ID_OWN);
+        kuaishouGudangdiantongMap.put(CLICK_ID, null);//由中间层生成时间戳
+        kuaishouGudangdiantongMap.put(CAMPAIGN_ID, GuangdiantongParamEnum.CAMPAIGN_ID);
+        kuaishouGudangdiantongMap.put(ADGROUP_ID, null);
+        kuaishouGudangdiantongMap.put(CREATEIVE_ID, GuangdiantongParamEnum.AD_ID);
+        kuaishouGudangdiantongMap.put(ADVERTISER_ID, GuangdiantongParamEnum.ADGROUP_ID);
+        kuaishouGudangdiantongMap.put(RTA_ID, null);
+        kuaishouGudangdiantongMap.put(CAID_LIST, null);
+        kuaishouGudangdiantongMap.put(USER_AGENT, GuangdiantongParamEnum.USER_AGENT);
+        kuaishouGudangdiantongMap.put(CALLBACK, GuangdiantongParamEnum.CALLBACK);
     }
 
 }

@@ -319,6 +319,8 @@ public class ChannelAdsConfig {
 
     @Autowired
     private GDTHuihuiXianyuChannelAds gdthhxyChannelAds;
+    @Autowired
+    private GDTKuaishouChannelAds gdtksChannelAds;
 
     @PostConstruct
     public void init() {
@@ -481,6 +483,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.HONOR_HUIHUANG_XIANYU, honorhhxyChannelAds);
 
         channelAdsMap.put(Constants.ChannelAdsKey.GDT_HUIHUI_XIANYU, gdthhxyChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.GDT_KUAISHOU, gdtksChannelAds);
 
     }
 

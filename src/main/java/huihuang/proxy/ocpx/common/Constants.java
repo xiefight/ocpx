@@ -224,6 +224,7 @@ public class Constants {
 
 
         public static final String GDT_HUIHUI_XIANYU = "/gdthhxyServer";
+        public static final String GDT_KUAISHOU = "/gdtksServer";
 
 
         public static final String MONITOR_ADDRESS = "/monitorAddress";
@@ -391,6 +392,7 @@ public class Constants {
         public static final String IQIYI_HUIHUI_XIANYU = "iqiyi-huihui-xianyu";
 
         public static final String GDT_HUIHUI_XIANYU = "gdt-huihui-xianyu";
+        public static final String GDT_KUAISHOU = "gdt-kuaishou";
 
 
         public static final String HONOR_HUIHUANG_JINGDONG = "honor-huihuang-jingdong";
