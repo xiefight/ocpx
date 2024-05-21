@@ -109,15 +109,19 @@ public class GDTKuaishouChannelAds extends KuaishouReportFactory {
     protected void convertParams(Object adsObj) {
         super.convertParams(adsObj);
         KuaishouParamField kuaishouParamField = (KuaishouParamField) adsObj;
+        logger.info("convertParams {} 处理kuaishouParamField前 {}", channelAdsKey, kuaishouParamField);
+        //imei为空，说明muid是空的，不处理
         if (kuaishouParamField.getImei() == null || "".equals(kuaishouParamField.getImei())) {
             return;
         }
-        if (kuaishouParamField.getOaid() == null || "".equals(kuaishouParamField.getOaid())) {
+        //oaid不为空，说明是imei，否则是idfa
+        if (kuaishouParamField.getOaid() != null) {
             return;
         }
         String imei = kuaishouParamField.getImei();
         kuaishouParamField.setIdfa(imei);
         kuaishouParamField.setImei(null);
+        logger.info("convertParams {} 处理kuaishouParamField后 {}", channelAdsKey, kuaishouParamField);
     }
 
     /**
