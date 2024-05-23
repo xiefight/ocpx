@@ -1522,6 +1522,14 @@
         <appender-ref ref="HUIHUANG_YOUKU_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangYoukuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_YOUKU_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangYoukuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_YOUKU_LOG"/>
+    </logger>
+
     <!-- 辉煌 优酷 end -->
 
 
