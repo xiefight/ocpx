@@ -103,10 +103,6 @@ public abstract class HuihuangMingtianReportFactory extends BaseSupport implemen
 //            ocpxUrl = URLEncoder.encode(ocpxUrl, "UTF-8");
         huihuangmingtianParamField.setCallbackUrl(encodeUrl);
 
-        //将channel去掉，该字段和辉煌给闲鱼的冲突了
-        huihuangmingtianParamField.setChannel(null);
-        huihuangmingtianParamField.setExtra(null);
-        huihuangmingtianParamField.setAccount_id(null);
         logger.info("clickReport {} 回调参数 replaceCallbackUrl:{}", channelAdsKey(), huihuangmingtianParamField);
     }
 
