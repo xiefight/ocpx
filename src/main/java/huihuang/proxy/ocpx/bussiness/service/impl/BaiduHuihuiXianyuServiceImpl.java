@@ -69,7 +69,8 @@ public class BaiduHuihuiXianyuServiceImpl extends BaiduChannelFactory implements
 //        if ("36490".equals(xianyuAdsDTO.getAid())) {
         if(BaiduPath.BAIDU_XIANYU_ACCOUNT_02.equals(ocpxAccount)
                 || BaiduPath.BAIDU_XIANYU_ACCOUNT_03.equals(ocpxAccount)
-                || BaiduPath.BAIDU_XIANYU_ACCOUNT_06.equals(ocpxAccount)){
+                || BaiduPath.BAIDU_XIANYU_ACCOUNT_06.equals(ocpxAccount)
+                || BaiduPath.BAIDU_XIANYU_ACCOUNT_07.equals(ocpxAccount)){
             if (eventType.equals(HuihuiEventTypeEnum.ANDROID_ACTIVATE.getCode())
                     || eventType.equals(HuihuiEventTypeEnum.IOS_ACTIVATE.getCode())) {
                 return BasicResult.getFailResponse(ocpxAccount + "的闲鱼户不需要回传激活事件:" + id);
@@ -110,6 +111,8 @@ public class BaiduHuihuiXianyuServiceImpl extends BaiduChannelFactory implements
             baiduVO.setSecret(BaiduPath.XIANYU_05_SECRET);
         } else if (BaiduPath.BAIDU_XIANYU_ACCOUNT_06.equals(ocpxAccount)) {
             baiduVO.setSecret(BaiduPath.XIANYU_06_SECRET);
+        } else if (BaiduPath.BAIDU_XIANYU_ACCOUNT_07.equals(ocpxAccount)) {
+            baiduVO.setSecret(BaiduPath.XIANYU_07_SECRET);
         } else {
             //默认
             baiduVO.setSecret(BaiduPath.XIANYU_01_SECRET);
