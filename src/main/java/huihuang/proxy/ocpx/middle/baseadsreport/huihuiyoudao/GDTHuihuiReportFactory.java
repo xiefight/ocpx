@@ -77,6 +77,7 @@ public abstract class GDTHuihuiReportFactory extends BaseHuihuiReportFactory {
 
     @Override
     protected void convertParams(Object adsObj) {
+        super.convertParams(adsObj);
         HuihuiParamField huihuiParamField = (HuihuiParamField) adsObj;
         if ("android".equals(huihuiParamField.getOs())) {
             huihuiParamField.setIdfa(null);
@@ -86,6 +87,8 @@ public abstract class GDTHuihuiReportFactory extends BaseHuihuiReportFactory {
             huihuiParamField.setOaid(null);
             huihuiParamField.setOaid_md5(null);
         }
+
+        huihuiParamField.setTs(System.currentTimeMillis() + "");
     }
 
 
