@@ -1579,7 +1579,7 @@
 
     <!-- 辉煌 京东 end -->
 
-    <!-- 辉煌 京东 start -->
+    <!-- 辉煌 爱聊 start -->
     <appender name="HUIHUANG_AILIAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/hhailiao/hhailiao.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
@@ -1607,7 +1607,15 @@
         <appender-ref ref="HUIHUANG_AILIAO_LOG"/>
     </logger>
 
-    <!-- 辉煌 京东 end -->
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiHuihuangAiliaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_AILIAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiHuihuangAiliaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_AILIAO_LOG"/>
+    </logger>
+
+    <!-- 辉煌 爱聊 end -->
 
     <!-- 辉煌 头条极速 start -->
     <appender name="HUIHUANG_TOUTIAOJISU_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
