@@ -22,7 +22,7 @@ public class HuaweiPath {
     public static final String HW_KS_ACCOUNT_04 = "hwks04";
     public static final String KUAISHOU4_SECRET = "R2etToXeBJy8jGmQpmDs1PGEAIGKbAObw9VJRF2HT4I=";
 
-    public static final String HW_HH_JINGDONG_ACCOUNT_01 = "hwhhjd01";
+
     public static final String LTJD_SECRET = "ggJC4oDsoBpalFHbHqmxcWxY4fmg6tZnYBTPxU5LLtI=";//"Txycx3/Kk14tow5N952l56bgKU+31pQ6W+tkWNlp2TY=";
     public static final String LTJD_02_SECRET = "+ZTn5tcB6xXL7rder5hHLkikXMzy+PSn6MmD92pyuLI=";
 
@@ -74,6 +74,9 @@ public class HuaweiPath {
     public static final String HUIHUANG_YOUKU_SECRET = "iREg9fQ6RJI8KtN0Frt7/44S2YMdJ3antwI/Vxqa+3k=";
     public static final String HUIHUANG_AILIAO_ACCOUNT_01 = "hwhhal01";
     public static final String HUIHUANG_AILIAO_SECRET_01 = "Aznblzt4ozHLa8c4LlAozxVxEmkNqx7hpm2QnLb5ido=";
+    public static final String HUIHUANG_JINGDONG_ACCOUNT_01 = "hwhhjd01";
+    public static final String HUIHUANG_JINGDONG_ACCOUNT_02 = "hwhhjd02";
+    public static final String HUIHUANG_JINGDONG_SECRET_02 = "1OjSQ/qwGyhrCTWIA5DVSCD/8abOPfbDsvGNnSfC8aQ=";
 
     //用于同一pid区分不出来的情况下，使用accountId区分
     public static final String HW_QUANNENG_DOUYIN_JISU_ACCOUNT_01 = "hwqndyjs01";

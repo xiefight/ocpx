@@ -1,6 +1,5 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
-import huihuang.proxy.ocpx.ads.huihuang.HuihuangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangJingdongPath;
@@ -69,8 +68,10 @@ public class HuaweiHuihuangJingdongServiceImpl extends HuaweiChannelFactory impl
         huaweiVO.setConversionTime(String.valueOf(currentTime / 1000));
         huaweiVO.setConversionType(HuihuangmingtianEventTypeEnum.huihuangmingtianHuaweiEventTypeMap.get(parameterMap.get("event_type")[0]).getCode());
         huaweiVO.setOaid(huihuangmingtianAdsDTO.getOaid());
-        if (HuaweiPath.HW_HH_JINGDONG_ACCOUNT_01.equals(huihuangmingtianAdsDTO.getAccountId())) {
+        if (HuaweiPath.HUIHUANG_JINGDONG_ACCOUNT_01.equals(huihuangmingtianAdsDTO.getAccountId())) {
             huaweiVO.setSecret(HuaweiPath.LTJD_02_SECRET);
+        } else if (HuaweiPath.HUIHUANG_JINGDONG_ACCOUNT_02.equals(huihuangmingtianAdsDTO.getAccountId())) {
+            huaweiVO.setSecret(HuaweiPath.HUIHUANG_JINGDONG_SECRET_02);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, huaweiVO);
 
