@@ -187,7 +187,7 @@ public enum KuaishouParamEnum {
         kuaishouIQiyiMap.put(ANDROID_ID, IQiyiParamEnum.ANDROID_ID_MD5);
         kuaishouIQiyiMap.put(MAC, IQiyiParamEnum.MAC);
         kuaishouIQiyiMap.put(IP, IQiyiParamEnum.IP);
-        kuaishouIQiyiMap.put(ACCOUNT_ID, null);
+        kuaishouIQiyiMap.put(ACCOUNT_ID, IQiyiParamEnum.ACCOUNT_ID);
         kuaishouIQiyiMap.put(CLICK_ID, null);//由中间层生成时间戳
         kuaishouIQiyiMap.put(CAMPAIGN_ID, null);
         kuaishouIQiyiMap.put(ADGROUP_ID, null);//XiaomiParamEnum.CUSTOMERID
