@@ -2596,11 +2596,10 @@
     <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiLuyunKeepChannelAds" level="INFO" additivity="true">
         <appender-ref ref="KEEP_LOG"/>
     </logger>
-    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiLuyunXiaomiKeepServiceImpl" level="INFO"
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiLuyunKeepServiceImpl" level="INFO"
             additivity="true">
         <appender-ref ref="KEEP_LOG"/>
     </logger>
-
 
     <!-- keep end -->
 
@@ -2670,6 +2669,14 @@
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiLuyunXiaohongshuServiceImpl" level="INFO"
             additivity="true">
         <appender-ref ref="LUYUN_XIAOHONGSHU_LOG"/>
+    </logger>
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiLuyunXiaohongshuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiLuyunXiaohongshuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="KEEP_LOG"/>
     </logger>
 
 
