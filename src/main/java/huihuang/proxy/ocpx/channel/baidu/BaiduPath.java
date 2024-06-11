@@ -40,6 +40,7 @@ public class BaiduPath {
     public static final String BAIDU_XIANYU_ACCOUNT_05 = "bdhhxy05";
     public static final String BAIDU_XIANYU_ACCOUNT_06 = "bdhhxy06";
     public static final String BAIDU_XIANYU_ACCOUNT_07 = "bdhhxy07";
+    public static final String BAIDU_XIANYUSOUSUO_ACCOUNT_01 = "bdhhxyss01";
     public static final String XIANYU_01_SECRET = "NDk1ODUwMDQ=";
     public static final String XIANYU_02_SECRET = "NDk1ODUwMDg=";
     public static final String XIANYU_03_SECRET = "NDk1ODUwMTQ=";
@@ -47,6 +48,7 @@ public class BaiduPath {
     public static final String XIANYU_05_SECRET = "NTM4OTEyMjc=";
     public static final String XIANYU_06_SECRET = "NTQyMjc0MDg=";
     public static final String XIANYU_07_SECRET = "NTU5NTExNTI=";
+    public static final String XIANYUSOUSUO_01_SECRET = "NTYxNjgyNDA=";
 
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_01 = "bdhuihxy01";
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_02 = "bdhuihxy02";//跑的lx052，数据对不上，暂停
