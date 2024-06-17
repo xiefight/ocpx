@@ -109,6 +109,7 @@ public class Constants {
         public static final String XIAOMI_KEEP = "/xkeepServer";
         public static final String XIAOMI_LUYUN_PAIPAI = "/xluppServer";
         public static final String XIAOMI_LUYUN_XIAOHONGSHU = "/xlyxhsServer";
+        public static final String XIAOMI_LUYUN_KUAIKANMANHUA = "/xlykkmhServer";
         public static final String XIAOMI_QIDU = "/xqiduServer";
 
 
@@ -292,6 +293,7 @@ public class Constants {
         public static final String XIAOMI_KEEP = "xiaomi-keep";
         public static final String XIAOMI_LUYUN_PAIPAI = "xiaomi-luyun-paipai";
         public static final String XIAOMI_LUYUN_XIAOHONGSHU = "xiaomi-luyun-xiaohongshu";
+        public static final String XIAOMI_LUYUN_KUAIKANMANHUA = "xiaomi-luyun-kuaikanmanhua";
 
         public static final String TOUTIAO_MEITUAN = "toutiao-meituan";
 
