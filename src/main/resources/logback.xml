@@ -2710,6 +2710,14 @@
         <appender-ref ref="LUYUN_KUAIKANMANHUA_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduLuyunKuaikanmanhuaChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="LUYUN_KUAIKANMANHUA_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduLuyunKuaikanmanhuaServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="LUYUN_KUAIKANMANHUA_LOG"/>
+    </logger>
+
 
     <!-- 快看漫画 end -->
 
