@@ -2,7 +2,7 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongAdsDTO;
 import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongEventTypeEnum;
-import huihuang.proxy.ocpx.ads.quannenghudong.youku.QuannengYoukuPath;
+import huihuang.proxy.ocpx.ads.quannenghudong.soul.QuannengSoulPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IQuannengSoulAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -33,10 +33,10 @@ public class XiaomiQuannengSoulServiceImpl extends XiaomiChannelFactory implemen
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private QuannengYoukuPath quannengYoukuPath;
+    private QuannengSoulPath quannengSoulPath;
 
 
-    String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_QUANNENG_YOUKU;
+    String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_QUANNENG_SOUL;
 
     @Override
     public IChannelAds channelAds() {
@@ -56,7 +56,7 @@ public class XiaomiQuannengSoulServiceImpl extends XiaomiChannelFactory implemen
 
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
-        xiaomiVO.setAdsName(quannengYoukuPath.baseAdsName());
+        xiaomiVO.setAdsName(quannengSoulPath.baseAdsName());
         xiaomiVO.setEventType(QuannengHudongEventTypeEnum.quannengHudongXiaomiEventTypeMap.get(eventType).getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(quannengIQiyiAdsDTO.getCallback());
