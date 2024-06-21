@@ -176,6 +176,8 @@ public class BaiduPath {
     public static final String LUYUN_PAIPAI_SECRET_02 = "NTI5MTAwNjQ=";
     public static final String BAIDU_LUYUN_KUAIKANMANHUA_ACCOUNT_01 = "blykkmh01";
     public static final String LUYUN_KUAIKANMANHUA_SECRET_01 = "NTQ5MDM1NjA=";
+    public static final String BAIDU_LUYUN_KUAIKANMANHUA_ACCOUNT_02 = "blykkmh02";
+    public static final String LUYUN_KUAIKANMANHUA_SECRET_02 = "NTUyODk4OTM=";
 
     public static final String BAIDU_LUYUN_KEEP_ACCOUNT_02 = "bdkeep02";
     public static final String KEEP_SECRET = "NTI5Mjc5NDc=";

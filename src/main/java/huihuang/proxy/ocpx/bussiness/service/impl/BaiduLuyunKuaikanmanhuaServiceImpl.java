@@ -73,8 +73,10 @@ public class BaiduLuyunKuaikanmanhuaServiceImpl extends BaiduChannelFactory impl
         baiduVO.setCbImeiMd5(keepAdsDTO.getImeiMd5());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(keepAdsDTO.getIp());
-        if (BaiduPath.BAIDU_LUYUN_KUAIKANMANHUA_ACCOUNT_01.equals(keepAdsDTO.getAccountId())){
+        if (BaiduPath.BAIDU_LUYUN_KUAIKANMANHUA_ACCOUNT_01.equals(keepAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.LUYUN_KUAIKANMANHUA_SECRET_01);
+        } else if (BaiduPath.BAIDU_LUYUN_KUAIKANMANHUA_ACCOUNT_02.equals(keepAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.LUYUN_KUAIKANMANHUA_SECRET_02);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
