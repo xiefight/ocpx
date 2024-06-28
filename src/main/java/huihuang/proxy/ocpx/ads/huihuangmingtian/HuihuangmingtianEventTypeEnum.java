@@ -3,6 +3,7 @@ package huihuang.proxy.ocpx.ads.huihuangmingtian;
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
+import huihuang.proxy.ocpx.channel.iqiyi.IQiyiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
@@ -77,6 +78,19 @@ public enum HuihuangmingtianEventTypeEnum {
         huihuangmingtianXiaomiEventTypeMap.put(PURCHASE.code, null);
         huihuangmingtianXiaomiEventTypeMap.put(FIRST_WEAK.code, null);
         huihuangmingtianXiaomiEventTypeMap.put(PAID.code, XiaomiEventTypeEnum.APP_PAY);
+    }
+
+    public static Map<String, IQiyiEventTypeEnum> huihuangmingtianIQiyiEventTypeMap;
+
+    static {
+        huihuangmingtianIQiyiEventTypeMap = CollUtil.newHashMap();
+        huihuangmingtianIQiyiEventTypeMap.put(ACTIVATE.code, IQiyiEventTypeEnum.ACTIVE);
+        huihuangmingtianIQiyiEventTypeMap.put(NEW_LOGIN.code, null);
+        huihuangmingtianIQiyiEventTypeMap.put(DAY1RETENTION.code, IQiyiEventTypeEnum.RETENTION);
+        huihuangmingtianIQiyiEventTypeMap.put(ORDER.code, null);
+        huihuangmingtianIQiyiEventTypeMap.put(PURCHASE.code, null);
+        huihuangmingtianIQiyiEventTypeMap.put(FIRST_WEAK.code, null);
+        huihuangmingtianIQiyiEventTypeMap.put(PAID.code, IQiyiEventTypeEnum.PAY);
     }
 
 }

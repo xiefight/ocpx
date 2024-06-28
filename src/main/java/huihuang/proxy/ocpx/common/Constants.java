@@ -221,6 +221,7 @@ public class Constants {
         public static final String IQIYI_HUIHUANG_FANQIE = "/ihhfqServer";
         public static final String IQIYI_HUIHUANG_XIGUAVIDEO = "/ihhxgServer";
         public static final String IQIYI_HUIHUANG_XIANYU = "/ihhuangxyServer";
+        public static final String IQIYI_HUIHUANG_JINGDONG = "/ihhuangjdServer";
         public static final String IQIYI_QUANNENG_XIGUAVIDEO = "/iqnxgServer";
         public static final String IQIYI_DINGYUN_XIGUAVIDEO = "/idyxgServer";
         public static final String IQIYI_LUYUN_KEEP = "/ilykeepServer";
@@ -403,6 +404,7 @@ public class Constants {
         public static final String IQIYI_HUIHUANG_FANQIE = "iqiyi-huihuang-fanqie";
         public static final String IQIYI_HUIHUANG_XIGUAVIDEO = "iqiyi-huihuang-xiguavideo";
         public static final String IQIYI_HUIHUANG_XIANYU = "iqiyi-huihuang-xianyu";
+        public static final String IQIYI_HUIHUANG_JINGDONG = "iqiyi-huihuang-jingdong";
         public static final String IQIYI_QUANNENG_XIGUAVIDEO = "iqiyi-quanneng-xiguavideo";
         public static final String IQIYI_DINGYUN_XIGUAVIDEO = "iqiyi-dingyun-xiguavideo";
         public static final String IQIYI_LUYUN_KEEP = "iqiyi-luyun-keep";

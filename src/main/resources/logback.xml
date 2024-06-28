@@ -1577,6 +1577,14 @@
         <appender-ref ref="HUIHUANG_JINGDONG_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiHuihuangFengmangJingdongChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONG_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiHuihuangFengmangJingdongServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONG_LOG"/>
+    </logger>
+
     <!-- 辉煌 京东 end -->
 
     <!-- 辉煌 爱聊 start -->
