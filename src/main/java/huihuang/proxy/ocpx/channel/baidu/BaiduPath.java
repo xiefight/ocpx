@@ -186,6 +186,8 @@ public class BaiduPath {
     public static final String BAIDU_LUYUN_KEEP_ACCOUNT_02 = "bdkeep02";
     public static final String KEEP_SECRET = "NTI5Mjc5NDc=";
     public static final String KEEP_02_SECRET = "NTEzNzEzNTI=";
+    public static final String BAIDU_LUYUN_KEEP_SOUSUO_ACCOUNT_01 = "bdkeepss01";
+    public static final String KEEP_SOUSUO_SECRET_01 = "NTY2NTUxMjA=";
 
 
 

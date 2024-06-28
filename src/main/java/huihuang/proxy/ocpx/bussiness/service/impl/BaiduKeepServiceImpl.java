@@ -75,6 +75,8 @@ public class BaiduKeepServiceImpl extends BaiduChannelFactory implements IChanne
         baiduVO.setCbIp(keepAdsDTO.getIp());
         if (BaiduPath.BAIDU_LUYUN_KEEP_ACCOUNT_02.equals(keepAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.KEEP_02_SECRET);
+        }else if (BaiduPath.BAIDU_LUYUN_KEEP_SOUSUO_ACCOUNT_01.equals(keepAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.KEEP_SOUSUO_SECRET_01);
         } else {
             baiduVO.setSecret(BaiduPath.KEEP_SECRET);
         }
