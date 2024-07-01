@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.ads.huihuangmingtian;
 
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
+import huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongEventTypeEnum;
 import huihuang.proxy.ocpx.channel.honor.HonorEventTypeEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiEventTypeEnum;
@@ -118,6 +119,21 @@ public enum HuihuangFengmangEventTypeEnum {
         huihuangmingtianHonorEventTypeMap.put(DAY1RETENTION.code, HonorEventTypeEnum.RETAIN);
         huihuangmingtianHonorEventTypeMap.put(COPY_PART.code, null);
         huihuangmingtianHonorEventTypeMap.put(FIRST_WEAK.code, null);
+    }
+
+
+    public static Map<String, GuangdiantongEventTypeEnum> huihuangmingtianGdtEventTypeMap;
+
+    static {
+        huihuangmingtianGdtEventTypeMap = CollUtil.newHashMap();
+        huihuangmingtianGdtEventTypeMap.put(ACTIVATE.code, GuangdiantongEventTypeEnum.ACTIVE);
+        huihuangmingtianGdtEventTypeMap.put(REGISTER.code, GuangdiantongEventTypeEnum.REGISTER);
+        huihuangmingtianGdtEventTypeMap.put(FIRST_PAID.code, GuangdiantongEventTypeEnum.PURCHASE);
+        huihuangmingtianGdtEventTypeMap.put(ORDER.code, null);
+        huihuangmingtianGdtEventTypeMap.put(OTHER.code, null);
+        huihuangmingtianGdtEventTypeMap.put(DAY1RETENTION.code, GuangdiantongEventTypeEnum.START_APP);
+        huihuangmingtianGdtEventTypeMap.put(COPY_PART.code, null);
+        huihuangmingtianGdtEventTypeMap.put(FIRST_WEAK.code, null);
     }
 
 }

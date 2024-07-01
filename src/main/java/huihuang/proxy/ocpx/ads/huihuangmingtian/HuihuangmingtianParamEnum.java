@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.huihuangmingtian;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongParamEnum;
 import huihuang.proxy.ocpx.channel.honor.HonorParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
@@ -232,6 +233,41 @@ public enum HuihuangmingtianParamEnum {
 //        huihuangmingtianHonorMap.put(CALLBACK_URL, HonorParamEnum.CALLBACK);
 
         huihuangmingtianHonorMap.put(ACCOUNT_ID, HonorParamEnum.ACCOUNT_ID);
+
+    }
+
+
+    public static Map<HuihuangmingtianParamEnum, GuangdiantongParamEnum> huihuangmingtianGdtMap;
+
+    static {
+        huihuangmingtianGdtMap = new HashMap<>();
+        huihuangmingtianGdtMap.put(CHAIN_CODE, GuangdiantongParamEnum.HUIHUANG_CHAIN_CODE);
+        huihuangmingtianGdtMap.put(TASKID, GuangdiantongParamEnum.HUIHUANG_TASK_ID);
+        huihuangmingtianGdtMap.put(APP, GuangdiantongParamEnum.HUIHUANG_APP);
+        huihuangmingtianGdtMap.put(SOURCE, GuangdiantongParamEnum.HUIHUANG_SOURCE);
+        huihuangmingtianGdtMap.put(ADVERTISING_SPACE_ID, GuangdiantongParamEnum.HUIHUANG_ADVERTISING_SPACE_ID);
+        huihuangmingtianGdtMap.put(AID, GuangdiantongParamEnum.HUIHUANG_AID);
+        huihuangmingtianGdtMap.put(CHANNEL, GuangdiantongParamEnum.HUIHUANG_CHANNEL);
+        huihuangmingtianGdtMap.put(ADID, GuangdiantongParamEnum.HUIHUANG_ADID);
+        huihuangmingtianGdtMap.put(IMEI_MD5, GuangdiantongParamEnum.MUID);
+        huihuangmingtianGdtMap.put(OAID, null);
+        huihuangmingtianGdtMap.put(OAID_MD5, GuangdiantongParamEnum.HASH_OAID);
+        huihuangmingtianGdtMap.put(IDFA, null);
+        huihuangmingtianGdtMap.put(IDFA_MD5, null);
+//        huihuangmingtianGdtMap.put(IDFA_MD5, GuangdiantongParamEnum.MUID);
+        huihuangmingtianGdtMap.put(CAMPAIGN_ID, GuangdiantongParamEnum.CAMPAIGN_ID);
+        huihuangmingtianGdtMap.put(UID, GuangdiantongParamEnum.HUIHUANG_UID);
+        huihuangmingtianGdtMap.put(CID, GuangdiantongParamEnum.HUIHUANG_CID);
+        huihuangmingtianGdtMap.put(SID, GuangdiantongParamEnum.HUIHUANG_SID);
+        huihuangmingtianGdtMap.put(EVENT_TYPE, null);  //拉活  1  拉新   2
+
+        huihuangmingtianGdtMap.put(TMS, GuangdiantongParamEnum.CLICK_TIME);
+        huihuangmingtianGdtMap.put(OS, GuangdiantongParamEnum.DEVICE_OS_TYPE);
+        huihuangmingtianGdtMap.put(IP, GuangdiantongParamEnum.IP);
+        huihuangmingtianGdtMap.put(UA, GuangdiantongParamEnum.USER_AGENT);
+        huihuangmingtianGdtMap.put(CALLBACK_URL, GuangdiantongParamEnum.CALLBACK);
+
+        huihuangmingtianGdtMap.put(ACCOUNT_ID, GuangdiantongParamEnum.ACCOUNT_ID_OWN);
 
     }
 

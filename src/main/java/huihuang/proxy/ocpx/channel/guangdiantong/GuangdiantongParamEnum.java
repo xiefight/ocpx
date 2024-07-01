@@ -38,6 +38,20 @@ public enum GuangdiantongParamEnum {
 
     KUAISHOU_ADID("", "adid", "快手投放渠道标识"),
 
+
+    HUIHUANG_CHAIN_CODE("","chainCode","辉煌标识"),
+    HUIHUANG_TASK_ID("","taskId","由辉煌明天提供任务 id"),
+    HUIHUANG_APP("","app","辉煌明天提供App 号，14 飞猪,9 点淘"),
+    HUIHUANG_SOURCE("","source",""),
+    HUIHUANG_ADVERTISING_SPACE_ID("","advertisingSpaceId",""),
+    HUIHUANG_AID("","aid",""),
+    HUIHUANG_CHANNEL("","channel",""),
+    HUIHUANG_ADID("","adid",""),
+    HUIHUANG_UID("","uid",""),
+    HUIHUANG_CID("","cid",""),
+    HUIHUANG_SID("","sid",""),
+    HUIHUANG_EVENT_TYPE("","eventType",""),
+
     ;
 
 
