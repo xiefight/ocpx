@@ -64,7 +64,7 @@ public class BaiduHuihuangZhifubaoServiceImpl extends BaiduChannelFactory implem
         baiduVO.setAdsId(id);
         baiduVO.setAdsName(hhzfbPath.baseAdsName());
         baiduVO.setChannelUrl(channelUrl);
-        baiduVO.setaType(HuihuangmingtianEventTypeEnum.huihuangmingtianBaiduEventTypeMap.get(eventType).getCode());
+        baiduVO.setaType(HuihuangFengmangEventTypeEnum.huihuangmingtianBaiduEventTypeMap.get(eventType).getCode());
         baiduVO.setaValue(0);
         baiduVO.setCbEventTime(String.valueOf(System.currentTimeMillis()));
         baiduVO.setCbOaid(hhtmAdsDTO.getOaid());
