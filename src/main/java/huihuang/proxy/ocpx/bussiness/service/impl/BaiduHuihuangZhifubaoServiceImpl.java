@@ -3,7 +3,6 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 import cn.hutool.core.net.URLDecoder;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangZhifubaoPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangZhifubaoAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -76,6 +75,8 @@ public class BaiduHuihuangZhifubaoServiceImpl extends BaiduChannelFactory implem
         baiduVO.setCbIp(hhtmAdsDTO.getIp());
         if (BaiduPath.HUIHUANG_ZHIFUBAO_ACCOUNT_01.equals(hhtmAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.HUIHUANG_ZHIFUBAO_SECRET_01);
+        } else if (BaiduPath.HUIHUANG_ZHIFUBAO_ACCOUNT_02.equals(hhtmAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_ZHIFUBAO_SECRET_02);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 

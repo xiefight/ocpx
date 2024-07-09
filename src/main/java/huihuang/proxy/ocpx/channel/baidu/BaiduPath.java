@@ -41,6 +41,7 @@ public class BaiduPath {
     public static final String BAIDU_XIANYU_ACCOUNT_06 = "bdhhxy06";
     public static final String BAIDU_XIANYU_ACCOUNT_07 = "bdhhxy07";
     public static final String BAIDU_XIANYUSOUSUO_ACCOUNT_01 = "bdhhxyss01";
+    public static final String BAIDU_XIANYUSOUSUO_ACCOUNT_02 = "bdhhxyss02";
     public static final String XIANYU_01_SECRET = "NDk1ODUwMDQ=";
     public static final String XIANYU_02_SECRET = "NDk1ODUwMDg=";
     public static final String XIANYU_03_SECRET = "NDk1ODUwMTQ=";
@@ -49,6 +50,7 @@ public class BaiduPath {
     public static final String XIANYU_06_SECRET = "NTQyMjc0MDg=";
     public static final String XIANYU_07_SECRET = "NTU5NTExNTI=";
     public static final String XIANYUSOUSUO_01_SECRET = "NTYxNjgyNDA=";
+    public static final String XIANYUSOUSUO_02_SECRET = "NTY4NTExNDE=";
 
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_01 = "bdhuihxy01";
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_02 = "bdhuihxy02";//跑的lx052，数据对不上，暂停
@@ -82,6 +84,7 @@ public class BaiduPath {
     public static final String BAIDU_KUAISHOU_ACCOUNT_06 = "bdks06";
     public static final String BAIDU_KUAISHOU_ACCOUNT_08 = "bdks08";
     public static final String BAIDU_KUAISHOU_ACCOUNT_09 = "bdks09";
+    public static final String BAIDU_KUAISHOU_ACCOUNT_10 = "bdks10";
     public static final String BAIDU_KUAISHOUJISU_ACCOUNT_01 = "bdksjs01"; //这个是新户
     public static final String BAIDU_KUAISHOUJISU_ACCOUNT_02 = "bdksjs02"; //这个是老户
     public static final String BAIDU_KUAISHOUJISU_ACCOUNT_04 = "bdksjs04";
@@ -111,6 +114,7 @@ public class BaiduPath {
     public static final String KUAISHOU_6_SECRET = "NTI1OTY1OTc=";
     public static final String KUAISHOU_8_SECRET = "NTM1NTczNTk=";
     public static final String KUAISHOU_9_SECRET = "NTY1NDgxNjM=";
+    public static final String KUAISHOU_10_SECRET = "NTY1NDgxNjQ=";
     public static final String KUAISHOUJISU_5_SECRET = "NTM1NTczNjA=";
     public static final String KUAISHOUJISU_6_SECRET = "NTM5MzMzMDk=";
     public static final String KUAISHOUJISU_07_SECRET = "NTY1NDgyNDc=";
@@ -137,6 +141,8 @@ public class BaiduPath {
     public static final String HUIHUANG_YOUKU_SECRET_01 = "NTU3MTA0NTA=";
     public static final String HUIHUANG_ZHIFUBAO_ACCOUNT_01 = "bhhzhifubao01";
     public static final String HUIHUANG_ZHIFUBAO_SECRET_01 = "NDczODM5ODI=";
+    public static final String HUIHUANG_ZHIFUBAO_ACCOUNT_02 = "bhhzhifubao02";
+    public static final String HUIHUANG_ZHIFUBAO_SECRET_02 = "NTY4NTExNDg=";
 
     public static final String QUANNENG_FANQIECHANGTING_ACCOUNT_02 = "bdqnfqct02";
     public static final String QUANNENG_PIPIXIA_ACCOUNT_02 = "bdqnppx02";
