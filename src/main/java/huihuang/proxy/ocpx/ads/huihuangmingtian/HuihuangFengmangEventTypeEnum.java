@@ -133,7 +133,7 @@ public enum HuihuangFengmangEventTypeEnum {
         huihuangmingtianGdtEventTypeMap.put(OTHER.code, null);
         huihuangmingtianGdtEventTypeMap.put(DAY1RETENTION.code, GuangdiantongEventTypeEnum.START_APP);
         huihuangmingtianGdtEventTypeMap.put(COPY_PART.code, null);
-        huihuangmingtianGdtEventTypeMap.put(FIRST_WEAK.code, null);
+        huihuangmingtianGdtEventTypeMap.put(FIRST_WEAK.code, GuangdiantongEventTypeEnum.VIEW_CONTENT);
     }
 
 }

@@ -45,7 +45,7 @@ public class GdtHuihuangZhitouXianyuServiceImpl extends GDTChannelFactory implem
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        String eventType = parameterMap.get("conv_action")[0];
+        String eventType = parameterMap.get("event_type")[0];
         logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
         //根据id查询对应的点击记录
         HuihuangmingtianAdsDTO hhxyfmAdsDTO = hhxyffmAdsDao.queryHuihuangFengmangXianyuAdsById(id);

@@ -11,6 +11,7 @@ public enum GuangdiantongEventTypeEnum {
     REGISTER("REGISTER", "register 注册"),
     PURCHASE("PURCHASE", "pay 首次付费"),
     START_APP("START_APP", "次日留存 length_of_stay=1"),
+    VIEW_CONTENT("VIEW_CONTENT", "关键页面访问"),
 
     //其他的事件未定义
     ;
