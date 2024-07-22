@@ -113,6 +113,8 @@ public class BaiduHuihuiXianyuServiceImpl extends BaiduChannelFactory implements
             baiduVO.setSecret(BaiduPath.XIANYU_06_SECRET);
         } else if (BaiduPath.BAIDU_XIANYU_ACCOUNT_07.equals(ocpxAccount)) {
             baiduVO.setSecret(BaiduPath.XIANYU_07_SECRET);
+        } else if (BaiduPath.BAIDU_XIANYU_ACCOUNT_08.equals(ocpxAccount)) {
+            baiduVO.setSecret(BaiduPath.XIANYU_08_SECRET);
         } else if (BaiduPath.BAIDU_XIANYUSOUSUO_ACCOUNT_01.equals(ocpxAccount)) {
             baiduVO.setSecret(BaiduPath.XIANYUSOUSUO_01_SECRET);
         } else if (BaiduPath.BAIDU_XIANYUSOUSUO_ACCOUNT_02.equals(ocpxAccount)) {
