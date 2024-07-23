@@ -2756,11 +2756,11 @@
     </logger>
 
     <logger name="huihuang.proxy.ocpx.middle.impl.IQiyiLuyunXiaohongshuChannelAds" level="INFO" additivity="true">
-        <appender-ref ref="KEEP_LOG"/>
+        <appender-ref ref="LUYUN_XIAOHONGSHU_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.IQiyiLuyunXiaohongshuServiceImpl" level="INFO"
             additivity="true">
-        <appender-ref ref="KEEP_LOG"/>
+        <appender-ref ref="LUYUN_XIAOHONGSHU_LOG"/>
     </logger>
 
 
