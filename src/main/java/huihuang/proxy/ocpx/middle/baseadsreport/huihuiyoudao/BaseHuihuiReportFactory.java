@@ -155,6 +155,8 @@ public abstract class BaseHuihuiReportFactory extends BaseSupport implements ICh
 
     @Override
     protected Response reportAds(String adsUrl, Object adsDtoObj) throws Exception {
+        //huihui有道上报时添加必填参数，拼接did
+        adsUrl += "&did=" + HuihuiPath.DID;
         logger.info("调用用户侧的地址 {} adsUrl:{}", channelAdsKey(), adsUrl);
         HttpResponse response = HttpRequest.get(adsUrl).timeout(20000).header("token", "application/json").execute();
         Map<String, Object> responseBodyMap = JsonParameterUtil.jsonToMap(response.body(), Exception.class);
