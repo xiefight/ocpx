@@ -29,6 +29,8 @@ public class KuaishouAdsDTO extends CommonColumn  implements IMarkDto {
     private String callback;
     private String extra;
 
+    private String tableName;
+
     public String getAdid() {
         return adid;
     }
@@ -173,6 +175,13 @@ public class KuaishouAdsDTO extends CommonColumn  implements IMarkDto {
         this.extra = extra;
     }
 
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
 
     @Override
     public String toString() {

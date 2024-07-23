@@ -1,9 +1,12 @@
 package huihuang.proxy.ocpx.middle.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
+import huihuang.proxy.ocpx.ads.kuaishou.KuaishouAdsDTO;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouParamEnum;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouParamField;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IKuaishouAdsDao;
+import huihuang.proxy.ocpx.bussiness.dao.ads.kuaishouaccount.IBaiduKuaishouAccountDao;
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.Constants;
@@ -36,6 +39,9 @@ public class BaiduKuaishouChannelAds extends KuaishouReportFactory {
     @Qualifier("kuaishouAdsBaiduDao")
     private IKuaishouAdsDao kuaishouAdsBaiduDao;
 
+    @Autowired
+    private IBaiduKuaishouAccountDao baiduKuaishouAccountDao;
+
     @Override
     protected String channelAdsKey() {
         return channelAdsKey;
@@ -53,7 +59,7 @@ public class BaiduKuaishouChannelAds extends KuaishouReportFactory {
 
     @Override
     protected IKuaishouAdsDao adsDao() {
-        return kuaishouAdsBaiduDao;
+        return baiduKuaishouAccountDao;
     }
 
     /**
@@ -119,13 +125,38 @@ public class BaiduKuaishouChannelAds extends KuaishouReportFactory {
     }
 
     @Override
-    public void convertParams(Object adsObj){
+    public void convertParams(Object adsObj) {
         super.convertParams(adsObj);
         KuaishouParamField kuaishouParamField = (KuaishouParamField) adsObj;
         if (BaiduPath.BAIDU_KUAISHOU_ACCOUNT_05.equals(kuaishouParamField.getAccount_id())
-                || BaiduPath.BAIDU_KUAISHOUJISU_ACCOUNT_05.equals(kuaishouParamField.getAccount_id())){
+                || BaiduPath.BAIDU_KUAISHOUJISU_ACCOUNT_05.equals(kuaishouParamField.getAccount_id())) {
             kuaishouParamField.setRta_id(RandomUtil.randomStamp());
         }
+    }
+
+
+    @Override
+    protected Object saveOriginParamData(Object adsObj) {
+        KuaishouParamField kuaishouParamField = (KuaishouParamField) adsObj;
+        KuaishouAdsDTO kuaishouAdsDTO = new KuaishouAdsDTO();
+        BeanUtil.copyProperties(kuaishouParamField, kuaishouAdsDTO);
+        if (null != kuaishouParamField.getAccount_id()) {
+            //暂用于百度-快手分表时，account_id作为分表字段
+            kuaishouAdsDTO.setTableName("kuaishou_ads_baidu_" + kuaishouParamField.getAccount_id());
+        }
+        kuaishouAdsDTO.setChannelName(channelName());
+        //先判断表是否已经创建过
+        if (baiduKuaishouAccountDao.isTableExist(kuaishouAdsDTO.getTableName()) == 0) {
+            logger.info("没创建过 {}",kuaishouAdsDTO.getTableName());
+            //创建表
+            baiduKuaishouAccountDao.createTable(kuaishouAdsDTO.getTableName());
+        }
+        logger.info("创建过 {}",kuaishouAdsDTO.getTableName());
+
+        baseServiceInner.insertAdsObject(kuaishouAdsDTO, adsDao());
+//        adsDao().insert(kuaishouAdsDTO);
+        logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey(), kuaishouAdsDTO);
+        return kuaishouAdsDTO;
     }
 
 
