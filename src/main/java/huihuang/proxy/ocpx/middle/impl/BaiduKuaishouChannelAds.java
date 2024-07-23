@@ -11,6 +11,7 @@ import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.middle.baseadsreport.KuaishouReportFactory;
+import huihuang.proxy.ocpx.util.CommonUtil;
 import huihuang.proxy.ocpx.util.RandomUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -146,12 +147,14 @@ public class BaiduKuaishouChannelAds extends KuaishouReportFactory {
         }
         kuaishouAdsDTO.setChannelName(channelName());
         //先判断表是否已经创建过
-        if (baiduKuaishouAccountDao.isTableExist(kuaishouAdsDTO.getTableName()) == 0) {
-            logger.info("没创建过 {}",kuaishouAdsDTO.getTableName());
-            //创建表
-            baiduKuaishouAccountDao.createTable(kuaishouAdsDTO.getTableName());
+        String tableName = kuaishouAdsDTO.getTableName();
+        if (!CommonUtil.kuaishouBaiduTables.contains(tableName)){
+            if (baiduKuaishouAccountDao.isTableExist(tableName) == 0){
+                //创建表
+                baiduKuaishouAccountDao.createTable(tableName);
+            }
+            CommonUtil.kuaishouBaiduTables.add(tableName);
         }
-        logger.info("创建过 {}",kuaishouAdsDTO.getTableName());
 
         baseServiceInner.insertAdsObject(kuaishouAdsDTO, adsDao());
 //        adsDao().insert(kuaishouAdsDTO);

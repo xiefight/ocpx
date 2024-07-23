@@ -36,7 +36,7 @@
     </select>
 
     <update id="createTable" parameterType="string" statementType="STATEMENT">
-        create table #{tableName}
+        create table ${tableName}
         (
             id              bigint auto_increment comment '主键id'
                 primary key,
@@ -65,9 +65,7 @@
             extra           varchar(1000) null comment '广告主没有而渠道必须的额外字段',
             channel_name    varchar(20)   null comment '渠道标识'
         )
-            collate = utf8mb4_bin;
-
-
+            collate = utf8mb4_bin auto_increment=1;
     </update>
 
 
@@ -76,7 +74,7 @@
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO #{tableName}
+        INSERT INTO ${tableName}
         (adid, imei, idfa, oaid, android_id,
         mac, ip, user_agent, account_id, click_id, campaign_id, adgroup_id, creative_id,
         advertiser_id,rta_id,caid_list,callback,extra,channel_name, create_time, update_time, report_status, callback_status)
@@ -87,7 +85,7 @@
 
 
     <update id="update" parameterType="huihuang.proxy.ocpx.ads.kuaishou.KuaishouAdsDTO">
-        UPDATE #{tableName}
+        UPDATE ${tableName}
         <set>
             <if test="adid != null">adid = #{adid},</if>
             <if test="imei != null">imei = #{imei},</if>

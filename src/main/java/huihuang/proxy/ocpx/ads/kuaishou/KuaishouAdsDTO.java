@@ -2,12 +2,14 @@ package huihuang.proxy.ocpx.ads.kuaishou;
 
 import huihuang.proxy.ocpx.common.CommonColumn;
 import huihuang.proxy.ocpx.marketinterface.IMarkDto;
+import lombok.ToString;
 
 /**
  * 快手
  * @Author: xietao
  * @Date: 2023/5/14 10:51
  */
+@ToString
 public class KuaishouAdsDTO extends CommonColumn  implements IMarkDto {
 
     private String adid;
@@ -181,29 +183,5 @@ public class KuaishouAdsDTO extends CommonColumn  implements IMarkDto {
 
     public void setTableName(String tableName) {
         this.tableName = tableName;
-    }
-
-    @Override
-    public String toString() {
-        return "KuaishouAdsDTO{" +
-                "adid='" + adid + '\'' +
-                ", imei='" + imei + '\'' +
-                ", idfa='" + idfa + '\'' +
-                ", oaid='" + oaid + '\'' +
-                ", androidId='" + androidId + '\'' +
-                ", mac='" + mac + '\'' +
-                ", ip='" + ip + '\'' +
-                ", userAgent='" + userAgent + '\'' +
-                ", accountId='" + accountId + '\'' +
-                ", clickId='" + clickId + '\'' +
-                ", campaignId='" + campaignId + '\'' +
-                ", adgroupId='" + adgroupId + '\'' +
-                ", creativeId='" + creativeId + '\'' +
-                ", advertiserId='" + advertiserId + '\'' +
-                ", rtaId='" + rtaId + '\'' +
-                ", caidList='" + caidList + '\'' +
-                ", callback='" + callback + '\'' +
-                ", extra='" + extra + '\'' +
-                '}';
     }
 }

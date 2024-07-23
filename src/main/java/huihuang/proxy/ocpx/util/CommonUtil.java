@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -61,5 +62,8 @@ public class CommonUtil {
         }
         return true;
     }
+
+    public static Set<String> kuaishouBaiduTables = new HashSet<>();
+
 
 }
