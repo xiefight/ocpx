@@ -1,20 +1,16 @@
 package huihuang.proxy.ocpx.middle;
 
-import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.bussiness.dao.common.IConfigDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.common.ResultStatus;
-import huihuang.proxy.ocpx.domain.Config;
-import huihuang.proxy.ocpx.util.JsonParameterUtil;
+import huihuang.proxy.ocpx.util.CommonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Description:
@@ -24,8 +20,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class BaseSupport {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
-
-    protected Map<String, String> serverMap = new ConcurrentHashMap<>(2);
 
     @Autowired
     private IConfigDao configDao;
@@ -37,21 +31,7 @@ public abstract class BaseSupport {
      * config中查询服务地址
      */
     protected String queryServerPath() {
-        //缓存中为空，从数据库获取
-        if (CollUtil.isEmpty(serverMap) || !serverMap.containsKey(Config.SERVER_PATH)) {
-            String config = configDao.queryConfig();
-            Map<String, Object> configMap = CollUtil.newHashMap();
-            try {
-                configMap = JsonParameterUtil.jsonToMap(config, Exception.class);
-                assert configMap != null;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            String serverPath = (String) configMap.get(Config.SERVER_PATH);
-            serverMap.put(Config.SERVER_PATH, serverPath);
-            return serverPath;
-        }
-        return serverMap.get(Config.SERVER_PATH);
+        return CommonUtil.queryServerPath(configDao);
     }
 
     /**

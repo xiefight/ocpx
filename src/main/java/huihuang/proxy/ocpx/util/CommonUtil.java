@@ -2,11 +2,14 @@ package huihuang.proxy.ocpx.util;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
+import huihuang.proxy.ocpx.bussiness.dao.common.IConfigDao;
+import huihuang.proxy.ocpx.domain.Config;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Description:
@@ -14,6 +17,12 @@ import java.util.Set;
  * @Date: 2023-04-23 23:00
  **/
 public class CommonUtil {
+
+    /*
+     * 存储服务器地址
+     */
+    public static Map<String, String> serverMap = new ConcurrentHashMap<>(2);
+
 
     /**
      * 将从get请求中获取到的参数组装成Map
@@ -63,6 +72,30 @@ public class CommonUtil {
         return true;
     }
 
+    /**
+     * config中查询服务地址
+     */
+    public static String queryServerPath(IConfigDao configDao) {
+        //缓存中为空，从数据库获取
+        if (CollUtil.isEmpty(serverMap) || !serverMap.containsKey(Config.SERVER_PATH)) {
+            String config = configDao.queryConfig();
+            Map<String, Object> configMap = CollUtil.newHashMap();
+            try {
+                configMap = JsonParameterUtil.jsonToMap(config, Exception.class);
+                assert configMap != null;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            String serverPath = (String) configMap.get(Config.SERVER_PATH);
+            serverMap.put(Config.SERVER_PATH, serverPath);
+            return serverPath;
+        }
+        return serverMap.get(Config.SERVER_PATH);
+    }
+
+    /**
+     * 存储百度快手动态创建的表名
+     */
     public static Set<String> kuaishouBaiduTables = new HashSet<>();
 
 
