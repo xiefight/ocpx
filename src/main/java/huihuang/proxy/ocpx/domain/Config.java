@@ -7,16 +7,13 @@ package huihuang.proxy.ocpx.domain;
  **/
 public class Config {
 
-    //配置字段
-    private String dynamic_config;
 
-    public String getDynamic_config() {
-        return dynamic_config;
-    }
-
-    public void setDynamic_config(String dynamic_config) {
-        this.dynamic_config = dynamic_config;
-    }
 
     public static final String SERVER_PATH = "serverPath";
+
+    /**
+     * 百度-快手根据accountId分表,需要规定每个户的表的起始id,在此作映射关系
+     */
+    public static final String BAIDU_KUAISHOU_ACCOUNT_ID_MAP = "bdksacMap";
+
 }

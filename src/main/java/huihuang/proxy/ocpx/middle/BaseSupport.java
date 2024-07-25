@@ -1,10 +1,9 @@
 package huihuang.proxy.ocpx.middle;
 
-import huihuang.proxy.ocpx.bussiness.dao.common.IConfigDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
+import huihuang.proxy.ocpx.bussiness.service.common.IConfigService;
 import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.common.ResultStatus;
-import huihuang.proxy.ocpx.util.CommonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +20,17 @@ public abstract class BaseSupport {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Autowired
-    private IConfigDao configDao;
 
     @Autowired
     private BaseServiceInner baseServiceInner;
+    @Autowired
+    private IConfigService configService;
 
     /**
      * config中查询服务地址
      */
     protected String queryServerPath() {
-        return CommonUtil.queryServerPath(configDao);
+        return configService.queryServerPath();
     }
 
     /**

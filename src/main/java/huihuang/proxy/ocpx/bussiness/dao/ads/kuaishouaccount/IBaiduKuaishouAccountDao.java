@@ -21,6 +21,6 @@ public interface IBaiduKuaishouAccountDao extends IKuaishouAdsDao {
      * 创建表
      */
 //    void createTable(@Param("sql") String sql);
-    void createTable(@Param("tableName") String tableName);
+    void createTable(@Param("tableName") String tableName, @Param("startId") Integer startId);
 
 }

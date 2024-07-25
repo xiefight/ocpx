@@ -7,6 +7,7 @@ import huihuang.proxy.ocpx.ads.kuaishou.KuaishouParamEnum;
 import huihuang.proxy.ocpx.ads.kuaishou.KuaishouParamField;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IKuaishouAdsDao;
 import huihuang.proxy.ocpx.bussiness.dao.ads.kuaishouaccount.IBaiduKuaishouAccountDao;
+import huihuang.proxy.ocpx.bussiness.service.common.IConfigService;
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.Constants;
@@ -35,6 +36,9 @@ import java.util.Set;
 public class BaiduKuaishouChannelAds extends KuaishouReportFactory {
 
     String channelAdsKey = Constants.ChannelAdsKey.BAIDU_KUAISHOU;
+
+    @Autowired
+    private IConfigService configService;
 
     @Autowired
     @Qualifier("kuaishouAdsBaiduDao")
@@ -148,12 +152,25 @@ public class BaiduKuaishouChannelAds extends KuaishouReportFactory {
         kuaishouAdsDTO.setChannelName(channelName());
         //先判断表是否已经创建过
         String tableName = kuaishouAdsDTO.getTableName();
-        if (!CommonUtil.kuaishouBaiduTables.contains(tableName)){
-            if (baiduKuaishouAccountDao.isTableExist(tableName) == 0){
-                //创建表
-                baiduKuaishouAccountDao.createTable(tableName);
+        if (!CommonUtil.kuaishouBaiduTables.contains(tableName)) {
+            //表不存在,创建
+            //创建之前,需要查看配置,要创建哪个表,起始自增id是多少
+            Map<String, Integer> baiduKuaishouAccountMap = configService.queryBaiduKuaishouAccountMap();
+            assert baiduKuaishouAccountMap != null;
+            //在配置表中配置新增的 账户:id,必须在生成数据之前
+            Integer startId = baiduKuaishouAccountMap.get(tableName);
+            assert startId != null;
+            //创建表
+            synchronized (BaiduPath.class) {
+                //加锁,避免重复建表
+                if (baiduKuaishouAccountDao.isTableExist(tableName) == 0) {
+                    baiduKuaishouAccountDao.createTable(tableName, startId);
+                }
             }
+            //将表名添加到集合中,避免重复创建
             CommonUtil.kuaishouBaiduTables.add(tableName);
+            //保存id和表名的映射关系,方便回传更新时,根据id快速定位到表名
+            CommonUtil.kuaishouBaiduIdTableMap.put(startId, tableName);
         }
 
         baseServiceInner.insertAdsObject(kuaishouAdsDTO, adsDao());
