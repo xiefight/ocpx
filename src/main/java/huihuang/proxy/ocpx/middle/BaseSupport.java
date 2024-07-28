@@ -58,8 +58,7 @@ public abstract class BaseSupport {
         String adsUrl = initAdsUrl();
         String completeAdsUrl = baseServiceInner.initAdsUrlAndParam(adsUrl, adsObj);
         //7.调用广告侧上报接口
-//        return reportAds(completeAdsUrl, adsDtoObj);
-        return new Response();
+        return reportAds(completeAdsUrl, adsDtoObj);
     }
 
     protected abstract Object channelParamToAdsParam(Map<String, String[]> parameterMap);

@@ -154,6 +154,7 @@ public class BaiduKuaishouChannelAds extends KuaishouReportFactory {
         String tableName = kuaishouAdsDTO.getTableName();
         if (!CommonUtil.kuaishouBaiduTables.contains(tableName)) {
             //表不存在,创建
+            logger.info("clickReport {} 创建表，表名:{}", channelAdsKey(), tableName);
             //创建之前,需要查看配置,要创建哪个表,起始自增id是多少
 //            Map<String, Integer> baiduKuaishouAccountMap = configService.queryBaiduKuaishouAccountMap();
 //            assert baiduKuaishouAccountMap != null;

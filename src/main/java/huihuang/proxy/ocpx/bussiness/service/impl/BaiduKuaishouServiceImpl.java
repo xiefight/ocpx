@@ -12,6 +12,7 @@ import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.BaiduChannelFactory;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.vo.Ads2BaiduVO;
+import huihuang.proxy.ocpx.channel.baidu.BaiduCallbackDTO;
 import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
@@ -19,7 +20,7 @@ import huihuang.proxy.ocpx.common.Response;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
 import huihuang.proxy.ocpx.middle.IChannelAds;
 import huihuang.proxy.ocpx.middle.factory.ChannelAdsFactory;
-import huihuang.proxy.ocpx.util.tuple.Tuple4;
+import huihuang.proxy.ocpx.util.tuple.Tuple3;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +77,7 @@ public class BaiduKuaishouServiceImpl extends BaiduChannelFactory implements ICh
         }
         IKuaishouAdsDao ikuaishouAdsDao = (IKuaishouAdsDao) tuple3.getT1();
         KuaishouAdsDTO kuaishouAdsDTO = tuple3.getT2();
+        String tableName = tuple3.getT3();
 
         String callback = kuaishouAdsDTO.getCallback();
         String channelUrl = URLDecoder.decode(callback, StandardCharsets.UTF_8);
@@ -166,40 +168,26 @@ public class BaiduKuaishouServiceImpl extends BaiduChannelFactory implements ICh
 
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
-//        Response response = baseAdsCallBack(baiduVO);
-//        BaiduCallbackDTO data = (BaiduCallbackDTO) response.getData();
+        Response response = baseAdsCallBack(baiduVO);
+        BaiduCallbackDTO data = (BaiduCallbackDTO) response.getData();
 
-        String tableName = tuple3.getT3();
         //更新回调状态
         KuaishouAdsDTO kuaishouAds = new KuaishouAdsDTO();
         kuaishouAds.setId(id);
         kuaishouAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
         kuaishouAds.setTableName(tableName);
-        kuaishouAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-        baseServiceInner.updateAdsObject(kuaishouAds, ikuaishouAdsDao);
-        return BasicResult.getSuccessResponse(1);
 
-        /*if (response.getCode() == 0) {
+        if (response.getCode() == 0) {
             kuaishouAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
             baseServiceInner.updateAdsObject(kuaishouAds, ikuaishouAdsDao);
-            *//*if (tuple3.getT4()) {
-                baseServiceInner.updateAdsObject(kuaishouAds, ikuaishouAdsDao);
-            } else {
-                ((IBaiduKuaishouAccountDao) ikuaishouAdsDao).update(kuaishouAds);
-            }*//*
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
             kuaishouAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
             baseServiceInner.updateAdsObject(kuaishouAds, ikuaishouAdsDao);
-           *//* if (tuple3.getT4()) {
-                baseServiceInner.updateAdsObject(kuaishouAds, ikuaishouAdsDao);
-            } else {
-                ((IBaiduKuaishouAccountDao) ikuaishouAdsDao).update(kuaishouAds);
-            }*//*
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
-        }*/
+        }
     }
 
 
