@@ -17,16 +17,30 @@ import java.util.concurrent.ConcurrentHashMap;
 public class CommonUtil {
 
     /**
-     * 存放百度-快手account的集合
+     * 存放百度-快手完整表名的集合
+     * kuaishou_ads_baidu_bdks01
      * 只用来标识表是否存在
+     * 其他集合都可以从数据库配置中加载，但 kuaishouBaiduTables 这个结构不行，必须在插入上报时判断表是否存在，再放入该集合
      */
     public static Set<String> kuaishouBaiduTables = CollUtil.newHashSet();
+    /**
+     * 存放数据库配置加载的原始的 tableName:startId 的映射
+     */
+    public static Map<String, Integer> baiduKuaishouAccountMap = new ConcurrentHashMap<>();
 
     /**
      * 顺序存储百度快手动态创建的id和表名映射
      * 方便回传更新时,根据id快速定位到表名
      */
-    public static TreeMap<Integer, String> kuaishouBaiduIdTableMap = new TreeMap<>();
+    public static Integer START_ID = 60000000;
+    public static Integer STEP_NUM = 20000000;
+    public static String ORIGIN_BAIDU_KUAISHOU_TABLE_NAME = "kuaishou_ads_baidu";
+    public static TreeMap<Integer, String> kuaishouBaiduIdTableMap;
+    static {
+        kuaishouBaiduIdTableMap = new TreeMap<>();
+        //原表的id都是小于起始值60000000的
+        kuaishouBaiduIdTableMap.put(START_ID, ORIGIN_BAIDU_KUAISHOU_TABLE_NAME);
+    }
 
 
     /**

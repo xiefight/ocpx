@@ -155,10 +155,10 @@ public class BaiduKuaishouChannelAds extends KuaishouReportFactory {
         if (!CommonUtil.kuaishouBaiduTables.contains(tableName)) {
             //表不存在,创建
             //创建之前,需要查看配置,要创建哪个表,起始自增id是多少
-            Map<String, Integer> baiduKuaishouAccountMap = configService.queryBaiduKuaishouAccountMap();
-            assert baiduKuaishouAccountMap != null;
+//            Map<String, Integer> baiduKuaishouAccountMap = configService.queryBaiduKuaishouAccountMap();
+//            assert baiduKuaishouAccountMap != null;
             //在配置表中配置新增的 账户:id,必须在生成数据之前
-            Integer startId = baiduKuaishouAccountMap.get(tableName);
+            Integer startId = CommonUtil.baiduKuaishouAccountMap.get(tableName);
             assert startId != null;
             //创建表
             synchronized (BaiduPath.class) {
@@ -170,11 +170,14 @@ public class BaiduKuaishouChannelAds extends KuaishouReportFactory {
             //将表名添加到集合中,避免重复创建
             CommonUtil.kuaishouBaiduTables.add(tableName);
             //保存id和表名的映射关系,方便回传更新时,根据id快速定位到表名
-            CommonUtil.kuaishouBaiduIdTableMap.put(startId, tableName);
+            // 假如配置项是: {"bdks01":1000,"bdks02":2000,"bdksjs01":3000,"bdksjs02":4000},
+            // 在存储时,应该是{2000:"bdks01",3000:"bdks02",4000:"bdksjs01",5000:"bdksjs02"},这样在对比时,小于2000的，就是bdks01,小于3000的，就是bdks02
+            // 步近 1000 0000
+//            CommonUtil.kuaishouBaiduIdTableMap.put(startId + CommonUtil.STEP_NUM, tableName);
         }
 
-        baseServiceInner.insertAdsObject(kuaishouAdsDTO, adsDao());
-//        adsDao().insert(kuaishouAdsDTO);
+//        baseServiceInner.insertAdsObject(kuaishouAdsDTO, adsDao());
+        adsDao().insert(kuaishouAdsDTO);
         logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey(), kuaishouAdsDTO);
         return kuaishouAdsDTO;
     }

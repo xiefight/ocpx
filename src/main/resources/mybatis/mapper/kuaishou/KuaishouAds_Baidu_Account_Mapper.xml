@@ -38,7 +38,7 @@
     <update id="createTable" statementType="STATEMENT">
         create table ${tableName}
         (
-            id              bigint auto_increment=${startId} comment '主键id'
+            id              bigint auto_increment comment '主键id'
                 primary key,
             adid            varchar(10)   null comment '投放渠道标识',
             imei            varchar(255)  null comment '原值/md5值',
@@ -65,7 +65,7 @@
             extra           varchar(1000) null comment '广告主没有而渠道必须的额外字段',
             channel_name    varchar(20)   null comment '渠道标识'
         )
-            collate = utf8mb4_bin;
+            collate = utf8mb4_bin auto_increment=${startId};
     </update>
 
 
