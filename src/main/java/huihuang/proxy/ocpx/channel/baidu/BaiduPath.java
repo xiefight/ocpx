@@ -87,6 +87,7 @@ public class BaiduPath {
     public static final String BAIDU_KUAISHOU_ACCOUNT_08 = "bdks08";
     public static final String BAIDU_KUAISHOU_ACCOUNT_09 = "bdks09";
     public static final String BAIDU_KUAISHOU_ACCOUNT_10 = "bdks10";
+    public static final String BAIDU_KUAISHOU_ACCOUNT_11 = "bdks11";
     public static final String BAIDU_KUAISHOUJISU_ACCOUNT_01 = "bdksjs01"; //这个是新户
     public static final String BAIDU_KUAISHOUJISU_ACCOUNT_02 = "bdksjs02"; //这个是老户
     public static final String BAIDU_KUAISHOUJISU_ACCOUNT_04 = "bdksjs04";
@@ -119,6 +120,7 @@ public class BaiduPath {
     public static final String KUAISHOU_8_SECRET = "NTM1NTczNTk=";
     public static final String KUAISHOU_9_SECRET = "NTY1NDgxNjM=";
     public static final String KUAISHOU_10_SECRET = "NTY1NDgxNjQ=";
+    public static final String KUAISHOU_11_SECRET = "NTY5NjY3NjY=";
     public static final String KUAISHOUJISU_5_SECRET = "NTM1NTczNjA=";
     public static final String KUAISHOUJISU_6_SECRET = "NTM5MzMzMDk=";
     public static final String KUAISHOUJISU_07_SECRET = "NTY1NDgyNDc=";
