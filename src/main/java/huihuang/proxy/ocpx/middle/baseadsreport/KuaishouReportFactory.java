@@ -118,6 +118,9 @@ public abstract class KuaishouReportFactory extends BaseSupport implements IChan
         KuaishouAdsDTO kuaishouAdsDTO = (KuaishouAdsDTO) adsDtoObj;
         KuaishouAdsDTO kuaishouAdsVO = new KuaishouAdsDTO();
         kuaishouAdsVO.setId(kuaishouAdsDTO.getId());
+        if (null != kuaishouAdsDTO.getTableName()){
+            kuaishouAdsVO.setTableName(kuaishouAdsDTO.getTableName());
+        }
         //上报成功
         if (HttpStatus.HTTP_OK == response.getStatus() && Objects.requireNonNull(responseBodyMap).get("ret").equals(0)) {
             kuaishouAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());

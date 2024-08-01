@@ -115,7 +115,7 @@
     </update>
 
 
-    <select id="queryKuaishouAdsById" parameterType="java.lang.Integer" resultMap="kuaishouAdsMap">
+    <select id="queryKuaishouAdsById" resultMap="kuaishouAdsMap">
         SELECT id,
                adid,
                imei,
