@@ -94,17 +94,27 @@ public class BaseServiceInner {
             Set<Integer> configIds = CommonUtil.kuaishouBaiduIdTableMap.keySet();
             //判断id大小,这里不处理--计算的id在某一表中，但表不存在的情况,表一定是先于id存在的
             for (Integer configId : configIds) {
+                /*if (id < 60000000){
+                    String tableName = CommonUtil.NEW_ORIGIN_BAIDU_KUAISHOU_TABLE_NAME;
+                    //todo 指定分表
+                    //分表查
+                    Method adsDaoQuery = splitAccountAdsDao.getClass().getMethod(methodName, Integer.class, String.class);
+                    T t = (T) adsDaoQuery.invoke(splitAccountAdsDao, id, tableName);
+                    if (null != t) {
+                        return new Tuple3<>(splitAccountAdsDao, t, tableName);
+                    }
+                }*/
                 //如果id小于配置的id,说明id小于分表之后最小的configId,数据在原百度快手表里
                 if (id < configId) {
                     String tableName = CommonUtil.kuaishouBaiduIdTableMap.get(configId);
                     //原表查
-                    if (CommonUtil.ORIGIN_BAIDU_KUAISHOU_TABLE_NAME.equals(tableName)) {
+                    /*if (CommonUtil.ORIGIN_BAIDU_KUAISHOU_TABLE_NAME.equals(tableName)) {
                         Method splitAdsDaoQuery = splitAdsDao.getClass().getMethod(methodName, Integer.class);
                         T t = (T) splitAdsDaoQuery.invoke(splitAdsDao, id);
                         if (null != t) {
                             return new Tuple3<>(splitAdsDao, t, "");
                         }
-                    }
+                    }*/
                     //分表查
                     Method adsDaoQuery = splitAccountAdsDao.getClass().getMethod(methodName, Integer.class, String.class);
                     T t = (T) adsDaoQuery.invoke(splitAccountAdsDao, id, tableName);

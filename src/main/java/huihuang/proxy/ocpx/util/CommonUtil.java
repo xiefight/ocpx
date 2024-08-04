@@ -33,13 +33,17 @@ public class CommonUtil {
      * 方便回传更新时,根据id快速定位到表名
      */
     public static Integer START_ID = 60000000;
-    public static Integer STEP_NUM = 20000000;
+    public static Integer STEP_NUM = 20000000; //每张表只能存储最多2000w的数据，其实是有问题的，只能弥补了
+    public static Integer THRESHOLD = 18000000; //阈值，超过这个数，就把数据放到总表中//但总表的id不能大于6000w，所以总表分表
     public static String ORIGIN_BAIDU_KUAISHOU_TABLE_NAME = "kuaishou_ads_baidu";
+    public static String PREFIX_BAIDU_KUAISHOU_TABLE_NAME = "kuaishou_ads_baidu_";
+    public static String NEW_ORIGIN_BAIDU_KUAISHOU_TABLE_NAME = PREFIX_BAIDU_KUAISHOU_TABLE_NAME + "new";
     public static TreeMap<Integer, String> kuaishouBaiduIdTableMap;
     static {
         kuaishouBaiduIdTableMap = new TreeMap<>();
         //原表的id都是小于起始值60000000的
-        kuaishouBaiduIdTableMap.put(START_ID, ORIGIN_BAIDU_KUAISHOU_TABLE_NAME);
+//        kuaishouBaiduIdTableMap.put(START_ID, ORIGIN_BAIDU_KUAISHOU_TABLE_NAME);
+        kuaishouBaiduIdTableMap.put(START_ID, NEW_ORIGIN_BAIDU_KUAISHOU_TABLE_NAME);
     }
 
 

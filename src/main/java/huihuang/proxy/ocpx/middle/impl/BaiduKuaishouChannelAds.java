@@ -147,20 +147,20 @@ public class BaiduKuaishouChannelAds extends KuaishouReportFactory {
         BeanUtil.copyProperties(kuaishouParamField, kuaishouAdsDTO);
         if (null != kuaishouParamField.getAccount_id()) {
             //暂用于百度-快手分表时，account_id作为分表字段
-            kuaishouAdsDTO.setTableName("kuaishou_ads_baidu_" + kuaishouParamField.getAccount_id());
+            kuaishouAdsDTO.setTableName(CommonUtil.PREFIX_BAIDU_KUAISHOU_TABLE_NAME + kuaishouParamField.getAccount_id());
         }
         kuaishouAdsDTO.setChannelName(channelName());
         //先判断表是否已经创建过
         String tableName = kuaishouAdsDTO.getTableName();
+        //在配置表中配置新增的 账户:id,必须在生成数据之前
+        Integer startId = CommonUtil.baiduKuaishouAccountMap.get(tableName);
+        assert startId != null;
         if (!CommonUtil.kuaishouBaiduTables.contains(tableName)) {
             //表不存在,创建
             logger.info("clickReport {} 创建表，表名:{}", channelAdsKey(), tableName);
             //创建之前,需要查看配置,要创建哪个表,起始自增id是多少
 //            Map<String, Integer> baiduKuaishouAccountMap = configService.queryBaiduKuaishouAccountMap();
 //            assert baiduKuaishouAccountMap != null;
-            //在配置表中配置新增的 账户:id,必须在生成数据之前
-            Integer startId = CommonUtil.baiduKuaishouAccountMap.get(tableName);
-            assert startId != null;
             //创建表
             synchronized (BaiduPath.class) {
                 //加锁,避免重复建表
@@ -176,7 +176,14 @@ public class BaiduKuaishouChannelAds extends KuaishouReportFactory {
             // 步近 1000 0000
 //            CommonUtil.kuaishouBaiduIdTableMap.put(startId + CommonUtil.STEP_NUM, tableName);
         }
-
+        //查询当前数据库的最大id是否超过每张表的阈值
+        Integer maxId = ((IBaiduKuaishouAccountDao) adsDao()).queryMaxId(tableName);
+        if (maxId != null && maxId >= startId + CommonUtil.THRESHOLD) {
+            //超过阈值,需要插入到新表中，提前创建好
+            String newTableName = CommonUtil.NEW_ORIGIN_BAIDU_KUAISHOU_TABLE_NAME;
+            logger.info("clickReport {} 当前表已经超过阈值，需要创建新表，原表名:{},新表名:{}", channelAdsKey(), tableName, newTableName);
+            kuaishouAdsDTO.setTableName(newTableName);
+        }
 //        baseServiceInner.insertAdsObject(kuaishouAdsDTO, adsDao());
         adsDao().insert(kuaishouAdsDTO);
         logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey(), kuaishouAdsDTO);
