@@ -44,6 +44,7 @@ public class HuaweiHuihuangJingdongjinrongChannelAds extends HuaweiHuihuangRepor
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
         HuihuangmingtianParamField huihuangmingtianParamField = (HuihuangmingtianParamField) super.channelParamToAdsParam(parameterMap);
         huihuangmingtianParamField.setVersion("v2");
+        huihuangmingtianParamField.setChannel(null);
         return huihuangmingtianParamField;
     }
 
