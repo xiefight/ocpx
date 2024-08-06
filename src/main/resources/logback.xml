@@ -10,7 +10,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过30MB归档 -->
@@ -60,7 +60,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -90,7 +90,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -130,7 +130,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -158,7 +158,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -201,7 +201,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -260,7 +260,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -289,7 +289,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -319,7 +319,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -362,7 +362,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -393,7 +393,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -424,7 +424,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -454,7 +454,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -498,7 +498,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -524,7 +524,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -554,7 +554,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -591,7 +591,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -622,7 +622,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -653,7 +653,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -711,7 +711,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -753,7 +753,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -789,7 +789,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -819,7 +819,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -855,7 +855,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -901,7 +901,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -948,7 +948,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -994,7 +994,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1049,7 +1049,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1086,7 +1086,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1130,7 +1130,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1159,7 +1159,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1189,7 +1189,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1236,7 +1236,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1281,7 +1281,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1335,7 +1335,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1366,7 +1366,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1412,7 +1412,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1443,7 +1443,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1472,7 +1472,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1502,7 +1502,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1548,7 +1548,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1603,7 +1603,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1635,7 +1635,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1673,7 +1673,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1719,7 +1719,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1751,7 +1751,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1782,7 +1782,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1853,7 +1853,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1900,7 +1900,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1947,7 +1947,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -1985,7 +1985,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2022,7 +2022,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2060,7 +2060,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2097,7 +2097,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2126,7 +2126,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2156,7 +2156,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2202,7 +2202,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2239,7 +2239,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2268,7 +2268,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2314,7 +2314,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2343,7 +2343,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2373,7 +2373,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2403,7 +2403,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2432,7 +2432,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2451,6 +2451,14 @@
         <appender-ref ref="58_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuiTongchengChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="58_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuiTongchengServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="58_LOG"/>
+    </logger>
+
     <!-- 58同城（huihui有道） end -->
 
     <!-- 夸克（huihui有道） start -->
@@ -2461,7 +2469,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2491,7 +2499,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2536,7 +2544,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2590,7 +2598,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2635,7 +2643,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2675,7 +2683,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2729,7 +2737,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2768,7 +2776,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
@@ -2807,7 +2815,7 @@
             <!-- 索引最小值，标识%i从1开始 -->
             <minIndex>1</minIndex>
             <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
-            <maxIndex>20</maxIndex>
+            <maxIndex>10</maxIndex>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <!-- 文件大小超过1GB归档 -->
