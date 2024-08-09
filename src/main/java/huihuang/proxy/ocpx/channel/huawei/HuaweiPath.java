@@ -54,7 +54,7 @@ public class HuaweiPath {
     public static final String QQREAD_01_SECRET = "？";
     public static final String GUAZI_01_SECRET = "Q1c8K2sLYnqXbH8PZA3ndPDFtBXDJLIouBd45ZN66X0=";
     public static final String TONGCHENG_01_SECRET = "ECwVVx7pFhtjcXbKAPm5yfiRO8+m+96wFi2kv4uZkxI=";
-    public static final String XINGYE_01_SECRET = "WQ2jAAks3t1FMBb8lvlJFyU2HrtVSy7n9l6k1qQzY0=";
+    public static final String XINGYE_01_SECRET = "/WQ2jAAks3t1FMBb8lvlJFyU2HrtVSy7n9l6k1qQzY0=";
 
     public static final String IQIYI_SECRET = "CSfUp2v5dmrCfqSU0MrHtDYHhBUr4M9sUqNuzPKbmKY=";
 
