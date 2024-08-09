@@ -77,6 +77,8 @@ public class BaiduHuihuangYitaoServiceImpl extends BaiduChannelFactory implement
             baiduVO.setSecret(BaiduPath.HUIHUANG_YITAO_SECRET_02);
         } else if (BaiduPath.HUIHUANG_YITAO_ACCOUNT_03.equals(hhtmAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.HUIHUANG_YITAO_SECRET_03);
+        } else if (BaiduPath.HUIHUANG_YITAO_ACCOUNT_04.equals(hhtmAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_YITAO_SECRET_04);
         } else {
             baiduVO.setSecret(BaiduPath.HUIHUANG_YITAO_SECRET);
         }
