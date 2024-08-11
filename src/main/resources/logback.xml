@@ -1462,6 +1462,14 @@
         <appender-ref ref="HUIHUANG_YITAO_LOG"/>
     </logger>
 
+    <logger name="huihuang.proxy.ocpx.middle.impl.OppoHuihuangYitaoChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_YITAO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoHuihuangYitaoServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_YITAO_LOG"/>
+    </logger>
+
     <!-- 辉煌 一淘 end -->
 
     <!-- 辉煌 丰芒 一淘 start -->

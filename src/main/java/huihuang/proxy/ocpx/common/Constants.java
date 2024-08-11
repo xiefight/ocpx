@@ -220,6 +220,7 @@ public class Constants {
         public static final String HUAWEI_KEEP = "/hkeepServer";
 
         public static final String OPPO_KUAISHOU = "/okServer";
+        public static final String OPPO_HUIHUANG_YITAO = "/oppohhytServer";
 
 
         public static final String IQIYI_KUAISHOU = "/ikServer";
@@ -410,6 +411,7 @@ public class Constants {
         public static final String HUAWEI_KEEP = "huawei-keep";
 
         public static final String OPPO_KUAISHOU = "oppo-kuaishou";
+        public static final String OPPO_HUIHUANG_YITAO = "oppo-huihuang-yitao";
 
         public static final String IQIYI_KUAISHOU = "iqiyi-kuaishou";
         public static final String IQIYI_HUIHUANG_FANQIE = "iqiyi-huihuang-fanqie";

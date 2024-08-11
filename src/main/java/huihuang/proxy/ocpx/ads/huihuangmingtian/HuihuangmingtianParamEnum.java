@@ -5,6 +5,7 @@ import huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongParamEnum;
 import huihuang.proxy.ocpx.channel.honor.HonorParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
+import huihuang.proxy.ocpx.channel.oppo.OppoNewParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -268,6 +269,41 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianGdtMap.put(CALLBACK_URL, GuangdiantongParamEnum.CALLBACK);
 
         huihuangmingtianGdtMap.put(ACCOUNT_ID, GuangdiantongParamEnum.ACCOUNT_ID_OWN);
+
+    }
+
+
+    public static Map<HuihuangmingtianParamEnum, OppoNewParamEnum> huihuangmingtianOppoMap;
+
+    static {
+        huihuangmingtianOppoMap = new HashMap<>();
+        huihuangmingtianOppoMap.put(CHAIN_CODE, OppoNewParamEnum.HUIHUANG_CHAIN_CODE);
+        huihuangmingtianOppoMap.put(TASKID, OppoNewParamEnum.HUIHUANG_TASK_ID);
+        huihuangmingtianOppoMap.put(APP, OppoNewParamEnum.HUIHUANG_APP);
+        huihuangmingtianOppoMap.put(SOURCE, OppoNewParamEnum.HUIHUANG_SOURCE);
+        huihuangmingtianOppoMap.put(ADVERTISING_SPACE_ID, OppoNewParamEnum.HUIHUANG_ADVERTISING_SPACE_ID);
+        huihuangmingtianOppoMap.put(AID, OppoNewParamEnum.HUIHUANG_AID);
+        huihuangmingtianOppoMap.put(CHANNEL, OppoNewParamEnum.HUIHUANG_CHANNEL);
+        huihuangmingtianOppoMap.put(ADID, OppoNewParamEnum.HUIHUANG_ADID);
+        huihuangmingtianOppoMap.put(IMEI_MD5, OppoNewParamEnum.IMEI_MD5);
+        huihuangmingtianOppoMap.put(OAID, OppoNewParamEnum.OAID);
+        huihuangmingtianOppoMap.put(OAID_MD5, null);
+        huihuangmingtianOppoMap.put(IDFA, null);
+        huihuangmingtianOppoMap.put(IDFA_MD5, null);
+//        huihuangmingtianOppoMap.put(IDFA_MD5, OppoNewParamEnum.MUID);
+        huihuangmingtianOppoMap.put(CAMPAIGN_ID, OppoNewParamEnum.ADID);
+        huihuangmingtianOppoMap.put(UID, OppoNewParamEnum.HUIHUANG_UID);
+        huihuangmingtianOppoMap.put(CID, OppoNewParamEnum.HUIHUANG_CID);
+        huihuangmingtianOppoMap.put(SID, OppoNewParamEnum.HUIHUANG_SID);
+        huihuangmingtianOppoMap.put(EVENT_TYPE, null);  //拉活  1  拉新   2
+
+        huihuangmingtianOppoMap.put(TMS, null);
+        huihuangmingtianOppoMap.put(OS, OppoNewParamEnum.OS);
+        huihuangmingtianOppoMap.put(IP, OppoNewParamEnum.IP);
+        huihuangmingtianOppoMap.put(UA, OppoNewParamEnum.UA);
+        huihuangmingtianOppoMap.put(CALLBACK_URL, null);
+
+        huihuangmingtianOppoMap.put(ACCOUNT_ID, OppoNewParamEnum.ACCOUNT_ID);
 
     }
 
