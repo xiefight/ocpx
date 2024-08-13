@@ -18,7 +18,7 @@ public class OppoHuihuangYitaoController {
 
     @Autowired
     @Qualifier("oppohhytService")
-    private IChannelAdsService oppofmytService;
+    private IChannelAdsService opphhytService;
 
     /**
      * 监测地址
@@ -27,7 +27,7 @@ public class OppoHuihuangYitaoController {
     public Response monitorAddress(HttpServletRequest request, @RequestBody String reqBody) {
         try {
             Map<String, Object> params = JsonParameterUtil.jsonToMap(reqBody, Exception.class);
-            return oppofmytService.monitorAddress(params);
+            return opphhytService.monitorAddress(params);
         } catch (Exception e) {
             return BasicResult.getFailResponse("请求异常", e.getMessage());
         }
@@ -40,7 +40,7 @@ public class OppoHuihuangYitaoController {
     public Response clickReport(HttpServletRequest request) {
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
-            return oppofmytService.clickReport(parameterMap);
+            return opphhytService.clickReport(parameterMap);
         } catch (Exception e) {
             return BasicResult.getFailResponse("请求异常", e.getMessage());
         }
@@ -53,7 +53,7 @@ public class OppoHuihuangYitaoController {
     public Response adsCallBack(HttpServletRequest request, @PathVariable Integer id) {
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
-            return oppofmytService.adsCallBack(id, parameterMap);
+            return opphhytService.adsCallBack(id, parameterMap);
         } catch (Exception e) {
             e.printStackTrace();
             return BasicResult.getFailResponse("请求异常", e.getMessage());

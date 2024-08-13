@@ -24,7 +24,7 @@ public class OppoPath {
     public static final Long KUAISHOUJISU_ADID = 1000251849L;
 
 
-    public static final String OPPO_HUIHUANG_YITAO_PKG = "?";
+    public static final String OPPO_HUIHUANG_YITAO_PKG = "com.taobao.etao";
 
     /**
      * salt
