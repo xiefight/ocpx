@@ -91,7 +91,7 @@ public class OppoHuihuangYitaoServiceImpl extends OppoChannelFactory implements 
         oppoVO.setPkg(pkg);
         oppoVO.setDataType(HuihuangmingtianEventTypeEnum.huihuangmingtianOppoEventTypeMap.get(eventType).getCode());
         oppoVO.setAscribeType(0);
-        oppoVO.setAdId(Long.valueOf(hhtmAdsDTO.getAid()));
+        oppoVO.setAdId(Long.valueOf(hhtmAdsDTO.getAdid()));
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, oppoVO);
 
         Response response = baseAdsCallBack(oppoVO);

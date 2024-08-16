@@ -282,7 +282,7 @@ public enum HuihuangmingtianParamEnum {
         huihuangmingtianOppoMap.put(APP, OppoNewParamEnum.HUIHUANG_APP);
         huihuangmingtianOppoMap.put(SOURCE, OppoNewParamEnum.HUIHUANG_SOURCE);
         huihuangmingtianOppoMap.put(ADVERTISING_SPACE_ID, OppoNewParamEnum.HUIHUANG_ADVERTISING_SPACE_ID);
-        huihuangmingtianOppoMap.put(AID, OppoNewParamEnum.HUIHUANG_ADID);
+        huihuangmingtianOppoMap.put(AID, OppoNewParamEnum.HUIHUANG_AID);
         huihuangmingtianOppoMap.put(CHANNEL, OppoNewParamEnum.HUIHUANG_CHANNEL);
         huihuangmingtianOppoMap.put(ADID, OppoNewParamEnum.HUIHUANG_AID);
         huihuangmingtianOppoMap.put(IMEI_MD5, OppoNewParamEnum.IMEI_MD5);

@@ -22,7 +22,7 @@ public enum OppoNewParamEnum {
     CARRIER("$ca$", "carrier", "运营商 不用转换，传原始值"),
     PROGRESS("$progress$", "progress", "播放进度，单位为毫秒，视频广告时有效"),
     IMEI_MD5("__IMEI__", "imeiMd5", "Imei md5 加密"),
-    OAID("__OAID__", "OAID", "OAID 原值"),
+    OAID("__OAID__", "oaid", "OAID 原值"),
     ADID("__ADID__", "adid", "广告 ID"),
     IP("__IP__", "ip", "IP"),
     ADNAME("$an$", "ad_name", "广告名称，注意需要 url encode"),
