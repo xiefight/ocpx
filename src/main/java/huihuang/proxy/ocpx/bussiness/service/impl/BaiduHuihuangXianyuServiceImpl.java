@@ -72,7 +72,8 @@ public class BaiduHuihuangXianyuServiceImpl extends BaiduChannelFactory implemen
             }
         }*/
 
-        if (BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_05.equals(hhxyAdsDTO.getAccountId())) {
+        if (BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_05.equals(hhxyAdsDTO.getAccountId()) ||
+                BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_06.equals(hhxyAdsDTO.getAccountId())) {
             if (eventType.equals(HuihuangFengmangEventTypeEnum.REGISTER.getCode())) {
                 eventType = HuihuangFengmangEventTypeEnum.ACTIVATE.getCode();
             }
