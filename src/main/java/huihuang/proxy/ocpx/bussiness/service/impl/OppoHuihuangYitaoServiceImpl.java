@@ -1,10 +1,10 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.util.StrUtil;
+import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangYitaoPath;
-import huihuang.proxy.ocpx.ads.kuaishou.KuaishouPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangYitaoAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -48,7 +48,9 @@ public class OppoHuihuangYitaoServiceImpl extends OppoChannelFactory implements 
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        logger.info("adsCallBack {} 开始回调渠道  id:{}  parameterMap.size:{}", channelAdsKey, id, parameterMap.size());
+        //转化类型字段
+        String eventType = parameterMap.get("event_type")[0];
+        logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
         //根据id查询对应的点击记录
         HuihuangmingtianAdsDTO hhtmAdsDTO = hhytAdsDao.queryHuihuangYitaoAdsById(id);
 
@@ -61,20 +63,8 @@ public class OppoHuihuangYitaoServiceImpl extends OppoChannelFactory implements 
         String adsName = hhytPath.baseAdsName();
         Long adId = OppoPath.KUAISHOU_ADID;
         String pkg = OppoPath.OPPO_HUIHUANG_YITAO_PKG;
-        if (KuaishouPath.OPPO_KUAISHOU_ADID.equals(hhtmAdsDTO.getAdid())) {
-            oppoSecret = OppoPath.KUAISHOU_SECRET;
-            adsName = KuaishouPath.KUAISHOU_ADS_NAME;
-            pkg = KuaishouPath.OPPO_KUAISHOU_PKG;
-        }
-        if (KuaishouPath.OPPO_KUAISHOUJISU_ADID.equals(hhtmAdsDTO.getAdid())) {
-            oppoSecret = OppoPath.KUAISHOUJISU_SECRET;
-            adsName = KuaishouPath.KUAISHOUJISU_ADS_NAME;
-            adId = OppoPath.KUAISHOUJISU_ADID;
-            pkg = KuaishouPath.OPPO_KUAISHOUJISU_PKG;
-        }
 
-        //转化类型字段
-        String eventType = parameterMap.get("event_type")[0];
+
         long currentTime = System.currentTimeMillis();
         Ads2OppoVO oppoVO = new Ads2OppoVO();
         if (StrUtil.isNotEmpty(hhtmAdsDTO.getImeiMd5())) {
@@ -89,7 +79,7 @@ public class OppoHuihuangYitaoServiceImpl extends OppoChannelFactory implements 
         oppoVO.setChannel(1);
         oppoVO.setTimestamp(currentTime);
         oppoVO.setPkg(pkg);
-        oppoVO.setDataType(HuihuangmingtianEventTypeEnum.huihuangmingtianOppoEventTypeMap.get(eventType).getCode());
+        oppoVO.setDataType(HuihuangFengmangEventTypeEnum.huihuangmingtianOppoEventTypeMap.get(eventType).getCode());
         oppoVO.setAscribeType(0);
         oppoVO.setAdId(Long.valueOf(hhtmAdsDTO.getAdid()));
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, oppoVO);

@@ -6,6 +6,7 @@ import huihuang.proxy.ocpx.channel.honor.HonorParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
 import huihuang.proxy.ocpx.channel.oppo.OppoNewParamEnum;
+import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -273,37 +274,38 @@ public enum HuihuangmingtianParamEnum {
     }
 
 
-    public static Map<HuihuangmingtianParamEnum, OppoNewParamEnum> huihuangmingtianOppoMap;
+    public static Map<HuihuangmingtianParamEnum, OppoParamEnum> huihuangmingtianOppoMap;
 
     static {
         huihuangmingtianOppoMap = new HashMap<>();
-        huihuangmingtianOppoMap.put(CHAIN_CODE, OppoNewParamEnum.HUIHUANG_CHAIN_CODE);
-        huihuangmingtianOppoMap.put(TASKID, OppoNewParamEnum.HUIHUANG_TASK_ID);
-        huihuangmingtianOppoMap.put(APP, OppoNewParamEnum.HUIHUANG_APP);
-        huihuangmingtianOppoMap.put(SOURCE, OppoNewParamEnum.HUIHUANG_SOURCE);
-        huihuangmingtianOppoMap.put(ADVERTISING_SPACE_ID, OppoNewParamEnum.HUIHUANG_ADVERTISING_SPACE_ID);
-        huihuangmingtianOppoMap.put(AID, OppoNewParamEnum.HUIHUANG_AID);
-        huihuangmingtianOppoMap.put(CHANNEL, OppoNewParamEnum.HUIHUANG_CHANNEL);
-        huihuangmingtianOppoMap.put(ADID, OppoNewParamEnum.HUIHUANG_AID);
-        huihuangmingtianOppoMap.put(IMEI_MD5, OppoNewParamEnum.IMEI_MD5);
-        huihuangmingtianOppoMap.put(OAID, OppoNewParamEnum.OAID);
+        huihuangmingtianOppoMap.put(CHAIN_CODE, OppoParamEnum.HUIHUANG_CHAIN_CODE);
+        huihuangmingtianOppoMap.put(TASKID, OppoParamEnum.HUIHUANG_TASK_ID);
+        huihuangmingtianOppoMap.put(APP, OppoParamEnum.HUIHUANG_APP);
+        huihuangmingtianOppoMap.put(SOURCE, OppoParamEnum.HUIHUANG_SOURCE);
+        huihuangmingtianOppoMap.put(ADVERTISING_SPACE_ID, OppoParamEnum.HUIHUANG_ADVERTISING_SPACE_ID);
+        huihuangmingtianOppoMap.put(AID, OppoParamEnum.HUIHUANG_AID);
+        huihuangmingtianOppoMap.put(CHANNEL, OppoParamEnum.HUIHUANG_CHANNEL);
+        huihuangmingtianOppoMap.put(ADID, OppoParamEnum.ADID);
+        huihuangmingtianOppoMap.put(IMEI_MD5, OppoParamEnum.IMEI);
+        huihuangmingtianOppoMap.put(OAID, OppoParamEnum.OAID);
         huihuangmingtianOppoMap.put(OAID_MD5, null);
         huihuangmingtianOppoMap.put(IDFA, null);
         huihuangmingtianOppoMap.put(IDFA_MD5, null);
-//        huihuangmingtianOppoMap.put(IDFA_MD5, OppoNewParamEnum.MUID);
-        huihuangmingtianOppoMap.put(CAMPAIGN_ID, OppoNewParamEnum.ADID);
-        huihuangmingtianOppoMap.put(UID, OppoNewParamEnum.HUIHUANG_UID);
-        huihuangmingtianOppoMap.put(CID, OppoNewParamEnum.HUIHUANG_CID);
-        huihuangmingtianOppoMap.put(SID, OppoNewParamEnum.HUIHUANG_SID);
+//        huihuangmingtianOppoMap.put(IDFA_MD5, OppoParamEnum.MUID);
+        huihuangmingtianOppoMap.put(CAMPAIGN_ID, null);
+//        huihuangmingtianOppoMap.put(CAMPAIGN_ID, OppoParamEnum.ADID);
+        huihuangmingtianOppoMap.put(UID, OppoParamEnum.HUIHUANG_UID);
+        huihuangmingtianOppoMap.put(CID, OppoParamEnum.HUIHUANG_CID);
+        huihuangmingtianOppoMap.put(SID, OppoParamEnum.HUIHUANG_SID);
         huihuangmingtianOppoMap.put(EVENT_TYPE, null);  //拉活  1  拉新   2
 
         huihuangmingtianOppoMap.put(TMS, null);
-        huihuangmingtianOppoMap.put(OS, OppoNewParamEnum.OS);
-        huihuangmingtianOppoMap.put(IP, OppoNewParamEnum.IP);
-        huihuangmingtianOppoMap.put(UA, OppoNewParamEnum.UA);
+        huihuangmingtianOppoMap.put(OS, OppoParamEnum.OS);
+        huihuangmingtianOppoMap.put(IP, OppoParamEnum.IP);
+        huihuangmingtianOppoMap.put(UA, OppoParamEnum.USERAGENT);
         huihuangmingtianOppoMap.put(CALLBACK_URL, null);
 
-        huihuangmingtianOppoMap.put(ACCOUNT_ID, OppoNewParamEnum.ACCOUNT_ID);
+        huihuangmingtianOppoMap.put(ACCOUNT_ID, OppoParamEnum.ACCOUNT_ID);
 
     }
 

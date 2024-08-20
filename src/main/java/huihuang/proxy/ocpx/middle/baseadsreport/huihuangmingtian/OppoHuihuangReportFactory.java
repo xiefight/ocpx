@@ -3,8 +3,6 @@ package huihuang.proxy.ocpx.middle.baseadsreport.huihuangmingtian;
 import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianParamEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianParamField;
-import huihuang.proxy.ocpx.ads.kuaishou.KuaishouParamEnum;
-import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.oppo.OppoNewParamEnum;
 import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
 import huihuang.proxy.ocpx.common.Constants;
@@ -17,7 +15,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-public abstract class OppoHuihuangReportFactory extends HuihuangMingtianReportFactory{
+public abstract class OppoHuihuangReportFactory extends HuihuangMingtianReportFactory {
 
     /**
      * 生成监测链接
@@ -28,7 +26,7 @@ public abstract class OppoHuihuangReportFactory extends HuihuangMingtianReportFa
         //1.遍历kuaishou查找baidu对应的宏参数
         Set<HuihuangmingtianParamEnum> huihuangmingtianParamEnums = HuihuangmingtianParamEnum.huihuangmingtianOppoMap.keySet();
         for (HuihuangmingtianParamEnum huihuangmingtian : huihuangmingtianParamEnums) {
-            OppoNewParamEnum oppo = HuihuangmingtianParamEnum.huihuangmingtianOppoMap.get(huihuangmingtian);
+            OppoParamEnum oppo = HuihuangmingtianParamEnum.huihuangmingtianOppoMap.get(huihuangmingtian);
             if (Objects.isNull(oppo) || StrUtil.isEmpty(oppo.getMacro())) {
                 continue;
             }
@@ -48,10 +46,10 @@ public abstract class OppoHuihuangReportFactory extends HuihuangMingtianReportFa
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
         HuihuangmingtianParamField huihuangmingtianParamField = new HuihuangmingtianParamField();
 
-        Set<Map.Entry<HuihuangmingtianParamEnum, OppoNewParamEnum>> hbSet = HuihuangmingtianParamEnum.huihuangmingtianOppoMap.entrySet();
+        Set<Map.Entry<HuihuangmingtianParamEnum, OppoParamEnum>> hbSet = HuihuangmingtianParamEnum.huihuangmingtianOppoMap.entrySet();
         hbSet.stream().filter(hb -> Objects.nonNull(hb.getValue())).forEach(hb -> {
             HuihuangmingtianParamEnum huihuangmingtian = hb.getKey();
-            OppoNewParamEnum oppo = hb.getValue();
+            OppoParamEnum oppo = hb.getValue();
             String huihuangmingtianField = huihuangmingtian.getName();
             String huaweiParam = oppo.getParam();
             String[] value = parameterMap.get(huaweiParam);
