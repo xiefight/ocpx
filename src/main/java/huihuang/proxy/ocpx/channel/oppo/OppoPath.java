@@ -25,6 +25,7 @@ public class OppoPath {
 
 
     public static final String OPPO_HUIHUANG_YITAO_PKG = "com.taobao.etao";
+    public static final String OPPO_HUIHUANG_XIANYU_PKG = "com.taobao.idlefish";
 
     /**
      * salt
