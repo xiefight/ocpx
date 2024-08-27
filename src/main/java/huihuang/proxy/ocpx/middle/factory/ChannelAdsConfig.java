@@ -126,6 +126,9 @@ public class ChannelAdsConfig {
     private XiaomiLuyunKuaikanmanhuaChannelAds xiaomiLuyunKuaikanmanhuaChannelAds;
 
     @Autowired
+    private XiaomiBupetBiliChannelAds xmbupetbiliChannelAds;
+
+    @Autowired
     private WifiXiguaChannelAds wxChannelAds;
     @Autowired
     private WifiFanqieChannelAds wfChannelAds;
@@ -412,6 +415,8 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_LUYUN_PAIPAI, xiaomiLuyunPaipaiChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_LUYUN_XIAOHONGSHU, xiaomiLuyunXiaohongshuChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_LUYUN_KUAIKANMANHUA, xiaomiLuyunKuaikanmanhuaChannelAds);
+
+        channelAdsMap.put(Constants.ChannelAdsKey.XIAOMI_BUPET_BILI, xmbupetbiliChannelAds);
 
         channelAdsMap.put(Constants.ChannelAdsKey.WIFI_XIGUA, wxChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.WIFI_FANQIE, wfChannelAds);

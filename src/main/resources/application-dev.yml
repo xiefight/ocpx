@@ -7,7 +7,7 @@ spring:
   datasource:
     username: root
     password: 918904@xt
-    url: jdbc:mysql://rm-2ze954q1642q883g6so.mysql.rds.aliyuncs.com:3306/ocpx_test?useUnicode=true
+    url: jdbc:mysql://rm-2ze954q1642q883g6so.mysql.rds.aliyuncs.com:3306/ocpx?useUnicode=true
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 
