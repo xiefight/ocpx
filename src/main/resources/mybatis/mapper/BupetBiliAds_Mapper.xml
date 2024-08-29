@@ -34,7 +34,7 @@
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO bupet_bili
+        INSERT INTO bupet_bili_ads
         (idfa, idfa_md5, imei, oaid, oaid_md5, ip,
         user_agent,account_id,model,callback,caid,req_id,android_id,android_id_md5,gaid,
          extra,channel_name, create_time, update_time, report_status,callback_status)
@@ -45,7 +45,7 @@
 
 
     <update id="update" parameterType="huihuang.proxy.ocpx.ads.bupet.BupetAdsDTO">
-        UPDATE bupet_bili
+        UPDATE bupet_bili_ads
         <set>
             <if test="idfa != null">idfa = #{idfa},</if>
             <if test="idfaMd5 != null">idfa_md5 = #{idfaMd5},</if>
@@ -96,7 +96,7 @@
                update_time,
                report_status,
                callback_status
-        FROM bupet_bili
+        FROM bupet_bili_ads
         WHERE id = #{id}
     </select>
 
