@@ -8,11 +8,8 @@ import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
 import huihuang.proxy.ocpx.ads.bupet.BupetAdsDTO;
 import huihuang.proxy.ocpx.ads.bupet.BupetParamField;
-import huihuang.proxy.ocpx.ads.dingyun.DingyunAdsDTO;
+import huihuang.proxy.ocpx.ads.bupet.BupetPath;
 import huihuang.proxy.ocpx.ads.dingyun.DingyunParamEnum;
-import huihuang.proxy.ocpx.ads.dingyun.DingyunParamField;
-import huihuang.proxy.ocpx.ads.dingyun.DingyunPath;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianParamEnum;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.common.BasicResult;
 import huihuang.proxy.ocpx.common.Constants;
@@ -85,7 +82,7 @@ public abstract class BupetReportFactory extends BaseSupport implements IChannel
 
     @Override
     protected String initAdsUrl() {
-        return DingyunPath.BASIC_URI;
+        return BupetPath.BASIC_URI;
     }
 
     @Override

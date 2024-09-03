@@ -4,12 +4,12 @@ import huihuang.proxy.ocpx.bussiness.dao.ads.IBupetBiliAdsDao;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
-import huihuang.proxy.ocpx.middle.baseadsreport.dingyun.XiaomiDingyunReportFactory;
+import huihuang.proxy.ocpx.middle.baseadsreport.buget.XiaomiBupetReportFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component("xmbupetbiliChannelAds")
-public class XiaomiBupetBiliChannelAds extends XiaomiDingyunReportFactory {
+public class XiaomiBupetBiliChannelAds extends XiaomiBupetReportFactory {
 
     @Autowired
     private IBupetBiliAdsDao bupetBiliAdsDao;

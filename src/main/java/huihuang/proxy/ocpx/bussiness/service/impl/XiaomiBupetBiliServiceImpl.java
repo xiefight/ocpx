@@ -44,7 +44,7 @@ public class XiaomiBupetBiliServiceImpl extends XiaomiChannelFactory implements 
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        String[] eventType = parameterMap.get("action_type");
+        String eventType = parameterMap.get("action_type")[0];
         logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
         //根据id查询对应的点击记录
         BupetAdsDTO bupetAdsDTO = bupetBiliAdsDao.queryBupetBiliAdsById(id);
