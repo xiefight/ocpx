@@ -1881,6 +1881,38 @@
     <!-- 辉煌 闲鱼 end -->
 
 
+    <!-- 辉煌 映客 start -->
+    <appender name="HUIHUANG_YINGKE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/yingke/yingke-baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/yingke/yingke-baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangYingkeChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="HUIHUANG_YINGKE_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangYingkeServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_YINGKE_LOG"/>
+    </logger>
+
+
+    <!-- 辉煌 映客 end -->
+
+
     <!-- 今日头条（全能互动） start -->
     <appender name="QUANNENG_JINRITOUTIAO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/quannengJrtt/quannengJrtt.log</File>
