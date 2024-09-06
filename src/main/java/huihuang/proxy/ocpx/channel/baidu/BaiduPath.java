@@ -187,6 +187,8 @@ public class BaiduPath {
     public static final String QUANNENG_TOUTIAOJISU_SECRET_01 = "NTA1Mzc3OTE=";
     public static final String QUANNENG_ELEME_ACCOUNT_01 = "bdqneleme01";
     public static final String QUANNENG_ELEME_SECRET_01 = "NTgxODQ5MjE=";
+    public static final String QUANNENG_SOUL_ACCOUNT_01 = "bdqnsoul01";
+    public static final String QUANNENG_SOUL_SECRET_01 = "NTg0MTAwNDA=";
 
 
     public static final String BAIDU_DINGYUN_DOUYINHUOSHAN_ACCOUNT = "bddydyhs01";
