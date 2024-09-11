@@ -73,7 +73,12 @@ public class BaiduHuihuangTianmaoServiceImpl extends BaiduChannelFactory impleme
         baiduVO.setCbImeiMd5(hhtmAdsDTO.getImeiMd5());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(hhtmAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.HUIHUANG_TIANMAO_SECRET);
+        if (BaiduPath.HUIHUANG_TIANMAO_ACCOUNT_01.equals(hhtmAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_TIANMAO_SECRET_01);
+        } else {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_TIANMAO_SECRET);
+        }
+
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);

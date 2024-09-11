@@ -17,6 +17,7 @@
         <result column="tms" property="tms"/>
         <result column="os" property="os"/>
         <result column="ip" property="ip"/>
+        <result column="account_id" property="accountId"/>
         <result column="ad_agent" property="adAgent"/>
         <result column="advertising_space_id" property="advertisingSpaceId"/>
         <result column="source" property="source"/>
@@ -37,11 +38,11 @@
         INSERT INTO huihuangtianmao_ads
         (chain_code, imei_md5, oaid, oaid_md5, idfa,
         idfa_md5, task_id, aid, campaign_id, app, tms, os, ip, ad_agent,
-        advertising_space_id,source,callback_url,extra,channel_name, create_time, update_time, report_status,
+        advertising_space_id,source,account_id,callback_url,extra,channel_name, create_time, update_time, report_status,
         callback_status)
         VALUES (#{chainCode}, #{imeiMd5}, #{oaid}, #{oaidMd5}, #{idfa}, #{idfaMd5}, #{taskId},
         #{aid}, #{campaignId}, #{app}, #{tms}, #{os}, #{ip}, #{adAgent}, #{advertisingSpaceId},
-        #{source},#{callbackUrl},#{extra},#{channelName},now(),now(), "0", "0")
+        #{source},#{accountId},#{callbackUrl},#{extra},#{channelName},now(),now(), "0", "0")
     </insert>
 
 
@@ -64,6 +65,7 @@
             <if test="adAgent != null">ad_agent = #{adAgent},</if>
             <if test="advertisingSpaceId != null">advertising_space_id = #{advertisingSpaceId},</if>
             <if test="source != null">source = #{source},</if>
+            <if test="accountId != null">account_id = #{accountId},</if>
             <if test="callbackUrl != null">callback_url = #{callbackUrl},</if>
             <if test="extra != null">extra = #{extra},</if>
             <if test="channelName != null">channel_name = #{channelName},</if>
@@ -94,6 +96,7 @@
                ad_agent,
                advertising_space_id,
                source,
+               account_id,
                callback_url,
                extra,
                channel_name,
