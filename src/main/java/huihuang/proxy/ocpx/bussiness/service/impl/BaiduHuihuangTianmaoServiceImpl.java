@@ -75,6 +75,8 @@ public class BaiduHuihuangTianmaoServiceImpl extends BaiduChannelFactory impleme
         baiduVO.setCbIp(hhtmAdsDTO.getIp());
         if (BaiduPath.HUIHUANG_TIANMAO_ACCOUNT_01.equals(hhtmAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.HUIHUANG_TIANMAO_SECRET_01);
+        } else if (BaiduPath.HUIHUANG_TIANMAO_ACCOUNT_02.equals(hhtmAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_TIANMAO_SECRET_02);
         } else {
             baiduVO.setSecret(BaiduPath.HUIHUANG_TIANMAO_SECRET);
         }

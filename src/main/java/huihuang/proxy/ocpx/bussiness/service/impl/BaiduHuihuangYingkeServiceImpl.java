@@ -75,6 +75,8 @@ public class BaiduHuihuangYingkeServiceImpl extends BaiduChannelFactory implemen
         baiduVO.setCbIp(hhtmAdsDTO.getIp());
         if (BaiduPath.HUIHUANG_YINGKE_ACCOUNT_01.equals(hhtmAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.HUIHUANG_YINGKE_SECRET_01);
+        } else if (BaiduPath.HUIHUANG_YINGKE_ACCOUNT_02.equals(hhtmAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_YINGKE_SECRET_02);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 

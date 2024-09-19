@@ -73,7 +73,13 @@ public class BaiduQuannengElemeServiceImpl extends BaiduChannelFactory implement
         baiduVO.setCbImeiMd5(dyhsAdsDTO.getImei());
         baiduVO.setCbAndroidIdMd5(null);
         baiduVO.setCbIp(dyhsAdsDTO.getIp());
-        baiduVO.setSecret(BaiduPath.QUANNENG_ELEME_SECRET_01);
+
+        if (BaiduPath.QUANNENG_ELEME_ACCOUNT_02.equals(dyhsAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.QUANNENG_ELEME_SECRET_02);
+        } else if (BaiduPath.QUANNENG_ELEME_ACCOUNT_01.equals(dyhsAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.QUANNENG_ELEME_SECRET_01);
+        }
+//        baiduVO.setSecret(BaiduPath.QUANNENG_ELEME_SECRET_01);
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
         Response response = baseAdsCallBack(baiduVO);
