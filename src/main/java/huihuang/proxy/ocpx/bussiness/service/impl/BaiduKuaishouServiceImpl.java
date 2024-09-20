@@ -144,6 +144,12 @@ public class BaiduKuaishouServiceImpl extends BaiduChannelFactory implements ICh
             } else if (kuaishouAdsDTO.getAccountId().equals(BaiduPath.BAIDU_KUAISHOU_ACCOUNT_11)) {
                 baiduVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
                 baiduVO.setSecret(BaiduPath.KUAISHOU_11_SECRET);
+            } else if (kuaishouAdsDTO.getAccountId().equals(BaiduPath.BAIDU_KUAISHOU_ACCOUNT_12)) {
+                baiduVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
+                baiduVO.setSecret(BaiduPath.KUAISHOU_12_SECRET);
+            } else if (kuaishouAdsDTO.getAccountId().equals(BaiduPath.BAIDU_KUAISHOU_ACCOUNT_13)) {
+                baiduVO.setAdsName(KuaishouPath.KUAISHOU_ADS_NAME);
+                baiduVO.setSecret(BaiduPath.KUAISHOU_13_SECRET);
             } else if (kuaishouAdsDTO.getAccountId().equals(BaiduPath.BAIDU_KUAISHOUJISU_ACCOUNT_01)) {
                 baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
                 baiduVO.setSecret(BaiduPath.KUAISHOUJISU_21756_01_SECRET);
@@ -165,6 +171,15 @@ public class BaiduKuaishouServiceImpl extends BaiduChannelFactory implements ICh
             } else if (kuaishouAdsDTO.getAccountId().equals(BaiduPath.BAIDU_KUAISHOUJISU_ACCOUNT_08)) {
                 baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
                 baiduVO.setSecret(BaiduPath.KUAISHOUJISU_08_SECRET);
+            } else if (kuaishouAdsDTO.getAccountId().equals(BaiduPath.BAIDU_KUAISHOUJISU_ACCOUNT_09)) {
+                baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
+                baiduVO.setSecret(BaiduPath.KUAISHOUJISU_09_SECRET);
+            } else if (kuaishouAdsDTO.getAccountId().equals(BaiduPath.BAIDU_KUAISHOUJISU_ACCOUNT_10)) {
+                baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
+                baiduVO.setSecret(BaiduPath.KUAISHOUJISU_10_SECRET);
+            } else if (kuaishouAdsDTO.getAccountId().equals(BaiduPath.BAIDU_KUAISHOUJISU_ACCOUNT_11)) {
+                baiduVO.setAdsName(KuaishouPath.KUAISHOUJISU_ADS_NAME);
+                baiduVO.setSecret(BaiduPath.KUAISHOUJISU_11_SECRET);
             }
         }
 

@@ -32,7 +32,7 @@ public class CommonUtil {
      * 顺序存储百度快手动态创建的id和表名映射
      * 方便回传更新时,根据id快速定位到表名
      */
-    public static Integer START_ID = 60000000;
+    public static Integer START_ID = 120000000;
     public static Integer STEP_NUM = 20000000; //每张表只能存储最多2000w的数据，其实是有问题的，只能弥补了
     public static Integer THRESHOLD = 18000000; //阈值，超过这个数，就把数据放到总表中//但总表的id不能大于6000w，所以总表分表
     public static String ORIGIN_BAIDU_KUAISHOU_TABLE_NAME = "kuaishou_ads_baidu";

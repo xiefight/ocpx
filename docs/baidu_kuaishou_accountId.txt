@@ -1,0 +1,29 @@
+{
+	"bdksacMap": {
+		#"kuaishou_ads_baidu_bdks01": 60000000,
+		#"kuaishou_ads_baidu_bdks02": 80000000,
+		#"kuaishou_ads_baidu_bdks03": 100000000,
+		"kuaishou_ads_baidu_bdks04": 120000000,
+        "kuaishou_ads_baidu_bdks05": 140000000,
+        "kuaishou_ads_baidu_bdks06": 160000000,
+        "kuaishou_ads_baidu_bdks07": 180000000,
+        "kuaishou_ads_baidu_bdks08": 200000000,
+        "kuaishou_ads_baidu_bdks09": 220000000,
+        "kuaishou_ads_baidu_bdks10": 240000000,
+        "kuaishou_ads_baidu_bdks11": 440000000,
+        "kuaishou_ads_baidu_bdks12": 460000000,
+        "kuaishou_ads_baidu_bdks13": 480000000,
+        "kuaishou_ads_baidu_bdksjs01": 260000000,
+        "kuaishou_ads_baidu_bdksjs02": 280000000,
+        "kuaishou_ads_baidu_bdksjs03": 300000000,
+        "kuaishou_ads_baidu_bdksjs04": 320000000,
+        "kuaishou_ads_baidu_bdksjs05": 340000000,
+        "kuaishou_ads_baidu_bdksjs06": 360000000,
+        "kuaishou_ads_baidu_bdksjs07": 380000000,
+        "kuaishou_ads_baidu_bdksjs08": 400000000,
+        "kuaishou_ads_baidu_bdksjs09": 420000000,
+        "kuaishou_ads_baidu_bdksjs10": 500000000,
+        "kuaishou_ads_baidu_bdksjs11": 520000000
+	},
+	"serverPath": "https://hzpvip.com"
+}
