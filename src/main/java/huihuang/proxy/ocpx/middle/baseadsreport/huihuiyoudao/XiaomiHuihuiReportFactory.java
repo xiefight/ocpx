@@ -65,14 +65,14 @@ public abstract class XiaomiHuihuiReportFactory extends BaseHuihuiReportFactory 
             HuihuiParamEnum huihui = xh.getKey();
             XiaomiParamEnum xiaomi = xh.getValue();
             //huihui的字段名
-            String liangdamaoField = huihui.getName();
+            String huihuiField = huihui.getName();
             //xiaomi的字段名
             String xiaomiParam = xiaomi.getParam();
             //xiaomi的参数值
             String[] value = parameterMap.get(xiaomiParam);
             if (Objects.isNull(value) || value.length == 0) return;
             try {
-                PropertyDescriptor descriptor = new PropertyDescriptor(liangdamaoField, huihuiParamField.getClass());
+                PropertyDescriptor descriptor = new PropertyDescriptor(huihuiField, huihuiParamField.getClass());
                 Method setMethod = descriptor.getWriteMethod();
                 setMethod.invoke(huihuiParamField, value[0]);
             } catch (IntrospectionException | InvocationTargetException | IllegalAccessException e) {

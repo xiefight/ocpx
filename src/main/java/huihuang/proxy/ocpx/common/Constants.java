@@ -72,6 +72,7 @@ public class Constants {
         public static final String XIAOMI_HUIHUI_TAOBAO = "/xhhtbServer";
         public static final String XIAOMI_HUIHUI_KUAKE = "/xhhkkServer";
         public static final String XIAOMI_HUIHUI_GUAZI = "/xhhgzServer";
+        public static final String XIAOMI_HUIHUI_HEMADUANJU = "/xhhhmdjServer";
         public static final String XIAOMI_DONGCHEDI = "/xdcdServer";
 
         public static final String XIAOMI_QUANNENG_FANQIE = "/xqfServer";
@@ -275,6 +276,7 @@ public class Constants {
         public static final String XIAOMI_HUIHUI_TAOBAO = "xiaomi-huihui-taobao";
         public static final String XIAOMI_HUIHUI_KUAKE = "xiaomi-huihui-kuake";
         public static final String XIAOMI_HUIHUI_GUAZI = "xiaomi-huihui-guazi";
+        public static final String XIAOMI_HUIHUI_HEMADUANJU = "xiaomi-huihui-hemaduanju";
         public static final String XIAOMI_IQIYI = "xiaomi-iqiyi";
         public static final String XIAOMI_DOUYIN = "xiaomi-douyin";
         public static final String XIAOMI_DOUYINHUOSHAN = "xiaomi-douyinhuoshan";
