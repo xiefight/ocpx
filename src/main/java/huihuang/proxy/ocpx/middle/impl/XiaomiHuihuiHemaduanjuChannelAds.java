@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.middle.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiParamField;
+import huihuang.proxy.ocpx.ads.huihui.HuihuiPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuiHemaduanjuAdsDao;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
@@ -32,6 +33,11 @@ public class XiaomiHuihuiHemaduanjuChannelAds extends XiaomiHuihuiReportFactory 
     @Override
     protected IMarkDao adsDao() {
         return hemaduanjuAdsDao;
+    }
+
+    @Override
+    protected String initAdsUrl() {
+        return HuihuiPath.BASIC_URI_2;
     }
 
     @Override
