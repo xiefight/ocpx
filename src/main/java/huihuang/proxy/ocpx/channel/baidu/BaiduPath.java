@@ -80,6 +80,9 @@ public class BaiduPath {
     public static final String BAIDU_HUIHUI_TONGCHENG_ACCOUNT_01 = "bdhhtc01";
     public static final String HUIHUI_TONGCHENG_01_SECRET = "NTQyNDM2Mjk=";
 
+    public static final String BAIDU_HUIHUI_HEMADUANJU_ACCOUNT_01 = "bdhhhemaduanju01";
+    public static final String BAIDU_HUIHUI_HEMADUANJU_SECRET_01 = "NTkwMjE5Mjk=";
+
     public static final String BAIDU_KUAISHOU_ACCOUNT_01 = "bdks01";
     public static final String BAIDU_KUAISHOU_ACCOUNT_02 = "bdks02";
     public static final String BAIDU_KUAISHOU_ACCOUNT_03 = "bdks03";
