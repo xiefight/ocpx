@@ -60,7 +60,8 @@ public class BaiduHuihuangXianyuServiceImpl extends BaiduChannelFactory implemen
         //百度-闲鱼1&4户 ：注册对应注册人数（激活不需要回传）
         //百度-闲鱼2&3户：注册对应激活人数（激活也不需要回传）
 
-        if (eventType.equals(HuihuangFengmangEventTypeEnum.ACTIVATE.getCode())) {
+        if (!BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_07.equals(hhxyAdsDTO.getAccountId()) &&
+                eventType.equals(HuihuangFengmangEventTypeEnum.ACTIVATE.getCode())) {
             logger.error("{} 百度-闲鱼 {} 不需要激活事件 {}", channelAdsKey, hhxyAdsDTO.getAccountId(), id);
             return BasicResult.getFailResponse("百度-闲鱼不需要激活事件 " + id);
         }

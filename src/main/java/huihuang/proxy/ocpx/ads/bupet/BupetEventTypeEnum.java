@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.bupet;
 
 import cn.hutool.core.collection.CollUtil;
+import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
 
 import java.util.Map;
@@ -45,6 +46,16 @@ public enum BupetEventTypeEnum {
         bupetXiaomiEventTypeMap.put(REGISTER.code, XiaomiEventTypeEnum.APP_REGISTER);
         bupetXiaomiEventTypeMap.put(DAY1RETENTION.code, XiaomiEventTypeEnum.APP_RETENTION);
         bupetXiaomiEventTypeMap.put(PURCHASE.code, XiaomiEventTypeEnum.APP_FIRST_PAY);
+    }
+
+    public static Map<String, BaiduEventTypeEnum> bupetBaiduEventTypeMap;
+
+    static {
+        bupetBaiduEventTypeMap = CollUtil.newHashMap();
+        bupetBaiduEventTypeMap.put(ACTIVATE.code, BaiduEventTypeEnum.ACTIVE);
+        bupetBaiduEventTypeMap.put(REGISTER.code, BaiduEventTypeEnum.REGISTER);
+        bupetBaiduEventTypeMap.put(DAY1RETENTION.code, BaiduEventTypeEnum.RETAIN_1DAY);
+        bupetBaiduEventTypeMap.put(PURCHASE.code, BaiduEventTypeEnum.ORDERS);
     }
 
 }

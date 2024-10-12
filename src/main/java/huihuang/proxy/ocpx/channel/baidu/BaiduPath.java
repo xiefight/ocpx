@@ -245,7 +245,8 @@ public class BaiduPath {
     public static final String KEEP_SOUSUO_SECRET_01 = "NTY2NTUxMjA=";
 
 
-
+    public static final String BAIDU_BUPET_BILI_ACCOUNT_01 = "bdbupetbili01";
+    public static final String BAIDU_BUPET_BILI_SECRET_01 = "NTg4MDMzNzI=";
 
 
     public static final String BAIDU_CHANNEL_NAME = "baidu";

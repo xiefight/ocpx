@@ -181,6 +181,8 @@ public class Constants {
         public static final String BAIDU_LUYUN_PAIPAI = "/blyppServer";
         public static final String BAIDU_LUYUN_KUAIKANMANHUA = "/blykkmhServer";
 
+        public static final String BAIDU_BUPET_BILI = "/bdbupetbiliServer";
+
 
 
         public static final String HUAWEI_KUAISHOU = "/hkServer";
@@ -387,6 +389,8 @@ public class Constants {
         public static final String BAIDU_KEEP = "baidu-keep";
         public static final String BAIDU_LUYUN_PAIPAI = "baidu-luyun-paipai";
         public static final String BAIDU_LUYUN_KUAIKANMANHUA = "baidu-luyun-kuaikanmanhua";
+
+        public static final String BAIDU_BUPET_BILI = "baidu-bupet-bili";
 
         public static final String HUAWEI_KUAISHOU = "huawei-kuaishou";
         public static final String HUAWEI_LTJD = "huawei-ltjd";

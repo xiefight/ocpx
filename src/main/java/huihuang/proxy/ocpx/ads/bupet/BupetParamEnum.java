@@ -1,5 +1,6 @@
 package huihuang.proxy.ocpx.ads.bupet;
 
+import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
@@ -74,6 +75,26 @@ public enum BupetParamEnum {
         bupetXiaomiMap.put(USER_AGENT, XiaomiParamEnum.UA);
         bupetXiaomiMap.put(CAID, null);
         bupetXiaomiMap.put(ACCOUNT_ID, XiaomiParamEnum.ACCOUNT_ID);
+
+    }
+
+
+    public static Map<BupetParamEnum, BaiduParamEnum> bupetBaiduMap;
+
+    static {
+        bupetBaiduMap = new HashMap<>();
+        bupetBaiduMap.put(IMEI, BaiduParamEnum.IMEI_MD5);
+        bupetBaiduMap.put(IDFA, BaiduParamEnum.IDFA);
+        bupetBaiduMap.put(IDFA_MD5, null);
+        bupetBaiduMap.put(OAID, BaiduParamEnum.OAID);
+        bupetBaiduMap.put(OAID_MD5, BaiduParamEnum.OAID_MD5);
+        bupetBaiduMap.put(CALLBACK, BaiduParamEnum.CALLBACK_URL);
+        bupetBaiduMap.put(ANDROID_ID, null);
+        bupetBaiduMap.put(ANDROID_ID_MD5, BaiduParamEnum.ANDROID_ID_MD5);
+        bupetBaiduMap.put(IP, BaiduParamEnum.IP);
+        bupetBaiduMap.put(USER_AGENT, BaiduParamEnum.UA);
+        bupetBaiduMap.put(CAID, null);
+        bupetBaiduMap.put(ACCOUNT_ID, BaiduParamEnum.ACCOUNT_ID);
 
     }
 
