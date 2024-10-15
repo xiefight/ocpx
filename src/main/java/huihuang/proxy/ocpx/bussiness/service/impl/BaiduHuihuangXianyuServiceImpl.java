@@ -61,6 +61,7 @@ public class BaiduHuihuangXianyuServiceImpl extends BaiduChannelFactory implemen
         //百度-闲鱼2&3户：注册对应激活人数（激活也不需要回传）
 
         if (!BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_07.equals(hhxyAdsDTO.getAccountId()) &&
+                !BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_08.equals(hhxyAdsDTO.getAccountId()) &&
                 eventType.equals(HuihuangFengmangEventTypeEnum.ACTIVATE.getCode())) {
             logger.error("{} 百度-闲鱼 {} 不需要激活事件 {}", channelAdsKey, hhxyAdsDTO.getAccountId(), id);
             return BasicResult.getFailResponse("百度-闲鱼不需要激活事件 " + id);
@@ -112,6 +113,8 @@ public class BaiduHuihuangXianyuServiceImpl extends BaiduChannelFactory implemen
             baiduVO.setSecret(BaiduPath.HUIHUANG_XIANYU_06_SECRET);
         } else if (BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_07.equals(hhxyAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.HUIHUANG_XIANYU_07_SECRET);
+        } else if (BaiduPath.BAIDU_HUIHUANG_XIANYU_ACCOUNT_08.equals(hhxyAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_XIANYU_08_SECRET);
         } else if (BaiduPath.BAIDU_HUIHUANG_XIANYUSOUSUO_ACCOUNT_01.equals(hhxyAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.HUIHUANG_XIANYUSOUSUO_01_SECRET);
         } else if (BaiduPath.BAIDU_HUIHUANG_XIANYUSOUSUO_ACCOUNT_02.equals(hhxyAdsDTO.getAccountId())) {

@@ -63,6 +63,7 @@ public class BaiduPath {
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_05 = "bdhuihxy05";
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_06 = "bdhuihxy06";
     public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_07 = "bdhuihxy07";
+    public static final String BAIDU_HUIHUANG_XIANYU_ACCOUNT_08 = "bdhuihxy08";
     public static final String BAIDU_HUIHUANG_XIANYUSOUSUO_ACCOUNT_01 = "bdhuihxyss01";
     public static final String BAIDU_HUIHUANG_XIANYUSOUSUO_ACCOUNT_02 = "bdhuihxyss02";
     public static final String BAIDU_HUIHUANG_XIANYUSOUSUO_ACCOUNT_03 = "bdhuihxyss03";
@@ -73,6 +74,7 @@ public class BaiduPath {
     public static final String HUIHUANG_XIANYU_05_SECRET = "NTQyMjc0MDY=";
     public static final String HUIHUANG_XIANYU_06_SECRET = "NTY4NTExNDE=";
     public static final String HUIHUANG_XIANYU_07_SECRET = "NTkwODU2Njc=";
+    public static final String HUIHUANG_XIANYU_08_SECRET = "NTkwODU2Njg=";
     public static final String HUIHUANG_XIANYUSOUSUO_01_SECRET = "NDczMDc5OTY=";
     public static final String HUIHUANG_XIANYUSOUSUO_02_SECRET = "NTQzMDMyMDE=";
     public static final String HUIHUANG_XIANYUSOUSUO_03_SECRET = "NTQzMDMyMDA=";
