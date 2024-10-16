@@ -346,6 +346,8 @@ public class ChannelAdsConfig {
 
     @Autowired
     private BaiduBupetBiliChannelAds bdbupetbiliChannelAds;
+    @Autowired
+    private BaiduNingzhiSoulChannelAds bdningzhisoulChannelAds;
 
     @Autowired
     private OppoKuaishouChannelAds oppoKuaishouChannelAds;
@@ -559,6 +561,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_LUYUN_PAIPAI, blyppChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_LUYUN_KUAIKANMANHUA, blykkmhChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_BUPET_BILI, bdbupetbiliChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.BAIDU_NINGZHI_SOUL, bdningzhisoulChannelAds);
 
         channelAdsMap.put(Constants.ChannelAdsKey.OPPO_KUAISHOU, oppoKuaishouChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.OPPO_HUIHUANG_YITAO, oppohhytChannelAds);
