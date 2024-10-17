@@ -64,6 +64,8 @@ public enum BaiduParamEnum {
     KEEP_APPID("","appid","keep appid"),
     KEEP_CHANNEL("","channel","keep channel"),
 
+    NINGZHI_YYQ("","yyq","宁致的yyq"),
+
     ;
 
 

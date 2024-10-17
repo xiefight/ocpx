@@ -94,7 +94,7 @@ public abstract class NingzhiReportFactory extends BaseSupport implements IChann
         NingzhiAdsDTO ningzhiAdsVO = new NingzhiAdsDTO();
         ningzhiAdsVO.setId(ningzhiAdsDTO.getId());
         //上报成功
-        if (HttpStatus.HTTP_OK == response.getStatus() && (Integer) Objects.requireNonNull(responseBodyMap).get("code") == 0) {
+        if (HttpStatus.HTTP_OK == response.getStatus() && (Integer) Objects.requireNonNull(responseBodyMap).get("code") == 200) {
             ningzhiAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
             baseServiceInner.updateAdsObject(ningzhiAdsVO, adsDao());
             logger.info("clickReport {} 上报广告侧接口请求成功:{} 数据:{}", channelAdsKey(), response, ningzhiAdsVO);

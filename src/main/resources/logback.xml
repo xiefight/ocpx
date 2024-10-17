@@ -3323,7 +3323,32 @@
         <appender-ref ref="NINGZHI_SOUL_BAIDU_LOG"/>
     </logger>
 
+    <appender name="NINGZHI_SOUL_XIAOMI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/ningzhi/soul/soul_xiaomi.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/ningzhi/soul/soul_xiaomi.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
 
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.XiaomiNingzhiSoulChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="NINGZHI_SOUL_XIAOMI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.XiaomiNingzhiSoulServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="NINGZHI_SOUL_XIAOMI_LOG"/>
+    </logger>
 
 
     <!-- ningzhi soul end -->

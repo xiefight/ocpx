@@ -20,7 +20,9 @@ public enum NingzhiParamEnum {
     CLICK_ID("clickid", "String", 0, "点击id"),
     TS("ts", "String", 0, "请求时间（毫秒单位）"),
     CALLBACK("callback", "String", 1, "渠道回调地址"),
+    ACCOUNT_ID("accountId", "String", 0, "我们规定的账户id,用于同一pid区分不出来的情况下,使用accountId区分"),
 
+    YYQ("yyq", "String", 0, ""),
 
     ;
 
@@ -68,6 +70,8 @@ public enum NingzhiParamEnum {
         ningzhiXiaomiMap.put(CLICK_ID, null);
         ningzhiXiaomiMap.put(TS, XiaomiParamEnum.TS);
         ningzhiXiaomiMap.put(OS, null);
+        ningzhiXiaomiMap.put(ACCOUNT_ID, XiaomiParamEnum.ACCOUNT_ID);
+        ningzhiXiaomiMap.put(YYQ, XiaomiParamEnum.NINGZHI_YYQ);
     }
 
 
@@ -86,6 +90,7 @@ public enum NingzhiParamEnum {
         ningzhiBaiduMap.put(CLICK_ID, null);
         ningzhiBaiduMap.put(TS, BaiduParamEnum.TS);
         ningzhiBaiduMap.put(OS, BaiduParamEnum.OS_TYPE);
+        ningzhiBaiduMap.put(ACCOUNT_ID, BaiduParamEnum.ACCOUNT_ID);
     }
 
 

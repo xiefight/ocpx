@@ -14,6 +14,7 @@
         <result column="account_id" property="accountId"/>
         <result column="model" property="model"/>
         <result column="callback" property="callback"/>
+        <result column="yyq" property="yyq"/>
 
         <result column="extra" property="extra"/>
         <result column="channel_name" property="channelName"/>
@@ -29,9 +30,9 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
         INSERT INTO ningzhi_soul_ads
-        (idfa, imei, oaid, ip, ua,os,ts,account_id,model,callback, extra,channel_name, create_time, update_time,
+        (idfa, imei, oaid, ip, ua,os,ts,account_id,yyq,model,callback, extra,channel_name, create_time, update_time,
         report_status,callback_status)
-        VALUES (#{idfa}, #{imei}, #{oaid}, #{ip}, #{ua},#{os},#{ts},#{accountId}, #{model}, #{callback},
+        VALUES (#{idfa}, #{imei}, #{oaid}, #{ip}, #{ua},#{os},#{ts},#{accountId},#{yyq}, #{model}, #{callback},
         #{extra},#{channelName},now(),now(), "0", "0")
     </insert>
 
@@ -49,6 +50,7 @@
             <if test="model != null">model = #{model},</if>
             <if test="callback != null">callback = #{callback},</if>
             <if test="accountId != null">account_id = #{accountId},</if>
+            <if test="yyq != null">yyq = #{yyq},</if>
             <if test="extra != null">extra = #{extra},</if>
             <if test="channelName != null">channel_name = #{channelName},</if>
             update_time = now(),
@@ -69,6 +71,7 @@
                ua,
                os,
                ts,
+               yyq,
                account_id,
                model,
                callback,

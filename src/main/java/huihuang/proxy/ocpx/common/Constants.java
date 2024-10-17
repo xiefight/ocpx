@@ -120,6 +120,7 @@ public class Constants {
         public static final String XIAOMI_QIDU = "/xqiduServer";
 
         public static final String XIAOMI_BUPET_BILI = "/xbupetbiliServer";
+        public static final String XIAOMI_NINGZHI_SOUL = "/xmningzhisoulServer";
 
 
         public static final String WIFI_XIGUA = "/wxServer";
@@ -330,6 +331,7 @@ public class Constants {
         public static final String XIAOMI_LUYUN_KUAIKANMANHUA = "xiaomi-luyun-kuaikanmanhua";
 
         public static final String XIAOMI_BUPET_BILI = "xiaomi-bupet-bili";
+        public static final String XIAOMI_NINGZHI_SOUL = "xiaomi-ningzhi-soul";
 
         public static final String TOUTIAO_MEITUAN = "toutiao-meituan";
 
