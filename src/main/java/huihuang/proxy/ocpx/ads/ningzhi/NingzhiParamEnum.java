@@ -91,6 +91,7 @@ public enum NingzhiParamEnum {
         ningzhiBaiduMap.put(TS, BaiduParamEnum.TS);
         ningzhiBaiduMap.put(OS, BaiduParamEnum.OS_TYPE);
         ningzhiBaiduMap.put(ACCOUNT_ID, BaiduParamEnum.ACCOUNT_ID);
+        ningzhiBaiduMap.put(YYQ, BaiduParamEnum.NINGZHI_YYQ);
     }
 
 

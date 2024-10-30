@@ -46,7 +46,8 @@ public class XiaomiNingzhiSoulServiceImpl extends XiaomiChannelFactory implement
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        logger.info("adsCallBack {} 开始回调渠道  id:{}  parameterMap.size:{}", channelAdsKey, id, parameterMap.size());
+        String eventType = parameterMap.get("event")[0];
+        logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
         //根据id查询对应的点击记录
         NingzhiAdsDTO ningzhisoulAdsDTO = ningzhisoulAdsDao.queryNingzhiSoulAdsById(id);
         if (null == ningzhisoulAdsDTO) {
@@ -56,7 +57,7 @@ public class XiaomiNingzhiSoulServiceImpl extends XiaomiChannelFactory implement
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
         xiaomiVO.setAdsName(ningzhisoulPath.baseAdsName());
-        xiaomiVO.setEventType(NingzhiEventTypeEnum.ningzhiXiaomiEventTypeMap.get(parameterMap.get("action_type")[0]).getCode());
+        xiaomiVO.setEventType(NingzhiEventTypeEnum.ningzhiXiaomiEventTypeMap.get(eventType).getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(ningzhisoulAdsDTO.getCallback());
         xiaomiVO.setOaid(ningzhisoulAdsDTO.getOaid());

@@ -37,11 +37,12 @@ public enum NingzhiEventTypeEnum {
     static {
         ningzhiXiaomiEventTypeMap = CollUtil.newHashMap();
         //激活
-        ningzhiXiaomiEventTypeMap.put(ACTIVATE.code, XiaomiEventTypeEnum.APP_ACTIVE);
+//        ningzhiXiaomiEventTypeMap.put(ACTIVATE.code, XiaomiEventTypeEnum.APP_ACTIVE);
         //自定义新增激活
-        ningzhiXiaomiEventTypeMap.put(ACTIVATE.code + "new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
+//        ningzhiXiaomiEventTypeMap.put(ACTIVATE.code + "new", XiaomiEventTypeEnum.APP_ACTIVE_NEW);
         //注册
-        ningzhiXiaomiEventTypeMap.put(REGISTER.code, XiaomiEventTypeEnum.APP_REGISTER);
+        ningzhiXiaomiEventTypeMap.put(REGISTER.code, XiaomiEventTypeEnum.APP_ACTIVE);
+//        ningzhiXiaomiEventTypeMap.put(REGISTER.code, XiaomiEventTypeEnum.APP_REGISTER);
         //次留
         ningzhiXiaomiEventTypeMap.put(LEAVE.code, XiaomiEventTypeEnum.APP_RETENTION);
         //购买
@@ -54,9 +55,9 @@ public enum NingzhiEventTypeEnum {
     static {
         ningzhiBaiduEventTypeMap = CollUtil.newHashMap();
         //激活
-        ningzhiBaiduEventTypeMap.put(ACTIVATE.code, BaiduEventTypeEnum.ACTIVE);
+//        ningzhiBaiduEventTypeMap.put(ACTIVATE.code, BaiduEventTypeEnum.ACTIVE);
         //注册
-        ningzhiBaiduEventTypeMap.put(REGISTER.code, BaiduEventTypeEnum.REGISTER);
+        ningzhiBaiduEventTypeMap.put(REGISTER.code, BaiduEventTypeEnum.ACTIVE);
         //次留
         ningzhiBaiduEventTypeMap.put(LEAVE.code, BaiduEventTypeEnum.RETAIN_1DAY);
         //购买

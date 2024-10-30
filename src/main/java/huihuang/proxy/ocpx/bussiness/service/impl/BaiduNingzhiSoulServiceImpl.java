@@ -47,7 +47,7 @@ public class BaiduNingzhiSoulServiceImpl extends BaiduChannelFactory implements 
 
     @Override
     public Response adsCallBack(Integer id, Map<String, String[]> parameterMap) throws Exception {
-        String eventType = parameterMap.get("action_type")[0];
+        String eventType = parameterMap.get("event")[0];
         logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
         //根据id查询对应的点击记录
         NingzhiAdsDTO ningzhiAdsDTO = ningzhiSoulAdsDao.queryNingzhiSoulAdsById(id);
