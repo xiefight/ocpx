@@ -22,6 +22,7 @@ public enum HuihuangFengmangEventTypeEnum {
     COPY_PART("7", "复制报名"),
     FIRST_WEAK("8", "首次拉活"),
     FIRST_CLICK("9", "首次点击"),
+    CALL_BACK("10", "召回"),
     EFFECT_READ("30", "有效阅读"),
 
     ;

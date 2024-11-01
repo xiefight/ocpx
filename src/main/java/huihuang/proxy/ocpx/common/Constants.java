@@ -156,6 +156,7 @@ public class Constants {
         public static final String BAIDU_HUIHUANG_YINGKE = "/bhhyingkeServer";
         public static final String BAIDU_HUIHUANG_MIA = "/bhhmiaServer";
         public static final String BAIDU_HUIHUANG_LIANXIN = "/bhhlianxinServer";
+        public static final String BAIDU_HUIHUANG_GAOTU = "/bhhgaotuServer";
 
         public static final String BDSS_LTJD = "/bdssjdServer";
         public static final String BDSS_KUAISHOU = "/bdssksServer";
@@ -370,6 +371,7 @@ public class Constants {
         public static final String BAIDU_HUIHUANG_YINGKE = "baidu-huihuang-yingke";
         public static final String BAIDU_HUIHUANG_MIA = "baidu-huihuang-mia";
         public static final String BAIDU_HUIHUANG_LIANXIN = "baidu-huihuang-lianxin";
+        public static final String BAIDU_HUIHUANG_GAOTU = "baidu-huihuang-gaotu";
 
         public static final String BAIDU_QUANNENG_XIGUA_VIDEO = "baidu-quanneng-xiguavideo";
         public static final String BAIDU_QUANNENG_DOUYIN_JISU = "baidu-quanneng-douyinjisu";
