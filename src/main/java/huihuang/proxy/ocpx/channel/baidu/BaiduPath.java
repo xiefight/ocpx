@@ -186,10 +186,14 @@ public class BaiduPath {
     public static final String HUIHUANG_TIANMAO_SECRET_02 = "NTg0ODU1ODg=";
     public static final String HUIHUANG_MIA_ACCOUNT_01 = "bhhmia01";
     public static final String HUIHUANG_MIA_SECRET_01 = "NTkwODU2NzY=";
+    public static final String HUIHUANG_MIA_ACCOUNT_02 = "bhhmia02";
+    public static final String HUIHUANG_MIA_SECRET_02 = "NTkwODU2NzU=";
     public static final String HUIHUANG_LIANXIN_ACCOUNT_01 = "bhhlianxin01";
     public static final String HUIHUANG_LIANXIN_SECRET_01 = "NTkwODU2ODI=";
     public static final String HUIHUANG_GAOTU_ACCOUNT_01 = "bhhgaotu01";
     public static final String HUIHUANG_GAOTU_SECRET_01 = "NjAwMjMzMjk=";
+    public static final String HUIHUANG_GAOTU_ACCOUNT_02 = "bhhgaotu02";
+    public static final String HUIHUANG_GAOTU_SECRET_02 = "NjAyNDUzNTg=";
 
     public static final String QUANNENG_FANQIECHANGTING_ACCOUNT_02 = "bdqnfqct02";
     public static final String QUANNENG_PIPIXIA_ACCOUNT_02 = "bdqnppx02";
@@ -256,6 +260,8 @@ public class BaiduPath {
 
     public static final String BAIDU_NINGZHI_SOUL_ACCOUNT_01 = "bdningzhisoul01";
     public static final String BAIDU_NINGZHI_SOUL_SECRET_01 = "NTk1NDExNDQ=";
+    public static final String BAIDU_NINGZHI_SOUL_ACCOUNT_02 = "bdningzhisoul02";
+    public static final String BAIDU_NINGZHI_SOUL_SECRET_02 = "NTc5NTcwNjI=";
 
 
     public static final String BAIDU_CHANNEL_NAME = "baidu";

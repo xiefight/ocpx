@@ -56,6 +56,11 @@ public class BaiduNingzhiSoulServiceImpl extends BaiduChannelFactory implements 
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
+        //bdningzhisoul02广告主注册伪装激活回传
+//        if (ningzhiAdsDTO.getAccountId().equals(BaiduPath.BAIDU_NINGZHI_SOUL_ACCOUNT_02) && NingzhiEventTypeEnum.REGISTER.getCode().equals(eventType)) {
+//            eventType = NingzhiEventTypeEnum.ACTIVATE.getCode();
+//        }
+
         String callback = ningzhiAdsDTO.getCallback();
         String channelUrl = URLDecoder.decode(callback, StandardCharsets.UTF_8);
 
@@ -75,6 +80,8 @@ public class BaiduNingzhiSoulServiceImpl extends BaiduChannelFactory implements 
         baiduVO.setCbIp(ningzhiAdsDTO.getIp());
         if (BaiduPath.BAIDU_NINGZHI_SOUL_ACCOUNT_01.equals(ningzhiAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.BAIDU_NINGZHI_SOUL_SECRET_01);
+        } else if (BaiduPath.BAIDU_NINGZHI_SOUL_ACCOUNT_02.equals(ningzhiAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.BAIDU_NINGZHI_SOUL_SECRET_02);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
