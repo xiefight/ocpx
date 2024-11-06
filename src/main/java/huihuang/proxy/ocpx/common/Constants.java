@@ -255,6 +255,7 @@ public class Constants {
 
 
         public static final String HONOR_HUIHUANG_JINGDONG = "/honorhhjdServer";
+        public static final String HONOR_HUIHUANG_JINGDONGJINRONG = "/honorhhjdjrServer";
         public static final String HONOR_HUIHUANG_XIANYU = "/honorhhxyServer";
 
 
@@ -468,6 +469,7 @@ public class Constants {
 
 
         public static final String HONOR_HUIHUANG_JINGDONG = "honor-huihuang-jingdong";
+        public static final String HONOR_HUIHUANG_JINGDONGJINRONG = "honor-huihuang-jingdongjinrong";
         public static final String HONOR_HUIHUANG_XIANYU = "honor-huihuang-xianyu";
     }
 
