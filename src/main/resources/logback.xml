@@ -1892,6 +1892,39 @@
 
     <!-- 辉煌 高途 end -->
 
+    <!-- 辉煌 唯品会 start -->
+
+    <appender name="HUIHUANG_BAIDU_WEIPINHUI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/weipinhui/weipinhui-baidu.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/weipinhui/weipinhui-baidu.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.BaiduHuihuangGaotuChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_BAIDU_WEIPINHUI_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.BaiduHuihuangGaotuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_BAIDU_WEIPINHUI_LOG"/>
+    </logger>
+
+
+    <!-- 辉煌 唯品会 end -->
+
 
     <!-- 辉煌 mia start -->
     <appender name="HUIHUANG_XIAOMI_MIA_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
