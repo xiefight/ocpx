@@ -106,8 +106,11 @@ public enum HuihuiEventTypeEnum {
         huihuiBaiduEventTypeMap.put(ANDROID_ADDTOCART.code, null);
         huihuiBaiduEventTypeMap.put(IOS_ADDTOCART.code, null);
         //购买
-        huihuiBaiduEventTypeMap.put(ANDROID_PURCHASE.code, BaiduEventTypeEnum.EC_BUY);
-        huihuiBaiduEventTypeMap.put(IOS_PURCHASE.code, BaiduEventTypeEnum.EC_BUY);
+//        huihuiBaiduEventTypeMap.put(ANDROID_PURCHASE.code, BaiduEventTypeEnum.EC_BUY);
+//        huihuiBaiduEventTypeMap.put(IOS_PURCHASE.code, BaiduEventTypeEnum.EC_BUY);
+        //付费
+        huihuiBaiduEventTypeMap.put(ANDROID_PURCHASE.code, BaiduEventTypeEnum.ORDERS);
+        huihuiBaiduEventTypeMap.put(IOS_PURCHASE.code, BaiduEventTypeEnum.ORDERS);
         //授信
         huihuiBaiduEventTypeMap.put(ANDROID_CREDIT.code, null);
         huihuiBaiduEventTypeMap.put(IOS_CREDIT.code, null);
