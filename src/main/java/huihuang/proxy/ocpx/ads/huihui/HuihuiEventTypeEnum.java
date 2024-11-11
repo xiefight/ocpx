@@ -3,6 +3,7 @@ package huihuang.proxy.ocpx.ads.huihui;
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
 import huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongEventTypeEnum;
+import huihuang.proxy.ocpx.channel.honor.HonorEventTypeEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiEventTypeEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiEventTypeEnum;
@@ -147,7 +148,7 @@ public enum HuihuiEventTypeEnum {
         huihuiHuaweiEventTypeMap.put(IOS_CREDIT.code, HuaweiEventTypeEnum.CREDIT);
         //自定义
         huihuiHuaweiEventTypeMap.put(ANDROID_CUSTOM.code, null);
-        huihuiBaiduEventTypeMap.put(IOS_CUSTOM.code, null);
+        huihuiHuaweiEventTypeMap.put(IOS_CUSTOM.code, null);
 
     }
 
@@ -210,6 +211,37 @@ public enum HuihuiEventTypeEnum {
         //自定义
         huihuiGDTEventTypeMap.put(ANDROID_CUSTOM.code, null);
         huihuiGDTEventTypeMap.put(IOS_CUSTOM.code, null);
+
+    }
+
+
+    public static Map<String, HonorEventTypeEnum> huihuiHonorEventTypeMap;
+
+    static {
+        huihuiHonorEventTypeMap = CollUtil.newHashMap();
+        //下载
+        huihuiHonorEventTypeMap.put(ANDROID_DOWNLOAD.code, null);
+        //激活
+        huihuiHonorEventTypeMap.put(ANDROID_ACTIVATE.code, HonorEventTypeEnum.ACTIVE);
+        huihuiHonorEventTypeMap.put(IOS_ACTIVATE.code, HonorEventTypeEnum.ACTIVE);
+        //注册
+        huihuiHonorEventTypeMap.put(ANDROID_REGISTER.code, HonorEventTypeEnum.REGISTER);
+        huihuiHonorEventTypeMap.put(IOS_REGISTER.code, HonorEventTypeEnum.REGISTER);
+        //次日留存
+        huihuiHonorEventTypeMap.put(ANDROID_DAY1RETENTION.code, HonorEventTypeEnum.RETAIN);
+        huihuiHonorEventTypeMap.put(IOS_DAY1RETENTION.code, HonorEventTypeEnum.RETAIN);
+        //加入购物车
+        huihuiHonorEventTypeMap.put(ANDROID_ADDTOCART.code, null);
+        huihuiHonorEventTypeMap.put(IOS_ADDTOCART.code, null);
+        //购买
+        huihuiHonorEventTypeMap.put(ANDROID_PURCHASE.code, HonorEventTypeEnum.PAID);
+        huihuiHonorEventTypeMap.put(IOS_PURCHASE.code, HonorEventTypeEnum.PAID);
+        //授信
+        huihuiHonorEventTypeMap.put(ANDROID_CREDIT.code, null);
+        huihuiHonorEventTypeMap.put(IOS_CREDIT.code, null);
+        //自定义
+        huihuiHonorEventTypeMap.put(ANDROID_CUSTOM.code, null);
+        huihuiHonorEventTypeMap.put(IOS_CUSTOM.code, null);
 
     }
 

@@ -108,9 +108,10 @@ public abstract class BaseHuihuiReportFactory extends BaseSupport implements ICh
         if (StrUtil.isEmpty(huihuiParamField.getTs())) {
             return BasicResult.getFailResponse("广告点击时间缺失");
         }
-        if (StrUtil.isEmpty(huihuiParamField.getCallback())) {
-            return BasicResult.getFailResponse("回传地址缺失");
-        }
+        //榮耀的回傳地址在extra中，沒有通過callback映射，所以這個條件先放開
+//        if (StrUtil.isEmpty(huihuiParamField.getCallback())) {
+//            return BasicResult.getFailResponse("回传地址缺失");
+//        }
         if (StrUtil.isEmpty(huihuiParamField.getOs())) {
             return BasicResult.getFailResponse("操作系统缺失");
         }

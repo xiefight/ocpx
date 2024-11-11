@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.ads.huihui;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongParamEnum;
+import huihuang.proxy.ocpx.channel.honor.HonorParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
@@ -196,6 +197,32 @@ public enum HuihuiParamEnum {
         huihuiGDTMap.put(MODEL, null);
         huihuiGDTMap.put(OCPX_ACCOUNT, GuangdiantongParamEnum.ACCOUNT_ID_OWN);
     }
+
+    public static Map<HuihuiParamEnum, HonorParamEnum> huihuiHonorMap;
+
+    static {
+        huihuiHonorMap = new HashMap<>();
+        huihuiHonorMap.put(AID, HonorParamEnum.HUIHUIYOUDAO_AID);
+        huihuiHonorMap.put(SID, HonorParamEnum.HUIHUIYOUDAO_SID);
+        huihuiHonorMap.put(CONV_EXT, HonorParamEnum.HUIHUIYOUDAO_CONV_EXT);
+        huihuiHonorMap.put(IMEI, null);
+        huihuiHonorMap.put(OAID, HonorParamEnum.OAID);
+        huihuiHonorMap.put(OAID_MD5, null);
+        huihuiHonorMap.put(IDFA, null);
+        huihuiHonorMap.put(IDFA_MD5, null);
+        huihuiHonorMap.put(CAID, null);
+        huihuiHonorMap.put(CAID_MD5, null);
+        huihuiHonorMap.put(TS, HonorParamEnum.TIME);
+        huihuiHonorMap.put(OS, HonorParamEnum.OS);
+        huihuiHonorMap.put(IP, HonorParamEnum.IP);
+        huihuiHonorMap.put(UA, HonorParamEnum.UA);
+//        huihuiHonorMap.put(CALLBACK, HonorParamEnum.CALLBACK);
+        huihuiHonorMap.put(REQ_ID, null);
+        huihuiHonorMap.put(AAID, null);
+        huihuiHonorMap.put(MODEL, null);
+        huihuiHonorMap.put(OCPX_ACCOUNT, HonorParamEnum.ACCOUNT_ID);
+    }
+
 
 
 }
