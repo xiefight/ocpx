@@ -45,7 +45,7 @@ public class BaiduQuannengElemeChannelAds extends BaiduQuannengHudongReportFacto
     @Override
     protected Object saveOriginParamData(Object adsObj) {
         QuannengHudongParamField quannengHudongParamField = (QuannengHudongParamField) adsObj;
-        quannengHudongParamField.setPid("865");
+//        quannengHudongParamField.setPid("865");
         String ip = quannengHudongParamField.getIp();
         logger.info("saveOriginParamData 当前ip是：{}", ip);
         if (StrUtil.isNotEmpty(ip) && ip.length() <= 16) {
