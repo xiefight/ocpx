@@ -246,6 +246,8 @@ public class BaiduPath {
     public static final String QUANNENG_ELEME_SECRET_02 = "NTg2OTM2NjI=";
     public static final String QUANNENG_SOUL_ACCOUNT_01 = "bdqnsoul01";
     public static final String QUANNENG_SOUL_SECRET_01 = "NTg0MTAwNDA=";
+    public static final String QUANNENG_ZHIPUQINGYAN_ACCOUNT_01 = "bdqnzpqy01";
+    public static final String QUANNENG_ZHIPUQINGYAN_SECRET_01 = "NTkwODU3MDY=";
 
 
     public static final String BAIDU_DINGYUN_DOUYINHUOSHAN_ACCOUNT = "bddydyhs01";

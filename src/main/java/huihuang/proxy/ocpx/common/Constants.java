@@ -178,6 +178,7 @@ public class Constants {
         public static final String BAIDU_QUANNENG_UC = "/bqucServer";
         public static final String BAIDU_QUANNENG_ELEME = "/bqelemeServer";
         public static final String BAIDU_QUANNENG_SOUL = "/bqsoulServer";
+        public static final String BAIDU_QUANNENG_ZHIPUQINGYAN = "/bqzpqyServer";
 
         public static final String BAIDU_DINGYUN_DOUYINHUOSHAN = "/bdydyhsServer";
         public static final String BAIDU_DINGYUN_XIGUAVIDEO = "/bdyxgServer";
@@ -398,6 +399,7 @@ public class Constants {
         public static final String BAIDU_QUANNENG_UC = "baidu-quanneng-uc";
         public static final String BAIDU_QUANNENG_ELEME = "baidu-quanneng-eleme";
         public static final String BAIDU_QUANNENG_SOUL = "baidu-quanneng-soul";
+        public static final String BAIDU_QUANNENG_ZHIPUQINGYAN = "baidu-quanneng-zhipuqingyan";
 
         public static final String BAIDU_DINGYUN_DOUYINHUOSHAN = "baidu-dingyun-douyinhuoshan";
         public static final String BAIDU_DINGYUN_XIGUAVIDEO = "baidu-dingyun-xiguavideo";
