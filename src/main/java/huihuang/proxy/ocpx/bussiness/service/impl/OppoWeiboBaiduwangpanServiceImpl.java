@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
 import huihuang.proxy.ocpx.ads.weibo.WeiboAdsDTO;
+import huihuang.proxy.ocpx.ads.weibo.WeiboEventTypeEnum;
 import huihuang.proxy.ocpx.ads.weibo.baiduwangpan.WeiboBaiduwangpanPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IWeiboBaiduwangpanAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -80,7 +81,7 @@ public class OppoWeiboBaiduwangpanServiceImpl extends OppoChannelFactory impleme
         oppoVO.setChannel(1);
         oppoVO.setTimestamp(currentTime);
 //        oppoVO.setPkg(pkg);
-        oppoVO.setDataType(HuihuangFengmangEventTypeEnum.huihuangmingtianOppoEventTypeMap.get(eventType).getCode());
+        oppoVO.setDataType(WeiboEventTypeEnum.weiboOppoEventTypeMap.get(eventType).getCode());
         oppoVO.setAscribeType(0);
 //        oppoVO.setAdId(Long.valueOf(weiboAdsDTO.getAdid()));
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, oppoVO);
@@ -89,17 +90,17 @@ public class OppoWeiboBaiduwangpanServiceImpl extends OppoChannelFactory impleme
         OppoCallbackDTO data = (OppoCallbackDTO) response.getData();
 
         //更新回调状态
-        HuihuangmingtianAdsDTO huihuangmingtianAds = new HuihuangmingtianAdsDTO();
-        huihuangmingtianAds.setId(id);
-        huihuangmingtianAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
+        WeiboAdsDTO weiboAds = new WeiboAdsDTO();
+        weiboAds.setId(id);
+        weiboAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
         if (response.getCode() == 0) {
-            huihuangmingtianAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(huihuangmingtianAds, wbbdwpAdsDao);
+            weiboAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
+            baseServiceInner.updateAdsObject(weiboAds, wbbdwpAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
-            huihuangmingtianAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(huihuangmingtianAds, wbbdwpAdsDao);
+            weiboAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
+            baseServiceInner.updateAdsObject(weiboAds, wbbdwpAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
         }
