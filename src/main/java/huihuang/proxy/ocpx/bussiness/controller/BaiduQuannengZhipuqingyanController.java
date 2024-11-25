@@ -14,7 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(Constants.ServerPath.BAIDU_QUANNENG_ZHIPUQINGYAN)
-public class BaiduQuannengUZhipuqingyanController {
+public class BaiduQuannengZhipuqingyanController {
 
     @Autowired
     @Qualifier("bqzpqyService")

@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.quannenghudong;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.honor.HonorParamEnum;
 import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
 import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
 import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
@@ -137,6 +138,26 @@ public static Map<QuannengHudongParamEnum, IQiyiParamEnum> quannengHudongIQiyiMa
         quannengHudongIQiyiMap.put(CALLBACK, IQiyiParamEnum.CALLBACK_URL);
         quannengHudongIQiyiMap.put(UNIQUE_ID, IQiyiParamEnum.QUANNENGHUDONG_UNIQUEID);
         quannengHudongIQiyiMap.put(ACCOUNT_ID, IQiyiParamEnum.ACCOUNT_ID);
+    }
+
+    public static Map<QuannengHudongParamEnum, HonorParamEnum> quannengHudongHonorMap;
+
+    static {
+        quannengHudongHonorMap = new HashMap<>();
+        quannengHudongHonorMap.put(PID, HonorParamEnum.QUANNENGHUDONG_PID);
+        quannengHudongHonorMap.put(IDFA, null);
+        quannengHudongHonorMap.put(IMEI, null);//需要md5
+        quannengHudongHonorMap.put(OAID, HonorParamEnum.OAID);
+        quannengHudongHonorMap.put(CAID, null);
+        quannengHudongHonorMap.put(OS, HonorParamEnum.OS);
+        quannengHudongHonorMap.put(IP, HonorParamEnum.IP);
+        quannengHudongHonorMap.put(ANDROID_ID, null);
+        quannengHudongHonorMap.put(AAID, null);
+        quannengHudongHonorMap.put(UA, HonorParamEnum.UA);
+        quannengHudongHonorMap.put(MODEL, null);
+        quannengHudongHonorMap.put(CALLBACK, null);
+        quannengHudongHonorMap.put(UNIQUE_ID, HonorParamEnum.QUANNENGHUDONG_UNIQUEID);
+        quannengHudongHonorMap.put(ACCOUNT_ID, HonorParamEnum.ACCOUNT_ID);
     }
 
 

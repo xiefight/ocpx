@@ -62,9 +62,9 @@ public abstract class QuannengHudongReportFactory extends BaseSupport implements
     @Override
     protected Response judgeParams(Object adsObj) {
         QuannengHudongParamField quannengHudongParamField = (QuannengHudongParamField) adsObj;
-        if (Objects.isNull(quannengHudongParamField.getCallback())) {
-            return BasicResult.getFailResponse(QuannengHudongParamEnum.CALLBACK.getName() + "不能为空");
-        }
+//        if (Objects.isNull(quannengHudongParamField.getCallback())) {
+//            return BasicResult.getFailResponse(QuannengHudongParamEnum.CALLBACK.getName() + "不能为空");
+//        }
         if (Objects.isNull(quannengHudongParamField.getUniqueid())) {
             return BasicResult.getFailResponse(QuannengHudongParamEnum.UNIQUE_ID.getName() + "不能为空");
         }

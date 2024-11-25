@@ -42,6 +42,9 @@ public enum HonorParamEnum {
     HUIHUIYOUDAO_SID("","sid","闲鱼投放渠道标识"),
     HUIHUIYOUDAO_CONV_EXT("","conv_ext","闲鱼投放渠道标识"),
 
+    QUANNENGHUDONG_PID("","pid","全能互动广告商标识"),
+    QUANNENGHUDONG_UNIQUEID("","uniqueid","全能互动请求唯一id"),
+
     ;
 
 
