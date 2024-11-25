@@ -9,7 +9,7 @@ import huihuang.proxy.ocpx.middle.baseadsreport.quannenghudong.HonorQuannengHudo
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("bqzpqyChannelAds")
+@Component("honorqnzpqyChannelAds")
 public class HonorQuannengZhipuqingyanChannelAds extends HonorQuannengHudongReportFactory {
 
     String channelAdsKey = Constants.ChannelAdsKey.HONOR_QUANNENG_ZHIPUQINGYAN;
