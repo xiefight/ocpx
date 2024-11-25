@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
-@Service("honorhhzhipuqingyanService")
+@Service("honorqnzpqyService")
 public class HonorQuannengZhipuqingyanServiceImpl extends HonorChannelFactory implements IChannelAdsService {
 
     protected Logger logger = LoggerFactory.getLogger(HonorQuannengZhipuqingyanServiceImpl.class);
