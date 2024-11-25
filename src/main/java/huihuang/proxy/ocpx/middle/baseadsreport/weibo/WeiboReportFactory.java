@@ -49,6 +49,9 @@ public abstract class WeiboReportFactory extends BaseSupport implements IChannel
         }
         //uniqueid
         weiboParamField.setUniq_id(RandomUtil.randomStamp());
+        if (weiboParamField.getLanguage() == null) {
+            weiboParamField.setLanguage("zh_CN");
+        }
         if (weiboParamField.getIdfa_md5() != null) {
             weiboParamField.setOs("1");
         } else {

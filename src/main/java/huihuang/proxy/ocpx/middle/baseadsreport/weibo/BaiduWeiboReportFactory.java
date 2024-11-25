@@ -1,8 +1,8 @@
 package huihuang.proxy.ocpx.middle.baseadsreport.weibo;
 
 import cn.hutool.core.util.StrUtil;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianParamEnum;
-import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianParamField;
+import huihuang.proxy.ocpx.ads.weibo.WeiboParamEnum;
+import huihuang.proxy.ocpx.ads.weibo.WeiboParamField;
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
 import huihuang.proxy.ocpx.common.Constants;
 
@@ -23,9 +23,9 @@ public abstract class BaiduWeiboReportFactory extends WeiboReportFactory {
     public String findMonitorAddress() {
         StringBuilder macro = new StringBuilder();
         //1.遍历广告主查找渠道对应的宏参数
-        Set<HuihuangmingtianParamEnum> huihuangmingtianParamEnums = HuihuangmingtianParamEnum.huihuangmingtianBaiduMap.keySet();
-        for (HuihuangmingtianParamEnum huihuangmingtian : huihuangmingtianParamEnums) {
-            BaiduParamEnum baidu = HuihuangmingtianParamEnum.huihuangmingtianBaiduMap.get(huihuangmingtian);
+        Set<WeiboParamEnum> weiboParamEnums = WeiboParamEnum.weiboBaiduMap.keySet();
+        for (WeiboParamEnum weibo : weiboParamEnums) {
+            BaiduParamEnum baidu = WeiboParamEnum.weiboBaiduMap.get(weibo);
             if (Objects.isNull(baidu) || StrUtil.isEmpty(baidu.getMacro())) {
                 continue;
             }
@@ -43,28 +43,28 @@ public abstract class BaiduWeiboReportFactory extends WeiboReportFactory {
 
     @Override
     protected Object channelParamToAdsParam(Map<String, String[]> parameterMap) {
-        HuihuangmingtianParamField huihuangmingtianParamField = new HuihuangmingtianParamField();
+        WeiboParamField weiboParamField = new WeiboParamField();
 
-        Set<Map.Entry<HuihuangmingtianParamEnum, BaiduParamEnum>> hbSet = HuihuangmingtianParamEnum.huihuangmingtianBaiduMap.entrySet();
+        Set<Map.Entry<WeiboParamEnum, BaiduParamEnum>> hbSet = WeiboParamEnum.weiboBaiduMap.entrySet();
         hbSet.stream().filter(hb -> Objects.nonNull(hb.getValue())).forEach(hb -> {
-            HuihuangmingtianParamEnum huihuangmingtian = hb.getKey();
-            BaiduParamEnum baidu = hb.getValue();
-            String huihuangmingtianField = huihuangmingtian.getName();
-            String huaweiParam = baidu.getParam();
-            String[] value = parameterMap.get(huaweiParam);
+            WeiboParamEnum weiboEnum = hb.getKey();
+            BaiduParamEnum baiduEnum = hb.getValue();
+            String weiboField = weiboEnum.getName();
+            String baiduParam = baiduEnum.getParam();
+            String[] value = parameterMap.get(baiduParam);
             if (Objects.isNull(value) || value.length == 0) return;
             if ("null".equals(value[0]) || "NULL".equals(value[0])) return;
             if (value[0].startsWith("__") && value[0].endsWith("__")) return;
             try {
-                PropertyDescriptor descriptor = new PropertyDescriptor(huihuangmingtianField, huihuangmingtianParamField.getClass());
+                PropertyDescriptor descriptor = new PropertyDescriptor(weiboField, weiboParamField.getClass());
                 Method setMethod = descriptor.getWriteMethod();
-                setMethod.invoke(huihuangmingtianParamField, value[0]);
+                setMethod.invoke(weiboParamField, value[0]);
             } catch (IntrospectionException | InvocationTargetException | IllegalAccessException e) {
                 e.printStackTrace();
             }
         });
-        logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey(), huihuangmingtianParamField);
-        return huihuangmingtianParamField;
+        logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey(), weiboParamField);
+        return weiboParamField;
     }
 
 }

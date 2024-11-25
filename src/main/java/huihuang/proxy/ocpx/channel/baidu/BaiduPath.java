@@ -283,6 +283,9 @@ public class BaiduPath {
     public static final String BAIDU_NINGZHI_SOUL_ACCOUNT_02 = "bdningzhisoul02";
     public static final String BAIDU_NINGZHI_SOUL_SECRET_02 = "NTc5NTcwNjI=";
 
+    public static final String BAIDU_WEIBO_XUEERSI_ACCOUNT_01 = "bdwbxes01";
+    public static final String BAIDU_WEIBO_XUEERSI_SECRET_01 = "NjA5MjcwMDA=";
+
 
     public static final String BAIDU_CHANNEL_NAME = "baidu";
 

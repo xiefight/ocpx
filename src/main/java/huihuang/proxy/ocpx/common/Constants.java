@@ -192,6 +192,8 @@ public class Constants {
         public static final String BAIDU_BUPET_BILI = "/bdbupetbiliServer";
         public static final String BAIDU_NINGZHI_SOUL = "/bdningzhisoulServer";
 
+        public static final String BAIDU_WEIBO_XUEERSI = "/bdwbxesServer";
+
 
 
         public static final String HUAWEI_KUAISHOU = "/hkServer";
@@ -413,6 +415,8 @@ public class Constants {
 
         public static final String BAIDU_BUPET_BILI = "baidu-bupet-bili";
         public static final String BAIDU_NINGZHI_SOUL = "baidu-ningzhi-soul";
+
+        public static final String BAIDU_WEIBO_XUEERSI = "baidu-weibo-xueersi";
 
         public static final String HUAWEI_KUAISHOU = "huawei-kuaishou";
         public static final String HUAWEI_LTJD = "huawei-ltjd";
