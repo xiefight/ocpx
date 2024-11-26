@@ -269,6 +269,7 @@ public class Constants {
         public static final String HONOR_HUIHUANG_XIANYU = "/honorhhxyServer";
         public static final String HONOR_HUIHUANG_MIA = "/honorhhmiaServer";
         public static final String HONOR_HUIHUI_ZHIPUQINGYAN = "/honorhhzpqyServer";
+        public static final String HONOR_QUANNENG_ZHIPUQINGYAN = "/honorqnzpqyServer";
 
 
         public static final String GDT_HUIHUI_XIANYU = "/gdthhxyServer";
@@ -495,6 +496,7 @@ public class Constants {
         public static final String HONOR_HUIHUANG_XIANYU = "honor-huihuang-xianyu";
         public static final String HONOR_HUIHUANG_MIA = "honor-huihuang-mia";
         public static final String HONOR_HUIHUI_ZHIPUQINGYAN = "honor-huihui-zhipuqingyan";
+        public static final String HONOR_QUANNENG_ZHIPUQINGYAN = "honor-quanneng-zhipuqingyan";
     }
 
     public class AdsForChannel {
