@@ -6,10 +6,6 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpStatus;
 import com.alibaba.fastjson.JSONObject;
-import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongAdsDTO;
-import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongParamEnum;
-import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongParamField;
-import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongPath;
 import huihuang.proxy.ocpx.ads.weibo.WeiboAdsDTO;
 import huihuang.proxy.ocpx.ads.weibo.WeiboParamField;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -24,6 +20,7 @@ import huihuang.proxy.ocpx.util.RandomUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -56,6 +53,16 @@ public abstract class WeiboReportFactory extends BaseSupport implements IChannel
             weiboParamField.setOs("1");
         } else {
             weiboParamField.setOs("0");
+        }
+        //md5转大写
+        if (weiboParamField.getOaid_md5() != null) {
+            weiboParamField.setOaid_md5(weiboParamField.getOaid_md5().toUpperCase(Locale.ROOT));
+        }
+        if (weiboParamField.getIdfa_md5() != null) {
+            weiboParamField.setIdfa_md5(weiboParamField.getIdfa_md5().toUpperCase(Locale.ROOT));
+        }
+        if (weiboParamField.getImei_md5() != null) {
+            weiboParamField.setImei_md5(weiboParamField.getImei_md5().toUpperCase(Locale.ROOT));
         }
         logger.info("clickReport {} 特殊参数进行转换 convertParams:{}", channelAdsKey(), weiboParamField);
     }

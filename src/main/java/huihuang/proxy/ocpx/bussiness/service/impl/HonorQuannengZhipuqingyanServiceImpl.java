@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import huihuang.proxy.ocpx.ads.huihui.HuihuiEventTypeEnum;
 import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongAdsDTO;
+import huihuang.proxy.ocpx.ads.quannenghudong.QuannengHudongEventTypeEnum;
 import huihuang.proxy.ocpx.ads.quannenghudong.zhipuqingyan.QuannengZhipuqingyanPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IQuannengZhipuqingyanAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -64,7 +65,7 @@ public class HonorQuannengZhipuqingyanServiceImpl extends HonorChannelFactory im
 
 //        honorVO.setTimestamp(String.valueOf(currentTime));
         honorVO.setConversionTime(String.valueOf(currentTime));
-        honorVO.setConversionId(HuihuiEventTypeEnum.huihuiHonorEventTypeMap.get(eventType).getCode());
+        honorVO.setConversionId(QuannengHudongEventTypeEnum.quannengHudongHonorEventTypeMap.get(eventType).getCode());
         honorVO.setTrackId(getContentFromExtra(quannengAdsDTO, HonorParamEnum.TRACK_ID.getParam(),
                 getContentFromExtra(quannengAdsDTO, "trackId", "")));
         honorVO.setAdvertiserId(getContentFromExtra(quannengAdsDTO, HonorParamEnum.ADVERTISER_ID.getParam(),

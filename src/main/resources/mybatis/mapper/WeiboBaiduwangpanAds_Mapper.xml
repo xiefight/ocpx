@@ -34,12 +34,12 @@
         </selectKey>
         INSERT INTO weibo_baiduwangpan_ads
         (uniq_id, os, os_ver, idfa_md5, caid, ip,
-        imei_md5, oaid_md5,brand, language,ua,ts, os, model,account_id, callback, extra,channel_name, create_time,
+        imei_md5, oaid_md5,brand, language,ua,ts, model,account_id, callback, extra,channel_name, create_time,
         update_time,
         report_status,
         callback_status)
         VALUES (#{uniq_id}, #{os}, #{os_ver}, #{idfa_md5}, #{caid}, #{ip}, #{imei_md5}, #{oaid_md5},
-        #{brand},#{language}, #{ua},#{ts}, #{os}, #{model},#{accountId}, #{cb}, #{extra},#{channelName},now(),now(),
+        #{brand},#{language}, #{ua},#{ts}, #{model},#{accountId}, #{cb}, #{extra},#{channelName},now(),now(),
         "0", "0")
     </insert>
 
@@ -61,7 +61,7 @@
             <if test="ua != null">ua = #{ua},</if>
             <if test="ts != null">ts = #{ts},</if>
             <if test="accountId != null">account_id = #{accountId},</if>
-            <if test="callback != null">callback = #{cb},</if>
+            <if test="cb != null">callback = #{cb},</if>
             <if test="extra != null">extra = #{extra},</if>
             <if test="channelName != null">channel_name = #{channelName},</if>
             update_time = now(),
