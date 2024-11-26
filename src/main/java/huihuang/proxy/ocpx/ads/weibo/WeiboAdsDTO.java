@@ -27,4 +27,6 @@ public class WeiboAdsDTO extends CommonColumn implements IMarkDto {
     private String accountId;
     private String extra;
 
+    private String monitorType;
+
 }

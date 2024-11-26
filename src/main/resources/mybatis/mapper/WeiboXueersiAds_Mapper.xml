@@ -20,6 +20,7 @@
         <result column="language" property="language"/>
         <result column="account_id" property="accountId"/>
         <result column="extra" property="extra"/>
+        <result column="monitor_type" property="monitorType"/>
         <result column="channel_name" property="channelName"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
@@ -34,12 +35,12 @@
         </selectKey>
         INSERT INTO weibo_xueersi_ads
         (uniq_id, os, os_ver, idfa_md5, caid, ip,
-        imei_md5, oaid_md5,brand, language,ua,ts, model,account_id, callback, extra,channel_name, create_time,
+        imei_md5, oaid_md5,brand, language,ua,ts, model,account_id, callback, extra,monitor_type,channel_name, create_time,
         update_time,
         report_status,
         callback_status)
         VALUES (#{uniq_id}, #{os}, #{os_ver}, #{idfa_md5}, #{caid}, #{ip}, #{imei_md5}, #{oaid_md5},
-        #{brand},#{language}, #{ua},#{ts}, #{model},#{accountId}, #{cb}, #{extra},#{channelName},now(),now(),
+        #{brand},#{language}, #{ua},#{ts}, #{model},#{accountId}, #{cb}, #{extra},#{monitorType},#{channelName},now(),now(),
         "0", "0")
     </insert>
 
@@ -63,6 +64,7 @@
             <if test="accountId != null">account_id = #{accountId},</if>
             <if test="cb != null">callback = #{cb},</if>
             <if test="extra != null">extra = #{extra},</if>
+            <if test="monitorType != null">monitor_type = #{monitorType},</if>
             <if test="channelName != null">channel_name = #{channelName},</if>
             update_time = now(),
             <if test="reportStatus != null">report_status = #{reportStatus},</if>
@@ -91,6 +93,7 @@
             account_id,
             callback,
             extra,
+            monitor_type,
             channel_name,
             create_time,
             update_time,

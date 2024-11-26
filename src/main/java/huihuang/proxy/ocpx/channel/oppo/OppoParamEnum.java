@@ -47,6 +47,8 @@ public enum OppoParamEnum {
     HUIHUANG_SID("","sid",""),
     HUIHUANG_EVENT_TYPE("","eventType",""),
 
+    MONITOR_TYPE("","monitorType","监测类型 0：曝光  1：点击 默认点击"),
+
 
     ;
 

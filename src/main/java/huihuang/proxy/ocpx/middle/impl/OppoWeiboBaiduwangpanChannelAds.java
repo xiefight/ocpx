@@ -1,6 +1,8 @@
 package huihuang.proxy.ocpx.middle.impl;
 
+import huihuang.proxy.ocpx.ads.weibo.WeiboParamField;
 import huihuang.proxy.ocpx.ads.weibo.baiduwangpan.WeiboBaiduwangpanPath;
+import huihuang.proxy.ocpx.ads.weibo.wannianli.WeiboWannianliPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IWeiboBaiduwangpanAdsDao;
 import huihuang.proxy.ocpx.channel.oppo.OppoPath;
 import huihuang.proxy.ocpx.common.Constants;
@@ -39,7 +41,19 @@ public class OppoWeiboBaiduwangpanChannelAds extends OppoWeiboReportFactory {
 
     @Override
     protected String initAdsUrl() {
-        //点击监测
-        return WeiboBaiduwangpanPath.BASIC_URI;
+        return null;
+    }
+
+    @Override
+    protected String initAdsUrl(Object adsObj) {
+        WeiboParamField weiboParamField = (WeiboParamField) adsObj;
+        String monitorType = weiboParamField.getMonitorType();
+        if ("0".equals(monitorType)){
+            //曝光监测
+            return WeiboWannianliPath.EXPOSURE_URI;
+        }else {
+            //点击监测
+            return WeiboWannianliPath.BASIC_URI;
+        }
     }
 }

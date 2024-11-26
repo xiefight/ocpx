@@ -7,6 +7,7 @@ import huihuang.proxy.ocpx.common.ResultStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 
 import java.util.Map;
 import java.util.Set;
@@ -56,6 +57,7 @@ public abstract class BaseSupport {
         replaceCallbackUrl(adsObj, adsDtoObj);
         //6.初始化广告侧请求url
         String adsUrl = initAdsUrl();
+        adsUrl = null == adsUrl ? initAdsUrl(adsObj) : adsUrl;
         String completeAdsUrl = baseServiceInner.initAdsUrlAndParam(adsUrl, adsObj);
         //7.调用广告侧上报接口
         return reportAds(completeAdsUrl, adsDtoObj);
@@ -71,7 +73,16 @@ public abstract class BaseSupport {
 
     protected abstract void replaceCallbackUrl(Object adsObj, Object adsDtoObj);
 
-    protected abstract String initAdsUrl();
+    /**
+     * 如果不需要判断返回多个url，则直接使用该方法
+     */
+     protected abstract String initAdsUrl();
+    //由于该方法无法根据参数判断具体要使用的url，所以要想实现根据类型返回不同的监测链接，需要配合下面的重载方法，即：子类实现该方法返回null，再重写下面的方法
+
+    //这个方法不强制子类实现，在模板中，先沿用原有的url逻辑，如果原url为空，再使用该方法
+    protected String initAdsUrl(Object adsObj){
+        return null;
+    }
 
     protected abstract Response reportAds(String adsUrl, Object adsDtoObj) throws Exception;
 

@@ -1,5 +1,7 @@
 package huihuang.proxy.ocpx.middle.impl;
 
+import huihuang.proxy.ocpx.ads.weibo.WeiboParamField;
+import huihuang.proxy.ocpx.ads.weibo.wannianli.WeiboWannianliPath;
 import huihuang.proxy.ocpx.ads.weibo.xueersi.WeiboXueersiPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IWeiboXueersiAdsDao;
 import huihuang.proxy.ocpx.channel.baidu.BaiduPath;
@@ -39,7 +41,19 @@ public class BaiduWeiboXueersiChannelAds extends BaiduWeiboReportFactory {
 
     @Override
     protected String initAdsUrl() {
-        //点击监测
-        return WeiboXueersiPath.BASIC_URI;
+        return null;
+    }
+
+    @Override
+    protected String initAdsUrl(Object adsObj) {
+        WeiboParamField weiboParamField = (WeiboParamField) adsObj;
+        String monitorType = weiboParamField.getMonitorType();
+        if ("0".equals(monitorType)){
+            //曝光监测
+            return WeiboWannianliPath.EXPOSURE_URI;
+        }else {
+            //点击监测
+            return WeiboWannianliPath.BASIC_URI;
+        }
     }
 }

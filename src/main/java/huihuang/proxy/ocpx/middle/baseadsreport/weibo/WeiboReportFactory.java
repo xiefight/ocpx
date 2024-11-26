@@ -64,6 +64,10 @@ public abstract class WeiboReportFactory extends BaseSupport implements IChannel
         if (weiboParamField.getImei_md5() != null) {
             weiboParamField.setImei_md5(weiboParamField.getImei_md5().toUpperCase(Locale.ROOT));
         }
+        //监测类型 0：曝光 1：点击（默认）
+        if (weiboParamField.getMonitorType() == null){
+            weiboParamField.setMonitorType("1");
+        }
         logger.info("clickReport {} 特殊参数进行转换 convertParams:{}", channelAdsKey(), weiboParamField);
     }
 

@@ -26,6 +26,7 @@ public class WeiboParamField {
     private String account_id;
 
     private String extra;
+    private String monitorType;
 
 
 }

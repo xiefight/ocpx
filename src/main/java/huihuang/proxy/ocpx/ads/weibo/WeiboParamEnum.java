@@ -25,6 +25,7 @@ public enum WeiboParamEnum {
 
     ACCOUNT_ID("account_id", "String", 0, "我们规定的账户id,用于同一pid区分不出来的情况下,使用accountId区分"),
 
+    MONITOR_TYPE("monitorType","String",0,"监测类型 0：曝光  1：点击 默认点击"),
     ;
 
 
@@ -77,6 +78,7 @@ public enum WeiboParamEnum {
         weiboBaiduMap.put(CALLBACK, BaiduParamEnum.CALLBACK_URL);
 
         weiboBaiduMap.put(ACCOUNT_ID, BaiduParamEnum.ACCOUNT_ID);
+        weiboBaiduMap.put(MONITOR_TYPE, BaiduParamEnum.MONITOR_TYPE);
     }
 
     public static Map<WeiboParamEnum, OppoParamEnum> weiboOppoMap;
@@ -99,6 +101,7 @@ public enum WeiboParamEnum {
         weiboOppoMap.put(CALLBACK, null);
 
         weiboOppoMap.put(ACCOUNT_ID, OppoParamEnum.ACCOUNT_ID);
+        weiboOppoMap.put(MONITOR_TYPE, OppoParamEnum.MONITOR_TYPE);
     }
 
 }
