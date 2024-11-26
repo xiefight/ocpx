@@ -285,9 +285,10 @@ public class BaiduPath {
 
     public static final String BAIDU_WEIBO_XUEERSI_ACCOUNT_01 = "bdwbxes01";
     public static final String BAIDU_WEIBO_XUEERSI_SECRET_01 = "NjA5MjcwMDA=";
-
     public static final String BAIDU_WEIBO_WANNIANLI_ACCOUNT_01 = "bdwbwnl01";
     public static final String BAIDU_WEIBO_WANNIANLI_SECRET_01 = "NjA5MjY5MzE=";
+    public static final String BAIDU_WEIBO_BAIDUWANGPAN_ACCOUNT_01 = "bdwbbdwp01";
+    public static final String BAIDU_WEIBO_BAIDUWANGPAN_SECRET_01 = "NjEwNTIwMDk=";
 
 
     public static final String BAIDU_CHANNEL_NAME = "baidu";

@@ -194,6 +194,7 @@ public class Constants {
 
         public static final String BAIDU_WEIBO_XUEERSI = "/bdwbxesServer";
         public static final String BAIDU_WEIBO_WANNIANLI = "/bdwbwnlServer";
+        public static final String BAIDU_WEIBO_BAIDUWANGPAN = "/bdwbbdwpServer";
 
 
 
@@ -420,6 +421,7 @@ public class Constants {
 
         public static final String BAIDU_WEIBO_XUEERSI = "baidu-weibo-xueersi";
         public static final String BAIDU_WEIBO_WANNIANLI = "baidu-weibo-wannianli";
+        public static final String BAIDU_WEIBO_BAIDUWANGPAN = "baidu-weibo-baiduwangpan";
 
         public static final String HUAWEI_KUAISHOU = "huawei-kuaishou";
         public static final String HUAWEI_LTJD = "huawei-ltjd";
