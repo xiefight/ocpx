@@ -61,7 +61,7 @@ public class OppoHuihuangJingdongServiceImpl extends OppoChannelFactory implemen
         String oppoSecret = "";
         String adsName = hhjdPath.baseAdsName();
         Long adId = OppoPath.KUAISHOU_ADID;
-        String pkg = OppoPath.OPPO_HUIHUANG_YITAO_PKG;
+        String pkg = OppoPath.OPPO_HUIHUANG_JINGDONG_PKG;
 
 
         long currentTime = System.currentTimeMillis();
@@ -77,7 +77,7 @@ public class OppoHuihuangJingdongServiceImpl extends OppoChannelFactory implemen
         oppoVO.setAdsName(adsName);
         oppoVO.setChannel(1);
         oppoVO.setTimestamp(currentTime);
-//        oppoVO.setPkg(pkg);
+        oppoVO.setPkg(pkg);
         oppoVO.setDataType(HuihuangFengmangEventTypeEnum.huihuangmingtianOppoEventTypeMap.get(eventType).getCode());
         oppoVO.setAscribeType(0);
         oppoVO.setAdId(Long.valueOf(hhtmAdsDTO.getAdid()));

@@ -24,7 +24,7 @@ public class XiaomiPath {
 
     public static final String XIAOMI_CHANNEL_NAME = "xiaomi";
 
-    public static final String CALLBACK_URL = "http://trail.e.mi.com/api/callback?";
+    public static final String CALLBACK_URL = "https://trail.e.mi.com/api/callback?";
 
 
     //1户新增激活  02户和03户都是pid都是356   02户新增激活  03户、04户激活  要区分
