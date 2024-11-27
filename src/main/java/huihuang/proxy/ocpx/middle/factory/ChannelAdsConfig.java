@@ -379,6 +379,8 @@ public class ChannelAdsConfig {
     @Autowired
     private OppoHuihuangXianyunChannelAds oppohhxyChannelAds;
     @Autowired
+    private OppoHuihuangJingdongChannelAds oppohhjdChannelAds;
+    @Autowired
     private OppoWeiboBaiduwangpanChannelAds oppowbbdwpChannelAds;
 
 
@@ -613,6 +615,7 @@ public class ChannelAdsConfig {
         channelAdsMap.put(Constants.ChannelAdsKey.OPPO_KUAISHOU, oppoKuaishouChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.OPPO_HUIHUANG_YITAO, oppohhytChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.OPPO_HUIHUANG_XIANYU, oppohhxyChannelAds);
+        channelAdsMap.put(Constants.ChannelAdsKey.OPPO_HUIHUANG_JINGDONG, oppohhjdChannelAds);
         channelAdsMap.put(Constants.ChannelAdsKey.OPPO_WEIBO_BAIDUWANGPAN, oppowbbdwpChannelAds);
 
         channelAdsMap.put(Constants.ChannelAdsKey.IQIYI_KUAISHOU, ikChannelAds);
