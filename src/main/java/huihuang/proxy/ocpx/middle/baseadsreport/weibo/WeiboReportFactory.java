@@ -65,8 +65,11 @@ public abstract class WeiboReportFactory extends BaseSupport implements IChannel
             weiboParamField.setImei_md5(weiboParamField.getImei_md5().toUpperCase(Locale.ROOT));
         }
         //监测类型 0：曝光 1：点击（默认）
-        if (weiboParamField.getMonitorType() == null){
+        if (weiboParamField.getMonitorType() == null) {
             weiboParamField.setMonitorType("1");
+        }
+        if (weiboParamField.getTs() == null) {
+            weiboParamField.setTs(String.valueOf((System.currentTimeMillis())));
         }
         logger.info("clickReport {} 特殊参数进行转换 convertParams:{}", channelAdsKey(), weiboParamField);
     }
@@ -100,7 +103,7 @@ public abstract class WeiboReportFactory extends BaseSupport implements IChannel
             weiboAdsDTO.setChannelName(channelName());
             baseServiceInner.insertAdsObject(weiboAdsDTO, adsDao());
             logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey(), weiboAdsDTO);
-        }catch (Exception e) {
+        } catch (Exception e) {
             logger.error("clickReport {} 保存原始参数数据异常:{}", channelAdsKey(), e);
         }
         return weiboAdsDTO;

@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.weibo;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.huihuang.HuihuangChannelParamEnum;
 import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
 
 import java.util.HashMap;
@@ -102,6 +103,30 @@ public enum WeiboParamEnum {
 
         weiboOppoMap.put(ACCOUNT_ID, OppoParamEnum.ACCOUNT_ID);
         weiboOppoMap.put(MONITOR_TYPE, OppoParamEnum.MONITOR_TYPE);
+    }
+
+
+    public static Map<WeiboParamEnum, HuihuangChannelParamEnum> weiboHuihuangMap;
+
+    static {
+        weiboHuihuangMap = new HashMap<>();
+        weiboHuihuangMap.put(IMEI_MD5, HuihuangChannelParamEnum.IMEI_MD5);
+        weiboHuihuangMap.put(OAID_MD5, HuihuangChannelParamEnum.OAID_MD5);
+        weiboHuihuangMap.put(IDFA_MD5, HuihuangChannelParamEnum.IDFA_MD5);
+        weiboHuihuangMap.put(CAID, null);
+        weiboHuihuangMap.put(MODEL, null);
+        weiboHuihuangMap.put(BRAND, null);
+        weiboHuihuangMap.put(LANGUAGE, null);
+
+        weiboHuihuangMap.put(TS, HuihuangChannelParamEnum.TMS);
+        weiboHuihuangMap.put(OS, HuihuangChannelParamEnum.OS);
+        weiboHuihuangMap.put(OSVERSION, null);
+        weiboHuihuangMap.put(IPV4, HuihuangChannelParamEnum.IP);
+        weiboHuihuangMap.put(UA, HuihuangChannelParamEnum.UA);
+        weiboHuihuangMap.put(CALLBACK, HuihuangChannelParamEnum.CALLBACK_URL);
+
+        weiboHuihuangMap.put(ACCOUNT_ID, HuihuangChannelParamEnum.ACCOUNT_ID);
+        weiboHuihuangMap.put(MONITOR_TYPE, HuihuangChannelParamEnum.MONITOR_TYPE);
     }
 
 }

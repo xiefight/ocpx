@@ -2,6 +2,7 @@ package huihuang.proxy.ocpx.ads.weibo;
 
 import cn.hutool.core.collection.CollUtil;
 import huihuang.proxy.ocpx.channel.baidu.BaiduEventTypeEnum;
+import huihuang.proxy.ocpx.channel.huihuang.HuihuangChannelEventTypeEnum;
 import huihuang.proxy.ocpx.channel.oppo.OppoEventTypeEnum;
 
 import java.util.Map;
@@ -54,6 +55,18 @@ public enum WeiboEventTypeEnum {
         weiboOppoEventTypeMap.put(DAY1RETENTION.code, OppoEventTypeEnum.RETAIN_2DAY);
         weiboOppoEventTypeMap.put(ORDER.code, OppoEventTypeEnum.APPLICATION_ORDER);
         weiboOppoEventTypeMap.put(PAY.code, OppoEventTypeEnum.DEEP_PAGE_ACCESS);
+    }
+
+
+    public static Map<String, HuihuangChannelEventTypeEnum> weiboHuihuangEventTypeMap;
+
+    static {
+        weiboHuihuangEventTypeMap = CollUtil.newHashMap();
+        weiboHuihuangEventTypeMap.put(ACTIVATE.code, HuihuangChannelEventTypeEnum.ACTIVATE);
+        weiboHuihuangEventTypeMap.put(REGISTER.code, null);
+        weiboHuihuangEventTypeMap.put(DAY1RETENTION.code, HuihuangChannelEventTypeEnum.DAY1RETENTION);
+        weiboHuihuangEventTypeMap.put(ORDER.code, HuihuangChannelEventTypeEnum.ORDER);
+        weiboHuihuangEventTypeMap.put(PAY.code, HuihuangChannelEventTypeEnum.PAID);
     }
 
 
