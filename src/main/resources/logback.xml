@@ -3794,4 +3794,64 @@
 
     <!-- 微博 万年历 end -->
 
+
+    <!-- 微博 快手/快手极速 start -->
+    <appender name="WEIBO_KUAISHOU_HUIHUANG_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/weibo/kuaishou/kuaishou_huihuang.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/weibo/kuaishou/kuaishou_huihuang.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuihuangWeiboKuaishouChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="WEIBO_KUAISHOU_HUIHUANG_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuihuangWeiboKuaishouServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="WEIBO_KUAISHOU_HUIHUANG_LOG"/>
+    </logger>
+
+
+    <appender name="WEIBO_KUAISHOUJISU_HUIHUANG_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/weibo/kuaishoujisu/kuaishoujisu_huihuang.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/weibo/kuaishoujisu/kuaishoujisu_huihuang.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.HuihuangWeiboKuaishoujisuChannelAds" level="INFO" additivity="true">
+        <appender-ref ref="WEIBO_KUAISHOUJISU_HUIHUANG_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuihuangWeiboKuaishoujisuServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="WEIBO_KUAISHOUJISU_HUIHUANG_LOG"/>
+    </logger>
+
+
+    <!-- 微博 快手/快手极速 end -->
+
 </configuration>

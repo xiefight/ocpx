@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="huihuang.proxy.ocpx.bussiness.dao.ads.IWeiboKuaishoujisuAdsDao">
+
+    <resultMap id="weiboAdsMap" type="huihuang.proxy.ocpx.ads.weibo.WeiboAdsDTO">
+        <id column="id" property="id"/>
+        <result column="uniq_id" property="uniq_id"/>
+        <result column="os" property="os"/>
+        <result column="os_ver" property="os_ver"/>
+        <result column="idfa_md5" property="idfa_md5"/>
+        <result column="caid" property="caid"/>
+        <result column="ip" property="ip"/>
+        <result column="imei_md5" property="imei_md5"/>
+        <result column="oaid_md5" property="oaid_md5"/>
+        <result column="ua" property="ua"/>
+        <result column="ts" property="ts"/>
+        <result column="model" property="model"/>
+        <result column="brand" property="brand"/>
+        <result column="callback" property="cb"/>
+        <result column="language" property="language"/>
+        <result column="account_id" property="accountId"/>
+        <result column="extra" property="extra"/>
+        <result column="monitor_type" property="monitorType"/>
+        <result column="channel_name" property="channelName"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="report_status" property="reportStatus"/>
+        <result column="callback_status" property="callBackStatus"/>
+        <result column="callback_time" property="callBackTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="huihuang.proxy.ocpx.ads.weibo.WeiboAdsDTO">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO weibo_kuaishoujisu_ads
+        (uniq_id, os, os_ver, idfa_md5, caid, ip,
+        imei_md5, oaid_md5,brand, language,ua,ts, model,account_id, callback, extra,monitor_type,channel_name, create_time,
+        update_time,
+        report_status,
+        callback_status)
+        VALUES (#{uniq_id}, #{os}, #{os_ver}, #{idfa_md5}, #{caid}, #{ip}, #{imei_md5}, #{oaid_md5},
+        #{brand},#{language}, #{ua},#{ts}, #{model},#{accountId}, #{cb}, #{extra},#{monitorType},#{channelName},now(),now(),
+        "0", "0")
+    </insert>
+
+
+    <update id="update" parameterType="huihuang.proxy.ocpx.ads.weibo.WeiboAdsDTO">
+        UPDATE weibo_kuaishoujisu_ads
+        <set>
+            <if test="uniq_id != null">uniq_id = #{uniq_id},</if>
+            <if test="os != null">os = #{os},</if>
+            <if test="os_ver != null">os_ver = #{os_ver},</if>
+            <if test="idfa_md5 != null">idfa_md5 = #{idfa_md5},</if>
+            <if test="caid != null">caid = #{caid},</if>
+            <if test="imei_md5 != null">imei_md5 = #{imei_md5},</if>
+            <if test="oaid_md5 != null">oaid_md5 = #{oaid_md5},</if>
+            <if test="model != null">model = #{model},</if>
+            <if test="brand != null">brand = #{brand},</if>
+            <if test="language != null">language = #{language},</if>
+            <if test="ip != null">ip = #{ip},</if>
+            <if test="ua != null">ua = #{ua},</if>
+            <if test="ts != null">ts = #{ts},</if>
+            <if test="accountId != null">account_id = #{accountId},</if>
+            <if test="cb != null">callback = #{cb},</if>
+            <if test="extra != null">extra = #{extra},</if>
+            <if test="monitorType != null">monitor_type = #{monitorType},</if>
+            <if test="channelName != null">channel_name = #{channelName},</if>
+            update_time = now(),
+            <if test="reportStatus != null">report_status = #{reportStatus},</if>
+            <if test="callBackStatus != null">callback_status = #{callBackStatus},</if>
+            <if test="callBackTime != null">callback_time = #{callBackTime},</if>
+        </set>
+        where id =#{id}
+    </update>
+
+
+    <select id="queryWeiboKuaishoujisuAdsById" parameterType="java.lang.Integer" resultMap="weiboAdsMap">
+        SELECT id,
+               uniq_id,
+               os,
+               os_ver,
+               idfa_md5,
+               caid,
+               imei_md5,
+               oaid_md5,
+               model,
+               brand,
+            language,
+            ip,
+            ua,
+            ts,
+            account_id,
+            callback,
+            extra,
+            monitor_type,
+            channel_name,
+            create_time,
+            update_time,
+            report_status,
+            callback_status
+        FROM weibo_kuaishoujisu_ads
+        WHERE id = #{id}
+    </select>
+
+
+</mapper>
