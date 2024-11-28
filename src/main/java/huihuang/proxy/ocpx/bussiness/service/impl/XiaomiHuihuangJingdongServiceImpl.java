@@ -63,7 +63,7 @@ public class XiaomiHuihuangJingdongServiceImpl extends XiaomiChannelFactory impl
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
         xiaomiVO.setAdsName(hhjdPath.baseAdsName());
-        xiaomiVO.setEventType(HuihuangFengmangEventTypeEnum.huihuangmingtianXiaomiEventTypeMap.get(eventType).getCode());
+        xiaomiVO.setEventType(HuihuangmingtianEventTypeEnum.huihuangmingtianXiaomiEventTypeMap.get(eventType).getCode());
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(hhmtAdsDTO.getCallbackUrl());
         xiaomiVO.setOaid(hhmtAdsDTO.getOaid());

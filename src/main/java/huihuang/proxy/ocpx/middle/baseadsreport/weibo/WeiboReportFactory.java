@@ -95,10 +95,14 @@ public abstract class WeiboReportFactory extends BaseSupport implements IChannel
     protected Object saveOriginParamData(Object adsObj) {
         WeiboParamField weiboParamField = (WeiboParamField) adsObj;
         WeiboAdsDTO weiboAdsDTO = new WeiboAdsDTO();
-        BeanUtil.copyProperties(weiboParamField, weiboAdsDTO);
-        weiboAdsDTO.setChannelName(channelName());
-        baseServiceInner.insertAdsObject(weiboAdsDTO, adsDao());
-        logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey(), weiboAdsDTO);
+        try {
+            BeanUtil.copyProperties(weiboParamField, weiboAdsDTO);
+            weiboAdsDTO.setChannelName(channelName());
+            baseServiceInner.insertAdsObject(weiboAdsDTO, adsDao());
+            logger.info("clickReport {} 将原始参数保存数据库，返回数据库对象 saveOriginParamData:{}", channelAdsKey(), weiboAdsDTO);
+        }catch (Exception e) {
+            logger.error("clickReport {} 保存原始参数数据异常:{}", channelAdsKey(), e);
+        }
         return weiboAdsDTO;
     }
 

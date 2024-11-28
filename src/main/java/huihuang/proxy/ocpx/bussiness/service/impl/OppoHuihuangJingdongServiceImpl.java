@@ -3,6 +3,7 @@ package huihuang.proxy.ocpx.bussiness.service.impl;
 import cn.hutool.core.util.StrUtil;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
+import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangJingdongPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangJingdongAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
@@ -78,7 +79,7 @@ public class OppoHuihuangJingdongServiceImpl extends OppoChannelFactory implemen
         oppoVO.setChannel(1);
         oppoVO.setTimestamp(currentTime);
         oppoVO.setPkg(pkg);
-        oppoVO.setDataType(HuihuangFengmangEventTypeEnum.huihuangmingtianOppoEventTypeMap.get(eventType).getCode());
+        oppoVO.setDataType(HuihuangmingtianEventTypeEnum.huihuangmingtianOppoEventTypeMap.get(eventType).getCode());
         oppoVO.setAscribeType(0);
         oppoVO.setAdId(Long.valueOf(hhtmAdsDTO.getAdid()));
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, oppoVO);
