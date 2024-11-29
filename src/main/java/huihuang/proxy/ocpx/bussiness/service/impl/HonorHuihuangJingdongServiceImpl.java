@@ -4,6 +4,7 @@ import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangJingdongPath;
+import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangJingdongjinrongPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangJingdongAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -36,6 +37,8 @@ public class HonorHuihuangJingdongServiceImpl extends HonorChannelFactory implem
     private IHuihuangJingdongAdsDao hhjdAdsDao;
     @Autowired
     private HuihuangJingdongPath hhjdPath;
+    @Autowired
+    private HuihuangJingdongjinrongPath hhjdjrPath;
 
     String channelAdsKey = Constants.ChannelAdsKey.HONOR_HUIHUANG_JINGDONG;
 
@@ -61,15 +64,24 @@ public class HonorHuihuangJingdongServiceImpl extends HonorChannelFactory implem
 //            eventType = HuihuangFengmangEventTypeEnum.ACTIVATE.getCode();
 //        }
 
+        //京东和京东金融  揉到了一起  京东使用的是HuihuangmingtianEventTypeEnum  京东金融使用的是HuihuangFengmangEventTypeEnum
+        //根据accountId判断
+        String backEvent = HuihuangmingtianEventTypeEnum.huihuangmingtianXiaomiEventTypeMap.get(eventType).getCode();
+        String adsName = hhjdPath.baseAdsName();
+        if ("honorhhjd03".equals(huihuangmingtianAdsDTO.getAccountId())) {
+            backEvent = HuihuangFengmangEventTypeEnum.huihuangmingtianHonorEventTypeMap.get(eventType).getCode();
+            adsName = hhjdjrPath.baseAdsName();
+        }
+
         long currentTime = System.currentTimeMillis();
         Ads2HonorVO honorVO = new Ads2HonorVO();
         honorVO.setAdsId(id);
-        honorVO.setAdsName(hhjdPath.baseAdsName());
+        honorVO.setAdsName(adsName);
 //        honorVO.setCallbackUrl(huihuangmingtianAdsDTO.getCallbackUrl());
 
 //        honorVO.setTimestamp(String.valueOf(currentTime));
         honorVO.setConversionTime(String.valueOf(currentTime));
-        honorVO.setConversionId(HuihuangmingtianEventTypeEnum.huihuangmingtianHonorEventTypeMap.get(eventType).getCode());
+        honorVO.setConversionId(backEvent);
         honorVO.setTrackId(getContentFromExtra(huihuangmingtianAdsDTO, HonorParamEnum.TRACK_ID.getParam(),
                 getContentFromExtra(huihuangmingtianAdsDTO, "trackId", "")));
         honorVO.setAdvertiserId(getContentFromExtra(huihuangmingtianAdsDTO, HonorParamEnum.ADVERTISER_ID.getParam(),

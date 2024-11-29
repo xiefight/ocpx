@@ -5,6 +5,7 @@ import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianAdsDTO;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangmingtianEventTypeEnum;
 import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangJingdongPath;
+import huihuang.proxy.ocpx.ads.huihuangmingtian.ads.HuihuangJingdongjinrongPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IHuihuangJingdongAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
@@ -36,6 +37,8 @@ public class XiaomiHuihuangJingdongServiceImpl extends XiaomiChannelFactory impl
     private BaseServiceInner baseServiceInner;
     @Autowired
     private HuihuangJingdongPath hhjdPath;
+    @Autowired
+    private HuihuangJingdongjinrongPath hhjdjrPath;
 
 
     String channelAdsKey = Constants.ChannelAdsKey.XIAOMI_HUIHUANG_JINGDONG;
@@ -60,10 +63,20 @@ public class XiaomiHuihuangJingdongServiceImpl extends XiaomiChannelFactory impl
 //            eventType = eventType + "new";
 //        }
 
+        //京东和京东金融  揉到了一起  京东使用的是HuihuangmingtianEventTypeEnum  京东金融使用的是HuihuangFengmangEventTypeEnum
+        //根据accountId判断
+        String backEvent = HuihuangmingtianEventTypeEnum.huihuangmingtianXiaomiEventTypeMap.get(eventType).getCode();
+        String adsName = hhjdPath.baseAdsName();
+        if ("xmhhjdjr01".equals(hhmtAdsDTO.getAccountId())) {
+            backEvent = HuihuangFengmangEventTypeEnum.huihuangmingtianXiaomiEventTypeMap.get(eventType).getCode();
+            adsName = hhjdjrPath.baseAdsName();
+        }
+
+
         Ads2XiaomiVO xiaomiVO = new Ads2XiaomiVO();
         xiaomiVO.setAdsId(id);
-        xiaomiVO.setAdsName(hhjdPath.baseAdsName());
-        xiaomiVO.setEventType(HuihuangmingtianEventTypeEnum.huihuangmingtianXiaomiEventTypeMap.get(eventType).getCode());
+        xiaomiVO.setAdsName(adsName);
+        xiaomiVO.setEventType(backEvent);
         xiaomiVO.setEventTimes(String.valueOf(System.currentTimeMillis()));
         xiaomiVO.setCallBackUrl(hhmtAdsDTO.getCallbackUrl());
         xiaomiVO.setOaid(hhmtAdsDTO.getOaid());
