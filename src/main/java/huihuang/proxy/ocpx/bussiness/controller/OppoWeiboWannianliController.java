@@ -17,8 +17,8 @@ import java.util.Map;
 public class OppoWeiboWannianliController {
 
     @Autowired
-    @Qualifier("oppowbbdwpService")
-    private IChannelAdsService oppowbbdwpService;
+    @Qualifier("oppowbwnlService")
+    private IChannelAdsService oppowbwnlService;
 
     /**
      * 监测地址
@@ -27,7 +27,7 @@ public class OppoWeiboWannianliController {
     public Response monitorAddress(HttpServletRequest request, @RequestBody String reqBody) {
         try {
             Map<String, Object> params = JsonParameterUtil.jsonToMap(reqBody, Exception.class);
-            return oppowbbdwpService.monitorAddress(params);
+            return oppowbwnlService.monitorAddress(params);
         } catch (Exception e) {
             return BasicResult.getFailResponse("请求异常", e.getMessage());
         }
@@ -40,7 +40,7 @@ public class OppoWeiboWannianliController {
     public Response clickReport(HttpServletRequest request) {
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
-            return oppowbbdwpService.clickReport(parameterMap);
+            return oppowbwnlService.clickReport(parameterMap);
         } catch (Exception e) {
             return BasicResult.getFailResponse("请求异常", e.getMessage());
         }
@@ -53,7 +53,7 @@ public class OppoWeiboWannianliController {
     public Response adsCallBack(HttpServletRequest request, @PathVariable Integer id) {
         try {
             Map<String, String[]> parameterMap = request.getParameterMap();
-            return oppowbbdwpService.adsCallBack(id, parameterMap);
+            return oppowbwnlService.adsCallBack(id, parameterMap);
         } catch (Exception e) {
             e.printStackTrace();
             return BasicResult.getFailResponse("请求异常", e.getMessage());
