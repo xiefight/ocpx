@@ -66,7 +66,7 @@ public class HonorHuihuangJingdongServiceImpl extends HonorChannelFactory implem
 
         //京东和京东金融  揉到了一起  京东使用的是HuihuangmingtianEventTypeEnum  京东金融使用的是HuihuangFengmangEventTypeEnum
         //根据accountId判断
-        String backEvent = HuihuangmingtianEventTypeEnum.huihuangmingtianXiaomiEventTypeMap.get(eventType).getCode();
+        String backEvent = HuihuangmingtianEventTypeEnum.huihuangmingtianHonorEventTypeMap.get(eventType).getCode();
         String adsName = hhjdPath.baseAdsName();
         if ("honorhhjd03".equals(huihuangmingtianAdsDTO.getAccountId())) {
             backEvent = HuihuangFengmangEventTypeEnum.huihuangmingtianHonorEventTypeMap.get(eventType).getCode();

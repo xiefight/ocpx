@@ -1820,7 +1820,7 @@
 
 
     <!-- 辉煌 京东金融 start -->
-    <appender name="HUIHUANG_JINGDONGJINRONG_HUIHUA_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="HUIHUANG_JINGDONGJINRONG_HUAWEI_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>logs/huihuang/hhjingdongjinrong/hhjingdongjinrong_huawei.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
             <fileNamePattern>logs/huihuang/hhjingdongjinrong/hhjingdongjinrong_huawei.log.%i</fileNamePattern>
@@ -1841,11 +1841,11 @@
 
     <logger name="huihuang.proxy.ocpx.middle.impl.HuaweiHuihuangJingdongjinrongChannelAds" level="INFO"
             additivity="true">
-        <appender-ref ref="HUIHUANG_JINGDONGJINRONG_HUIHUA_LOG"/>
+        <appender-ref ref="HUIHUANG_JINGDONGJINRONG_HUAWEI_LOG"/>
     </logger>
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HuaweiHuihuangJingdongjinrongServiceImpl" level="INFO"
             additivity="true">
-        <appender-ref ref="HUIHUANG_JINGDONGJINRONG_HUIHUA_LOG"/>
+        <appender-ref ref="HUIHUANG_JINGDONGJINRONG_HUAWEI_LOG"/>
     </logger>
 
     <appender name="HUIHUANG_JINGDONGJINRONG_HONOR_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -1874,6 +1874,34 @@
     <logger name="huihuang.proxy.ocpx.bussiness.service.impl.HonorHuihuangJingdongjinrongServiceImpl" level="INFO"
             additivity="true">
         <appender-ref ref="HUIHUANG_JINGDONGJINRONG_HONOR_LOG"/>
+    </logger>
+
+    <appender name="HUIHUANG_JINGDONGJINRONG_OPPO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>logs/huihuang/hhjingdongjinrong/hhjingdongjinrong_oppo.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/huihuang/hhjingdongjinrong/hhjingdongjinrong_oppo.log.%i</fileNamePattern>
+            <!-- 索引最小值，标识%i从1开始 -->
+            <minIndex>1</minIndex>
+            <!-- 索引最大值，标识%i到5结束，始终保留了5个归档文件 -->
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <!-- 文件大小超过1GB归档 -->
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%-5L] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+
+    <logger name="huihuang.proxy.ocpx.middle.impl.OppoHuihuangJingdongjinrongChannelAds" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONGJINRONG_OPPO_LOG"/>
+    </logger>
+    <logger name="huihuang.proxy.ocpx.bussiness.service.impl.OppoHuihuangJingdongjinrongServiceImpl" level="INFO"
+            additivity="true">
+        <appender-ref ref="HUIHUANG_JINGDONGJINRONG_OPPO_LOG"/>
     </logger>
 
 

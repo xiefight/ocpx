@@ -27,9 +27,9 @@ public class OppoPath {
     public static final String OPPO_HUIHUANG_YITAO_PKG = "com.taobao.etao";
     public static final String OPPO_HUIHUANG_XIANYU_PKG = "com.taobao.idlefish";
     public static final String OPPO_HUIHUANG_JINGDONG_PKG = "com.jingdong.app.mall";
-    public static final String OPPO_HUIHUANG_ELEME_PKG = "com.jingdong.app.mall";
-    public static final String OPPO_HUIHUANG_JINGDONGJINRONG_PKG = "com.jingdong.app.mall";
-    public static final String OPPO_HUIHUANG_BAIDUWANGPAN_PKG = "com.jingdong.app.mall";
+    public static final String OPPO_HUIHUANG_ELEME_PKG = "me.ele";
+    public static final String OPPO_HUIHUANG_JINGDONGJINRONG_PKG = "com.jd.jrapp";
+    public static final String OPPO_HUIHUANG_BAIDUWANGPAN_PKG = "com.baidu.netdisk";
 
     /**
      * salt
