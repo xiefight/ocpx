@@ -41,5 +41,9 @@ public class HuihuangmingtianParamField {
 
     @Alias("accountId")
     private String account_id;
+    /*
+        监测链接类型 0：曝光 1：点击
+     */
+    private String monitorType;
 
 }

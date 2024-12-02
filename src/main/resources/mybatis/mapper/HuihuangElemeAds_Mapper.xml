@@ -23,6 +23,7 @@
         <result column="source" property="source"/>
         <result column="channel" property="channel"/>
         <result column="account_id" property="accountId"/>
+        <result column="monitorType" property="monitorType"/>
         <result column="callback_url" property="callbackUrl"/>
         <result column="extra" property="extra"/>
         <result column="channel_name" property="channelName"/>
@@ -40,11 +41,11 @@
         INSERT INTO huihuang_eleme_ads
         (chain_code, imei_md5, oaid, oaid_md5, idfa,
         idfa_md5, task_id, aid, campaign_id, app, adid, tms, os, ip, ad_agent,
-        advertising_space_id,source,account_id,callback_url,channel,extra,channel_name, create_time, update_time, report_status,
+        advertising_space_id,source,account_id,monitorType,callback_url,channel,extra,channel_name, create_time, update_time, report_status,
         callback_status)
         VALUES (#{chainCode}, #{imeiMd5}, #{oaid}, #{oaidMd5}, #{idfa}, #{idfaMd5}, #{taskId},
         #{aid}, #{campaignId}, #{app}, #{adid}, #{tms}, #{os}, #{ip}, #{adAgent}, #{advertisingSpaceId},
-        #{source},#{accountId},#{callbackUrl},#{channel},#{extra},#{channelName},now(),now(), "0", "0")
+        #{source},#{accountId},#{monitorType},#{callbackUrl},#{channel},#{extra},#{channelName},now(),now(), "0", "0")
     </insert>
 
 
@@ -70,6 +71,7 @@
             <if test="source != null">source = #{source},</if>
             <if test="channel != null">channel = #{channel},</if>
             <if test="accountId != null">account_id = #{accountId},</if>
+            <if test="monitorType != null">monitorType = #{monitorType},</if>
             <if test="callbackUrl != null">callback_url = #{callbackUrl},</if>
             <if test="extra != null">extra = #{extra},</if>
             <if test="channelName != null">channel_name = #{channelName},</if>
@@ -102,6 +104,7 @@
                advertising_space_id,
                source,
                account_id,
+               monitorType,
                callback_url,
                channel,
                extra,

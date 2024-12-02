@@ -39,5 +39,6 @@ public class HuihuangmingtianAdsDTO extends CommonColumn implements IMarkDto {
     private String adid;
 
     private String accountId;
+    private String monitorType;
 
 }
