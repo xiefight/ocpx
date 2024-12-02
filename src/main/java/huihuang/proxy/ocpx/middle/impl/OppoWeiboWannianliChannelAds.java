@@ -1,8 +1,8 @@
 package huihuang.proxy.ocpx.middle.impl;
 
 import huihuang.proxy.ocpx.ads.weibo.WeiboParamField;
-import huihuang.proxy.ocpx.ads.weibo.baiduwangpan.WeiboBaiduwangpanPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IWeiboBaiduwangpanAdsDao;
+import huihuang.proxy.ocpx.ads.weibo.wannianli.WeiboWannianliPath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IWeiboWannianliAdsDao;
 import huihuang.proxy.ocpx.channel.oppo.OppoPath;
 import huihuang.proxy.ocpx.common.Constants;
 import huihuang.proxy.ocpx.marketinterface.IMarkDao;
@@ -10,13 +10,13 @@ import huihuang.proxy.ocpx.middle.baseadsreport.weibo.OppoWeiboReportFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("oppowbbdwpChannelAds")
-public class OppoWeiboBaiduwangpanChannelAds extends OppoWeiboReportFactory {
+@Component("oppowbwnlChannelAds")
+public class OppoWeiboWannianliChannelAds extends OppoWeiboReportFactory {
 
-    String channelAdsKey = Constants.ChannelAdsKey.OPPO_WEIBO_BAIDUWANGPAN;
+    String channelAdsKey = Constants.ChannelAdsKey.OPPO_WEIBO_WANNIANLI;
 
     @Autowired
-    private IWeiboBaiduwangpanAdsDao wbbdwpAdsOppoDao;
+    private IWeiboWannianliAdsDao wbwnlAdsOppoDao;
 
     @Override
     protected String channelAdsKey() {
@@ -25,7 +25,7 @@ public class OppoWeiboBaiduwangpanChannelAds extends OppoWeiboReportFactory {
 
     @Override
     protected String serverPathKey() {
-        return Constants.ServerPath.OPPO_WEIBO_BAIDUWANGPAN;
+        return Constants.ServerPath.OPPO_WEIBO_WANNIANLI;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class OppoWeiboBaiduwangpanChannelAds extends OppoWeiboReportFactory {
 
     @Override
     protected IMarkDao adsDao() {
-        return wbbdwpAdsOppoDao;
+        return wbwnlAdsOppoDao;
     }
 
     @Override
@@ -49,10 +49,10 @@ public class OppoWeiboBaiduwangpanChannelAds extends OppoWeiboReportFactory {
         String monitorType = weiboParamField.getMonitorType();
         if ("0".equals(monitorType)) {
             //曝光监测
-            return WeiboBaiduwangpanPath.EXPOSURE_URI;
+            return WeiboWannianliPath.EXPOSURE_URI;
         } else {
             //点击监测
-            return WeiboBaiduwangpanPath.BASIC_URI;
+            return WeiboWannianliPath.BASIC_URI;
         }
     }
 }

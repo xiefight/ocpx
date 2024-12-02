@@ -1,10 +1,11 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.util.StrUtil;
+import huihuang.proxy.ocpx.ads.huihuangmingtian.HuihuangFengmangEventTypeEnum;
 import huihuang.proxy.ocpx.ads.weibo.WeiboAdsDTO;
 import huihuang.proxy.ocpx.ads.weibo.WeiboEventTypeEnum;
-import huihuang.proxy.ocpx.ads.weibo.baiduwangpan.WeiboBaiduwangpanPath;
-import huihuang.proxy.ocpx.bussiness.dao.ads.IWeiboBaiduwangpanAdsDao;
+import huihuang.proxy.ocpx.ads.weibo.wannianli.WeiboWannianliPath;
+import huihuang.proxy.ocpx.bussiness.dao.ads.IWeiboWannianliAdsDao;
 import huihuang.proxy.ocpx.bussiness.service.BaseServiceInner;
 import huihuang.proxy.ocpx.bussiness.service.IChannelAdsService;
 import huihuang.proxy.ocpx.bussiness.service.basechannel.OppoChannelFactory;
@@ -24,21 +25,21 @@ import org.springframework.stereotype.Service;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
-@Service("oppowbbdwpService")
-public class OppoWeiboBaiduwangpanServiceImpl extends OppoChannelFactory implements IChannelAdsService {
+@Service("oppowbwnlService")
+public class OppoWeiboWannianliServiceImpl extends OppoChannelFactory implements IChannelAdsService {
 
-    protected Logger logger = LoggerFactory.getLogger(OppoWeiboBaiduwangpanServiceImpl.class);
+    protected Logger logger = LoggerFactory.getLogger(OppoWeiboWannianliServiceImpl.class);
 
     @Autowired
     private ChannelAdsFactory channelAdsFactory;
     @Autowired
-    private IWeiboBaiduwangpanAdsDao wbbdwpAdsDao;
+    private IWeiboWannianliAdsDao wbwnlAdsDao;
     @Autowired
     private BaseServiceInner baseServiceInner;
     @Autowired
-    private WeiboBaiduwangpanPath wbbdwpPath;
+    private WeiboWannianliPath wbwnlPath;
 
-    String channelAdsKey = Constants.ChannelAdsKey.OPPO_WEIBO_BAIDUWANGPAN;
+    String channelAdsKey = Constants.ChannelAdsKey.OPPO_WEIBO_WANNIANLI;
 
     @Override
     public IChannelAds channelAds() {
@@ -51,15 +52,15 @@ public class OppoWeiboBaiduwangpanServiceImpl extends OppoChannelFactory impleme
         String eventType = parameterMap.get("action_type")[0];
         logger.info("adsCallBack {} 开始回调渠道  id:{}  eventType:{}", channelAdsKey, id, eventType);
         //根据id查询对应的点击记录
-        WeiboAdsDTO weiboAdsDTO = wbbdwpAdsDao.queryWeiboBaiduwangpanAdsById(id);
+        WeiboAdsDTO weiboAdsDTO = wbwnlAdsDao.queryWeiboWannianliAdsById(id);
 
         if (null == weiboAdsDTO) {
             logger.error("{} 未根据{}找到对应的监测信息", channelAdsKey, id);
             return BasicResult.getFailResponse("未找到对应的监测信息 " + id);
         }
 
-        String adsName = wbbdwpPath.baseAdsName();
-        String pkg = OppoPath.OPPO_WEIBO_BAIDUWANGPAN_PKG;
+        String adsName = wbwnlPath.baseAdsName();
+        String pkg = OppoPath.OPPO_WEIBO_WANNIANLI_PKG;
 
         long currentTime = System.currentTimeMillis();
         Ads2OppoVO oppoVO = new Ads2OppoVO();
@@ -89,12 +90,12 @@ public class OppoWeiboBaiduwangpanServiceImpl extends OppoChannelFactory impleme
         weiboAds.setCallBackTime(String.valueOf(System.currentTimeMillis()));
         if (response.getCode() == 0) {
             weiboAds.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(weiboAds, wbbdwpAdsDao);
+            baseServiceInner.updateAdsObject(weiboAds, wbwnlAdsDao);
             logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
             return BasicResult.getSuccessResponse(data.getId());
         } else {
             weiboAds.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(weiboAds, wbbdwpAdsDao);
+            baseServiceInner.updateAdsObject(weiboAds, wbwnlAdsDao);
             logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
             return BasicResult.getFailResponse(data.getCallBackMes());
         }
