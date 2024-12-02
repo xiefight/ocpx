@@ -79,6 +79,8 @@ public class BaiduHuihuangGaotuServiceImpl extends BaiduChannelFactory implement
             baiduVO.setSecret(BaiduPath.HUIHUANG_GAOTU_SECRET_02);
         } else if (BaiduPath.HUIHUANG_GAOTU_ACCOUNT_03.equals(hhtmAdsDTO.getAccountId())) {
             baiduVO.setSecret(BaiduPath.HUIHUANG_GAOTU_SECRET_03);
+        } else if (BaiduPath.HUIHUANG_GAOTU_ACCOUNT_04.equals(hhtmAdsDTO.getAccountId())) {
+            baiduVO.setSecret(BaiduPath.HUIHUANG_GAOTU_SECRET_04);
         }
         logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
 
