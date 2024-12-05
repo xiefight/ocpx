@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.middle.baseadsreport.weibo;
 
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.crypto.digest.MD5;
 import huihuang.proxy.ocpx.ads.weibo.WeiboParamEnum;
 import huihuang.proxy.ocpx.ads.weibo.WeiboParamField;
 import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
@@ -54,7 +55,7 @@ public abstract class OppoWeiboReportFactory extends WeiboReportFactory {
             String[] value = parameterMap.get(huaweiParam);
             if (Objects.isNull(value) || value.length == 0) return;
             if ("null".equals(value[0]) || "NULL".equals(value[0])) return;
-            if (value[0].startsWith("__") && value[0].endsWith("__")) return;
+            if (value[0].startsWith("$") && value[0].endsWith("$")) return;
             try {
                 PropertyDescriptor descriptor = new PropertyDescriptor(weiboField, weiboParamField.getClass());
                 Method setMethod = descriptor.getWriteMethod();
@@ -65,6 +66,17 @@ public abstract class OppoWeiboReportFactory extends WeiboReportFactory {
         });
         logger.info("clickReport {} 媒体侧请求的监测链接中的参数，转化成广告侧的参数对象 channelParamToAdsParam:{}", channelAdsKey(), weiboParamField);
         return weiboParamField;
+    }
+
+
+    @Override
+    protected void convertParams(Object adsObj) {
+        WeiboParamField weiboParamField = (WeiboParamField) adsObj;
+        String oaid_md5 = weiboParamField.getOaid_md5();
+        if (oaid_md5 != null) {
+            weiboParamField.setOaid_md5(MD5.create().digestHex(oaid_md5));
+        }
+        super.convertParams(weiboParamField);
     }
 
 }
