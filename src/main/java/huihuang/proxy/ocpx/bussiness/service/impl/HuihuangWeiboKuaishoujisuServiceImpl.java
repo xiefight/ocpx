@@ -1,6 +1,9 @@
 package huihuang.proxy.ocpx.bussiness.service.impl;
 
 import cn.hutool.core.net.URLDecoder;
+import cn.hutool.http.HttpRequest;
+import cn.hutool.http.HttpResponse;
+import cn.hutool.http.HttpStatus;
 import huihuang.proxy.ocpx.ads.weibo.WeiboAdsDTO;
 import huihuang.proxy.ocpx.ads.weibo.kuaishou.WeiboKuaishoujisuPath;
 import huihuang.proxy.ocpx.bussiness.dao.ads.IWeiboKuaishoujisuAdsDao;
@@ -53,53 +56,27 @@ public class HuihuangWeiboKuaishoujisuServiceImpl implements IChannelAdsService 
 
         String callback = weiboAdsDTO.getCb();
         String channelUrl = URLDecoder.decode(callback, StandardCharsets.UTF_8);
-
-        // todo 回调辉煌待确认
-        /*Ads2BaiduVO baiduVO = new Ads2BaiduVO();
-        baiduVO.setAdsId(id);
-        baiduVO.setAdsName(weiboKuaishouPath.baseAdsName());
-        baiduVO.setChannelUrl(channelUrl);
-        baiduVO.setaType(WeiboEventTypeEnum.weiboBaiduEventTypeMap.get(eventType).getCode());
-        baiduVO.setaValue(0);
-        baiduVO.setCbEventTime(String.valueOf(System.currentTimeMillis()));
-//        baiduVO.setCbOaid(weiboAdsDTO.getOaid());
-        baiduVO.setCbOaidMd5(weiboAdsDTO.getOaid_md5());
-        baiduVO.setCbIdfa(weiboAdsDTO.getIdfa_md5());
-        baiduVO.setCbImei(null);
-        baiduVO.setCbImeiMd5(weiboAdsDTO.getImei_md5());
-        baiduVO.setCbAndroidIdMd5(null);
-        baiduVO.setCbIp(weiboAdsDTO.getIp());
-        if (BaiduPath.BAIDU_WEIBO_XUEERSI_ACCOUNT_01.equals(weiboAdsDTO.getAccountId())) {
-            baiduVO.setSecret(BaiduPath.BAIDU_WEIBO_XUEERSI_SECRET_01);
-        }
-        logger.info("adsCallBack {} 组装调用渠道参数:{}", channelAdsKey, baiduVO);
-
-        Response response = baseAdsCallBack(baiduVO);
-        BaiduCallbackDTO data = (BaiduCallbackDTO) response.getData();*/
+        //辉煌的链接，将事件拼接上
+        channelUrl = channelUrl + "&event_type=" + eventType;
+        HttpResponse result = HttpRequest.get(channelUrl).execute();
+        //todo 回调辉煌的结果暂不保存数据库
 
         //更新回调状态
         WeiboAdsDTO dto = new WeiboAdsDTO();
         dto.setId(id);
         dto.setCallBackTime(String.valueOf(System.currentTimeMillis()));
 
-
-        dto.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-        baseServiceInner.updateAdsObject(dto, weiboKuaishoujisuAdsDao);
-//        logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
-        return BasicResult.getSuccessResponse(weiboAdsDTO.getId());
-
-
-        /*if (response.getCode() == 0) {
+        if (HttpStatus.HTTP_OK == result.getStatus()) {
             dto.setCallBackStatus(Constants.CallBackStatus.SUCCESS.getCode());
-            baseServiceInner.updateAdsObject(dto, weiboKuaishouAdsDao);
-            logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, data);
-            return BasicResult.getSuccessResponse(data.getId());
+            baseServiceInner.updateAdsObject(dto, weiboKuaishoujisuAdsDao);
+            logger.info("adsCallBack {} 回调渠道成功：{}", channelAdsKey, id);
+            return BasicResult.getSuccessResponse(id);
         } else {
             dto.setCallBackStatus(Constants.CallBackStatus.FAIL.getCode());
-            baseServiceInner.updateAdsObject(dto, weiboKuaishouAdsDao);
-            logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, data);
-            return BasicResult.getFailResponse(data.getCallBackMes());
-        }*/
+            baseServiceInner.updateAdsObject(dto, weiboKuaishoujisuAdsDao);
+            logger.info("adsCallBack {} 回调渠道失败：{}", channelAdsKey, id);
+            return BasicResult.getFailResponse("回调渠道失败:"+id);
+        }
     }
 
 }
