@@ -146,7 +146,7 @@ public enum HuihuangFengmangEventTypeEnum {
         huihuangmingtianOppoEventTypeMap.put(ACTIVATE.code, OppoEventTypeEnum.ACTIVE);
         huihuangmingtianOppoEventTypeMap.put(REGISTER.code, OppoEventTypeEnum.REGISTER);
         huihuangmingtianOppoEventTypeMap.put(FIRST_PAID.code, null);
-        huihuangmingtianOppoEventTypeMap.put(ORDER.code, null);
+        huihuangmingtianOppoEventTypeMap.put(ORDER.code, OppoEventTypeEnum.DEEP_PAGE_ACCESS);
         huihuangmingtianOppoEventTypeMap.put(OTHER.code, null);
         huihuangmingtianOppoEventTypeMap.put(DAY1RETENTION.code, OppoEventTypeEnum.RETAIN_2DAY);
         huihuangmingtianOppoEventTypeMap.put(COPY_PART.code, null);
