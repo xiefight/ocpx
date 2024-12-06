@@ -1,11 +1,6 @@
 package huihuang.proxy.ocpx.ads.jiyue;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
-import huihuang.proxy.ocpx.channel.guangdiantong.GuangdiantongParamEnum;
-import huihuang.proxy.ocpx.channel.honor.HonorParamEnum;
-import huihuang.proxy.ocpx.channel.huawei.HuaweiParamEnum;
-import huihuang.proxy.ocpx.channel.iqiyi.IQiyiParamEnum;
-import huihuang.proxy.ocpx.channel.xiaomi.XiaomiParamEnum;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,15 +12,19 @@ public enum JiyueParamEnum {
     OAID("oaid", "String", 1, "OAID明文 优先"),
     OAID_MD5("oaidmd5", "String", 1, "OAID  明文直接取 32 位MD5 值"),
     IDFA("idfa", "String", 1, "IOS idfa明文设备号 优先"),
-    IDFA_MD5("idfa_md5", "String", 2, "IDFA 转大写后取 32 位MD5 值"),
+    IDFA_MD5("idfamd5", "String", 2, "IDFA 转大写后取 32 位MD5 值"),
     CAID("caid", "String", 1, "CAID明文  idfa和caid至少一项必填"),
     IP("ip", "String", 1, "IP地址，明文"),
     UA("ua", "String", 1, "User Agent信息，明文"),
     ANDROID_ID("androidid", "String", 1, "androidid原值进行MD5，32位无符号"),
+    MAC("mac", "String", 1, "移动设备 mac 地址,转换成大写后,取md5，32 位无符号"),
     TS("ts", "String", 1, "点击时间，时间戳，单位毫秒"),
     CALLBACK("callback", "String", 1, "渠道回调地址"),
 
-    OCPX_ACCOUNT("ocpxAccount", "String", 1, ""),
+    ACCOUNT_ID("account_id", "String", 1, ""),
+
+    JIYUE_TYPE("type", "String", 1, ""),
+    JIYUE_TOKEN("token", "String", 1, ""),
 
     ;
 
@@ -83,22 +82,24 @@ public enum JiyueParamEnum {
     }*/
 
 
-    public static Map<JiyueParamEnum, BaiduParamEnum> huihuiBaiduMap;
+    public static Map<JiyueParamEnum, BaiduParamEnum> jiyueBaiduMap;
 
     static {
-        huihuiBaiduMap = new HashMap<>();
-        huihuiBaiduMap.put(IMEI, BaiduParamEnum.IMEI_MD5);
-        huihuiBaiduMap.put(OAID, BaiduParamEnum.OAID);
-        huihuiBaiduMap.put(OAID_MD5, BaiduParamEnum.OAID_MD5);
-        huihuiBaiduMap.put(IDFA, BaiduParamEnum.IDFA);
-        huihuiBaiduMap.put(IDFA_MD5, null);
-        huihuiBaiduMap.put(CAID, BaiduParamEnum.CAID);
-        huihuiBaiduMap.put(TS, BaiduParamEnum.TS);
-        huihuiBaiduMap.put(OS, null);
-        huihuiBaiduMap.put(IP, BaiduParamEnum.IP);
-        huihuiBaiduMap.put(UA, BaiduParamEnum.UA);
-        huihuiBaiduMap.put(CALLBACK, BaiduParamEnum.CALLBACK_URL);
-        huihuiBaiduMap.put(OCPX_ACCOUNT, BaiduParamEnum.ACCOUNT_ID);
+        jiyueBaiduMap = new HashMap<>();
+        jiyueBaiduMap.put(IMEI, BaiduParamEnum.IMEI_MD5);
+        jiyueBaiduMap.put(OAID, BaiduParamEnum.OAID);
+        jiyueBaiduMap.put(OAID_MD5, BaiduParamEnum.OAID_MD5);
+        jiyueBaiduMap.put(IDFA, BaiduParamEnum.IDFA);
+        jiyueBaiduMap.put(IDFA_MD5, null);
+        jiyueBaiduMap.put(CAID, BaiduParamEnum.CAID);
+        jiyueBaiduMap.put(TS, BaiduParamEnum.TS);
+        jiyueBaiduMap.put(OS, BaiduParamEnum.OS_TYPE);
+        jiyueBaiduMap.put(IP, BaiduParamEnum.IP);
+        jiyueBaiduMap.put(UA, BaiduParamEnum.UA);
+        jiyueBaiduMap.put(CALLBACK, BaiduParamEnum.CALLBACK_URL);
+        jiyueBaiduMap.put(ACCOUNT_ID, BaiduParamEnum.ACCOUNT_ID);
+        jiyueBaiduMap.put(JIYUE_TYPE, BaiduParamEnum.JIYUE_TYPE);
+        jiyueBaiduMap.put(JIYUE_TOKEN, BaiduParamEnum.JIYUE_TOKEN);
     }
 
 

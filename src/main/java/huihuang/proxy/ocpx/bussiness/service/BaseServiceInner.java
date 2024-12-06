@@ -172,6 +172,16 @@ public class BaseServiceInner {
         return "";
     }
 
+    public String typeConvertOs(String appType) {
+        switch (appType) {
+            case "0":
+                return "android";
+            case "1":
+                return "ios";
+        }
+        return "";
+    }
+
 
     /**
      * 服务器动时，将账户分表的 startId:tableName 的关系加载到内存中

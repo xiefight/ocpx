@@ -68,6 +68,9 @@ public enum BaiduParamEnum {
 
     MONITOR_TYPE("","monitorType","监测类型 0：曝光  1：点击 默认点击"),
 
+    JIYUE_TYPE("","type","jiyue家的产品type"),
+    JIYUE_TOKEN("","token","jiyue家的产品token"),
+
     ;
 
 

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="huihuang.proxy.ocpx.bussiness.dao.ads.IJiyueYingkeAdsDao">
+
+    <resultMap id="jiyueAdsMap" type="huihuang.proxy.ocpx.ads.jiyue.JiyueAdsDTO">
+        <id column="id" property="id"/>
+        <result column="imei" property="imei"/>
+        <result column="oaid" property="oaid"/>
+        <result column="oaid_md5" property="oaidMd5"/>
+        <result column="idfa" property="idfa"/>
+        <result column="idfa_md5" property="idfaMd5"/>
+        <result column="android_id" property="androidId"/>
+        <result column="mac" property="mac"/>
+        <result column="ts" property="ts"/>
+        <result column="os" property="os"/>
+        <result column="ip" property="ip"/>
+        <result column="ua" property="ua"/>
+        <result column="type" property="type"/>
+        <result column="callback" property="callback"/>
+        <result column="channel_name" property="channelName"/>
+        <result column="extra" property="extra"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="report_status" property="reportStatus"/>
+        <result column="callback_status" property="callBackStatus"/>
+        <result column="callback_time" property="callBackTime"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO jiyue_yingke_ads
+        (imei, oaid, oaid_md5, idfa, idfa_md5, android_id, mac, ts, os, ip, ua,type, callback, channel_name, extra,
+        create_time, update_time, report_status, callback_status)
+        VALUES (#{imei}, #{oaid}, #{oaidMd5}, #{idfa}, #{idfaMd5}, #{androidId}, #{mac}, #{ts}, #{os}, #{ip}, #{ua},#{type},
+        #{callback},#{channelName},#{extra},now(),now(), "0", "0")
+    </insert>
+
+
+    <update id="update" parameterType="huihuang.proxy.ocpx.ads.liangdamao.LiangdamaoAdsDTO">
+        UPDATE jiyue_yingke_ads
+        <set>
+            <if test="imei != null">imei = #{imei},</if>
+            <if test="oaid != null">oaid = #{oaid},</if>
+            <if test="oaidMd5 != null">oaid_md5 = #{oaidMd5},</if>
+            <if test="idfa != null">idfa = #{idfa},</if>
+            <if test="idfaMd5 != null">idfa_md5 = #{idfaMd5},</if>
+            <if test="androidId != null">android_id = #{androidId},</if>
+            <if test="mac != null">mac = #{mac},</if>
+            <if test="ts != null">ts = #{ts},</if>
+            <if test="os != null">os = #{os},</if>
+            <if test="ip != null">ip = #{ip},</if>
+            <if test="ua != null">ua = #{ua},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="callback != null">callback = #{callback},</if>
+            <if test="channelName != null">channel_name = #{channelName},</if>
+            <if test="extra != null">extra = #{extra},</if>
+            update_time = now(),
+            <if test="reportStatus != null">report_status = #{reportStatus},</if>
+            <if test="callBackStatus != null">callback_status = #{callBackStatus},</if>
+            <if test="callBackTime != null">callback_time = #{callBackTime},</if>
+        </set>
+        where id =#{id}
+    </update>
+
+
+    <select id="queryJiyueYingkeAdsById" parameterType="java.lang.Integer" resultMap="jiyueAdsMap">
+        SELECT id,
+               imei,
+               oaid,
+               oaid_md5,
+               idfa,
+               idfa_md5,
+               android_id,
+               mac,
+               ts,
+               os,
+               ip,
+               ua,
+               type,
+               callback,
+               channel_name,
+               extra,
+               create_time,
+               update_time,
+               report_status,
+               callback_status
+        FROM jiyue_yingke_ads
+        WHERE id = #{id}
+    </select>
+
+
+</mapper>
