@@ -68,9 +68,10 @@ public abstract class WeiboReportFactory extends BaseSupport implements IChannel
         if (weiboParamField.getMonitorType() == null) {
             weiboParamField.setMonitorType("1");
         }
-        if (weiboParamField.getTs() == null) {
-            weiboParamField.setTs(String.valueOf((System.currentTimeMillis())));
-        }
+        weiboParamField.setTs(String.valueOf((System.currentTimeMillis())));
+//        if (weiboParamField.getTs() == null) {
+//            weiboParamField.setTs(String.valueOf((System.currentTimeMillis())));
+//        }
         logger.info("clickReport {} 特殊参数进行转换 convertParams:{}", channelAdsKey(), weiboParamField);
     }
 

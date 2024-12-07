@@ -63,6 +63,7 @@ public class HuihuangWeiboKuaishouServiceImpl implements IChannelAdsService {
         String channelUrl = URLDecoder.decode(callback, StandardCharsets.UTF_8);
         //辉煌的链接，将事件拼接上
         channelUrl = channelUrl + "?event_type=" + eventType;
+        logger.info("{} 回调渠道链接：{}", channelAdsKey, channelUrl);
         HttpResponse result = HttpRequest.get(channelUrl).execute();
         //todo 回调辉煌的结果暂不保存数据库
 

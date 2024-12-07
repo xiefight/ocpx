@@ -55,7 +55,7 @@ public abstract class HuihuangWeiboReportFactory extends WeiboReportFactory {
             String[] value = parameterMap.get(huihuangParam);
             if (Objects.isNull(value) || value.length == 0) return;
             if ("null".equals(value[0]) || "NULL".equals(value[0])) return;
-            if (value[0].startsWith("__") && value[0].endsWith("__")) return;
+            if (value[0].startsWith("__") || value[0].endsWith("__")) return;
             try {
                 PropertyDescriptor descriptor = new PropertyDescriptor(weiboField, weiboParamField.getClass());
                 Method setMethod = descriptor.getWriteMethod();
