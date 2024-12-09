@@ -29,4 +29,5 @@ public class JiyueParamField {
     private String type;
     @Alias("accountId")
     private String account_id;
+    private String token;
 }

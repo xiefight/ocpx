@@ -97,7 +97,7 @@ public abstract class JiyueReportFactory extends BaseSupport implements IChannel
         JiyueAdsDTO jiyueAdsVO = new JiyueAdsDTO();
         jiyueAdsVO.setId(jiyueAdsDTO.getId());
         //上报成功
-        if (HttpStatus.HTTP_OK == response.getStatus() && (Integer) Objects.requireNonNull(responseBodyMap).get("code") == 200) {
+        if (HttpStatus.HTTP_OK == response.getStatus() && "200".equals(Objects.requireNonNull(responseBodyMap).get("code"))) {
             jiyueAdsVO.setReportStatus(Constants.ReportStatus.SUCCESS.getCode());
             baseServiceInner.updateAdsObject(jiyueAdsVO, adsDao());
             logger.info("clickReport {} 上报广告侧接口请求成功:{} 数据:{}", channelAdsKey(), response, jiyueAdsVO);
