@@ -45,6 +45,7 @@ public enum HonorParamEnum {
     QUANNENGHUDONG_PID("","pid","全能互动广告商标识"),
     QUANNENGHUDONG_UNIQUEID("","uniqueid","全能互动请求唯一id"),
 
+    MONITOR_TYPE("", "monitorType", "监测类型 0：曝光  1：点击 默认点击"),
     ;
 
 

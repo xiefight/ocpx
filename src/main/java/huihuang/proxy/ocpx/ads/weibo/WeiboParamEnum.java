@@ -1,6 +1,7 @@
 package huihuang.proxy.ocpx.ads.weibo;
 
 import huihuang.proxy.ocpx.channel.baidu.BaiduParamEnum;
+import huihuang.proxy.ocpx.channel.honor.HonorParamEnum;
 import huihuang.proxy.ocpx.channel.huihuang.HuihuangChannelParamEnum;
 import huihuang.proxy.ocpx.channel.oppo.OppoParamEnum;
 
@@ -128,5 +129,30 @@ public enum WeiboParamEnum {
         weiboHuihuangMap.put(ACCOUNT_ID, HuihuangChannelParamEnum.ACCOUNT_ID);
         weiboHuihuangMap.put(MONITOR_TYPE, HuihuangChannelParamEnum.MONITOR_TYPE);
     }
+
+
+    public static Map<WeiboParamEnum, HonorParamEnum> weiboHonorMap;
+
+    static {
+        weiboHonorMap = new HashMap<>();
+        weiboHonorMap.put(IMEI_MD5, null);
+        weiboHonorMap.put(OAID_MD5, HonorParamEnum.OAID);
+        weiboHonorMap.put(IDFA_MD5, null);
+        weiboHonorMap.put(CAID, null);
+        weiboHonorMap.put(MODEL, null);
+        weiboHonorMap.put(BRAND, null);
+        weiboHonorMap.put(LANGUAGE, null);
+
+        weiboHonorMap.put(TS, HonorParamEnum.TIME);
+        weiboHonorMap.put(OS, HonorParamEnum.OS);
+        weiboHonorMap.put(OSVERSION, null);
+        weiboHonorMap.put(IPV4, HonorParamEnum.IP);
+        weiboHonorMap.put(UA, HonorParamEnum.UA);
+        weiboHonorMap.put(CALLBACK, null);
+
+        weiboHonorMap.put(ACCOUNT_ID, HonorParamEnum.ACCOUNT_ID);
+        weiboHonorMap.put(MONITOR_TYPE, HonorParamEnum.MONITOR_TYPE);
+    }
+
 
 }
